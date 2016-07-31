@@ -1,0 +1,28 @@
+@import '../../styles/sizes.less';
+
+.container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media only screen and (min-width: @mobile) {
+  .container {
+    width: @mobile;
+  }
+}
+
+@media only screen and (min-width: @tablet) {
+  .container {
+    width: @tablet;
+  }
+
+  .flexContainer {
+    max-width: @tablet * 1.2;
+  }
+}
+
+@media only screen and (min-width: @pc) {
+  .container {
+    width: @pc;
+  }
+}

@@ -1,0 +1,46 @@
+@import '../../styles/colours.less';
+@import '../../styles/sizes.less';
+
+@large-card: 100%;
+@medium-card: 500px;
+@small-card: 200px;
+
+.container {
+  border-radius: 1px;
+  margin: 0 0 3em 0;
+  width: 100%;
+  flex-grow: 0;
+  position: relative;
+  composes: low from '../../styles/box-shadow.less';
+}
+
+hr {
+  margin: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.2);
+  height: 1px!important;
+}
+
+.primary {
+  background: @card-bg;
+}
+
+@media only screen and (min-width: @mobile) {
+  .card {
+    flex-grow: 1;
+  }
+
+  .small {
+    width: @mobile - 50%;
+  }
+
+  .medium {
+    width: @mobile - 20;
+  }
+}
+
+@media only screen and (min-width: @tablet) {
+  .medium {
+    width: @tablet - 150;
+  }
+}
