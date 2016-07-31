@@ -4,9 +4,14 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 const Icon = ({ name, size, className }) => (
-  <div className={cx('container', size, className)} style={{
-    backgroundImage: 'url(' + require(`assets/images/${name}`) + ')',
-  }}></div>
+  <div
+    className={cx('container', size, className)}
+    style={{
+      /* eslint prefer-template:0 */
+      backgroundImage: 'url(' + require(`assets/images/${name}`) + ')',
+    }}
+  >
+  </div>
 );
 
 Icon.propTypes = {

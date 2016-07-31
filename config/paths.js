@@ -45,8 +45,8 @@ if (isInCreateReactAppSource) {
   // after eject: we're in ./config/
   module.exports = {
     appBuild: resolve('../build'),
-    appHtml: resolve('../index.html'),
-    appFavicon: resolve('../favicon.ico'),
+    appHtml: resolve('../src/index.html'),
+    appFavicon: resolve('../src/favicon.ico'),
     appPackageJson: resolve('../package.json'),
     appSrc: resolve('../src'),
     appNodeModules: resolve('../node_modules'),

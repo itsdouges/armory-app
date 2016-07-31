@@ -31,7 +31,7 @@ class Login extends Component {
 
   login = (event) => {
     event.preventDefault();
-    
+
     if (!this.state.canLogin) {
       return;
     }
@@ -39,12 +39,14 @@ class Login extends Component {
     // do stuff
   };
 
-  render() {
+  render () {
     return (
       <span>
         <h2>Login</h2>
         <Card size="small">
-          <Message>Don't have an account? <Link to="/join"><strong>Join us :-)!</strong></Link></Message>
+          <Message>
+            Don't have an account? <Link to="/join"><strong>Join us :-)!</strong></Link>
+          </Message>
 
           <form onSubmit={this.login}>
             <Textbox

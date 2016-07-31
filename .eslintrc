@@ -1,0 +1,26 @@
+{
+  "extends": ["./config/eslint.js", "airbnb"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "generators": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "plugins": [
+    "flowtype"
+  ],
+  "rules": {
+    "space-before-function-paren": [2, "always"],
+    "comma-dangle": ["error", "always-multiline"],
+    "default-case": 0,
+    "react/react-in-jsx-scope": 0,
+    "global-require": 0,
+    "import/no-unresolved": 0,
+  },
+  "globals": {
+    "__DEVELOPMENT__": true,
+    "__DATE__": true,
+    "__SHORT_GIT_HASH__": true
+  }
+}

@@ -4,11 +4,13 @@ import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
 const Button = (props) => (
-  <div className={cx('container', {
-    primary: props.primary,
-    secondary: !props.primary,
-    disabled: props.disabled,
-  })}>
+  <div
+    className={cx('container', {
+      primary: props.primary,
+      secondary: !props.primary,
+      disabled: props.disabled,
+    })}
+  >
     <button className={styles.button}></button>
     {props.children}
   </div>

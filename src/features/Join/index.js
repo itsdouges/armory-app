@@ -1,12 +1,27 @@
 import { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
 import Button from 'common/components/Button';
 
+import {
+  register,
+  validateEmailThunk,
+  validateAliasThunk,
+  validatePasswords,
+} from './actions';
+
+import { selector } from './user.reducer';
+
+import debounce from 'lodash/debounce';
+
 class Join extends Component {
   static propTypes = {
     router: PropTypes.object,
+    dispatch: PropTypes.func,
+    user: PropTypes.object,
+    canRegister: PropTypes.bool,
   };
 
   state = {
@@ -23,37 +38,48 @@ class Join extends Component {
       [id]: value,
     };
 
-    newState.canRegister = this.validateForm(newState);
+    const passwordChanged = id.indexOf('password') >= 0;
+    const methodName = passwordChanged ? 'password' : id;
+    const args = passwordChanged ?
+      [newState.password, newState.passwordConfirm] :
+      [value];
 
+    this[`check${methodName[0].toUpperCase() + methodName.slice(1)}`](...args);
     this.setState(newState);
   };
 
-  validateForm({ email, alias, password, passwordConfirm }) {
-    return email && alias && password && passwordConfirm && password === passwordConfirm;
-  }
+  checkEmail = debounce((value) => this.props.dispatch(validateEmailThunk(value)), 300);
+  checkAlias = debounce((value) => this.props.dispatch(validateAliasThunk(value)), 300);
+  checkPassword = debounce(
+    (password, passwordConfirm) =>
+      this.props.dispatch(validatePasswords(password, passwordConfirm)),
+      300
+  );
 
   register = (event) => {
     event.preventDefault();
-    
+
     if (!this.state.canRegister) {
       return;
     }
 
-    // do stuff
+    const action = register(this.state);
+    this.props.dispatch(action);
   };
 
-  render() {
+  render () {
     return (
       <span>
         <h2>Join</h2>
         <Card size="small">
-          <form onSubmit={this.login}>
+          <form onSubmit={this.register}>
             <Textbox
               showStatus
               required
               id="email"
               placeholder="Email"
               value={this.state.email}
+              error={this.props.user.emailErrors}
               onChange={this.fieldChanged}
             />
 
@@ -63,6 +89,7 @@ class Join extends Component {
               id="alias"
               placeholder="Alias"
               value={this.state.alias}
+              error={this.props.user.aliasErrors}
               onChange={this.fieldChanged}
             />
 
@@ -83,10 +110,11 @@ class Join extends Component {
               placeholder="Confirm Password"
               type="password"
               value={this.state.passwordConfirm}
+              error={this.props.user.passwordErrors}
               onChange={this.fieldChanged}
             />
 
-            <Button primary disabled={!this.state.canRegister}>
+            <Button primary disabled={!this.props.canRegister}>
               REGISTER
             </Button>
           </form>
@@ -96,4 +124,4 @@ class Join extends Component {
   }
 }
 
-export default Join;
+export default connect(selector)(Join);

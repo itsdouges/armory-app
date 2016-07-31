@@ -10,7 +10,7 @@ const Textbox = (props) => {
 
   return (
     <div className={cx(props.containerClassName || 'container')}>
-      {props.label && <label for={props.id}>{props.label}</label>}
+      {props.label && <label htmlFor={props.id}>{props.label}</label>}
 
       <input
         id={props.id}

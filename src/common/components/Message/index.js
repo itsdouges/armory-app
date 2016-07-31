@@ -4,10 +4,13 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 const Message = ({ children, type, small, title, className }) => (
-  <div title={title} className={cx('container', className, type, {
-    small,
-  })}>
-    {children}
+  <div
+    title={title}
+    className={cx('container', className, type, {
+      small,
+    })}
+  >
+      {children}
   </div>
 );
 

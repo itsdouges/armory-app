@@ -32,6 +32,12 @@ module.exports = {
     },
   },
 
+  globals: {
+    __DATE__: true,
+    __SHORT_GIT_HASH__: true,
+    __DEVELOPMENT__: true,
+  },
+
   settings: {
     'import/ignore': [
       'node_modules',

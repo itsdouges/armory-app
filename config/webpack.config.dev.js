@@ -77,7 +77,7 @@ module.exports = {
   },
   eslint: {
     configFile: path.join(__dirname, 'eslint.js'),
-    useEslintrc: false
+    useEslintrc: true
   },
   postcss: function() {
     return [autoprefixer];
@@ -88,7 +88,12 @@ module.exports = {
       template: paths.appHtml,
       favicon: paths.appFavicon,
     }),
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"development"' }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"development"',
+      __DATE__: `${new Date()}`,
+      __SHORT_GIT_HASH__: '"local-build"',
+      __DEVELOPMENT__: 'true',
+    }),
     // Note: only CSS is currently hot reloaded
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({

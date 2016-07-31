@@ -8,7 +8,7 @@ var execSync = require('child_process').execSync;
 var opn = require('opn');
 var detect = require('detect-port');
 var prompt = require('./utils/prompt');
-var config = require('../config/webpack.config.dev');
+var config = require('../webpack.config');
 
 // Tools like Cloud9 rely on this
 var DEFAULT_PORT = process.env.PORT || 3000;
