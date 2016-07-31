@@ -49,6 +49,7 @@ class Join extends Component {
         <Card size="small">
           <form onSubmit={this.login}>
             <Textbox
+              showStatus
               required
               id="email"
               placeholder="Email"
@@ -57,6 +58,7 @@ class Join extends Component {
             />
 
             <Textbox
+              showStatus
               required
               id="alias"
               placeholder="Alias"
@@ -65,6 +67,7 @@ class Join extends Component {
             />
 
             <Textbox
+              showStatus
               required
               id="password"
               placeholder="Password"
@@ -74,6 +77,7 @@ class Join extends Component {
             />
 
             <Textbox
+              showStatus
               required
               id="passwordConfirm"
               placeholder="Confirm Password"
