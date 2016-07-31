@@ -8,15 +8,15 @@ import { Link } from 'react-router';
 
 const Header = ({ authenticated, user }) => {
   const links = authenticated ?
-    [<Link to="/me">{user.alias}</Link>, <Link to="/settings">Settings</Link>] :
-    [<Link to="/join">Join</Link>, <Link to="/login">Login</Link>];
+    [<Link to="/me">{user.alias}</Link>, <Link to="/me/settings">Settings</Link>] :
+    [<Link to="/join">Join</Link>, <Link to="/in">Login</Link>];
 
   return (
     <Card className={styles.container}>
       <div className={styles.heroImage}></div>
 
       <Container className={styles.innerContainer}>
-        <Link to="/"><Icon name="logo-small" size="mini" /></Link>
+        <Link to="/"><Icon name="logo-small.png" size="mini" /></Link>
 
         <Textbox
           placeholder="Search Guild Wars 2 Armory"

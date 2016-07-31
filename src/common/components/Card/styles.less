@@ -8,10 +8,12 @@
 .container {
   border-radius: 1px;
   margin: 0 0 3em 0;
+  padding: 1.5em;
   width: 100%;
   flex-grow: 0;
   position: relative;
   composes: low from '../../styles/box-shadow.less';
+  background: @card-bg;
 }
 
 hr {
@@ -19,10 +21,6 @@ hr {
   border: 0;
   background: rgba(0, 0, 0, 0.2);
   height: 1px!important;
-}
-
-.primary {
-  background: @card-bg;
 }
 
 @media only screen and (min-width: @mobile) {

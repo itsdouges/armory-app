@@ -5,8 +5,16 @@ const cx = classnames.bind(styles);
 
 const Textbox = (props) => (
   <div className={cx(props.containerClassName || 'container')}>
-    {props.label && <label>{props.label}</label>}
-    <input placeholder={props.placeholder} onChange={props.onChange} type={props.type || 'text'} className={styles.textbox} />
+    {props.label && <label for={props.id}>{props.label}</label>}
+
+    <input
+      id={props.id}
+      value={props.value}
+      placeholder={props.placeholder}
+      onChange={props.onChange}
+      type={props.type || 'text'}
+      className={styles.textbox}
+    />
   </div>
 );
 
@@ -19,6 +27,8 @@ Textbox.propTypes = {
   onChange: PropTypes.func,
   containerClassName: PropTypes.string,
   error: PropTypes.string,
+  value: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default Textbox;

@@ -13,6 +13,7 @@ Card.propTypes = {
   size: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.any,
+  background: PropTypes.string,
 };
 
 export default Card;

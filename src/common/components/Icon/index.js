@@ -5,7 +5,7 @@ const cx = classNames.bind(styles);
 
 const Icon = ({ name, size, className }) => (
   <div className={cx('container', size, className)} style={{
-    backgroundImage: 'url(' + require(`assets/images/${name}.png`) + ')',
+    backgroundImage: 'url(' + require(`assets/images/${name}`) + ')',
   }}></div>
 );
 
