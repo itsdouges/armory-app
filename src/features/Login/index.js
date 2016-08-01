@@ -1,14 +1,19 @@
 import { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
 import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
 import Message from 'common/components/Message';
 import Button from 'common/components/Button';
 
+import { selector } from './user.reducer';
+import { fetchToken } from './actions';
+
 class Login extends Component {
   static propTypes = {
     router: PropTypes.object,
+    dispatch: PropTypes.func,
   };
 
   state = {
@@ -32,11 +37,7 @@ class Login extends Component {
   login = (event) => {
     event.preventDefault();
 
-    if (!this.state.canLogin) {
-      return;
-    }
-
-    // do stuff
+    this.props.dispatch(fetchToken(this.state.email, this.state.password));
   };
 
   render () {
@@ -66,7 +67,10 @@ class Login extends Component {
               onChange={this.fieldChanged}
             />
 
-            <Button primary disabled={!this.state.canLogin}>
+            <Button
+              primary
+              disabled={!this.state.canLogin}
+            >
               SIGN IN
             </Button>
           </form>
@@ -76,4 +80,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default connect(selector)(Login);

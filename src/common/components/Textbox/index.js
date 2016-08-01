@@ -30,7 +30,7 @@ const Textbox = (props) => {
 
 Textbox.propTypes = {
   showStatus: PropTypes.bool,
-  valid: PropTypes.string,
+  valid: PropTypes.bool,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string,

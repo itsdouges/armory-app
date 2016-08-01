@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// import * as authActions from './auth';
+import { fetchToken } from 'features/Login/actions';
 import config from 'env';
 
 export const REGISTERING_USER = 'REGISTERING_USER';
@@ -48,9 +48,7 @@ export function register (user) {
       .post(`${config.api.endpoint}users`, mappedUser)
       .then(() => {
         dispatch(registerResultSuccess());
-        // dispatch(
-        //  authActions.actionCreators.fetchTokenThunk(mappedUser.email, mappedUser.password)
-        // );
+        dispatch(fetchToken(mappedUser.email, mappedUser.password));
       }, (response) => {
         dispatch(registerResultError(response.data));
         dispatch(isRegistering(false));

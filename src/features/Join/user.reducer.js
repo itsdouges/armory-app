@@ -109,7 +109,7 @@ export const selector = createSelector(
   })
 );
 
-export default function reduce (state = {}, action) {
+export default (state, action) => {
   switch (action.type) {
     case REGISTERING_USER:
       return registeringUserReducer(state, action);
@@ -139,6 +139,6 @@ export default function reduce (state = {}, action) {
       return validatePasswordsReducer(state, action);
 
     default:
-      return state;
+      return undefined;
   }
-}
+};

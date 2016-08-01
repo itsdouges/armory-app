@@ -29,7 +29,6 @@ class Join extends Component {
     alias: '',
     password: '',
     passwordConfirm: '',
-    canRegister: false,
   };
 
   fieldChanged = ({ target: { id, value } }) => {
@@ -58,10 +57,6 @@ class Join extends Component {
 
   register = (event) => {
     event.preventDefault();
-
-    if (!this.state.canRegister) {
-      return;
-    }
 
     const action = register(this.state);
     this.props.dispatch(action);
@@ -118,7 +113,11 @@ class Join extends Component {
               onChange={this.fieldChanged}
             />
 
-            <Button primary disabled={!this.props.canRegister}>
+            <Button
+              primary
+              busy={this.props.user.registering}
+              disabled={!this.props.canRegister}
+            >
               REGISTER
             </Button>
           </form>
