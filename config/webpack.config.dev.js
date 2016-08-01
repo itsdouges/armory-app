@@ -92,7 +92,7 @@ module.exports = {
       'process.env.NODE_ENV': '"development"',
       __DATE__: `${new Date()}`,
       __SHORT_GIT_HASH__: '"local-build"',
-      __DEVELOPMENT__: 'true',
+      __DEVELOPMENT__: 'false',
     }),
     // Note: only CSS is currently hot reloaded
     new webpack.HotModuleReplacementPlugin(),

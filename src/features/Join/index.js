@@ -80,6 +80,7 @@ class Join extends Component {
               placeholder="Email"
               value={this.state.email}
               error={this.props.user.emailErrors}
+              valid={this.props.user.emailValid}
               onChange={this.fieldChanged}
             />
 
@@ -90,6 +91,7 @@ class Join extends Component {
               placeholder="Alias"
               value={this.state.alias}
               error={this.props.user.aliasErrors}
+              valid={this.props.user.aliasValid}
               onChange={this.fieldChanged}
             />
 
@@ -100,6 +102,7 @@ class Join extends Component {
               placeholder="Password"
               type="password"
               value={this.state.password}
+              valid={this.props.user.passwordValid}
               onChange={this.fieldChanged}
             />
 
@@ -111,6 +114,7 @@ class Join extends Component {
               type="password"
               value={this.state.passwordConfirm}
               error={this.props.user.passwordErrors}
+              valid={this.props.user.passwordValid}
               onChange={this.fieldChanged}
             />
 

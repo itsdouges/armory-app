@@ -94,6 +94,7 @@ function validatePasswordsReducer (state, action) {
     ...state,
     passwordErrors: action.error ? action.payload : undefined,
     passwordValue: !action.error ? action.payload : undefined,
+    passwordValid: !action.error,
   };
 
   return newState;
