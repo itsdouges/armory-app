@@ -1,6 +1,7 @@
 import {
   CLEAR_USER_DATA,
   AUTHENTICATE_USER,
+  CHECKING_AUTHENTICATION,
 } from './actions';
 
 function clearUserDataReducer () {
@@ -16,6 +17,17 @@ function authenticateUserReducer (state, action) {
   };
 }
 
+function checkingAuthReducer (state, action) {
+  return {
+    ...state,
+    checkingAuthentication: action.payload,
+  };
+}
+
+export const defaultState = {
+  checkingAuthentication: true,
+};
+
 export default (state, action) => {
   switch (action.type) {
     case CLEAR_USER_DATA:
@@ -23,6 +35,9 @@ export default (state, action) => {
 
     case AUTHENTICATE_USER:
       return authenticateUserReducer(state, action);
+
+    case CHECKING_AUTHENTICATION:
+      return checkingAuthReducer(state, action);
 
     default:
       return undefined;

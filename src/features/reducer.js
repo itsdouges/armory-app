@@ -9,8 +9,6 @@ const reducerModules = require.context('./', true, /.\.reducer\.js$/);
  *
  * Each reducer should export a default 'reduce' function,
  * and an optional 'defaultState' named export.
- *
- * Only one defaultState is allowed per [name]ed reducer.
  */
 
 const definitions = reducerModules.keys().reduce((acc, key) => {
@@ -29,13 +27,10 @@ const definitions = reducerModules.keys().reduce((acc, key) => {
 
   acc[cleanedKey].reducers.push(module.default);
 
-  if (__DEVELOPMENT__ && acc[cleanedKey].defaultState && module.defaultState) {
-    console.error(`DefaultState for ${cleanedKey} has already been defined.`);
-  }
-
-  if (module.defaultState) {
-    acc[cleanedKey].defaultState = module.defaultState;
-  }
+  acc[cleanedKey].defaultState = {
+    ...acc[cleanedKey].defaultState,
+    ...module.defaultState,
+  };
 
   return acc;
 }, {});

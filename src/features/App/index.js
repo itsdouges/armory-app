@@ -24,15 +24,12 @@ class App extends Component {
   };
 
   static childContextTypes = {
-    user: PropTypes.object,
+    userAlias: PropTypes.string,
   };
 
   getChildContext () {
     return {
-      user: {
-        authenticated: this.props.userAuthenticated,
-        alias: this.props.userAlias,
-      },
+      userAlias: this.props.userAlias,
     };
   }
 

@@ -1,18 +1,18 @@
 import { Component, PropTypes } from 'react';
-import { get } from 'axios';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { browserHistory } from 'react-router';
 
-import config from 'env';
-import { authenticateUser, clearUserData } from './actions';
+import { authenticateUser } from './actions';
 
 const selector = createSelector(
   store => store.user.token,
   store => store.user.loggedIn,
-  (userToken, userAuthenticated) => ({
+  store => store.user.checkingAuthentication,
+  (userToken, userAuthenticated, checkingAuthentication) => ({
     userToken,
     userAuthenticated,
+    checkingAuthentication,
   })
 );
 
@@ -22,6 +22,7 @@ export const authEnabled = (ComposedComponent) => connect(selector)(
       dispatch: PropTypes.func,
       userToken: PropTypes.string,
       userAuthenticated: PropTypes.bool,
+      checkingAuthentication: PropTypes.bool,
     };
 
     static childContextTypes = {
@@ -29,13 +30,9 @@ export const authEnabled = (ComposedComponent) => connect(selector)(
       _userAuthenticated: PropTypes.bool,
     };
 
-    state = {
-      checkingAuth: true,
-    };
-
     getChildContext () {
       return {
-        _checkingAuth: this.state.checkingAuth,
+        _checkingAuth: this.props.checkingAuthentication,
         _userAuthenticated: this.props.userAuthenticated,
       };
     }
@@ -55,24 +52,7 @@ export const authEnabled = (ComposedComponent) => connect(selector)(
         return;
       }
 
-      get(`${config.api.endpoint}/users/me`, {
-        headers: {
-          Authorization: this.props.userToken,
-        },
-      })
-      .then(({ data }) => {
-        this.props.dispatch(authenticateUser(data));
-        this.setState({
-          checkingAuth: false,
-        });
-      }, this.clearUser);
-    }
-
-    clearUser () {
-      this.props.dispatch(clearUserData());
-      this.setState({
-        checkingAuth: false,
-      });
+      this.props.dispatch(authenticateUser(this.props.userToken));
     }
 
     render () {
@@ -103,7 +83,7 @@ export const authOnly = (ComposedComponent) => class AuthOnly extends Component 
   }
 
   render () {
-    return this.context._checkingAuth ? <span /> : <ComposedComponent {...this.props} />;
+    return this.context._checkingAuth ? <span>...</span> : <ComposedComponent {...this.props} />;
   }
 };
 
