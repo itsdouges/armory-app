@@ -9,11 +9,9 @@ import Header from './Header';
 const selector = createSelector(
   store => store.user.alias,
   store => store.user.loggedIn,
-  store => store.user.token,
-  (userAlias, userAuthenticated, userToken) => ({
+  (userAlias, userAuthenticated) => ({
     userAlias,
     userAuthenticated,
-    userToken,
   })
 );
 

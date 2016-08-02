@@ -18,7 +18,7 @@ import User from 'features/User';
 import Settings from 'features/Settings';
 import Search from 'features/Search';
 import NotFound from 'features/NotFound';
-import withAuthFactory from 'features/WithAuth';
+import { authEnabled, authOnly } from 'features/Auth';
 
 const logger = __DEVELOPMENT__ && createLogger();
 
@@ -30,21 +30,16 @@ const store = createStore(
   ].filter((n) => !!n))
 );
 
-const withAuth = withAuthFactory({
-  getState: store.getState,
-  dispatch: store.dispatch,
-});
-
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={withAuth(App)}>
+      <Route path="/" component={authEnabled(App)}>
         <IndexRoute component={Home} />
         <Route path="/in" component={Login} />
         <Route path="/join" component={Join} />
         <Route path="/search(/:term)" component={Search} />
-        <Route path="/me" component={withAuth(User, true)} />
-        <Route path="/me/settings" component={withAuth(Settings, true)} />
+        <Route path="/me" component={authOnly(User)} />
+        <Route path="/me/settings" component={authOnly(Settings)} />
         <Route path="/:user" component={User} />
         <Route path="*" component={NotFound} />
       </Route>
