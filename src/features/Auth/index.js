@@ -41,8 +41,8 @@ export const authEnabled = (ComposedComponent) => connect(selector)(
       this.checkAuth();
     }
 
-    componentWillReceiveProps (nextProps) {
-      if (nextProps.userToken && nextProps.userToken !== this.props.userToken) {
+    componentDidUpdate (prevProps) {
+      if (this.props.userToken && prevProps.userToken !== this.props.userToken) {
         this.checkAuth();
       }
     }
