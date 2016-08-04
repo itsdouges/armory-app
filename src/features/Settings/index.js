@@ -1,8 +1,8 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import ApiTokens from './ApiTokens';
-import ChangePassword from './ChangePassword';
+import ApiTokens from './components/ApiTokens';
+import ChangePassword from './components/ChangePassword';
 
 const selector = createSelector(
   store => store.user,

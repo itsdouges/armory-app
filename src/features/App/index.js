@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import styles from './styles.less';
-import Footer from './Footer';
-import Header from './Header';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 const selector = createSelector(
   store => store.user.alias,
