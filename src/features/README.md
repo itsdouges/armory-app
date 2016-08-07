@@ -14,3 +14,4 @@ actions.js
 - components folder is optional
 - any common view modules (styles, components, etc) should be placed in `src/common/`
 - any common functionality should be placed in `src/lib/`
+- Keep component definitions flat, no deeper than one level e.g: `components/ComponentName`

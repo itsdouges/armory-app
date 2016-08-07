@@ -37,12 +37,21 @@ export default class ChangePassword extends Component {
         <Card size="small">
           <form onSubmit={this.changePassword}>
             <Textbox
-              showStatus
               required
               id="password"
               placeholder="Password"
               type="password"
               value={this.state.password}
+              onChange={this.fieldChanged}
+            />
+
+            <Textbox
+              showStatus
+              required
+              id="passwordConfirm"
+              placeholder="New Password"
+              type="password"
+              value={this.state.newPassword}
               valid={this.props.valid}
               onChange={this.fieldChanged}
             />
@@ -51,9 +60,9 @@ export default class ChangePassword extends Component {
               showStatus
               required
               id="passwordConfirm"
-              placeholder="Confirm Password"
+              placeholder="Confirm New Password"
               type="password"
-              value={this.state.passwordConfirm}
+              value={this.state.newPasswordConfirm}
               error={this.props.error}
               valid={this.props.valid}
               onChange={this.fieldChanged}

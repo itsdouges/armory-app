@@ -1,11 +1,20 @@
 @padding: 0.5rem;
 
-.container {
+.root {
   display: flex;
   align-items: center;
   padding: @padding * 1.5;
-  transition: background 0.3s;
   flex-shrink: 0;
+  opacity: 0.75;
+}
+
+.root:hover {
+  opacity: 1;
+  background: #4c4c4c;
+
+  .textContainer {
+    color: white;
+  }
 }
 
 .placeholder {
@@ -43,7 +52,6 @@
   font-size: 0.8em;
   font-weight: 100;
   opacity: 0.85;
-  transition: color 0.3s;
   overflow: visible;
 }
 

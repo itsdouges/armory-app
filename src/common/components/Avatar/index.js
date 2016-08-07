@@ -1,24 +1,25 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
 import classnames from 'classnames/bind';
+import noImage from 'assets/images/quaggan-sad.png';
 const cx = classnames.bind(styles);
 
-const Avatar = ({ alias, img, size }) => (
-  <div title={alias} className={styles.root}>
+const Avatar = ({ name, img, size }) => (
+  <div title={name} className={styles.root}>
     <img
-      alt={alias}
+      alt={name}
       className={cx('image', size)}
-      src={img}
+      src={img || noImage}
     />
 
     <h2 className={styles.name}>
-      <strong>{alias || <span className={styles.placeholder}>'loading...'</span>}</strong>
+      <strong>{name || <span className={styles.placeholder}>loading...</span>}</strong>
     </h2>
   </div>
 );
 
 Avatar.propTypes = {
-  alias: PropTypes.string,
+  name: PropTypes.string,
   size: PropTypes.string,
   img: PropTypes.string,
 };

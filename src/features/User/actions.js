@@ -8,6 +8,7 @@ export const FETCHING_USER_CHARACTERS_RESULT = 'FETCHING_USER_CHARACTERS_RESULT'
 export const FETCH_PVP_STATS_RESULT = 'FETCH_PVP_STATS_RESULT';
 export const FETCH_PVP_GAMES_RESULT = 'FETCH_PVP_GAMES_RESULT';
 export const FETCH_PVP_STANDINGS_RESULT = 'FETCH_PVP_STANDINGS_RESULT';
+export const SELECT_USER = 'SELECT_USER';
 
 const fetchingUser = (fetching) => ({
   type: FETCHING_USER,
@@ -74,6 +75,11 @@ export const fetchPvpStandingsSuccess = (alias, data) => ({
     alias,
     data,
   },
+});
+
+export const selectUser = (alias) => ({
+  type: SELECT_USER,
+  payload: alias,
 });
 
 export const fetchPvpStats = (alias) => (dispatch) =>

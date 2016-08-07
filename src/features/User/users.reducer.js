@@ -1,3 +1,4 @@
+import { createSelector } from 'reselect';
 import {
   FETCHING_USER,
   FETCHING_USER_RESULT,
@@ -6,6 +7,7 @@ import {
   FETCH_PVP_STATS_RESULT,
   FETCH_PVP_GAMES_RESULT,
   FETCH_PVP_STANDINGS_RESULT,
+  SELECT_USER,
 } from './actions';
 
 function fetchingUserResult (state, action) {
@@ -82,6 +84,15 @@ function fetchPvpGamesResult (state, action) {
   return newState;
 }
 
+export const selector = createSelector(
+  store => store.users.data[store.users.selected],
+  store => store.gw2PvpSeasons,
+  (user, pvpSeasons) => ({
+    user,
+    pvpSeasons,
+  })
+);
+
 export const defaultState = {
   data: {},
 };
@@ -92,6 +103,12 @@ export default function reducer (state, action) {
       return {
         ...state,
         fetching: action.payload,
+      };
+
+    case SELECT_USER:
+      return {
+        ...state,
+        selected: action.payload,
       };
 
     case FETCHING_USER_RESULT:
