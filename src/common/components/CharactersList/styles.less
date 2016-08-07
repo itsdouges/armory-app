@@ -1,0 +1,74 @@
+@import '../../styles/sizes.less';
+
+.root {
+  position: relative;
+  padding: 26px 0 0 0;
+}
+
+.container {
+  display: flex;
+  overflow-x: auto;
+}
+
+.borderContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  opacity: 0.85;
+}
+
+.borderContainerTop {
+  top: 0;
+}
+
+.border {
+  flex-shrink: 0;
+  height: 26px;
+  width: 284px;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-image: url('assets/images/slider-border.png');
+  overflow: hidden;
+}
+
+.borderTopLeft {
+  margin-right: 2em;
+}
+
+.borderTopRight {
+  transform: scaleX(-1);
+}
+
+.item {
+  width: 80%;
+}
+
+.NumberOfSliderItems(@items) {
+  width: (100 / @items) * 1%;
+}
+
+@media only screen and (min-width: @mobile) {
+  .item {
+    .NumberOfSliderItems(2);
+  }
+}
+
+@media only screen and (min-width: @tablet) {
+  .item {
+    .NumberOfSliderItems(3);
+  }
+}
+
+@media only screen and (min-width: @pc) {
+  .item {
+    .NumberOfSliderItems(4);
+  }
+}
+
+@media only screen and (min-width: @big-pc) {
+  .item {
+    .NumberOfSliderItems(5);
+  }
+}
