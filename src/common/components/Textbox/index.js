@@ -38,7 +38,7 @@ Textbox.propTypes = {
   type: PropTypes.string,
   onChange: PropTypes.func,
   containerClassName: PropTypes.string,
-  error: PropTypes.string,
+  error: PropTypes.any,
   value: PropTypes.string,
   id: PropTypes.string,
 };

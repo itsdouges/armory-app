@@ -5,7 +5,13 @@ import ApiTokens from './components/ApiTokens';
 import ChangePassword from './components/ChangePassword';
 import debounce from 'lodash/debounce';
 
-import { validateGw2Token, addGw2Token } from './actions';
+import {
+  validateGw2Token,
+  addGw2Token,
+  fetchGw2Tokens,
+  selectPrimaryGw2Token,
+  removeGw2Token,
+} from './actions';
 
 const selector = createSelector(
   store => store.user,
@@ -21,6 +27,14 @@ class Settings extends Component {
     user: PropTypes.object,
   };
 
+  componentWillMount () {
+    this.props.dispatch(fetchGw2Tokens());
+  }
+
+  setPrimaryToken = (token) => {
+    this.props.dispatch(selectPrimaryGw2Token(token));
+  };
+
   validateToken = debounce((token) => {
     this.props.dispatch(validateGw2Token(token));
   });
@@ -29,8 +43,8 @@ class Settings extends Component {
     this.props.dispatch(addGw2Token(token));
   };
 
-  removeToken = () => {
-
+  removeToken = (token) => {
+    this.props.dispatch(removeGw2Token(token));
   };
 
   render () {
@@ -38,11 +52,12 @@ class Settings extends Component {
       <span>
         <ApiTokens
           valid={this.props.user.validGw2Token}
-          tokens={this.props.user.apiTokens}
+          tokens={this.props.user.gw2Tokens}
           error={this.props.user.gw2TokenError}
           add={this.addToken}
           remove={this.removeToken}
           validate={this.validateToken}
+          setPrimary={this.setPrimaryToken}
         />
 
         <ChangePassword

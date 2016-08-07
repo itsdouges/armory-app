@@ -12,7 +12,7 @@ const Avatar = ({ alias, img, size }) => (
     />
 
     <h2 className={styles.name}>
-      <strong>{alias || 'loading...'}</strong>
+      <strong>{alias || <span className={styles.placeholder}>'loading...'</span>}</strong>
     </h2>
   </div>
 );

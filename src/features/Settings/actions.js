@@ -144,9 +144,7 @@ export function removeGw2Token (token) {
   return (dispatch) => {
     dispatch(deleteGw2Token(token));
 
-    return del(`${config.api.endpoint}users/me/gw2-tokens/${token}`)
-      .then(() => {
-      });
+    return del(`${config.api.endpoint}users/me/gw2-tokens/${token}`);
   };
 }
 
