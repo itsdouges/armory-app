@@ -7,7 +7,6 @@ import Card from 'common/components/Card';
 import Message from 'common/components/Message';
 import Button from 'common/components/Button';
 
-import { selector } from './user.reducer';
 import { fetchToken } from './actions';
 
 class Login extends Component {
@@ -80,4 +79,4 @@ class Login extends Component {
   }
 }
 
-export default connect(selector)(Login);
+export default connect(undefined)(Login);

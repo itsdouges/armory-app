@@ -26,11 +26,16 @@ class User extends Component {
   };
 
   componentWillMount () {
-    const route = this.props.location.pathname.replace('/', '');
-    const user = route === 'me' ? this.context.userAlias : route;
+    const alias = this.alias;
 
-    this.props.dispatch(fetchUser(user));
-    this.props.dispatch(selectUser(user));
+    this.props.dispatch(fetchUser(alias));
+    this.props.dispatch(selectUser(alias));
+  }
+
+  get alias () {
+    const route = this.props.location.pathname.replace('/', '');
+    const alias = route === 'me' ? this.context.userAlias : route;
+    return alias;
   }
 
   render () {
@@ -39,6 +44,7 @@ class User extends Component {
         <Avatar name={this.props.user.alias} />
         <CharactersList
           type="grid"
+          alias={this.alias}
           characters={this.props.user.characters}
         />
       </div>
