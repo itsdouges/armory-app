@@ -6,7 +6,7 @@ import styles from './styles.less';
 import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
-const CharactersList = ({ characters = [] }) => {
+const CharactersList = ({ characters = [], type = 'list' }) => {
   const content = characters.length ?
     characters.map((character) => (
       <CharacterCard className={styles.item} character={character} key={character.name} />)
@@ -22,7 +22,7 @@ const CharactersList = ({ characters = [] }) => {
         <div className={cx('border', 'borderTopRight')}></div>
       </div>
 
-      <Card className={styles.container}>
+      <Card className={cx('container', type)}>
         {content}
       </Card>
     </div>
@@ -31,7 +31,7 @@ const CharactersList = ({ characters = [] }) => {
 
 CharactersList.propTypes = {
   characters: PropTypes.array,
-  type: PropTypes.oneOf(['grid', 'list', '']),
+  type: PropTypes.oneOf(['grid', 'list']),
 };
 
 export default CharactersList;

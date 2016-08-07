@@ -5,7 +5,7 @@ import noImage from 'assets/images/quaggan-sad.png';
 const cx = classnames.bind(styles);
 
 const Avatar = ({ name, img, size }) => (
-  <div title={name} className={styles.root}>
+  <div className={styles.root}>
     <img
       alt={name}
       className={cx('image', size)}

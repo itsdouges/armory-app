@@ -37,7 +37,10 @@ class User extends Component {
     return (
       <div className={styles.container}>
         <Avatar name={this.props.user.alias} />
-        <CharactersList characters={this.props.user.characters} />
+        <CharactersList
+          type="grid"
+          characters={this.props.user.characters}
+        />
       </div>
     );
   }
