@@ -11,7 +11,7 @@ export default class ApiTokens extends Component {
     remove: PropTypes.func,
     valid: PropTypes.bool,
     validate: PropTypes.func,
-    error: PropTypes.string,
+    error: PropTypes.array,
   };
 
   state = {
@@ -27,7 +27,8 @@ export default class ApiTokens extends Component {
     this.props.validate(value);
   };
 
-  add = () => {
+  add = (event) => {
+    event.preventDefault();
     this.props.add(this.state.newToken);
   };
 
@@ -43,7 +44,9 @@ export default class ApiTokens extends Component {
               id="newToken"
               placeholder="Add token"
               value={this.state.newToken}
+              valid={this.props.valid}
               onChange={this.fieldChanged}
+              error={this.props.error}
             />
 
             <Button

@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import ApiTokens from './components/ApiTokens';
 import ChangePassword from './components/ChangePassword';
+import debounce from 'lodash/debounce';
+
+import { validateGw2Token, addGw2Token } from './actions';
 
 const selector = createSelector(
   store => store.user,
@@ -18,28 +21,28 @@ class Settings extends Component {
     user: PropTypes.object,
   };
 
-  validateToken = () => {
+  validateToken = debounce((token) => {
+    this.props.dispatch(validateGw2Token(token));
+  });
 
-  }
-
-  addToken = () => {
-
-  }
+  addToken = (token) => {
+    this.props.dispatch(addGw2Token(token));
+  };
 
   removeToken = () => {
 
-  }
+  };
 
   render () {
     return (
       <span>
         <ApiTokens
-          valid={this.props.user.validToken}
+          valid={this.props.user.validGw2Token}
           tokens={this.props.user.apiTokens}
+          error={this.props.user.gw2TokenError}
           add={this.addToken}
           remove={this.removeToken}
           validate={this.validateToken}
-          error={this.tokenError}
         />
 
         <ChangePassword

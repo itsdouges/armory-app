@@ -1,5 +1,6 @@
 import { get } from 'axios';
 import config from 'env';
+import { setApiToken } from 'lib/http';
 
 export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
 export const CLEAR_USER_DATA = 'CLEAR_USER_DATA';
@@ -36,6 +37,7 @@ export function authenticateUser (token) {
     })
     .then(({ data }) => {
       dispatch(userAuthenticated(data));
+      setApiToken(token);
       dispatch(checkingAuthentication(false));
     }, () => {
       dispatch(clearUserData());
