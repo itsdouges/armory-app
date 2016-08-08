@@ -1,3 +1,4 @@
+import { createSelector } from 'reselect';
 import {
   FETCHING_GW2_TOKENS,
   FETCH_GW2_TOKEN_RESULT,
@@ -20,6 +21,13 @@ const addGw2TokenResultReducer = (state, action) => {
 
   return newState;
 };
+
+export const selector = createSelector(
+  store => store.user,
+  (user) => ({
+    user,
+  })
+);
 
 export const defaultState = {
   gw2Tokens: [],

@@ -17,6 +17,7 @@ import Join from 'features/Join';
 import User from 'features/User';
 import Settings from 'features/Settings';
 import Search from 'features/Search';
+import Character from 'features/Character';
 import NotFound from 'features/NotFound';
 import { authEnabled, authOnly } from 'features/Auth';
 
@@ -35,12 +36,12 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={authEnabled(App)}>
         <IndexRoute component={Home} />
-        <Route path="/in" component={Login} />
+        <Route path="/login" component={Login} />
         <Route path="/join" component={Join} />
         <Route path="/search(/:term)" component={Search} />
-        <Route path="/me" component={authOnly(User)} />
-        <Route path="/me/settings" component={authOnly(Settings)} />
-        <Route path="/:user" component={User} />
+        <Route path="/settings" component={authOnly(Settings)} />
+        <Route path="/:alias" component={User} />
+        <Route path="/:alias/characters/:character" component={Character} />
         <Route path="*" component={NotFound} />
       </Route>
     </Router>

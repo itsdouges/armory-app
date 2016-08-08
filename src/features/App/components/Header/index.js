@@ -8,8 +8,8 @@ import { Link } from 'react-router';
 
 const Header = ({ authenticated, alias }) => {
   const links = authenticated ?
-    [<Link to="/me">{alias}</Link>, <Link to="/me/settings">Settings</Link>] :
-    [<Link to="/join">Join</Link>, <Link to="/in">Login</Link>];
+    [<Link to={`/${alias}`}>{alias}</Link>, <Link to="/settings">Settings</Link>] :
+    [<Link to="/join">Join</Link>, <Link to="/login">Login</Link>];
 
   return (
     <Card className={styles.container}>

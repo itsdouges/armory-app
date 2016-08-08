@@ -18,7 +18,7 @@ const CharactersList = ({ characters = [], alias, type = 'list' }) => {
         <CharacterCard character={character} />
       </Link>)
     ) :
-    [0, 0, 0, 0].map((data, index) => (
+    [0, 0].map((data, index) => (
       <PlaceholderCharacterCard className={styles.item} key={index} />)
     );
 

@@ -1,6 +1,6 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
+import { selector } from './user.reducer';
 import ApiTokens from './components/ApiTokens';
 import ChangePassword from './components/ChangePassword';
 import debounce from 'lodash/debounce';
@@ -12,13 +12,6 @@ import {
   selectPrimaryGw2Token,
   removeGw2Token,
 } from './actions';
-
-const selector = createSelector(
-  store => store.user,
-  (user) => ({
-    user,
-  })
-);
 
 class Settings extends Component {
   static propTypes = {
@@ -58,6 +51,7 @@ class Settings extends Component {
           remove={this.removeToken}
           validate={this.validateToken}
           setPrimary={this.setPrimaryToken}
+          adding={this.props.user.addingGw2Token}
         />
 
         <ChangePassword

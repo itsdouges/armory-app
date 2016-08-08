@@ -14,7 +14,7 @@ class User extends Component {
   static propTypes = {
     user: PropTypes.object,
     dispatch: PropTypes.func,
-    location: PropTypes.object,
+    routeParams: PropTypes.object,
   };
 
   static contextTypes = {
@@ -26,16 +26,10 @@ class User extends Component {
   };
 
   componentWillMount () {
-    const alias = this.alias;
+    const alias = this.props.routeParams.alias;
 
     this.props.dispatch(fetchUser(alias));
     this.props.dispatch(selectUser(alias));
-  }
-
-  get alias () {
-    const route = this.props.location.pathname.replace('/', '');
-    const alias = route === 'me' ? this.context.userAlias : route;
-    return alias;
   }
 
   render () {
@@ -44,7 +38,7 @@ class User extends Component {
         <Avatar name={this.props.user.alias} />
         <CharactersList
           type="grid"
-          alias={this.alias}
+          alias={this.props.routeParams.alias}
           characters={this.props.user.characters}
         />
       </div>

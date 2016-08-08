@@ -1,5 +1,6 @@
 import { get } from 'axios';
 import config from 'env';
+import { fetchPvpSeason } from 'features/Gw2/actions';
 
 export const FETCHING_USER = 'FETCHING_USER';
 export const FETCHING_USER_CHARACTERS = 'FETCHING_USER_CHARACTERS';
@@ -40,16 +41,6 @@ export const fetchUserCharacters = (alias) => (dispatch) => {
     .then((response) => {
       dispatch(fetchUserCharactersResult(alias, response.data));
       dispatch(fetchingUserCharacters(false));
-    });
-};
-
-export const fetchUser = (alias) => (dispatch) => {
-  dispatch(fetchingUser(true));
-
-  return get(`${config.api.endpoint}users/${alias}`)
-    .then((response) => {
-      dispatch(fetchUserResult(response.data));
-      dispatch(fetchingUser(false));
     });
 };
 
@@ -99,7 +90,20 @@ export const fetchPvpStandings = (alias) => (dispatch) =>
   .then((response) => {
     const standings = response.data;
 
-    // standings.forEach((standing) => dispatch(fetchPvpSeason(standing.season_id)));
+    standings.forEach((standing) => dispatch(fetchPvpSeason(standing.season_id)));
 
     dispatch(fetchPvpStandingsSuccess(alias, standings));
   });
+
+export const fetchUser = (alias) => (dispatch) => {
+  dispatch(fetchingUser(true));
+  dispatch(fetchPvpStandings(alias));
+  dispatch(fetchPvpGames(alias));
+  dispatch(fetchPvpStats(alias));
+
+  return get(`${config.api.endpoint}users/${alias}`)
+    .then((response) => {
+      dispatch(fetchUserResult(response.data));
+      dispatch(fetchingUser(false));
+    });
+};

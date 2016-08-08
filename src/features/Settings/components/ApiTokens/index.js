@@ -15,6 +15,7 @@ export default class ApiTokens extends Component {
     setPrimary: PropTypes.func,
     validate: PropTypes.func,
     error: PropTypes.array,
+    adding: PropTypes.bool,
   };
 
   state = {
@@ -68,10 +69,12 @@ export default class ApiTokens extends Component {
               valid={this.props.valid}
               onChange={this.fieldChanged}
               error={this.props.error}
+              disabled={this.props.adding}
             />
 
             <Button
               primary
+              busy={this.props.adding}
               disabled={!this.props.valid}
             >
               ADD
