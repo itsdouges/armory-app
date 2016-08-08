@@ -1,6 +1,5 @@
 import { PropTypes } from 'react';
 import CharacterCard from 'common/components/CharacterCard';
-import PlaceholderCharacterCard from 'common/components/CharacterCard/placeholder';
 import Card from 'common/components/Card';
 import { Link } from 'react-router';
 import styles from './styles.less';
@@ -11,7 +10,7 @@ const CharactersList = ({ characters = [], alias, type = 'list' }) => {
   const content = characters.length ?
     characters.map((character) => (
       <Link
-        to={`${alias}/characters/${character.name}`}
+        to={`/${alias}/characters/${character.name}`}
         key={character.name}
         className={styles.item}
       >
@@ -19,7 +18,7 @@ const CharactersList = ({ characters = [], alias, type = 'list' }) => {
       </Link>)
     ) :
     [0, 0].map((data, index) => (
-      <PlaceholderCharacterCard className={styles.item} key={index} />)
+      <CharacterCard className={styles.item} key={index} />)
     );
 
   return (

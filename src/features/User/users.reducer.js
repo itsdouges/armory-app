@@ -95,6 +95,7 @@ export const selector = createSelector(
 
 export const defaultState = {
   data: {},
+  selected: '',
 };
 
 export default function reducer (state, action) {

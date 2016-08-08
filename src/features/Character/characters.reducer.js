@@ -106,15 +106,20 @@ function parseCharacter (character) {
 }
 
 export const selector = createSelector(
-  store => store.characters[store.characters.selected],
-  (character) => ({
+  store => store.characters.data[store.characters.selected],
+  store => {
+    const user = store.users.data[store.users.selected];
+    return user && user.characters;
+  },
+  (character, characters) => ({
     character,
+    characters,
   })
 );
 
 export const defaultState = {
   data: {},
-  selected: null,
+  selected: '',
 };
 
 export default function reducer (state, action) {

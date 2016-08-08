@@ -3,8 +3,8 @@ import styles from './styles.less';
 import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
-const Placeholder = ({ className }) => (
-  <div className={cx('placeholderRoot', className)}>
+const Placeholder = ({ className, size = 'small' }) => (
+  <div className={cx('placeholderRoot', className, size)}>
     <div className={cx('image', 'placeholder')} />
     <div className={styles.textContainer}>
       <div className={cx('title', 'placeholder')}>loading...</div>
@@ -15,6 +15,7 @@ const Placeholder = ({ className }) => (
 
 Placeholder.propTypes = {
   className: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'big']),
 };
 
 export default Placeholder;

@@ -6,27 +6,11 @@
   align-items: center;
   padding: @padding * 1.5;
   flex-shrink: 0;
-  opacity: 0.75;
-}
-
-.root:hover {
-  opacity: 1;
-  background: #4c4c4c;
-  cursor: pointer;
-
-  .textContainer {
-    color: white;
-  }
 }
 
 .placeholder {
   background: #dcdcdc;
   color: #dcdcdc;
-}
-
-.image {
-  height: 64px;
-  width: 64px;
 }
 
 .textContainer {
@@ -41,7 +25,6 @@
   font-size: 1.7em;
   font-family: 'Menomonia';
   overflow: hidden;
-  opacity: 0.9;
   font-weight: bold;
   min-width: 60%;
   margin: @padding;
@@ -53,42 +36,93 @@
   margin-top: 0;
   font-size: 0.8em;
   font-weight: 100;
-  opacity: 0.85;
   overflow: visible;
 }
 
-.guardian {
-  background-image: url('assets/images/guardian-icon-small.png');
+.small {
+  .image {
+    height: 64px;
+    width: 64px;
+  }
+
+  .guardian {
+    background-image: url('assets/images/guardian-icon-small.png');
+  }
+
+  .necromancer {
+    background-image: url('assets/images/necromancer-icon-small.png');
+  }
+
+  .ranger {
+    background-image: url('assets/images/ranger-icon-small.png');
+  }
+
+  .engineer {
+    background-image: url('assets/images/engineer-icon-small.png');
+  }
+
+  .elementalist {
+    background-image: url('assets/images/elementalist-icon-small.png');
+  }
+
+  .thief {
+    background-image: url('assets/images/thief-icon-small.png');
+  }
+
+  .revenant {
+    background-image: url('assets/images/revenant-icon-small.png');
+  }
+
+  .warrior {
+    background-image: url('assets/images/warrior-icon-small.png');
+  }
+
+  .mesmer {
+    background-image: url('assets/images/mesmer-icon-small.png');
+  }
 }
 
-.necromancer {
-  background-image: url('assets/images/necromancer-icon-small.png');
-}
+.big {
+  font-size: 2em;
 
-.ranger {
-  background-image: url('assets/images/ranger-icon-small.png');
-}
+  .image {
+    width: 128px;
+    height: 128px;
+  }
 
-.engineer {
-  background-image: url('assets/images/engineer-icon-small.png');
-}
+  .elementalist {
+    background-image: url('assets/images/elementalist-icon.png');
+  }
 
-.elementalist {
-  background-image: url('assets/images/elementalist-icon-small.png');
-}
+  .thief {
+    background-image: url('assets/images/thief-icon.png');
+  }
 
-.thief {
-  background-image: url('assets/images/thief-icon-small.png');
-}
+  .guardian {
+    background-image: url('assets/images/guardian-icon.png');
+  }
 
-.revenant {
-  background-image: url('assets/images/revenant-icon-small.png');
-}
+  .engineer {
+    background-image: url('assets/images/engineer-icon.png');
+  }
 
-.warrior {
-  background-image: url('assets/images/warrior-icon-small.png');
-}
+  .ranger {
+    background-image: url('assets/images/ranger-icon.png');
+  }
 
-.mesmer {
-  background-image: url('assets/images/mesmer-icon-small.png');
+  .mesmer {
+    background-image: url('assets/images/mesmer-icon.png');
+  }
+
+  .necromancer {
+    background-image: url('assets/images/necromancer-icon.png');
+  }
+
+  .warrior {
+    background-image: url('assets/images/warrior-icon.png');
+  }
+
+  .revenant {
+    background-image: url('assets/images/revenant-icon.png');
+  }
 }
