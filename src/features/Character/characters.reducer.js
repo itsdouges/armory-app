@@ -111,9 +111,17 @@ export const selector = createSelector(
     const user = store.users.data[store.users.selected];
     return user && user.characters;
   },
-  (character, characters) => ({
+  store => store.items,
+  store => store.skins,
+  store => store.specializations,
+  store => store.traits,
+  (character, characters, items, skins, specializations, traits) => ({
     character,
     characters,
+    items,
+    skins,
+    specializations,
+    traits,
   })
 );
 
