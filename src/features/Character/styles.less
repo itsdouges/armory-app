@@ -1,4 +1,57 @@
+@import '../../common/styles/sizes.less';
+
+@thick-width: 180;
+@thin-width: 120;
+@content-width: 820px;
+
 .root {
   flex-grow: 1;
   width: 100%;
+}
+
+.inner {
+  max-width: @content-width;
+  margin: 0 auto;
+}
+
+.columns {
+  display: flex;
+  flex-direction: column;
+}
+
+.leftColumn,
+.innerRightColumn {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.innerRightColumn {
+  flex-direction: row;
+}
+
+// @media only screen and (min-width: @mobile) {
+//   .rightColumn {
+//     width: @thin-width * 1px;
+//   }
+// }
+
+@media only screen and (min-width: @tablet) {
+  .columns {
+    flex-direction: row;
+  }
+
+  .leftColumn,
+  .innerRightColumn {
+    justify-content: flex-start;
+  }
+
+  .leftColumn {
+    flex-direction: column;
+  }
+
+  .rightColumn {
+    width: @thick-width * 1px;
+  }
 }

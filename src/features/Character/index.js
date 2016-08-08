@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
+
 import CharactersList from 'common/components/CharactersList';
 import CharacterCard from 'common/components/CharacterCard';
+import Portrait from './components/Portrait';
 
 import Item from './components/Item';
 import styles from './styles.less';
@@ -155,24 +157,43 @@ class Character extends Component {
 
     return (
       <div className={styles.root}>
-        <CharacterCard character={character} size="big" />
+        <div className={styles.inner}>
+          <CharacterCard character={character} size="big" />
 
-        {leftItems.map((item) =>
-          <Item
-            {...item}
-            key={item.key}
-            item={this.props.items[equipment && equipment[item.key] && equipment[item.key].id]}
-            skin={this.props.skins[equipment && equipment[item.key] && equipment[item.key].skin]}
-          />)}
+          <div className={styles.columns}>
+            <div className={styles.leftColumn}>
+              {leftItems.map((item) =>
+                <Item
+                  {...item}
+                  key={item.key}
+                  item={this.props.items[equipment &&
+                    equipment[item.key] &&
+                    equipment[item.key].id]}
+                  skin={this.props.skins[equipment &&
+                    equipment[item.key] &&
+                    equipment[item.key].skin]}
+                />)}
+            </div>
 
-        {rightItems.map((item) =>
-          <Item
-            {...item}
-            key={item.key}
-            item={this.props.items[equipment && equipment[item.key] && equipment[item.key].id]}
-            skin={this.props.skins[equipment && equipment[item.key] && equipment[item.key].skin]}
-          />)}
+            <Portrait character={character} />
 
+            <div className={styles.rightColumn}>
+              <div className={styles.innerRightColumn}>
+              {rightItems.map((item) =>
+                <Item
+                  {...item}
+                  key={item.key}
+                  item={this.props.items[equipment &&
+                    equipment[item.key] &&
+                    equipment[item.key].id]}
+                  skin={this.props.skins[equipment &&
+                    equipment[item.key] &&
+                    equipment[item.key].skin]}
+                />)}
+              </div>
+            </div>
+          </div>
+        </div>
         <CharactersList alias={alias} characters={characters} />
       </div>
     );

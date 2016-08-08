@@ -9,11 +9,14 @@ const CharacterCard = ({ character, className, size = 'small' }) => {
     return <Placeholder size={size} className={className} />;
   }
 
+  const title = size === 'big' && character.guild_tag ?
+    `${character.name} [${character.guild_tag}]` : character.name;
+
   return (
     <div className={cx('root', className, size)}>
       <div className={cx('image', character.profession.toLowerCase())} />
       <div className={styles.textContainer}>
-        <div className={cx('title')}>{character.name}</div>
+        <div className={cx('title')}>{title}</div>
         <div className={cx('subTitle')}>
           {character.level} {character.race} {character.profession}
         </div>

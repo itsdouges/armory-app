@@ -1,0 +1,114 @@
+@import '../../../../common/styles/sizes.less';
+
+@potrait-top-spacer: 37px;
+@pz-foreground: 10;
+@pz-background: 1;
+@pz-middle: 5;
+
+.root {
+  background-position: center center;
+  background-repeat: no-repeat;
+  composes: low from 'common/styles/box-shadow.less';
+  background: black;
+  background-size: cover;
+  position: relative;
+  flex-grow: 1;
+}
+
+.root:before {
+  content: "";
+  display: block;
+  padding-top: 150%;
+}
+
+.portraitTopIn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 239px;
+  background-size: cover!important;
+  z-index: @pz-background;
+}
+
+.portraitBottomIn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-size: cover!important;
+  height: 240px;
+  z-index: @pz-foreground;
+}
+
+@media only screen and (min-width: @mobile) {
+  .container:before {
+    content: "";
+    display: block;
+    padding-top: 175%;
+  }
+
+  .container {
+    margin-left: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: @tablet) {
+  .container:before {
+    content: "";
+    display: block;
+    padding-top: 140%;
+  }
+
+  .container {
+    margin-left: 0;
+  }
+}
+
+.asura {
+  background-image: url('assets/images/portrait-bgs/asura.png');
+}
+
+.human {
+  background-image: url('assets/images/portrait-bgs/human.png');
+}
+
+.charr {
+  background-image: url('assets/images/portrait-bgs/charr.png');
+}
+
+.norn {
+  background-image: url('assets/images/portrait-bgs/norn.png');
+}
+
+.sylvari {
+  background-image: url('assets/images/portrait-bgs/sylvari.png');
+}
+
+.borderStrip1 {
+  background: url('assets/images/portrait-top-in.png');
+}
+
+.borderStrip2 {
+  background: url('assets/images/portrait-bottom-in.png');
+}
+
+.portraitAsura {
+  background-image: url('assets/images/portraits/asura.png');
+}
+
+.portraitHuman {
+  background-image: url('assets/images/portraits/human.png');
+}
+
+.portraitCharr {
+  background-image: url('assets/images/portraits/charr.png');
+}
+
+.portraitNorn {
+  background-image: url('assets/images/portraits/norn.png');
+}
+
+.portraitSylvari {
+  background-image: url('assets/images/portraits/sylvari.png');
+}

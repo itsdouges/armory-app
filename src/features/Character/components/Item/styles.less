@@ -6,16 +6,18 @@
   height: 60px;
   font-size: 0;
   position: relative;
+  border-radius: 2px;
+  composes: low from 'common/styles/box-shadow.less';
 }
 
-.fetching {
-  animation-name: fetching;
+.busy {
+  animation-name: busy;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
-@keyframes fetching {
+@keyframes busy {
   from {
     opacity: 0.5;
   }
@@ -23,12 +25,6 @@
   to {
     opacity: 0.8;
   }
-}
-
-item-block {
-  margin: 0.25rem;
-  font-size: 0;
-  display: inline-block;
 }
 
 .item {
@@ -42,12 +38,9 @@ item-block {
 }
 
 .containerDefault {
-  composes: low from 'common/styles/box-shadow.less';
   border: 1px solid @junk;
   transition: border-color 0.25s;
-  border-radius: 2px;
   background-size: cover;
-  transition: box-shadow 0.2s;
   background-color: black;
 }
 
