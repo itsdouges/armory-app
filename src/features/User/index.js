@@ -1,6 +1,6 @@
 import styles from './styles.less';
 import CharactersList from 'common/components/CharactersList';
-import Avatar from 'common/components/Avatar';
+import ContentCard from 'common/components/ContentCard';
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { selector } from './users.reducer';
@@ -21,10 +21,6 @@ class User extends Component {
     userAlias: PropTypes.string,
   };
 
-  static defaultProps = {
-    user: {},
-  };
-
   componentWillMount () {
     const alias = this.props.routeParams.alias;
 
@@ -33,13 +29,16 @@ class User extends Component {
   }
 
   render () {
+    const { user, routeParams: { alias } } = this.props;
+
     return (
       <div className={styles.container}>
-        <Avatar name={this.props.user.alias} />
+        <ContentCard content={user} size="big" type="user" />
+
         <CharactersList
           type="grid"
-          alias={this.props.routeParams.alias}
-          characters={this.props.user.characters}
+          alias={alias}
+          characters={user && user.characters}
         />
       </div>
     );

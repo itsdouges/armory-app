@@ -5,7 +5,7 @@ import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
 
 import CharactersList from 'common/components/CharactersList';
-import CharacterCard from 'common/components/CharacterCard';
+import ContentCard from 'common/components/ContentCard';
 import Portrait from './components/Portrait';
 
 import Item from './components/Item';
@@ -158,7 +158,7 @@ class Character extends Component {
     return (
       <div className={styles.root}>
         <div className={styles.inner}>
-          <CharacterCard character={character} size="big" />
+          <ContentCard content={character} size="big" />
 
           <div className={styles.columns}>
             <div className={styles.leftColumn}>

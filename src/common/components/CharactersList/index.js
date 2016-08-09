@@ -1,5 +1,5 @@
 import { PropTypes } from 'react';
-import CharacterCard from 'common/components/CharacterCard';
+import ContentCard from 'common/components/ContentCard';
 import Card from 'common/components/Card';
 import { Link } from 'react-router';
 import styles from './styles.less';
@@ -14,11 +14,11 @@ const CharactersList = ({ characters = [], alias, type = 'list' }) => {
         key={character.name}
         className={styles.item}
       >
-        <CharacterCard character={character} />
+        <ContentCard content={character} />
       </Link>)
     ) :
     [0, 0].map((data, index) => (
-      <CharacterCard className={styles.item} key={index} />)
+      <ContentCard className={styles.item} key={index} />)
     );
 
   return (
