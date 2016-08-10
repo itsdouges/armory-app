@@ -1,4 +1,4 @@
-# gw2armory.com [![Build Status](https://travis-ci.org/madou/armory-front.svg?branch=master)](https://travis-ci.org/madou/armory-front)
+# gw2armory.com [![Build Status](https://travis-ci.org/madou/armory-ng.svg?branch=master)](https://travis-ci.org/madou/armory-ng)
 
 ## Usage
 
