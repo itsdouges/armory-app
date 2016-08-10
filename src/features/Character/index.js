@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
+import { calculate as calculateAttributes } from 'lib/gw2/attributes';
 
 import CharactersList from 'common/components/CharactersList';
 import ContentCard from 'common/components/ContentCard';
 import Portrait from './components/Portrait';
+import Attribute from './components/Attribute';
 
 import Item from './components/Item';
 import styles from './styles.less';
@@ -135,6 +137,7 @@ class Character extends Component {
     characters: PropTypes.array,
     items: PropTypes.object,
     skins: PropTypes.object,
+    fetchingGw2Data: PropTypes.bool,
   };
 
   componentWillMount () {
@@ -154,6 +157,7 @@ class Character extends Component {
     } = this.props;
 
     const equipment = character && character.equipment;
+    const attributes = calculateAttributes(character, this.props.items);
 
     return (
       <div className={styles.root}>
@@ -178,6 +182,13 @@ class Character extends Component {
             <Portrait character={character} />
 
             <div className={styles.rightColumn}>
+              <div>
+                {Object.keys(attributes).map((key) => {
+                  const value = attributes[key];
+                  return <Attribute key={key} name={key} value={value} />;
+                })}
+              </div>
+
               <div className={styles.innerRightColumn}>
               {rightItems.map((item) =>
                 <Item

@@ -32,8 +32,10 @@ class User extends Component {
     const { user, routeParams: { alias } } = this.props;
 
     return (
-      <div className={styles.container}>
-        <ContentCard content={user} size="big" type="user" />
+      <div className={styles.root}>
+        <div className={styles.inner}>
+          <ContentCard content={user} size="big" type="user" />
+        </div>
 
         <CharactersList
           type="grid"

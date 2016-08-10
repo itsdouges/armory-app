@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { get, post } from 'axios';
 
 import { fetchToken } from 'features/Login/actions';
 import config from 'env';
@@ -44,8 +44,7 @@ export function register (user) {
       password: user.password,
     };
 
-    return axios
-      .post(`${config.api.endpoint}users`, mappedUser)
+    return post(`${config.api.endpoint}users`, mappedUser)
       .then(() => {
         dispatch(registerResultSuccess());
         dispatch(fetchToken(mappedUser.email, mappedUser.password));
@@ -88,7 +87,7 @@ export function validateEmailThunk (email) {
   return (dispatch) => {
     dispatch(validatingEmail(true));
 
-    return axios.get(`${config.api.endpoint}users/check/email/${email}`)
+    return get(`${config.api.endpoint}users/check/email/${email}`)
       .then(() => {
         dispatch(validateEmailSuccess(email));
         dispatch(validatingEmail(false));
@@ -135,7 +134,7 @@ export function validateAliasThunk (alias) {
 
     dispatch(validatingAlias(true));
 
-    axios.get(`${config.api.endpoint}users/check/alias/${alias}`)
+    return get(`${config.api.endpoint}users/check/alias/${alias}`)
       .then(() => {
         dispatch(checkAliasSuccess(alias));
         dispatch(validatingAlias(false));

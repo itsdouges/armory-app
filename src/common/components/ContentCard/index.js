@@ -9,7 +9,11 @@ function extractData (content, { type, size }) {
     case 'user':
       return {
         title: content.alias,
-        subTitle: 'something',
+        subTitle: 'stress level zero',
+        imageStyle: {
+          backgroundImage: `url(//api.adorable.io/avatars/128/${content.alias}.png})`,
+          borderRadius: '50%',
+        },
       };
 
     case 'character':
@@ -17,7 +21,7 @@ function extractData (content, { type, size }) {
         title: size === 'big' && content.guild_tag ?
           `${content.name} [${content.guild_tag}]` : content.name,
         subTitle: `${content.level} ${content.race} ${content.profession}`,
-        image: content.profession && content.profession.toLowerCase(),
+        imageClass: content.profession && content.profession.toLowerCase(),
       };
 
     default:
@@ -30,11 +34,11 @@ const ContentCard = ({ content, className, type = 'character', size = 'small' })
     return <Placeholder size={size} className={className} />;
   }
 
-  const { title, subTitle, image } = extractData(content, { type, size });
+  const { title, subTitle, imageClass, imageStyle } = extractData(content, { type, size });
 
   return (
     <div className={cx('root', className, size)}>
-      <div className={cx('image', image)} />
+      <div className={cx('image', imageClass)} style={imageStyle} />
       <div className={styles.textContainer}>
         <div className={cx('title')}>{title}</div>
         <div className={cx('subTitle')}>{subTitle}</div>

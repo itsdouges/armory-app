@@ -1,0 +1,138 @@
+@import '../../../../common/styles/sizes.less';
+
+.attackPower {
+  background: url('assets/images/power.png');
+}
+
+.precision {
+  background: url('assets/images/precision.png');
+}
+
+.toughness {
+  background: url('assets/images/toughness.png');
+}
+
+.vitality {
+  background: url('assets/images/vitality.png');
+}
+
+.conditionDuration {
+  background: url('assets/images/condition-duration.png');
+}
+
+.boon {
+  background: url('assets/images/boon-duration.png');
+}
+
+.conditionDamage {
+  background: url('assets/images/condition-damage.png');
+}
+
+.ferocity {
+  background: url('assets/images/ferocity.png');
+}
+
+.healing {
+  background: url('assets/images/healing-power.png');
+}
+
+.armor {
+  background: url('assets/images/armor-attribute.png');
+}
+
+.health {
+  background: url('assets/images/health.png');
+}
+
+.criticalDamage {
+  background: url('assets/images/critical-damage.png');
+}
+
+.criticalChance {
+  background: url('assets/images/critical-chance.png');
+}
+
+.magicFind {
+  background: url('assets/images/magic-find.png');
+}
+
+.agony {
+  background: url('assets/images/agony-resistance.png');
+}
+
+.elementalist {
+  background: url('assets/images/elementalist-attribute.png');
+}
+
+.necromancer {
+  background: url('assets/images/necromancer-attribute.png');
+}
+
+.mesmer {
+  background: url('assets/images/mesmer-attribute.png');
+}
+
+.thief {
+  background: url('assets/images/thief-attribute.png');
+}
+
+.ranger {
+  background: url('assets/images/ranger-attribute.png');
+}
+
+.engineer {
+  background: url('assets/images/engineer-attribute.png');
+}
+
+.warrior {
+  background: url('assets/images/warrior-attribute.png');
+}
+
+.guardian {
+  background: url('assets/images/guardian-attribute.png');
+}
+
+.attributeIcon {
+  margin: 0.4em 0.8em;
+  background-size: cover;
+}
+
+character-attributes {
+  margin: 2em 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  font-size: 0.9em;
+  padding: 1em;
+}
+
+.health + span {
+  color: #059202;
+}
+
+.attribute {
+  padding: 0.3em 0;
+  display: flex;
+  align-items: center;
+  cursor: default;
+  width: 30%;
+}
+
+@media only screen and (min-width: @mobile) {
+  character-attributes {
+    padding: 0;
+    margin: 0;
+  }
+
+  .attribute {
+    flex-flow: column;
+    padding: 0;
+    width:  50%;
+  }
+}
+
+@media only screen and (min-width: @tablet) {
+  .attribute {
+    flex-flow: row;
+  }
+}
