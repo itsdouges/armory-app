@@ -25,7 +25,7 @@ function extractData (content, { type, size }) {
       };
 
     default:
-      return undefined;
+      return {};
   }
 }
 
@@ -50,7 +50,7 @@ const ContentCard = ({ content, className, type = 'characters', size = 'small' }
 ContentCard.propTypes = {
   content: PropTypes.object,
   className: PropTypes.string,
-  type: PropTypes.oneOf(['characters', 'users']),
+  type: PropTypes.oneOf(['characters', 'users', 'guilds']),
   size: PropTypes.oneOf(['small', 'big']),
 };
 

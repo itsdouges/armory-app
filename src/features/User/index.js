@@ -34,7 +34,7 @@ class User extends Component {
     return (
       <div className={styles.root}>
         <div className={styles.inner}>
-          <ContentCard content={user} size="big" type="user" />
+          <ContentCard content={user} size="big" type="users" />
         </div>
 
         <CharactersList

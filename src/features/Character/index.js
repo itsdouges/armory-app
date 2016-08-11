@@ -182,7 +182,7 @@ class Character extends Component {
             <Portrait character={character} />
 
             <div className={styles.rightColumn}>
-              <div>
+              <div className={styles.attributes}>
                 {Object.keys(attributes).map((key) => {
                   const value = attributes[key];
                   return <Attribute key={key} name={key} value={value} />;

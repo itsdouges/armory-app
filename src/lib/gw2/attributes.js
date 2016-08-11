@@ -298,6 +298,6 @@ export function calculate (character, items) {
     magic: 0,
 
     // Profession
-    profession: 0,
+    [character.profession.toLowerCase()]: 0,
   };
 }

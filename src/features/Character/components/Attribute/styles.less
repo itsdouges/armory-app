@@ -1,6 +1,6 @@
 @import '../../../../common/styles/sizes.less';
 
-.attackPower {
+.power {
   background: url('assets/images/power.png');
 }
 
@@ -16,11 +16,13 @@
   background: url('assets/images/vitality.png');
 }
 
-.conditionDuration {
+.conditionDuration,
+.expertise {
   background: url('assets/images/condition-duration.png');
 }
 
-.boon {
+.boon,
+.concentration {
   background: url('assets/images/boon-duration.png');
 }
 
@@ -52,7 +54,7 @@
   background: url('assets/images/critical-chance.png');
 }
 
-.magicFind {
+.magic {
   background: url('assets/images/magic-find.png');
 }
 
@@ -92,9 +94,12 @@
   background: url('assets/images/guardian-attribute.png');
 }
 
-.attributeIcon {
+.icon {
   margin: 0.4em 0.8em;
   background-size: cover;
+  height: 18px;
+  width: 18px;
+  display: inline-block;
 }
 
 character-attributes {
@@ -110,12 +115,12 @@ character-attributes {
   color: #059202;
 }
 
-.attribute {
-  padding: 0.3em 0;
+.root {
   display: flex;
   align-items: center;
   cursor: default;
-  width: 30%;
+  display: flex;
+  align-items: center;
 }
 
 @media only screen and (min-width: @mobile) {

@@ -2,6 +2,7 @@ import { Component, PropTypes } from 'react';
 import { get } from 'axios';
 import config from 'env';
 import ContentCard from 'common/components/ContentCard';
+import styles from './styles.less';
 
 export default class Search extends Component {
   static propTypes = {
@@ -56,7 +57,7 @@ export default class Search extends Component {
       <div>No results...</div>;
 
     return (
-      <div>
+      <div className={styles.root}>
         {content}
       </div>
     );
