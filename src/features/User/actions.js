@@ -1,6 +1,7 @@
 import { get } from 'axios';
 import config from 'env';
 import { fetchPvpSeason } from 'features/Gw2/actions';
+import { browserHistory } from 'react-router';
 
 export const FETCHING_USER = 'FETCHING_USER';
 export const FETCHING_USER_CHARACTERS = 'FETCHING_USER_CHARACTERS';
@@ -105,5 +106,5 @@ export const fetchUser = (alias) => (dispatch) => {
     .then((response) => {
       dispatch(fetchUserResult(response.data));
       dispatch(fetchingUser(false));
-    });
+    }, () => browserHistory.push('/404'));
 };

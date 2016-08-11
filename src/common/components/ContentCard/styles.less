@@ -1,4 +1,5 @@
 @padding: 0.5rem;
+@placeholderColor: #9a9a9a;
 
 .root,
 .placeholderRoot {
@@ -9,8 +10,9 @@
 }
 
 .placeholder {
-  background: #dcdcdc;
-  color: #dcdcdc;
+  background: @placeholderColor;
+  color: @placeholderColor;
+  opacity: 0.5;
 }
 
 .textContainer {

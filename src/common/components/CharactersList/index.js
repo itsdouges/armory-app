@@ -12,7 +12,7 @@ const CharactersList = ({ characters = [], alias, type = 'list' }) => {
       <Link
         to={`/${alias}/characters/${character.name}`}
         key={character.name}
-        className={styles.item}
+        className={cx('item', 'withHover')}
       >
         <ContentCard content={character} />
       </Link>)

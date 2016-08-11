@@ -40,9 +40,9 @@ ReactDOM.render(
         <Route path="/join" component={Join} />
         <Route path="/search(/:term)" component={Search} />
         <Route path="/settings" component={authOnly(Settings)} />
+        <Route path="/404" component={NotFound} />
         <Route path="/:alias" component={User} />
         <Route path="/:alias/characters/:character" component={Character} />
-        <Route path="*" component={NotFound} />
       </Route>
     </Router>
   </Provider>,

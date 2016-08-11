@@ -1,5 +1,6 @@
 import { get } from 'axios';
 import config from 'env';
+import { browserHistory } from 'react-router';
 import {
   fetchItems,
   fetchSkins,
@@ -88,7 +89,7 @@ export function fetchCharacter (character) {
         if (idsForFetching.specializations.length) {
           dispatch(fetchSpecializations(idsForFetching.specializations));
         }
-      });
+      }, () => browserHistory.push('/404'));
   };
 }
 
