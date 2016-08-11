@@ -6,9 +6,9 @@ const cx = classnames.bind(styles);
 
 function extractData (content, { type, size }) {
   switch (type) {
-    case 'user':
+    case 'users':
       return {
-        title: content.alias,
+        title: content.alias || content.name,
         subTitle: 'stress level zero',
         imageStyle: {
           backgroundImage: `url(//api.adorable.io/avatars/128/${content.alias}.png})`,
@@ -16,7 +16,7 @@ function extractData (content, { type, size }) {
         },
       };
 
-    case 'character':
+    case 'characters':
       return {
         title: size === 'big' && content.guild_tag ?
           `${content.name} [${content.guild_tag}]` : content.name,
@@ -29,7 +29,7 @@ function extractData (content, { type, size }) {
   }
 }
 
-const ContentCard = ({ content, className, type = 'character', size = 'small' }) => {
+const ContentCard = ({ content, className, type = 'characters', size = 'small' }) => {
   if (!content) {
     return <Placeholder size={size} className={className} />;
   }
@@ -50,7 +50,7 @@ const ContentCard = ({ content, className, type = 'character', size = 'small' })
 ContentCard.propTypes = {
   content: PropTypes.object,
   className: PropTypes.string,
-  type: PropTypes.oneOf(['character', 'user']),
+  type: PropTypes.oneOf(['characters', 'users']),
   size: PropTypes.oneOf(['small', 'big']),
 };
 

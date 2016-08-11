@@ -1,5 +1,7 @@
 @import '../../styles/colours.less';
 
+@bottomSpacer: 2em;
+
 .error {
   position: absolute;
   font-size: 0.8em;
@@ -12,8 +14,8 @@
 }
 
 .container {
-  position: relative; 
-  padding-bottom: 2em;
+  position: relative;
+  padding-bottom: @bottomSpacer;
 }
 
 .textbox {
@@ -25,13 +27,18 @@
   font-size: 1.3em;
   border-radius: 0;
   outline: none;
+  transition: border-color 0.2s;
+}
+
+.valid {
+  border-color: @positive;
 }
 
 .validityContainer {
   position: absolute;
   right: 0;
   top: 0;
-  bottom: 20px;
+  bottom: @bottomSpacer;
   display: flex;
   align-items: center;
 }

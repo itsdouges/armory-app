@@ -45,7 +45,7 @@ class Login extends Component {
         <h2>Login</h2>
         <Card size="small">
           <Message>
-            Don't have an account? <Link to="/join"><strong>Join us :-)!</strong></Link>
+            Need an account? <Link to="/join"><strong>Make one.</strong></Link>
           </Message>
 
           <form onSubmit={this.login}>

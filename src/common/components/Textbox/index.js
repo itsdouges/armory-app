@@ -13,12 +13,13 @@ const Textbox = (props) => {
       {props.label && <label htmlFor={props.id}>{props.label}</label>}
 
       <input
+        required={props.required}
         id={props.id}
         value={props.value}
         placeholder={props.placeholder}
         onChange={props.onChange}
         type={props.type || 'text'}
-        className={styles.textbox}
+        className={cx('textbox', props.valid && 'valid')}
       />
 
       {props.error && <Message className={styles.error} type="error" small>{props.error}</Message>}

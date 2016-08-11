@@ -11,7 +11,7 @@ actions.js
 
 ### Notes
 - [name] is used for the property name in the root reducer
-- components folder is optional
-- any common view modules (styles, components, etc) should be placed in `src/common/`
-- any common functionality should be placed in `src/lib/`
+- Components folder is optional
+- Any common view modules (styles, components, etc) should be placed in `src/common/`
+- Any common functionality should be placed in `src/lib/`
 - Keep component definitions flat, no deeper than one level e.g: `components/ComponentName`
