@@ -1,8 +1,8 @@
-import devConfig from './dev';
+import localConfig from './local';
 import prodConfig from './prod';
 import defaultConfig from './default';
 
-const overrideConfig = __DEVELOPMENT__ ? devConfig : prodConfig;
+const overrideConfig = __DEVELOPMENT__ ? localConfig : prodConfig;
 
 export default {
   ...defaultConfig,

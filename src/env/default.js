@@ -1,7 +1,7 @@
 export default {
-  client_name: 'gw2Armory',
+  appName: 'gw2Armory',
   gw2: {
-    endpoint: 'https://api.guildwars2.com/',
+    endpoint: '//api.guildwars2.com/',
   },
-  previewDomain: window.location.host === 'preview.gw2armory.com',
+  isPreview: window.location.host === 'preview.gw2armory.com',
 };

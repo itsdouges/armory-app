@@ -7,6 +7,10 @@ npm i
 npm start
 ```
 
+### Running locally
+
+If running locally make sure you add a `local.js` to the `src/env/` folder. Look at `local.sample.js` for help.
+
 ### Api
 
 Make sure you're running the api locally, grab it over at [armory-api](https://github.com/madou/armory-api). Make sure the env is pointing to the correct endpoint (depending how you're running the api).
