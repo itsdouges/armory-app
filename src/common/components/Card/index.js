@@ -4,7 +4,7 @@ import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
 const Card = (props) => (
-  <div {...props} className={cx('container', props.size, props.className)}>
+  <div {...props} className={cx('root', props.size, props.className)}>
     {props.children}
   </div>
 );

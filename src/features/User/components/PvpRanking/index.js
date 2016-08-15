@@ -57,7 +57,7 @@ function calculateIconStyle (rank) {
   } else if (rank >= 70 && rank <= 79) {
     name = 'Phoenix';
   } else {
-    name = 'Dragon';
+    name = 'Rabbit';
   }
 
   return {
