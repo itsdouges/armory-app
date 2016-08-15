@@ -10,6 +10,7 @@ import CharactersList from 'common/components/CharactersList';
 import ContentCard from 'common/components/ContentCard';
 import Portrait from './components/Portrait';
 import Attribute from './components/Attribute';
+import CraftingBar from './components/CraftingBar';
 
 import Item from './components/Item';
 import styles from './styles.less';
@@ -166,6 +167,8 @@ class Character extends Component {
       [this.props.mode]: [{}, {}, {}],
     };
 
+    const crafting = (character && character.crafting) || [{}, {}, {}];
+
     return (
       <div className={styles.root}>
         <div className={styles.inner}>
@@ -209,6 +212,8 @@ class Character extends Component {
                     equipment[item.key].skin]}
                 />)}
               </div>
+
+              {crafting.map((craft, index) => <CraftingBar craft={craft} key={index} />)}
             </div>
           </div>
         </div>
