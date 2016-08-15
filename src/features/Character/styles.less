@@ -40,6 +40,33 @@
   }
 }
 
+.brushStrokeContainer {
+  position: relative;
+  max-width: 650px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.brushStrokeContainer:before,
+.brushStrokeContainer:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 125px;
+  height: 337px;
+  bottom: -2px;
+  background-image: url('assets/images/brush-stroke-1.png');
+}
+
+.brushStrokeContainer:before {
+  left: -125px;
+}
+
+.brushStrokeContainer:after {
+  transform: scaleX(-1);
+  right: -125px;
+}
+
 @media only screen and (min-width: @tablet) {
   .columns {
     flex-direction: row;

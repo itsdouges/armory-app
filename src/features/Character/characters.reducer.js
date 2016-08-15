@@ -119,7 +119,8 @@ export const selector = createSelector(
     store.skins.fetching ||
     store.traits.fetching ||
     store.specializations.fetching,
-  (character, characters, items, skins, specializations, traits, fetchingGw2Data) => ({
+  store => store.characters.mode,
+  (character, characters, items, skins, specializations, traits, fetchingGw2Data, mode) => ({
     character,
     characters,
     items,
@@ -127,6 +128,7 @@ export const selector = createSelector(
     specializations,
     traits,
     fetchingGw2Data,
+    mode,
   })
 );
 

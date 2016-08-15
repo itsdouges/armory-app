@@ -5,6 +5,7 @@ import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
 import { calculate as calculateAttributes } from 'lib/gw2/attributes';
 
+import Specialization from './components/Specialization';
 import CharactersList from 'common/components/CharactersList';
 import ContentCard from 'common/components/ContentCard';
 import Portrait from './components/Portrait';
@@ -138,6 +139,9 @@ class Character extends Component {
     items: PropTypes.object,
     skins: PropTypes.object,
     fetchingGw2Data: PropTypes.bool,
+    specializations: PropTypes.object,
+    traits: PropTypes.object,
+    mode: PropTypes.oneOf(['pve', 'pvp', 'wvw']),
   };
 
   componentWillMount () {
@@ -158,6 +162,9 @@ class Character extends Component {
 
     const equipment = character && character.equipment;
     const attributes = calculateAttributes(character, this.props.items);
+    const specializations = (character && character.specializations) || {
+      [this.props.mode]: [{}, {}, {}],
+    };
 
     return (
       <div className={styles.root}>
@@ -205,6 +212,19 @@ class Character extends Component {
             </div>
           </div>
         </div>
+
+        <div className={styles.specializationContainer}>
+          <div className={styles.brushStrokeContainer}>
+            {specializations[this.props.mode].map((data, index) =>
+              <Specialization
+                key={data.id || index}
+                data={data}
+                specializations={this.props.specializations}
+                traits={this.props.traits}
+              />)}
+          </div>
+        </div>
+
         <CharactersList alias={alias} characters={characters} />
       </div>
     );

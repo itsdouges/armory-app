@@ -1,0 +1,127 @@
+@import '../../../../common/styles/box-shadow.less';
+@import '../../../../common/styles/sizes.less';
+
+.root {
+  display: block;
+  height: 140px;
+  max-width: 650px;
+  display: flex;
+  margin: 4em auto;
+  align-items: center;
+  padding-left: 4.4rem;
+  background-color: black;
+  position: relative;
+  .low;
+}
+
+.background {
+  position: absolute;
+  background-position: bottom left;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.4;
+}
+
+.majorTraitColumn {
+  display: flex;
+  flex-flow: column;
+
+  div {
+    clip-path: inset(2px 2px 2px 2px);
+  }
+
+  z-index: 19;
+}
+
+.minorTraitColumn {
+  z-index: 19;
+  margin: 5.3%;
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+}
+
+.bigIcon {
+  position: relative;
+  width: 100px;
+  height: 58px;
+  margin: 29px 0;
+  background-position: -102.5% 78%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+  border-left: solid 3px #0d0d0d;
+  border-right: solid 3px #0d0d0d;
+  margin-left: -8em;
+}
+
+.bigIcon:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 94px;
+  height: 54px;
+  z-index: 2;
+  background: inherit;
+}
+
+.bigIconTop,
+.bigIconBottom {
+  position: absolute;
+  z-index: 1;
+  width: 71px;
+  height: 71px;
+  overflow: hidden;
+  transform: scaleY(0.6) rotate(-45deg);
+  background: inherit;
+  left: 11.64px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+
+.bigIconTop:after,
+.bigIconBottom:after {
+  content: "";
+  position: absolute;
+  width: 94px;
+  height: 54px;
+  transform: rotate(45deg) scaleY(1.8) translateY(-27px);
+  transform-origin: 0 0;
+  background: inherit;
+}
+
+.bigIconTop {
+  top: -35.5px;
+  border-top: solid 4px #0d0d0d;
+  border-right: solid 4px #0d0d0d;
+}
+
+.bigIconTop:after {
+  background-position: -102.5% 64.7%;
+}
+
+.bigIconBottom {
+  bottom: -35.5px;
+  border-bottom: solid 4.5px #0d0d0d;
+  border-left: solid 4.5px #0d0d0d;
+}
+
+.bigIconBottom:after {
+  background-position: -102.5% 91.5%;
+}
+
+@media only screen and (min-width: 420px) {
+  .bigIcon {
+    margin-left: -6em;
+  }
+}
+
+@media only screen and (min-width: @mobile) {
+  .bigIcon {
+    margin-left: -3em;
+  }
+}
+
+@media only screen and (min-width: @tablet) {
+  .bigIcon {
+    margin-left: 0;
+  }
+}
