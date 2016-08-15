@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { selector } from './users.reducer';
 import SocialButtons from 'common/components/SocialButtons';
 import PvpStats from './components/PvpStats';
+import PvpSeason from './components/PvpSeason';
 
 import {
   fetchUser,
@@ -32,6 +33,7 @@ class User extends Component {
 
   render () {
     const { user, routeParams: { alias } } = this.props;
+    const pvpSeasons = (user && user.pvpSeasons) || [{}];
 
     return (
       <div className={styles.root}>
@@ -46,6 +48,8 @@ class User extends Component {
         />
 
         <PvpStats stats={user && user.pvpStats} />
+
+        {pvpSeasons.map((season) => <PvpSeason season={season} />)}
 
         <SocialButtons />
       </div>
