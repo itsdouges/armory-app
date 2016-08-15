@@ -168,6 +168,11 @@ class Character extends Component {
     };
 
     const crafting = (character && character.crafting) || [{}, {}, {}];
+    const guild = character && {
+      name: character.guild_name,
+      tag: character.guild_tag,
+      id: character.guild,
+    };
 
     return (
       <div className={styles.root}>
@@ -228,6 +233,10 @@ class Character extends Component {
                 traits={this.props.traits}
               />)}
           </div>
+        </div>
+
+        <div className={styles.links}>
+          <ContentCard type="guilds" content={guild} />
         </div>
 
         <CharactersList alias={alias} characters={characters} />

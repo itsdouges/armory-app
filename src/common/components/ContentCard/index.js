@@ -11,7 +11,7 @@ function extractData (content, { type, size }) {
         title: content.alias || content.name,
         subTitle: 'stress level zero',
         imageStyle: {
-          backgroundImage: `url(//api.adorable.io/avatars/128/${content.alias}.png})`,
+          backgroundImage: `url(//api.adorable.io/avatars/128/${content.alias}.png)`,
           borderRadius: '50%',
         },
       };
@@ -22,6 +22,16 @@ function extractData (content, { type, size }) {
           `${content.name} [${content.guild_tag}]` : content.name,
         subTitle: `${content.level} ${content.race} ${content.profession}`,
         imageClass: content.profession && content.profession.toLowerCase(),
+      };
+
+    case 'guilds':
+      return {
+        title: content.name,
+        subTitle: `[${content.tag}]`,
+        imageStyle: {
+          backgroundImage: `url(https://guilds.gw2w2w.com/guilds/${content.name && content.name.replace(/\s+/g, '-')}/256.svg)`,
+          borderRadius: '50%',
+        },
       };
 
     default:
