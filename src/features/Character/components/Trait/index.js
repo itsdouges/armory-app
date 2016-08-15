@@ -11,9 +11,9 @@ const Trait = ({ data, className, active }) => (
 );
 
 Trait.propTypes = {
+  active: PropTypes.bool,
   data: PropTypes.object,
   className: PropTypes.string,
-  active: PropTypes.bool,
 };
 
 export default Trait;
