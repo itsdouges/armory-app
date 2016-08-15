@@ -9,7 +9,7 @@ function extractData (content, { type, size }) {
     case 'users':
       return {
         title: content.alias || content.name,
-        subTitle: 'stress level zero',
+        subTitle: content.accountName || 'stress level zero',
         imageStyle: {
           backgroundImage: `url(//api.adorable.io/avatars/128/${content.alias}.png)`,
           borderRadius: '50%',

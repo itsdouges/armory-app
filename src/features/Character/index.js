@@ -236,7 +236,8 @@ class Character extends Component {
         </div>
 
         <div className={styles.links}>
-          <ContentCard type="guilds" content={guild} />
+          <ContentCard type="users" content={character} className={styles.linkItem} />
+          <ContentCard type="guilds" content={guild} className={styles.linkItem} />
         </div>
 
         <CharactersList alias={alias} characters={characters} />
