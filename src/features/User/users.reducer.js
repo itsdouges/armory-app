@@ -15,12 +15,10 @@ function fetchingUserResult (state, action) {
     ...state,
   };
 
-  if (!newState.data[action.payload.alias]) {
-    newState.data[action.payload.alias] = {};
-  }
+  const oldUser = newState.data[action.payload.alias];
 
   newState.data[action.payload.alias] = {
-    ...newState.data[action.payload.alias],
+    ...oldUser,
     ...action.payload,
   };
 
@@ -32,11 +30,12 @@ function fetchingUserCharactersResult (state, action) {
     ...state,
   };
 
-  if (!newState.data[action.payload.alias]) {
-    newState.data[action.payload.alias] = {};
-  }
+  const oldUser = newState.data[action.payload.alias];
 
-  newState.data[action.payload.alias].characters = action.payload.characters;
+  newState.data[action.payload.alias] = {
+    ...oldUser,
+    characters: action.payload.characters,
+  };
 
   return newState;
 }
@@ -46,11 +45,12 @@ function fetchPvpStatsResult (state, action) {
     ...state,
   };
 
-  if (!newState.data[action.payload.alias]) {
-    newState.data[action.payload.alias] = {};
-  }
+  const oldUser = newState.data[action.payload.alias];
 
-  newState.data[action.payload.alias].pvpStats = action.payload.data;
+  newState.data[action.payload.alias] = {
+    ...oldUser,
+    pvpStats: action.payload.data,
+  };
 
   return newState;
 }
@@ -60,11 +60,12 @@ function fetchPvpStandingsResult (state, action) {
     ...state,
   };
 
-  if (!newState.data[action.payload.alias]) {
-    newState.data[action.payload.alias] = {};
-  }
+  const oldUser = newState.data[action.payload.alias];
 
-  newState.data[action.payload.alias].pvpStandings = action.payload.data.reverse();
+  newState.data[action.payload.alias] = {
+    ...oldUser,
+    pvpStandings: action.payload.data.reverse(),
+  };
 
   return newState;
 }
@@ -74,12 +75,12 @@ function fetchPvpGamesResult (state, action) {
     ...state,
   };
 
-  if (!newState.data[action.payload.alias]) {
-    newState.data[action.payload.alias] = {};
-  }
+  const oldUser = newState.data[action.payload.alias];
 
-  newState.data[action.payload.alias].pvpGames = action
-    .payload.data.sort((game1, game2) => game1.ended < game2.ended);
+  newState.data[action.payload.alias] = {
+    ...oldUser,
+    pvpGames: action.payload.data.sort((game1, game2) => game1.ended < game2.ended),
+  };
 
   return newState;
 }

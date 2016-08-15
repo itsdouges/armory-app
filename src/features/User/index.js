@@ -45,7 +45,7 @@ class User extends Component {
           characters={user && user.characters}
         />
 
-        <PvpStats stats={this.props.user && this.props.user.pvpStats} />
+        <PvpStats stats={user && user.pvpStats} />
 
         <SocialButtons />
       </div>
