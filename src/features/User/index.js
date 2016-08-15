@@ -5,6 +5,7 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { selector } from './users.reducer';
 import SocialButtons from 'common/components/SocialButtons';
+import PvpStats from './components/PvpStats';
 
 import {
   fetchUser,
@@ -43,6 +44,8 @@ class User extends Component {
           alias={alias}
           characters={user && user.characters}
         />
+
+        <PvpStats stats={this.props.user && this.props.user.pvpStats} />
 
         <SocialButtons />
       </div>

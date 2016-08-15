@@ -6,7 +6,7 @@ import styles from './styles.less';
 import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
-const CharactersList = ({ characters = [], alias, type = 'list' }) => {
+const CharactersList = ({ characters = [], alias, type = 'list', bottomBorder }) => {
   const content = characters.length ?
     characters.map((character) => (
       <Link
@@ -21,11 +21,13 @@ const CharactersList = ({ characters = [], alias, type = 'list' }) => {
       <ContentCard className={styles.item} key={index} />)
     );
 
+  const borderStyle = bottomBorder ? 'borderContainerBottom' : 'borderContainerTop';
+
   return (
     <div className={styles.root}>
-      <div className={cx('borderContainer', 'borderContainerTop')}>
-        <div className={cx('border', 'borderTopLeft')}></div>
-        <div className={cx('border', 'borderTopRight')}></div>
+      <div className={cx('borderContainer', borderStyle)}>
+        <div className={cx('border', 'borderLeft')}></div>
+        <div className={cx('border', 'borderRight')}></div>
       </div>
 
       <Card className={cx('container', type)}>
@@ -39,6 +41,7 @@ CharactersList.propTypes = {
   characters: PropTypes.array,
   alias: PropTypes.string,
   type: PropTypes.oneOf(['grid', 'list']),
+  bottomBorder: PropTypes.bool,
 };
 
 export default CharactersList;

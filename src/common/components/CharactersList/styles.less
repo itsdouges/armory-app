@@ -26,6 +26,26 @@
 
 .borderContainerTop {
   top: 0;
+
+  .borderLeft {
+    margin-right: 2em;
+  }
+
+  .borderRight {
+    transform: scaleX(-1);
+  }
+}
+
+.borderContainerBottom {
+  bottom: -26px;
+
+  .borderLeft {
+    transform: scaleY(-1);
+  }
+
+  .borderRight {
+    transform: scaleX(-1) scaleY(-1);
+  }
 }
 
 .border {
@@ -36,14 +56,6 @@
   background-repeat: no-repeat;
   background-image: url('assets/images/slider-border.png');
   overflow: hidden;
-}
-
-.borderTopLeft {
-  margin-right: 2em;
-}
-
-.borderTopRight {
-  transform: scaleX(-1);
 }
 
 .item {

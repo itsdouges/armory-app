@@ -1,0 +1,48 @@
+@import '../../../common/styles/sizes.less';
+@import '../../../common/styles/z-index.less';
+@import '../../../common/styles/colours.less';
+
+.root {
+  text-align: left;
+  z-index: @bottom-z;
+  position: relative;
+  width: 100%;
+  height: 30px;
+  overflow: hidden;
+  composes: low from 'common/styles/box-shadow.less';
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @behind-z;
+  transition: width 0.5s;
+}
+
+.bar:after {
+  content: "";
+  box-sizing: border-box;
+  display: block;
+  width: 5px;
+  border-right: 4px solid white;
+  height: 100%;
+  background: linear-gradient(to right, transparent, @white);
+  float: right;
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: @middle-z;
+  text-align: center;
+  font-size: 0.9em;
+  line-height: 2em;
+  color: white;
+  cursor: default;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}

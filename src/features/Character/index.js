@@ -242,7 +242,7 @@ class Character extends Component {
           <ContentCard type="guilds" content={guild} className={styles.linkItem} />
         </div>
 
-        <CharactersList alias={alias} characters={characters} />
+        <CharactersList bottomBorder alias={alias} characters={characters} />
 
         <SocialButtons />
       </div>
