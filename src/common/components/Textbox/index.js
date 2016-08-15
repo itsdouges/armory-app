@@ -13,6 +13,7 @@ const Textbox = (props) => {
       {props.label && <label htmlFor={props.id}>{props.label}</label>}
 
       <input
+        autoFocus={props.autofocus}
         required={props.required}
         id={props.id}
         value={props.value}
@@ -30,6 +31,7 @@ const Textbox = (props) => {
 };
 
 Textbox.propTypes = {
+  autofocus: PropTypes.bool,
   showStatus: PropTypes.bool,
   valid: PropTypes.bool,
   placeholder: PropTypes.string,

@@ -4,6 +4,7 @@ import ContentCard from 'common/components/ContentCard';
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { selector } from './users.reducer';
+import SocialButtons from 'common/components/SocialButtons';
 
 import {
   fetchUser,
@@ -42,6 +43,8 @@ class User extends Component {
           alias={alias}
           characters={user && user.characters}
         />
+
+        <SocialButtons />
       </div>
     );
   }

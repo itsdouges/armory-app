@@ -11,6 +11,7 @@ import ContentCard from 'common/components/ContentCard';
 import Portrait from './components/Portrait';
 import Attribute from './components/Attribute';
 import CraftingBar from './components/CraftingBar';
+import SocialButtons from 'common/components/SocialButtons';
 
 import Item from './components/Item';
 import styles from './styles.less';
@@ -143,6 +144,7 @@ class Character extends Component {
     specializations: PropTypes.object,
     traits: PropTypes.object,
     mode: PropTypes.oneOf(['pve', 'pvp', 'wvw']),
+    location: PropTypes.object,
   };
 
   componentWillMount () {
@@ -241,6 +243,8 @@ class Character extends Component {
         </div>
 
         <CharactersList alias={alias} characters={characters} />
+
+        <SocialButtons />
       </div>
     );
   }

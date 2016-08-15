@@ -26,6 +26,7 @@ const Header = ({ authenticated, alias }) => {
 
         <form className={styles.formContainer} onSubmit={search}>
           <Textbox
+            autoFocus
             required
             placeholder="Search Guild Wars 2 Armory"
             containerClassName={styles.textBoxContainer}
