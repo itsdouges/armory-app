@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { browserHistory } from 'react-router';
 
-import { authenticateUser } from './actions';
+import { authenticateUser, checkingAuthentication } from './actions';
 
 const selector = createSelector(
   store => store.user.token,
   store => store.user.loggedIn,
   store => store.user.checkingAuthentication,
-  (userToken, userAuthenticated, checkingAuthentication) => ({
+  (userToken, userAuthenticated, checkinAuthentication) => ({
     userToken,
     userAuthenticated,
-    checkingAuthentication,
+    checkingAuthentication: checkinAuthentication,
   })
 );
 
@@ -42,13 +42,14 @@ export const authEnabled = (ComposedComponent) => connect(selector)(
     }
 
     componentDidUpdate (prevProps) {
-      if (this.props.userToken && prevProps.userToken !== this.props.userToken) {
+      if (prevProps.userToken !== this.props.userToken) {
         this.checkAuth();
       }
     }
 
     checkAuth () {
       if (!this.props.userToken || this.props.userAuthenticated) {
+        this.props.dispatch(checkingAuthentication(false));
         return;
       }
 
@@ -78,7 +79,7 @@ export const authOnly = (ComposedComponent) => class AuthOnly extends Component 
   redirectIfNeeded () {
     /* eslint no-underscore-dangle:0 */
     if (!this.context._checkingAuth && !this.context._userAuthenticated) {
-      browserHistory.push('/in');
+      browserHistory.replace('/login');
     }
   }
 

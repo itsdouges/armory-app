@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router';
 import 'normalize.css';
 
 import { createStore, applyMiddleware } from 'redux';
@@ -36,6 +36,8 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={authEnabled(App)}>
         <IndexRoute component={Home} />
+        <Redirect from="/in" to="/login" />
+        <Redirect from="/me" to="/settings" />
         <Route path="/login" component={Login} />
         <Route path="/join" component={Join} />
         <Route path="/search(/:term)" component={Search} />

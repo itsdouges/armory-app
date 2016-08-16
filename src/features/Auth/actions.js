@@ -23,7 +23,7 @@ function userAuthenticated (user) {
   };
 }
 
-function checkingAuthentication (checking) {
+export function checkingAuthentication (checking) {
   return {
     type: CHECKING_AUTHENTICATION,
     payload: checking,
