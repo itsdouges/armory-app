@@ -4,7 +4,9 @@ import { selector } from './user.reducer';
 import ApiTokens from './components/ApiTokens';
 import ChangePassword from './components/ChangePassword';
 import debounce from 'lodash/debounce';
+import { browserHistory } from 'react-router';
 
+import { clearUserData } from 'features/Auth/actions';
 import {
   validateGw2Token,
   addGw2Token,
@@ -40,6 +42,12 @@ class Settings extends Component {
     this.props.dispatch(removeGw2Token(token));
   };
 
+  signOut = (e) => {
+    e.preventDefault();
+    browserHistory.push('/');
+    this.props.dispatch(clearUserData());
+  };
+
   render () {
     return (
       <span>
@@ -60,6 +68,8 @@ class Settings extends Component {
           validate={this.validatePassword}
           error={this.passwordsError}
         />
+
+        <a href="" onClick={this.signOut}>Sign Out</a>
       </span>
     );
   }

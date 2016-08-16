@@ -49,7 +49,7 @@ class User extends Component {
 
         <PvpStats stats={user && user.pvpStats} />
 
-        {pvpSeasons.map((season) => <PvpSeason season={season} />)}
+        {pvpSeasons.map((season, index) => <PvpSeason key={index} season={season} />)}
 
         <SocialButtons />
       </div>

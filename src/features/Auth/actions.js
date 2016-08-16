@@ -6,7 +6,11 @@ export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
 export const CLEAR_USER_DATA = 'CLEAR_USER_DATA';
 export const CHECKING_AUTHENTICATION = 'CHECKING_AUTHENTICATION';
 
+let clearApiToken;
+
 export function clearUserData () {
+  if (clearApiToken) clearApiToken();
+
   return {
     type: CLEAR_USER_DATA,
   };
@@ -37,7 +41,7 @@ export function authenticateUser (token) {
     })
     .then(({ data }) => {
       dispatch(userAuthenticated(data));
-      setApiToken(token);
+      clearApiToken = setApiToken(token);
       dispatch(checkingAuthentication(false));
     }, () => {
       dispatch(clearUserData());
