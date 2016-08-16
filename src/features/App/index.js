@@ -5,6 +5,7 @@ import { createSelector } from 'reselect';
 import styles from './styles.less';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import Tooltip from 'common/components/Tooltip';
 
 const selector = createSelector(
   store => store.user.alias,
@@ -43,6 +44,7 @@ class App extends Component {
 
         {this.props.children}
 
+        <Tooltip show data="Cool Tooltip" />
         <Footer />
       </div>
     );
