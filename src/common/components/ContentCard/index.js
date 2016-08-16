@@ -9,7 +9,8 @@ function extractData (content, { type, size }) {
     case 'users':
       return {
         title: content.alias || content.name,
-        subTitle: content.accountName || 'stress level zero',
+        // TODO: Source accountName from api for search
+        subTitle: content.accountName || 'user',
         imageStyle: {
           backgroundImage: `url(//api.adorable.io/avatars/128/${content.alias}.png)`,
           borderRadius: '50%',
@@ -27,7 +28,8 @@ function extractData (content, { type, size }) {
     case 'guilds':
       return {
         title: content.name,
-        subTitle: `[${content.tag}]`,
+        // TODO: Source tag from api for search
+        subTitle: (content.tag && `[${content.tag}]`) || 'guild',
         imageStyle: {
           backgroundImage: `url(https://guilds.gw2w2w.com/guilds/${content.name && content.name.replace(/\s+/g, '-')}/256.svg)`,
           borderRadius: '50%',
