@@ -7,10 +7,10 @@ const PvpStats = ({ stats }) => (
   <div className={styles.root}>
     <PvpRanking rank={stats.pvp_rank} points={stats.pvp_rank_points} />
 
-    <h3>PvP Stats</h3>
+    <h3>Pvp stats</h3>
     <Card className={styles.card}>
       <div className={styles.unrankedContainer}>
-        Unranked
+        <h4>Unranked</h4>
 
         <div className={styles.win}>
           <div className={styles.bigWin}>
@@ -35,7 +35,7 @@ const PvpStats = ({ stats }) => (
         </div>
       </div>
       <div className={styles.rankedContainer}>
-        Ranked
+        <h4>Ranked</h4>
 
         <div className={styles.win}>
           <div className={styles.bigWin}>

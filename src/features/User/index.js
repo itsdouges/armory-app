@@ -36,7 +36,7 @@ class User extends Component {
     const { user, routeParams: { alias }/* , pvpSeasons*/ } = this.props;
     // const pvpStandings = (user && user.pvpStandings);
 
-    const pvpGames = (user && user.pvpGames) || [undefined];
+    const pvpGames = (user && user.pvpGames) || [undefined, undefined];
 
     return (
       <div className={styles.root}>
@@ -59,7 +59,10 @@ class User extends Component {
             seasons={pvpSeasons[standing.season_id]}
           />) */}
 
-        {pvpGames.map((game, index) => <PvpGame game={game} key={index} />)}
+        <div className={styles.gamesContainer}>
+          <h3>Recent matches</h3>
+          {pvpGames.map((game, index) => <PvpGame game={game} key={index} />)}
+        </div>
 
         <SocialButtons />
       </div>

@@ -2,6 +2,9 @@ import { PropTypes } from 'react';
 import styles from './styles.less';
 import Card from 'common/components/Card';
 import classnames from 'classnames/bind';
+import Icon from 'common/components/Icon';
+import Gw2Map from 'common/components/Gw2Map';
+
 const cx = classnames.bind(styles);
 
 function stringToDate (date) {
@@ -14,16 +17,16 @@ function calculateMatchInMinutes (start, end) {
 
 const PvpGame = ({ game }) => (
   <Card className={styles.root}>
-    <div>map hah</div>
+    <Gw2Map id={game.map_id} />
 
     <div className={styles.inner}>
       <div className={cx('column', 'medium')}>
-        <icon name="{{ pvp.game.profession || 'Necromancer' }}"></icon>
+        <Icon size="medium" name={`${game.profession.toLowerCase()}-icon-small.png`} />
         <div className={cx('result', game.team.toLowerCase())}>
           {game.result.toUpperCase()}
         </div>
       </div>
-      <div className="${styles.stretch} ${styles.spreadItems}">
+      <div className={cx('stretch', 'spreadItems')}>
         <div>
           <div className={styles.red}>RED</div>
           <div>{game.scores.red || '25'}</div>
@@ -52,6 +55,7 @@ PvpGame.defaultProps = {
     team: 'red',
     result: 'forfeit',
     scores: {},
+    profession: 'necromancer',
   },
 };
 

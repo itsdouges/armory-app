@@ -1,3 +1,5 @@
+@import '../../common/styles/sizes.less';
+
 @content-width: 820px;
 
 .root {
@@ -8,4 +10,21 @@
 .inner {
   max-width: @content-width;
   margin: 0 auto;
+}
+
+.heading {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.gamesContainer {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+@media only screen and (min-width: @tablet) {
+  .gamesContainer {
+    max-width: 1000px;
+  }
 }

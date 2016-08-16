@@ -44,7 +44,6 @@ export function authenticateUser (token) {
       clearApiToken = setApiToken(token);
       dispatch(checkingAuthentication(false));
     }, () => {
-      dispatch(clearUserData());
       dispatch(checkingAuthentication(false));
     });
   };

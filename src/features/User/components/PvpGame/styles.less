@@ -1,13 +1,20 @@
+@import '../../../../common/styles/sizes.less';
+
+@margin: 0.5em;
+
 .root {
-  display: flex;
+  display: inline-flex;
   white-space: normal;
   font-size: 1rem;
+  padding: 0;
+  margin: 1em auto;
+  margin-top: 0;
 }
 
 .inner {
-  padding: 1.5em;
   display: flex;
   flex-grow: 1;
+  padding: 1em;
   justify-content: space-between;
 }
 
@@ -46,4 +53,18 @@
 
 .stats {
   text-align: right;
+}
+
+@media only screen and (min-width: @tablet) {
+  .root {
+    max-width: ~"calc(50% - 0.5em)";
+  }
+
+  .root:nth-child(even) {
+    margin-right: @margin;
+  }
+
+  .root:nth-child(odd) {
+    margin-left: @margin;
+  }
 }
