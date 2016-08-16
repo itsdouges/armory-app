@@ -27,7 +27,7 @@ function extractData (content, { type, size }) {
 
     case 'guilds':
       return {
-        title: content.name,
+        title: content.name || 'No Guild',
         // TODO: Source tag from api for search
         subTitle: (content.tag && `[${content.tag}]`) || 'guild',
         imageStyle: {

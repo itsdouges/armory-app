@@ -148,6 +148,16 @@ class Character extends Component {
   };
 
   componentWillMount () {
+    this.loadCharacter();
+  }
+
+  componentDidUpdate (prevProps) {
+    if (prevProps.routeParams.character !== this.props.routeParams.character) {
+      this.loadCharacter();
+    }
+  }
+
+  loadCharacter () {
     const { character, alias } = this.props.routeParams;
 
     this.props.dispatch(fetchCharacter(character));
@@ -228,8 +238,8 @@ class Character extends Component {
         <div className={styles.specializationContainer}>
           <div className={styles.brushStrokeContainer}>
             {specializations[this.props.mode].map((data, index) =>
-              <Specialization
-                key={data.id || index}
+              data && <Specialization
+                key={(data.id) || index}
                 data={data}
                 specializations={this.props.specializations}
                 traits={this.props.traits}

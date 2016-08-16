@@ -40,7 +40,7 @@ export default class ApiTokens extends Component {
     return (
       <span>
         <h2>Api tokens</h2>
-        <Card size="small" className={styles.root}>
+        <Card size="medium" className={styles.root}>
           <div className={styles.padding}>
             {!this.props.tokens.length &&
               <span>

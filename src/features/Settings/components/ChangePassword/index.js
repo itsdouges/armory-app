@@ -34,7 +34,7 @@ export default class ChangePassword extends Component {
     return (
       <span>
         <h2>Password</h2>
-        <Card size="small">
+        <Card size="medium">
           <form onSubmit={this.changePassword}>
             <Textbox
               required
