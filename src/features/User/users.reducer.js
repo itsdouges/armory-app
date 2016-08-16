@@ -87,7 +87,7 @@ function fetchPvpGamesResult (state, action) {
 
 export const selector = createSelector(
   store => store.users.data[store.users.selected],
-  store => store.gw2PvpSeasons,
+  store => store.pvpSeasons,
   (user, pvpSeasons) => ({
     user,
     pvpSeasons,
