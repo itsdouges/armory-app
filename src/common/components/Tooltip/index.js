@@ -1,16 +1,18 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
 import MouseFollow from '../MouseFollow';
+import { connect } from 'react-redux';
+import { selector } from 'features/Gw2/tooltip.reducer';
 
-const Tooltip = ({ show, mode, data }) => {
-  if (!show) return null;
+const Tooltip = ({ tooltip }) => {
+  if (!tooltip.show) return null;
 
   let content;
 
-  switch (mode) {
+  switch (tooltip.mode) {
     case 'simple':
     default:
-      content = <div className={styles.simple}>{data}</div>;
+      content = <div className={styles.simple}>{tooltip.data || 'Loading...'}</div>;
       break;
   }
 
@@ -24,9 +26,7 @@ const Tooltip = ({ show, mode, data }) => {
 };
 
 Tooltip.propTypes = {
-  show: PropTypes.bool,
-  mode: PropTypes.oneOf(['simple', 'item', 'trait']),
-  data: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  tooltip: PropTypes.object,
 };
 
-export default Tooltip;
+export default connect(selector)(Tooltip);

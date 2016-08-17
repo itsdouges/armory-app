@@ -1,4 +1,5 @@
 import { Component, PropTypes } from 'react';
+import addEvent from 'lib/add-event';
 
 export default class MouseFollow extends Component {
   static propTypes = {
@@ -11,24 +12,25 @@ export default class MouseFollow extends Component {
       top: 10,
       left: 10,
       zIndex: 999,
+      opacity: 0,
     },
   };
 
   componentDidMount () {
-    window.addEventListener('mousemove', this.onMouseMove, false);
+    this.removeEvent = addEvent('mousemove', this.onMouseMove);
   }
 
   componentWillUnmount () {
-    window.addEventListener('mousemove', this.onMouseMove, false);
+    this.removeEvent();
   }
 
   onMouseMove = (event) => {
     const tooltip = this.refs.tooltip;
 
-    const flip = this.calculateFlip(tooltip);
+    const pin = this.calculatePin({ tooltip, mouse: event });
     const style = this.calculateStyle({
       tooltip,
-      flip,
+      pin,
       mouse: event,
     });
 
@@ -36,20 +38,20 @@ export default class MouseFollow extends Component {
       style: {
         ...this.state.style,
         ...style,
+        opacity: 1,
       },
     });
   };
 
-  calculateStyle ({ flip, mouse, tooltip }) {
-    let x = mouse.x;
-    let y = mouse.y;
+  calculateStyle ({ pin, mouse, tooltip }) {
+    let { x, y } = mouse;
 
-    if (flip.flipRight) {
-      x -= tooltip.offsetWidth;
+    if (pin.pinRight) {
+      x = window.innerWidth - tooltip.offsetWidth - 10;
     }
 
-    if (flip.flipTop) {
-      y -= tooltip.offsetHeight;
+    if (pin.pinBottom) {
+      y = window.innerHeight - tooltip.offsetHeight - 10;
     }
 
     return {
@@ -57,29 +59,23 @@ export default class MouseFollow extends Component {
     };
   }
 
-  calculateFlip (tooltip) {
-    // const width = tooltip.offsetWidth;
-    // const height = tooltip.offsetHeight;
-    const elementRelativeToWindowPosition = tooltip.getBoundingClientRect();
+  calculatePin ({ tooltip, mouse }) {
+    const { x, y } = mouse;
 
-    let flipRight = false;
-    let flipTop = false;
+    let pinRight = false;
+    let pinBottom = false;
 
-    if (elementRelativeToWindowPosition.right > window.innerWidth / 2) {
-      flipRight = true;
-    } else {
-      flipRight = false;
+    if ((x + tooltip.offsetWidth + 10) > window.innerWidth) {
+      pinRight = true;
     }
 
-    if (elementRelativeToWindowPosition.bottom > window.innerHeight / 2) {
-      flipTop = true;
-    } else {
-      flipTop = false;
+    if ((y + tooltip.offsetHeight + 10) > window.innerHeight) {
+      pinBottom = true;
     }
 
     return {
-      flipTop,
-      flipRight,
+      pinRight,
+      pinBottom,
     };
   }
 

@@ -1,19 +1,26 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+
 import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
 import { calculate as calculateAttributes } from 'lib/gw2/attributes';
 
-import Specialization from './components/Specialization';
 import CharactersList from 'common/components/CharactersList';
 import ContentCard from 'common/components/ContentCard';
+import SocialButtons from 'common/components/SocialButtons';
+import tooltipTrigger from 'common/components/TooltipTrigger';
+
+import Specialization from './components/Specialization';
 import Portrait from './components/Portrait';
 import Attribute from './components/Attribute';
 import CraftingBar from './components/CraftingBar';
-import SocialButtons from 'common/components/SocialButtons';
-
 import Item from './components/Item';
+
+const ItemWithTooltip = tooltipTrigger(Item);
+const CraftingBarWithTooltip = tooltipTrigger(CraftingBar);
+const AttributeWithTooltip = tooltipTrigger(Attribute);
+
 import styles from './styles.less';
 
 const leftItems = [
@@ -194,7 +201,7 @@ class Character extends Component {
           <div className={styles.columns}>
             <div className={styles.leftColumn}>
               {leftItems.map((item) =>
-                <Item
+                <ItemWithTooltip
                   {...item}
                   key={item.key}
                   item={this.props.items[equipment &&
@@ -212,13 +219,13 @@ class Character extends Component {
               <div className={styles.attributes}>
                 {Object.keys(attributes).map((key) => {
                   const value = attributes[key];
-                  return <Attribute key={key} name={key} value={value} />;
+                  return <AttributeWithTooltip key={key} name={key} value={value} />;
                 })}
               </div>
 
               <div className={styles.innerRightColumn}>
               {rightItems.map((item) =>
-                <Item
+                <ItemWithTooltip
                   {...item}
                   key={item.key}
                   item={this.props.items[equipment &&
@@ -230,7 +237,7 @@ class Character extends Component {
                 />)}
               </div>
 
-              {crafting.map((craft, index) => <CraftingBar craft={craft} key={index} />)}
+              {crafting.map((craft, index) => <CraftingBarWithTooltip craft={craft} key={index} />)}
             </div>
           </div>
         </div>

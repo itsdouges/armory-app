@@ -1,6 +1,11 @@
 import styles from './styles.less';
 import { PropTypes } from 'react';
 import Trait from '../Trait';
+import BigTrait from '../BigTrait';
+import tooltipTrigger from 'common/components/TooltipTrigger';
+
+const BigTraitWithTooltip = tooltipTrigger(BigTrait);
+const TraitWithTooltip = tooltipTrigger(Trait);
 
 function getStyle (data, spec) {
   return {
@@ -27,15 +32,9 @@ const Specialization = ({ data, traits, specializations }) => {
         style={bgStyle}
       />
 
-      <div
-        className={styles.bigIcon}
-        style={bgStyle}
-      >
-        <div className={styles.bigIconTop} />
-        <div className={styles.bigIconBottom} />
-      </div>
+      <BigTraitWithTooltip image={spec.background} />
 
-      <Trait
+      <TraitWithTooltip
         active
         className={styles.minorTraitColumn}
         data={getTrait(traits, spec.minor_traits[0])}
@@ -43,10 +42,10 @@ const Specialization = ({ data, traits, specializations }) => {
 
       <div className={styles.majorTraitColumn}>
         {spec.major_traits.slice(0, 3).map((id) =>
-          <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+          <TraitWithTooltip key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
       </div>
 
-      <Trait
+      <TraitWithTooltip
         active
         className={styles.minorTraitColumn}
         data={getTrait(traits, spec.minor_traits[1])}
@@ -54,10 +53,10 @@ const Specialization = ({ data, traits, specializations }) => {
 
       <div className={styles.majorTraitColumn}>
         {spec.major_traits.slice(3, 6).map((id) =>
-          <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+          <TraitWithTooltip key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
       </div>
 
-      <Trait
+      <TraitWithTooltip
         active
         className={styles.minorTraitColumn}
         data={getTrait(traits, spec.minor_traits[2])}
@@ -65,7 +64,7 @@ const Specialization = ({ data, traits, specializations }) => {
 
       <div className={styles.majorTraitColumn}>
         {spec.major_traits.slice(6, 9).map((id) =>
-          <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+          <TraitWithTooltip key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
       </div>
     </div>
   );

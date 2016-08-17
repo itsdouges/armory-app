@@ -131,11 +131,7 @@ export function showTooltip (show, config = {}) {
     type: SHOW_TOOLTIP,
     payload: {
       show,
-      item: config.item,
-      skin: config.skin,
-      upgrades: config.upgrades,
-      type: config.type,
-      upgrade_combo_count: config.upgradeCount,
+      ...config,
     },
   };
 }

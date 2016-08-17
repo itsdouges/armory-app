@@ -44,7 +44,7 @@ class App extends Component {
 
         {this.props.children}
 
-        <Tooltip show data="Cool Tooltip" />
+        <Tooltip />
         <Footer />
       </div>
     );
