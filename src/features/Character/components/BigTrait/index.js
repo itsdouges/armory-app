@@ -1,14 +1,17 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
+import TooltipTrigger from 'common/components/TooltipTrigger';
 
 const BigTrait = ({ name, image }) => (
-  <div
-    className={styles.bigIcon}
-    style={{ backgroundImage: `url(${image})` }}
-  >
-    <div className={styles.bigIconTop} />
-    <div className={styles.bigIconBottom} />
-  </div>
+  <TooltipTrigger data={name}>
+    <div
+      className={styles.bigIcon}
+      style={{ backgroundImage: `url(${image})` }}
+    >
+      <div className={styles.bigIconTop} />
+      <div className={styles.bigIconBottom} />
+    </div>
+  </TooltipTrigger>
 );
 
 BigTrait.propTypes = {

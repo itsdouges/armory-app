@@ -1,5 +1,6 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
+import TooltipTrigger from 'common/components/TooltipTrigger';
 import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
@@ -17,13 +18,15 @@ function getStyle ({ discipline, rating }) {
 }
 
 const CraftingBar = ({ craft }) => (
-  <div className={cx('root', { active: craft.active })}>
-    <span className={cx('icon', craft.discipline && craft.discipline.toLowerCase())} />
-    <span className={styles.ratingBlock} style={getStyle(craft)} />
-    <span className={styles.rating}>
-      {`${craft.rating || 0} / ${getTotal(craft.discipline)}`}
-    </span>
-  </div>
+  <TooltipTrigger data={craft.discipline}>
+    <div className={cx('root', { active: craft.active })}>
+      <span className={cx('icon', craft.discipline && craft.discipline.toLowerCase())} />
+      <span className={styles.ratingBlock} style={getStyle(craft)} />
+      <span className={styles.rating}>
+        {`${craft.rating || 0} / ${getTotal(craft.discipline)}`}
+      </span>
+    </div>
+  </TooltipTrigger>
 );
 
 CraftingBar.propTypes = {

@@ -44,6 +44,7 @@ ReactDOM.render(
         <Route path="/settings" component={authOnly(Settings)} />
         <Route path="/404" component={NotFound} />
         <Route path="/:alias" component={User} />
+        <Redirect from="/:alias/characters" to="/:alias" />
         <Route path="/:alias/characters/:character" component={Character} />
       </Route>
     </Router>

@@ -2,10 +2,6 @@ import styles from './styles.less';
 import { PropTypes } from 'react';
 import Trait from '../Trait';
 import BigTrait from '../BigTrait';
-import tooltipTrigger from 'common/components/TooltipTrigger';
-
-const BigTraitWithTooltip = tooltipTrigger(BigTrait);
-const TraitWithTooltip = tooltipTrigger(Trait);
 
 function getStyle (data, spec) {
   return {
@@ -32,9 +28,9 @@ const Specialization = ({ data, traits, specializations }) => {
         style={bgStyle}
       />
 
-      <BigTraitWithTooltip image={spec.background} />
+      <BigTrait name={spec.name} image={spec.background} />
 
-      <TraitWithTooltip
+      <Trait
         active
         className={styles.minorTraitColumn}
         data={getTrait(traits, spec.minor_traits[0])}
@@ -42,10 +38,10 @@ const Specialization = ({ data, traits, specializations }) => {
 
       <div className={styles.majorTraitColumn}>
         {spec.major_traits.slice(0, 3).map((id) =>
-          <TraitWithTooltip key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+          <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
       </div>
 
-      <TraitWithTooltip
+      <Trait
         active
         className={styles.minorTraitColumn}
         data={getTrait(traits, spec.minor_traits[1])}
@@ -53,10 +49,10 @@ const Specialization = ({ data, traits, specializations }) => {
 
       <div className={styles.majorTraitColumn}>
         {spec.major_traits.slice(3, 6).map((id) =>
-          <TraitWithTooltip key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+          <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
       </div>
 
-      <TraitWithTooltip
+      <Trait
         active
         className={styles.minorTraitColumn}
         data={getTrait(traits, spec.minor_traits[2])}
@@ -64,7 +60,7 @@ const Specialization = ({ data, traits, specializations }) => {
 
       <div className={styles.majorTraitColumn}>
         {spec.major_traits.slice(6, 9).map((id) =>
-          <TraitWithTooltip key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+          <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
       </div>
     </div>
   );

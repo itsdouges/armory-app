@@ -126,12 +126,12 @@ export function fetchSpecializations (ids) {
   };
 }
 
-export function showTooltip (show, config = {}) {
+export function showTooltip (show, data) {
   return {
     type: SHOW_TOOLTIP,
     payload: {
       show,
-      ...config,
+      data,
     },
   };
 }
