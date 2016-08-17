@@ -1,5 +1,6 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter } from './actions';
@@ -250,8 +251,13 @@ class Character extends Component {
         </div>
 
         <div className={styles.links}>
-          <ContentCard type="users" content={character} className={styles.linkItem} />
-          <ContentCard type="guilds" content={guild} className={styles.linkItem} />
+          <Link to={`/${character && character.alias}`}>
+            <ContentCard type="users" content={character} className={styles.linkItem} />
+          </Link>
+
+          <Link to={`/g/${guild && guild.name}`}>
+            <ContentCard type="guilds" content={guild} className={styles.linkItem} />
+          </Link>
         </div>
 
         <CharactersList bottomBorder alias={alias} characters={characters} />
