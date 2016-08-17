@@ -1,3 +1,5 @@
+@import '../../styles/sizes.less';
+
 @padding: 0.5rem;
 @placeholderColor: #9a9a9a;
 
@@ -7,6 +9,11 @@
   align-items: center;
   padding: @padding * 1.5;
   flex-shrink: 0;
+
+  &.big {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 .placeholder {
@@ -28,12 +35,10 @@
   font-family: 'Menomonia';
   overflow: hidden;
   font-weight: bold;
-  min-width: 60%;
   margin-bottom: @padding;
 }
 
 .subTitle {
-  min-width: 90%;
   font-size: 0.8em;
   font-weight: 100;
   overflow: visible;
@@ -129,5 +134,15 @@
 
   .revenant {
     background-image: url('assets/images/revenant-icon.png');
+  }
+}
+
+@media only screen and (min-width: @tablet) {
+  .root,
+  .placeholderRoot {
+    &.big {
+      flex-direction: row;
+      text-align: left;
+    }
   }
 }
