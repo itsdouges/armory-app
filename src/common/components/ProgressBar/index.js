@@ -10,8 +10,9 @@ function calcBarStyles (current, max, barColor) {
   };
 }
 
-const ProgressBar = ({ current, max, barColor, backgroundColor }) => (
+const ProgressBar = ({ current, max, barColor, backgroundColor, icon }) => (
   <div className={styles.root} style={{ backgroundColor }}>
+    {icon}
     <span className={styles.bar} style={calcBarStyles(current, max, barColor)} />
     <span className={styles.progress}>
       {`${current}/${max}`}
@@ -29,6 +30,7 @@ ProgressBar.propTypes = {
   barColor: PropTypes.string,
   current: PropTypes.number,
   max: PropTypes.number,
+  icon: PropTypes.node,
 };
 
 export default ProgressBar;

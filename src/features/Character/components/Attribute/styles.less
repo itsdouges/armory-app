@@ -102,15 +102,6 @@
   display: inline-block;
 }
 
-character-attributes {
-  margin: 2em 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  font-size: 0.9em;
-  padding: 1em;
-}
-
 .health + span {
   color: #059202;
 }
@@ -119,16 +110,10 @@ character-attributes {
   display: flex;
   align-items: center;
   cursor: default;
-  display: flex;
   align-items: center;
 }
 
 @media only screen and (min-width: @mobile) {
-  character-attributes {
-    padding: 0;
-    margin: 0;
-  }
-
   .attribute {
     flex-flow: column;
     padding: 0;

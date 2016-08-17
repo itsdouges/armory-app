@@ -1,66 +1,11 @@
-@import '../../../../common/styles/sizes.less';
 @import '../../../../common/styles/z-index.less';
-@import '../../../../common/styles/colours.less';
 
 .root {
-  background: black;
-  text-align: left;
-  z-index: @bottom-z;
-  position: relative;
-  margin: 0.15em 0.6em;
-  height: 24px;
-  overflow: hidden;
-  composes: low from 'common/styles/box-shadow.less';
-
-  &.active {
-    font-weight: bold;
-
-    .icon {
-      opacity: 1;
-    }
-  }
-}
-
-.rating {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: @middle-z;
-}
-
-.ratingBlock {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: @behind-z;
-  background-color: @orange;
-}
-
-.ratingBlock:after {
-  content: "";
-  box-sizing: border-box;
-  display: block;
-  width: 5px;
-  border-right: 4px solid white;
-  height: 100%;
-  background: linear-gradient(to right, @orange, @white);
-  float: right;
-}
-
-.rating {
-  text-align: center;
-  font-size: 0.8em;
-  line-height: 2em;
-  color: white;
-  cursor: default;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+  margin-bottom: 0.25em;
 }
 
 .icon {
-  margin: 2px;
+  margin: 5px;
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -69,33 +14,33 @@
 }
 
 .tailor {
-  background: url('../../../../assets/images/tailor-icon.png');
+  background: url('assets/images/tailor-icon.png');
 }
 
 .chef {
-  background: url('../../../../assets/images/chef-icon.png');
+  background: url('assets/images/chef-icon.png');
 }
 
 .artificer {
-  background: url('../../../../assets/images/artificer-icon.png');
+  background: url('assets/images/artificer-icon.png');
 }
 
 .armorsmith {
-  background: url('../../../../assets/images/armorsmith-icon.png');
+  background: url('assets/images/armorsmith-icon.png');
 }
 
 .huntsman {
-  background: url('../../../../assets/images/huntsman-icon.png');
+  background: url('assets/images/huntsman-icon.png');
 }
 
 .jeweler {
-  background: url('../../../../assets/images/jeweler-icon.png');
+  background: url('assets/images/jeweler-icon.png');
 }
 
 .leatherworker {
-  background: url('../../../../assets/images/leatherworker-icon.png');
+  background: url('assets/images/leatherworker-icon.png');
 }
 
 .weaponsmith {
-  background: url('../../../../assets/images/weaponsmith-icon.png');
+  background: url('assets/images/weaponsmith-icon.png');
 }
