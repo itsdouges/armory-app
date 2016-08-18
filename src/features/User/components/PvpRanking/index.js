@@ -1,6 +1,7 @@
 import styles from './styles.less';
 import { PropTypes } from 'react';
 import ProgressBar from 'common/components/ProgressBar';
+import Redacted from 'common/components/Redacted';
 
 function calculateRankExperience (rank) {
   let totalExpForNextLevel;
@@ -84,9 +85,12 @@ const PvpRanking = ({ rank, points }) => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.icon} style={{ backgroundImage: `url(${image})` }}></div>
+      <Redacted redact={!rank}>
+        <div className={styles.icon} style={{ backgroundImage: `url(${image})` }} />
+      </Redacted>
+
       <div className={styles.progressContainer}>
-        <span className={styles.name}>{name}</span>
+        <span className={styles.name}><Redacted redact={!rank}>{name}</Redacted></span>
 
         <ProgressBar
           barColor="rgb(85, 35, 164)"

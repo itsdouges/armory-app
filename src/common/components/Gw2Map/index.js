@@ -24,7 +24,7 @@ Gw2Map.defaultProps = {
   map: {
     name: ' ',
   },
-  id: 1011,
+  id: 0,
 };
 
 export default Gw2Map;
