@@ -8,10 +8,14 @@ class TooltipTrigger extends Component {
     data: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     dispatch: PropTypes.func,
     children: PropTypes.any,
+    type: PropTypes.string,
   };
 
   onMouseEnter = debounce(() => {
-    this.props.dispatch(showTooltip(true, this.props.data));
+    this.props.dispatch(showTooltip(true, {
+      data: this.props.data,
+      type: this.props.type,
+    }));
   }, 50);
 
   onMouseLeave = debounce(() => {

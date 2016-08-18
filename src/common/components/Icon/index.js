@@ -3,12 +3,12 @@ import styles from './styles.less';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
-const Icon = ({ name, size, className }) => (
+const Icon = ({ name, size, className, src }) => (
   <div
     className={cx('container', size, className)}
     style={{
       /* eslint prefer-template:0 */
-      backgroundImage: 'url(' + require(`assets/images/${name}`) + ')',
+      backgroundImage: 'url(' + src || require(`assets/images/${name}`) + ')',
     }}
   >
   </div>
@@ -18,6 +18,7 @@ Icon.propTypes = {
   name: PropTypes.string,
   size: PropTypes.string,
   className: PropTypes.string,
+  src: PropTypes.sting,
 };
 
 export default Icon;

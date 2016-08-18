@@ -4,15 +4,22 @@ import MouseFollow from '../MouseFollow';
 import { connect } from 'react-redux';
 import { selector } from 'features/Gw2/tooltip.reducer';
 
+import ItemsTooltip from './Items';
+import SimpleTooltip from './Simple';
+
 const Tooltip = ({ tooltip }) => {
   if (!tooltip.show) return null;
 
   let content;
 
-  switch (tooltip.mode) {
+  switch (tooltip.type) {
+    case 'items':
+      content = <ItemsTooltip data={tooltip.data} />;
+      break;
+
     case 'simple':
     default:
-      content = <div className={styles.simple}>{tooltip.data || 'Loading...'}</div>;
+      content = <SimpleTooltip data={tooltip.data} />;
       break;
   }
 

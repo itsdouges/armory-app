@@ -5,7 +5,14 @@ import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
 const Item = ({ type, busy, name, item = {}, skin = {} }) => (
-  <TooltipTrigger data={name}>
+  <TooltipTrigger
+    type="items"
+    data={{
+      name,
+      item,
+      skin,
+    }}
+  >
     <div className={cx('root', 'containerDefault', `${type}Icon`, { busy })}>
       <div className={styles.item} style={{ backgroundImage: `url(${skin.icon || item.icon})` }} />
     </div>
