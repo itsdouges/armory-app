@@ -135,16 +135,19 @@ export const selector = createSelector(
 export const defaultState = {
   data: {},
   selected: '',
+  fetching: false,
 };
 
 export default function reducer (state, action) {
   switch (action.type) {
     case FETCH_CHARACTER_RESULT: {
-      const newState = {
+      return {
         ...state,
+        data: {
+          ...state.data,
+          [action.payload.name]: parseCharacter(action.payload.data),
+        },
       };
-      newState.data[action.payload.name] = parseCharacter(action.payload.data);
-      return newState;
     }
 
     case FETCHING_CHARACTER:

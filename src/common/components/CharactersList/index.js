@@ -10,7 +10,7 @@ const CharactersList = ({ characters = [], alias, type = 'list', bottomBorder })
   const content = characters.length ?
     characters.map((character) => (
       <Link
-        to={`/${alias}/characters/${character.name}`}
+        to={`/${alias || character.userAlias}/characters/${character.name}`}
         key={character.name}
         className={cx('item', 'withHover')}
       >

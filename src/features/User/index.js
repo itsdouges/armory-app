@@ -26,7 +26,7 @@ class User extends Component {
   };
 
   componentWillMount () {
-    const alias = this.props.routeParams.alias;
+    const { alias } = this.props.routeParams;
 
     this.props.dispatch(fetchUser(alias));
     this.props.dispatch(selectUser(alias));
