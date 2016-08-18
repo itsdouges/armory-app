@@ -269,35 +269,23 @@ export function calculate (character, items) {
   criticalChance = criticalChance < 0 ? 0 : criticalChance;
 
   return {
-      // Primary
     power: (base + itemBonus.Power).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-    precision: precision.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+    [character.profession.toLowerCase()]: 0,
     toughness: (base + itemBonus.Toughness).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+    armor: (toughness + itemBonus.Armor).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
     vitality: (base + itemBonus.Vitality).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-
-    // Secondary
-    boon: (+itemBonus.BoonDuration + (itemBonus.Expertise / 15)).toFixed(1),
+    health: ((base * 10) + bonusHealth).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+    precision: precision.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+    criticalChance: criticalChance.toFixed(2),
+    ferocity: itemBonus.Ferocity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+    criticalDamage: (BASE_CRITICAL_DAMAGE + (itemBonus.Ferocity / 15)).toFixed(1),
     conditionDamage: itemBonus.ConditionDamage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
     conditionDuration: (+itemBonus.ConditionDuration + (itemBonus.Concentration / 15)).toFixed(1),
-    ferocity: itemBonus.Ferocity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-    healing: itemBonus.HealingPower,
-
-    // Derived
-    armor: (toughness + itemBonus.Armor).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-    // TODO: Critical chance is currently rounding up. Fix it.
-    criticalChance: criticalChance.toFixed(2),
-    criticalDamage: (BASE_CRITICAL_DAMAGE + (itemBonus.Ferocity / 15)).toFixed(1),
-    health: ((base * 10) + bonusHealth).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-
-    // HOT
-    expertise: itemBonus.Expertise,
     concentration: itemBonus.Concentration,
-
-    // Special
+    healing: itemBonus.HealingPower,
+    expertise: itemBonus.Expertise,
+    boon: (+itemBonus.BoonDuration + (itemBonus.Expertise / 15)).toFixed(1),
     agony: 0,
     magic: 0,
-
-    // Profession
-    [character.profession.toLowerCase()]: 0,
   };
 }
