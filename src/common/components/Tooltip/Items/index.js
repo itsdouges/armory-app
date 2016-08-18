@@ -4,10 +4,7 @@ import styles from './styles.less';
 import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 import Icon from 'common/components/Icon';
-
-const rarityMapping = {
-
-};
+import colours from 'common/styles/colours.less';
 
 const ItemsTooltip = ({ data: { item, skin, name } }) => {
   if (Object.keys(item).length === 0) {
@@ -18,10 +15,10 @@ const ItemsTooltip = ({ data: { item, skin, name } }) => {
     <div>
       <SimpleTooltip data="Current Equipped" />
 
-      <div className="${styles.itemHeader}">
+      <div className={styles.itemHeader}>
         <Icon size="mini" src={skin.icon || item.icon} className={styles.tooltipIcon} />
 
-        <span className={cx('itemName', rarityMapping[item.rarity])}>
+        <span className={cx('itemName', colours[item.rarity.toLowerCase()])}>
           {item.name}
         </span>
       </div>

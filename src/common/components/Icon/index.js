@@ -18,7 +18,7 @@ Icon.propTypes = {
   name: PropTypes.string,
   size: PropTypes.string,
   className: PropTypes.string,
-  src: PropTypes.sting,
+  src: PropTypes.string,
 };
 
 export default Icon;
