@@ -2,7 +2,7 @@ import { Component, PropTypes } from 'react';
 import { get } from 'axios';
 import config from 'env';
 import styles from './styles.less';
-import ContentCardList from 'common/components/CharactersList';
+import ContentCardList from 'common/components/ContentCardList';
 
 export default class Search extends Component {
   static propTypes = {
@@ -60,32 +60,48 @@ export default class Search extends Component {
         resources[result.resource].push(result);
       });
 
-      content = (
-        <div>
+      const characters = !!resources.characters.length && (
+        <span>
           <h2>Characters</h2>
           <ContentCardList
-            bottomBorder
+            noBorder
             resource="characters"
             items={resources.characters}
             type="grid"
           />
+        </span>
+      );
 
+      const users = !!resources.users.length && (
+        <span>
           <h2>Users</h2>
           <ContentCardList
-            bottomBorder
+            noBorder
             resource="users"
             items={resources.users}
             type="grid"
           />
+        </span>
+      );
 
+      const guilds = !!resources.guilds.length && (
+        <span>
           <h2>Guilds</h2>
           <ContentCardList
-            bottomBorder
+            noBorder
             resource="guilds"
             items={resources.guilds}
             type="grid"
           />
-        </div>
+        </span>
+      );
+
+      content = (
+        <span>
+          {characters}
+          {users}
+          {guilds}
+        </span>
       );
     }
 

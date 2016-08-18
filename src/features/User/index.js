@@ -1,5 +1,5 @@
 import styles from './styles.less';
-import CharactersList from 'common/components/CharactersList';
+import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -41,10 +41,10 @@ class User extends Component {
     return (
       <div className={styles.root}>
         <div className={styles.inner}>
-          <ContentCard content={user} size="big" type="users" />
+          <ContentCard className={styles.card} content={user} size="big" type="users" />
         </div>
 
-        <CharactersList
+        <ContentCardList
           type="grid"
           alias={alias}
           items={user && user.characters}

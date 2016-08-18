@@ -12,7 +12,7 @@ function buildUrl (item, aliasOverride, resource) {
       return `/${item.name}`;
 
     case 'characters':
-      return `/${aliasOverride || item.alias}/characters/${item.name}`;
+      return `/${aliasOverride || item.alias || item.userAlias}/characters/${item.name}`;
 
     case 'guilds':
       return `/g/${item.name}`;
@@ -27,6 +27,7 @@ const ContentCardList = ({
   alias,
   type = 'list',
   bottomBorder,
+  noBorder,
   resource = 'characters',
 }) => {
   const content = items.length ?
@@ -47,10 +48,12 @@ const ContentCardList = ({
 
   return (
     <div className={styles.root}>
-      <div className={cx('borderContainer', borderStyle)}>
-        <div className={cx('border', 'borderLeft')}></div>
-        <div className={cx('border', 'borderRight')}></div>
-      </div>
+      {!noBorder && (
+        <div className={cx('borderContainer', borderStyle)}>
+          <div className={cx('border', 'borderLeft')}></div>
+          <div className={cx('border', 'borderRight')}></div>
+        </div>
+      )}
 
       <Card className={cx('container', type)}>
         {content}
@@ -63,6 +66,7 @@ ContentCardList.propTypes = {
   items: PropTypes.array,
   alias: PropTypes.string,
   resource: PropTypes.string,
+  noBorder: PropTypes.bool,
   type: PropTypes.oneOf(['grid', 'list']),
   bottomBorder: PropTypes.bool,
 };

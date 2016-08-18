@@ -7,7 +7,7 @@ import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
 import { calculate as calculateAttributes } from 'lib/gw2/attributes';
 
-import CharactersList from 'common/components/CharactersList';
+import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
 
@@ -260,7 +260,7 @@ class Character extends Component {
           </Link>
         </div>
 
-        <CharactersList bottomBorder alias={alias} items={characters} />
+        <ContentCardList bottomBorder alias={alias} items={characters} />
 
         <SocialButtons />
       </div>

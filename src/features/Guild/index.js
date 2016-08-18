@@ -2,7 +2,7 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import styles from './styles.less';
-import CharactersList from 'common/components/CharactersList';
+import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
 
@@ -32,10 +32,10 @@ class Guild extends Component {
     return (
       <div className={styles.root}>
         <div className={styles.inner}>
-          <ContentCard content={guild} size="big" type="guilds" />
+          <ContentCard className={styles.card} content={guild} size="big" type="guilds" />
         </div>
 
-        <CharactersList
+        <ContentCardList
           type="grid"
           items={guild && guild.characters}
         />
