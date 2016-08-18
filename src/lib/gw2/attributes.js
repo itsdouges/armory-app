@@ -1,3 +1,24 @@
+const defaultAttributes = {
+  power: 0,
+  necromancer: 0,
+  toughness: 0,
+  armor: 0,
+  vitality: 0,
+  health: 0,
+  precision: 0,
+  criticalChance: 0,
+  ferocity: 0,
+  criticalDamage: 0,
+  conditionDamage: 0,
+  conditionDuration: 0,
+  concentration: 0,
+  healing: 0,
+  expertise: 0,
+  boon: 0,
+  agony: 0,
+  magic: 0,
+};
+
 function combineAttributes (attr1, attr2) {
   /* eslint no-param-reassign:0 */
   attr1.Power += attr2.Power || 0;
@@ -255,7 +276,7 @@ function calculateBonusHealth (level, profession) {
 const BASE_CRITICAL_DAMAGE = 150;
 export function calculate (character, items) {
   if (!character) {
-    return {};
+    return defaultAttributes;
   }
 
   const base = calculateBaseAttribute(character.level);

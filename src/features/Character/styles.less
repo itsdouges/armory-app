@@ -1,6 +1,6 @@
 @import '../../common/styles/sizes.less';
 
-@thick-width: 180;
+@thick-width: 192;
 @thin-width: 120;
 @content-width: 820px;
 
@@ -20,15 +20,35 @@
 }
 
 .leftColumn,
-.innerRightColumn {
+.rightItemColumn {
   display: flex;
   flex-shrink: 0;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.innerRightColumn {
+.leftColumn {
+  > * {
+    margin: 0.125em;
+  }
+
+  *:first-child {
+    margin-top: 0;
+  }
+}
+
+.leftColumn,
+.rightColumn {
+  margin: 0 0.125em;
+}
+
+.rightItemColumn {
   flex-direction: row;
+  margin: 0.25em 0;
+
+  > * {
+    margin: 0.125em;
+  }
 }
 
 .attributes {
@@ -77,13 +97,17 @@
   text-align: left;
 }
 
+.craftingContainer {
+  margin: 0 0.125em;
+}
+
 @media only screen and (min-width: @tablet) {
   .columns {
     flex-direction: row;
   }
 
   .leftColumn,
-  .innerRightColumn {
+  .rightItemColumn {
     justify-content: flex-start;
   }
 

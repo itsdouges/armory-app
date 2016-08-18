@@ -69,7 +69,9 @@ class Settings extends Component {
           error={this.passwordsError}
         />
 
-        <a href="" onClick={this.signOut}>Sign Out</a>
+        <div style={{ textAlign: 'center' }}>
+          Ready to leave? <strong><a href="" onClick={this.signOut}>Sign Out</a></strong>.
+        </div>
       </span>
     );
   }

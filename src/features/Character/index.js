@@ -219,7 +219,7 @@ class Character extends Component {
                 })}
               </div>
 
-              <div className={styles.innerRightColumn}>
+              <div className={styles.rightItemColumn}>
               {rightItems.map((item) =>
                 <Item
                   {...item}
@@ -233,7 +233,9 @@ class Character extends Component {
                 />)}
               </div>
 
-              {crafting.map((craft, index) => <CraftingBar craft={craft} key={index} />)}
+              <div className={styles.craftingContainer}>
+                {crafting.map((craft, index) => <CraftingBar craft={craft} key={index} />)}
+              </div>
             </div>
           </div>
         </div>

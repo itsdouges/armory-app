@@ -6,16 +6,18 @@ const cx = classnames.bind(styles);
 
 function extractData (content, { type, size }) {
   switch (type) {
-    case 'users':
+    case 'users': {
+      const alias = content.alias || content.name;
       return {
-        title: content.alias || content.name,
+        title: alias,
         // TODO: Source accountName from api for search
         subTitle: content.accountName || 'user',
         imageStyle: {
-          backgroundImage: `url(//api.adorable.io/avatars/128/${content.alias}.png)`,
+          backgroundImage: `url(//api.adorable.io/avatars/128/${alias}.png)`,
           borderRadius: '50%',
         },
       };
+    }
 
     case 'characters':
       return {

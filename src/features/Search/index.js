@@ -62,7 +62,7 @@ export default class Search extends Component {
 
       const characters = !!resources.characters.length && (
         <span>
-          <h2>Characters</h2>
+          <h3>Characters</h3>
           <ContentCardList
             noBorder
             resource="characters"
@@ -74,7 +74,7 @@ export default class Search extends Component {
 
       const users = !!resources.users.length && (
         <span>
-          <h2>Users</h2>
+          <h3>Users</h3>
           <ContentCardList
             noBorder
             resource="users"
@@ -86,7 +86,7 @@ export default class Search extends Component {
 
       const guilds = !!resources.guilds.length && (
         <span>
-          <h2>Guilds</h2>
+          <h3>Guilds</h3>
           <ContentCardList
             noBorder
             resource="guilds"
@@ -107,6 +107,7 @@ export default class Search extends Component {
 
     return (
       <div className={styles.root}>
+        <h2>Search results</h2>
         {content}
       </div>
     );
