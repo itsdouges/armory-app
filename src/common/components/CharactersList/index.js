@@ -6,15 +6,37 @@ import styles from './styles.less';
 import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
-const CharactersList = ({ characters = [], alias, type = 'list', bottomBorder }) => {
-  const content = characters.length ?
-    characters.map((character) => (
+function buildUrl (item, aliasOverride, resource) {
+  switch (resource) {
+    case 'users':
+      return `/${item.name}`;
+
+    case 'characters':
+      return `/${aliasOverride || item.alias}/characters/${item.name}`;
+
+    case 'guilds':
+      return `/g/${item.name}`;
+
+    default:
+      return '';
+  }
+}
+
+const ContentCardList = ({
+  items = [],
+  alias,
+  type = 'list',
+  bottomBorder,
+  resource = 'characters',
+}) => {
+  const content = items.length ?
+    items.map((item) => (
       <Link
-        to={`/${alias || character.userAlias}/characters/${character.name}`}
-        key={character.name}
+        to={buildUrl(item, alias, resource)}
+        key={item.name}
         className={cx('item', 'withHover')}
       >
-        <ContentCard content={character} />
+        <ContentCard type={item.resource} content={item} />
       </Link>)
     ) :
     [0, 0].map((data, index) => (
@@ -37,11 +59,12 @@ const CharactersList = ({ characters = [], alias, type = 'list', bottomBorder })
   );
 };
 
-CharactersList.propTypes = {
-  characters: PropTypes.array,
+ContentCardList.propTypes = {
+  items: PropTypes.array,
   alias: PropTypes.string,
+  resource: PropTypes.string,
   type: PropTypes.oneOf(['grid', 'list']),
   bottomBorder: PropTypes.bool,
 };
 
-export default CharactersList;
+export default ContentCardList;

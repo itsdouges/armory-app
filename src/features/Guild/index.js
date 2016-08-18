@@ -37,7 +37,7 @@ class Guild extends Component {
 
         <CharactersList
           type="grid"
-          characters={guild && guild.characters}
+          items={guild && guild.characters}
         />
 
         <SocialButtons />

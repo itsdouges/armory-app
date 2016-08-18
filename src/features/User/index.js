@@ -47,7 +47,7 @@ class User extends Component {
         <CharactersList
           type="grid"
           alias={alias}
-          characters={user && user.characters}
+          items={user && user.characters}
         />
 
         <PvpStats stats={user && user.pvpStats} />

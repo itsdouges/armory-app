@@ -260,7 +260,7 @@ class Character extends Component {
           </Link>
         </div>
 
-        <CharactersList bottomBorder alias={alias} characters={characters} />
+        <CharactersList bottomBorder alias={alias} items={characters} />
 
         <SocialButtons />
       </div>

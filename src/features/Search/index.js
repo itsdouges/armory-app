@@ -1,8 +1,8 @@
 import { Component, PropTypes } from 'react';
 import { get } from 'axios';
 import config from 'env';
-import ContentCard from 'common/components/ContentCard';
 import styles from './styles.less';
+import ContentCardList from 'common/components/CharactersList';
 
 export default class Search extends Component {
   static propTypes = {
@@ -43,18 +43,51 @@ export default class Search extends Component {
   }
 
   render () {
-    if (this.state.searching) {
-      return <div>Searching...</div>;
-    }
+    let content;
 
-    const content = this.state.results.length ?
-      this.state.results.map((result) =>
-        <ContentCard
-          type={result.resource}
-          key={`${result.name}${result.alias}`}
-          content={result}
-        />) :
-      <div>No results...</div>;
+    if (this.state.searching) {
+      content = <div>Searching...</div>;
+    } else if (!this.state.results.length) {
+      content = <div>No results...</div>;
+    } else {
+      const resources = {
+        users: [],
+        characters: [],
+        guilds: [],
+      };
+
+      this.state.results.forEach((result) => {
+        resources[result.resource].push(result);
+      });
+
+      content = (
+        <div>
+          <h2>Characters</h2>
+          <ContentCardList
+            bottomBorder
+            resource="characters"
+            items={resources.characters}
+            type="grid"
+          />
+
+          <h2>Users</h2>
+          <ContentCardList
+            bottomBorder
+            resource="users"
+            items={resources.users}
+            type="grid"
+          />
+
+          <h2>Guilds</h2>
+          <ContentCardList
+            bottomBorder
+            resource="guilds"
+            items={resources.guilds}
+            type="grid"
+          />
+        </div>
+      );
+    }
 
     return (
       <div className={styles.root}>
