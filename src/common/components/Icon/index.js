@@ -8,7 +8,7 @@ const Icon = ({ name, size, className, src }) => (
     className={cx('container', size, className)}
     style={{
       /* eslint prefer-template:0 */
-      backgroundImage: 'url(' + src || require(`assets/images/${name}`) + ')',
+      backgroundImage: 'url(' + (src || require(`assets/images/${name}`)) + ')',
     }}
   >
   </div>

@@ -3,6 +3,7 @@ import { get } from 'axios';
 import config from 'env';
 import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
+import SocialButtons from 'common/components/SocialButtons';
 
 export default class Search extends Component {
   static propTypes = {
@@ -11,7 +12,7 @@ export default class Search extends Component {
 
   state = {
     results: [],
-    searching: false,
+    searching: true,
   };
 
   componentWillMount () {
@@ -28,14 +29,12 @@ export default class Search extends Component {
     const { term } = this.props.routeParams;
 
     this.setState({
-      ...this.state,
       searching: true,
     });
 
     return get(`${config.api.endpoint}search?filter=${term}`)
       .then(({ data }) => {
         this.setState({
-          ...this.state,
           searching: false,
           results: data,
         });
@@ -43,72 +42,58 @@ export default class Search extends Component {
   }
 
   render () {
-    let content;
+    const resources = {
+      users: [],
+      characters: [],
+      guilds: [],
+    };
 
-    if (this.state.searching) {
-      content = <div>Searching...</div>;
-    } else if (!this.state.results.length) {
-      content = <div>No results...</div>;
-    } else {
-      const resources = {
-        users: [],
-        characters: [],
-        guilds: [],
-      };
+    this.state.results.forEach((result) => {
+      resources[result.resource].push(result);
+    });
 
-      this.state.results.forEach((result) => {
-        resources[result.resource].push(result);
-      });
+    const characters = (
+      <span>
+        <h2>Characters result</h2>
+        <ContentCardList
+          noBorder
+          resource="characters"
+          items={resources.characters}
+          type="grid"
+        />
+      </span>
+    );
 
-      const characters = !!resources.characters.length && (
-        <span>
-          <h3>Characters</h3>
-          <ContentCardList
-            noBorder
-            resource="characters"
-            items={resources.characters}
-            type="grid"
-          />
-        </span>
-      );
+    const users = (
+      <span>
+        <h2>Users result</h2>
+        <ContentCardList
+          noBorder
+          resource="users"
+          items={resources.users}
+          type="grid"
+        />
+      </span>
+    );
 
-      const users = !!resources.users.length && (
-        <span>
-          <h3>Users</h3>
-          <ContentCardList
-            noBorder
-            resource="users"
-            items={resources.users}
-            type="grid"
-          />
-        </span>
-      );
-
-      const guilds = !!resources.guilds.length && (
-        <span>
-          <h3>Guilds</h3>
-          <ContentCardList
-            noBorder
-            resource="guilds"
-            items={resources.guilds}
-            type="grid"
-          />
-        </span>
-      );
-
-      content = (
-        <span>
-          {characters}
-          {users}
-          {guilds}
-        </span>
-      );
-    }
+    const guilds = (
+      <span>
+        <h2>Guilds result</h2>
+        <ContentCardList
+          noBorder
+          resource="guilds"
+          items={resources.guilds}
+          type="grid"
+        />
+      </span>
+    );
 
     return (
       <div className={styles.root}>
-        <h2>Search results</h2>
-        {content}
+        {characters}
+        {users}
+        {guilds}
+        <SocialButtons />
       </div>
     );
   }

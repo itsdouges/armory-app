@@ -89,7 +89,7 @@ export function fetchCharacter (character) {
         if (idsForFetching.specializations.length) {
           dispatch(fetchSpecializations(idsForFetching.specializations));
         }
-      }, () => browserHistory.push('/404'));
+      }, ({ status }) => status === 404 && browserHistory.push('/404'));
   };
 }
 
