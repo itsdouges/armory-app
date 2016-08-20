@@ -1,19 +1,9 @@
-// Inspired by https://github.com/airbnb/javascript but less opinionated.
-
-// We use eslint-loader so even warnings are very visibile.
-// This is why we only use "WARNING" level for potential errors,
-// and we don't use "ERROR" level at all.
-
-// In the future, we might create a separate list of rules for production.
-// It would probably be more strict.
-
 module.exports = {
   root: true,
 
   parser: 'babel-eslint',
 
-  // import plugin is termporarily disabled, scroll below to see why
-  plugins: [/*'import', */'flowtype', 'jsx-a11y', 'react'],
+  plugins: ['flowtype', 'jsx-a11y', 'react'],
 
   env: {
     browser: true,
@@ -191,7 +181,6 @@ module.exports = {
     'react/prop-types': 'warn',
     'react/jsx-boolean-value': 'warn',
     'react/jsx-closing-bracket-location': 'warn',
-    
 
     // https://github.com/evcohen/eslint-plugin-jsx-a11y/tree/master/docs/rules
     'jsx-a11y/aria-role': 'warn',

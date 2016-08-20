@@ -88,7 +88,7 @@ module.exports = {
       'process.env.NODE_ENV': '"production"',
       __DATE__: `${new Date()}`,
       __SHORT_GIT_HASH__: '"local-build"',
-      __DEVELOPMENT__: 'false',
+      __DEVELOPMENT__: false,
     }),
     new webpack.ProvidePlugin({
       React: 'react',

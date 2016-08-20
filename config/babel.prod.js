@@ -3,7 +3,7 @@ module.exports = {
   presets: [
     'babel-preset-es2015',
     'babel-preset-es2016',
-    'babel-preset-react'
+    'babel-preset-react',
   ].map(require.resolve),
   plugins: [
     'babel-plugin-syntax-trailing-function-commas',
@@ -14,7 +14,7 @@ module.exports = {
     [require.resolve('babel-plugin-transform-runtime'), {
       helpers: false,
       polyfill: false,
-      regenerator: true
-    }]
-  ])
+      regenerator: true,
+    }],
+  ]),
 };

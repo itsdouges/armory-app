@@ -4,7 +4,8 @@
 
 ```
 npm i
-npm start
+npm run dev // Run in dev mode
+npm start // Run in prod mode
 ```
 
 ### Running locally
