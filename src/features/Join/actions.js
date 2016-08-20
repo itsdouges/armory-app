@@ -83,7 +83,7 @@ export function invalidateEmail () {
   };
 }
 
-export function validateEmailThunk (email) {
+export function validateEmail (email) {
   return (dispatch) => {
     dispatch(validatingEmail(true));
 
@@ -126,7 +126,7 @@ function checkAliasError (error) {
   };
 }
 
-export function validateAliasThunk (alias) {
+export function validateAlias (alias) {
   return (dispatch) => {
     if (!alias) {
       dispatch(invalidateAlias());
@@ -168,8 +168,7 @@ export function validatePasswords (password1, password2) {
 
   if (!isStrong) {
     errors.push(
-      'Password should be greater than 7 characters long and ' +
-      'contain one or more uppercase and lowercase character.'
+      'Needs 8 or more characters with at least one being uppercase.'
     );
   }
 

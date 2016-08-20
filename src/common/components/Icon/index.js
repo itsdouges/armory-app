@@ -10,9 +10,12 @@ const Icon = ({ name, size, className, src }) => (
       /* eslint prefer-template:0 */
       backgroundImage: 'url(' + (src || require(`assets/images/${name}`)) + ')',
     }}
-  >
-  </div>
+  />
 );
+
+Icon.defaultProps = {
+  size: 'mini',
+};
 
 Icon.propTypes = {
   name: PropTypes.string,

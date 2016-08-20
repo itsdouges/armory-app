@@ -54,7 +54,7 @@ export default class Search extends Component {
 
     const characters = (
       <span>
-        <h2>Characters result</h2>
+        <h2>Characters</h2>
         <ContentCardList
           noBorder
           resource="characters"
@@ -66,7 +66,7 @@ export default class Search extends Component {
 
     const users = (
       <span>
-        <h2>Users result</h2>
+        <h2>Users</h2>
         <ContentCardList
           noBorder
           resource="users"
@@ -78,7 +78,7 @@ export default class Search extends Component {
 
     const guilds = (
       <span>
-        <h2>Guilds result</h2>
+        <h2>Guilds</h2>
         <ContentCardList
           noBorder
           resource="guilds"

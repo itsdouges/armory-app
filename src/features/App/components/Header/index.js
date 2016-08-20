@@ -5,6 +5,7 @@ import Card from 'common/components/Card';
 import Icon from 'common/components/Icon';
 import Textbox from 'common/components/Textbox';
 import { Link, browserHistory } from 'react-router';
+import SvgIcon from 'common/components/Icon/Svg';
 
 function search (event) {
   event.preventDefault();
@@ -32,7 +33,7 @@ const Header = ({ authenticated, alias }) => {
             containerClassName={styles.textBoxContainer}
           />
 
-          <button className={styles.searchButton}>SEARCH</button>
+          <button className={styles.searchButton}><SvgIcon name="search" /></button>
         </form>
 
         <ul className={styles.linkContainer}>

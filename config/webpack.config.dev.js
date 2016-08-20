@@ -71,9 +71,9 @@ module.exports = {
       {
         test: /\.(mp4|webm)$/,
         include: [paths.appSrc, paths.appNodeModules],
-        loader: 'url?limit=10000'
-      }
-    ]
+        loader: 'url?limit=10000',
+      },
+    ],
   },
   eslint: {
     configFile: path.join(__dirname, 'eslint.js'),

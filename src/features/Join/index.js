@@ -5,11 +5,12 @@ import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
 import Button from 'common/components/Button';
 import PasswordForm from 'common/components/PasswordForm';
+import Message from 'common/components/Message';
 
 import {
   register,
-  validateEmailThunk,
-  validateAliasThunk,
+  validateEmail,
+  validateAlias,
   validatePasswords,
 } from './actions';
 
@@ -48,8 +49,22 @@ class Join extends Component {
     this.setState(newState);
   };
 
-  checkEmail = debounce((value) => this.props.dispatch(validateEmailThunk(value)), 300);
-  checkAlias = debounce((value) => this.props.dispatch(validateAliasThunk(value)), 300);
+  checkEmail = debounce((value) => {
+    if (!value.trim()) {
+      return;
+    }
+
+    this.props.dispatch(validateEmail(value));
+  }, 300);
+
+  checkAlias = debounce((value) => {
+    if (!value.trim()) {
+      return;
+    }
+
+    this.props.dispatch(validateAlias(value));
+  }, 300);
+
   checkPassword = debounce(
     (password, passwordConfirm) =>
       this.props.dispatch(validatePasswords(password, passwordConfirm)),
@@ -67,7 +82,7 @@ class Join extends Component {
     return (
       <span>
         <h2>Join</h2>
-        <Card size="small">
+        <Card size="medium">
           <form onSubmit={this.register}>
             <Textbox
               showStatus

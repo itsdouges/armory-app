@@ -2,7 +2,10 @@ import { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
+import 'normalize.css';
+import 'assets/fonts/menomonia.css';
 import styles from './styles.less';
+
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Tooltip from 'common/components/Tooltip';

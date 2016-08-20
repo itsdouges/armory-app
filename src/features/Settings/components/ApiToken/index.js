@@ -1,10 +1,11 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
+import SvgIcon from 'common/components/Icon/Svg';
 
 const ApiToken = ({ token: { accountName, primary, permissions }, remove, setPrimary }) => (
   <div className={styles.root}>
     <div onClick={setPrimary}>
-      {primary.toString()}
+      <SvgIcon name={primary ? 'cb-checked' : 'cb-clear'} />
     </div>
 
     <div className={styles.information}>
@@ -15,7 +16,7 @@ const ApiToken = ({ token: { accountName, primary, permissions }, remove, setPri
     </div>
 
     <div onClick={remove}>
-      del
+      <SvgIcon name="delete-forever" />
     </div>
   </div>
 );

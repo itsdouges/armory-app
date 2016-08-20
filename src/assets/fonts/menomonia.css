@@ -1,9 +1,9 @@
 @font-face {
-    font-family: 'Menomonia';
-    src: url('./menomonia.eot');
-    src: url('./menomonia.eot?#iefix') format('embedded-opentype'),
-         url('./menomonia.woff') format('woff'),
-         url('./menomonia.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Menomonia';
+  src: url('assets/fonts/menomonia.eot');
+  src: url('assets/fonts/menomonia.eot?#iefix') format('embedded-opentype'),
+       url('assets/fonts/menomonia.woff') format('woff'),
+       url('assets/fonts/menomonia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
