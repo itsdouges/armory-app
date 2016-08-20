@@ -26,7 +26,10 @@ const Textbox = (props) => {
         className={cx('textbox', props.showStatus && status)}
       />
 
-      {props.error && <Message className={styles.error} type="error" small>{props.error}</Message>}
+      {props.error &&
+        <Message className={styles.error} type="error" size="small">
+          {props.error}
+        </Message>}
 
       {props.showStatus && <div className={styles.validityContainer}>{validity}</div>}
     </div>

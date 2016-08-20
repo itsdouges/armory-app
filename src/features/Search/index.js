@@ -5,6 +5,7 @@ import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
 import SocialButtons from 'common/components/SocialButtons';
 import Title from 'react-title-component';
+import Message from 'common/components/Message';
 
 export default class Search extends Component {
   static propTypes = {
@@ -14,25 +15,22 @@ export default class Search extends Component {
   state = {
     results: [],
     searching: true,
-    term: '',
   };
 
   componentWillMount () {
-    this.search();
+    const { term } = this.props.routeParams;
+    this.search(term);
   }
 
-  componentDidUpdate (prevProps) {
-    if (this.props.routeParams.term !== prevProps.routeParams.term) {
-      this.search();
+  componentWillReceiveProps (nextProps) {
+    if (this.props.routeParams.term !== nextProps.routeParams.term) {
+      this.search(nextProps.routeParams.term);
     }
   }
 
-  search () {
-    const { term } = this.props.routeParams;
-
+  search (term) {
     this.setState({
       searching: true,
-      term,
     });
 
     return get(`${config.api.endpoint}search?filter=${term}`)
@@ -51,7 +49,10 @@ export default class Search extends Component {
       guilds: [],
     };
 
-    this.state.results.forEach((result) => {
+    const { results, searching } = this.state;
+    const { term } = this.props.routeParams;
+
+    results.forEach((result) => {
       resources[result.resource].push(result);
     });
 
@@ -91,12 +92,21 @@ export default class Search extends Component {
       </span>
     );
 
+    const resultsFound = (!!resources.characters.length ||
+      !!resources.users.length ||
+      !!resources.guilds.length);
+
     return (
       <div className={styles.root}>
-        <Title render={(title) => `${this.state.term}${title}`} />
-        {characters}
-        {users}
-        {guilds}
+        <Title render={(title) => `${term}${title}`} />
+
+        {!searching && !resultsFound && (
+          <Message size="big">Nothing found with "<i>{term}</i>"...</Message>
+        )}
+
+        {(searching || !!resources.characters.length) && characters}
+        {(searching || !!resources.users.length) && users}
+        {(searching || !!resources.guilds.length) && guilds}
         <SocialButtons />
       </div>
     );

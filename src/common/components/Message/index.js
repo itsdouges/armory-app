@@ -3,12 +3,10 @@ import styles from './styles.less';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
-const Message = ({ children, type, small, title, className }) => (
+const Message = ({ children, type, title, className, size }) => (
   <div
     title={title}
-    className={cx('container', className, type, {
-      small,
-    })}
+    className={cx('container', className, type, size)}
   >
       {children}
   </div>
@@ -19,7 +17,7 @@ Message.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any,
   type: PropTypes.string,
-  small: PropTypes.bool,
+  size: PropTypes.string,
 };
 
 export default Message;
