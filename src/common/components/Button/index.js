@@ -11,10 +11,15 @@ const Button = (props) => (
       disabled: props.disabled,
     })}
     disabled={props.busy || props.disabled}
+    onClick={props.onClick}
   >
     {props.children}
   </button>
 );
+
+Button.defaultProps = {
+  onClick: () => {},
+};
 
 Button.propTypes = {
   disabled: PropTypes.bool,
@@ -22,6 +27,7 @@ Button.propTypes = {
   primary: PropTypes.bool,
   children: PropTypes.any,
   containerClassName: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Button;

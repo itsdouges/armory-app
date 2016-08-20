@@ -11,7 +11,7 @@ function extractData (content, { type, size }) {
       return {
         title: alias,
         // TODO: Source accountName from api for search
-        subTitle: content.accountName || 'user',
+        subTitle: content.accountName || 'User',
         imageStyle: {
           backgroundImage: alias && `url(//api.adorable.io/avatars/128/${alias}.png)`,
           borderRadius: '50%',
@@ -31,7 +31,7 @@ function extractData (content, { type, size }) {
       return {
         title: content.name || 'No Guild',
         // TODO: Source tag from api for search
-        subTitle: (content.tag && `[${content.tag}]`) || 'guild',
+        subTitle: (content.tag && `[${content.tag}]`) || 'Guild',
         imageStyle: {
           backgroundImage: `url(https://guilds.gw2w2w.com/guilds/${content.name && content.name.replace(/\s+/g, '-')}/256.svg)`,
           borderRadius: '50%',

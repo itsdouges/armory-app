@@ -2,6 +2,7 @@ import { PropTypes } from 'react';
 import styles from './styles.less';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import classnames from 'classnames/bind';
+import Icon from 'common/components/Icon';
 
 const cx = classnames.bind(styles);
 
@@ -37,7 +38,7 @@ const attributeNameMapping = {
 const Attribute = ({ value, name }) => (
   <TooltipTrigger data={attributeNameMapping[name]}>
     <div className={styles.root}>
-      <i className={cx('icon', name)} />
+      <Icon className={cx('icon', name)} size="micro" />
       <span>{value}</span>
     </div>
   </TooltipTrigger>

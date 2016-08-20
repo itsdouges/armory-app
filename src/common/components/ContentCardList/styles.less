@@ -11,10 +11,6 @@
   padding: 0;
 }
 
-.grid {
-  flex-wrap: wrap;
-}
-
 .borderContainer {
   position: absolute;
   left: 0;
@@ -66,6 +62,18 @@
   opacity: 0.8;
 }
 
+.list .item {
+  width: 80%;
+}
+
+.grid .item {
+  width: 100%;
+}
+
+.grid {
+  flex-wrap: wrap;
+}
+
 .withHover:hover {
   opacity: 1;
   background: #4c4c4c;
@@ -78,25 +86,29 @@
 }
 
 @media only screen and (min-width: @mobile) {
-  .item {
+  .grid .item,
+  .list .item {
     .NumberOfSliderItems(2);
   }
 }
 
 @media only screen and (min-width: @tablet) {
-  .item {
+  .grid .item,
+  .list .item {
     .NumberOfSliderItems(3);
   }
 }
 
 @media only screen and (min-width: @pc) {
-  .item {
+  .grid .item,
+  .list .item {
     .NumberOfSliderItems(4);
   }
 }
 
 @media only screen and (min-width: @big-pc) {
-  .item {
+  .grid .item,
+  .list .item {
     .NumberOfSliderItems(5);
   }
 }

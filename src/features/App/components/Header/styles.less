@@ -1,9 +1,15 @@
+div.container {
+  background: #fff;
+  padding: 0.25em;
+  margin-bottom: 9em;
+}
+
 .heroImage {
   background-image: url('assets/images/brush-stroke-2-3.png');
   background-repeat: no-repeat;
   position: absolute;
   left: 0;
-  top: 45px;
+  top: 35px;
   height: 147px;
   width: 698px;
   z-index: -1;
@@ -29,7 +35,6 @@
 
 .formContainer {
   margin-right: auto;
-  margin-left: 1em;
   max-width: 450px;
   flex-grow: 1;
   position: relative;
@@ -38,12 +43,15 @@
 .textBoxContainer {
   margin-right: auto;
   margin-left: 1em;
+
+  input {
+    font-size: 1em;
+  }
 }
 
-div.container {
-  background: #fff;
-  padding: 0.5em;
-  margin-bottom: 9em;
+.searchIcon {
+  width: 20px;
+  height: 20px;
 }
 
 .searchButton {
@@ -53,4 +61,6 @@ div.container {
   bottom: 0;
   background: transparent;
   border: none;
+  cursor: pointer;
+  outline: none;
 }

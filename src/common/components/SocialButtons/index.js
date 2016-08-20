@@ -1,4 +1,5 @@
 import styles from './styles.less';
+import Message from 'common/components/Message';
 
 function onClick (e) {
   const textbox = e.target;
@@ -7,9 +8,9 @@ function onClick (e) {
 
 const SocialButtons = () => (
   <div className={styles.root}>
-    <div>
+    <Message>
       Like what you see? <strong>Share it!</strong>
-    </div>
+    </Message>
 
     <div className={styles.buttons}>
       <input onClick={onClick} className={styles.textbox} readOnly value={window.location.href} />

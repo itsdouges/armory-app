@@ -6,6 +6,7 @@ import ChangePassword from './components/ChangePassword';
 import debounce from 'lodash/debounce';
 import { browserHistory } from 'react-router';
 
+import Button from 'common/components/Button';
 import { validatePasswords } from 'features/Join/actions';
 import { clearUserData } from 'features/Auth/actions';
 import {
@@ -80,7 +81,7 @@ class Settings extends Component {
         />
 
         <div style={{ textAlign: 'center' }}>
-          Ready to leave? <strong><a href="" onClick={this.signOut}>Sign Out</a></strong>.
+          <Button onClick={this.signOut}>LOGOUT</Button>
         </div>
       </span>
     );

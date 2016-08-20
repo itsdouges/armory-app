@@ -1,5 +1,6 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
@@ -83,6 +84,10 @@ class Join extends Component {
       <span>
         <h2>Join</h2>
         <Card size="medium">
+          <Message>
+            Already have an account? <Link to="/login"><strong>Go login!</strong></Link>
+          </Message>
+
           <form onSubmit={this.register}>
             <Textbox
               showStatus

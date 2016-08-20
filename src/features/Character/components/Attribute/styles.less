@@ -1,5 +1,13 @@
 @import '../../../../common/styles/sizes.less';
 
+.root {
+  display: flex;
+  align-items: center;
+  cursor: default;
+  align-items: center;
+  font-size: 0.9em;
+}
+
 .power {
   background: url('assets/images/power.png');
 }
@@ -96,21 +104,11 @@
 
 .icon {
   margin: 0.4em 0.8em;
-  background-size: cover;
-  height: 18px;
-  width: 18px;
   display: inline-block;
 }
 
 .health + span {
   color: #059202;
-}
-
-.root {
-  display: flex;
-  align-items: center;
-  cursor: default;
-  align-items: center;
 }
 
 @media only screen and (min-width: @mobile) {

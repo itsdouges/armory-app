@@ -2,6 +2,7 @@
 
 @padding: 0.5rem;
 @placeholderColor: #9a9a9a;
+@placeholderColorLight: #c5c5c5;
 
 .root,
 .placeholderRoot {
@@ -20,10 +21,24 @@
   }
 }
 
+@keyframes loading {
+  from {
+    background: @placeholderColorLight;
+    color: @placeholderColorLight;
+  }
+
+  to {
+    background: @placeholderColor;
+    color: @placeholderColor;
+  }
+}
+
 .placeholder {
-  background: @placeholderColor;
-  color: @placeholderColor;
   opacity: 0.5;
+  animation-name: loading;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 .textContainer {

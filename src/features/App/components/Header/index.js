@@ -15,8 +15,8 @@ function search (event) {
 
 const Header = ({ authenticated, alias }) => {
   const links = authenticated ?
-    [<Link to={`/${alias}`}>{alias}</Link>, <Link to="/settings">Settings</Link>] :
-    [<Link to="/join">Join</Link>, <Link to="/login">Login</Link>];
+    [<Link to={`/${alias}`}>{alias.toUpperCase()}</Link>, <Link to="/settings">SETTINGS</Link>] :
+    [<Link to="/join">JOIN</Link>, <Link to="/login">LOGIN</Link>];
 
   return (
     <Card className={styles.container}>
@@ -24,6 +24,7 @@ const Header = ({ authenticated, alias }) => {
 
       <Container className={styles.innerContainer}>
         <Link to="/"><Icon name="logo-small.png" size="mini" /></Link>
+        <h1>Guild Wars 2 Armory</h1>
 
         <form className={styles.formContainer} onSubmit={search}>
           <Textbox
@@ -33,7 +34,9 @@ const Header = ({ authenticated, alias }) => {
             containerClassName={styles.textBoxContainer}
           />
 
-          <button className={styles.searchButton}><SvgIcon name="search" /></button>
+          <button className={styles.searchButton}>
+            <SvgIcon button className={styles.searchIcon} name="search" size="micro" />
+          </button>
         </form>
 
         <ul className={styles.linkContainer}>

@@ -7,8 +7,8 @@ const Placeholder = ({ className, size = 'small' }) => (
   <div className={cx('placeholderRoot', className, size)}>
     <div className={cx('image', 'placeholder')} />
     <div className={styles.textContainer}>
-      <div className={cx('title', 'placeholder')}>loading...</div>
-      <div className={cx('subTitle', 'placeholder')}>loading...</div>
+      <div className={cx('title', 'placeholder')}>Loading...</div>
+      <div className={cx('subTitle', 'placeholder')}>Hampsters are working...</div>
     </div>
   </div>
 );

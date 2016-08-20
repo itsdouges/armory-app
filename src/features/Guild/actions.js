@@ -1,5 +1,6 @@
 import { get } from 'axios';
 import config from 'env';
+import { browserHistory } from 'react-router';
 
 export const FETCHING_GUILD = 'FETCHING_GUILD';
 export const SELECT_GUILD = 'SELECT_GUILD';
@@ -30,5 +31,5 @@ export const fetchGuild = (name) => (dispatch) => {
     .then((response) => {
       dispatch(fetchGuildResult(name, response.data));
       dispatch(fetchingGuild(false));
-    });
+    }, () => browserHistory.push('/404'));
 };

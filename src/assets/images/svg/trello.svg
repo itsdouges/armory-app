@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.3 (16044) - http://www.bohemiancoding.com/sketch -->
+    <title>trello-mark-white</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Original-Assets" sketch:type="MSArtboardGroup" transform="translate(-2789.000000, -298.000000)" fill="#161614">
+            <g id="Group" sketch:type="MSLayerGroup" transform="translate(229.000000, 198.000000)">
+                <g id="Trello-Logo" sketch:type="MSShapeGroup">
+                    <g id="Trello-Mark---White" transform="translate(2460.000000, 0.000000)">
+                        <g id="Logo" transform="translate(100.000000, 100.000000)">
+                            <path d="M25.0013814,0 C11.1934997,0 0,11.1994381 0,25.0013814 L0,174.998619 C0,188.8065 11.1994381,200 25.0013814,200 L174.998619,200 C188.8065,200 200,188.800562 200,174.998619 L200,25.0013814 C200,11.1934997 188.800562,0 174.998619,0 L25.0013814,0 Z M124.997036,26 C118.371256,26 113,31.3745986 113,38.0059087 L113,101.494091 C113,108.124772 118.373226,113.5 124.997036,113.5 L162.002964,113.5 C168.628744,113.5 174,108.125401 174,101.494091 L174,38.0059087 C174,31.3752284 168.626774,26 162.002964,26 L124.997036,26 Z M37.997036,26 C31.371256,26 26,31.3690439 26,37.9916439 L26,151.508356 C26,158.131158 31.3732256,163.5 37.997036,163.5 L75.002964,163.5 C81.628744,163.5 87,158.130956 87,151.508356 L87,37.9916439 C87,31.3688418 81.6267744,26 75.002964,26 L37.997036,26 Z" id="Board"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
