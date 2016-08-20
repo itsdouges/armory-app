@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "6.3.1"
+install:
+  - npm install
+script:
+  - npm run build
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: bash scripts/deploy.sh
+  on:
+    all_branches: true
+cache:
+  directories:
+    - node_modules

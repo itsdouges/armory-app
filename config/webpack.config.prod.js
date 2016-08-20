@@ -1,99 +1,71 @@
-var path = require('path');
-var autoprefixer = require('autoprefixer');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var url = require('url');
-var paths = require('./paths');
-
-var homepagePath = require(paths.appPackageJson).homepage;
-var publicPath = homepagePath ? url.parse(homepagePath).pathname : '/';
-if (!publicPath.endsWith('/')) {
-  // Prevents incorrect paths in file-loader
-  publicPath += '/';
-}
+const path = require('path');
+const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const paths = require('./paths');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  bail: true,
-  devtool: 'source-map',
+  devtool: 'eval',
   entry: [
-    require.resolve('./polyfills'),
-    path.join(paths.appSrc, 'index')
+    require.resolve('webpack-dev-server/client'),
+    require.resolve('webpack/hot/dev-server'),
+    path.join(paths.appSrc, 'index'),
   ],
   output: {
     path: paths.appBuild,
-    filename: '[name].[chunkhash:8].js',
-    chunkFilename: '[name].[chunkhash:8].chunk.js',
-    publicPath: publicPath
+    pathinfo: true,
+    filename: 'bundle.js',
+    publicPath: '/',
   },
   resolve: {
+    root: path.resolve('./src'),
     extensions: ['', '.js', '.json'],
-    alias: {
-      // This `alias` section can be safely removed after ejection.
-      // We do this because `babel-runtime` may be inside `react-scripts`,
-      // so when `babel-plugin-transform-runtime` imports it, it will not be
-      // available to the app directly. This is a temporary solution that lets
-      // us ship support for generators. However it is far from ideal, and
-      // if we don't have a good solution, we should just make `babel-runtime`
-      // a dependency in generated projects.
-      // See https://github.com/facebookincubator/create-react-app/issues/255
-      'babel-runtime/regenerator': require.resolve('babel-runtime/regenerator')
-    }
-  },
-  resolveLoader: {
-    root: paths.ownNodeModules,
-    moduleTemplates: ['*-loader']
   },
   module: {
     preLoaders: [
       {
         test: /\.js$/,
         loader: 'eslint',
-        include: paths.appSrc
-      }
+        include: paths.appSrc,
+      },
     ],
     loaders: [
       {
         test: /\.js$/,
         include: paths.appSrc,
         loader: 'babel',
-        query: require('./babel.prod')
+        query: require('./babel.prod'),
       },
       {
-        test: /\.css$/,
+        test: /\.(css|less)$/,
         include: [paths.appSrc, paths.appNodeModules],
-        // Disable autoprefixer in css-loader itself:
-        // https://github.com/webpack/css-loader/issues/281
-        // We already have it thanks to postcss.
-        loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer!postcss')
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!postcss!less'),
       },
       {
         test: /\.json$/,
         include: [paths.appSrc, paths.appNodeModules],
-        loader: 'json'
+        loader: 'json',
       },
       {
         test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
         include: [paths.appSrc, paths.appNodeModules],
         loader: 'file',
         query: {
-          name: '[name].[hash:8].[ext]'
-        }
+          name: '/assets/[hash:8].[ext]',
+        },
       },
       {
         test: /\.(mp4|webm)$/,
         include: [paths.appSrc, paths.appNodeModules],
-        loader: 'url?limit=10000'
-      }
-    ]
+        loader: 'url?limit=10000',
+      },
+    ],
   },
   eslint: {
-    // TODO: consider separate config for production,
-    // e.g. to enable no-console and no-debugger only in prod.
-    configFile: path.join(__dirname, 'eslint.js'),
-    useEslintrc: false
+    useEslintrc: true,
   },
-  postcss: function() {
+  postcss () {
     return [autoprefixer];
   },
   plugins: [
@@ -111,25 +83,33 @@ module.exports = {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true
-      }
+        minifyURLs: true,
+      },
     }),
-    new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
+      __DATE__: `${new Date()}`,
+      __SHORT_GIT_HASH__: '"local-build"',
+      __DEVELOPMENT__: 'true',
+    }),
+    new webpack.ProvidePlugin({
+      React: 'react',
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         screw_ie8: true,
-        warnings: false
+        warnings: false,
       },
       mangle: {
-        screw_ie8: true
+        screw_ie8: true,
       },
       output: {
         comments: false,
-        screw_ie8: true
-      }
+        screw_ie8: true,
+      },
     }),
-    new ExtractTextPlugin('[name].[contenthash:8].css')
-  ]
+    new ExtractTextPlugin('assets/[name].[contenthash:8].css'),
+  ],
 };

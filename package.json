@@ -42,10 +42,12 @@
     "promise": "7.1.1",
     "redux-logger": "^2.6.1",
     "rimraf": "2.5.4",
+    "s3": "^4.4.0",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.13.1",
-    "webpack-dev-server": "1.14.1"
+    "webpack-dev-server": "1.14.1",
+    "yargs": "^5.0.0"
   },
   "dependencies": {
     "axios": "^0.13.1",
