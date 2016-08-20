@@ -35,6 +35,10 @@ class Settings extends Component {
   };
 
   validateToken = debounce((token) => {
+    if (!token.trim()) {
+      return;
+    }
+
     this.props.dispatch(validateGw2Token(token));
   });
 

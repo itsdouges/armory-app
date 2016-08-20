@@ -37,6 +37,7 @@ export default class ApiTokens extends Component {
 
   add = (event) => {
     event.preventDefault();
+
     this.props.add(this.state.newToken);
   };
 
