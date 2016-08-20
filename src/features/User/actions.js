@@ -106,5 +106,5 @@ export const fetchUser = (alias) => (dispatch) => {
     .then((response) => {
       dispatch(fetchUserResult(response.data));
       dispatch(fetchingUser(false));
-    }, ({ status }) => status === 404 && browserHistory.push('/404'));
+    }, ({ response: { status } }) => status === 404 && browserHistory.push('/404'));
 };
