@@ -8,8 +8,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   devtool: 'eval',
   entry: [
-    require.resolve('webpack-dev-server/client'),
-    require.resolve('webpack/hot/dev-server'),
     path.join(paths.appSrc, 'index'),
   ],
   output: {
