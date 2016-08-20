@@ -9,7 +9,7 @@ import Redacted from 'common/components/Redacted';
 const cx = classnames.bind(styles);
 
 function stringToDate (date) {
-  return date && new Date(date).toDateString();
+  return date && new Date(date).toLocaleDateString();
 }
 
 function calculateMatchInMinutes (start, end) {
@@ -42,7 +42,11 @@ const PvpGame = ({ game }) => {
         </div>
         <div className={cx('stats', 'spreadItems', 'big')}>
           <div>
-            <Redacted redact={redacted}>{game.rating_type}</Redacted>
+            <Redacted redact={redacted}>
+              <span className={styles[game.rating_type.toLowerCase()]}>
+                {game.rating_type.toUpperCase()}
+              </span>
+            </Redacted>
           </div>
           <div>
             <div>
