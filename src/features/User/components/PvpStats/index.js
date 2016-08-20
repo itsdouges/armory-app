@@ -5,12 +5,16 @@ import Card from 'common/components/Card';
 import Redacted from 'common/components/Redacted';
 
 const PvpStats = ({ stats }) => {
-  const { unranked, ranked } = stats.ladders;
+  const { unranked = {}, ranked = {} } = stats.ladders || {};
   const redact = !unranked.wins || !ranked.wins;
 
   return (
     <div className={styles.root}>
-      <PvpRanking rank={stats.pvp_rank} points={stats.pvp_rank_points} />
+      <PvpRanking
+        rank={stats.pvp_rank}
+        points={stats.pvp_rank_points}
+        rankRollOvers={stats.pvp_rank_rollovers}
+      />
 
       <h3>Pvp stats</h3>
       <Card className={styles.card}>
@@ -72,6 +76,7 @@ PvpStats.defaultProps = {
   stats: {
     pvp_rank: 0,
     pvp_rank_points: 0,
+    pvp_rank_rollovers: 0,
     ladders: {
       ranked: {},
       unranked: {},

@@ -34,7 +34,7 @@ export function authenticateUser (token) {
   return (dispatch) => {
     dispatch(checkingAuthentication(true));
 
-    get(`${config.api.endpoint}/users/me`, {
+    get(`${config.api.endpoint}users/me`, {
       headers: {
         Authorization: token,
       },

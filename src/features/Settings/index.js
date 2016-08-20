@@ -48,7 +48,7 @@ class Settings extends Component {
 
   signOut = (e) => {
     e.preventDefault();
-    browserHistory.push('/');
+    browserHistory.replace('/');
     this.props.dispatch(clearUserData());
   };
 

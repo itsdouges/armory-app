@@ -34,7 +34,13 @@ class User extends Component {
 
   render () {
     const { user, routeParams: { alias } } = this.props;
-    const pvpGames = (user && user.pvpGames) || [undefined, undefined];
+
+    const pvpGames = (user &&
+      user.pvpGames &&
+      user.pvpGames.length &&
+      user.pvpGames) || [undefined, undefined];
+
+    const pvpStats = user && user.pvpStats;
 
     return (
       <div className={styles.root}>
@@ -50,7 +56,7 @@ class User extends Component {
           items={user && user.characters}
         />
 
-        <PvpStats stats={user && user.pvpStats} />
+        <PvpStats stats={pvpStats} />
 
         <div className={styles.gamesContainer}>
           <h3>Recent matches</h3>

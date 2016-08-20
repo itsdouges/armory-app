@@ -4,44 +4,38 @@ import ProgressBar from 'common/components/ProgressBar';
 import Redacted from 'common/components/Redacted';
 
 function calculateRankExperience (rank) {
-  let totalExpForNextLevel;
-
-  if (rank === 1) {
-    totalExpForNextLevel = 0;
+  if (!rank || rank <= 1) {
+    return 0;
   } else if (rank >= 2 && rank <= 5) {
-    totalExpForNextLevel = 500;
+    return 500;
   } else if (rank >= 6 && rank <= 8) {
-    totalExpForNextLevel = 1500;
+    return 1500;
   } else if (rank >= 9 && rank <= 18) {
-    totalExpForNextLevel = 4000;
+    return 4000;
   } else if (rank >= 19 && rank <= 28) {
-    totalExpForNextLevel = 7500;
+    return 7500;
   } else if (rank >= 29 && rank <= 38) {
-    totalExpForNextLevel = 15000;
-  } else if (rank) {
-    totalExpForNextLevel = 20000;
-  } else {
-    totalExpForNextLevel = 0;
+    return 15000;
   }
 
-  return totalExpForNextLevel;
+  return 20000;
 }
 
-function calculateExperienceInCurrentLevel (rank, currentPoints) {
-  let totalExperience = 0;
-  const nextLevel = +rank;
+function calculateExperienceInCurrentLevel (rank, rankPoints) {
+  let totalExperienceForNextLevel = 0;
+  const nextLevel = rank;
 
   for (let i = 1; i <= nextLevel; i++) {
-    totalExperience += calculateRankExperience(i);
+    totalExperienceForNextLevel += calculateRankExperience(i);
   }
 
-  return totalExperience - currentPoints;
+  return Math.abs(totalExperienceForNextLevel - rankPoints);
 }
 
 function calculateIconStyle (rank) {
   let name;
 
-  if (rank >= 1 && rank <= 9) {
+  if (!rank || rank <= 9) {
     name = 'Rabbit';
   } else if (rank >= 10 && rank <= 19) {
     name = 'Deer';
@@ -55,10 +49,8 @@ function calculateIconStyle (rank) {
     name = 'Bear';
   } else if (rank >= 60 && rank <= 69) {
     name = 'Shark';
-  } else if (rank >= 70 && rank <= 79) {
-    name = 'Phoenix';
   } else {
-    name = 'Rabbit';
+    name = 'Phoenix';
   }
 
   return {
@@ -68,7 +60,7 @@ function calculateIconStyle (rank) {
 }
 
 function calculateRanking (rank, points) {
-  const current = calculateExperienceInCurrentLevel(rank, points);
+  const current = calculateExperienceInCurrentLevel(rank, points) || 0;
   const max = calculateRankExperience(rank);
   const { name, image } = calculateIconStyle(rank);
 
@@ -80,7 +72,8 @@ function calculateRanking (rank, points) {
   };
 }
 
-const PvpRanking = ({ rank, points }) => {
+const PvpRanking = ({ rank, points, rankRollOvers }) => {
+  const rolledOverRank = (rank + rankRollOvers) || 0;
   const { image, name, current, max } = calculateRanking(rank, points);
 
   return (
@@ -90,7 +83,9 @@ const PvpRanking = ({ rank, points }) => {
       </Redacted>
 
       <div className={styles.progressContainer}>
-        <span className={styles.name}><Redacted redact={!rank}>{name}</Redacted></span>
+        <span className={styles.name}>
+          <Redacted redact={!rank}>{name} ({rolledOverRank})</Redacted>
+        </span>
 
         <ProgressBar
           barColor="rgb(85, 35, 164)"
@@ -106,6 +101,7 @@ const PvpRanking = ({ rank, points }) => {
 PvpRanking.propTypes = {
   rank: PropTypes.number,
   points: PropTypes.number,
+  rankRollOvers: PropTypes.number,
 };
 
 export default PvpRanking;

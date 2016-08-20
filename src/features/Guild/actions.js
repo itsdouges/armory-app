@@ -31,5 +31,5 @@ export const fetchGuild = (name) => (dispatch) => {
     .then((response) => {
       dispatch(fetchGuildResult(name, response.data));
       dispatch(fetchingGuild(false));
-    }, () => browserHistory.push('/404'));
+    }, () => browserHistory.replace('/404'));
 };
