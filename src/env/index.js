@@ -1,8 +1,7 @@
-import localConfig from './local';
-import prodConfig from './prod';
 import defaultConfig from './default';
 
-const overrideConfig = __DEVELOPMENT__ ? localConfig : prodConfig;
+const configName = __DEVELOPMENT__ ? 'local' : 'prod';
+const overrideConfig = require(`./${configName}`).default;
 
 export default {
   ...defaultConfig,
