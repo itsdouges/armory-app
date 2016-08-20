@@ -7,7 +7,7 @@ const LOCAL_PVP_SEASON_DATA = 'LOCAL_SKINS_DATA';
 
 clearIfPastStoreInterval(LOCAL_PVP_SEASON_DATA);
 
-export const defaultValue = JSON.parse(get(LOCAL_PVP_SEASON_DATA)) || {};
+export const defaultState = JSON.parse(get(LOCAL_PVP_SEASON_DATA)) || {};
 
 export default function reducer (state, action) {
   switch (action.type) {

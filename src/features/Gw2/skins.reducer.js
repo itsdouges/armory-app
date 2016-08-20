@@ -8,7 +8,7 @@ const LOCAL_SKINS_DATA = 'LOCAL_SKINS_DATA';
 
 clearIfPastStoreInterval(LOCAL_SKINS_DATA);
 
-export const defaultValue = JSON.parse(get(LOCAL_SKINS_DATA)) || {};
+export const defaultState = JSON.parse(get(LOCAL_SKINS_DATA)) || {};
 
 export default function reducer (state, action) {
   switch (action.type) {

@@ -8,7 +8,7 @@ const LOCAL_SPECS_DATA = 'LOCAL_SPECS_DATA';
 
 clearIfPastStoreInterval(LOCAL_SPECS_DATA);
 
-export const defaultValue = JSON.parse(get(LOCAL_SPECS_DATA)) || {};
+export const defaultState = JSON.parse(get(LOCAL_SPECS_DATA)) || {};
 
 export default function reducer (state, action) {
   switch (action.type) {

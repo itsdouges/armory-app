@@ -8,7 +8,7 @@ const LOCAL_ITEMS_DATA = 'LOCAL_ITEMS_DATA';
 
 clearIfPastStoreInterval(LOCAL_ITEMS_DATA);
 
-export const defaultValue = JSON.parse(get(LOCAL_ITEMS_DATA)) || {};
+export const defaultState = JSON.parse(get(LOCAL_ITEMS_DATA)) || {};
 
 export default function reducer (state, action) {
   switch (action.type) {
