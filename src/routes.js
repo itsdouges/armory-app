@@ -12,7 +12,7 @@ import NotFound from 'features/NotFound';
 import { authEnabled, authOnly } from 'features/Auth';
 
 const Routes = () => (
-  <Router history={browserHistory}>
+  <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
     <Route path="/" component={authEnabled(App)}>
       <IndexRoute component={Home} />
       <Redirect from="/in" to="/login" />
