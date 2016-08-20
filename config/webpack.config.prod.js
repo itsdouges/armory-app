@@ -50,7 +50,7 @@ module.exports = {
         include: [paths.appSrc, paths.appNodeModules],
         loader: 'file',
         query: {
-          name: '/assets/[hash:8].[ext]',
+          name: 'assets/[hash:8].[ext]',
         },
       },
       {
