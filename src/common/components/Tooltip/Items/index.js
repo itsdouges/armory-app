@@ -9,12 +9,31 @@ import colours from 'common/styles/colours.less';
 import Gold from '../Gold';
 import ItemUpgrade from '../ItemUpgrade';
 
-const ItemsTooltip = ({ data: { item, skin, name } }) => {
+function buildName (item, skin, upgrades) {
+  if (!skin.name) {
+    return item.name;
+  }
+
+  const regex = /[\w'\-]+/;
+  const prefix = regex.exec(item.name);
+  const prefixedName = `${prefix} ${skin.name}`;
+
+  const [upgradeOne] = upgrades;
+
+  if (upgradeOne && prefixedName.indexOf(upgradeOne.details.suffix)) {
+    return `${prefixedName} ${upgradeOne.details.suffix}`;
+  }
+
+  return prefixedName;
+}
+
+const ItemsTooltip = ({ data: { item, skin, name, upgrades } }) => {
   if (Object.keys(item).length === 0) {
     return <SimpleTooltip data={name} />;
   }
 
-  const hasSkin = !!skin.name;
+  const itemName = buildName(item, skin, upgrades);
+  const isTransmuted = !!skin.name;
 
   return (
     <div>
@@ -24,7 +43,7 @@ const ItemsTooltip = ({ data: { item, skin, name } }) => {
         <Icon size="mini" src={skin.icon || item.icon} className={styles.tooltipIcon} />
 
         <span className={cx('itemName', colours[item.rarity.toLowerCase()])}>
-          {item.name}
+          {itemName}
         </span>
       </div>
 
@@ -46,10 +65,10 @@ const ItemsTooltip = ({ data: { item, skin, name } }) => {
             <div key={attribute} className={colours.green}>{`+${modifier} ${attribute}`}</div>
         ))}
 
-        <ItemUpgrade data={item.details.upgrade_one} />
-        <ItemUpgrade data={item.details.upgrade_two} />
+        {upgrades.map((upgrade, index) => <ItemUpgrade key={index} data={upgrade} />)}
 
-        <div>{hasSkin ? 'Transmuted' : 'Skin Locked'}</div>
+        <div>{isTransmuted ? 'Transmuted' : 'Skin Locked'}</div>
+        <div>{item.name}</div>
 
         <div>{item.rarity}</div>
 

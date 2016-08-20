@@ -23,17 +23,17 @@ const ItemUpgrade = ({ data }) => {
         <span style={{ backgroundImage: `url(${data.icon})` }} />
         <span>{data.name}</span>
         <span>
-          {withBonus && `(${data.upgrade_combo_count}/${data.details.bonuses.length})`}
+          {withBonus && `(${data.upgrade_combo_count || 0}/${data.details.bonuses.length})`}
         </span>
       </div>
 
       {withBonus && data.details.bonuses.map((bonus, index) =>
-        <span className={index < data.upgrade_combo_count && colours.blue}>
+        <div key={index} className={index < data.upgrade_combo_count && colours.blue}>
           {`(${index + 1}): ${bonus}`}
-        </span>)}
+        </div>)}
 
-      {withBuffs && data.upgrade.details.infix_upgrade.buff.description.map((buff) =>
-        <div className={colours.blue}>{buff}</div>)}
+      {withBuffs && data.details.infix_upgrade.buff.description.map((buff, index) =>
+        <div key={index} className={colours.blue}>{buff}</div>)}
     </div>
   );
 };

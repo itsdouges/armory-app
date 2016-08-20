@@ -160,6 +160,10 @@ class Character extends Component {
     }
   }
 
+  getItems (ids = []) {
+    return ids.map((id) => this.props.items[id]);
+  }
+
   loadCharacter () {
     const { character, alias } = this.props.routeParams;
 
@@ -176,7 +180,7 @@ class Character extends Component {
       character,
     } = this.props;
 
-    const equipment = character && character.equipment;
+    const equipment = (character && character.equipment) || [];
     const attributes = calculateAttributes(character, this.props.items);
     const specializations = (character && character.specializations) || {
       [this.props.mode]: [{}, {}, {}],
@@ -200,12 +204,9 @@ class Character extends Component {
                 <Item
                   {...item}
                   key={item.key}
-                  item={this.props.items[equipment &&
-                    equipment[item.key] &&
-                    equipment[item.key].id]}
-                  skin={this.props.skins[equipment &&
-                    equipment[item.key] &&
-                    equipment[item.key].skin]}
+                  upgrades={equipment[item.key] && this.getItems(equipment[item.key].upgrades)}
+                  item={this.props.items[equipment[item.key] && equipment[item.key].id]}
+                  skin={this.props.skins[equipment[item.key] && equipment[item.key].skin]}
                 />)}
             </div>
 
@@ -224,12 +225,9 @@ class Character extends Component {
                 <Item
                   {...item}
                   key={item.key}
-                  item={this.props.items[equipment &&
-                    equipment[item.key] &&
-                    equipment[item.key].id]}
-                  skin={this.props.skins[equipment &&
-                    equipment[item.key] &&
-                    equipment[item.key].skin]}
+                  upgrades={equipment[item.key] && this.getItems(equipment[item.key].upgrades)}
+                  item={this.props.items[equipment[item.key] && equipment[item.key].id]}
+                  skin={this.props.skins[equipment[item.key] && equipment[item.key].skin]}
                 />)}
               </div>
 

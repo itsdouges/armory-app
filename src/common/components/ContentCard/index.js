@@ -13,7 +13,7 @@ function extractData (content, { type, size }) {
         // TODO: Source accountName from api for search
         subTitle: content.accountName || 'user',
         imageStyle: {
-          backgroundImage: `url(//api.adorable.io/avatars/128/${alias}.png)`,
+          backgroundImage: alias && `url(//api.adorable.io/avatars/128/${alias}.png)`,
           borderRadius: '50%',
         },
       };
