@@ -6,6 +6,7 @@ import ChangePassword from './components/ChangePassword';
 import debounce from 'lodash/debounce';
 import { browserHistory } from 'react-router';
 
+import { validatePasswords } from 'features/Join/actions';
 import { clearUserData } from 'features/Auth/actions';
 import {
   validateGw2Token,
@@ -13,6 +14,7 @@ import {
   fetchGw2Tokens,
   selectPrimaryGw2Token,
   removeGw2Token,
+  changePassword,
 } from './actions';
 
 class Settings extends Component {
@@ -48,6 +50,14 @@ class Settings extends Component {
     this.props.dispatch(clearUserData());
   };
 
+  validatePasswords = (newPassword, newPasswordConfirm) => {
+    this.props.dispatch(validatePasswords(newPassword, newPasswordConfirm));
+  };
+
+  changePassword = (currentPassword, newPassword) => {
+    this.props.dispatch(changePassword(currentPassword, newPassword));
+  };
+
   render () {
     return (
       <span>
@@ -63,10 +73,10 @@ class Settings extends Component {
         />
 
         <ChangePassword
-          valid={this.props.user.validPasswords}
+          valid={this.props.user.passwordValid}
           change={this.changePassword}
-          validate={this.validatePassword}
-          error={this.passwordsError}
+          validate={this.validatePasswords}
+          error={this.props.user.passwordErrors}
         />
 
         <div style={{ textAlign: 'center' }}>

@@ -18,7 +18,7 @@ const PasswordForm = ({ onFieldChange, valid, passwordValue, passwordConfirmValu
       showStatus
       required
       id="passwordConfirm"
-      placeholder="Confirm Password"
+      placeholder="Confirm password"
       type="password"
       value={passwordConfirmValue}
       error={error}

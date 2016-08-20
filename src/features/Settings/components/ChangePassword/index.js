@@ -3,6 +3,7 @@ import { Component, PropTypes } from 'react';
 import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
 import Button from 'common/components/Button';
+import PasswordForm from 'common/components/PasswordForm';
 
 export default class ChangePassword extends Component {
   static propTypes = {
@@ -13,21 +14,25 @@ export default class ChangePassword extends Component {
   };
 
   state = {
+    currentPassword: '',
     password: '',
     passwordConfirm: '',
   };
 
   fieldChanged = ({ target: { id, value } }) => {
-    this.setState({
+    const newState = {
       ...this.state,
       [id]: value,
-    });
+    };
 
-    this.props.validate(value);
+    this.setState(newState);
+
+    this.props.validate(newState.password, newState.passwordConfirm);
   };
 
-  changePassword = () => {
-    this.props.change(this.state.password, this.state.passwordConfirm);
+  changePassword = (e) => {
+    e.preventDefault();
+    this.props.change(this.state.currentPassword, this.state.password);
   };
 
   render () {
@@ -38,41 +43,26 @@ export default class ChangePassword extends Component {
           <form onSubmit={this.changePassword}>
             <Textbox
               required
-              id="password"
-              placeholder="Password"
+              id="currentPassword"
+              placeholder="Current password"
               type="password"
-              value={this.state.password}
+              value={this.state.currentPassword}
               onChange={this.fieldChanged}
             />
 
-            <Textbox
-              showStatus
-              required
-              id="passwordConfirm"
-              placeholder="New Password"
-              type="password"
-              value={this.state.newPassword}
+            <PasswordForm
+              onFieldChange={this.fieldChanged}
               valid={this.props.valid}
-              onChange={this.fieldChanged}
-            />
-
-            <Textbox
-              showStatus
-              required
-              id="passwordConfirm"
-              placeholder="Confirm New Password"
-              type="password"
-              value={this.state.newPasswordConfirm}
+              passwordValue={this.state.password}
+              passwordConfirmValue={this.state.passwordConfirm}
               error={this.props.error}
-              valid={this.props.valid}
-              onChange={this.fieldChanged}
             />
 
             <Button
               primary
               disabled={!this.props.valid}
             >
-              ADD
+              CHANGE
             </Button>
           </form>
         </Card>

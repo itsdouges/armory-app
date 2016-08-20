@@ -18,6 +18,10 @@ export default class ApiTokens extends Component {
     adding: PropTypes.bool,
   };
 
+  static defaultProps = {
+    tokens: [],
+  };
+
   state = {
     newToken: '',
   };
