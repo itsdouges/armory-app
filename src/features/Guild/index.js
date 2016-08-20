@@ -5,6 +5,7 @@ import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
+import Title from 'react-title-component';
 
 import {
   selectGuild,
@@ -27,10 +28,12 @@ class Guild extends Component {
   }
 
   render () {
-    const { guild } = this.props;
+    const { guild, routeParams: { guildName } } = this.props;
 
     return (
       <div className={styles.root}>
+        <Title render={(title) => `${guildName}${title}`} />
+
         <div className={styles.inner}>
           <ContentCard className={styles.card} content={guild} size="big" type="guilds" />
         </div>

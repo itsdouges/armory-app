@@ -4,6 +4,7 @@ import config from 'env';
 import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
 import SocialButtons from 'common/components/SocialButtons';
+import Title from 'react-title-component';
 
 export default class Search extends Component {
   static propTypes = {
@@ -13,6 +14,7 @@ export default class Search extends Component {
   state = {
     results: [],
     searching: true,
+    term: '',
   };
 
   componentWillMount () {
@@ -30,6 +32,7 @@ export default class Search extends Component {
 
     this.setState({
       searching: true,
+      term,
     });
 
     return get(`${config.api.endpoint}search?filter=${term}`)
@@ -90,6 +93,7 @@ export default class Search extends Component {
 
     return (
       <div className={styles.root}>
+        <Title render={(title) => `${this.state.term}${title}`} />
         {characters}
         {users}
         {guilds}

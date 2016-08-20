@@ -5,6 +5,7 @@ import ApiTokens from './components/ApiTokens';
 import ChangePassword from './components/ChangePassword';
 import debounce from 'lodash/debounce';
 import { browserHistory } from 'react-router';
+import Title from 'react-title-component';
 
 import Button from 'common/components/Button';
 import { validatePasswords } from 'features/Join/actions';
@@ -62,6 +63,8 @@ class Settings extends Component {
   render () {
     return (
       <span>
+        <Title render={(title) => `Settings${title}`} />
+
         <ApiTokens
           valid={this.props.user.validGw2Token}
           tokens={this.props.user.gw2Tokens}

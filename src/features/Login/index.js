@@ -2,6 +2,7 @@ import { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import Title from 'react-title-component';
 import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
 import Message from 'common/components/Message';
@@ -42,6 +43,8 @@ class Login extends Component {
   render () {
     return (
       <span>
+        <Title render={(title) => `Login${title}`} />
+
         <h2>Login</h2>
         <Card size="small">
           <Message>

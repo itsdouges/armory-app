@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { selector } from './users.reducer';
 import SocialButtons from 'common/components/SocialButtons';
 import PvpStats from './components/PvpStats';
-// import PvpSeason from './components/PvpSeason';
+import Title from 'react-title-component';
 import PvpGame from './components/PvpGame';
 
 import {
@@ -33,13 +33,13 @@ class User extends Component {
   }
 
   render () {
-    const { user, routeParams: { alias }/* , pvpSeasons*/ } = this.props;
-    // const pvpStandings = (user && user.pvpStandings);
-
+    const { user, routeParams: { alias } } = this.props;
     const pvpGames = (user && user.pvpGames) || [undefined, undefined];
 
     return (
       <div className={styles.root}>
+        <Title render={(title) => `${alias}${title}`} />
+
         <div className={styles.inner}>
           <ContentCard className={styles.card} content={user} size="big" type="users" />
         </div>
@@ -51,13 +51,6 @@ class User extends Component {
         />
 
         <PvpStats stats={user && user.pvpStats} />
-
-        {/* pvpStandings.map((standing, index) =>
-          <PvpSeason
-            key={index}
-            standing={standing}
-            seasons={pvpSeasons[standing.season_id]}
-          />) */}
 
         <div className={styles.gamesContainer}>
           <h3>Recent matches</h3>

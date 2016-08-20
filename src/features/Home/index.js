@@ -1,8 +1,11 @@
 import styles from './styles.less';
 import heroImage from 'assets/images/logo.png';
+import Title from 'react-title-component';
 
-const Home = (props) => (
+const Home = () => (
   <div className={styles.container}>
+    <Title render={(title) => `Armor Up${title}`} />
+
     <img
       alt="Guild Wars 2 Armory"
       title="Guild Wars 2 Armory"

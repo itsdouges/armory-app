@@ -1,6 +1,7 @@
 import { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
+import Title from 'react-title-component';
 
 import 'normalize.css';
 import 'assets/fonts/menomonia.css';
@@ -40,6 +41,8 @@ class App extends Component {
   render () {
     return (
       <div className={styles.app}>
+        <Title render=" | Guild Wars 2 Armory" />
+
         <Header
           authenticated={this.props.userAuthenticated}
           alias={this.props.userAlias}

@@ -7,6 +7,7 @@ import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
 import { calculate as calculateAttributes } from 'lib/gw2/attributes';
 
+import Title from 'react-title-component';
 import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
@@ -176,6 +177,7 @@ class Character extends Component {
   render () {
     const {
       routeParams: { alias },
+      routeParams,
       characters,
       character,
     } = this.props;
@@ -195,6 +197,8 @@ class Character extends Component {
 
     return (
       <div className={styles.root}>
+        <Title render={(title) => `${routeParams.character}${title}`} />
+
         <div className={styles.inner}>
           <ContentCard content={character} size="big" />
 
