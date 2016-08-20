@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
 import Button from 'common/components/Button';
+import PasswordForm from 'common/components/PasswordForm';
 
 import {
   register,
@@ -90,27 +91,12 @@ class Join extends Component {
               onChange={this.fieldChanged}
             />
 
-            <Textbox
-              showStatus
-              required
-              id="password"
-              placeholder="Password"
-              type="password"
-              value={this.state.password}
+            <PasswordForm
+              onFieldChange={this.fieldChanged}
               valid={this.props.user.passwordValid}
-              onChange={this.fieldChanged}
-            />
-
-            <Textbox
-              showStatus
-              required
-              id="passwordConfirm"
-              placeholder="Confirm Password"
-              type="password"
-              value={this.state.passwordConfirm}
+              passwordValue={this.state.password}
+              passwordConfirmValue={this.state.passwordConfirm}
               error={this.props.user.passwordErrors}
-              valid={this.props.user.passwordValid}
-              onChange={this.fieldChanged}
             />
 
             <Button
