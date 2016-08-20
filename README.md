@@ -4,17 +4,31 @@
 
 ```
 npm i
-npm run dev // Run in dev mode
-npm start // Run in prod mode
 ```
 
-### Running locally
+### Running local build
 
 If running locally make sure you add a `local.js` to the `src/env/` folder. Look at `local.sample.js` for help.
 
-### Api
+#### Local api
 
 Make sure you're running the api locally, grab it over at [armory-api](https://github.com/madou/armory-api). Make sure the env is pointing to the correct endpoint (depending how you're running the api).
+
+```
+npm run dev
+```
+
+### Running prod build
+
+```
+npm start
+```
+
+### Building prod build
+
+```
+npm run build
+```
 
 ## Pull Requests
 
