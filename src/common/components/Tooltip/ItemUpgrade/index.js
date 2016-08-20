@@ -21,9 +21,9 @@ const ItemUpgrade = ({ data }) => {
     <div className={styles.root}>
       <div className={colours.blue}>
         <span style={{ backgroundImage: `url(${data.icon})` }} />
-        <span>{data.name}</span>
         <span>
-          {withBonus && `(${data.upgrade_combo_count || 0}/${data.details.bonuses.length})`}
+          {data.name}
+          {withBonus && ` (${data.upgrade_combo_count || 0}/${data.details.bonuses.length})`}
         </span>
       </div>
 
