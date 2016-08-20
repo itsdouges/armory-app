@@ -13,7 +13,7 @@ module.exports = {
   output: {
     path: paths.appBuild,
     pathinfo: true,
-    filename: 'bundle.js',
+    filename: 'bundle-[hash:8].js',
     publicPath: '/',
   },
   resolve: {
@@ -88,7 +88,7 @@ module.exports = {
       'process.env.NODE_ENV': '"production"',
       __DATE__: `${new Date()}`,
       __SHORT_GIT_HASH__: '"local-build"',
-      __DEVELOPMENT__: 'true',
+      __DEVELOPMENT__: 'false',
     }),
     new webpack.ProvidePlugin({
       React: 'react',
