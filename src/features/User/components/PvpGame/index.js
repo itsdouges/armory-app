@@ -24,13 +24,14 @@ const PvpGame = ({ game }) => {
       <Gw2Map id={game.map_id} />
 
       <div className={styles.inner}>
-        <div className={cx('column', 'medium')}>
+        <div className={cx('column', 'resultsContainer')}>
           <Icon size="medium" name={`${game.profession.toLowerCase()}-icon-small.png`} />
           <div className={cx('result', game.team.toLowerCase())}>
             <Redacted redact={redacted}>{game.result.toUpperCase()}</Redacted>
           </div>
         </div>
-        <div className={cx('stretch', 'spreadItems')}>
+
+        <div className={cx('column', ', stretch', 'spreadItems')}>
           <div>
             <div className={styles.red}>RED</div>
             <Redacted redact={redacted}>{game.scores.red || '25'}</Redacted>
@@ -40,7 +41,8 @@ const PvpGame = ({ game }) => {
             <Redacted redact={redacted}>{game.scores.blue || '101'}</Redacted>
           </div>
         </div>
-        <div className={cx('stats', 'spreadItems', 'big')}>
+
+        <div className={cx('column', 'stats', 'spreadItems', 'big')}>
           <div>
             <Redacted redact={redacted}>
               <span className={styles[game.rating_type.toLowerCase()]}>
@@ -48,6 +50,7 @@ const PvpGame = ({ game }) => {
               </span>
             </Redacted>
           </div>
+
           <div>
             <div>
               <Redacted redact={redacted}>

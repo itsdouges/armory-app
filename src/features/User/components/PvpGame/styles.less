@@ -1,6 +1,7 @@
 @import '../../../../common/styles/sizes.less';
 
 @margin: 0.5em;
+@padding: 0.5em;
 
 .root {
   display: inline-flex;
@@ -14,12 +15,18 @@
 .inner {
   display: flex;
   flex-grow: 1;
-  padding: 1em;
   justify-content: space-between;
+  padding: @padding;
 }
 
 .column {
+  padding: @padding;
   text-align: center;
+}
+
+.resultsContainer {
+  width: 124px;
+  flex-shrink: 0;
 }
 
 .result {
