@@ -6,6 +6,7 @@ import Icon from 'common/components/Icon';
 import Textbox from 'common/components/Textbox';
 import { Link, browserHistory } from 'react-router';
 import SvgIcon from 'common/components/Icon/Svg';
+import ProgressIcon from 'common/components/Icon/Progress';
 
 function search (event) {
   event.preventDefault();
@@ -39,10 +40,12 @@ const Header = ({ authenticated, alias, checkingAuthentication }) => {
           </button>
         </form>
 
-        <ul className={styles.linkContainer}>
-          {!checkingAuthentication &&
-            links.map((link, index) => <li className={styles.link} key={index}>{link}</li>)}
-        </ul>
+        {checkingAuthentication ?
+          <ProgressIcon size="micro" /> :
+          <ul className={styles.linkContainer}>
+            {links.map((link, index) => <li className={styles.link} key={index}>{link}</li>)}
+          </ul>
+        }
       </Container>
     </Card>
   );
