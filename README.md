@@ -6,7 +6,7 @@
 npm i
 ```
 
-### Running local build
+### Local build
 
 If running locally make sure you add a `local.js` to the `src/env/` folder. Look at `local.sample.js` for help.
 
@@ -18,13 +18,13 @@ Make sure you're running the api locally, grab it over at [armory-api](https://g
 npm run dev
 ```
 
-### Running prod build
+### Prod build
 
 ```
 npm start
 ```
 
-### Building prod build
+### Bundling prod
 
 ```
 npm run build
@@ -32,6 +32,6 @@ npm run build
 
 ## Pull Requests
 
-Feel like contributing? Look at the [trello board](https://trello.com/b/qGvDe622/gw2armory-com), or contact me on [reddit](https://www.reddit.com/r/gw2armory) or [twitter](https://twitter.com/itsmadou) to find something you'd like to work on, then make a pull request against the `master` branch.
+Feel like contributing? Look at the [trello board](https://trello.com/b/qGvDe622/gw2armory-com), or contact me on [reddit](https://www.reddit.com/r/gw2armory) or [twitter](https://twitter.com/itsmadou) to find something you'd like to work on, then make a pull request against the `development` branch.
 
 © 2016 ArenaNet, Michael Dougall, gw2armory.com
