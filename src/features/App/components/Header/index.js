@@ -51,6 +51,7 @@ const Header = ({ authenticated, alias, checkingAuthentication }) => {
 Header.propTypes = {
   authenticated: PropTypes.bool,
   alias: PropTypes.string,
+  checkingAuthentication: PropTypes.bool,
 };
 
 export default Header;
