@@ -1,4 +1,4 @@
-import { PropTypes, Component } from 'react';
+import { PropTypes, Component, cloneElement } from 'react';
 import { connect } from 'react-redux';
 import { showTooltip } from 'features/Gw2/actions';
 
@@ -22,11 +22,10 @@ class TooltipTrigger extends Component {
   };
 
   render () {
-    return (
-      <span onMouseOver={this.onMouseEnter} onMouseOut={this.onMouseLeave}>
-        {this.props.children}
-      </span>
-    );
+    return cloneElement(this.props.children, {
+      onMouseOver: this.onMouseEnter,
+      onMouseOut: this.onMouseLeave,
+    });
   }
 }
 

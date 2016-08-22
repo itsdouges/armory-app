@@ -15,7 +15,7 @@ const Item = ({ type, busy, name, item = {}, skin = {}, upgrades = [], upgradeCo
       upgradeCounts,
     }}
   >
-    <div className={cx('root', 'containerDefault', `${type}Icon`, { busy })}>
+    <div className={cx('root', `${type}Icon`, { busy })}>
       <div className={styles.item} style={{ backgroundImage: `url(${skin.icon || item.icon})` }} />
     </div>
   </TooltipTrigger>

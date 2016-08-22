@@ -19,7 +19,7 @@ const Header = ({ authenticated, alias, checkingAuthentication }) => {
     [<Link to="/join">JOIN</Link>, <Link to="/login">LOGIN</Link>];
 
   return (
-    <Card className={styles.container}>
+    <Card className={styles.root}>
       <div className={styles.heroImage}></div>
 
       <Container className={styles.innerContainer}>

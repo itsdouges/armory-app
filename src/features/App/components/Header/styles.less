@@ -1,4 +1,6 @@
-div.container {
+@import '../../../../common/styles/sizes.less';
+
+div.root {
   background: #fff;
   padding: 0.25em;
   margin-bottom: 7em;
@@ -26,6 +28,7 @@ div.container {
   margin: 0;
   font-weight: bold;
   flex-shrink: 0;
+  font-size: 0.75em;
 }
 
 .link {
@@ -58,9 +61,16 @@ div.container {
   position: absolute;
   right: 0;
   top: 0;
-  bottom: 0;
+  bottom: 1px;
   background: transparent;
   border: none;
   cursor: pointer;
   outline: none;
+  background: white;
+}
+
+@media only screen and (min-width: @mobile) {
+  .linkContainer {
+    font-size: 1em;
+  }
 }

@@ -28,35 +28,34 @@
 }
 
 .leftColumn {
-  > * {
-    margin: 0.125em;
-  }
-
-  *:first-child {
-    margin-top: 0;
+  > div {
+    margin: 0.125rem;
   }
 }
 
 .leftColumn,
 .rightColumn {
-  margin: 0 0.125em;
+  margin: 0 0.125rem;
 }
 
 .rightItemColumn {
   flex-direction: row;
-  margin: 0.25em 0;
+  margin: 0.25rem 0;
 
   > * {
-    margin: 0.125em;
+    margin: 0.125rem;
   }
 }
 
 .attributes {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding-bottom: 0.25rem;
 
   > * {
-    width: 50%;
+    width: 33.3333%;
   }
 }
 
@@ -88,7 +87,7 @@
 }
 
 .links {
-  margin: 2em auto;
+  margin: 2rem auto;
   text-align: center;
 }
 
@@ -98,7 +97,7 @@
 }
 
 .craftingContainer {
-  margin: 0 0.125em;
+  margin: 0 0.125rem;
 }
 
 @media only screen and (min-width: @tablet) {
@@ -117,5 +116,14 @@
 
   .rightColumn {
     width: @thick-width * 1px;
+  }
+
+  .attributes {
+    margin-top: 0em;
+    padding-bottom: 0;
+
+    > * {
+      width: 50%;
+    }
   }
 }

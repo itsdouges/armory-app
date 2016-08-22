@@ -13,7 +13,11 @@ function stringToDate (date) {
 }
 
 function calculateMatchInMinutes (start, end) {
-  return start && end && new Date(new Date(end) - new Date(start)).getMinutes();
+  if (!start || !end) {
+    return 0;
+  }
+
+  return new Date(new Date(end) - new Date(start)).getMinutes();
 }
 
 const PvpGame = ({ game }) => {
@@ -54,10 +58,10 @@ const PvpGame = ({ game }) => {
           <div>
             <div>
               <Redacted redact={redacted}>
-                {calculateMatchInMinutes(game.started, game.ended) || 0} minutes
+                {calculateMatchInMinutes(game.started, game.ended)} minutes
               </Redacted>
             </div>
-            <Redacted redact={redacted}>{stringToDate(game.ended) || 'Groundhog Day'}</Redacted>
+            <Redacted redact={redacted}>{stringToDate(game.ended) || '14/12/2016'}</Redacted>
           </div>
         </div>
       </div>

@@ -22,45 +22,47 @@ const Specialization = ({ data, traits, specializations }) => {
   const bgStyle = getStyle(data, spec);
 
   return (
-    <div className={styles.root}>
-      <div
-        className={styles.background}
-        style={bgStyle}
-      />
+    <div className={styles.overflowContainer}>
+      <div className={styles.root}>
+        <div
+          className={styles.background}
+          style={bgStyle}
+        />
 
-      <BigTrait name={spec.name} image={spec.background} />
+        <BigTrait className={styles.bigIcon} name={spec.name} image={spec.background} />
 
-      <Trait
-        active
-        className={styles.minorTraitColumn}
-        data={getTrait(traits, spec.minor_traits[0])}
-      />
+        <Trait
+          active
+          className={styles.minorTraitColumn}
+          data={getTrait(traits, spec.minor_traits[0])}
+        />
 
-      <div className={styles.majorTraitColumn}>
-        {spec.major_traits.slice(0, 3).map((id) =>
-          <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
-      </div>
+        <div className={styles.majorTraitColumn}>
+          {spec.major_traits.slice(0, 3).map((id) =>
+            <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+        </div>
 
-      <Trait
-        active
-        className={styles.minorTraitColumn}
-        data={getTrait(traits, spec.minor_traits[1])}
-      />
+        <Trait
+          active
+          className={styles.minorTraitColumn}
+          data={getTrait(traits, spec.minor_traits[1])}
+        />
 
-      <div className={styles.majorTraitColumn}>
-        {spec.major_traits.slice(3, 6).map((id) =>
-          <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
-      </div>
+        <div className={styles.majorTraitColumn}>
+          {spec.major_traits.slice(3, 6).map((id) =>
+            <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+        </div>
 
-      <Trait
-        active
-        className={styles.minorTraitColumn}
-        data={getTrait(traits, spec.minor_traits[2])}
-      />
+        <Trait
+          active
+          className={styles.minorTraitColumn}
+          data={getTrait(traits, spec.minor_traits[2])}
+        />
 
-      <div className={styles.majorTraitColumn}>
-        {spec.major_traits.slice(6, 9).map((id) =>
-          <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+        <div className={styles.majorTraitColumn}>
+          {spec.major_traits.slice(6, 9).map((id) =>
+            <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+        </div>
       </div>
     </div>
   );

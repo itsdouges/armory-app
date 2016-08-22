@@ -54,7 +54,8 @@ const ContentCard = ({ content, className, type = 'characters', size = 'small' }
     <div className={cx('root', className, size)}>
       <div className={cx('image', imageClass)} style={imageStyle} />
       <div className={styles.textContainer}>
-        <div className={cx('title')}>{title}</div>
+        {size === 'big' ?
+          <h2 className={cx('title')}>{title}</h2> : <div className={cx('title')}>{title}</div>}
         <div className={cx('subTitle')}>{subTitle}</div>
       </div>
     </div>
