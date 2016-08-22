@@ -1,6 +1,7 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
 import colours from 'common/styles/colours.less';
+import Icon from 'common/components/Icon';
 
 const ItemUpgrade = ({ data, count: { count } }) => {
   const upgradeSlotUsed = !!data;
@@ -20,8 +21,8 @@ const ItemUpgrade = ({ data, count: { count } }) => {
   return (
     <div className={styles.root}>
       <div className={colours.blue}>
-        <span style={{ backgroundImage: `url(${data.icon})` }} />
-        <span>
+        <Icon src={data.icon} size="micro" />
+        <span className={styles.summaryContainer}>
           {data.name}
           {withBonus && ` (${count || 0}/${data.details.bonuses.length})`}
         </span>

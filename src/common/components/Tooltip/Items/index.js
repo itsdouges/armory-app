@@ -65,8 +65,12 @@ const ItemsTooltip = ({ data: { item, skin, name, upgrades, upgradeCounts } }) =
             <div key={attribute} className={colours.green}>{`+${modifier} ${attribute}`}</div>
         ))}
 
+        <br />
+
         {upgrades.map((upgrade, index) =>
-          <ItemUpgrade key={index} data={upgrade} count={upgradeCounts[upgrade.id]} />
+          <span key={index}>
+            <ItemUpgrade data={upgrade} count={upgradeCounts[upgrade.id]} /><br />
+          </span>
         )}
 
         <div>{isTransmuted ? 'Transmuted' : 'Skin Locked'}</div>
