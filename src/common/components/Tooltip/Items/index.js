@@ -27,7 +27,7 @@ function buildName (item, skin, upgrades) {
   return prefixedName;
 }
 
-const ItemsTooltip = ({ data: { item, skin, name, upgrades } }) => {
+const ItemsTooltip = ({ data: { item, skin, name, upgrades, upgradeCounts } }) => {
   if (Object.keys(item).length === 0) {
     return <SimpleTooltip data={name} />;
   }
@@ -65,7 +65,9 @@ const ItemsTooltip = ({ data: { item, skin, name, upgrades } }) => {
             <div key={attribute} className={colours.green}>{`+${modifier} ${attribute}`}</div>
         ))}
 
-        {upgrades.map((upgrade, index) => <ItemUpgrade key={index} data={upgrade} />)}
+        {upgrades.map((upgrade, index) =>
+          <ItemUpgrade key={index} data={upgrade} count={upgradeCounts[upgrade.id]} />
+        )}
 
         <div>{isTransmuted ? 'Transmuted' : 'Skin Locked'}</div>
         <div>{item.name}</div>

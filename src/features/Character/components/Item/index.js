@@ -4,7 +4,7 @@ import TooltipTrigger from 'common/components/TooltipTrigger';
 import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
-const Item = ({ type, busy, name, item = {}, skin = {}, upgrades = [] }) => (
+const Item = ({ type, busy, name, item = {}, skin = {}, upgrades = [], upgradeCounts = {} }) => (
   <TooltipTrigger
     type="items"
     data={{
@@ -12,6 +12,7 @@ const Item = ({ type, busy, name, item = {}, skin = {}, upgrades = [] }) => (
       item,
       skin,
       upgrades,
+      upgradeCounts,
     }}
   >
     <div className={cx('root', 'containerDefault', `${type}Icon`, { busy })}>
@@ -29,6 +30,7 @@ Item.propTypes = {
   skin: PropTypes.object,
   name: PropTypes.string,
   upgrades: PropTypes.array,
+  upgradeCounts: PropTypes.object,
 };
 
 export default Item;

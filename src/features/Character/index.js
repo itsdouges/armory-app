@@ -204,14 +204,20 @@ class Character extends Component {
 
           <div className={styles.columns}>
             <div className={styles.leftColumn}>
-              {leftItems.map((item) =>
-                <Item
-                  {...item}
-                  key={item.key}
-                  upgrades={equipment[item.key] && this.getItems(equipment[item.key].upgrades)}
-                  item={this.props.items[equipment[item.key] && equipment[item.key].id]}
-                  skin={this.props.skins[equipment[item.key] && equipment[item.key].skin]}
-                />)}
+              {leftItems.map((item) => {
+                const equip = equipment[item.key] || {};
+
+                return (
+                  <Item
+                    {...item}
+                    key={item.key}
+                    upgradeCounts={equip.upgradeCounts}
+                    upgrades={this.getItems(equip.upgrades)}
+                    item={this.props.items[equip.id]}
+                    skin={this.props.skins[equip.skin]}
+                  />
+                );
+              })}
             </div>
 
             <Portrait character={character} />
@@ -225,14 +231,20 @@ class Character extends Component {
               </div>
 
               <div className={styles.rightItemColumn}>
-              {rightItems.map((item) =>
-                <Item
-                  {...item}
-                  key={item.key}
-                  upgrades={equipment[item.key] && this.getItems(equipment[item.key].upgrades)}
-                  item={this.props.items[equipment[item.key] && equipment[item.key].id]}
-                  skin={this.props.skins[equipment[item.key] && equipment[item.key].skin]}
-                />)}
+              {rightItems.map((item) => {
+                const equip = equipment[item.key] || {};
+
+                return (
+                  <Item
+                    {...item}
+                    key={item.key}
+                    upgradeCounts={equip.upgradeCounts}
+                    upgrades={this.getItems(equip.upgrades)}
+                    item={this.props.items[equip.id]}
+                    skin={this.props.skins[equip.skin]}
+                  />
+                );
+              })}
               </div>
 
               <div className={styles.craftingContainer}>

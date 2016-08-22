@@ -34,30 +34,35 @@ function parseCharacterUpgrades (character) {
     return char;
   }
 
-  char.equipment.map((equip) => {
-    const eq = {
+  char.equipment = char.equipment.map((equip) => {
+    const equipWithUpgradeCount = {
       ...equip,
     };
 
-    if (eq.upgrades) {
-      let upgradeId;
-
-      eq.upgrades.forEach((upgrade) => {
-        upgradeId = upgrade;
-
-        if (!characterUpgrades[upgradeId]) {
-          characterUpgrades[upgradeId] = {
-            total: 1,
-          };
-        } else {
-          characterUpgrades[upgradeId].total += 1;
-        }
-      });
-
-      eq.counts = characterUpgrades[upgradeId];
+    if (!equipWithUpgradeCount.upgrades) {
+      return equipWithUpgradeCount;
     }
 
-    return eq;
+    let upgradeId;
+
+    equipWithUpgradeCount.upgrades.forEach((upgrade) => {
+      upgradeId = upgrade;
+
+      if (!characterUpgrades[upgradeId]) {
+        characterUpgrades[upgradeId] = {
+          count: 1,
+        };
+      } else {
+        characterUpgrades[upgradeId].count += 1;
+      }
+
+      equipWithUpgradeCount.upgradeCounts = {
+        ...equipWithUpgradeCount.upgradeCounts,
+        [upgradeId]: characterUpgrades[upgradeId],
+      };
+    });
+
+    return equipWithUpgradeCount;
   });
 
   return char;

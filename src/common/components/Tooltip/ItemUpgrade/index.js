@@ -2,7 +2,7 @@ import { PropTypes } from 'react';
 import styles from './styles.less';
 import colours from 'common/styles/colours.less';
 
-const ItemUpgrade = ({ data }) => {
+const ItemUpgrade = ({ data, count: { count } }) => {
   const upgradeSlotUsed = !!data;
 
   if (!upgradeSlotUsed) {
@@ -23,12 +23,12 @@ const ItemUpgrade = ({ data }) => {
         <span style={{ backgroundImage: `url(${data.icon})` }} />
         <span>
           {data.name}
-          {withBonus && ` (${data.upgrade_combo_count || 0}/${data.details.bonuses.length})`}
+          {withBonus && ` (${count || 0}/${data.details.bonuses.length})`}
         </span>
       </div>
 
       {withBonus && data.details.bonuses.map((bonus, index) =>
-        <div key={index} className={index < data.upgrade_combo_count && colours.blue}>
+        <div key={index} className={index < count && colours.blue}>
           {`(${index + 1}): ${bonus}`}
         </div>)}
 
@@ -40,6 +40,7 @@ const ItemUpgrade = ({ data }) => {
 
 ItemUpgrade.propTypes = {
   data: PropTypes.object,
+  count: PropTypes.object,
 };
 
 export default ItemUpgrade;
