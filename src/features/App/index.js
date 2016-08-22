@@ -14,9 +14,11 @@ import Tooltip from 'common/components/Tooltip';
 const selector = createSelector(
   store => store.user.alias,
   store => store.user.loggedIn,
-  (userAlias, userAuthenticated) => ({
+  store => store.user.checkingAuthentication,
+  (userAlias, userAuthenticated, checkingAuthentication) => ({
     userAlias,
     userAuthenticated,
+    checkingAuthentication,
   })
 );
 
@@ -26,6 +28,7 @@ class App extends Component {
     userAuthenticated: PropTypes.bool,
     userAlias: PropTypes.string,
     userToken: PropTypes.string,
+    checkingAuthentication: PropTypes.bool,
   };
 
   static childContextTypes = {
@@ -45,6 +48,7 @@ class App extends Component {
 
         <Header
           authenticated={this.props.userAuthenticated}
+          checkingAuthentication={this.props.checkingAuthentication}
           alias={this.props.userAlias}
         />
 

@@ -13,7 +13,7 @@ function search (event) {
   browserHistory.push(`/search/${filter}`);
 }
 
-const Header = ({ authenticated, alias }) => {
+const Header = ({ authenticated, alias, checkingAuthentication }) => {
   const links = authenticated ?
     [<Link to={`/${alias}`}>{alias.toUpperCase()}</Link>, <Link to="/settings">SETTINGS</Link>] :
     [<Link to="/join">JOIN</Link>, <Link to="/login">LOGIN</Link>];
@@ -40,7 +40,8 @@ const Header = ({ authenticated, alias }) => {
         </form>
 
         <ul className={styles.linkContainer}>
-          {links.map((link, index) => <li className={styles.link} key={index}>{link}</li>)}
+          {!checkingAuthentication &&
+            links.map((link, index) => <li className={styles.link} key={index}>{link}</li>)}
         </ul>
       </Container>
     </Card>
