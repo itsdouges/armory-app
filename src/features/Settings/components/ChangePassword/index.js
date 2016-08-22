@@ -4,6 +4,7 @@ import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
 import Button from 'common/components/Button';
 import PasswordForm from 'common/components/PasswordForm';
+import Message from 'common/components/Message';
 
 export default class ChangePassword extends Component {
   static propTypes = {
@@ -12,6 +13,7 @@ export default class ChangePassword extends Component {
     validate: PropTypes.func,
     error: PropTypes.string,
     busy: PropTypes.bool,
+    message: PropTypes.string,
   };
 
   state = {
@@ -41,6 +43,8 @@ export default class ChangePassword extends Component {
       <span>
         <h2>Password</h2>
         <Card size="medium">
+          {this.props.message && <Message type="success">{this.props.message}</Message>}
+
           <form onSubmit={this.changePassword}>
             <Textbox
               required

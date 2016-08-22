@@ -91,6 +91,7 @@ export default function reducer (state, action) {
     case CHANGE_PASSWORD_RESULT:
       return {
         ...state,
+        passwordSuccess: !action.error && 'Your password was successfully changed!',
         passwordErrors: action.error && 'Your current password is incorrect, please correct it.',
       };
 

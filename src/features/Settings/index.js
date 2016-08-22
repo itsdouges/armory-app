@@ -87,6 +87,7 @@ class Settings extends Component {
           validate={this.validatePasswords}
           error={this.props.user.passwordErrors}
           busy={this.props.user.changingPassword}
+          message={this.props.user.passwordSuccess}
         />
 
         <div style={{ textAlign: 'center' }}>
