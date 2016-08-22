@@ -8,7 +8,7 @@
   white-space: wrap;
   left: 0;
   right: 0;
-  top: 37px;
+  top: 39px;
 }
 
 .container {
@@ -24,8 +24,13 @@
   margin: 0;
   font-size: 1.3em;
   border-radius: 0;
-  outline: none;
+  outline: none!important;
   transition: border-color 0.2s;
+  -moz-mox-shadow: none;
+
+  &:invalid {
+      box-shadow: none;
+  }
 }
 
 .valid {

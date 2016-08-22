@@ -101,7 +101,7 @@ export default class Search extends Component {
         <Title render={(title) => `${term}${title}`} />
 
         {!searching && !resultsFound && (
-          <Message size="big">Nothing found with "<i>{term}</i>"...</Message>
+          <Message size="big">Nothing found searching for "<i>{term}</i>"...</Message>
         )}
 
         {(searching || !!resources.characters.length) && characters}

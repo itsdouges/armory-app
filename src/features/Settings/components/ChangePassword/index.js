@@ -1,5 +1,7 @@
 import { Component, PropTypes } from 'react';
 
+import styles from './styles.less';
+
 import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
 import Button from 'common/components/Button';
@@ -63,13 +65,15 @@ export default class ChangePassword extends Component {
               error={this.props.error}
             />
 
-            <Button
-              busy={this.props.busy}
-              primary
-              disabled={!this.props.valid}
-            >
-              CHANGE
-            </Button>
+            <div className={styles.buttons}>
+              <Button
+                busy={this.props.busy}
+                primary
+                disabled={!this.props.valid}
+              >
+                CHANGE
+              </Button>
+            </div>
           </form>
         </Card>
       </span>

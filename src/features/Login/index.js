@@ -2,6 +2,8 @@ import { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import styles from './styles.less';
+
 import Title from 'react-title-component';
 import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
@@ -69,12 +71,14 @@ class Login extends Component {
               onChange={this.fieldChanged}
             />
 
-            <Button
-              primary
-              disabled={!this.state.canLogin}
-            >
-              SIGN IN
-            </Button>
+            <div className={styles.buttons}>
+              <Button
+                primary
+                disabled={!this.state.canLogin}
+              >
+                SIGN IN
+              </Button>
+            </div>
           </form>
         </Card>
       </span>

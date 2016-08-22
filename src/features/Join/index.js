@@ -2,6 +2,8 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import styles from './styles.less';
+
 import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
 import Button from 'common/components/Button';
@@ -122,13 +124,15 @@ class Join extends Component {
               error={this.props.user.passwordErrors}
             />
 
-            <Button
-              primary
-              busy={this.props.user.registering}
-              disabled={!this.props.canRegister}
-            >
-              REGISTER
-            </Button>
+            <div className={styles.buttons}>
+              <Button
+                primary
+                busy={this.props.user.registering}
+                disabled={!this.props.canRegister}
+              >
+                REGISTER
+              </Button>
+            </div>
           </form>
         </Card>
       </span>
