@@ -20,6 +20,14 @@ function changingPassword (changing) {
   };
 }
 
+function changePasswordError (message) {
+  return {
+    type: CHANGE_PASSWORD_RESULT,
+    payload: message,
+    error: true,
+  };
+}
+
 export function changePassword (currentPassword, password) {
   return (dispatch) => {
     dispatch(changingPassword(true));
@@ -30,8 +38,9 @@ export function changePassword (currentPassword, password) {
     })
     .then(() => {
       dispatch(changingPassword(false));
-    }, () => {
+    }, ({ response }) => {
       dispatch(changingPassword(false));
+      dispatch(changePasswordError(response.data));
     });
   };
 }

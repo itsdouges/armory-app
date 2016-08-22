@@ -4,6 +4,7 @@ import { createSelector } from 'reselect';
 import { browserHistory } from 'react-router';
 
 import { authenticateUser, checkingAuthentication } from './actions';
+import ProgressIcon from 'common/components/Icon/Progress';
 
 const selector = createSelector(
   store => store.user.token,
@@ -84,7 +85,7 @@ export const authOnly = (ComposedComponent) => class AuthOnly extends Component 
   }
 
   render () {
-    return this.context._checkingAuth ? <span>...</span> : <ComposedComponent {...this.props} />;
+    return this.context._checkingAuth ? <ProgressIcon /> : <ComposedComponent {...this.props} />;
   }
 };
 

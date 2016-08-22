@@ -11,6 +11,7 @@ export default class ChangePassword extends Component {
     valid: PropTypes.bool,
     validate: PropTypes.func,
     error: PropTypes.string,
+    busy: PropTypes.bool,
   };
 
   state = {
@@ -59,6 +60,7 @@ export default class ChangePassword extends Component {
             />
 
             <Button
+              busy={this.props.busy}
               primary
               disabled={!this.props.valid}
             >

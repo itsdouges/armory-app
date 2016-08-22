@@ -71,6 +71,7 @@ class Settings extends Component {
 
         <ApiTokens
           valid={this.props.user.validGw2Token}
+          validating={this.props.user.validatingGw2Token}
           tokens={this.props.user.gw2Tokens}
           error={this.props.user.gw2TokenError}
           add={this.addToken}
@@ -85,6 +86,7 @@ class Settings extends Component {
           change={this.changePassword}
           validate={this.validatePasswords}
           error={this.props.user.passwordErrors}
+          busy={this.props.user.changingPassword}
         />
 
         <div style={{ textAlign: 'center' }}>

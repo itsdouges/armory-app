@@ -5,6 +5,7 @@ import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
 import Button from 'common/components/Button';
 import ApiToken from '../ApiToken';
+import Message from 'common/components/Message';
 
 export default class ApiTokens extends Component {
   static propTypes = {
@@ -14,6 +15,7 @@ export default class ApiTokens extends Component {
     valid: PropTypes.bool,
     setPrimary: PropTypes.func,
     validate: PropTypes.func,
+    validating: PropTypes.bool,
     error: PropTypes.array,
     adding: PropTypes.bool,
   };
@@ -48,9 +50,9 @@ export default class ApiTokens extends Component {
         <Card size="medium" className={styles.root}>
           <div className={styles.padding}>
             {!this.props.tokens.length &&
-              <span>
+              <Message>
                 Oh, you have no api tokens.. <a target="_blank" title="Opens in a new window" href="https://account.arena.net/applications/create"><strong>go generate one <i className="fa fa-external-link"></i></strong></a> ..! Make sure you select characters, builds, and pvp permissions :-).
-              </span>}
+              </Message>}
 
             {this.props.tokens.map((token) =>
               <ApiToken
@@ -75,6 +77,7 @@ export default class ApiTokens extends Component {
               onChange={this.fieldChanged}
               error={this.props.error}
               disabled={this.props.adding}
+              busy={this.props.validating}
             />
 
             <Button

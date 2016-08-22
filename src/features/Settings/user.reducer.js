@@ -10,6 +10,7 @@ import {
   REMOVE_GW2_TOKEN,
   CHANGING_PASSWORD,
   SELECT_PRIMARY_TOKEN,
+  CHANGE_PASSWORD_RESULT,
 } from './actions';
 
 const addGw2TokenResultReducer = (state, action) => {
@@ -85,6 +86,12 @@ export default function reducer (state, action) {
       return {
         ...state,
         changingPassword: action.payload,
+      };
+
+    case CHANGE_PASSWORD_RESULT:
+      return {
+        ...state,
+        passwordErrors: action.error && 'Your current password is incorrect, please correct it.',
       };
 
     case SELECT_PRIMARY_TOKEN:

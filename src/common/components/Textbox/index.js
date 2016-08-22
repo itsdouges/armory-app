@@ -3,6 +3,7 @@ import styles from './styles.less';
 import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 import SvgIcon from 'common/components/Icon/Svg';
+import ProgressIcon from 'common/components/Icon/Progress';
 
 import Message from 'common/components/Message';
 
@@ -16,6 +17,7 @@ const Textbox = (props) => {
       {props.label && <label htmlFor={props.id}>{props.label}</label>}
 
       <input
+        disabled={props.busy}
         autoFocus={props.autofocus}
         required={props.required}
         id={props.id}
@@ -31,7 +33,10 @@ const Textbox = (props) => {
           {props.error}
         </Message>}
 
-      {props.showStatus && <div className={styles.validityContainer}>{validity}</div>}
+      {props.showStatus &&
+        <div className={styles.validityContainer}>
+          {props.busy ? <ProgressIcon size="micro" /> : validity}
+        </div>}
     </div>
   );
 };
