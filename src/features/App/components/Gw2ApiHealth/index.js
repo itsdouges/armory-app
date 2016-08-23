@@ -27,7 +27,7 @@ export default class Gw2ApiHealth extends Component {
     return (
       <div className={styles.root}>
         <Message>
-          <strong>The offical GW2 API is experiencing issues, try again later :-(</strong>
+          The offical GW2 API is experiencing issues, your session may be affected!
         </Message>
       </div>
     );
