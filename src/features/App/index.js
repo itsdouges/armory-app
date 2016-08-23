@@ -22,6 +22,7 @@ const selector = createSelector(
   })
 );
 
+/* eslint react/prefer-stateless-function:0 */
 class App extends Component {
   static propTypes = {
     children: PropTypes.any,
@@ -30,16 +31,6 @@ class App extends Component {
     userToken: PropTypes.string,
     checkingAuthentication: PropTypes.bool,
   };
-
-  static childContextTypes = {
-    userAlias: PropTypes.string,
-  };
-
-  getChildContext () {
-    return {
-      userAlias: this.props.userAlias,
-    };
-  }
 
   render () {
     return (

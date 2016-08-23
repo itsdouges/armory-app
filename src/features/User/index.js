@@ -21,10 +21,6 @@ class User extends Component {
     routeParams: PropTypes.object,
   };
 
-  static contextTypes = {
-    userAlias: PropTypes.string,
-  };
-
   componentWillMount () {
     const { alias } = this.props.routeParams;
 
