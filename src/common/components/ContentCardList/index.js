@@ -12,7 +12,7 @@ function buildUrl (item, aliasOverride, resource) {
       return `/${item.name}`;
 
     case 'characters':
-      return `/${aliasOverride || item.alias || item.userAlias}/characters/${item.name}`;
+      return `/${aliasOverride || item.alias || item.userAlias}/c/${item.name}`;
 
     case 'guilds':
       return `/g/${item.name}`;
