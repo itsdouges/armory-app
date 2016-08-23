@@ -12,10 +12,19 @@ import Button from 'common/components/Button';
 
 import { fetchToken } from './actions';
 
+function mapStateToProps (state) {
+  return {
+    error: state.user.fetchTokenError,
+    busy: state.user.fetchingToken,
+  };
+}
+
 class Login extends Component {
   static propTypes = {
     router: PropTypes.object,
     dispatch: PropTypes.func,
+    busy: PropTypes.bool,
+    error: PropTypes.string,
   };
 
   state = {
@@ -43,14 +52,22 @@ class Login extends Component {
   };
 
   render () {
+    const { error } = this.props;
+
+    const message = error || (
+      <span>
+        Dont have an account <Link to="/join"><strong>Join us!</strong></Link>
+      </span>
+    );
+
     return (
       <span>
         <Title render={(title) => `Login${title}`} />
 
         <h2>Login</h2>
         <Card size="small">
-          <Message>
-            Need an account? <Link to="/join"><strong>Make one!</strong></Link>
+          <Message type={error ? 'error' : 'info'}>
+            {message}
           </Message>
 
           <form onSubmit={this.login}>
@@ -74,6 +91,7 @@ class Login extends Component {
             <div className={styles.buttons}>
               <Button
                 primary
+                busy={this.props.busy}
                 disabled={!this.state.canLogin}
               >
                 SIGN IN
@@ -86,4 +104,4 @@ class Login extends Component {
   }
 }
 
-export default connect(undefined)(Login);
+export default connect(mapStateToProps)(Login);

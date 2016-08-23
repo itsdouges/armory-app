@@ -12,6 +12,14 @@ function fetchTokenSuccess (token) {
   };
 }
 
+function fetchTokenError (message) {
+  return {
+    type: FETCH_TOKEN_RESULT,
+    error: true,
+    payload: message,
+  };
+}
+
 function fetchingToken (fetching) {
   return {
     type: FETCHING_TOKEN,
@@ -39,7 +47,8 @@ export function fetchToken (email, password) {
         dispatch(fetchTokenSuccess(combinedToken));
         dispatch(fetchingToken(false));
         browserHistory.push('/me');
-      }, () => {
+      }, ({ response }) => {
+        dispatch(fetchTokenError(response.data.error_description));
         dispatch(fetchingToken(false));
       });
   };

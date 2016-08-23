@@ -3,35 +3,28 @@ import {
   FETCHING_TOKEN,
 } from './actions';
 
-function fetchTokenResultReducer (state, action) {
-  const newState = {
-    ...state,
-    token: action.payload,
-  };
+import { set, get } from 'lib/local-storage';
 
-  localStorage.setItem('USER_TOKEN_LOCALSTORAGE_KEY', action.payload);
-
-  return newState;
-}
-
-function fetchingTokenReducer (state, action) {
-  return {
-    ...state,
-    fetchingToken: !!action.payload,
-  };
-}
+const TOKEN_KEY = 'USER_TOKEN_LOCALSTORAGE_KEY';
 
 export const defaultState = {
-  token: localStorage.getItem('USER_TOKEN_LOCALSTORAGE_KEY'),
+  token: get(TOKEN_KEY),
 };
 
 export default (state, action) => {
   switch (action.type) {
     case FETCH_TOKEN_RESULT:
-      return fetchTokenResultReducer(state, action);
+      return {
+        ...state,
+        token: !action.error ? set(TOKEN_KEY, action.payload) || action.payload : undefined,
+        fetchTokenError: action.error ? action.payload : undefined,
+      };
 
     case FETCHING_TOKEN:
-      return fetchingTokenReducer(state, action);
+      return {
+        ...state,
+        fetchingToken: !!action.payload,
+      };
 
     default:
       return undefined;
