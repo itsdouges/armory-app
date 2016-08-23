@@ -1,11 +1,10 @@
 const LAST_STORAGE_CLEAN_DATE_KEY = 'LAST_STORAGE_CLEAN_DATE';
 const CLEAR_INTERVAL_IN_DAYS = 7;
 
-function clear (key, clearKey) {
-  console.log('Clearing old gw2 data ;-)...');
+export function clear (key, clearKey) {
   localStorage.removeItem(key);
-  localStorage.setItem(clearKey, new Date().toString());
-  console.log('Done!');
+
+  if (clearKey) localStorage.setItem(clearKey, new Date().toString());
 }
 
 export function clearIfPastStoreInterval (key) {

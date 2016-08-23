@@ -4,25 +4,8 @@ import {
   CHECKING_AUTHENTICATION,
 } from './actions';
 
-function clearUserDataReducer () {
-  localStorage.removeItem('USER_TOKEN_LOCALSTORAGE_KEY');
-  return {};
-}
-
-function authenticateUserReducer (state, action) {
-  return {
-    ...state,
-    ...action.payload,
-    loggedIn: true,
-  };
-}
-
-function checkingAuthReducer (state, action) {
-  return {
-    ...state,
-    checkingAuthentication: action.payload,
-  };
-}
+import { TOKEN_KEY } from 'features/Login/actions';
+import { clear } from 'lib/local-storage';
 
 export const defaultState = {
   checkingAuthentication: true,
@@ -31,13 +14,21 @@ export const defaultState = {
 export default (state, action) => {
   switch (action.type) {
     case CLEAR_USER_DATA:
-      return clearUserDataReducer(state);
+      clear(TOKEN_KEY);
+      return {};
 
     case AUTHENTICATE_USER:
-      return authenticateUserReducer(state, action);
+      return {
+        ...state,
+        ...action.payload,
+        loggedIn: true,
+      };
 
     case CHECKING_AUTHENTICATION:
-      return checkingAuthReducer(state, action);
+      return {
+        ...state,
+        checkingAuthentication: action.payload,
+      };
 
     default:
       return undefined;

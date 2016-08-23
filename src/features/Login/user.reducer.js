@@ -5,7 +5,7 @@ import {
 
 import { set, get } from 'lib/local-storage';
 
-const TOKEN_KEY = 'USER_TOKEN_LOCALSTORAGE_KEY';
+export const TOKEN_KEY = 'USER_TOKEN_LOCALSTORAGE_KEY';
 
 export const defaultState = {
   token: get(TOKEN_KEY),

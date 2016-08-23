@@ -23,8 +23,8 @@ class TooltipTrigger extends Component {
 
   render () {
     return cloneElement(this.props.children, {
-      onMouseOver: this.onMouseEnter,
-      onMouseOut: this.onMouseLeave,
+      onMouseEnter: this.onMouseEnter,
+      onMouseLeave: this.onMouseLeave,
     });
   }
 }

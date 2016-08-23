@@ -40,7 +40,7 @@ module.exports = {
       {
         test: /\.(css|less)$/,
         include: [paths.appSrc, paths.appNodeModules],
-        loader: 'style!css?modules&importLoaders=1!postcss!less',
+        loader: 'style!css?localIdentName=[name]--[local]--[hash:base64:5]&modules&importLoaders=1!postcss!less',
       },
       {
         test: /\.json$/,

@@ -44,7 +44,7 @@ export default class MouseFollow extends Component {
   };
 
   calculateStyle ({ pin, mouse, tooltip }) {
-    let { x, y } = mouse;
+    let { clientX: x, clientY: y } = mouse;
 
     if (pin.pinRight) {
       x = window.innerWidth - tooltip.offsetWidth - 9;
@@ -54,13 +54,19 @@ export default class MouseFollow extends Component {
       y = window.innerHeight - tooltip.offsetHeight - 9;
     }
 
+    const transform = `translate3d(${x}px, ${y}px, 0)`;
+
     return {
-      transform: `translate3d(${x}px, ${y}px, 0)`,
+      WebkitTransform: transform,
+      MozTransform: transform,
+      msTransform: transform,
+      OTransform: transform,
+      transform,
     };
   }
 
   calculatePin ({ tooltip, mouse }) {
-    const { x, y } = mouse;
+    const { clientX: x, clientY: y } = mouse;
 
     let pinRight = false;
     let pinBottom = false;
