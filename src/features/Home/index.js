@@ -3,7 +3,7 @@ import heroImage from 'assets/images/logo.png';
 import Title from 'react-title-component';
 
 const Home = () => (
-  <div className={styles.container}>
+  <div className={styles.root}>
     <Title render={(title) => `Armor Up${title}`} />
 
     <img
