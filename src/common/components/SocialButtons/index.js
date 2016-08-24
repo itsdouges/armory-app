@@ -8,7 +8,7 @@ function onClick (e) {
 
 const SocialButtons = () => (
   <div className={styles.root}>
-    <Message>
+    <Message className={styles.message}>
       Like what you see? <strong>Share it!</strong>
     </Message>
 
