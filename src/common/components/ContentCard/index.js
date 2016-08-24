@@ -8,13 +8,14 @@ function extractData (content, { type, size }) {
   switch (type) {
     case 'users': {
       const alias = content.alias || content.name;
-      const url = content.avatar || (alias && `//api.adorable.io/avatars/128/${alias}.png`);
+      const url = alias && `//gw2armory-image-uploads.s3.amazonaws.com/${alias}/avatar`;
 
       return {
         title: alias,
         // TODO: Source accountName from api for search
         subTitle: content.accountName || 'User',
         imageStyle: {
+          backgroundColor: '#c1c1c1',
           backgroundImage: `url(${url})`,
           borderRadius: '50%',
         },
