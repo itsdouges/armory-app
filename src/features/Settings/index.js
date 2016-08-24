@@ -7,7 +7,10 @@ import debounce from 'lodash/debounce';
 import { browserHistory } from 'react-router';
 import Title from 'react-title-component';
 
+import ImageUpload from 'common/components/ImageUpload';
+import ContentCard from 'common/components/ContentCard';
 import Button from 'common/components/Button';
+
 import { validatePasswords } from 'features/Join/actions';
 import { clearUserData } from 'features/Auth/actions';
 import {
@@ -65,9 +68,21 @@ class Settings extends Component {
   };
 
   render () {
+    const { alias, avatar } = this.props.user;
+
+    const content = {
+      alias,
+      accountName: 'Click to change your avatar',
+      avatar,
+    };
+
     return (
       <span>
         <Title render={(title) => `Settings${title}`} />
+        <ImageUpload>
+          <ContentCard content={content} type="users" size="big" />
+        </ImageUpload>
+
 
         <ApiTokens
           valid={this.props.user.validGw2Token}
