@@ -1,14 +1,33 @@
-.footer {
-  font-size: 0.75em;
+@import '../../../../common/styles/sizes.less';
+
+.root {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+  font-size: 0.7em;
   padding: 2em;
+  background: #383232;
+  margin-top: 3em;
+}
+
+.container {
   max-width: 900px;
+  display: flex;
+  align-items: center;
 }
 
 .linkContainer {
-  margin: 0.5em;
+  flex-shrink: 0;
+  margin: 1em;
 
   > * {
-    display: inline-block;
+    display: block;
     margin: 0.5em;
+  }
+}
+
+@media only screen and (min-width: @tablet) {
+  .linkContainer > * {
+    display: inline-block;
   }
 }

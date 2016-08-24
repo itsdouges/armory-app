@@ -46,12 +46,12 @@ export default class ApiTokens extends Component {
   render () {
     return (
       <span>
-        <h2>Api tokens</h2>
+        <h2>Api Keys</h2>
         <Card size="medium" className={styles.root}>
           <div className={styles.padding}>
             {!this.props.tokens.length &&
               <Message>
-                Oh, you have no api tokens.. <a target="_blank" title="Opens in a new window" href="https://account.arena.net/applications/create"><strong>go generate one <i className="fa fa-external-link"></i></strong></a> ..! Make sure you select characters, builds, and pvp permissions :-).
+                Oh, you have no api keys.. <a target="_blank" title="Opens in a new window" href="https://account.arena.net/applications/create"><strong>go generate one <i className="fa fa-external-link"></i></strong></a> ..! Make sure you select characters, builds, and pvp permissions :-).
               </Message>}
 
             {this.props.tokens.map((token) =>
@@ -71,7 +71,7 @@ export default class ApiTokens extends Component {
               showStatus
               required
               id="newToken"
-              placeholder="Add token"
+              placeholder="Add key"
               value={this.state.newToken}
               valid={this.props.valid}
               onChange={this.fieldChanged}

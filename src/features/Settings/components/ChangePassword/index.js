@@ -43,7 +43,7 @@ export default class ChangePassword extends Component {
   render () {
     return (
       <span>
-        <h2>Password</h2>
+        <h2>Change password</h2>
         <Card size="medium">
           {this.props.message && <Message type="success">{this.props.message}</Message>}
 

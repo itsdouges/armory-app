@@ -92,17 +92,13 @@ export default class Search extends Component {
       </span>
     );
 
-    const resultsFound = (!!resources.characters.length ||
-      !!resources.users.length ||
-      !!resources.guilds.length);
-
     return (
       <div className={styles.root}>
         <Title render={(title) => `${term}${title}`} />
 
-        {!searching && !resultsFound && (
-          <Message size="big">Nothing found searching for "<i>{term}</i>"...</Message>
-        )}
+        <Message size="big" className={styles.message}>
+          Search results for <strong><i>{term}</i></strong>...
+        </Message>
 
         {(searching || !!resources.characters.length) && characters}
         {(searching || !!resources.users.length) && users}

@@ -11,7 +11,7 @@ function getStyle (id) {
 
 const Gw2Map = ({ id, map }) => (
   <div className={styles.root} style={getStyle(id)}>
-    <span title={map.name} className={styles.name}>{map.name}</span>
+    {map.name && <span title={map.name} className={styles.name}>{map.name}</span>}
   </div>
 );
 
@@ -22,7 +22,7 @@ Gw2Map.propTypes = {
 
 Gw2Map.defaultProps = {
   map: {
-    name: ' ',
+    name: '',
   },
   id: 0,
 };

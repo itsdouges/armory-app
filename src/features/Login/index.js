@@ -56,7 +56,7 @@ class Login extends Component {
 
     const message = error || (
       <span>
-        Dont have an account <Link to="/join"><strong>Join us!</strong></Link>
+        Don't have an account? <Link to="/join"><strong>Join us!</strong></Link>
       </span>
     );
 

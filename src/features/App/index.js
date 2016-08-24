@@ -35,21 +35,23 @@ class App extends Component {
 
   render () {
     return (
-      <div className={styles.app}>
-        <Title render=" | Guild Wars 2 Armory" />
-
-        <Header
-          authenticated={this.props.userAuthenticated}
-          checkingAuthentication={this.props.checkingAuthentication}
-          alias={this.props.userAlias}
-        />
-
-        {this.props.children}
-
+      <span>
         <Gw2ApiHealth />
-        <Tooltip />
-        <Footer />
-      </div>
+        <div className={styles.app}>
+          <Title render=" | Guild Wars 2 Armory" />
+
+          <Header
+            authenticated={this.props.userAuthenticated}
+            checkingAuthentication={this.props.checkingAuthentication}
+            alias={this.props.userAlias}
+          />
+
+          {this.props.children}
+
+          <Tooltip />
+          <Footer />
+        </div>
+      </span>
     );
   }
 }
