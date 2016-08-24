@@ -31,7 +31,7 @@ const Header = ({ authenticated, alias, checkingAuthentication }) => {
           <Textbox
             autoFocus
             required
-            placeholder="Search Guild Wars 2 Armory"
+            placeholder="Search for characters, users, and guilds..."
             containerClassName={styles.textBoxContainer}
           />
 
