@@ -19,6 +19,7 @@ export default class ImageUpload extends Component {
   state = {
     hovering: false,
     uploading: false,
+    error: '',
   };
 
   show = () => {
@@ -55,6 +56,10 @@ export default class ImageUpload extends Component {
 
             this.fileInput.files = undefined;
             this.props.onUploadComplete();
+          }, () => {
+            this.setState({
+              error: 'error :-(',
+            });
           }));
   };
 
@@ -63,7 +68,10 @@ export default class ImageUpload extends Component {
       return this.props.children;
     }
 
-    const { hovering, uploading } = this.state;
+    const { hovering, uploading, error } = this.state;
+
+    const showOverlay = hovering || uploading || error;
+    const overlayContent = error || (uploading && <ProgressIcon />) || <span>UPLOAD IMAGE</span>;
 
     return (
       <div
@@ -71,9 +79,9 @@ export default class ImageUpload extends Component {
         onMouseEnter={this.show}
         className={styles.root}
       >
-        {(uploading || hovering) && (
+        {showOverlay && (
           <div className={styles.uploadOverlay}>
-            {uploading ? <ProgressIcon /> : <span>UPLOAD IMAGE</span>}
+            {overlayContent}
           </div>
         )}
 
