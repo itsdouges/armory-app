@@ -11,6 +11,8 @@ import Title from 'react-title-component';
 import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
+import ImageUpload from 'common/components/ImageUpload';
+import Button from 'common/components/Button';
 
 import Specialization from './components/Specialization';
 import Portrait from './components/Portrait';
@@ -151,6 +153,15 @@ class Character extends Component {
     location: PropTypes.object,
   };
 
+  static contextTypes = {
+    _userAlias: PropTypes.string,
+  };
+
+  state = {
+    editMode: false,
+    updateImage: false,
+  };
+
   componentWillMount () {
     this.loadCharacter();
   }
@@ -160,6 +171,12 @@ class Character extends Component {
       this.loadCharacter();
     }
   }
+
+  onUploadComplete = () => {
+    this.setState({
+      updateImage: true,
+    });
+  };
 
   getItems (ids = []) {
     return ids.map((id) => this.props.items[id]);
@@ -174,6 +191,14 @@ class Character extends Component {
     this.props.dispatch(selectUser(alias));
   }
 
+  toggleEditMode = () => {
+    const editMode = !this.state.editMode;
+
+    this.setState({
+      editMode,
+    });
+  };
+
   render () {
     const {
       routeParams: { alias },
@@ -181,6 +206,11 @@ class Character extends Component {
       characters,
       character,
     } = this.props;
+
+    const { editMode } = this.state;
+
+    /* eslint no-underscore-dangle:0 */
+    const ownCharacter = character && character.alias === this.context._userAlias;
 
     const equipment = (character && character.equipment) || [];
     const attributes = calculateAttributes(character, this.props.items);
@@ -200,6 +230,15 @@ class Character extends Component {
         <Title render={(title) => `${routeParams.character}${title}`} />
 
         <div className={styles.inner}>
+          {ownCharacter &&
+            <Button
+              className={styles.editButton}
+              primary
+              onClick={this.toggleEditMode}
+            >
+              {editMode ? 'I\'M DONE' : 'UPDATE'}
+            </Button>}
+
           <ContentCard content={character} size="big" />
 
           <div className={styles.columns}>
@@ -220,7 +259,15 @@ class Character extends Component {
               })}
             </div>
 
-            <Portrait character={character} />
+            <ImageUpload
+              onUploadComplete={this.onUploadComplete}
+              disabled={!editMode}
+              forceShow={editMode}
+              hintText="UPLOAD CHARACTER PORTRAIT"
+              uploadName={`characters/${character && character.name}`}
+            >
+              <Portrait forceUpdate={this.state.updateImage} character={character} />
+            </ImageUpload>
 
             <div className={styles.rightColumn}>
               <div className={styles.attributes}>

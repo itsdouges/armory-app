@@ -12,6 +12,15 @@
 .inner {
   max-width: @content-width;
   margin: 0 auto;
+  position: relative;
+}
+
+.editButton {
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: 1em;
+  composes: low from 'common/styles/box-shadow.less';
 }
 
 .columns {
@@ -102,6 +111,11 @@
 }
 
 @media only screen and (min-width: @tablet) {
+  .editButton {
+    left: inherit;
+    right: 0;
+  }
+
   .columns {
     flex-direction: row;
   }

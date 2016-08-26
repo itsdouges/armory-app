@@ -10,10 +10,12 @@ const selector = createSelector(
   store => store.user.token,
   store => store.user.loggedIn,
   store => store.user.checkingAuthentication,
-  (userToken, userAuthenticated, checkinAuthentication) => ({
+  store => store.user.alias,
+  (userToken, userAuthenticated, checkinAuthentication, userAlias) => ({
     userToken,
     userAuthenticated,
     checkingAuthentication: checkinAuthentication,
+    userAlias,
   })
 );
 
@@ -24,17 +26,20 @@ export const authEnabled = (ComposedComponent) => connect(selector)(
       userToken: PropTypes.string,
       userAuthenticated: PropTypes.bool,
       checkingAuthentication: PropTypes.bool,
+      userAlias: PropTypes.string,
     };
 
     static childContextTypes = {
       _checkingAuth: PropTypes.bool,
       _userAuthenticated: PropTypes.bool,
+      _userAlias: PropTypes.string,
     };
 
     getChildContext () {
       return {
         _checkingAuth: this.props.checkingAuthentication,
         _userAuthenticated: this.props.userAuthenticated,
+        _userAlias: this.props.userAlias,
       };
     }
 
