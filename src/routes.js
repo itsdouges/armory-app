@@ -11,8 +11,20 @@ import Character from 'features/Character';
 import NotFound from 'features/NotFound';
 import { authEnabled, authOnly } from 'features/Auth';
 
+function onRouteUpdate () {
+  window.scrollTo(0, 0);
+
+  if (!window.ga) {
+    return;
+  }
+
+  window.ga('send', 'pageview', {
+    page: window.location.pathname,
+  });
+}
+
 const Routes = () => (
-  <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
+  <Router onUpdate={onRouteUpdate} history={browserHistory}>
     <Route path="/" component={authEnabled(App)}>
       <IndexRoute component={Home} />
       <Redirect from="/in" to="/login" />
