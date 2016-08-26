@@ -4,6 +4,10 @@ import styles from './styles.less';
 import { get, put } from 'axios';
 import config from 'env';
 import ProgressIcon from '../Icon/Progress';
+import Message from 'common/components/Message';
+
+const FILE_SIZE_LIMIT = 1000000;
+const ALLOWED_FILE_TYPES = ['image/x-png', 'image/jpeg', 'image/png', 'image/jpg'];
 
 export default class ImageUpload extends Component {
   static propTypes = {
@@ -37,11 +41,32 @@ export default class ImageUpload extends Component {
   upload = (e) => {
     const [file] = e.target.files;
 
+    if (!file) {
+      return;
+    }
+
+    if (ALLOWED_FILE_TYPES.indexOf(file.type) === -1) {
+      this.setState({
+        error: 'Image should be PNG or JPEG, click to choose another.',
+      });
+
+      return;
+    }
+
+    if (file.size > FILE_SIZE_LIMIT) {
+      this.setState({
+        error: 'Image should be less than 1MB, click to choose another.',
+      });
+
+      return;
+    }
+
     this.setState({
       uploading: true,
+      error: '',
     });
 
-    return get(`${config.api.endpoint}sign-upload?contentType=${file.type}&fileName=avatar`)
+    get(`${config.api.endpoint}sign-upload?contentType=${file.type}&fileName=avatar`)
       .then(({ data: { signedRequest } }) =>
           put(signedRequest, file, {
             headers: {
@@ -54,7 +79,7 @@ export default class ImageUpload extends Component {
               uploading: false,
             });
 
-            this.fileInput.files = undefined;
+            this.fileInput.value = '';
             this.props.onUploadComplete();
           }, () => {
             this.setState({
@@ -71,7 +96,8 @@ export default class ImageUpload extends Component {
     const { hovering, uploading, error } = this.state;
 
     const showOverlay = hovering || uploading || error;
-    const overlayContent = error || (uploading && <ProgressIcon />) || <span>UPLOAD IMAGE</span>;
+    const overlayContent = (error && <Message type="error">{error}</Message>) ||
+    (uploading && <ProgressIcon />) || <span>UPLOAD IMAGE</span>;
 
     return (
       <div
