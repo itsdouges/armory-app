@@ -1,7 +1,7 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-
+import includes from 'lodash/includes';
 import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
@@ -67,11 +67,13 @@ const leftItems = [
     name: 'Main-Hand Weapon',
     type: 'sword',
     key: 'weaponB1',
+    hideForClasses: ['Engineer', 'Elementalist'],
   },
   {
     name: 'Off-Hand Weapon',
     type: 'shield',
     key: 'weaponB2',
+    hideForClasses: ['Engineer', 'Elementalist'],
   },
 ];
 
@@ -211,7 +213,7 @@ class Character extends Component {
 
     /* eslint no-underscore-dangle:0 */
     const ownCharacter = character && character.alias === this.context._userAlias;
-
+    const safeCharacter = character || {};
     const equipment = (character && character.equipment) || [];
     const attributes = calculateAttributes(character, this.props.items);
     const specializations = (character && character.specializations) || {
@@ -249,6 +251,7 @@ class Character extends Component {
                 return (
                   <Item
                     {...item}
+                    hide={includes(item.hideForClasses, safeCharacter.profession)}
                     key={item.key}
                     upgradeCounts={equip.upgradeCounts}
                     upgrades={this.getItems(equip.upgrades)}
