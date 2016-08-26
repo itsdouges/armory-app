@@ -17,14 +17,20 @@ const ItemUpgrade = ({ data, count: { count } }) => {
 
   const withBonus = !!data.details.bonuses;
   const withBuffs = !!data.details.infix_upgrade.buff;
+  const upgradeOverflow = withBonus && count > data.details.bonuses.length;
 
   return (
     <div className={styles.root}>
       <div className={colours.blue}>
         <Icon src={data.icon} size="micro" />
         <span className={styles.summaryContainer}>
-          {data.name}
-          {withBonus && ` (${count || 0}/${data.details.bonuses.length})`}
+          {`${data.name} `}
+          {withBonus &&
+            <span>
+              (<span className={upgradeOverflow && styles.overflowRunes}>
+                {`${count || 0}/${data.details.bonuses.length}`}
+              </span>)
+            </span>}
         </span>
       </div>
 
