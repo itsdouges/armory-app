@@ -7,7 +7,10 @@ import debounce from 'lodash/debounce';
 import { browserHistory } from 'react-router';
 import Title from 'react-title-component';
 
+import ImageUpload from 'common/components/ImageUpload';
+import ContentCard from 'common/components/ContentCard';
 import Button from 'common/components/Button';
+
 import { validatePasswords } from 'features/Join/actions';
 import { clearUserData } from 'features/Auth/actions';
 import {
@@ -24,6 +27,11 @@ class Settings extends Component {
     router: PropTypes.object,
     dispatch: PropTypes.func,
     user: PropTypes.object,
+  };
+
+  state = {
+    subTitle: 'Click to change your avatar',
+    updateImage: false,
   };
 
   componentWillMount () {
@@ -64,10 +72,29 @@ class Settings extends Component {
     this.props.dispatch(changePassword(currentPassword, newPassword));
   };
 
+  finishedUploading = () => {
+    this.setState({
+      subTitle: 'Looking good ;-)',
+      updateImage: true,
+    });
+  };
+
   render () {
+    const { alias, avatar } = this.props.user;
+    const { updateImage, subTitle } = this.state;
+
+    const content = {
+      alias,
+      accountName: subTitle,
+      avatar,
+    };
+
     return (
       <span>
         <Title render={(title) => `Settings${title}`} />
+        <ImageUpload onUploadComplete={this.finishedUploading}>
+          <ContentCard content={content} type="users" size="big" forceUpdate={updateImage} />
+        </ImageUpload>
 
         <ApiTokens
           valid={this.props.user.validGw2Token}

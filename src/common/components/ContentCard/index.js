@@ -1,19 +1,24 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
+import config from 'env';
 import classnames from 'classnames/bind';
 import Placeholder from './placeholder';
 const cx = classnames.bind(styles);
 
-function extractData (content, { type, size }) {
+function extractData (content, { type, size, forceUpdate }) {
   switch (type) {
     case 'users': {
       const alias = content.alias || content.name;
+      const url = alias &&
+        `${config.imagesEndpoint}${alias}/avatar${forceUpdate ? `?${+new Date()}` : ''}`;
+
       return {
         title: alias,
         // TODO: Source accountName from api for search
         subTitle: content.accountName || 'User',
         imageStyle: {
-          backgroundImage: alias && `url(//api.adorable.io/avatars/128/${alias}.png)`,
+          backgroundColor: '#c1c1c1',
+          backgroundImage: `url(${url})`,
           borderRadius: '50%',
         },
       };
@@ -43,12 +48,17 @@ function extractData (content, { type, size }) {
   }
 }
 
-const ContentCard = ({ content, className, type = 'characters', size = 'small' }) => {
+const ContentCard = ({ content, className, type = 'characters', size = 'small', forceUpdate }) => {
   if (!content) {
     return <Placeholder size={size} className={className} />;
   }
 
-  const { title, subTitle, imageClass, imageStyle } = extractData(content, { type, size });
+  const {
+    title,
+    subTitle,
+    imageClass,
+    imageStyle,
+  } = extractData(content, { type, size, forceUpdate });
 
   return (
     <div className={cx('root', className, size)}>
@@ -67,6 +77,8 @@ ContentCard.propTypes = {
   className: PropTypes.string,
   type: PropTypes.oneOf(['characters', 'users', 'guilds']),
   size: PropTypes.oneOf(['small', 'big']),
+  // I don't like this.
+  forceUpdate: PropTypes.bool,
 };
 
 export default ContentCard;
