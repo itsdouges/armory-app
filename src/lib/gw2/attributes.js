@@ -119,6 +119,8 @@ const getItemAttributes = (character, items) => {
     equip.upgrades.forEach((id) => {
       const upgrade = items[id];
 
+      if (!upgrade) return;
+
       if (upgrade.details.type === 'Rune') {
         // TODO: Calculate total amount of runes available
         const bonuses = parseRuneBonuses(upgrade.details.bonuses, 1);

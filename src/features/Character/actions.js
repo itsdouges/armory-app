@@ -24,7 +24,7 @@ const fetchCharacterResultSuccess = (name, data) => ({
   },
 });
 
-function filterIdsToFetch (state, { specializations, equipment }) {
+function filterIdsToFetch (state, { specializations = {}, equipment }) {
   const ids = {
     items: [],
     skins: [],
