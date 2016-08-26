@@ -1,5 +1,6 @@
 export default {
   appName: 'gw2Armory',
+  imagesEndpoint: '//images.gw2armory.com/',
   gw2: {
     endpoint: 'https://api.guildwars2.com/',
   },

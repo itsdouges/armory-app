@@ -29,7 +29,10 @@ class Settings extends Component {
     user: PropTypes.object,
   };
 
-  state = {};
+  state = {
+    subTitle: 'Click to change your avatar',
+    updateImage: false,
+  };
 
   componentWillMount () {
     this.props.dispatch(fetchGw2Tokens());
@@ -71,17 +74,18 @@ class Settings extends Component {
 
   finishedUploading = () => {
     this.setState({
-      finishedUploading: true,
+      subTitle: 'Looking good ;-)',
+      updateImage: true,
     });
   };
 
   render () {
     const { alias, avatar } = this.props.user;
+    const { updateImage, subTitle } = this.state;
 
     const content = {
-      finishedUploading: this.state.finishedUploading,
       alias,
-      accountName: 'Click to change your avatar',
+      accountName: subTitle,
       avatar,
     };
 
@@ -89,7 +93,7 @@ class Settings extends Component {
       <span>
         <Title render={(title) => `Settings${title}`} />
         <ImageUpload onUploadComplete={this.finishedUploading}>
-          <ContentCard content={content} type="users" size="big" />
+          <ContentCard content={content} type="users" size="big" forceUpdate={updateImage} />
         </ImageUpload>
 
         <ApiTokens
