@@ -14,6 +14,9 @@ export default class ImageUpload extends Component {
     children: PropTypes.any,
     disabled: PropTypes.bool,
     onUploadComplete: PropTypes.func,
+    hintText: PropTypes.string,
+    forceShow: PropTypes.bool,
+    uploadName: PropTypes.string,
   };
 
   static defaultProps = {
@@ -66,7 +69,9 @@ export default class ImageUpload extends Component {
       error: '',
     });
 
-    get(`${config.api.endpoint}sign-upload?contentType=${file.type}&fileName=avatar`)
+    const { uploadName } = this.props;
+
+    get(`${config.api.endpoint}sign-upload?contentType=${file.type}&fileName=${uploadName}`)
       .then(({ data: { signedRequest } }) =>
           put(signedRequest, file, {
             headers: {
@@ -95,9 +100,9 @@ export default class ImageUpload extends Component {
 
     const { hovering, uploading, error } = this.state;
 
-    const showOverlay = hovering || uploading || error;
+    const showOverlay = this.props.forceShow || hovering || uploading || error;
     const overlayContent = (error && <Message type="error">{error}</Message>) ||
-    (uploading && <ProgressIcon />) || <span>UPLOAD IMAGE</span>;
+    (uploading && <ProgressIcon />) || <span>{this.props.hintText || 'UPLOAD IMAGE'}</span>;
 
     return (
       <div
@@ -111,13 +116,13 @@ export default class ImageUpload extends Component {
           </div>
         )}
 
-        <input
+        {uploading || <input
           accept="image/x-png,image/jpeg"
           className={styles.fileUpload}
           onChange={this.upload}
           ref={(ref) => this.fileInput = ref}
           type="file"
-        />
+        />}
 
         {this.props.children}
       </div>

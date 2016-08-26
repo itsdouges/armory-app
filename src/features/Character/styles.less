@@ -12,6 +12,14 @@
 .inner {
   max-width: @content-width;
   margin: 0 auto;
+  position: relative;
+}
+
+.editButton {
+  position: absolute;
+  right: 0;
+  margin: 1em;
+  composes: low from 'common/styles/box-shadow.less';
 }
 
 .columns {

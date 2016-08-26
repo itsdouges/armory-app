@@ -7,7 +7,7 @@ import ProgressIcon from 'common/components/Icon/Progress';
 
 const Button = (props) => (
   <button
-    className={cx('button', {
+    className={cx('button', props.className, {
       primary: props.primary,
       secondary: !props.primary,
       disabled: props.busy || props.disabled,
@@ -30,6 +30,7 @@ Button.propTypes = {
   children: PropTypes.any,
   containerClassName: PropTypes.string,
   onClick: PropTypes.func,
+  className: PropTypes.string,
 };
 
 export default Button;
