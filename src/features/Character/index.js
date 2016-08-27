@@ -238,7 +238,7 @@ class Character extends Component {
               primary
               onClick={this.toggleEditMode}
             >
-              {editMode ? 'I\'M DONE' : 'UPDATE'}
+              {editMode ? 'I\'M DONE' : 'EDIT CHARACTER'}
             </Button>}
 
           <ContentCard content={character} size="big" />
@@ -266,7 +266,7 @@ class Character extends Component {
               onUploadComplete={this.onUploadComplete}
               disabled={!editMode}
               forceShow={editMode}
-              hintText="UPLOAD CHARACTER PORTRAIT"
+              hintText="CHANGE YOUR CHARACTER PORTRAIT"
               uploadName={`characters/${character && character.name}`}
             >
               <Portrait forceUpdate={this.state.updateImage} character={character} />

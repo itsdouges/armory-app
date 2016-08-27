@@ -92,7 +92,11 @@ class Settings extends Component {
     return (
       <span>
         <Title render={(title) => `Settings${title}`} />
-        <ImageUpload uploadName="avatar" onUploadComplete={this.finishedUploading}>
+        <ImageUpload
+          hintText="Change your avatar"
+          uploadName="avatar"
+          onUploadComplete={this.finishedUploading}
+        >
           <ContentCard content={content} type="users" size="big" forceUpdate={updateImage} />
         </ImageUpload>
 
