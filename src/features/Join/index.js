@@ -126,7 +126,7 @@ class Join extends Component {
 
             <div className={styles.buttons}>
               <Button
-                primary
+                type="primary"
                 busy={this.props.user.registering}
                 disabled={!this.props.canRegister}
               >

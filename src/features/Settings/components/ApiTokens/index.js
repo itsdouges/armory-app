@@ -81,7 +81,7 @@ export default class ApiTokens extends Component {
             />
 
             <Button
-              primary
+              type="primary"
               busy={this.props.adding}
               disabled={!this.props.valid}
             >

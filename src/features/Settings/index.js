@@ -122,7 +122,7 @@ class Settings extends Component {
         />
 
         <div style={{ textAlign: 'center' }}>
-          <Button onClick={this.signOut}>LOGOUT</Button>
+          <Button type="secondary" onClick={this.signOut}>LOGOUT</Button>
         </div>
       </span>
     );

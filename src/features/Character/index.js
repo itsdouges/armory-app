@@ -235,7 +235,7 @@ class Character extends Component {
           {ownCharacter &&
             <Button
               className={styles.editButton}
-              primary
+              type={editMode && 'primary'}
               onClick={this.toggleEditMode}
             >
               {editMode ? 'I\'M DONE' : 'EDIT CHARACTER'}

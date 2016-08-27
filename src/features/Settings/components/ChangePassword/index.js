@@ -68,7 +68,7 @@ export default class ChangePassword extends Component {
             <div className={styles.buttons}>
               <Button
                 busy={this.props.busy}
-                primary
+                type="primary"
                 disabled={!this.props.valid}
               >
                 CHANGE

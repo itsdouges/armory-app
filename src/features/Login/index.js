@@ -90,7 +90,7 @@ class Login extends Component {
 
             <div className={styles.buttons}>
               <Button
-                primary
+                type="primary"
                 busy={this.props.busy}
                 disabled={!this.state.canLogin}
               >
