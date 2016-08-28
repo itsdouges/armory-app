@@ -8,7 +8,7 @@ const Introduction = ({ className, ...props }) => (
     <h2>What is Guild Wars 2 Armory?</h2>
 
     <div className={styles.text}>
-      Guild Wars 2 Armory is an opt-in utility that you can use to find,
+      Guild Wars 2 Armory is a free utility that you can use to find,
       view, and share Guild Wars 2 user, character, and guild pages.
     </div>
   </div>
