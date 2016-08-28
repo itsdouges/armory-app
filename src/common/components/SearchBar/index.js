@@ -8,7 +8,12 @@ import SvgIcon from 'common/components/Icon/Svg';
 
 function onSearch (event) {
   event.preventDefault();
+
   const filter = event.nativeEvent.target[0].value;
+  if (!filter) {
+    return;
+  }
+
   browserHistory.push(`/search/${filter}`);
 }
 
@@ -19,11 +24,12 @@ const SearchBar = ({ className, ...props }) => (
       required
       placeholder="Search for characters, users, and guilds..."
       containerClassName={styles.textBoxContainer}
+      iconRight={(
+        <button className={styles.searchButton}>
+          <SvgIcon button className={styles.searchIcon} name="search" size="micro" />
+        </button>
+      )}
     />
-
-    <button className={styles.searchButton}>
-      <SvgIcon button className={styles.searchIcon} name="search" size="micro" />
-    </button>
   </form>
 );
 

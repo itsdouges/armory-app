@@ -13,12 +13,15 @@
 
 .container {
   position: relative;
-  padding-bottom: @bottomSpacer;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background: #fff;
+  margin-bottom: @bottomSpacer;
 }
 
 .textbox {
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 0.25em;
   width: 100%;
   margin: 0;
@@ -38,10 +41,6 @@
 }
 
 .validityContainer {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: @bottomSpacer;
   display: flex;
   align-items: center;
 }

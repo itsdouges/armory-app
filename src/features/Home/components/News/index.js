@@ -6,9 +6,9 @@ import Card from 'common/components/Card';
 
 /* eslint max-len:0 */
 const news = [{
-  title: 'Front page experience',
+  title: 'The Front Page',
   date: '28/08/16',
-  content: 'If you\'re reading this, gw2armory now has a real front-page! You\'ll slowly see improvements here. Keep checking back!',
+  content: 'If you\'re reading this, gw2armory now has a front-page! You\'ll slowly see improvements here. Keep checking back!',
 }, {
   title: 'Custom Images!!!',
   date: '27/08/16',
@@ -16,7 +16,7 @@ const news = [{
 }, {
   title: 'UI Refresh',
   date: '22/08/16',
-  content: <span>The user interface has been remade, it's now faster, leaner, and easier to develop with. <a href="https://github.com/madou/armory-react"><strong>Come check it out on Github</strong></a> if you're into that kind of thing ;-).</span>,
+  content: <span>The user interface has been remade, it's now faster, leaner, and easier to develop with. <a href="https://github.com/madou/armory-react"><strong>Check it out on Github</strong></a> if you're into that kind of thing ;-).</span>,
 }];
 
 const News = (props) => (

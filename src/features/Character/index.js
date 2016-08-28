@@ -235,7 +235,7 @@ class Character extends Component {
           {ownCharacter &&
             <Button
               className={styles.editButton}
-              type={editMode && 'primary'}
+              type={editMode ? 'primary' : ''}
               onClick={this.toggleEditMode}
             >
               {editMode ? 'I\'M DONE' : 'EDIT CHARACTER'}
@@ -328,7 +328,7 @@ class Character extends Component {
 
         <ContentCardList bottomBorder alias={alias} items={characters} />
 
-        <SocialButtons />
+        <div className={styles.socialButtonsContainer}><SocialButtons /></div>
       </div>
     );
   }

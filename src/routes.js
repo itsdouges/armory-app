@@ -10,11 +10,12 @@ import Search from 'features/Search';
 import Character from 'features/Character';
 import NotFound from 'features/NotFound';
 import { authEnabled, authOnly } from 'features/Auth';
+import config from 'env';
 
 function onRouteUpdate () {
   window.scrollTo(0, 0);
 
-  if (!window.ga) {
+  if (!window.ga || !config.prodDomain) {
     return;
   }
 

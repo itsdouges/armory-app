@@ -1,7 +1,6 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
-import classnames from 'classnames/bind';
-const cx = classnames.bind(styles);
+import cx from 'classnames/bind';
 import SvgIcon from 'common/components/Icon/Svg';
 import ProgressIcon from 'common/components/Icon/Progress';
 
@@ -13,7 +12,7 @@ const Textbox = (props) => {
   const status = props.valid ? 'valid' : 'invalid';
 
   return (
-    <div className={cx(props.containerClassName || 'container')}>
+    <div className={cx(props.containerClassName, styles.container)}>
       {props.label && <label htmlFor={props.id}>{props.label}</label>}
 
       <input
@@ -25,13 +24,15 @@ const Textbox = (props) => {
         placeholder={props.placeholder}
         onChange={props.onChange}
         type={props.type || 'text'}
-        className={cx('textbox', props.showStatus && status)}
+        className={cx(styles.textbox, props.showStatus && status)}
       />
 
       {props.error &&
         <Message className={styles.error} type="error" size="small">
           {props.error}
         </Message>}
+
+      {props.iconRight}
 
       {props.showStatus &&
         <div className={styles.validityContainer}>
@@ -55,6 +56,7 @@ Textbox.propTypes = {
   error: PropTypes.any,
   value: PropTypes.string,
   id: PropTypes.string,
+  iconRight: PropTypes.any,
 };
 
 export default Textbox;

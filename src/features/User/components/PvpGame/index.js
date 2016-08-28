@@ -9,7 +9,7 @@ import Redacted from 'common/components/Redacted';
 const cx = classnames.bind(styles);
 
 function stringToDate (date) {
-  return date && new Date(date).toLocaleDateString();
+  return date && date.split('T')[0];
 }
 
 function calculateMatchInMinutes (start, end) {
@@ -58,10 +58,10 @@ const PvpGame = ({ game }) => {
           <div>
             <div>
               <Redacted redact={redacted}>
-                {calculateMatchInMinutes(game.started, game.ended)} minutes
+                {calculateMatchInMinutes(game.started, game.ended)} mins
               </Redacted>
             </div>
-            <Redacted redact={redacted}>{stringToDate(game.ended) || '14/12/2016'}</Redacted>
+            <Redacted redact={redacted}>{stringToDate(game.ended) || '2016-05-19'}</Redacted>
           </div>
         </div>
       </div>

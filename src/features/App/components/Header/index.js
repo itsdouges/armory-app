@@ -21,12 +21,10 @@ const Header = ({ authenticated, alias, checkingAuthentication, simple }) => {
       <Container className={styles.innerContainer}>
         <Link to="/" key={0}>
           <Icon className={styles.icon} name="logo-small.png" size="mini" />
+          <h1 key={1}>Guild Wars 2 Armory</h1>
         </Link>
 
-        {!simple && [
-          <h1 key={1}>Guild Wars 2 Armory</h1>,
-          <SearchBar key={2} />,
-        ]}
+        {!simple && <SearchBar />}
 
         {checkingAuthentication ?
           <ProgressIcon size="micro" /> :
