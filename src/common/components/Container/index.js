@@ -1,9 +1,9 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
-import classnames from 'classnames';
+import cx from 'classnames';
 
-const Container = (props) => (
-  <div {...props} className={classnames(styles.container, props.className)}>
+const Container = ({ className, ...props }) => (
+  <div {...props} className={cx(styles.container, className)}>
     {props.children}
   </div>
 );

@@ -7,6 +7,7 @@ import debounce from 'lodash/debounce';
 import { browserHistory } from 'react-router';
 import Title from 'react-title-component';
 
+import styles from './styles.less';
 import ImageUpload from 'common/components/ImageUpload';
 import ContentCard from 'common/components/ContentCard';
 import Button from 'common/components/Button';
@@ -100,28 +101,32 @@ class Settings extends Component {
           <ContentCard content={content} type="users" size="big" forceUpdate={updateImage} />
         </ImageUpload>
 
-        <ApiTokens
-          valid={this.props.user.validGw2Token}
-          validating={this.props.user.validatingGw2Token}
-          tokens={this.props.user.gw2Tokens}
-          error={this.props.user.gw2TokenError}
-          add={this.addToken}
-          remove={this.removeToken}
-          validate={this.validateToken}
-          setPrimary={this.setPrimaryToken}
-          adding={this.props.user.addingGw2Token}
-        />
+        <div className={styles.spaceBelow}>
+          <ApiTokens
+            valid={this.props.user.validGw2Token}
+            validating={this.props.user.validatingGw2Token}
+            tokens={this.props.user.gw2Tokens}
+            error={this.props.user.gw2TokenError}
+            add={this.addToken}
+            remove={this.removeToken}
+            validate={this.validateToken}
+            setPrimary={this.setPrimaryToken}
+            adding={this.props.user.addingGw2Token}
+          />
+        </div>
 
-        <ChangePassword
-          valid={this.props.user.passwordValid}
-          change={this.changePassword}
-          validate={this.validatePasswords}
-          error={this.props.user.passwordErrors}
-          busy={this.props.user.changingPassword}
-          message={this.props.user.passwordSuccess}
-        />
+        <div className={styles.spaceBelow}>
+          <ChangePassword
+            valid={this.props.user.passwordValid}
+            change={this.changePassword}
+            validate={this.validatePasswords}
+            error={this.props.user.passwordErrors}
+            busy={this.props.user.changingPassword}
+            message={this.props.user.passwordSuccess}
+          />
+        </div>
 
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center' }} className={styles.spaceBelow}>
           <Button type="secondary" onClick={this.signOut}>LOGOUT</Button>
         </div>
       </span>

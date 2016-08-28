@@ -61,7 +61,7 @@ class Login extends Component {
     );
 
     return (
-      <span>
+      <span className={styles.root}>
         <Title render={(title) => `Login${title}`} />
 
         <h2>Login</h2>

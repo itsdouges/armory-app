@@ -1,0 +1,37 @@
+@import '~common/styles/sizes.less';
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.newsItem {
+  width: 100%;
+  padding: 0.5rem;
+  text-align: left;
+  font-size: 0.85em;
+}
+
+.newsItemInner {
+  height: 100%;
+  padding: 0;
+}
+
+.newsItemHeader,
+.newsItemContent {
+  padding: 1rem;
+}
+
+.newsItemTitle {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 0;
+}
+
+@media only screen and (min-width: @tablet) {
+  .newsItem {
+    width: 33.3333%;
+  }
+}

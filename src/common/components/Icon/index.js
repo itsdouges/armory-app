@@ -3,8 +3,9 @@ import styles from './styles.less';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
-const Icon = ({ name, size, className, src, button }) => (
+const Icon = ({ name, size, className, src, button, ...props }) => (
   <div
+    {...props}
     className={cx('container', size, className, button && 'button')}
     style={{
       /* eslint prefer-template:0 */

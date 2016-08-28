@@ -1,44 +1,32 @@
 import { PropTypes } from 'react';
+import { Link } from 'react-router';
+import cx from 'classnames';
+
 import styles from './styles.less';
 import Container from 'common/components/Container';
 import Card from 'common/components/Card';
 import Icon from 'common/components/Icon';
-import Textbox from 'common/components/Textbox';
-import { Link, browserHistory } from 'react-router';
-import SvgIcon from 'common/components/Icon/Svg';
 import ProgressIcon from 'common/components/Icon/Progress';
+import SearchBar from 'common/components/SearchBar';
 
-function search (event) {
-  event.preventDefault();
-  const filter = event.nativeEvent.target[0].value;
-  browserHistory.push(`/search/${filter}`);
-}
-
-const Header = ({ authenticated, alias, checkingAuthentication }) => {
+const Header = ({ authenticated, alias, checkingAuthentication, simple }) => {
   const links = authenticated ?
     [<Link to={`/${alias}`}>{alias.toUpperCase()}</Link>, <Link to="/settings">SETTINGS</Link>] :
     [<Link to="/join">JOIN</Link>, <Link to="/login">LOGIN</Link>];
 
   return (
-    <Card className={styles.root}>
+    <Card className={cx(styles.root, simple && styles.simple)}>
       <div className={styles.heroImage}></div>
 
       <Container className={styles.innerContainer}>
-        <Link to="/"><Icon name="logo-small.png" size="mini" /></Link>
-        <h1>Guild Wars 2 Armory</h1>
+        <Link to="/" key={0}>
+          <Icon className={styles.icon} name="logo-small.png" size="mini" />
+        </Link>
 
-        <form className={styles.formContainer} onSubmit={search}>
-          <Textbox
-            autoFocus
-            required
-            placeholder="Search for characters, users, and guilds..."
-            containerClassName={styles.textBoxContainer}
-          />
-
-          <button className={styles.searchButton}>
-            <SvgIcon button className={styles.searchIcon} name="search" size="micro" />
-          </button>
-        </form>
+        {!simple && [
+          <h1 key={1}>Guild Wars 2 Armory</h1>,
+          <SearchBar key={2} />,
+        ]}
 
         {checkingAuthentication ?
           <ProgressIcon size="micro" /> :
@@ -55,6 +43,7 @@ Header.propTypes = {
   authenticated: PropTypes.bool,
   alias: PropTypes.string,
   checkingAuthentication: PropTypes.bool,
+  simple: PropTypes.bool,
 };
 
 export default Header;

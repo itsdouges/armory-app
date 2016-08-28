@@ -84,7 +84,7 @@ class Join extends Component {
 
   render () {
     return (
-      <span>
+      <span className={styles.root}>
         <Title render={(title) => `Join${title}`} />
 
         <h2>Join</h2>

@@ -3,7 +3,12 @@
 div.root {
   background: #fff;
   padding: 0.25em;
-  margin-bottom: 7em;
+  margin-bottom: 5em;
+}
+
+.simple {
+  background: none!important;
+  box-shadow: none!important;
 }
 
 .heroImage {
@@ -11,7 +16,7 @@ div.root {
   background-repeat: no-repeat;
   position: absolute;
   left: 0;
-  top: 35px;
+  top: 0;
   height: 147px;
   width: 698px;
   z-index: -1;
@@ -29,6 +34,7 @@ div.root {
   font-weight: bold;
   flex-shrink: 0;
   font-size: 0.75em;
+  margin-left: auto;
 }
 
 .link {
@@ -36,37 +42,8 @@ div.root {
   display: inline-block;
 }
 
-.formContainer {
-  margin-right: auto;
-  max-width: 450px;
-  flex-grow: 1;
-  position: relative;
-}
-
-.textBoxContainer {
-  margin-right: auto;
-  margin-left: 1em;
-
-  input {
-    font-size: 1em;
-    padding: 0.5em;
-  }
-}
-
-.searchIcon {
-  width: 20px;
-  height: 20px;
-}
-
-.searchButton {
-  position: absolute;
-  right: 0;
-  top: 6px;
-  bottom: 1px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
+.icon {
+  margin-right: 0.5em;
 }
 
 @media only screen and (min-width: @mobile) {

@@ -23,7 +23,6 @@ const selector = createSelector(
   })
 );
 
-/* eslint react/prefer-stateless-function:0 */
 class App extends Component {
   static propTypes = {
     children: PropTypes.any,
@@ -31,7 +30,18 @@ class App extends Component {
     userAlias: PropTypes.string,
     userToken: PropTypes.string,
     checkingAuthentication: PropTypes.bool,
+    location: PropTypes.object,
   };
+
+  state = {
+    simpleHeader: this.props.location.pathname === '/',
+  };
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({
+      simpleHeader: nextProps.location.pathname === '/',
+    });
+  }
 
   render () {
     return (
@@ -41,6 +51,7 @@ class App extends Component {
           <Title render=" | Guild Wars 2 Armory" />
 
           <Header
+            simple={this.state.simpleHeader}
             authenticated={this.props.userAuthenticated}
             checkingAuthentication={this.props.checkingAuthentication}
             alias={this.props.userAlias}

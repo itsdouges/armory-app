@@ -1,15 +1,36 @@
-@import '../../common/styles/sizes.less';
+@import '~common/styles/sizes.less';
 
 .root {
   text-align: center;
   width: 100%;
 }
 
+.container {
+  text-align: center;
+}
+
 .heroImageContainer {
-  max-width: 300px;
+  padding: 0 1em 1em;
   margin: 0 auto;
+  position: relative;
+}
+
+.newsContainer {
+  margin: 0.5em
 }
 
 .heroImage {
   width: 100%;
+  max-width: 300px;
+}
+
+.searchContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+}
+
+.searchBar {
+  margin: 0 auto;
 }
