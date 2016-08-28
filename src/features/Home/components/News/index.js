@@ -1,5 +1,4 @@
 import { PropTypes } from 'react';
-import cx from 'classnames';
 
 import styles from './styles.less';
 import Card from 'common/components/Card';
@@ -20,21 +19,24 @@ const news = [{
 }];
 
 const News = (props) => (
-  <div className={cx(styles.root, props.className)}>
-    {news.map((item) => (
-      <div className={styles.newsItem} key={item.title}>
-        <Card className={styles.newsItemInner}>
-          <div className={styles.newsItemHeader}>
-            <h3 className={styles.newsItemTitle}>{item.title}</h3>
-            <div>{item.date}</div>
-          </div>
+  <div className={props.className}>
+    <h2>Latest News</h2>
+    <div className={styles.root}>
+      {news.map((item) => (
+        <div className={styles.newsItem} key={item.title}>
+          <Card className={styles.newsItemInner}>
+            <div className={styles.newsItemHeader}>
+              <h3 className={styles.newsItemTitle}>{item.title}</h3>
+              <div>{item.date}</div>
+            </div>
 
-          <hr />
+            <hr />
 
-          <div className={styles.newsItemContent}>{item.content}</div>
-        </Card>
-      </div>
-    ))}
+            <div className={styles.newsItemContent}>{item.content}</div>
+          </Card>
+        </div>
+      ))}
+    </div>
   </div>
 );
 

@@ -22,7 +22,7 @@ const SearchBar = ({ className, ...props }) => (
     <Textbox
       autoFocus
       required
-      placeholder="Search for characters, users, and guilds..."
+      placeholder="Search for users, characters, and guilds..."
       containerClassName={styles.textBoxContainer}
       iconRight={(
         <button className={styles.searchButton}>

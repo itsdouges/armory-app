@@ -5,12 +5,13 @@ import heroImage from 'assets/images/logo.png';
 import SearchBar from 'common/components/SearchBar';
 import Container from 'common/components/Container';
 import News from './components/News';
+import Introduction from './components/Introduction';
 
 const Home = () => (
   <div className={styles.root}>
     <Title render={(title) => `Armor Up${title}`} />
 
-    <Container className={styles.container}>
+    <Container>
       <div className={styles.heroImageContainer}>
         <img
           alt="Guild Wars 2 Armory"
@@ -22,6 +23,10 @@ const Home = () => (
           <SearchBar className={styles.searchBar} />
         </div>
       </div>
+
+      <hr />
+
+      <Introduction className={styles.introContainer} />
 
       <hr />
 
