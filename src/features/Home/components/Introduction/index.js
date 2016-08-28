@@ -8,8 +8,9 @@ const Introduction = ({ className, ...props }) => (
     <h2>What is Guild Wars 2 Armory?</h2>
 
     <div className={styles.text}>
-      Guild Wars 2 Armory is a free utility that you can use to find,
-      view, and share Guild Wars 2 user, character, and guild pages.
+      Guild Wars 2 Armory is an easy way to find, view, and
+      share users, characters, and guilds with your friends
+      on your mobile and desktop! Join today and start sharing!
     </div>
   </div>
 );
