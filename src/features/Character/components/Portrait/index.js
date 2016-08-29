@@ -16,7 +16,7 @@ const Portrait = ({ character = {}, forceUpdate }) => (
     <div
       className={styles.portrait}
       style={{
-        backgroundImage: `url(${endpoint}${character.alias}/characters/${character.name}${forceUpdate ? `?${+new Date()}` : ''})`,
+        backgroundImage: encodeURI(`url(${endpoint}${character.alias}/characters/${character.name}${forceUpdate ? `?${+new Date()}` : ''})`),
       }}
     />
     <div className={cx('portraitBottomIn', 'borderStrip2')} />
