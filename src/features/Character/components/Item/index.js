@@ -11,6 +11,7 @@ const Item = ({
   item = {},
   skin = {},
   upgrades = [],
+  infusions = [],
   upgradeCounts = {},
   hide,
 }) => {
@@ -23,6 +24,7 @@ const Item = ({
         name,
         item,
         skin,
+        infusions,
         upgrades,
         upgradeCounts,
       }}
@@ -44,6 +46,7 @@ Item.propTypes = {
   busy: PropTypes.bool,
   item: PropTypes.object,
   skin: PropTypes.object,
+  infusions: PropTypes.array,
   hide: PropTypes.bool,
   name: PropTypes.string,
   upgrades: PropTypes.array,

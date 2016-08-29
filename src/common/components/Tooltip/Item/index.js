@@ -7,7 +7,8 @@ import Icon from 'common/components/Icon';
 import colours from 'common/styles/colours.less';
 
 import Gold from '../Gold';
-import ItemUpgrade from '../ItemUpgrade';
+import Upgrade from '../Upgrade';
+import Infusion from '../Infusion';
 
 function buildName (item, skin, upgrades) {
   if (!skin.name) {
@@ -27,7 +28,14 @@ function buildName (item, skin, upgrades) {
   return prefixedName;
 }
 
-const ItemsTooltip = ({ data: { item, skin, name, upgrades, upgradeCounts } }) => {
+const ItemsTooltip = ({ data: {
+  item,
+  skin,
+  name,
+  upgrades,
+  upgradeCounts,
+  infusions,
+} }) => {
   if (Object.keys(item).length === 0) {
     return <SimpleTooltip data={name} />;
   }
@@ -37,7 +45,7 @@ const ItemsTooltip = ({ data: { item, skin, name, upgrades, upgradeCounts } }) =
 
   return (
     <div>
-      <SimpleTooltip data="Current Equipped" />
+      <SimpleTooltip data="Currently Equipped" />
 
       <div className={styles.itemHeader}>
         <Icon size="mini" src={skin.icon || item.icon} className={styles.tooltipIcon} />
@@ -69,7 +77,13 @@ const ItemsTooltip = ({ data: { item, skin, name, upgrades, upgradeCounts } }) =
 
         {upgrades.map((upgrade, index) =>
           <span key={index}>
-            <ItemUpgrade data={upgrade} count={upgradeCounts[upgrade.id]} /><br />
+            <Upgrade data={upgrade} count={upgradeCounts[upgrade.id]} /><br />
+          </span>
+        )}
+
+        {infusions.map((infusion, index) =>
+          <span key={index}>
+            <Infusion data={infusion} /><br />
           </span>
         )}
 

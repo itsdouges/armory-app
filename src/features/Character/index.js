@@ -255,6 +255,7 @@ class Character extends Component {
                     key={item.key}
                     upgradeCounts={equip.upgradeCounts}
                     upgrades={this.getItems(equip.upgrades)}
+                    infusions={this.getItems(equip.infusions)}
                     item={this.props.items[equip.id]}
                     skin={this.props.skins[equip.skin]}
                   />
@@ -290,6 +291,7 @@ class Character extends Component {
                     key={item.key}
                     upgradeCounts={equip.upgradeCounts}
                     upgrades={this.getItems(equip.upgrades)}
+                    infusions={this.getItems(equip.infusions)}
                     item={this.props.items[equip.id]}
                     skin={this.props.skins[equip.skin]}
                   />

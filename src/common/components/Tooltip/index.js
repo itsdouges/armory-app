@@ -4,7 +4,7 @@ import MouseFollow from '../MouseFollow';
 import { connect } from 'react-redux';
 import { selector } from 'features/Gw2/tooltip.reducer';
 
-import ItemsTooltip from './Items';
+import ItemTooltip from './Item';
 import SimpleTooltip from './Simple';
 
 const Tooltip = ({ tooltip }) => {
@@ -14,7 +14,7 @@ const Tooltip = ({ tooltip }) => {
 
   switch (tooltip.type) {
     case 'items':
-      content = <ItemsTooltip data={tooltip.data} />;
+      content = <ItemTooltip data={tooltip.data} />;
       break;
 
     case 'simple':

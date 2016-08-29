@@ -56,10 +56,18 @@ function filterIdsToFetch (state, { specializations = {}, equipment }) {
 
     if (!currentItems.hasOwnProperty(item.id)) {
       ids.items.push(item.id);
+    }
 
-      if (item.upgrades) {
-        ids.items = ids.items.concat(item.upgrades);
-      }
+    if (item.upgrades) {
+      ids.items = ids.items.concat(
+        item.upgrades.filter((upgrade) => !currentItems.hasOwnProperty(upgrade))
+      );
+    }
+
+    if (item.infusions) {
+      ids.items = ids.items.concat(
+        item.infusions.filter((infusion) => !currentItems.hasOwnProperty(infusion))
+      );
     }
   });
 
