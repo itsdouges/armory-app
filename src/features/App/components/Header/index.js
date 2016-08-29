@@ -24,7 +24,7 @@ const Header = ({ authenticated, alias, checkingAuthentication, simple }) => {
           <h1 key={1}>Guild Wars 2 Armory</h1>
         </Link>
 
-        {!simple && <SearchBar />}
+        {!simple && <div className={styles.searchContainer}><SearchBar /></div>}
 
         {checkingAuthentication ?
           <ProgressIcon size="micro" /> :
