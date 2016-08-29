@@ -12,6 +12,7 @@ const Item = ({
   skin = {},
   upgrades = [],
   infusions = [],
+  stats = {},
   upgradeCounts = {},
   hide,
 }) => {
@@ -27,6 +28,7 @@ const Item = ({
         infusions,
         upgrades,
         upgradeCounts,
+        stats,
       }}
     >
       <div className={cx('root', `${type}Icon`, { busy })}>
@@ -49,6 +51,7 @@ Item.propTypes = {
   infusions: PropTypes.array,
   hide: PropTypes.bool,
   name: PropTypes.string,
+  stats: PropTypes.object,
   upgrades: PropTypes.array,
   upgradeCounts: PropTypes.object,
 };

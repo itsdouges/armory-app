@@ -35,6 +35,7 @@ const ItemsTooltip = ({ data: {
   upgrades,
   upgradeCounts,
   infusions,
+  stats: { attributes = {} },
 } }) => {
   if (Object.keys(item).length === 0) {
     return <SimpleTooltip data={name} />;
@@ -72,6 +73,12 @@ const ItemsTooltip = ({ data: {
           item.details.infix_upgrade.attributes.map(({ modifier, attribute }) => (
             <div key={attribute} className={colours.green}>{`+${modifier} ${attribute}`}</div>
         ))}
+
+        {Object.keys(attributes).map((attribute, index) => {
+          const modifier = attributes[attribute];
+
+          return <div key={index} className={colours.green}>{`+${modifier} ${attribute}`}</div>;
+        })}
 
         <br />
 

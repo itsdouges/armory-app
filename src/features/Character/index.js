@@ -137,6 +137,7 @@ const rightItems = [
     name: 'Acquatic Weapon',
     type: 'sword',
     key: 'weaponAquaticB',
+    hideForClasses: ['Engineer', 'Elementalist'],
   },
 ];
 
@@ -258,6 +259,7 @@ class Character extends Component {
                     infusions={this.getItems(equip.infusions)}
                     item={this.props.items[equip.id]}
                     skin={this.props.skins[equip.skin]}
+                    stats={equip.stats}
                   />
                 );
               })}
@@ -288,12 +290,14 @@ class Character extends Component {
                 return (
                   <Item
                     {...item}
+                    hide={includes(item.hideForClasses, safeCharacter.profession)}
                     key={item.key}
                     upgradeCounts={equip.upgradeCounts}
                     upgrades={this.getItems(equip.upgrades)}
                     infusions={this.getItems(equip.infusions)}
                     item={this.props.items[equip.id]}
                     skin={this.props.skins[equip.skin]}
+                    stats={equip.stats}
                   />
                 );
               })}
