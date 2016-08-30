@@ -10,7 +10,6 @@ import styles from './styles.less';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Gw2ApiHealth from './components/Gw2ApiHealth';
-import Tooltip from 'common/components/Tooltip';
 
 const selector = createSelector(
   store => store.user.alias,
@@ -58,8 +57,6 @@ class App extends Component {
           />
 
           {this.props.children}
-
-          <Tooltip />
           <Footer />
         </div>
       </span>

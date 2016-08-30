@@ -19,6 +19,7 @@ import Portrait from './components/Portrait';
 import Attribute from './components/Attribute';
 import CraftingBar from './components/CraftingBar';
 import Item from './components/Item';
+import Tooltip from 'common/components/Tooltip';
 
 import styles from './styles.less';
 
@@ -335,6 +336,8 @@ class Character extends Component {
         <ContentCardList bottomBorder alias={alias} items={characters} />
 
         <div className={styles.socialButtonsContainer}><SocialButtons /></div>
+
+        <Tooltip />
       </div>
     );
   }
