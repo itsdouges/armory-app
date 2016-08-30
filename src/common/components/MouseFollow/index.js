@@ -13,6 +13,7 @@ export default class MouseFollow extends Component {
       left: 10,
       zIndex: 999,
       opacity: 0,
+      pointerEvents: 'none',
     },
   };
 
