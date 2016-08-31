@@ -10,12 +10,13 @@ import Search from 'features/Search';
 import Character from 'features/Character';
 import NotFound from 'features/NotFound';
 import { authEnabled, authOnly } from 'features/Auth';
-import config from 'env';
 
 function onRouteUpdate () {
   window.scrollTo(0, 0);
 
-  if (!window.ga || !config.prodDomain) {
+  if (!window.ga || window.location.hostname.indexOf('localhost') >= 0) {
+    if (__DEVELOPMENT__) console.log('localhost -> NO TRACK');
+
     return;
   }
 
