@@ -17,7 +17,8 @@ export default class Search extends Component {
 
   state = {
     results: [],
-    searching: true,
+    searching: false,
+    error: '',
   };
 
   componentWillMount () {
@@ -32,6 +33,14 @@ export default class Search extends Component {
   }
 
   search (term) {
+    if (term.length <= 4) {
+      this.setState({
+        error: 'Search term must be 4 or more characters!',
+      });
+
+      return undefined;
+    }
+
     this.setState({
       searching: true,
       results: [],
@@ -53,7 +62,7 @@ export default class Search extends Component {
       guilds: [],
     };
 
-    const { results, searching } = this.state;
+    const { results, searching, error } = this.state;
     const { term } = this.props.routeParams;
 
     results.forEach((result) => {
@@ -96,7 +105,7 @@ export default class Search extends Component {
       </span>
     );
 
-    const noResults = !searching && !results.length && (
+    const noResults = !error && !searching && !results.length && (
       <Message>
         Couldn't find anything :-(..<br /><br />
         Can't find your characters? Guild Wars Armory 2 is opt-in.<br /><br />
@@ -109,7 +118,9 @@ export default class Search extends Component {
         <Title render={(title) => `${term}${title}`} />
 
         <Message size="big" className={styles.message}>
-          Search results for <strong><i>{term}</i></strong>...
+          {error ?
+            <span>{error}</span> :
+            <span>Search results for <strong><i>{term}</i></strong>...</span>}
         </Message>
 
         {searching && <div className={styles.iconContainer}><ProgressIcon /></div>}
