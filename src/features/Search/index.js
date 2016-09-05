@@ -10,6 +10,8 @@ import Title from 'react-title-component';
 import Message from 'common/components/Message';
 import ProgressIcon from 'common/components/Icon/Progress';
 
+const SEARCH_TERM_MINIMUM = 3;
+
 export default class Search extends Component {
   static propTypes = {
     routeParams: PropTypes.object,
@@ -33,9 +35,10 @@ export default class Search extends Component {
   }
 
   search (term) {
-    if (term.length <= 4) {
+    if (term.length < SEARCH_TERM_MINIMUM) {
       this.setState({
-        error: 'Search term must be 4 or more characters!',
+        results: [],
+        error: `Search term should be ${SEARCH_TERM_MINIMUM} or more characters :-)`,
       });
 
       return undefined;
@@ -44,6 +47,7 @@ export default class Search extends Component {
     this.setState({
       searching: true,
       results: [],
+      error: '',
     });
 
     return get(`${config.api.endpoint}search?filter=${term}`)
@@ -118,9 +122,8 @@ export default class Search extends Component {
         <Title render={(title) => `${term}${title}`} />
 
         <Message size="big" className={styles.message}>
-          {error ?
-            <span>{error}</span> :
-            <span>Search results for <strong><i>{term}</i></strong>...</span>}
+          <span>Search results for <strong><i>{term}</i></strong>...</span>
+          {error && <div><br />{error}</div>}
         </Message>
 
         {searching && <div className={styles.iconContainer}><ProgressIcon /></div>}
