@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import Title from 'react-title-component';
-import { post } from 'axios';
+import { post, put } from 'axios';
 
 import config from 'env';
 import styles from './styles.less';
@@ -12,13 +12,20 @@ import Message from 'common/components/Message';
 import Button from 'common/components/Button';
 import PasswordForm from 'common/components/PasswordForm';
 
+import { validatePasswords } from 'features/Join/actions';
+
 export default class ForgotMyPassword extends Component {
   state = {
     email: '',
     token: qs('token'),
     startScreen: !qs('token'),
+    complete: false,
     busy: false,
     valid: true,
+    password: '',
+    passwordConfirm: '',
+    passwordError: '',
+    passwordValid: false,
   };
 
   setStart () {
@@ -65,8 +72,9 @@ export default class ForgotMyPassword extends Component {
         />
 
         <PasswordForm
+          error={this.state.passwordError}
           onFieldChange={this.fieldChanged}
-          valid={this.state.valid}
+          valid={this.state.passwordValid}
           passwordValue={this.state.password}
           passwordConfirmValue={this.state.passwordConfirm}
         />
@@ -104,6 +112,23 @@ export default class ForgotMyPassword extends Component {
 
   changePassword = (event) => {
     event.preventDefault();
+
+    const { token, password } = this.state;
+
+    this.setState({
+      busy: true,
+    });
+
+    return put(`${config.api.endpoint}forgot-my-password`, {
+      token,
+      password,
+    })
+    .then(() => {
+      this.setState({
+        busy: false,
+        complete: true,
+      });
+    });
   };
 
   fieldChanged = ({ target: { id, value } }) => {
@@ -111,6 +136,12 @@ export default class ForgotMyPassword extends Component {
       ...this.state,
       [id]: value,
     };
+
+    if (id.indexOf('password') >= 0) {
+      const action = validatePasswords(newState.password, newState.passwordConfirm);
+      newState.passwordError = action.error && action.payload;
+      newState.passwordValid = !action.error;
+    }
 
     this.setState(newState);
   };
