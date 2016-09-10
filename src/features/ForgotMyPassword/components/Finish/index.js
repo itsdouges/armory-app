@@ -19,9 +19,9 @@ export default class Finish extends Component {
 
   state = {
     token: this.props.initialToken || '',
+    message: this.props.initialToken ? '' : 'Check your email for your reset token!',
     password: '',
     passwordConfirm: '',
-    error: '',
     busy: false,
     valid: false,
     complete: false,
