@@ -98,6 +98,10 @@ class Login extends Component {
               </Button>
             </div>
           </form>
+
+          <Message className={styles.forgotPasswordContainer} type="small">
+            <Link to="/forgot-my-password">Forgot my password</Link>
+          </Message>
         </Card>
       </span>
     );
