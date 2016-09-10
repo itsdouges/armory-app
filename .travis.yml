@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "6.3.1"
 install:
-  - npm install
+  - npm install --silent
 script:
   - npm run build
 deploy:
