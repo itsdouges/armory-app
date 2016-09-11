@@ -5,6 +5,10 @@ import Card from 'common/components/Card';
 
 /* eslint max-len:0 */
 const news = [{
+  title: 'Forgot Your Password?',
+  date: '10/09/16',
+  content: 'If you\'ve forgotten your password you can now reset it, you can find it through the login screen.',
+}, {
   title: 'The Front Page',
   date: '28/08/16',
   content: 'If you\'re reading this, gw2armory now has a front-page! You\'ll slowly see improvements here. Keep checking back!',
