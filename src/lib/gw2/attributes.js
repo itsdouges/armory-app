@@ -10,10 +10,10 @@ const defaultAttributes = {
   ferocity: 0,
   criticalDamage: 0,
   conditionDamage: 0,
-  conditionDuration: 0,
-  concentration: 0,
   healing: 0,
   expertise: 0,
+  conditionDuration: 0,
+  concentration: 0,
   boon: 0,
   agony: 0,
   magic: 0,
@@ -291,6 +291,7 @@ export function calculate (character, items) {
   let criticalChance = (precision - 916) / 21;
   criticalChance = criticalChance < 0 ? 0 : criticalChance;
 
+  /* eslint max-len:0 */
   return {
     power: (base + itemBonus.Power).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
     [character.profession.toLowerCase()]: 0,
@@ -299,16 +300,16 @@ export function calculate (character, items) {
     vitality: (base + itemBonus.Vitality).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
     health: ((base * 10) + bonusHealth).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
     precision: precision.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-    criticalChance: criticalChance.toFixed(2),
+    criticalChance: `${criticalChance.toFixed(2)}%`,
     ferocity: itemBonus.Ferocity.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-    criticalDamage: (BASE_CRITICAL_DAMAGE + (itemBonus.Ferocity / 15)).toFixed(1),
+    criticalDamage: `${(BASE_CRITICAL_DAMAGE + (itemBonus.Ferocity / 15)).toFixed(1)}%`,
     conditionDamage: itemBonus.ConditionDamage.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-    conditionDuration: (+itemBonus.ConditionDuration + (itemBonus.Concentration / 15)).toFixed(1),
-    concentration: itemBonus.Concentration,
     healing: itemBonus.HealingPower,
     expertise: itemBonus.Expertise,
-    boon: (+itemBonus.BoonDuration + (itemBonus.Expertise / 15)).toFixed(1),
+    conditionDuration: `${(+itemBonus.ConditionDuration + (itemBonus.Concentration / 15)).toFixed(1)}%`,
+    concentration: itemBonus.Concentration,
+    boon: `${(+itemBonus.BoonDuration + (itemBonus.Expertise / 15)).toFixed(1)}%`,
     agony: 0,
-    magic: 0,
+    magic: `${0}%`,
   };
 }
