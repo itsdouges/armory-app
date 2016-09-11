@@ -118,7 +118,8 @@ const ItemsTooltip = ({ data: {
 
         <div>{item.boundStatus}</div>
 
-        <Gold copper={item.copper} silver={item.silver} gold={item.gold} />
+        {item.rarity !== 'Legendary' &&
+          <Gold copper={item.copper} silver={item.silver} gold={item.gold} />}
       </div>
     </div>
   );
