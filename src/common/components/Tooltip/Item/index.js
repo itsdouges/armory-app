@@ -1,7 +1,10 @@
 import { PropTypes } from 'react';
+import startCase from 'lodash/startCase';
+import classnames from 'classnames/bind';
+
+
 import SimpleTooltip from '../Simple';
 import styles from './styles.less';
-import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 import Icon from 'common/components/Icon';
 import colours from 'common/styles/colours.less';
@@ -71,13 +74,19 @@ const ItemsTooltip = ({ data: {
 
         {item.details.infix_upgrade &&
           item.details.infix_upgrade.attributes.map(({ modifier, attribute }) => (
-            <div key={attribute} className={colours.green}>{`+${modifier} ${attribute}`}</div>
+            <div key={attribute} className={colours.green}>
+              {`+${modifier} ${startCase(attribute)}`}
+            </div>
         ))}
 
         {Object.keys(attributes).map((attribute, index) => {
           const modifier = attributes[attribute];
 
-          return <div key={index} className={colours.green}>{`+${modifier} ${attribute}`}</div>;
+          return (
+            <div key={index} className={colours.green}>
+              {`+${modifier} ${startCase(attribute)}`}
+            </div>
+          );
         })}
 
         <br />
