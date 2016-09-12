@@ -1,21 +1,50 @@
+import { ShareButtons, generateShareIcon } from 'react-share';
+
+import config from 'env';
 import styles from './styles.less';
-import Message from 'common/components/Message';
 
-function onClick (e) {
-  const textbox = e.target;
-  textbox.setSelectionRange(0, textbox.value.length);
-}
+const {
+  FacebookShareButton,
+  TwitterShareButton,
+  GooglePlusShareButton,
+  VKShareButton,
+} = ShareButtons;
 
-const SocialButtons = () => (
-  <div className={styles.root}>
-    <Message className={styles.message}>
-      Like what you see? <strong>Share it!</strong>
-    </Message>
+const FacebookIcon = generateShareIcon('facebook');
+const TwitterIcon = generateShareIcon('twitter');
+const GooglePlusIcon = generateShareIcon('google');
+const VKIcon = generateShareIcon('vk');
 
-    <div className={styles.buttons}>
-      <input onClick={onClick} className={styles.textbox} readOnly value={window.location.href} />
+const SocialButtons = () => {
+  const socialProps = {
+    url: window.location.href,
+    title: document.getElementsByTagName('title')[0].text,
+    className: styles.icon,
+  };
+
+  const iconProps = {
+    size: 40,
+  };
+
+  return (
+    <div className={styles.root}>
+      <FacebookShareButton {...socialProps} description={config.description}>
+        <FacebookIcon {...iconProps} />
+      </FacebookShareButton>
+
+      <TwitterShareButton {...socialProps} hashtags={['gw2', 'guildwars2', 'gw2armory']}>
+        <TwitterIcon {...iconProps} />
+      </TwitterShareButton>
+
+      <GooglePlusShareButton {...socialProps}>
+        <GooglePlusIcon {...iconProps} />
+      </GooglePlusShareButton>
+
+      <VKShareButton {...socialProps}>
+        <VKIcon {...iconProps} />
+      </VKShareButton>
     </div>
-  </div>
-);
+  );
+};
 
 export default SocialButtons;
