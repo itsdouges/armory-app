@@ -18,7 +18,7 @@ const VKIcon = generateShareIcon('vk');
 const SocialButtons = () => {
   const socialProps = {
     url: window.location.href,
-    title: document.getElementsByTagName('title')[0].text,
+    title: 'Guild Wars 2 Armory',
     className: styles.icon,
   };
 
