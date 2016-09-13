@@ -2,6 +2,7 @@ import { PropTypes } from 'react';
 import styles from './styles.less';
 import colours from 'common/styles/colours.less';
 import Icon from 'common/components/Icon';
+import { markup } from 'lib/gw2/parse';
 
 const ItemUpgrade = ({ data, count: { count } }) => {
   const upgradeSlotUsed = !!data;
@@ -36,11 +37,11 @@ const ItemUpgrade = ({ data, count: { count } }) => {
 
       {withBonus && data.details.bonuses.map((bonus, index) =>
         <div key={index} className={index < count && colours.blue}>
-          {`(${index + 1}): ${bonus}`}
+          {`(${index + 1}):`}{markup(bonus)}
         </div>)}
 
       {withBuffs && data.details.infix_upgrade.buff.description.map((buff, index) =>
-        <div key={index} className={colours.blue}>{buff}</div>)}
+        <div key={index} className={colours.blue}>{markup(buff)}</div>)}
     </div>
   );
 };

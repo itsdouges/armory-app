@@ -2,12 +2,12 @@ import { PropTypes } from 'react';
 import startCase from 'lodash/startCase';
 import classnames from 'classnames/bind';
 
-
 import SimpleTooltip from '../Simple';
 import styles from './styles.less';
 const cx = classnames.bind(styles);
 import Icon from 'common/components/Icon';
 import colours from 'common/styles/colours.less';
+import { markup } from 'lib/gw2/parse';
 
 import Gold from '../Gold';
 import Upgrade from '../Upgrade';
@@ -110,9 +110,9 @@ const ItemsTooltip = ({ data: {
 
         <div>{item.details.weight_class}</div>
 
-        <div>{item.details.type} {item.type}</div>
+        <div>{startCase(item.details.type)} {item.type}</div>
 
-        <div>{item.description}</div>
+        <div>{markup(item.description)}</div>
 
         {!!item.level && <div>Required Level: {item.level}</div>}
 

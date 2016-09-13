@@ -1,3 +1,5 @@
+import colours from 'common/styles/colours.less';
+
 function parseVendorValue (item) {
   const inItem = {
     ...item,
@@ -29,7 +31,7 @@ function parseFlags (item) {
 
       case 'AccountBoundOnUse':
       case 'AccountBound':
-        inItem.boundStatus = 'Accountbound';
+        inItem.boundStatus = 'Account Bound';
         return;
     }
   });
@@ -116,4 +118,16 @@ export function mapSkinsToObject (items) {
   });
 
   return object;
+}
+
+export function markup (text) {
+  if (!text) {
+    return <span />;
+  }
+
+  const parsedText = text.replace(/<c=@([^>]*)>|<\/c>/g, '').split('<br>');
+  const result = /<c=@([^>]*)>/g.exec(text);
+  const colour = result && result[1];
+
+  return parsedText.map((tx) => <span className={colours[colour]} key={tx}>{tx}<br /></span>);
 }
