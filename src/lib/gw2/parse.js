@@ -125,7 +125,7 @@ export function markup (text) {
     return <span />;
   }
 
-  const parsedText = text.replace(/<c=@([^>]*)>|<\/c>/g, '').split('<br>');
+  const parsedText = text.replace(/<c=@([^>]*)>|<\/c>|<c>/g, '').split('<br>');
   const result = /<c=@([^>]*)>/g.exec(text);
   const colour = result && result[1];
 
