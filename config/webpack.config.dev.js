@@ -3,6 +3,7 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
+const config = require('../src/env/default');
 
 module.exports = {
   devtool: 'eval',
@@ -48,7 +49,7 @@ module.exports = {
         loader: 'json',
       },
       {
-        test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
+        test: /\.(ico|jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
         include: [paths.appSrc, paths.appNodeModules],
         loader: 'file',
         query: {
@@ -69,11 +70,10 @@ module.exports = {
     return [autoprefixer];
   },
   plugins: [
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin(Object.assign({
       inject: true,
       template: paths.appHtml,
-      favicon: paths.appFavicon,
-    }),
+    }, config)),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"development"',
       __DATE__: `${new Date()}`,

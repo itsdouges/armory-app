@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const config = require('../src/env/default');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -46,7 +47,7 @@ module.exports = {
         loader: 'json',
       },
       {
-        test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
+        test: /\.(ico|jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
         include: [paths.appSrc, paths.appNodeModules],
         loader: 'file',
         query: {
@@ -67,10 +68,9 @@ module.exports = {
     return [autoprefixer];
   },
   plugins: [
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin(Object.assign({
       inject: true,
       template: paths.appHtml,
-      favicon: paths.appFavicon,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -83,7 +83,7 @@ module.exports = {
         minifyCSS: true,
         minifyURLs: true,
       },
-    }),
+    }, config)),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
       __DATE__: `${new Date()}`,
