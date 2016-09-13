@@ -7,7 +7,6 @@ function resolve (relativePath) {
 module.exports = {
   appBuild: resolve('../dist'),
   appHtml: resolve('../src/index.html'),
-  appFavicon: resolve('../src/favicon.ico'),
   appPackageJson: resolve('../package.json'),
   appSrc: resolve('../src'),
   appNodeModules: resolve('../node_modules'),
