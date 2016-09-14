@@ -125,7 +125,7 @@ function parseCharacter (character) {
 
 function extractEliteSpecialization (character, mode) {
   return character.specializations[mode]
-    .reduce((acc, spec) => eliteSpecMap[spec.id] || acc, character.profession);
+    .reduce((acc, spec) => (spec && eliteSpecMap[spec.id]) || acc, character.profession);
 }
 
 export const selector = createSelector(
