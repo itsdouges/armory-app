@@ -14,7 +14,7 @@ export default class ImageUpload extends Component {
     children: PropTypes.any,
     disabled: PropTypes.bool,
     onUploadComplete: PropTypes.func,
-    hintText: PropTypes.string,
+    hintText: PropTypes.any,
     forceShow: PropTypes.bool,
     uploadName: PropTypes.string,
   };
@@ -102,7 +102,8 @@ export default class ImageUpload extends Component {
 
     const showOverlay = this.props.forceShow || hovering || uploading || error;
     const overlayContent = (error && <Message type="error">{error}</Message>) ||
-    (uploading && <ProgressIcon />) || <span>{this.props.hintText || 'UPLOAD IMAGE'}</span>;
+      (uploading && <ProgressIcon />) ||
+      <span className={styles.hintText}>{this.props.hintText || 'UPLOAD IMAGE'}</span>;
 
     return (
       <div

@@ -94,7 +94,7 @@ class Settings extends Component {
       <span>
         <Title render={(title) => `Settings${title}`} />
         <ImageUpload
-          hintText="Change your avatar"
+          hintText={<span>Change your avatar<br />128 x 128</span>}
           uploadName="avatar"
           onUploadComplete={this.finishedUploading}
         >

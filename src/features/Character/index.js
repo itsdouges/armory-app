@@ -287,7 +287,7 @@ class Character extends Component {
               onUploadComplete={this.onUploadComplete}
               disabled={!editMode}
               forceShow={editMode}
-              hintText="CHANGE YOUR CHARACTER PORTRAIT"
+              hintText={<span>CHANGE YOUR CHARACTER PORTRAIT<br />560 x 840</span>}
               uploadName={`characters/${character && character.name}`}
             >
               <Portrait forceUpdate={this.state.updateImage} character={character}>
