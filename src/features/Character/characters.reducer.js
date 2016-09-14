@@ -3,6 +3,7 @@ import {
   FETCH_CHARACTER_RESULT,
   FETCHING_CHARACTER,
   SELECT_CHARACTER,
+  SELECT_CHARACTER_MODE,
 } from './actions';
 
 const eliteSpecMap = {
@@ -124,7 +125,7 @@ function parseCharacter (character) {
 
 function extractEliteSpecialization (character, mode) {
   return character.specializations[mode]
-    .reduce((acc, spec) => eliteSpecMap[spec.id] || acc, character.profession);
+    .reduce((acc, spec) => (spec && eliteSpecMap[spec.id]) || acc, character.profession);
 }
 
 export const selector = createSelector(
@@ -186,6 +187,12 @@ export default function reducer (state, action) {
         ...state,
         mode: 'pve',
         selected: action.payload,
+      };
+
+    case SELECT_CHARACTER_MODE:
+      return {
+        ...state,
+        mode: action.payload,
       };
 
     default:

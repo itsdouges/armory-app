@@ -2,24 +2,28 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import includes from 'lodash/includes';
+import Title from 'react-title-component';
+import cx from 'classnames';
+
 import { selector } from './characters.reducer';
-import { fetchCharacter, selectCharacter } from './actions';
+import { fetchCharacter, selectCharacter, selectCharacterMode } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
 import { calculate as calculateAttributes } from 'lib/gw2/attributes';
 
-import Title from 'react-title-component';
 import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
 import ImageUpload from 'common/components/ImageUpload';
 import Button from 'common/components/Button';
+import Tooltip from 'common/components/Tooltip';
+import TooltipTrigger from 'common/components/TooltipTrigger';
+import Icon from 'common/components/Icon';
 
 import Specialization from './components/Specialization';
 import Portrait from './components/Portrait';
 import Attribute from './components/Attribute';
 import CraftingBar from './components/CraftingBar';
 import Item from './components/Item';
-import Tooltip from 'common/components/Tooltip';
 
 import styles from './styles.less';
 
@@ -186,6 +190,18 @@ class Character extends Component {
     return ids.map((id) => this.props.items[id]);
   }
 
+  setPve = () => {
+    this.setMode('pve');
+  };
+
+  setWvw = () => {
+    this.setMode('wvw');
+  };
+
+  setMode (mode) {
+    this.props.dispatch(selectCharacterMode(mode));
+  }
+
   loadCharacter () {
     const { character, alias } = this.props.routeParams;
 
@@ -209,6 +225,7 @@ class Character extends Component {
       routeParams,
       characters,
       character,
+      mode,
     } = this.props;
 
     const { editMode } = this.state;
@@ -219,7 +236,7 @@ class Character extends Component {
     const equipment = (character && character.equipment) || [];
     const attributes = calculateAttributes(character, this.props.items);
     const specializations = (character && character.specializations) || {
-      [this.props.mode]: [{}, {}, {}],
+      [mode]: [{}, {}, {}],
     };
 
     const crafting = (character && character.crafting) || [{}, {}, {}];
@@ -273,7 +290,27 @@ class Character extends Component {
               hintText="CHANGE YOUR CHARACTER PORTRAIT"
               uploadName={`characters/${character && character.name}`}
             >
-              <Portrait forceUpdate={this.state.updateImage} character={character} />
+              <Portrait forceUpdate={this.state.updateImage} character={character}>
+                <div className={styles.modeContainer}>
+                  <TooltipTrigger data="PvE">
+                    <Icon
+                      size="medium"
+                      name="pve-icon.png"
+                      onClick={this.setPve}
+                      className={cx(styles.modeIcon, mode === 'pve' && styles.active)}
+                    />
+                  </TooltipTrigger>
+
+                  <TooltipTrigger data="WvW">
+                    <Icon
+                      size="medium"
+                      name="wvw-icon.png"
+                      onClick={this.setWvw}
+                      className={cx(styles.modeIcon, mode === 'wvw' && styles.active)}
+                    />
+                  </TooltipTrigger>
+                </div>
+              </Portrait>
             </ImageUpload>
 
             <div className={styles.rightColumn}>
@@ -313,7 +350,7 @@ class Character extends Component {
 
         <div className={styles.specializationContainer}>
           <div className={styles.brushStrokeContainer}>
-            {specializations[this.props.mode].map((data, index) =>
+            {specializations[mode].map((data, index) =>
               data && <Specialization
                 key={(data.id) || index}
                 data={data}

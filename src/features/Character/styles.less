@@ -23,6 +23,24 @@
   composes: low from 'common/styles/box-shadow.less';
 }
 
+.modeContainer {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  z-index: 99;
+}
+
+.modeIcon {
+  display: block;
+  opacity: 0.5;
+  cursor: pointer;
+
+  &:hover,
+  &.active {
+    opacity: 1;
+  }
+}
+
 .columns {
   display: flex;
   flex-direction: column;

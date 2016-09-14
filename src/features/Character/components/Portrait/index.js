@@ -8,7 +8,7 @@ const cx = classnames.bind(styles);
 const endpoint = config.imagesEndpoint;
 
 /* eslint max-len:0 */
-const Portrait = ({ character = {}, forceUpdate }) => (
+const Portrait = ({ character = {}, forceUpdate, children }) => (
   <div
     className={cx('root', 'portraitBgDefault', character.race && character.race.toLowerCase())}
   >
@@ -20,12 +20,14 @@ const Portrait = ({ character = {}, forceUpdate }) => (
       }}
     />
     <div className={cx('portraitBottomIn', 'borderStrip2')} />
+    {children}
   </div>
 );
 
 Portrait.propTypes = {
   character: PropTypes.object,
   forceUpdate: PropTypes.bool,
+  children: PropTypes.any,
 };
 
 export default Portrait;
