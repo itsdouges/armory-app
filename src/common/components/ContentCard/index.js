@@ -14,7 +14,6 @@ function extractData (content, { type, size, forceUpdate }) {
 
       return {
         title: alias,
-        // TODO: Source accountName from api for search
         subTitle: content.accountName || 'User',
         imageStyle: {
           backgroundColor: '#c1c1c1',
@@ -28,14 +27,14 @@ function extractData (content, { type, size, forceUpdate }) {
       return {
         title: size === 'big' && content.guild_tag ?
           `${content.name} [${content.guild_tag}]` : content.name,
-        subTitle: `${content.level} ${content.race} ${content.profession}`,
+        // eslint-disable-next-line
+        subTitle: `${content.level} ${content.race} ${content.eliteSpecialization || content.profession}`,
         imageClass: content.profession && content.profession.toLowerCase(),
       };
 
     case 'guilds':
       return {
         title: content.name || 'No Guild',
-        // TODO: Source tag from api for search
         subTitle: (content.tag && `[${content.tag}]`) || 'Guild',
         imageStyle: {
           backgroundImage: `url(https://guilds.gw2w2w.com/guilds/${content.name && content.name.replace(/\s+/g, '-')}/256.svg)`,

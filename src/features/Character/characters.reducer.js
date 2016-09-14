@@ -5,6 +5,18 @@ import {
   SELECT_CHARACTER,
 } from './actions';
 
+const eliteSpecMap = {
+  5: 'Druid',
+  7: 'Daredevil',
+  18: 'Berserker',
+  27: 'Dragonhunter',
+  34: 'Reaper',
+  40: 'Chronomancer',
+  43: 'Scrapper',
+  48: 'Tempest',
+  52: 'Herald',
+};
+
 function parseWeaponSwap (character) {
   const char = {
     ...character,
@@ -110,6 +122,11 @@ function parseCharacter (character) {
   return char;
 }
 
+function extractEliteSpecialization (character, mode) {
+  return character.specializations[mode]
+    .reduce((acc, spec) => eliteSpecMap[spec.id] || acc, character.profession);
+}
+
 export const selector = createSelector(
   store => store.characters.data[store.characters.selected],
   store => {
@@ -126,7 +143,10 @@ export const selector = createSelector(
     store.specializations.fetching,
   store => store.characters.mode,
   (character, characters, items, skins, specializations, traits, fetchingGw2Data, mode) => ({
-    character,
+    character: character && {
+      ...character,
+      eliteSpecialization: extractEliteSpecialization(character, mode),
+    },
     characters,
     items,
     skins,
