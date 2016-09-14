@@ -10,6 +10,7 @@ import {
 export const FETCH_CHARACTER_RESULT = 'FETCH_CHARACTER_RESULT';
 export const FETCHING_CHARACTER = 'FETCHING_CHARACTER';
 export const SELECT_CHARACTER = 'SELECT_CHARACTER';
+export const SELECT_CHARACTER_MODE = 'SELECT_CHARACTER_MODE';
 
 const fetchingCharacter = (fetching) => ({
   type: FETCHING_CHARACTER,
@@ -104,4 +105,9 @@ export function fetchCharacter (character) {
 export const selectCharacter = (name) => ({
   type: SELECT_CHARACTER,
   payload: name,
+});
+
+export const selectCharacterMode = (mode) => ({
+  type: SELECT_CHARACTER_MODE,
+  payload: mode,
 });

@@ -3,6 +3,7 @@ import {
   FETCH_CHARACTER_RESULT,
   FETCHING_CHARACTER,
   SELECT_CHARACTER,
+  SELECT_CHARACTER_MODE,
 } from './actions';
 
 const eliteSpecMap = {
@@ -186,6 +187,12 @@ export default function reducer (state, action) {
         ...state,
         mode: 'pve',
         selected: action.payload,
+      };
+
+    case SELECT_CHARACTER_MODE:
+      return {
+        ...state,
+        mode: action.payload,
       };
 
     default:
