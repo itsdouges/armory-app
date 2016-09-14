@@ -58,6 +58,7 @@ function calculateDaysToSeconds (days) {
 
 const SHORT_CACHE_FILES = [
   'index.html',
+  'robots.txt',
 ];
 
 Object.freeze(SHORT_CACHE_FILES);
