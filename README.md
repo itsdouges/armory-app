@@ -32,6 +32,6 @@ npm run build
 
 ## Pull Requests
 
-Feel like contributing? Look at the [trello board](https://trello.com/b/qGvDe622/gw2armory-com), or contact me on [reddit](https://www.reddit.com/r/gw2armory) or [twitter](https://twitter.com/itsmadou) to find something you'd like to work on, then make a pull request against the `development` branch.
+Feel like contributing? Look at the [issues](https://github.com/madou/armory-react/issues) tab, or contact me on [reddit](https://www.reddit.com/r/gw2armory) or [twitter](https://twitter.com/itsmadou) to find something you'd like to work on, then make a pull request against the `master` branch.
 
 © 2016 ArenaNet, Michael Dougall, gw2armory.com
