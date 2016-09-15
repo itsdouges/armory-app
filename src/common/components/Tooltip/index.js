@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { selector } from 'features/Gw2/tooltip.reducer';
 
 import ItemTooltip from './Item';
+import SkillTooltip from './Skill';
 import SimpleTooltip from './Simple';
+import Background from './Background';
 
 const Tooltip = ({ tooltip }) => {
   if (!tooltip.show) return null;
@@ -17,9 +19,14 @@ const Tooltip = ({ tooltip }) => {
       content = <ItemTooltip data={tooltip.data} />;
       break;
 
+    case 'trait':
+    case 'skill':
+      content = <SkillTooltip data={tooltip.data} />;
+      break;
+
     case 'simple':
     default:
-      content = <SimpleTooltip data={tooltip.data} />;
+      content = <Background><SimpleTooltip data={tooltip.data} /></Background>;
       break;
   }
 
