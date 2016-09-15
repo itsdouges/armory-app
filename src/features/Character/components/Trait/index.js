@@ -5,7 +5,7 @@ import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
 const Trait = ({ data, className, active }) => (
-  <TooltipTrigger data={data.name}>
+  <TooltipTrigger type="trait" data={data}>
     <div
       className={cx('root', className, { active })}
       style={{ backgroundImage: `url(${data.icon})` }}

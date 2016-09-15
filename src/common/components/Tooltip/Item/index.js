@@ -12,6 +12,7 @@ import { markup } from 'lib/gw2/parse';
 import Gold from '../Gold';
 import Upgrade from '../Upgrade';
 import Infusion from '../Infusion';
+import Background from '../Background';
 
 function buildName (item, skin, upgrades) {
   if (!skin.name) {
@@ -41,14 +42,14 @@ const ItemsTooltip = ({ data: {
   stats: { attributes = {} },
 } }) => {
   if (Object.keys(item).length === 0) {
-    return <SimpleTooltip data={name} />;
+    return <Background><SimpleTooltip data={name} /></Background>;
   }
 
   const itemName = buildName(item, skin, upgrades);
   const isTransmuted = !!skin.name;
 
   return (
-    <div>
+    <Background>
       <SimpleTooltip data="Currently Equipped" />
 
       <div className={styles.itemHeader}>
@@ -121,7 +122,7 @@ const ItemsTooltip = ({ data: {
         {item.rarity !== 'Legendary' &&
           <Gold copper={item.copper} silver={item.silver} gold={item.gold} />}
       </div>
-    </div>
+    </Background>
   );
 };
 
