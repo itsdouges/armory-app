@@ -28,8 +28,29 @@
   margin-bottom: 0.75em;
 }
 
+.pvpContainer {
+  margin: 0 auto;
+  margin-top: 1em;
+}
+
 @media only screen and (min-width: @tablet) {
   .gamesContainer {
     max-width: 1000px;
+  }
+
+  .pvpContainer {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 1em;
+    align-items: flex-start;
+
+    > div {
+      width: 50%;
+    }
+
+    > :first-child {
+      margin-right: 1em;
+    }
   }
 }

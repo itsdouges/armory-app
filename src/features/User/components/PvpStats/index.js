@@ -1,6 +1,5 @@
 import styles from './styles.less';
 import { PropTypes } from 'react';
-import PvpRanking from '../PvpRanking';
 import Card from 'common/components/Card';
 import Redacted from 'common/components/Redacted';
 
@@ -26,12 +25,6 @@ const PvpStats = ({ stats }) => {
 
   return (
     <div className={styles.root}>
-      <PvpRanking
-        rank={stats.pvp_rank}
-        points={stats.pvp_rank_points}
-        rankRollOvers={stats.pvp_rank_rollovers}
-      />
-
       <h3>Pvp stats</h3>
       <Card className={styles.card}>
         <div className={styles.unrankedContainer}>

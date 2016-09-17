@@ -1,15 +1,48 @@
 .root {
-  text-align: center;
   width: 100%;
-  display: inline-block;
-  white-space: normal;
+}
+
+.small {
+  opacity: 0.6;
+  font-size: 0.75em;
+
+  .heroIcon {
+    width: 3.5em;
+    height: 3.5em;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.titleContainer {
+  padding: 0 0.5em;
 }
 
 .title {
-  font-size: 2em;
+  font-family: 'Menomonia', serif;
+  font-size: 1.8em;
 }
 
 .subtitle {
   font-size: 1.2em;
   font-style: italic;
+}
+
+.heroIcon {
+  width: 8.438em;
+  height: 8.438em;
+  margin: 0.46877em;
+  flex-shrink: 0;
+}
+
+.iconContainer {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

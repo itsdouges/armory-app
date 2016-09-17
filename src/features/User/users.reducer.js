@@ -1,4 +1,3 @@
-import { createSelector } from 'reselect';
 import {
   FETCHING_USER,
   FETCHING_USER_RESULT,
@@ -84,15 +83,6 @@ function fetchPvpGamesResult (state, action) {
 
   return newState;
 }
-
-export const selector = createSelector(
-  store => store.users.data[store.users.selected],
-  store => store.pvpSeasons,
-  (user, pvpSeasons) => ({
-    user,
-    pvpSeasons,
-  })
-);
 
 export const defaultState = {
   data: {},

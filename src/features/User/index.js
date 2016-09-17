@@ -1,18 +1,31 @@
+import { Component, PropTypes } from 'react';
+import { createSelector } from 'reselect';
+import { connect } from 'react-redux';
+import Title from 'react-title-component';
+import get from 'lodash/get';
+
 import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
-import { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { selector } from './users.reducer';
 import SocialButtons from 'common/components/SocialButtons';
 import PvpStats from './components/PvpStats';
-import Title from 'react-title-component';
+import PvpRanking from './components/PvpRanking';
 import PvpGame from './components/PvpGame';
+import PvpLeague from './components/PvpSeason';
 
 import {
   fetchUser,
   selectUser,
 } from './actions';
+
+export const selector = createSelector(
+  store => store.users.data[store.users.selected],
+  store => store.pvpSeasons,
+  (user, pvpSeasons) => ({
+    user,
+    pvpSeasons,
+  })
+);
 
 class User extends Component {
   static propTypes = {
@@ -39,14 +52,15 @@ class User extends Component {
   }
 
   render () {
-    const { user, routeParams: { alias } } = this.props;
+    const { user, routeParams: { alias }, pvpSeasons } = this.props;
 
     const pvpGames = (user &&
       user.pvpGames &&
       user.pvpGames.length &&
       user.pvpGames) || [undefined, undefined];
 
-    const pvpStats = user && user.pvpStats;
+    const pvpStats = get(user, 'pvpStats');
+    const pvpStandings = get(user, 'pvpStandings', [undefined]);
 
     return (
       <div className={styles.root}>
@@ -61,6 +75,16 @@ class User extends Component {
           alias={alias}
           items={user && user.characters}
         />
+
+        <div className={styles.pvpContainer}>
+          <PvpRanking
+            rank={get(pvpStats, 'pvp_rank')}
+            points={get(pvpStats, 'pvp_rank_points')}
+            rankRollOvers={get(pvpStats, 'pvp_rank_rollovers')}
+          />
+
+          <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
+        </div>
 
         <PvpStats stats={pvpStats} />
 
