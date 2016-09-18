@@ -6,8 +6,22 @@ import {
 
 } from './parse';
 
+export const readPvpSeasons = (ids) =>
+  get(`${config.gw2.endpoint}v2/pvp/seasons?ids=${ids.join(',')}`, {
+    ignoreAuth: true,
+    cache: true,
+  })
+  .then(({ data }) => data);
+
 export const readPvpSeason = (id) =>
   get(`${config.gw2.endpoint}v2/pvp/seasons/${id}`, {
+    ignoreAuth: true,
+    cache: true,
+  })
+  .then(({ data }) => data);
+
+export const readSkills = (ids) =>
+  get(`${config.gw2.endpoint}v2/skills?ids=${ids.join(',')}`, {
     ignoreAuth: true,
     cache: true,
   })

@@ -1,9 +1,9 @@
 import { get } from 'axios';
 import config from 'env';
 import { browserHistory } from 'react-router';
-import {
-  fetchItems,
-  fetchSkins,
+import actions, {
+  // fetchItems,
+  // fetchSkins,
   fetchSpecializations,
 } from 'features/Gw2/actions';
 
@@ -25,16 +25,12 @@ const fetchCharacterResultSuccess = (name, data) => ({
   },
 });
 
-function filterIdsToFetch (state, { specializations = {}, equipment }) {
+function extractIds ({ specializations = {}, equipment }) {
   const ids = {
     items: [],
     skins: [],
     specializations: [],
   };
-
-  const currentSpecializations = state.specializations;
-  const currentItems = state.items;
-  const currentSkins = state.skins;
 
   Object.keys(specializations).forEach((key) => {
     const mode = specializations[key];
@@ -43,32 +39,20 @@ function filterIdsToFetch (state, { specializations = {}, equipment }) {
         return;
       }
 
-      if (!currentSpecializations.hasOwnProperty(specialization.id) &&
-        ids.specializations.indexOf(specialization.id) === -1) {
-        ids.specializations.push(specialization.id);
-      }
+      ids.specializations.push(specialization.id);
     });
   });
 
   equipment.forEach((item) => {
-    if (item.skin && !currentSkins.hasOwnProperty(item.skin)) {
-      ids.skins.push(item.skin);
-    }
-
-    if (!currentItems.hasOwnProperty(item.id)) {
-      ids.items.push(item.id);
-    }
+    ids.skins.push(item.skin);
+    ids.items.push(item.id);
 
     if (item.upgrades) {
-      ids.items = ids.items.concat(
-        item.upgrades.filter((upgrade) => !currentItems.hasOwnProperty(upgrade))
-      );
+      ids.items = ids.items.concat(item.upgrades);
     }
 
     if (item.infusions) {
-      ids.items = ids.items.concat(
-        item.infusions.filter((infusion) => !currentItems.hasOwnProperty(infusion))
-      );
+      ids.items = ids.items.concat(item.infusions);
     }
   });
 
@@ -76,7 +60,7 @@ function filterIdsToFetch (state, { specializations = {}, equipment }) {
 }
 
 export function fetchCharacter (character) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(fetchingCharacter(true));
 
     return get(`${config.api.endpoint}characters/${character}`)
@@ -84,20 +68,17 @@ export function fetchCharacter (character) {
         dispatch(fetchCharacterResultSuccess(character, data));
         dispatch(fetchingCharacter(false));
 
-        const currentState = getState();
-        const idsForFetching = filterIdsToFetch(currentState, data);
+        const { items, skins, specializations } = extractIds(data);
 
-        if (idsForFetching.items.length) {
-          dispatch(fetchItems(idsForFetching.items));
-        }
+        const skills = Object.keys(data.skills).reduce((acc, key) => {
+          const skillType = data.skills[key];
+          return acc.concat([skillType.elite, skillType.heal]).concat(skillType.utilities);
+        }, []);
 
-        if (idsForFetching.skins.length) {
-          dispatch(fetchSkins(idsForFetching.skins));
-        }
-
-        if (idsForFetching.specializations.length) {
-          dispatch(fetchSpecializations(idsForFetching.specializations));
-        }
+        dispatch(actions.fetchSkills(skills));
+        dispatch(actions.fetchItems(items));
+        dispatch(actions.fetchSkins(skins));
+        dispatch(fetchSpecializations(specializations));
       }, () => browserHistory.replace('/404'));
   };
 }
