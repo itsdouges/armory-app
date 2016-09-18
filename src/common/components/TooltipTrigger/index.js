@@ -1,6 +1,7 @@
 import { PropTypes, Component, cloneElement } from 'react';
 import { connect } from 'react-redux';
 import { showTooltip } from 'features/Gw2/actions';
+import { isSmallScreen } from 'lib/dom';
 
 class TooltipTrigger extends Component {
   static propTypes = {
@@ -10,21 +11,26 @@ class TooltipTrigger extends Component {
     type: PropTypes.string,
   };
 
-  onMouseEnter = () => {
+  showTooltip = () => {
     this.props.dispatch(showTooltip(true, {
       data: this.props.data,
       type: this.props.type,
     }));
   };
 
-  onMouseLeave = () => {
+  hideTooltip = () => {
+    if (isSmallScreen()) {
+      return;
+    }
+
     this.props.dispatch(showTooltip(false));
   };
 
   render () {
     return cloneElement(this.props.children, {
-      onMouseEnter: this.onMouseEnter,
-      onMouseLeave: this.onMouseLeave,
+      onMouseEnter: this.showTooltip,
+      onMouseLeave: this.hideTooltip,
+      onTouchEnd: this.showTooltip,
     });
   }
 }

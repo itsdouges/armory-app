@@ -1,6 +1,8 @@
 import { Component, PropTypes } from 'react';
 import addEvent from 'lib/add-event';
 
+import { isSmallScreen } from 'lib/dom';
+
 export default class MouseFollow extends Component {
   static propTypes = {
     children: PropTypes.any,
@@ -18,15 +20,35 @@ export default class MouseFollow extends Component {
   };
 
   componentDidMount () {
+    if (isSmallScreen()) {
+      // eslint-disable-next-line
+      this.setState({
+        style: {
+          ...this.state.style,
+          opacity: 1,
+          right: 10,
+          bottom: 10,
+          pointerEvents: 'inherit',
+        },
+      });
+
+      return;
+    }
+
     this.removeEvent = addEvent('mousemove', this.onMouseMove);
   }
 
   componentWillUnmount () {
+    if (isSmallScreen()) {
+      return;
+    }
+
     this.removeEvent();
   }
 
   onMouseMove = (event) => {
-    const tooltip = this.refs.tooltip;
+    // eslint-disable-next-line
+    const tooltip = this._tooltip;
 
     const pin = this.calculatePin({ tooltip, mouse: event });
     const style = this.calculateStyle({
@@ -87,6 +109,13 @@ export default class MouseFollow extends Component {
   }
 
   render () {
-    return <div ref="tooltip" style={this.state.style}>{this.props.children}</div>;
+    const { children, ...props } = this.props;
+
+    return (
+      // eslint-disable-next-line
+      <div ref={(c) => this._tooltip = c} style={this.state.style} {...props}>
+        {children}
+      </div>
+    );
   }
 }

@@ -1,12 +1,4 @@
 import { SHOW_TOOLTIP } from './actions';
-import { createSelector } from 'reselect';
-
-export const selector = createSelector(
-  state => state.tooltip,
-  (tooltip) => ({
-    tooltip,
-  })
-);
 
 export const defaultState = {
   show: false,

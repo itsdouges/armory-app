@@ -1,46 +1,65 @@
-import { PropTypes } from 'react';
-import styles from './styles.less';
-import MouseFollow from '../MouseFollow';
+import { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import { selector } from 'features/Gw2/tooltip.reducer';
+import { createSelector } from 'reselect';
 
+import styles from './styles.less';
+
+import { showTooltip } from 'features/Gw2/actions';
+
+import MouseFollow from '../MouseFollow';
 import ItemTooltip from './Item';
 import SkillTooltip from './Skill';
 import SimpleTooltip from './Simple';
 import Background from './Background';
 
-const Tooltip = ({ tooltip }) => {
-  if (!tooltip.show) return null;
+const selector = createSelector(
+  state => state.tooltip,
+  (tooltip) => ({
+    tooltip,
+  })
+);
 
-  let content;
+class Tooltip extends Component {
+  static propTypes = {
+    tooltip: PropTypes.object,
+    dispatch: PropTypes.func,
+  };
 
-  switch (tooltip.type) {
-    case 'items':
-      content = <ItemTooltip data={tooltip.data} />;
-      break;
+  close = () => {
+    this.props.dispatch(showTooltip(false));
+  };
 
-    case 'trait':
-    case 'skill':
-      content = <SkillTooltip data={tooltip.data} />;
-      break;
+  render () {
+    const { tooltip } = this.props;
 
-    case 'simple':
-    default:
-      content = <Background><SimpleTooltip data={tooltip.data} /></Background>;
-      break;
+    if (!tooltip.show) return null;
+
+    let content;
+
+    switch (tooltip.type) {
+      case 'items':
+        content = <ItemTooltip data={tooltip.data} />;
+        break;
+
+      case 'trait':
+      case 'skill':
+        content = <SkillTooltip data={tooltip.data} />;
+        break;
+
+      case 'simple':
+      default:
+        content = <Background><SimpleTooltip data={tooltip.data} /></Background>;
+        break;
+    }
+
+    return (
+      <MouseFollow onTouchEnd={this.close}>
+        <div className={styles.root}>
+          {content}
+        </div>
+      </MouseFollow>
+    );
   }
-
-  return (
-    <MouseFollow>
-      <div className={styles.root}>
-        {content}
-      </div>
-    </MouseFollow>
-  );
-};
-
-Tooltip.propTypes = {
-  tooltip: PropTypes.object,
-};
+}
 
 export default connect(selector)(Tooltip);
