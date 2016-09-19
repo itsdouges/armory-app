@@ -152,7 +152,6 @@ class Character extends Component {
   static propTypes = {
     character: PropTypes.object,
     dispatch: PropTypes.func,
-    routeParams: PropTypes.object,
     characters: PropTypes.array,
     items: PropTypes.object,
     skins: PropTypes.object,
@@ -160,12 +159,14 @@ class Character extends Component {
     specializations: PropTypes.object,
     traits: PropTypes.object,
     mode: PropTypes.oneOf(['pve', 'pvp', 'wvw']),
-    location: PropTypes.object,
     skills: PropTypes.object,
+    routeParams: PropTypes.object,
+    location: PropTypes.object,
   };
 
   static contextTypes = {
     _userAlias: PropTypes.string,
+    router: PropTypes.object,
   };
 
   state = {
@@ -175,6 +176,10 @@ class Character extends Component {
 
   componentWillMount () {
     this.loadCharacter();
+
+    if (this.props.location.query.mode) {
+      this.props.dispatch(selectCharacterMode(this.props.location.query.mode));
+    }
   }
 
   componentDidUpdate (prevProps) {
@@ -203,6 +208,11 @@ class Character extends Component {
 
   setMode (mode) {
     this.props.dispatch(selectCharacterMode(mode));
+
+    this.context.router.replace({
+      pathname: location.pathname,
+      query: { mode },
+    });
   }
 
   loadCharacter () {
