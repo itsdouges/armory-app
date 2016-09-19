@@ -5,6 +5,10 @@ import Card from 'common/components/Card';
 
 /* eslint max-len:0 */
 const news = [{
+  title: 'Skills, Trait Tooltips, and Games Modes',
+  date: '19/09/16',
+  content: 'Character pages now have skills (with tooltips) and trait tooltips available.',
+}, {
   title: 'Forgot Your Password?',
   date: '10/09/16',
   content: 'If you\'ve forgotten your password you can now reset it, you can find it through the login screen.',
@@ -13,7 +17,7 @@ const news = [{
   date: '28/08/16',
   content: 'If you\'re reading this, gw2armory now has a front-page! You\'ll slowly see improvements here. Keep checking back!',
 }, {
-  title: 'Custom Images!!!',
+  title: 'Custom Images',
   date: '27/08/16',
   content: 'You can now change your Avatar and Character Portraits! Go to your settings and character pages respectively to modify them.',
 }, {
