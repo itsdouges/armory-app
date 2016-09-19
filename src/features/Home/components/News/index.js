@@ -9,6 +9,10 @@ const news = [{
   date: '19/09/16',
   content: 'Character pages now have skills (with tooltips) and trait tooltips available.',
 }, {
+  title: 'PvP Season Standings',
+  date: '15/09/16',
+  content: 'Current pvp seasons are now available on user pages, historical pvp seasons coming soon.',
+}, {
   title: 'Forgot Your Password?',
   date: '10/09/16',
   content: 'If you\'ve forgotten your password you can now reset it, you can find it through the login screen.',
