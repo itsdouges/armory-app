@@ -25,14 +25,24 @@ export function generateActions (resourceName, getResource, afterGet) {
     payload: fetching,
   });
 
-  actions[fetchMethodName] = (ids) => (dispatch) => {
+  actions[fetchMethodName] = (ids) => (dispatch, getStore) => {
     if (!ids) {
+      return undefined;
+    }
+
+    const store = getStore();
+
+    const missingIds = ids.filter((id) => id).reduce((acc, id) => (
+      store[resourceName].hasOwnProperty(id) ? acc : acc.concat([id])
+    ), []);
+
+    if (!missingIds.length) {
       return undefined;
     }
 
     dispatch(actions[fetchingMethodName](true));
 
-    return getResource(ids)
+    return getResource(missingIds)
       .then((response) => {
         dispatch(actions[fetchResultMethodName](response));
         dispatch(actions[fetchingMethodName](false));

@@ -1,17 +1,20 @@
 import { get } from 'axios';
 import config from 'env';
-import {
-  mapItemsToObject,
-  mapSkinsToObject,
+import { mapItemsToObject } from './parse';
 
-} from './parse';
+function reduceById (payload) {
+  return payload.reduce((acc, item) => ({
+    ...acc,
+    [item.id]: item,
+  }), {});
+}
 
 export const readPvpSeasons = (ids) =>
   get(`${config.gw2.endpoint}v2/pvp/seasons?ids=${ids.join(',')}`, {
     ignoreAuth: true,
     cache: true,
   })
-  .then(({ data }) => data);
+  .then(({ data }) => reduceById(data));
 
 export const readPvpSeason = (id) =>
   get(`${config.gw2.endpoint}v2/pvp/seasons/${id}`, {
@@ -25,7 +28,7 @@ export const readSkills = (ids) =>
     ignoreAuth: true,
     cache: true,
   })
-  .then(({ data }) => data);
+  .then(({ data }) => reduceById(data));
 
 export const readAllItemIds = () =>
   get(`${config.gw2.endpoint}v2/items`, {
@@ -41,10 +44,7 @@ export const readItems = (ids) => {
     ignoreAuth: true,
     cache: true,
   })
-  .then(({ data }) => {
-    const items = mapItemsToObject(data);
-    return Promise.resolve(items);
-  });
+  .then(({ data }) => mapItemsToObject(data));
 };
 
 export const readSkins = (ids) => {
@@ -54,10 +54,7 @@ export const readSkins = (ids) => {
     ignoreAuth: true,
     cache: true,
   })
-  .then(({ data }) => {
-    const skins = mapSkinsToObject(data);
-    return skins;
-  });
+  .then(({ data }) => reduceById(data));
 };
 
 export const readSpecializations = (ids) => {
@@ -67,10 +64,7 @@ export const readSpecializations = (ids) => {
     ignoreAuth: true,
     cache: true,
   })
-  .then(({ data }) => {
-    const specs = mapSkinsToObject(data);
-    return specs;
-  });
+  .then(({ data }) => reduceById(data));
 };
 
 export const readTraits = (ids) => {
@@ -80,10 +74,7 @@ export const readTraits = (ids) => {
     ignoreAuth: true,
     cache: true,
   })
-  .then(({ data }) => {
-    const mappedTraits = mapSkinsToObject(data);
-    return mappedTraits;
-  });
+  .then(({ data }) => reduceById(data));
 };
 
 export const readGuild = (guid) =>

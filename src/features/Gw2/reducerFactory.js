@@ -1,16 +1,7 @@
 import { clearIfPastStoreInterval, set, get } from 'lib/local-storage';
 import { generateActions } from './actions';
 
-
-function reduceById (payload) {
-  return payload.reduce((acc, item) => ({
-    ...acc,
-    [item.id]: item,
-  }), {});
-}
-
 export default function gw2ReducerFactory (resourceName, getResource, {
-  reduceResultsById,
   afterGet,
 } = {}) {
   const LS_KEY = `LOCAL-${resourceName}-DATA`;
@@ -30,7 +21,7 @@ export default function gw2ReducerFactory (resourceName, getResource, {
         case result: {
           const newState = {
             ...state,
-            ...reduceResultsById ? reduceById(action.payload) : action.payload,
+            ...action.payload,
           };
 
           set(LS_KEY, JSON.stringify(newState));
@@ -42,6 +33,9 @@ export default function gw2ReducerFactory (resourceName, getResource, {
           return undefined;
       }
     },
-    defaultState: JSON.parse(get(LS_KEY)) || {},
+    defaultState: {
+      ...JSON.parse(get(LS_KEY)),
+      fetching: false,
+    },
   };
 }
