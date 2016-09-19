@@ -1,6 +1,7 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import Head from 'common/components/Head';
 
 import styles from './styles.less';
 
@@ -9,7 +10,6 @@ import Card from 'common/components/Card';
 import Button from 'common/components/Button';
 import PasswordForm from 'common/components/PasswordForm';
 import Message from 'common/components/Message';
-import Title from 'react-title-component';
 
 import {
   register,
@@ -85,7 +85,7 @@ class Join extends Component {
   render () {
     return (
       <span className={styles.root}>
-        <Title render={(title) => `Join${title}`} />
+        <Head title="Join" />
 
         <h2>Join</h2>
         <Card size="medium">

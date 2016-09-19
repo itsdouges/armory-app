@@ -7,4 +7,7 @@ module.exports = {
   gw2: {
     endpoint: 'https://api.guildwars2.com/',
   },
+  meta: {
+    title: 'Armor Up',
+  },
 };

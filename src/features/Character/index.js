@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
-import Title from 'react-title-component';
+import Head from 'common/components/Head';
 import cx from 'classnames';
 
 import { selector } from './characters.reducer';
@@ -249,9 +249,9 @@ class Character extends Component {
     const { editMode } = this.state;
 
     /* eslint no-underscore-dangle:0 */
-    const ownCharacter = character && character.alias === this.context._userAlias;
     const attributes = calculateAttributes(character, items);
 
+    const ownCharacter = get(character, 'alias') === this.context._userAlias;
     const equipment = get(character, 'equipment', []);
     const profession = get(character, 'profession');
     const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]);
@@ -265,7 +265,7 @@ class Character extends Component {
 
     return (
       <div className={styles.root}>
-        <Title render={(title) => `${routeParams.character}${title}`} />
+        <Head title={routeParams.character} />
 
         <div className={styles.inner}>
           {ownCharacter &&

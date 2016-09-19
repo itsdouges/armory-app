@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Title from 'react-title-component';
+import Head from 'common/components/Head';
 
 import styles from './styles.less';
 
@@ -48,7 +48,7 @@ export default class ForgotMyPassword extends Component {
 
     return (
       <span className={styles.root}>
-        <Title render={(title) => `Forgot My Password${title}`} />
+        <Head title="Forgot My Password" />
 
         <h2>Forgot My Password</h2>
         <Card size="small">

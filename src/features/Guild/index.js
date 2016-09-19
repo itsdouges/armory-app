@@ -1,11 +1,11 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Head from 'common/components/Head';
 
 import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
-import Title from 'react-title-component';
 
 import {
   selectGuild,
@@ -32,7 +32,7 @@ class Guild extends Component {
 
     return (
       <div className={styles.root}>
-        <Title render={(title) => `${guildName}${title}`} />
+        <Head title={guildName} />
 
         <div className={styles.inner}>
           <ContentCard className={styles.card} content={guild} size="big" type="guilds" />
