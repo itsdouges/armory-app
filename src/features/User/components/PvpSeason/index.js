@@ -56,7 +56,7 @@ const PvpLeague = ({ standings, seasons }) => {
 
 PvpLeague.propTypes = {
   standings: PropTypes.array,
-  seasons: PropTypes.object,
+  seasons: PropTypes.array,
 };
 
 export default PvpLeague;

@@ -1,11 +1,7 @@
 import { get } from 'axios';
 import config from 'env';
 import { browserHistory } from 'react-router';
-import actions, {
-  // fetchItems,
-  // fetchSkins,
-  fetchSpecializations,
-} from 'features/Gw2/actions';
+import actions from 'features/Gw2/actions';
 
 export const FETCH_CHARACTER_RESULT = 'FETCH_CHARACTER_RESULT';
 export const FETCHING_CHARACTER = 'FETCHING_CHARACTER';
@@ -78,7 +74,7 @@ export function fetchCharacter (character) {
         dispatch(actions.fetchSkills(skills));
         dispatch(actions.fetchItems(items));
         dispatch(actions.fetchSkins(skins));
-        dispatch(fetchSpecializations(specializations));
+        dispatch(actions.fetchSpecializations(specializations));
       }, () => browserHistory.replace('/404'));
   };
 }

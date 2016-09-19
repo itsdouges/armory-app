@@ -1,36 +1,23 @@
-import { clearIfPastStoreInterval, set, get } from 'lib/local-storage';
-import {
-  FETCHING_SPECIALIZATIONS,
-  FETCH_SPECIALIZATIONS_RESULT,
-} from './actions';
+import { readSpecializations } from 'lib/gw2';
+import createReducer from './reducerFactory';
+import actions from './actions';
 
-const LOCAL_SPECS_DATA = 'LOCAL_SPECS_DATA';
+const { defaultState, reducer } = createReducer('specializations', readSpecializations, {
+  afterGet: (dispatch, specializations) => {
+    let traitsToAdd = [];
 
-clearIfPastStoreInterval(LOCAL_SPECS_DATA);
+    Object.keys(specializations).forEach((key) => {
+      const speciailization = specializations[key];
 
-export const defaultState = JSON.parse(get(LOCAL_SPECS_DATA)) || {};
+      traitsToAdd = traitsToAdd.concat(
+        speciailization.major_traits,
+        speciailization.minor_traits
+      );
+    });
 
-export default function reducer (state, action) {
-  switch (action.type) {
-    case FETCHING_SPECIALIZATIONS:
-      return {
-        ...state,
-        fetching: action.payload,
-      };
+    dispatch(actions.fetchTraits(traitsToAdd));
+  },
+});
 
-    case FETCH_SPECIALIZATIONS_RESULT: {
-      const newState = {
-        ...state,
-        ...action.payload,
-      };
-
-
-      set(LOCAL_SPECS_DATA, JSON.stringify(newState));
-
-      return newState;
-    }
-
-    default:
-      return undefined;
-  }
-}
+export { defaultState };
+export default reducer;
