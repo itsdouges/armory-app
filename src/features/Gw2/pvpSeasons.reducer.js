@@ -1,28 +1,7 @@
-import { clearIfPastStoreInterval, set, get } from 'lib/local-storage';
-import {
-  FETCH_PVP_SEASON_RESULT,
-} from './actions';
+import { readPvpSeasons } from 'lib/gw2';
+import createReducer from './reducerFactory';
 
-const LOCAL_PVP_SEASON_DATA = 'LOCAL_SKINS_DATA';
+const { reducer, defaultState } = createReducer('pvpSeasons', readPvpSeasons);
 
-clearIfPastStoreInterval(LOCAL_PVP_SEASON_DATA);
-
-export const defaultState = JSON.parse(get(LOCAL_PVP_SEASON_DATA)) || {};
-
-export default function reducer (state, action) {
-  switch (action.type) {
-    case FETCH_PVP_SEASON_RESULT: {
-      const newState = {
-        ...state,
-        [action.payload.id]: action.payload,
-      };
-
-      set(LOCAL_PVP_SEASON_DATA, JSON.stringify(newState));
-
-      return newState;
-    }
-
-    default:
-      return undefined;
-  }
-}
+export { defaultState };
+export default reducer;

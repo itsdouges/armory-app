@@ -2,6 +2,7 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import includes from 'lodash/includes';
+import get from 'lodash/get';
 import Title from 'react-title-component';
 import cx from 'classnames';
 
@@ -24,6 +25,7 @@ import Portrait from './components/Portrait';
 import Attribute from './components/Attribute';
 import CraftingBar from './components/CraftingBar';
 import Item from './components/Item';
+import Skills from './components/Skills';
 
 import styles from './styles.less';
 
@@ -159,6 +161,7 @@ class Character extends Component {
     traits: PropTypes.object,
     mode: PropTypes.oneOf(['pve', 'pvp', 'wvw']),
     location: PropTypes.object,
+    skills: PropTypes.object,
   };
 
   static contextTypes = {
@@ -226,20 +229,24 @@ class Character extends Component {
       characters,
       character,
       mode,
+      skills,
+      items,
+      skins,
+      traits,
+      specializations,
     } = this.props;
 
     const { editMode } = this.state;
 
     /* eslint no-underscore-dangle:0 */
     const ownCharacter = character && character.alias === this.context._userAlias;
-    const safeCharacter = character || {};
-    const equipment = (character && character.equipment) || [];
-    const attributes = calculateAttributes(character, this.props.items);
-    const specializations = (character && character.specializations) || {
-      [mode]: [{}, {}, {}],
-    };
+    const attributes = calculateAttributes(character, items);
 
-    const crafting = (character && character.crafting) || [{}, {}, {}];
+    const equipment = get(character, 'equipment', []);
+    const profession = get(character, 'profession');
+    const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]);
+    const characterSkills = get(character, `skills[${mode}]`, {});
+    const crafting = get(character, 'crafting', [{}, {}, {}]);
     const guild = character && {
       name: character.guild_name,
       tag: character.guild_tag,
@@ -270,13 +277,13 @@ class Character extends Component {
                 return (
                   <Item
                     {...item}
-                    hide={includes(item.hideForClasses, safeCharacter.profession)}
+                    hide={includes(item.hideForClasses, profession)}
                     key={item.key}
                     upgradeCounts={equip.upgradeCounts}
                     upgrades={this.getItems(equip.upgrades)}
                     infusions={this.getItems(equip.infusions)}
-                    item={this.props.items[equip.id]}
-                    skin={this.props.skins[equip.skin]}
+                    item={items[equip.id]}
+                    skin={skins[equip.skin]}
                     stats={equip.stats}
                   />
                 );
@@ -328,13 +335,13 @@ class Character extends Component {
                 return (
                   <Item
                     {...item}
-                    hide={includes(item.hideForClasses, safeCharacter.profession)}
+                    hide={includes(item.hideForClasses, profession)}
                     key={item.key}
                     upgradeCounts={equip.upgradeCounts}
                     upgrades={this.getItems(equip.upgrades)}
                     infusions={this.getItems(equip.infusions)}
-                    item={this.props.items[equip.id]}
-                    skin={this.props.skins[equip.skin]}
+                    item={items[equip.id]}
+                    skin={skins[equip.skin]}
                     stats={equip.stats}
                   />
                 );
@@ -348,14 +355,16 @@ class Character extends Component {
           </div>
         </div>
 
+        <Skills skills={skills} characterSkills={characterSkills} />
+
         <div className={styles.specializationContainer}>
           <div className={styles.brushStrokeContainer}>
-            {specializations[mode].map((data, index) =>
+            {characterSpecializations.map((data, index) =>
               data && <Specialization
                 key={(data.id) || index}
                 data={data}
-                specializations={this.props.specializations}
-                traits={this.props.traits}
+                specializations={specializations}
+                traits={traits}
               />)}
           </div>
         </div>

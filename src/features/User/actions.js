@@ -1,6 +1,6 @@
 import { get } from 'axios';
 import config from 'env';
-import { fetchPvpSeason } from 'features/Gw2/actions';
+import actions from 'features/Gw2/actions';
 import { browserHistory } from 'react-router';
 
 export const FETCHING_USER = 'FETCHING_USER';
@@ -88,12 +88,11 @@ export const fetchPvpGames = (alias) => (dispatch) =>
 
 export const fetchPvpStandings = (alias) => (dispatch) =>
   get(`${config.api.endpoint}users/${alias}/pvp/standings`)
-  .then((response) => {
-    const standings = response.data;
+  .then(({ data }) => {
+    dispatch(fetchPvpStandingsSuccess(alias, data));
 
-    standings.forEach((standing) => dispatch(fetchPvpSeason(standing.season_id)));
-
-    dispatch(fetchPvpStandingsSuccess(alias, standings));
+    const ids = data.reduce((acc, standing) => acc.concat([standing.season_id]), []);
+    dispatch(actions.fetchPvpSeasons(ids));
   });
 
 export const fetchUser = (alias) => (dispatch) => {

@@ -3,6 +3,8 @@ import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import Title from 'react-title-component';
 import get from 'lodash/get';
+import isObject from 'lodash/isObject';
+import filter from 'lodash/filter';
 
 import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
@@ -20,7 +22,7 @@ import {
 
 export const selector = createSelector(
   store => store.users.data[store.users.selected],
-  store => store.pvpSeasons,
+  store => filter(store.pvpSeasons, ((season) => isObject(season))),
   (user, pvpSeasons) => ({
     user,
     pvpSeasons,
@@ -101,7 +103,7 @@ class User extends Component {
 
 User.propTypes = {
   user: PropTypes.object,
-  pvpSeasons: PropTypes.object,
+  pvpSeasons: PropTypes.array,
 };
 
 export default connect(selector)(User);

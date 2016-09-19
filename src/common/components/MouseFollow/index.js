@@ -70,7 +70,7 @@ export default class MouseFollow extends Component {
     let { clientX: x, clientY: y } = mouse;
 
     if (pin.pinRight) {
-      x = window.innerWidth - tooltip.offsetWidth - 9;
+      x = window.innerWidth - tooltip.offsetWidth - 19;
     }
 
     if (pin.pinBottom) {

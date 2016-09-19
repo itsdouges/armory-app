@@ -1,35 +1,7 @@
-import { clearIfPastStoreInterval, set, get } from 'lib/local-storage';
-import {
-  FETCHING_ITEMS,
-  FETCH_ITEMS_RESULT,
-} from './actions';
+import { readItems } from 'lib/gw2';
+import createReducer from './reducerFactory';
 
-const LOCAL_ITEMS_DATA = 'LOCAL_ITEMS_DATA';
+const { defaultState, reducer } = createReducer('items', readItems);
 
-clearIfPastStoreInterval(LOCAL_ITEMS_DATA);
-
-export const defaultState = JSON.parse(get(LOCAL_ITEMS_DATA)) || {};
-
-export default function reducer (state, action) {
-  switch (action.type) {
-    case FETCHING_ITEMS:
-      return {
-        ...state,
-        fetching: action.payload,
-      };
-
-    case FETCH_ITEMS_RESULT: {
-      const newState = {
-        ...state,
-        ...action.payload,
-      };
-
-      set(LOCAL_ITEMS_DATA, JSON.stringify(newState));
-
-      return newState;
-    }
-
-    default:
-      return undefined;
-  }
-}
+export { defaultState };
+export default reducer;

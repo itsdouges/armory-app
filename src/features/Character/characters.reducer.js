@@ -143,7 +143,9 @@ export const selector = createSelector(
     store.traits.fetching ||
     store.specializations.fetching,
   store => store.characters.mode,
-  (character, characters, items, skins, specializations, traits, fetchingGw2Data, mode) => ({
+  store => store.skills,
+  // eslint-disable-next-line
+  (character, characters, items, skins, specializations, traits, fetchingGw2Data, mode, skills) => ({
     character: character && {
       ...character,
       eliteSpecialization: extractEliteSpecialization(character, mode),
@@ -155,6 +157,7 @@ export const selector = createSelector(
     traits,
     fetchingGw2Data,
     mode,
+    skills,
   })
 );
 

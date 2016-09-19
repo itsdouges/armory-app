@@ -4,22 +4,21 @@
   position: absolute;
   top: 15%;
   right: 0;
-  transform: translate3d(10%, 0, 0);
-  transition: transform 0.2s;
-  background: #fff;
-  composes: low from 'common/styles/box-shadow.less';
-
-  &:hover {
-    transform: translate3d(0, 0, 0);
-  }
+  overflow: hidden;
 }
 
 .icon {
   cursor: pointer;
   opacity: 0.7;
+  composes: low from 'common/styles/box-shadow.less';
+  background-color: #fff;
+  transition: transform 0.2s;
+  transform: translate3d(10%, 0, 0);
 
+  &:focus,
   &:hover {
     opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
