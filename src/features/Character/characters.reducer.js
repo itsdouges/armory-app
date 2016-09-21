@@ -1,4 +1,6 @@
+import get from 'lodash/get';
 import { createSelector } from 'reselect';
+
 import {
   FETCH_CHARACTER_RESULT,
   FETCHING_CHARACTER,
@@ -124,7 +126,7 @@ function parseCharacter (character) {
 }
 
 function extractEliteSpecialization (character, mode) {
-  return character.specializations[mode]
+  return get(character, `specializations[${mode}]`, [])
     .reduce((acc, spec) => (spec && eliteSpecMap[spec.id]) || acc, character.profession);
 }
 
