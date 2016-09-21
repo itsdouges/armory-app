@@ -1,5 +1,7 @@
 const argv = require('yargs').argv;
 const s3 = require('s3');
+const http = require('http');
+const fs = require('fs');
 
 const ENVIRONMENT = argv.env;
 const ACCESS_KEY_ID = process.env.ACCESS_KEY_ID;
@@ -49,16 +51,28 @@ function deployProd () {
 
   const client = getS3Client();
 
-  sync(client, 'gw2armory.com', './dist/');
+  downloadSitemap(() => sync(client, 'gw2armory.com', './dist/'));
 }
 
 function calculateDaysToSeconds (days) {
   return 3600 * 24 * days;
 }
 
+function downloadSitemap (cb) {
+  console.log('Downloading prod sitemap.xml');
+
+  const file = fs.createWriteStream('./dist/sitemap.xml');
+  http.get('http://api.gw2armory.com/sitemap.xml', (response) => {
+    response.pipe(file);
+    console.log('Downloaded!');
+    cb();
+  });
+}
+
 const SHORT_CACHE_FILES = [
   'index.html',
   'robots.txt',
+  'sitemap.xml',
 ];
 
 Object.freeze(SHORT_CACHE_FILES);
