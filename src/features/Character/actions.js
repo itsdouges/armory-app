@@ -1,6 +1,8 @@
-import { get } from 'axios';
+import axios from 'axios';
 import config from 'env';
 import { browserHistory } from 'react-router';
+import get from 'lodash/get';
+
 import actions from 'features/Gw2/actions';
 
 export const FETCH_CHARACTER_RESULT = 'FETCH_CHARACTER_RESULT';
@@ -59,14 +61,14 @@ export function fetchCharacter (character) {
   return (dispatch) => {
     dispatch(fetchingCharacter(true));
 
-    return get(`${config.api.endpoint}characters/${character}`)
+    return axios.get(`${config.api.endpoint}characters/${character}`)
       .then(({ data }) => {
         dispatch(fetchCharacterResultSuccess(character, data));
         dispatch(fetchingCharacter(false));
 
         const { items, skins, specializations } = extractIds(data);
 
-        const skills = Object.keys(data.skills).reduce((acc, key) => {
+        const skills = Object.keys(get(data, 'skills', {})).reduce((acc, key) => {
           const skillType = data.skills[key];
           return acc.concat([skillType.elite, skillType.heal]).concat(skillType.utilities);
         }, []);
