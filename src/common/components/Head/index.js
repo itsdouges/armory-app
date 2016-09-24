@@ -12,10 +12,12 @@ const Head = ({
   image = defaultImage,
   ...extraProps,
 }) => {
+  const fullTitle = `${title} | Guild Wars 2 Armory`;
+
   const props = {
-    title,
+    title: fullTitle,
     meta: [
-      { name: 'og:title', content: title },
+      { name: 'og:title', content: fullTitle },
       { name: 'description', content: description },
       { name: 'og:description', content: description },
       { name: 'og:image', content: image },

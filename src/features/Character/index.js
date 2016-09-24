@@ -29,6 +29,11 @@ import Skills from './components/Skills';
 
 import styles from './styles.less';
 
+function buildDescription (character = {}) {
+  // eslint-disable-next-line
+  return `${character.name} is a level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
+}
+
 const leftItems = [
   {
     name: 'Headgear',
@@ -265,7 +270,10 @@ class Character extends Component {
 
     return (
       <div className={styles.root}>
-        <Head title={routeParams.character} />
+        <Head
+          title={routeParams.character}
+          description={buildDescription(character)}
+        />
 
         <div className={styles.inner}>
           {ownCharacter &&

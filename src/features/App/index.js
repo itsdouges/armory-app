@@ -48,7 +48,7 @@ class App extends Component {
       <span>
         <Gw2ApiHealth />
         <div className={styles.app}>
-          <Head titleTemplate="%s | Guild Wars 2 Armory" />
+          <Head />
 
           <Header
             simple={this.state.simpleHeader}
