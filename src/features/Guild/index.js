@@ -28,11 +28,11 @@ class Guild extends Component {
   }
 
   render () {
-    const { guild, routeParams: { guildName } } = this.props;
+    const { guild = { tag: '...' }, routeParams: { guildName } } = this.props;
 
     return (
       <div className={styles.root}>
-        <Head title={guildName} />
+        <Head title={`${guildName} [${guild.tag}]`} />
 
         <div className={styles.inner}>
           <ContentCard className={styles.card} content={guild} size="big" type="guilds" />

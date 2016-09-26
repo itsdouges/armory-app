@@ -271,7 +271,7 @@ class Character extends Component {
     return (
       <div className={styles.root}>
         <Head
-          title={routeParams.character}
+          title={`${routeParams.character} - ${alias}`}
           description={buildDescription(character)}
         />
 

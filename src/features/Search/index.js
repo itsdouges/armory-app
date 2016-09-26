@@ -119,7 +119,7 @@ export default class Search extends Component {
 
     return (
       <div className={styles.root}>
-        <Head title={term} />
+        <Head title="Search" />
 
         <Message size="big" className={styles.message}>
           <span>Search results for <strong><i>{term}</i></strong>...</span>
