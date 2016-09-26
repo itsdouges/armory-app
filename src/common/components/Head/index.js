@@ -8,7 +8,7 @@ const Head = ({
   description,
   title = config.meta.title,
   canonical = location.href,
-  type = 'Article',
+  type = 'website',
   image = defaultImage,
   ...extraProps,
 }) => {

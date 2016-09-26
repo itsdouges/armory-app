@@ -1,11 +1,16 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8" />
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="website" property="og:type" />
+    <meta content="<%= htmlWebpackPlugin.options.description %>" property="og:description" />
+    <meta content="<%= htmlWebpackPlugin.options.description %>" name="description" />
+    <meta content="https://gw2armory.com<%= require('./assets/images/logo.png') %>" property="og:image" />
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="shortcut icon" href="<%= require('./assets/images/favicons/favicon.ico') %>" />
     <link rel="icon" type="image/png" href="<%= require('./assets/images/favicons/favicon-16.png') %>" sizes="16x16" />
     <link rel="icon" type="image/png" href="<%= require('./assets/images/favicons/favicon-32.png') %>" sizes="32x32" />
