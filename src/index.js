@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'airbnb-js-shims';
 
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
