@@ -1,5 +1,5 @@
 import { get } from 'axios';
-import config from 'env';
+import config from 'config';
 import { Component } from 'react';
 import styles from './styles.less';
 

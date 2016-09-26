@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const config = require('../src/env/default');
+const config = require('../src/config/default');
 
 module.exports = {
   devtool: 'cheap-module-source-map',

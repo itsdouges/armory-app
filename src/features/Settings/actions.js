@@ -1,5 +1,5 @@
 import { get, put, post, delete as del } from 'axios';
-import config from 'env';
+import config from 'config';
 
 export const FETCHING_GW2_TOKENS = 'FETCHING_GW2_TOKENS';
 export const FETCH_GW2_TOKEN_RESULT = 'FETCH_GW2_TOKEN_RESULT';

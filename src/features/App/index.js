@@ -1,7 +1,8 @@
 import { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import Title from 'react-title-component';
+
+import Head from 'common/components/Head';
 
 import 'normalize.css';
 import 'assets/fonts/menomonia.css';
@@ -47,7 +48,7 @@ class App extends Component {
       <span>
         <Gw2ApiHealth />
         <div className={styles.app}>
-          <Title render=" | Guild Wars 2 Armory" />
+          <Head />
 
           <Header
             simple={this.state.simpleHeader}

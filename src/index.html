@@ -1,16 +1,23 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="<%= htmlWebpackPlugin.options.description %>" />
-    <meta property="og:image" content="https://gw2armory.com<%= require('./assets/images/logo.png') %>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="<%= require('./favicon.ico') %>">
+
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="website" property="og:type" data-react-helmet="true" />
+    <meta content="<%= htmlWebpackPlugin.options.description %>" property="og:description" data-react-helmet="true" />
+    <meta content="<%= htmlWebpackPlugin.options.description %>" name="description" data-react-helmet="true" />
+    <meta content="https://gw2armory.com<%= require('./assets/images/logo.png') %>" property="og:image" data-react-helmet="true" />
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="shortcut icon" href="<%= require('./assets/images/favicons/favicon.ico') %>" />
+    <link rel="icon" type="image/png" href="<%= require('./assets/images/favicons/favicon-16.png') %>" sizes="16x16" />
+    <link rel="icon" type="image/png" href="<%= require('./assets/images/favicons/favicon-32.png') %>" sizes="32x32" />
+    <link rel="icon" type="image/png" href="<%= require('./assets/images/favicons/favicon-96.png') %>" sizes="96x96" />
+    <link rel="icon" type="image/png" href="<%= require('./assets/images/favicons/favicon-192.png') %>" sizes="192x192" />
+    <link rel="apple-touch-icon" href="<%= require('./assets/images/favicons/appIcon.png') %>" />
+    <link rel="android-touch-icon" href="<%= require('./assets/images/favicons/appIcon.png') %>" />
   </head>
   <body>
     <span id="root"></span>

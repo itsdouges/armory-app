@@ -1,8 +1,8 @@
-import Title from 'react-title-component';
+import Head from 'common/components/Head';
 
 const NotFound = () => (
   <div>
-    <Title render={(title) => `Uh Oh!${title}`} />
+    <Head title="Uh Oh!" />
     <h2>Not Found :-(</h2>
   </div>
 );

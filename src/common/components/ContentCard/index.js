@@ -1,6 +1,6 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
-import config from 'env';
+import config from 'config';
 import classnames from 'classnames/bind';
 import Placeholder from './placeholder';
 const cx = classnames.bind(styles);

@@ -1,7 +1,7 @@
 import { get, post } from 'axios';
 
 import { fetchToken } from 'features/Login/actions';
-import config from 'env';
+import config from 'config';
 
 export const REGISTERING_USER = 'REGISTERING_USER';
 export const REGISTER_USER_RESULT = 'REGISTER_USER_RESULT';

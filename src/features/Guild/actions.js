@@ -1,5 +1,5 @@
 import { get } from 'axios';
-import config from 'env';
+import config from 'config';
 import { browserHistory } from 'react-router';
 
 export const FETCHING_GUILD = 'FETCHING_GUILD';

@@ -1,5 +1,5 @@
 import { get } from 'axios';
-import config from 'env';
+import config from 'config';
 import actions from 'features/Gw2/actions';
 import { browserHistory } from 'react-router';
 

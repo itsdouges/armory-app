@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
-import Title from 'react-title-component';
+import Head from 'common/components/Head';
 import cx from 'classnames';
 
 import { selector } from './characters.reducer';
@@ -28,6 +28,11 @@ import Item from './components/Item';
 import Skills from './components/Skills';
 
 import styles from './styles.less';
+
+function buildDescription (character = {}) {
+  // eslint-disable-next-line
+  return `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
+}
 
 const leftItems = [
   {
@@ -249,9 +254,9 @@ class Character extends Component {
     const { editMode } = this.state;
 
     /* eslint no-underscore-dangle:0 */
-    const ownCharacter = character && character.alias === this.context._userAlias;
     const attributes = calculateAttributes(character, items);
 
+    const ownCharacter = get(character, 'alias') === this.context._userAlias;
     const equipment = get(character, 'equipment', []);
     const profession = get(character, 'profession');
     const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]);
@@ -265,7 +270,10 @@ class Character extends Component {
 
     return (
       <div className={styles.root}>
-        <Title render={(title) => `${routeParams.character}${title}`} />
+        <Head
+          title={`${routeParams.character} - ${alias}`}
+          description={buildDescription(character)}
+        />
 
         <div className={styles.inner}>
           {ownCharacter &&

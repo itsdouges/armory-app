@@ -1,5 +1,5 @@
 import axios from 'axios';
-import env from 'env';
+import env from 'config';
 
 export function setApiToken (token) {
   const id = axios.interceptors.request.use((config) => {

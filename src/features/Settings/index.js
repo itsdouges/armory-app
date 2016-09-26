@@ -5,7 +5,7 @@ import ApiTokens from './components/ApiTokens';
 import ChangePassword from './components/ChangePassword';
 import debounce from 'lodash/debounce';
 import { browserHistory } from 'react-router';
-import Title from 'react-title-component';
+import Head from 'common/components/Head';
 
 import styles from './styles.less';
 import ImageUpload from 'common/components/ImageUpload';
@@ -92,7 +92,8 @@ class Settings extends Component {
 
     return (
       <span>
-        <Title render={(title) => `Settings${title}`} />
+        <Head title="Settings" />
+
         <ImageUpload
           hintText={<span>Change your avatar<br />128 x 128</span>}
           uploadName="avatar"

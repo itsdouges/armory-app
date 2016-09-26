@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
 import classnames from 'classnames/bind';
-import config from 'env';
+import config from 'config';
 
 const cx = classnames.bind(styles);
 

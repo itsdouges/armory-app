@@ -5,7 +5,7 @@ import Textbox from 'common/components/Textbox';
 import Button from 'common/components/Button';
 import Message from 'common/components/Message';
 
-import config from 'env';
+import config from 'config';
 import styles from '../../styles.less';
 
 export default class Start extends Component {

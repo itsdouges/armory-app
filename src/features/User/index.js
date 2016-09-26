@@ -1,7 +1,7 @@
 import { Component, PropTypes } from 'react';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
-import Title from 'react-title-component';
+import Head from 'common/components/Head';
 import get from 'lodash/get';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
@@ -66,7 +66,7 @@ class User extends Component {
 
     return (
       <div className={styles.root}>
-        <Title render={(title) => `${alias}${title}`} />
+        <Head title={alias} />
 
         <div className={styles.inner}>
           <ContentCard className={styles.card} content={user} size="big" type="users" />

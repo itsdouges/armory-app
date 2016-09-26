@@ -1,12 +1,12 @@
 import { Component, PropTypes } from 'react';
 import { get } from 'axios';
 import { Link } from 'react-router';
+import Head from 'common/components/Head';
 
-import config from 'env';
+import config from 'config';
 import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
 import SocialButtons from 'common/components/SocialButtons';
-import Title from 'react-title-component';
 import Message from 'common/components/Message';
 import ProgressIcon from 'common/components/Icon/Progress';
 
@@ -119,7 +119,7 @@ export default class Search extends Component {
 
     return (
       <div className={styles.root}>
-        <Title render={(title) => `${term}${title}`} />
+        <Head title="Search" />
 
         <Message size="big" className={styles.message}>
           <span>Search results for <strong><i>{term}</i></strong>...</span>

@@ -1,4 +1,4 @@
-import Title from 'react-title-component';
+import Head from 'common/components/Head';
 
 import styles from './styles.less';
 import heroImage from 'assets/images/logo.png';
@@ -9,7 +9,7 @@ import Introduction from './components/Introduction';
 
 const Home = () => (
   <div className={styles.root}>
-    <Title render={(title) => `Armor Up${title}`} />
+    <Head title="Armor Up" />
 
     <Container>
       <div className={styles.heroImageContainer}>

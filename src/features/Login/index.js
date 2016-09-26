@@ -1,10 +1,10 @@
 import { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import Head from 'common/components/Head';
 
 import styles from './styles.less';
 
-import Title from 'react-title-component';
 import Textbox from 'common/components/Textbox';
 import Card from 'common/components/Card';
 import Message from 'common/components/Message';
@@ -62,7 +62,7 @@ class Login extends Component {
 
     return (
       <span className={styles.root}>
-        <Title render={(title) => `Login${title}`} />
+        <Head title="Login" />
 
         <h2>Login</h2>
         <Card size="small">
