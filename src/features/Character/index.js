@@ -207,6 +207,10 @@ class Character extends Component {
     this.setMode('pve');
   };
 
+  setPvp = () => {
+    this.setMode('pvp');
+  };
+
   setWvw = () => {
     this.setMode('wvw');
   };
@@ -323,6 +327,15 @@ class Character extends Component {
                       name="pve-icon.png"
                       onClick={this.setPve}
                       className={cx(styles.modeIcon, mode === 'pve' && styles.active)}
+                    />
+                  </TooltipTrigger>
+
+                  <TooltipTrigger data="PvP">
+                    <Icon
+                      size="medium"
+                      name="pvp-icon.png"
+                      onClick={this.setPvp}
+                      className={cx(styles.modeIcon, mode === 'pvp' && styles.active)}
                     />
                   </TooltipTrigger>
 
