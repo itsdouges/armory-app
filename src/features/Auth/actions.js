@@ -1,5 +1,5 @@
 import { get } from 'axios';
-import config from 'env';
+import config from 'config';
 import { setApiToken } from 'lib/http';
 
 export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';

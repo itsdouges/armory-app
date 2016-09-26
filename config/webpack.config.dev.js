@@ -3,7 +3,7 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
-const config = require('../src/env/default');
+const config = require('../src/config/default');
 
 module.exports = {
   devtool: 'eval',

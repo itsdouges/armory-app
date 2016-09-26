@@ -9,7 +9,7 @@ import Message from 'common/components/Message';
 
 import { validatePasswords } from 'features/Join/actions';
 
-import config from 'env';
+import config from 'config';
 import styles from '../../styles.less';
 
 export default class Finish extends Component {

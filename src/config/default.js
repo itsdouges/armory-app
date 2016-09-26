@@ -10,4 +10,5 @@ module.exports = {
   meta: {
     title: 'Armor Up',
   },
+  titleSuffix: ' | Guild Wars 2 Armory',
 };

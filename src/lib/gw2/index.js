@@ -1,5 +1,5 @@
 import { get } from 'axios';
-import config from 'env';
+import config from 'config';
 import { mapItemsToObject } from './parse';
 
 function reduceById (payload) {

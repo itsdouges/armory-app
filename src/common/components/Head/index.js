@@ -1,6 +1,6 @@
 import { PropTypes } from 'react';
 import Helmet from 'react-helmet';
-import config from 'env';
+import config from 'config';
 
 import defaultImage from 'assets/images/logo.png';
 
@@ -12,7 +12,7 @@ const Head = ({
   image = defaultImage,
   ...extraProps,
 }) => {
-  const fullTitle = `${title} | Guild Wars 2 Armory`;
+  const fullTitle = `${title}${config.titleSuffix}`;
 
   const props = {
     title: fullTitle,
@@ -20,7 +20,7 @@ const Head = ({
       { name: 'og:title', content: fullTitle },
       { name: 'description', content: description },
       { name: 'og:description', content: description },
-      { name: 'og:image', content: image },
+      { name: 'og:image', content: `${location.origin}${image}` },
       { name: 'og:type', content: type },
       { name: 'og:url', content: canonical },
     ],

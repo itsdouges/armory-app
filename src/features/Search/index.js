@@ -3,7 +3,7 @@ import { get } from 'axios';
 import { Link } from 'react-router';
 import Head from 'common/components/Head';
 
-import config from 'env';
+import config from 'config';
 import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
 import SocialButtons from 'common/components/SocialButtons';

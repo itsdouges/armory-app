@@ -1,6 +1,6 @@
 import { ShareButtons, generateShareIcon } from 'react-share';
 
-import config from 'env';
+import config from 'config';
 import styles from './styles.less';
 
 const {

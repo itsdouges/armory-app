@@ -2,7 +2,7 @@
 import { PropTypes, Component } from 'react';
 import styles from './styles.less';
 import { get, put } from 'axios';
-import config from 'env';
+import config from 'config';
 import ProgressIcon from '../Icon/Progress';
 import Message from 'common/components/Message';
 
