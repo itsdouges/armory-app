@@ -1,7 +1,7 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
 
-function getStyle (id) {
+function getStyle (id = 0) {
   const image = require(`assets/images/maps/${id}.jpg`);
 
   return {
@@ -9,22 +9,21 @@ function getStyle (id) {
   };
 }
 
-const Gw2Map = ({ id, map }) => (
-  <div className={styles.root} style={getStyle(id)}>
-    {map.name && <span title={map.name} className={styles.name}>{map.name}</span>}
+const Gw2Map = ({ data }) => (
+  <div className={styles.root} style={getStyle(data.id)}>
+    {data.name && <span title={data.name} className={styles.name}>{data.name}</span>}
   </div>
 );
 
 Gw2Map.propTypes = {
-  id: PropTypes.number,
-  map: PropTypes.object,
+  data: PropTypes.object,
 };
 
 Gw2Map.defaultProps = {
-  map: {
+  data: {
     name: '',
+    id: 0,
   },
-  id: 0,
 };
 
 export default Gw2Map;

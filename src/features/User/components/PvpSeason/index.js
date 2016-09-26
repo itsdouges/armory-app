@@ -12,7 +12,7 @@ import Redacted from 'common/components/Redacted';
 const PvpSeason = ({ standing, season, small }) => {
   const divisionId = get(standing, 'current.division');
   const division = get(season, `divisions[${divisionId}]`, {});
-  const redact = !season.name;
+  const redact = !division.name;
 
   return (
     <div className={cx(styles.root, { [styles.small]: small })}>
@@ -20,7 +20,7 @@ const PvpSeason = ({ standing, season, small }) => {
         <img
           alt="Division"
           className={styles.heroIcon}
-          src={small ? division.small_icon : division.large_icon || 'https://render.guildwars2.com/file/97E44C1BB3B7434639D470E9F25DD9C601ACEDD9/1313339.png'}
+          src={small ? division.small_icon : division.large_icon || 'https://render.guildwars2.com/file/02ED75461164551455297DA4955862552C2452BE/1313334.png'}
         />
 
         <div className={styles.titleContainer}>
@@ -47,7 +47,9 @@ const PvpLeague = ({ standings, seasons }) => {
   const sortedSeasons = sortBy(seasons, (season) => new Date(season.end));
 
   const currentSeason = last(sortedSeasons) || {};
-  const standing = find(standings, () => (st) => st.season_id === currentSeason.id) || {};
+  const standing = find(standings, { season_id: currentSeason.id }) || {};
+
+  console.log(currentSeason, standing);
 
   return (
     <PvpSeason season={currentSeason} standing={standing} />

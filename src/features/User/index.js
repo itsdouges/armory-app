@@ -23,9 +23,11 @@ import {
 export const selector = createSelector(
   store => store.users.data[store.users.selected],
   store => filter(store.pvpSeasons, ((season) => isObject(season))),
-  (user, pvpSeasons) => ({
+  store => store.maps,
+  (user, pvpSeasons, maps) => ({
     user,
     pvpSeasons,
+    maps,
   })
 );
 
@@ -54,7 +56,7 @@ class User extends Component {
   }
 
   render () {
-    const { user, routeParams: { alias }, pvpSeasons } = this.props;
+    const { user, routeParams: { alias }, pvpSeasons, maps } = this.props;
 
     const pvpGames = (user &&
       user.pvpGames &&
@@ -92,7 +94,7 @@ class User extends Component {
 
         <div className={styles.gamesContainer}>
           <h3>Recent matches</h3>
-          {pvpGames.map((game, index) => <PvpGame game={game} key={index} />)}
+          {pvpGames.map((game, index) => <PvpGame game={game} key={index} maps={maps} />)}
         </div>
 
         <SocialButtons />
@@ -104,6 +106,7 @@ class User extends Component {
 User.propTypes = {
   user: PropTypes.object,
   pvpSeasons: PropTypes.array,
+  maps: PropTypes.object,
 };
 
 export default connect(selector)(User);

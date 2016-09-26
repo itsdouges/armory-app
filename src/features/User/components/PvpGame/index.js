@@ -1,10 +1,12 @@
 import { PropTypes } from 'react';
+import classnames from 'classnames/bind';
+
 import styles from './styles.less';
 import Card from 'common/components/Card';
-import classnames from 'classnames/bind';
 import Icon from 'common/components/Icon';
 import Gw2Map from 'common/components/Gw2Map';
 import Redacted from 'common/components/Redacted';
+import get from 'lodash/get';
 
 const cx = classnames.bind(styles);
 
@@ -20,12 +22,13 @@ function calculateMatchInMinutes (start, end) {
   return new Date(new Date(end) - new Date(start)).getMinutes();
 }
 
-const PvpGame = ({ game }) => {
+const PvpGame = ({ game, maps }) => {
   const redacted = game.scores.red !== 0 && !game.scores.red;
+  const map = get(maps, `[${game.map_id}]`, { id: game.map_id });
 
   return (
     <Card className={styles.root}>
-      <Gw2Map id={game.map_id} />
+      <Gw2Map data={map} />
 
       <div className={styles.inner}>
         <div className={cx('column', 'resultsContainer')}>
@@ -82,6 +85,7 @@ PvpGame.defaultProps = {
 PvpGame.propTypes = {
   game: PropTypes.object,
   season: PropTypes.object,
+  maps: PropTypes.object,
 };
 
 export default PvpGame;
