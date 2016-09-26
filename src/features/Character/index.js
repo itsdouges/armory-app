@@ -31,7 +31,7 @@ import styles from './styles.less';
 
 function buildDescription (character = {}) {
   // eslint-disable-next-line
-  return `${character.name} is a level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
+  return `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
 }
 
 const leftItems = [

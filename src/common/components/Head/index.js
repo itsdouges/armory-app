@@ -5,7 +5,7 @@ import config from 'config';
 import defaultImage from 'assets/images/logo.png';
 
 const Head = ({
-  description = config.description,
+  description,
   title = config.meta.title,
   canonical = location.href,
   type = 'Article',
@@ -13,13 +13,16 @@ const Head = ({
   ...extraProps,
 }) => {
   const fullTitle = `${title}${config.titleSuffix}`;
+  const parsedDescription = description
+    ? `${description} | ${config.description}`
+    : config.description;
 
   const props = {
     title: fullTitle,
     meta: [
       { name: 'og:title', content: fullTitle },
-      { name: 'description', content: description },
-      { name: 'og:description', content: description },
+      { name: 'description', content: parsedDescription },
+      { name: 'og:description', content: parsedDescription },
       { name: 'og:image', content: `${location.origin}${image}` },
       { name: 'og:type', content: type },
       { name: 'og:url', content: canonical },
