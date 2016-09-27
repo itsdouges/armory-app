@@ -23,14 +23,15 @@ const fetchCharacterResultSuccess = (name, data) => ({
   },
 });
 
-function extractIds ({ specializations = {}, equipment }) {
+function extractIds ({ specializations, equipment, equipment_pvp }) {
   const ids = {
     items: [],
     skins: [],
     specializations: [],
+    amulets: [],
   };
 
-  Object.keys(specializations).forEach((key) => {
+  specializations && Object.keys(specializations).forEach((key) => {
     const mode = specializations[key];
     mode.forEach((specialization) => {
       if (!specialization) {
@@ -54,6 +55,12 @@ function extractIds ({ specializations = {}, equipment }) {
     }
   });
 
+  if (equipment_pvp) {
+    ids.items = ids.items.concat(equipment_pvp.sigils);
+    ids.items.push(equipment_pvp.rune);
+    ids.amulets.push(equipment_pvp.amulet);
+  }
+
   return ids;
 }
 
@@ -66,7 +73,7 @@ export function fetchCharacter (character) {
         dispatch(fetchCharacterResultSuccess(character, data));
         dispatch(fetchingCharacter(false));
 
-        const { items, skins, specializations } = extractIds(data);
+        const { items, skins, specializations, amulets } = extractIds(data);
 
         const skills = Object.keys(get(data, 'skills', {})).reduce((acc, key) => {
           const skillType = data.skills[key];
@@ -76,6 +83,7 @@ export function fetchCharacter (character) {
         dispatch(actions.fetchSkills(skills));
         dispatch(actions.fetchItems(items));
         dispatch(actions.fetchSkins(skins));
+        dispatch(actions.fetchAmulets(amulets));
         dispatch(actions.fetchSpecializations(specializations));
       }, () => browserHistory.replace('/404'));
   };

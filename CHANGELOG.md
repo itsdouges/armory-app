@@ -8,8 +8,13 @@
 - Changes
 ```
 
+## [2.3.0] - 2016/09/27
+### Added
+- Adds pvp gear to character page when pvp mode is enabled.
+
 ## [2.2.0] - 2016/09/26
 ### Added
+- Adds pvp gear to character page when pvp mode is enabled.
 - Adds pvp toggle button to character page.
 - Adds pvp map names to map component.
 

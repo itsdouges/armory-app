@@ -1,10 +1,9 @@
 import { PropTypes } from 'react';
 import startCase from 'lodash/startCase';
-import classnames from 'classnames/bind';
+import cx from 'classnames/bind';
 
 import SimpleTooltip from '../Simple';
 import styles from './styles.less';
-const cx = classnames.bind(styles);
 import Icon from 'common/components/Icon';
 import colours from 'common/styles/colours.less';
 import { markup } from 'lib/gw2/parse';
@@ -55,7 +54,7 @@ const ItemsTooltip = ({ data: {
       <div className={styles.itemHeader}>
         <Icon size="mini" src={skin.icon || item.icon} className={styles.tooltipIcon} />
 
-        <span className={cx('itemName', colours[item.rarity.toLowerCase()])}>
+        <span className={cx(styles.itemName, item.rarity && colours[item.rarity.toLowerCase()])}>
           {itemName}
         </span>
       </div>

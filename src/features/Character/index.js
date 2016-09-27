@@ -20,6 +20,7 @@ import Tooltip from 'common/components/Tooltip';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Icon from 'common/components/Icon';
 
+import PvpEquipment from './components/PvpEquipment';
 import Specialization from './components/Specialization';
 import Portrait from './components/Portrait';
 import Attribute from './components/Attribute';
@@ -167,6 +168,7 @@ class Character extends Component {
     skills: PropTypes.object,
     routeParams: PropTypes.object,
     location: PropTypes.object,
+    amulets: PropTypes.object,
   };
 
   static contextTypes = {
@@ -253,6 +255,7 @@ class Character extends Component {
       skins,
       traits,
       specializations,
+      amulets,
     } = this.props;
 
     const { editMode } = this.state;
@@ -261,16 +264,21 @@ class Character extends Component {
     const attributes = calculateAttributes(character, items);
 
     const ownCharacter = get(character, 'alias') === this.context._userAlias;
-    const equipment = get(character, 'equipment', []);
+    const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
     const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]);
     const characterSkills = get(character, `skills[${mode}]`, {});
+    const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
     const crafting = get(character, 'crafting', [{}, {}, {}]);
     const guild = character && {
       name: character.guild_name,
       tag: character.guild_tag,
       id: character.guild,
     };
+
+    const showPvpEquipment = mode === 'pvp';
+
+    console.log(pvpEquipment);
 
     return (
       <div className={styles.root}>
@@ -292,7 +300,7 @@ class Character extends Component {
           <ContentCard content={character} size="big" />
 
           <div className={styles.columns}>
-            <div className={styles.leftColumn}>
+            <div className={cx(styles.leftColumn, showPvpEquipment && styles.fade)}>
               {leftItems.map((item) => {
                 const equip = equipment[item.key] || {};
 
@@ -330,21 +338,21 @@ class Character extends Component {
                     />
                   </TooltipTrigger>
 
-                  <TooltipTrigger data="PvP">
-                    <Icon
-                      size="medium"
-                      name="pvp-icon.png"
-                      onClick={this.setPvp}
-                      className={cx(styles.modeIcon, mode === 'pvp' && styles.active)}
-                    />
-                  </TooltipTrigger>
-
                   <TooltipTrigger data="WvW">
                     <Icon
                       size="medium"
                       name="wvw-icon.png"
                       onClick={this.setWvw}
                       className={cx(styles.modeIcon, mode === 'wvw' && styles.active)}
+                    />
+                  </TooltipTrigger>
+
+                  <TooltipTrigger data="PvP">
+                    <Icon
+                      size="medium"
+                      name="pvp-icon.png"
+                      onClick={this.setPvp}
+                      className={cx(styles.modeIcon, mode === 'pvp' && styles.active)}
                     />
                   </TooltipTrigger>
                 </div>
@@ -359,7 +367,7 @@ class Character extends Component {
                 })}
               </div>
 
-              <div className={styles.rightItemColumn}>
+              <div className={cx(styles.rightItemColumn, showPvpEquipment && styles.fade)}>
               {rightItems.map((item) => {
                 const equip = equipment[item.key] || {};
 
@@ -385,6 +393,16 @@ class Character extends Component {
             </div>
           </div>
         </div>
+
+        {showPvpEquipment && (
+          <PvpEquipment
+            equipment={equipment}
+            pvpEquipment={pvpEquipment}
+            items={items}
+            skins={skins}
+            amulets={amulets}
+          />
+        )}
 
         <Skills skills={skills} characterSkills={characterSkills} />
 
