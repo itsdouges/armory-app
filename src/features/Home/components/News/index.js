@@ -5,6 +5,10 @@ import Card from 'common/components/Card';
 
 /* eslint max-len:0 */
 const news = [{
+  title: 'Character Pvp Mode',
+  date: '27/09/16',
+  content: 'Characters can now be viewed in pvp mode! Attribute calculation fixes coming soon.',
+}, {
   title: 'Skills, Trait Tooltips, and Games Modes',
   date: '19/09/16',
   content: 'Character pages now have skills (with tooltips) and trait tooltips available.',
