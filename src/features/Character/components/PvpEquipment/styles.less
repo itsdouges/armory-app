@@ -18,12 +18,12 @@
   }
 }
 
-.weaponsContainer,
-.sigilsContainer {
-  :nth-child(3) {
-    margin-left: @margin * 1rem;
-  }
-}
+// .weaponsContainer,
+// .sigilsContainer {
+//   :nth-child(3) {
+//     margin-left: @margin * 1rem;
+//   }
+// }
 
 .spacer {
   top: 33%;
@@ -36,41 +36,41 @@
   position: absolute;
 }
 
-.weaponsContainer,
-.sigilsContainer {
-  > :first-child:after {
-    background-image: url('assets/images/i.png');
-    .spacer;
-  }
+// .weaponsContainer,
+// .sigilsContainer {
+//   > :first-child:after {
+//     background-image: url('assets/images/i.png');
+//     .spacer;
+//   }
 
-  :nth-child(3):after {
-    background-image: url('assets/images/ii.png');
-    .spacer;
-  }
+//   :nth-child(3):after {
+//     background-image: url('assets/images/ii.png');
+//     .spacer;
+//   }
 
-  :nth-child(2):after {
-    content: '';
-    position: absolute;
-    width: @margin * 1rem;
-    height: 100%;
-    top: 50%;
-    right: (@margin + @itemMargin) * -1rem;
-    pointer-events: none;
-  }
-}
+//   :nth-child(2):after {
+//     content: '';
+//     position: absolute;
+//     width: @margin * 1rem;
+//     height: 100%;
+//     top: 50%;
+//     right: (@margin + @itemMargin) * -1rem;
+//     pointer-events: none;
+//   }
+// }
 
-.sigilsContainer {
-  > :first-child,
-  :nth-child(3) {
-    margin-right: 24px;
+// .sigilsContainer {
+//   > :first-child,
+//   :nth-child(3) {
+//     margin-right: 24px;
 
-    &:after {
-      top: 25%;
-      right: -23px;
-    }
-  }
-}
+//     &:after {
+//       top: 25%;
+//       right: -23px;
+//     }
+//   }
+// }
 
-.upgradesContainer {
-  margin-top: 0.7em;
-}
+// .upgradesContainer {
+//   margin-top: 0.7em;
+// }
