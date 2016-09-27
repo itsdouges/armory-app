@@ -57,7 +57,7 @@ const PvpEquipment = ({ equipment, pvpEquipment, items, skins, amulets, professi
     </div>
 
     <div className={styles.upgradesContainer}>
-      <Item item={items[pvpEquipment.rune]} name="Rune" />
+      <Item item={items[pvpEquipment.rune]} name="Rune" tooltipType="amulets" />
       <Item item={amulets[pvpEquipment.amulet]} tooltipType="amulets" />
     </div>
   </div>

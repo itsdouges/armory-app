@@ -21,7 +21,7 @@ const Skill = ({ data }) => {
 
         <div className={styles.description}>{markup(data.description)}</div>
 
-        {data.facts.map((fact, index) => <Fact key={index} data={fact} />)}
+        {get(data, 'facts', []).map((fact, index) => <Fact key={index} data={fact} />)}
       </Background>
     </div>
   );
