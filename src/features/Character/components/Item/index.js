@@ -16,13 +16,13 @@ const Item = ({
   upgradeCounts = {},
   hide,
   small,
-  tooltipTypeOverride,
+  tooltipType,
 }) => {
   if (hide) return null;
 
   return (
     <TooltipTrigger
-      type={tooltipTypeOverride || 'items'}
+      type={tooltipType || 'items'}
       data={{
         name,
         item,
@@ -57,7 +57,7 @@ Item.propTypes = {
   upgrades: PropTypes.array,
   upgradeCounts: PropTypes.object,
   small: PropTypes.bool,
-  tooltipTypeOverride: PropTypes.string,
+  tooltipType: PropTypes.string,
 };
 
 export default Item;

@@ -1,29 +1,11 @@
 import { PropTypes } from 'react';
+import includes from 'lodash/includes';
 
 import Item from '../Item';
 import styles from './styles.less';
+import { weapons, noSecondWeaponSet } from 'lib/gw2/equipment';
 
-const weapons = [{
-  name: 'Main-Hand Weapon',
-  type: 'sword',
-  key: 'weaponA1',
-}, {
-  name: 'Off-Hand Weapon',
-  type: 'shield',
-  key: 'weaponA2',
-}, {
-  name: 'Main-Hand Weapon',
-  type: 'sword',
-  key: 'weaponB1',
-  hideForClasses: ['Engineer', 'Elementalist'],
-}, {
-  name: 'Off-Hand Weapon',
-  type: 'shield',
-  key: 'weaponB2',
-  hideForClasses: ['Engineer', 'Elementalist'],
-}];
-
-const PvpEquipment = ({ equipment, pvpEquipment, items, skins, amulets }) => (
+const PvpEquipment = ({ equipment, pvpEquipment, items, skins, amulets, profession }) => (
   <div className={styles.root}>
     <div className={styles.weaponsContainer}>
       {weapons.map((item) => {
@@ -32,6 +14,7 @@ const PvpEquipment = ({ equipment, pvpEquipment, items, skins, amulets }) => (
         return (
           <Item
             {...item}
+            hide={includes(item.hideForClasses, profession)}
             key={item.key}
             item={items[equip.id]}
             skin={skins[equip.skin]}
@@ -42,16 +25,40 @@ const PvpEquipment = ({ equipment, pvpEquipment, items, skins, amulets }) => (
     </div>
 
     <div className={styles.sigilsContainer}>
-      <Item item={items[pvpEquipment.sigils[0]]} small />
-      <Item item={items[pvpEquipment.sigils[1]]} small />
+      <Item
+        small
+        name="Sigil"
+        tooltipType="amulets"
+        item={items[pvpEquipment.sigils[0]]}
+      />
 
-      <Item item={items[pvpEquipment.sigils[2]]} small />
-      <Item item={items[pvpEquipment.sigils[3]]} small />
+      <Item
+        small
+        name="Sigil"
+        tooltipType="amulets"
+        item={items[pvpEquipment.sigils[1]]}
+      />
+
+      <Item
+        small
+        name="Sigil"
+        tooltipType="amulets"
+        item={items[pvpEquipment.sigils[2]]}
+        hide={includes(noSecondWeaponSet, profession)}
+      />
+
+      <Item
+        small
+        name="Sigil"
+        tooltipType="amulets"
+        item={items[pvpEquipment.sigils[3]]}
+        hide={includes(noSecondWeaponSet, profession)}
+      />
     </div>
 
     <div className={styles.upgradesContainer}>
-      <Item item={items[pvpEquipment.rune]} />
-      <Item item={amulets[pvpEquipment.amulet]} tooltipTypeOverride="amulets" />
+      <Item item={items[pvpEquipment.rune]} name="Rune" />
+      <Item item={amulets[pvpEquipment.amulet]} tooltipType="amulets" />
     </div>
   </div>
 );
@@ -62,6 +69,7 @@ PvpEquipment.defaultProps = {
 };
 
 PvpEquipment.propTypes = {
+  profession: PropTypes.string,
   equipment: PropTypes.object,
   skins: PropTypes.object,
   pvpEquipment: PropTypes.object,
