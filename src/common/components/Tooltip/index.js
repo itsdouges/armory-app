@@ -7,6 +7,8 @@ import styles from './styles.less';
 import { showTooltip } from 'features/Gw2/actions';
 
 import MouseFollow from '../MouseFollow';
+
+import AmuletTooltip from './Amulet';
 import ItemTooltip from './Item';
 import SkillTooltip from './Skill';
 import SimpleTooltip from './Simple';
@@ -36,9 +38,15 @@ class Tooltip extends Component {
 
     let content;
 
-    switch (tooltip.type) {
+    const type = typeof tooltip.data === 'string' ? 'simple' : tooltip.type;
+
+    switch (type) {
       case 'items':
         content = <ItemTooltip data={tooltip.data} />;
+        break;
+
+      case 'amulets':
+        content = <AmuletTooltip data={tooltip.data} />;
         break;
 
       case 'trait':

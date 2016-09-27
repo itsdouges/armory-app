@@ -15,12 +15,14 @@ const Item = ({
   stats = {},
   upgradeCounts = {},
   hide,
+  small,
+  tooltipType,
 }) => {
   if (hide) return null;
 
   return (
     <TooltipTrigger
-      type="items"
+      type={tooltipType || 'items'}
       data={{
         name,
         item,
@@ -31,7 +33,7 @@ const Item = ({
         stats,
       }}
     >
-      <div className={cx('root', `${type}Icon`, { busy })}>
+      <div className={cx('root', `${type}Icon`, { busy, small })}>
         <div
           className={styles.item}
           style={{ backgroundImage: `url(${skin.icon || item.icon})` }}
@@ -54,6 +56,8 @@ Item.propTypes = {
   stats: PropTypes.object,
   upgrades: PropTypes.array,
   upgradeCounts: PropTypes.object,
+  small: PropTypes.bool,
+  tooltipType: PropTypes.string,
 };
 
 export default Item;

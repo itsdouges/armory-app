@@ -1,14 +1,12 @@
 import { PropTypes } from 'react';
 import startCase from 'lodash/startCase';
-import classnames from 'classnames/bind';
+import get from 'lodash/get';
 
 import SimpleTooltip from '../Simple';
-import styles from './styles.less';
-const cx = classnames.bind(styles);
-import Icon from 'common/components/Icon';
 import colours from 'common/styles/colours.less';
 import { markup } from 'lib/gw2/parse';
 
+import ItemHeader from '../ItemHeader';
 import Gold from '../Gold';
 import Upgrade from '../Upgrade';
 import Infusion from '../Infusion';
@@ -45,20 +43,17 @@ const ItemsTooltip = ({ data: {
     return <Background><SimpleTooltip data={name} /></Background>;
   }
 
-  const itemName = buildName(item, skin, upgrades);
   const isTransmuted = !!skin.name;
 
   return (
     <Background>
       <SimpleTooltip data="Currently Equipped" />
 
-      <div className={styles.itemHeader}>
-        <Icon size="mini" src={skin.icon || item.icon} className={styles.tooltipIcon} />
-
-        <span className={cx('itemName', colours[item.rarity.toLowerCase()])}>
-          {itemName}
-        </span>
-      </div>
+      <ItemHeader
+        name={buildName(item, skin, upgrades)}
+        icon={skin.icon || item.icon}
+        rarity={item.rarity}
+      />
 
       <div>
         {!!item.details.defense && (
@@ -73,11 +68,10 @@ const ItemsTooltip = ({ data: {
           </span>
         </div>}
 
-        {item.details.infix_upgrade &&
-          item.details.infix_upgrade.attributes.map(({ modifier, attribute }) => (
-            <div key={attribute} className={colours.green}>
-              {`+${modifier} ${startCase(attribute)}`}
-            </div>
+        {get(item, 'details.infix_upgrade.attributes', []).map(({ modifier, attribute }) => (
+          <div key={attribute} className={colours.green}>
+            {`+${modifier} ${startCase(attribute)}`}
+          </div>
         ))}
 
         {Object.keys(attributes).map((attribute, index) => {

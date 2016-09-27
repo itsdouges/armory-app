@@ -23,6 +23,13 @@ export const readMaps = (ids) =>
   })
   .then(({ data }) => reduceById(data));
 
+export const readAmulets = (ids) =>
+  get(`${config.gw2.endpoint}v2/pvp/amulets?ids=${ids.join(',')}`, {
+    ignoreAuth: true,
+    cache: true,
+  })
+  .then(({ data }) => reduceById(data));
+
 export const readPvpSeasonIds = () =>
   get(`${config.gw2.endpoint}v2/pvp/seasons`, {
     ignoreAuth: true,

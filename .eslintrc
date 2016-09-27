@@ -16,7 +16,9 @@
     "default-case": 0,
     "react/react-in-jsx-scope": 0,
     "global-require": 0,
-    "import/no-unresolved": 0
+    "import/no-unresolved": 0,
+    "no-unused-expressions": "off",
+    "camelcase": "off"
   },
   "globals": {
     "__DEVELOPMENT__": true,

@@ -10,6 +10,7 @@ import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter, selectCharacterMode } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
 import { calculate as calculateAttributes } from 'lib/gw2/attributes';
+import { leftItems, rightItems } from 'lib/gw2/equipment';
 
 import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
@@ -20,6 +21,7 @@ import Tooltip from 'common/components/Tooltip';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Icon from 'common/components/Icon';
 
+import PvpEquipment from './components/PvpEquipment';
 import Specialization from './components/Specialization';
 import Portrait from './components/Portrait';
 import Attribute from './components/Attribute';
@@ -33,125 +35,6 @@ function buildDescription (character = {}) {
   // eslint-disable-next-line
   return `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
 }
-
-const leftItems = [
-  {
-    name: 'Headgear',
-    type: 'head',
-    key: 'helm',
-  },
-  {
-    name: 'Shoulders',
-    type: 'shoulder',
-    key: 'shoulders',
-  },
-  {
-    name: 'Chest',
-    type: 'chest',
-    key: 'coat',
-  },
-  {
-    name: 'Gloves',
-    type: 'hand',
-    key: 'gloves',
-  },
-  {
-    name: 'Leggings',
-    type: 'leg',
-    key: 'leggings',
-  },
-  {
-    name: 'Boots',
-    type: 'feet',
-    key: 'boots',
-  },
-  {
-    name: 'Main-Hand Weapon',
-    type: 'sword',
-    key: 'weaponA1',
-  },
-  {
-    name: 'Off-Hand Weapon',
-    type: 'shield',
-    key: 'weaponA2',
-  },
-  {
-    name: 'Main-Hand Weapon',
-    type: 'sword',
-    key: 'weaponB1',
-    hideForClasses: ['Engineer', 'Elementalist'],
-  },
-  {
-    name: 'Off-Hand Weapon',
-    type: 'shield',
-    key: 'weaponB2',
-    hideForClasses: ['Engineer', 'Elementalist'],
-  },
-];
-
-const rightItems = [
-  {
-    name: 'Back',
-    type: 'back',
-    key: 'backpack',
-  },
-  {
-    name: 'Accessory',
-    type: 'beartrinket',
-    key: 'accessory1',
-  },
-  {
-    name: 'Accessory',
-    type: 'cubetrinket',
-    key: 'accessory2',
-  },
-  {
-    name: 'Amulet',
-    type: 'amulet',
-    key: 'amulet',
-  },
-  {
-    name: 'Ring',
-    type: 'rightring',
-    key: 'ring1',
-  },
-  {
-    name: 'Ring',
-    type: 'leftring',
-    key: 'ring2',
-  },
-  {
-    name: 'Foraging',
-    type: 'sickle',
-    key: 'sickle',
-  },
-  {
-    name: 'Logging',
-    type: 'axe',
-    key: 'axe',
-  },
-  {
-    name: 'Mining',
-    type: 'pick',
-    key: 'pick',
-  },
-  {
-    name: 'Acquatic Headgear',
-    type: 'head',
-    key: 'helmAquatic',
-  },
-  {
-    name: 'Acquatic Weapon',
-    type: 'sword',
-    key: 'weaponAquaticA',
-  },
-  {
-    name: 'Acquatic Weapon',
-    type: 'sword',
-    key: 'weaponAquaticB',
-    hideForClasses: ['Engineer', 'Elementalist'],
-  },
-];
 
 class Character extends Component {
   static propTypes = {
@@ -167,6 +50,7 @@ class Character extends Component {
     skills: PropTypes.object,
     routeParams: PropTypes.object,
     location: PropTypes.object,
+    amulets: PropTypes.object,
   };
 
   static contextTypes = {
@@ -205,6 +89,10 @@ class Character extends Component {
 
   setPve = () => {
     this.setMode('pve');
+  };
+
+  setPvp = () => {
+    this.setMode('pvp');
   };
 
   setWvw = () => {
@@ -249,6 +137,7 @@ class Character extends Component {
       skins,
       traits,
       specializations,
+      amulets,
     } = this.props;
 
     const { editMode } = this.state;
@@ -257,16 +146,19 @@ class Character extends Component {
     const attributes = calculateAttributes(character, items);
 
     const ownCharacter = get(character, 'alias') === this.context._userAlias;
-    const equipment = get(character, 'equipment', []);
+    const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
     const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]);
     const characterSkills = get(character, `skills[${mode}]`, {});
+    const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
     const crafting = get(character, 'crafting', [{}, {}, {}]);
     const guild = character && {
       name: character.guild_name,
       tag: character.guild_tag,
       id: character.guild,
     };
+
+    const showPvpEquipment = mode === 'pvp';
 
     return (
       <div className={styles.root}>
@@ -288,7 +180,7 @@ class Character extends Component {
           <ContentCard content={character} size="big" />
 
           <div className={styles.columns}>
-            <div className={styles.leftColumn}>
+            <div className={cx(styles.leftColumn, showPvpEquipment && styles.fade)}>
               {leftItems.map((item) => {
                 const equip = equipment[item.key] || {};
 
@@ -334,6 +226,15 @@ class Character extends Component {
                       className={cx(styles.modeIcon, mode === 'wvw' && styles.active)}
                     />
                   </TooltipTrigger>
+
+                  <TooltipTrigger data="PvP">
+                    <Icon
+                      size="medium"
+                      name="pvp-icon.png"
+                      onClick={this.setPvp}
+                      className={cx(styles.modeIcon, mode === 'pvp' && styles.active)}
+                    />
+                  </TooltipTrigger>
                 </div>
               </Portrait>
             </ImageUpload>
@@ -346,7 +247,7 @@ class Character extends Component {
                 })}
               </div>
 
-              <div className={styles.rightItemColumn}>
+              <div className={cx(styles.rightItemColumn, showPvpEquipment && styles.fade)}>
               {rightItems.map((item) => {
                 const equip = equipment[item.key] || {};
 
@@ -372,6 +273,17 @@ class Character extends Component {
             </div>
           </div>
         </div>
+
+        {showPvpEquipment && (
+          <PvpEquipment
+            equipment={equipment}
+            pvpEquipment={pvpEquipment}
+            items={items}
+            skins={skins}
+            amulets={amulets}
+            profession={profession}
+          />
+        )}
 
         <Skills skills={skills} characterSkills={characterSkills} />
 
