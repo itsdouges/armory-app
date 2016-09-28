@@ -11,4 +11,4 @@ dist
 npm-debug.log
 
 # local env
-/src/env/local.js
+/src/config/local.js
