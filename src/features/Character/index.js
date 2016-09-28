@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
-import Head from 'common/components/Head';
 import cx from 'classnames';
 
+import Head from 'common/components/Head';
 import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter, selectCharacterMode } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';

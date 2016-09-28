@@ -4,8 +4,6 @@ import { createSelector } from 'reselect';
 
 import Head from 'common/components/Head';
 
-import 'normalize.css';
-import 'assets/fonts/menomonia.css';
 import styles from './styles.less';
 
 import Footer from './components/Footer';

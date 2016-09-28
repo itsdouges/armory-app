@@ -1,0 +1,67 @@
+@import '~common/styles/colours.less';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: #f7f9fa;
+  overflow-x: hidden;
+  width: 100%;
+  color: #333;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  display: none;
+}
+
+h2, h3, h4 {
+  font-weight: normal;
+  font-family: 'Menomonia';
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 1em 0.5em 0.1em 0.5em;
+}
+
+h3 {
+  font-size: 1.7em;
+  margin-left: 0.5em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
+a {
+  color: @text;
+  text-decoration: none;
+  transition: color 0.1s;
+  font-weight: bold;
+}
+
+a:hover,
+a:focus {
+  color: @primary;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: @gray;
+}
