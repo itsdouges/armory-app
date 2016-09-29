@@ -25,7 +25,7 @@ function extractData (content, { type, forceUpdate }) {
 
     case 'characters':
       return {
-        title: `${content.name} [${content.guild_tag}]`,
+        title: content.guild_tag ? `${content.name} [${content.guild_tag}]` : content.name,
         // eslint-disable-next-line
         subTitle: `${content.level} ${content.race} ${content.eliteSpecialization || content.profession}`,
         imageClass: content.profession && content.profession.toLowerCase(),
