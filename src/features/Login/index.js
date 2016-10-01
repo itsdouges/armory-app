@@ -5,8 +5,8 @@ import Head from 'common/components/Head';
 
 import styles from './styles.less';
 
+import CardWithTitle from 'common/layouts/CardWithTitle';
 import Textbox from 'common/components/Textbox';
-import Card from 'common/components/Card';
 import Message from 'common/components/Message';
 import Button from 'common/components/Button';
 
@@ -61,49 +61,42 @@ class Login extends Component {
     );
 
     return (
-      <span className={styles.root}>
+      <CardWithTitle title="Login" message={message} className={styles.root}>
         <Head title="Login" />
 
-        <h2>Login</h2>
-        <Card size="small">
-          <Message type={error ? 'error' : 'info'}>
-            {message}
-          </Message>
+        <form onSubmit={this.login}>
+          <Textbox
+            required
+            id="email"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.fieldChanged}
+          />
 
-          <form onSubmit={this.login}>
-            <Textbox
-              required
-              id="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.fieldChanged}
-            />
+          <Textbox
+            required
+            id="password"
+            placeholder="Password"
+            type="password"
+            value={this.state.password}
+            onChange={this.fieldChanged}
+          />
 
-            <Textbox
-              required
-              id="password"
-              placeholder="Password"
-              type="password"
-              value={this.state.password}
-              onChange={this.fieldChanged}
-            />
+          <div className={styles.buttons}>
+            <Button
+              type="primary"
+              busy={this.props.busy}
+              disabled={!this.state.canLogin}
+            >
+              SIGN IN
+            </Button>
+          </div>
+        </form>
 
-            <div className={styles.buttons}>
-              <Button
-                type="primary"
-                busy={this.props.busy}
-                disabled={!this.state.canLogin}
-              >
-                SIGN IN
-              </Button>
-            </div>
-          </form>
-
-          <Message className={styles.forgotPasswordContainer} type="small">
-            <Link to="/forgot-my-password">Forgot my password</Link>
-          </Message>
-        </Card>
-      </span>
+        <Message className={styles.forgotPasswordContainer} type="small">
+          <Link to="/forgot-my-password">Forgot my password</Link>
+        </Message>
+      </CardWithTitle>
     );
   }
 }
