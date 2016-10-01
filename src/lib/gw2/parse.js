@@ -99,6 +99,7 @@ export function parseItem (item) {
   return inItem;
 }
 
+// TODO: Stop using, use reduceById in index.js and map parseItem directly.
 export function mapItemsToObject (items) {
   const mappedItems = {};
 
@@ -108,16 +109,6 @@ export function mapItemsToObject (items) {
   });
 
   return mappedItems;
-}
-
-export function mapSkinsToObject (items) {
-  const object = {};
-
-  items.forEach((item) => {
-    object[item.id] = item;
-  });
-
-  return object;
 }
 
 export function markup (text) {
