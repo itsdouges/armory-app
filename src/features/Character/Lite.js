@@ -15,7 +15,7 @@ import ContentCard from 'common/components/ContentCard';
 import Item from './components/Item';
 import Portrait from './components/Portrait';
 
-export default connect(selector)(class CharacterLite extends Component {
+class CharacterLite extends Component {
   static propTypes = {
     character: PropTypes.object,
     dispatch: PropTypes.func,
@@ -34,15 +34,15 @@ export default connect(selector)(class CharacterLite extends Component {
     this.loadCharacter();
   }
 
+  getItems (ids = []) {
+    return ids.map((id) => this.props.items[id]);
+  }
+
   loadCharacter () {
     const name = qs('name');
 
     this.props.dispatch(fetchCharacter(name));
     this.props.dispatch(selectCharacter(name));
-  }
-
-  getItems (ids = []) {
-    return ids.map((id) => this.props.items[id]);
   }
 
   render () {
@@ -55,6 +55,7 @@ export default connect(selector)(class CharacterLite extends Component {
     const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
     const safeCharacter = get(this.props, 'character', {});
+    const guild = get(character, 'guild');
 
     return (
       <div className={styles.root}>
@@ -62,6 +63,10 @@ export default connect(selector)(class CharacterLite extends Component {
 
         <a href={`/${safeCharacter.alias}/c/${safeCharacter.name}`} className={styles.header}>
           <ContentCard content={character} />
+        </a>
+
+        <a href={`/g/${guild && guild.name}`}>
+          <ContentCard type="guilds" content={guild} className={styles.linkItem} />
         </a>
 
         <div className={styles.equips}>
@@ -112,4 +117,6 @@ export default connect(selector)(class CharacterLite extends Component {
       </div>
     );
   }
-});
+}
+
+export default connect(selector)(CharacterLite);
