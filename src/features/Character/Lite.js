@@ -10,7 +10,6 @@ import { fetchCharacter, selectCharacter } from './actions';
 import { selector } from './characters.reducer';
 import styles from './liteStyles.less';
 
-import Tooltip from 'common/components/Tooltip';
 import ContentCard from 'common/components/ContentCard';
 import Item from './components/Item';
 import Portrait from './components/Portrait';
@@ -55,18 +54,19 @@ class CharacterLite extends Component {
     const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
     const safeCharacter = get(this.props, 'character', {});
-    const guild = get(character, 'guild');
 
     return (
       <div className={styles.root}>
-        <div className={styles.cover}><Portrait character={character} /></div>
+        <div className={styles.cover}>
+          <Portrait character={character} className={styles.litePortrait} />
+        </div>
 
-        <a href={`/${safeCharacter.alias}/c/${safeCharacter.name}`} className={styles.header}>
+        <a
+          target="_blank"
+          href={`/${safeCharacter.alias}/c/${safeCharacter.name}`}
+          className={styles.header}
+        >
           <ContentCard content={character} />
-        </a>
-
-        <a href={`/g/${guild && guild.name}`}>
-          <ContentCard type="guilds" content={guild} className={styles.linkItem} />
         </a>
 
         <div className={styles.equips}>
@@ -112,8 +112,6 @@ class CharacterLite extends Component {
         <a href="https://gw2armory.com" className={styles.siteLink}>
           gw2armory.com
         </a>
-
-        <Tooltip />
       </div>
     );
   }

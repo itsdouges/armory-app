@@ -1,7 +1,23 @@
+@import '~common/styles/colours.less';
+
 .root {
   position: relative;
   overflow: hidden;
   padding: 0.5em;
+  width: 500px;
+
+  a {
+    color: #fff;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      color: @primary;
+    }
+  }
+}
+
+.litePortrait {
+  background-position: center top !important;
 }
 
 .header {
