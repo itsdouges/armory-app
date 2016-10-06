@@ -28,6 +28,7 @@ import Attribute from './components/Attribute';
 import CraftingBar from './components/CraftingBar';
 import Item from './components/Item';
 import Skills from './components/Skills';
+import Embed from './components/Embed';
 
 import styles from './styles.less';
 
@@ -235,6 +236,10 @@ class Character extends Component {
                       className={cx(styles.modeIcon, mode === 'pvp' && styles.active)}
                     />
                   </TooltipTrigger>
+                </div>
+
+                <div className={styles.embedContainer}>
+                  <Embed name={routeParams.character} />
                 </div>
               </Portrait>
             </ImageUpload>

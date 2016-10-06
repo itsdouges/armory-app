@@ -89,7 +89,7 @@ module.exports = {
     new HtmlWebpackPlugin(Object.assign({
       inject: true,
       template: paths.appHtml,
-      filename: 'character/index.html',
+      filename: `${config.embeds.character}/index.html`,
       chunks: ['character'],
       minify: {
         removeComments: true,
