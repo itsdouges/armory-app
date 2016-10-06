@@ -1,7 +1,6 @@
 import { Component, PropTypes } from 'react';
-import addEvent from 'lib/add-event';
 
-import { isSmallScreen } from 'lib/dom';
+import { isSmallScreen, addEvent } from 'lib/dom';
 
 export default class MouseFollow extends Component {
   static propTypes = {

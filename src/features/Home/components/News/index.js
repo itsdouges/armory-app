@@ -5,6 +5,10 @@ import Card from 'common/components/Card';
 
 /* eslint max-len:0 */
 const news = [{
+  title: 'Embed Your Characters!',
+  date: '7/10/16',
+  content: 'Character embeddables are now available. Click on the embed icon for any character and copy and paste the markup onto your website.',
+}, {
   title: 'Character Pvp Mode',
   date: '27/09/16',
   content: 'Characters can now be viewed in pvp mode! Attribute calculation fixes coming soon.',

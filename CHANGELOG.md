@@ -8,6 +8,11 @@
 - Changes
 ```
 
+## [2.4.0] - 2016/10/07
+### Added
+- Adds character embed endpoint.
+- Adds character embed markup copy to character portrait.
+
 ## [2.3.0] - 2016/09/27
 ### Added
 - Adds pvp gear to character page when pvp mode is enabled.

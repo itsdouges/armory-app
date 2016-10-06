@@ -2,21 +2,29 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const paths = require('./paths');
 const config = require('../src/config/default');
 
 module.exports = {
   devtool: 'eval',
-  entry: [
-    require.resolve('webpack-dev-server/client'),
-    require.resolve('webpack/hot/dev-server'),
-    path.join(paths.appSrc, 'index'),
-  ],
+  entry: {
+    app: [
+      require.resolve('webpack-dev-server/client'),
+      require.resolve('webpack/hot/dev-server'),
+      path.join(paths.appSrc, 'index'),
+    ],
+    character: [
+      require.resolve('webpack-dev-server/client'),
+      require.resolve('webpack/hot/dev-server'),
+      path.join(paths.appSrc, 'character'),
+    ],
+  },
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
     path: paths.appBuild,
     pathinfo: true,
-    filename: 'bundle.js',
+    filename: '[name].js',
     publicPath: '/',
   },
   resolve: {
@@ -41,6 +49,7 @@ module.exports = {
       {
         test: /\.(css|less)$/,
         include: [paths.appSrc, paths.appNodeModules],
+        // eslint-disable-next-line
         loader: 'style!css?localIdentName=[name]--[local]--[hash:base64:5]&modules&importLoaders=1!postcss!less',
       },
       {
@@ -73,6 +82,13 @@ module.exports = {
     new HtmlWebpackPlugin(Object.assign({
       inject: true,
       template: paths.appHtml,
+      chunks: ['app'],
+    }, config)),
+    new HtmlWebpackPlugin(Object.assign({
+      inject: true,
+      template: paths.appHtml,
+      filename: `${config.embeds.character}/index.html`,
+      chunks: ['character'],
     }, config)),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"development"',

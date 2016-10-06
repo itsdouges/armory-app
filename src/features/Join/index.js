@@ -5,11 +5,10 @@ import Head from 'common/components/Head';
 
 import styles from './styles.less';
 
+import CardWithTitle from 'common/layouts/CardWithTitle';
 import Textbox from 'common/components/Textbox';
-import Card from 'common/components/Card';
 import Button from 'common/components/Button';
 import PasswordForm from 'common/components/PasswordForm';
-import Message from 'common/components/Message';
 
 import {
   register,
@@ -84,58 +83,57 @@ class Join extends Component {
 
   render () {
     return (
-      <span className={styles.root}>
+      <CardWithTitle
+        title="Join"
+        className={styles.root}
+        size="medium"
+        message={
+          <span>Already have an account? <Link to="/login"><strong>Go login!</strong></Link></span>
+        }
+      >
         <Head title="Join" />
+        <form onSubmit={this.register}>
+          <Textbox
+            showStatus
+            required
+            id="email"
+            placeholder="Email"
+            value={this.state.email}
+            error={this.props.user.emailErrors}
+            valid={this.props.user.emailValid}
+            onChange={this.fieldChanged}
+          />
 
-        <h2>Join</h2>
-        <Card size="medium">
-          <Message>
-            Already have an account? <Link to="/login"><strong>Go login!</strong></Link>
-          </Message>
+          <Textbox
+            showStatus
+            required
+            id="alias"
+            placeholder="Alias"
+            value={this.state.alias}
+            error={this.props.user.aliasErrors}
+            valid={this.props.user.aliasValid}
+            onChange={this.fieldChanged}
+          />
 
-          <form onSubmit={this.register}>
-            <Textbox
-              showStatus
-              required
-              id="email"
-              placeholder="Email"
-              value={this.state.email}
-              error={this.props.user.emailErrors}
-              valid={this.props.user.emailValid}
-              onChange={this.fieldChanged}
-            />
+          <PasswordForm
+            onFieldChange={this.fieldChanged}
+            valid={this.props.user.passwordValid}
+            passwordValue={this.state.password}
+            passwordConfirmValue={this.state.passwordConfirm}
+            error={this.props.user.passwordErrors}
+          />
 
-            <Textbox
-              showStatus
-              required
-              id="alias"
-              placeholder="Alias"
-              value={this.state.alias}
-              error={this.props.user.aliasErrors}
-              valid={this.props.user.aliasValid}
-              onChange={this.fieldChanged}
-            />
-
-            <PasswordForm
-              onFieldChange={this.fieldChanged}
-              valid={this.props.user.passwordValid}
-              passwordValue={this.state.password}
-              passwordConfirmValue={this.state.passwordConfirm}
-              error={this.props.user.passwordErrors}
-            />
-
-            <div className={styles.buttons}>
-              <Button
-                type="primary"
-                busy={this.props.user.registering}
-                disabled={!this.props.canRegister}
-              >
-                REGISTER
-              </Button>
-            </div>
-          </form>
-        </Card>
-      </span>
+          <div className={styles.buttons}>
+            <Button
+              type="primary"
+              busy={this.props.user.registering}
+              disabled={!this.props.canRegister}
+            >
+              REGISTER
+            </Button>
+          </div>
+        </form>
+      </CardWithTitle>
     );
   }
 }

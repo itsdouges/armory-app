@@ -8,13 +8,14 @@ const config = require('../src/config/default');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
-  entry: [
-    path.join(paths.appSrc, 'index'),
-  ],
+  entry: {
+    app: path.join(paths.appSrc, 'index'),
+    character: path.join(paths.appSrc, 'character'),
+  },
   output: {
     path: paths.appBuild,
     pathinfo: true,
-    filename: 'bundle-[hash:8].js',
+    filename: '[name]-[hash:8].js',
     publicPath: '/',
   },
   resolve: {
@@ -71,6 +72,25 @@ module.exports = {
     new HtmlWebpackPlugin(Object.assign({
       inject: true,
       template: paths.appHtml,
+      chunks: ['app'],
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }, config)),
+    new HtmlWebpackPlugin(Object.assign({
+      inject: true,
+      template: paths.appHtml,
+      filename: `${config.embeds.character}/index.html`,
+      chunks: ['character'],
       minify: {
         removeComments: true,
         collapseWhitespace: true,

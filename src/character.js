@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom';
-import Routes from './routes';
 import Base from './base';
+import CharacterLite from 'features/Character/Lite';
 
 ReactDOM.render(
   <Base>
-    <Routes />
+    <CharacterLite />
   </Base>,
   document.getElementById('root')
 );

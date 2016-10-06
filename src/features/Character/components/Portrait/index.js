@@ -8,13 +8,16 @@ const cx = classnames.bind(styles);
 const endpoint = config.imagesEndpoint;
 
 /* eslint max-len:0 */
-const Portrait = ({ character = {}, forceUpdate, children }) => (
+const Portrait = ({ character = {}, forceUpdate, children, className }) => (
   <div
-    className={cx('root', 'portraitBgDefault', character.race && character.race.toLowerCase())}
+    className={cx('root',
+      'portraitBgDefault',
+      character.race && character.race.toLowerCase()
+    )}
   >
     <div className={cx('portraitTopIn', 'borderStrip1')} />
     <div
-      className={styles.portrait}
+      className={cx(styles.portrait, className)}
       style={{
         backgroundImage: encodeURI(`url(${endpoint}${character.alias}/characters/${character.name}${forceUpdate ? `?${+new Date()}` : ''})`),
       }}
@@ -25,6 +28,7 @@ const Portrait = ({ character = {}, forceUpdate, children }) => (
 );
 
 Portrait.propTypes = {
+  className: PropTypes.string,
   character: PropTypes.object,
   forceUpdate: PropTypes.bool,
   children: PropTypes.any,

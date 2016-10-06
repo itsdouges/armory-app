@@ -5,7 +5,7 @@ import classnames from 'classnames/bind';
 import Placeholder from './placeholder';
 const cx = classnames.bind(styles);
 
-function extractData (content, { type, size, forceUpdate }) {
+function extractData (content, { type, forceUpdate }) {
   switch (type) {
     case 'users': {
       const alias = content.alias || content.name;
@@ -25,8 +25,7 @@ function extractData (content, { type, size, forceUpdate }) {
 
     case 'characters':
       return {
-        title: size === 'big' && content.guild_tag ?
-          `${content.name} [${content.guild_tag}]` : content.name,
+        title: content.guild_tag ? `${content.name} [${content.guild_tag}]` : content.name,
         // eslint-disable-next-line
         subTitle: `${content.level} ${content.race} ${content.eliteSpecialization || content.profession}`,
         imageClass: content.profession && content.profession.toLowerCase(),
