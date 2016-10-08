@@ -6,6 +6,7 @@ import SearchBar from 'common/components/SearchBar';
 import Container from 'common/components/Container';
 import News from './components/News';
 import Introduction from './components/Introduction';
+import RandomCharacter from './components/RandomCharacter';
 
 const Home = () => (
   <div className={styles.root}>
@@ -27,6 +28,10 @@ const Home = () => (
       <hr />
 
       <Introduction className={styles.introContainer} />
+
+      <hr />
+
+      <RandomCharacter />
 
       <hr />
 

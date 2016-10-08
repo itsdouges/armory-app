@@ -27,9 +27,14 @@ class CharacterLite extends Component {
     routeParams: PropTypes.object,
     location: PropTypes.object,
     amulets: PropTypes.object,
+    name: PropTypes.string,
   };
 
   componentWillMount () {
+    this.loadCharacter();
+  }
+
+  componentDidUpdate () {
     this.loadCharacter();
   }
 
@@ -38,9 +43,12 @@ class CharacterLite extends Component {
   }
 
   loadCharacter () {
-    const name = qs('name');
+    const name = this.props.name || qs('name');
+    if (!name) {
+      return;
+    }
 
-    this.props.dispatch(fetchCharacter(name));
+    this.props.dispatch(fetchCharacter(name, { redirect404: false }));
     this.props.dispatch(selectCharacter(name));
   }
 
