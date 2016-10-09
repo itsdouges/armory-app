@@ -107,24 +107,28 @@ class Statistics extends Component {
                 <span key={index} className={styles.chartContainer}>
                   <h3>{statData.name}</h3>
 
-                  {statData.name !== 'count' && <PieChart className={styles.chart} width={325} height={250}>
-                    <Pie
-                      label={label(statData.data)}
-                      labelLine={false}
-                      data={statData.data}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={60}
-                      outerRadius={80}
-                      fill="#82ca9d"
-                      paddingAngle={3}
-                    >
-                    {statData.data.map((entry, indx) =>
-                      <Cell key={`cell-${indx}`} fill={nameToColour[entry.name]} />)}
-                    </Pie>
-                  </PieChart>}
+                  {statData.name !== 'count' && (
+                    <PieChart className={styles.chart} width={325} height={250}>
+                      <Pie
+                        label={label(statData.data)}
+                        labelLine={false}
+                        data={statData.data}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={60}
+                        outerRadius={80}
+                        fill="#82ca9d"
+                        paddingAngle={3}
+                      >
+                      {statData.data.map((entry, indx) =>
+                        <Cell key={`cell-${indx}`} fill={nameToColour[entry.name]} />)}
+                      </Pie>
+                    </PieChart>
+                  )}
 
-                  {statData.name === 'count' && <span className={styles.count}>{`${statData.data}`}</span>}
+                  {statData.name === 'count' && (
+                    <span className={styles.count}>{`${statData.data}`}</span>
+                  )}
                 </span>
               ))}
             </div>
