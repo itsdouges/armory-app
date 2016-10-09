@@ -102,6 +102,9 @@ class Statistics extends Component {
         {parsedStats.splice(0, 1).map(({ name, stats }) => (
           <span key={name}>
             <h2>{name}</h2>
+
+            <hr />
+
             <div className={styles.chartsContainer}>
               {stats.filter((statData) => statData.name !== 'count').map((statData, index) => (
                 <span key={index} className={styles.chartContainer}>
