@@ -2,9 +2,12 @@
   text-align: left;
 }
 
-.chart {
-  width: 250px !important;
-  height: 250px !important;
+.chartContainer {
+  text-align: center;
+
+  text {
+    font-size: 11px;
+  }
 }
 
 .chartsContainer {
@@ -12,4 +15,14 @@
   flex-wrap: wrap;
   justify-content: center;
   min-height: 250px;
+}
+
+.count {
+  font-size: 4em;
+  composes: chartContainer;
+  width: 325px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

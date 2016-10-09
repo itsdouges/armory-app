@@ -3,6 +3,7 @@ import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import PieChart from 'recharts/lib/chart/PieChart';
 import Pie from 'recharts/lib/polar/Pie';
+import Cell from 'recharts/lib/component/Cell';
 
 import styles from './styles.less';
 import { fetchStatistics } from './actions';
@@ -16,7 +17,29 @@ export const selector = createSelector(
   })
 );
 
-function mapToData (data) {
+const nameToColour = {
+  Male: '#448AFF',
+  Female: '#E91E63',
+  Guardian: '#72C1D9',
+  Revenant: '#D16E5A',
+  Warrior: '#FFD166',
+  Engineer: ' #D09C59',
+  Ranger: '#8CDC82',
+  Thief: '#C08F95',
+  Elementalist: '#F68A87',
+  Mesmer: '#B679D5',
+  Necromancer: '#52A76F',
+  Asura: '#9966FF',
+  Charr: '#D25D6B',
+  Human: '#FFCC33',
+  Norn: '#66CCFF',
+  Sylvari: '#33CC33',
+  yes: '#E91E63',
+  no: '#448AFF',
+  count: '#009688',
+};
+
+function mapRawStatsToData (data) {
   return Object.keys(data).map((item) => {
     const count = data[item];
 
@@ -27,20 +50,30 @@ function mapToData (data) {
   });
 }
 
-function mapStats (stats) {
+function mapRawStats (stats) {
   return Object.keys(stats).map((stat) => {
     const data = stats[stat];
 
-    if (typeof data === 'object') {
-      return mapToData(data);
-    }
-
-    return [{
+    return {
       name: stat,
-      value: data,
-    }];
+      data: typeof data === 'object' ? mapRawStatsToData(data) : data,
+    };
   });
 }
+
+const RADIAN = Math.PI / 180;
+// eslint-disable-next-line
+const label = (data) => ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 1.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+  return (
+    <text x={x} y={y} textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+      {`${data[index].name} (${(percent * 100).toFixed(0)}%)`}
+    </text>
+  );
+};
 
 class Statistics extends Component {
   static propTypes = {
@@ -55,13 +88,12 @@ class Statistics extends Component {
   render () {
     const { armoryStats = {} } = this.props;
 
-
     const parsedStats = Object.keys(armoryStats).sort().map((name) => {
       const data = armoryStats[name];
 
       return {
         name,
-        stats: mapStats(data),
+        stats: mapRawStats(data),
       };
     });
 
@@ -71,17 +103,29 @@ class Statistics extends Component {
           <span key={name}>
             <h2>{name}</h2>
             <div className={styles.chartsContainer}>
-              {stats.map((data, index) => (
-                <PieChart key={index} className={styles.chart} width={250} height={250}>
-                  <Pie
-                    data={data}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={40}
-                    outerRadius={80}
-                    fill="#82ca9d"
-                  />
-                </PieChart>
+              {stats.map((statData, index) => (
+                <span key={index} className={styles.chartContainer}>
+                  <h3>{statData.name}</h3>
+
+                  {statData.name !== 'count' && <PieChart className={styles.chart} width={325} height={250}>
+                    <Pie
+                      label={label(statData.data)}
+                      labelLine={false}
+                      data={statData.data}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={80}
+                      fill="#82ca9d"
+                      paddingAngle={3}
+                    >
+                    {statData.data.map((entry, indx) =>
+                      <Cell key={`cell-${indx}`} fill={nameToColour[entry.name]} />)}
+                    </Pie>
+                  </PieChart>}
+
+                  {statData.name === 'count' && <span className={styles.count}>{`${statData.data}`}</span>}
+                </span>
               ))}
             </div>
 
@@ -89,7 +133,7 @@ class Statistics extends Component {
           </span>
         ))}
 
-        <p>Armory statistics are refreshed every thirty minutes.</p>
+        <p><small>* Armory statistics are refreshed every thirty minutes.</small></p>
 
       </Container>
     );
