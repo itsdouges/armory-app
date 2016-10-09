@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [2.6.0] - Unreleased
+### Added
+- Armory statistics page.
+
 ## [2.5.0] - 2016/10/08
 ### Added
 - Adds character embed to frontpage, loaded with random character name endpoint from api `/random/character/`.

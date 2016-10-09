@@ -10,6 +10,7 @@ import Settings from 'features/Settings';
 import Search from 'features/Search';
 import Character from 'features/Character';
 import NotFound from 'features/NotFound';
+import Statistics from 'features/Statistics';
 import { authEnabled, authOnly } from 'features/Auth';
 
 function onRouteUpdate () {
@@ -33,6 +34,7 @@ const Routes = () => (
       <Redirect from="/in" to="/login" />
       <Redirect from="/me" to="/settings" />
       <Redirect from="/me/*" to="/settings" />
+      <Route path="/stats" component={Statistics} />
       <Route path="/login" component={Login} />
       <Route path="/join" component={Join} />
       <Route path="/search(/:term)" component={Search} />

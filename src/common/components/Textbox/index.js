@@ -26,11 +26,11 @@ const Textbox = ({
       {label && <label htmlFor={id}>{label}</label>}
 
       <input
+        {...props}
         disabled={busy}
         id={id}
         type={type || 'text'}
         className={cx(styles.textbox, showStatus && status)}
-        {...props}
       />
 
       {error &&
