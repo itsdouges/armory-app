@@ -8,10 +8,20 @@
 - Changes
 ```
 
+## [2.5.0] - 2016/10/08
+### Added
+- Adds character embed to frontpage, loaded with random character name endpoint from api `/random/character/`.
+
 ## [2.4.0] - 2016/10/07
 ### Added
-- Adds character embed endpoint.
+- Adds character embed entrypoint.
 - Adds character embed markup copy to character portrait.
+
+### Changed
+- Refactored form cards into a common view component.
+
+### Deleted
+- Removed old `Avatar` component.
 
 ## [2.3.0] - 2016/09/27
 ### Added
@@ -24,8 +34,8 @@
 - Adds pvp map names to map component.
 
 ### Changed
-- Updates character/user/search page titles to be more appropriate for SEO purposes.
-- Modifies character meta descriptions to for SEO purposes.
+- Character page title from `{characterName}` to `{characterName} - {userAlias}`.
+- Character meta descriptions for SEO purposes.
 
 ### Fixed
 - Fixes user pvp seasons from not behaving as expected sometimes.

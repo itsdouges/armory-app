@@ -31,23 +31,27 @@ class CharacterLite extends Component {
   };
 
   componentWillMount () {
-    this.loadCharacter();
+    const name = this.props.name || qs('name');
+    if (!name) {
+      return;
+    }
+
+    this.loadCharacter(name);
   }
 
-  componentDidUpdate () {
-    this.loadCharacter();
+  componentWillReceiveProps (nextProps) {
+    if (this.props.name === nextProps.name) {
+      return;
+    }
+
+    this.loadCharacter(nextProps.name);
   }
 
   getItems (ids = []) {
     return ids.map((id) => this.props.items[id]);
   }
 
-  loadCharacter () {
-    const name = this.props.name || qs('name');
-    if (!name) {
-      return;
-    }
-
+  loadCharacter (name) {
     this.props.dispatch(fetchCharacter(name, { redirect404: false }));
     this.props.dispatch(selectCharacter(name));
   }

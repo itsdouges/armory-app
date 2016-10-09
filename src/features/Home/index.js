@@ -1,9 +1,10 @@
 import Head from 'common/components/Head';
 
-import styles from './styles.less';
 import heroImage from 'assets/images/logo.png';
 import SearchBar from 'common/components/SearchBar';
 import Container from 'common/components/Container';
+
+import styles from './styles.less';
 import News from './components/News';
 import Introduction from './components/Introduction';
 import RandomCharacter from './components/RandomCharacter';
