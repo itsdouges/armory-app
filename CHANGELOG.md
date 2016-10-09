@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [2.6.0] - Unreleased
+## [2.6.0] - 2016/10/09
 ### Added
 - Armory statistics page.
 
