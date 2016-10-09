@@ -146,7 +146,7 @@ class Character extends Component {
     /* eslint no-underscore-dangle:0 */
     const attributes = calculateAttributes(character, items);
 
-    const ownCharacter = get(character, 'alias') === this.context._userAlias;
+    const ownCharacter = alias === this.context._userAlias;
     const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
     const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]);

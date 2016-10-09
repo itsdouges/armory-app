@@ -67,6 +67,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.6.1",
     "react-share": "^1.9.3",
+    "recharts": "^0.15.1",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
     "reselect": "^2.5.3"
