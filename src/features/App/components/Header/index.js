@@ -16,7 +16,7 @@ const DEFAULT_LINKS = [
 const Header = ({ authenticated, alias, checkingAuthentication, simple }) => {
   const links = authenticated ?
     [<Link to={`/${alias}`}>{alias.toUpperCase()}</Link>, <Link to="/settings">SETTINGS</Link>] :
-    [<Link to="/login">LOGIN</Link>];
+    [<Link to="/join">JOIN</Link>, <Link to="/login">LOGIN</Link>];
 
   return (
     <Card className={cx(styles.root, simple && styles.simple)}>
