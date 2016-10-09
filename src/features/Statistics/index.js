@@ -99,36 +99,30 @@ class Statistics extends Component {
 
     return (
       <Container className={styles.root}>
-        {parsedStats.map(({ name, stats }) => (
+        {parsedStats.splice(0, 1).map(({ name, stats }) => (
           <span key={name}>
             <h2>{name}</h2>
             <div className={styles.chartsContainer}>
-              {stats.map((statData, index) => (
+              {stats.filter((statData) => statData.name !== 'count').map((statData, index) => (
                 <span key={index} className={styles.chartContainer}>
                   <h3>{statData.name}</h3>
 
-                  {statData.name !== 'count' && (
-                    <PieChart className={styles.chart} width={325} height={250}>
-                      <Pie
-                        label={label(statData.data)}
-                        labelLine={false}
-                        data={statData.data}
-                        cx="50%"
-                        cy="50%"
-                        innerRadius={60}
-                        outerRadius={80}
-                        fill="#82ca9d"
-                        paddingAngle={3}
-                      >
-                      {statData.data.map((entry, indx) =>
-                        <Cell key={`cell-${indx}`} fill={nameToColour[entry.name]} />)}
-                      </Pie>
-                    </PieChart>
-                  )}
-
-                  {statData.name === 'count' && (
-                    <span className={styles.count}>{`${statData.data}`}</span>
-                  )}
+                  <PieChart className={styles.chart} width={325} height={250}>
+                    <Pie
+                      label={label(statData.data)}
+                      labelLine={false}
+                      data={statData.data}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={80}
+                      fill="#82ca9d"
+                      paddingAngle={3}
+                    >
+                    {statData.data.map((entry, indx) =>
+                      <Cell key={`cell-${indx}`} fill={nameToColour[entry.name]} />)}
+                    </Pie>
+                  </PieChart>
                 </span>
               ))}
             </div>
