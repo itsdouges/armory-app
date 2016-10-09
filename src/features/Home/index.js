@@ -28,11 +28,11 @@ const Home = () => (
 
       <hr />
 
-      <Introduction className={styles.introContainer} />
+      <div className={styles.atfContainer}>
+        <Introduction className={styles.introContainer} />
 
-      <hr />
-
-      <RandomCharacter />
+        <RandomCharacter />
+      </div>
 
       <hr />
 
