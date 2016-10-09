@@ -8,6 +8,7 @@ import Cell from 'recharts/lib/component/Cell';
 import styles from './styles.less';
 import { fetchStatistics } from './actions';
 
+import Head from 'common/components/Head';
 import Container from 'common/components/Container';
 
 export const selector = createSelector(
@@ -99,6 +100,8 @@ class Statistics extends Component {
 
     return (
       <Container className={styles.root}>
+        <Head title="Statistics" />
+
         {parsedStats.splice(0, 1).map(({ name, stats }) => (
           <span key={name}>
             <h2>{name}</h2>
