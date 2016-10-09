@@ -9,10 +9,14 @@ import Icon from 'common/components/Icon';
 import ProgressIcon from 'common/components/Icon/Progress';
 import SearchBar from 'common/components/SearchBar';
 
+const DEFAULT_LINKS = [
+  <Link to="/stats">STATS</Link>,
+];
+
 const Header = ({ authenticated, alias, checkingAuthentication, simple }) => {
   const links = authenticated ?
     [<Link to={`/${alias}`}>{alias.toUpperCase()}</Link>, <Link to="/settings">SETTINGS</Link>] :
-    [<Link to="/join">JOIN</Link>, <Link to="/login">LOGIN</Link>];
+    [<Link to="/login">LOGIN</Link>];
 
   return (
     <Card className={cx(styles.root, simple && styles.simple)}>
@@ -26,12 +30,11 @@ const Header = ({ authenticated, alias, checkingAuthentication, simple }) => {
 
         {!simple && <div className={styles.searchContainer}><SearchBar /></div>}
 
-        {checkingAuthentication ?
-          <ProgressIcon size="micro" /> :
-          <ul className={styles.linkContainer}>
-            {links.map((link, index) => <li className={styles.link} key={index}>{link}</li>)}
-          </ul>
-        }
+        <ul className={styles.linkContainer}>
+          {DEFAULT_LINKS.map((link, index) => <li className={styles.link} key={index}>{link}</li>)}
+          {!checkingAuthentication && links.map((link, index) => <li className={styles.link} key={index}>{link}</li>)}
+          {checkingAuthentication && <li className={styles.link}><ProgressIcon size="micro" /></li>}
+        </ul>
       </Container>
     </Card>
   );

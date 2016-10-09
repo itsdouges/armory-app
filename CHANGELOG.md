@@ -12,6 +12,9 @@
 ### Added
 - Armory statistics page.
 
+## Changed
+- Header to include link to statistics page.
+
 ## [2.5.0] - 2016/10/08
 ### Added
 - Adds character embed to frontpage, loaded with random character name endpoint from api `/random/character/`.
