@@ -27,20 +27,32 @@ class CharacterLite extends Component {
     routeParams: PropTypes.object,
     location: PropTypes.object,
     amulets: PropTypes.object,
+    name: PropTypes.string,
   };
 
   componentWillMount () {
-    this.loadCharacter();
+    const name = this.props.name || qs('name');
+    if (!name) {
+      return;
+    }
+
+    this.loadCharacter(name);
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (this.props.name === nextProps.name) {
+      return;
+    }
+
+    this.loadCharacter(nextProps.name);
   }
 
   getItems (ids = []) {
     return ids.map((id) => this.props.items[id]);
   }
 
-  loadCharacter () {
-    const name = qs('name');
-
-    this.props.dispatch(fetchCharacter(name));
+  loadCharacter (name) {
+    this.props.dispatch(fetchCharacter(name, { redirect404: false }));
     this.props.dispatch(selectCharacter(name));
   }
 

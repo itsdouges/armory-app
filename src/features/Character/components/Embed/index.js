@@ -45,7 +45,17 @@ export default class Embed extends Component {
         </TooltipTrigger>
 
         {shown && (
-          <Textbox containerClassName={styles.input} value={buildEmbedScript(name)} readOnly />
+          <div className={styles.input}>
+            <Textbox
+              value={buildEmbedScript(name)}
+              readOnly
+              iconRight={(
+                <TooltipTrigger data="Copy and paste this markup onto your website.">
+                  <SvgIcon name="help-black" />
+                </TooltipTrigger>
+              )}
+            />
+          </div>
         )}
       </div>
     );

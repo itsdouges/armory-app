@@ -29,6 +29,10 @@
   margin: 2em 0;
 }
 
+.atfContainer {
+  display: inherit;
+}
+
 .searchContainer {
   position: absolute;
   left: 0;
@@ -43,5 +47,11 @@
   > div {
     padding: 0.4em;
     font-size: 1.1em;
+  }
+}
+
+@media only screen and (min-width: @pc) {
+  .atfContainer {
+    display: flex;
   }
 }

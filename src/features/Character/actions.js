@@ -64,7 +64,7 @@ function extractIds ({ specializations, equipment, equipment_pvp }) {
   return ids;
 }
 
-export function fetchCharacter (character) {
+export function fetchCharacter (character, { redirect404 = true } = {}) {
   return (dispatch) => {
     dispatch(fetchingCharacter(true));
 
@@ -85,7 +85,7 @@ export function fetchCharacter (character) {
         dispatch(actions.fetchSkins(skins));
         dispatch(actions.fetchAmulets(amulets));
         dispatch(actions.fetchSpecializations(specializations));
-      }, () => browserHistory.replace('/404'));
+      }, () => redirect404 && browserHistory.replace('/404'));
   };
 }
 

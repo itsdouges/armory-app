@@ -49,8 +49,6 @@ const PvpLeague = ({ standings, seasons }) => {
   const currentSeason = last(sortedSeasons) || {};
   const standing = find(standings, { season_id: currentSeason.id }) || {};
 
-  console.log(currentSeason, standing);
-
   return (
     <PvpSeason season={currentSeason} standing={standing} />
   );
