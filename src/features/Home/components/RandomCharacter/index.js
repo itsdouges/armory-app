@@ -3,9 +3,9 @@ import { Component } from 'react';
 
 import config from 'config';
 import CharacterLite from 'features/Character/Lite';
-import TooltipTrigger from 'common/Components/TooltipTrigger';
+import TooltipTrigger from 'common/components/TooltipTrigger';
 import SvgIcon from 'common/components/Icon/Svg';
-import Tooltip from 'common/Components/Tooltip';
+import Tooltip from 'common/components/Tooltip';
 
 import styles from './styles.less';
 
