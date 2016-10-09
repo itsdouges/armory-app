@@ -31,10 +31,10 @@ const Header = ({ authenticated, alias, checkingAuthentication, simple }) => {
         {!simple && <div className={styles.searchContainer}><SearchBar /></div>}
 
         <ul className={styles.linkContainer}>
-          {DEFAULT_LINKS.map((link, index) => <li className={styles.link} key={index}>{link}</li>)}
           {!checkingAuthentication && links.map((link, index) =>
             <li className={styles.link} key={index}>{link}</li>)}
           {checkingAuthentication && <li className={styles.link}><ProgressIcon size="micro" /></li>}
+          {DEFAULT_LINKS.map((link, index) => <li className={styles.link} key={index}>{link}</li>)}
         </ul>
       </Container>
     </Card>
