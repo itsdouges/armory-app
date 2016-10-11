@@ -52,7 +52,7 @@ class CharacterLite extends Component {
   }
 
   loadCharacter (name) {
-    this.props.dispatch(fetchCharacter(name, { redirect404: false }));
+    this.props.dispatch(fetchCharacter(name, { redirect404: false, ignoreAuth: true }));
     this.props.dispatch(selectCharacter(name));
   }
 

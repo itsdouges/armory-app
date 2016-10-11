@@ -1,4 +1,5 @@
 import get from 'lodash/get';
+import merge from 'lodash/merge';
 import { createSelector } from 'reselect';
 
 import {
@@ -6,6 +7,7 @@ import {
   FETCHING_CHARACTER,
   SELECT_CHARACTER,
   SELECT_CHARACTER_MODE,
+  UPDATE_CHARACTER,
 } from './actions';
 
 const eliteSpecMap = {
@@ -201,6 +203,16 @@ export default function reducer (state, action) {
         ...state,
         mode: action.payload,
       };
+
+    case UPDATE_CHARACTER: {
+      const characterUpdate = {
+        [action.payload.name]: {
+          authorization: action.payload.authorization,
+        },
+      };
+
+      return merge({}, state, { data: characterUpdate });
+    }
 
     default:
       return undefined;

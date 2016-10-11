@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [2.7.0] - 2016/12/09
+### Added
+- Character hiding feature, you can find this by clicking the edit button on any character you own.
+
 ## [2.6.0] - 2016/10/09
 ### Added
 - Armory statistics page.

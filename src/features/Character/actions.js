@@ -9,6 +9,7 @@ export const FETCH_CHARACTER_RESULT = 'FETCH_CHARACTER_RESULT';
 export const FETCHING_CHARACTER = 'FETCHING_CHARACTER';
 export const SELECT_CHARACTER = 'SELECT_CHARACTER';
 export const SELECT_CHARACTER_MODE = 'SELECT_CHARACTER_MODE';
+export const UPDATE_CHARACTER = 'UPDATE_CHARACTER';
 
 const fetchingCharacter = (fetching) => ({
   type: FETCHING_CHARACTER,
@@ -64,11 +65,11 @@ function extractIds ({ specializations, equipment, equipment_pvp }) {
   return ids;
 }
 
-export function fetchCharacter (character, { redirect404 = true } = {}) {
+export function fetchCharacter (character, { redirect404 = true, ignoreAuth } = {}) {
   return (dispatch) => {
     dispatch(fetchingCharacter(true));
 
-    return axios.get(`${config.api.endpoint}characters/${character}`)
+    return axios.get(`${config.api.endpoint}characters/${character}`, { ignoreAuth })
       .then(({ data }) => {
         dispatch(fetchCharacterResultSuccess(character, data));
         dispatch(fetchingCharacter(false));
@@ -86,6 +87,23 @@ export function fetchCharacter (character, { redirect404 = true } = {}) {
         dispatch(actions.fetchAmulets(amulets));
         dispatch(actions.fetchSpecializations(specializations));
       }, () => redirect404 && browserHistory.replace('/404'));
+  };
+}
+
+function updateCharacterAuth (name, authorization) {
+  return {
+    type: UPDATE_CHARACTER,
+    payload: {
+      name,
+      authorization,
+    },
+  };
+}
+
+export function updateCharacter (name, { showPublic }) {
+  return (dispatch) => {
+    dispatch(updateCharacterAuth(name, { showPublic }));
+    return axios.put(`${config.api.endpoint}characters/${name}`, { showPublic });
   };
 }
 

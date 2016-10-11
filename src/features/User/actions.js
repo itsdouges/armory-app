@@ -37,10 +37,10 @@ const fetchingUserCharacters = (fetching) => ({
   payload: fetching,
 });
 
-export const fetchUserCharacters = (alias) => (dispatch) => {
+export const fetchUserCharacters = (alias, { ignoreAuth } = {}) => (dispatch) => {
   dispatch(fetchingUserCharacters(true));
 
-  return get(`${config.api.endpoint}users/${alias}/characters`)
+  return get(`${config.api.endpoint}users/${alias}/characters`, { ignoreAuth })
     .then((response) => {
       dispatch(fetchUserCharactersResult(alias, response.data));
       dispatch(fetchingUserCharacters(false));
@@ -99,13 +99,13 @@ export const fetchPvpStandings = (alias) => (dispatch) =>
   })
   .then((ids) => dispatch(actions.fetchPvpSeasons(ids)));
 
-export const fetchUser = (alias) => (dispatch) => {
+export const fetchUser = (alias, { ignoreAuth } = {}) => (dispatch) => {
   dispatch(fetchingUser(true));
   dispatch(fetchPvpStandings(alias));
   dispatch(fetchPvpGames(alias));
   dispatch(fetchPvpStats(alias));
 
-  return get(`${config.api.endpoint}users/${alias}`)
+  return get(`${config.api.endpoint}users/${alias}`, { ignoreAuth })
     .then((response) => {
       dispatch(fetchUserResult(response.data));
       dispatch(fetchingUser(false));

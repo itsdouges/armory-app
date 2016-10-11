@@ -1,5 +1,5 @@
-// import { get } from 'axios';
-// import config from 'config';
+import { get } from 'axios';
+import config from 'config';
 import { Component } from 'react';
 import styles from './styles.less';
 
@@ -11,12 +11,12 @@ export default class Gw2ApiHealth extends Component {
   };
 
   componentWillMount () {
-    // get(`${config.api.endpoint}characters/Blastrn`, { ignoreAuth: true })
-    //   .then(null, () => {
-    //     this.setState({
-    //       up: false,
-    //     });
-    //   });
+    get(`${config.api.endpoint}characters/Blastrn`, { ignoreAuth: true })
+      .then(null, () => {
+        this.setState({
+          up: false,
+        });
+      });
   }
 
   render () {

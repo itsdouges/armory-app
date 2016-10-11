@@ -5,13 +5,14 @@ import includes from 'lodash/includes';
 import get from 'lodash/get';
 import cx from 'classnames';
 
-import Head from 'common/components/Head';
 import { selector } from './characters.reducer';
-import { fetchCharacter, selectCharacter, selectCharacterMode } from './actions';
+import { fetchCharacter, selectCharacter, selectCharacterMode, updateCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
 import { calculate as calculateAttributes } from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
+import Checkbox from 'common/components/Checkbox';
+import Head from 'common/components/Head';
 import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
@@ -112,8 +113,14 @@ class Character extends Component {
   loadCharacter () {
     const { character, alias } = this.props.routeParams;
 
-    this.props.dispatch(fetchCharacter(character));
-    this.props.dispatch(fetchUserCharacters(alias));
+    this.props.dispatch(fetchCharacter(character, {
+      ignoreAuth: this.context._userAlias !== alias,
+    }));
+
+    this.props.dispatch(fetchUserCharacters(alias, {
+      ignoreAuth: this.context._userAlias !== alias,
+    }));
+
     this.props.dispatch(selectCharacter(character));
     this.props.dispatch(selectUser(alias));
   }
@@ -125,6 +132,14 @@ class Character extends Component {
       editMode,
     });
   };
+
+  hide = (e) => {
+    const { character } = this.props.routeParams;
+
+    this.props.dispatch(updateCharacter(character, {
+      showPublic: e.target.checked,
+    }));
+  }
 
   render () {
     const {
@@ -153,6 +168,7 @@ class Character extends Component {
     const characterSkills = get(character, `skills[${mode}]`, {});
     const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
     const crafting = get(character, 'crafting', [{}, {}, {}]);
+    const showPublic = get(character, 'authorization.showPublic');
     const guild = character && {
       name: character.guild_name,
       tag: character.guild_tag,
@@ -169,14 +185,29 @@ class Character extends Component {
         />
 
         <div className={styles.inner}>
-          {ownCharacter &&
-            <Button
-              className={styles.editButton}
-              type={editMode ? 'primary' : ''}
-              onClick={this.toggleEditMode}
-            >
-              {editMode ? 'I\'M DONE' : 'EDIT'}
-            </Button>}
+          <div className={styles.editContainer}>
+            {ownCharacter && (
+              <div>
+                <Button
+                  key="edit-button"
+                  className={styles.editButton}
+                  type={editMode ? 'primary' : ''}
+                  onClick={this.toggleEditMode}
+                >
+                  {editMode ? 'I\'M DONE' : 'EDIT'}
+                </Button>
+
+                {editMode && [
+                  <Checkbox
+                    checked={!!showPublic}
+                    key="hide-checkbox"
+                    onChange={this.hide}
+                    label={showPublic ? 'Character Shown' : 'Character Hidden'}
+                  />,
+                ]}
+              </div>
+            )}
+          </div>
 
           <ContentCard content={character} size="big" />
 
