@@ -20,10 +20,12 @@
   opacity: 0.5;
 }
 
-.editButton {
-  position: absolute;
-  right: 0;
+.editContainer {
+  text-align: center;
   margin: 1em;
+}
+
+.editButton {
   composes: low from 'common/styles/box-shadow.less';
 }
 
@@ -141,6 +143,11 @@
 }
 
 @media only screen and (min-width: @tablet) {
+  .editContainer {
+    position: absolute;
+    right: 0;
+  }
+
   .columns {
     flex-direction: row;
   }

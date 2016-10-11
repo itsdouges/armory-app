@@ -63,7 +63,11 @@ export const authEnabled = (ComposedComponent) => connect(selector)(
     }
 
     render () {
-      return <ComposedComponent {...this.props} />;
+      return (
+        this.props.checkingAuthentication
+          ? <ProgressIcon />
+          : <ComposedComponent {...this.props} />
+      );
     }
 });
 
