@@ -11,7 +11,7 @@ export default class Gw2ApiHealth extends Component {
   };
 
   componentWillMount () {
-    get(`${config.api.endpoint}characters/Blastrn`)
+    get(`${config.api.endpoint}characters/Blastrn`, { ignoreAuth: true })
       .then(null, () => {
         this.setState({
           up: false,
