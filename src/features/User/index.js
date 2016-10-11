@@ -38,6 +38,10 @@ class User extends Component {
     routeParams: PropTypes.object,
   };
 
+  static contextTypes = {
+    _userAlias: PropTypes.string,
+  };
+
   componentWillMount () {
     this.loadUser();
   }
@@ -51,7 +55,7 @@ class User extends Component {
   }
 
   loadUser (alias = this.props.routeParams.alias) {
-    this.props.dispatch(fetchUser(alias));
+    this.props.dispatch(fetchUser(alias, { ignoreAuth: this.context._userAlias !== alias }));
     this.props.dispatch(selectUser(alias));
   }
 

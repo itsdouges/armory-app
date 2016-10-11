@@ -64,11 +64,11 @@ function extractIds ({ specializations, equipment, equipment_pvp }) {
   return ids;
 }
 
-export function fetchCharacter (character, { redirect404 = true } = {}) {
+export function fetchCharacter (character, { redirect404 = true, ignoreAuth } = {}) {
   return (dispatch) => {
     dispatch(fetchingCharacter(true));
 
-    return axios.get(`${config.api.endpoint}characters/${character}`)
+    return axios.get(`${config.api.endpoint}characters/${character}`, { ignoreAuth })
       .then(({ data }) => {
         dispatch(fetchCharacterResultSuccess(character, data));
         dispatch(fetchingCharacter(false));

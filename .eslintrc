@@ -18,7 +18,8 @@
     "global-require": 0,
     "import/no-unresolved": 0,
     "no-unused-expressions": "off",
-    "camelcase": "off"
+    "camelcase": "off",
+    "no-underscore-dangle": "off"
   },
   "globals": {
     "__DEVELOPMENT__": true,

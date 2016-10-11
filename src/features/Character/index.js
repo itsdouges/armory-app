@@ -112,8 +112,14 @@ class Character extends Component {
   loadCharacter () {
     const { character, alias } = this.props.routeParams;
 
-    this.props.dispatch(fetchCharacter(character));
-    this.props.dispatch(fetchUserCharacters(alias));
+    this.props.dispatch(fetchCharacter(character, {
+      ignoreAuth: this.context._userAlias !== alias,
+    }));
+
+    this.props.dispatch(fetchUserCharacters(alias, {
+      ignoreAuth: this.context._userAlias !== alias,
+    }));
+
     this.props.dispatch(selectCharacter(character));
     this.props.dispatch(selectUser(alias));
   }
