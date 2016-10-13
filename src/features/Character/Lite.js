@@ -9,7 +9,6 @@ import { fetchCharacter, selectCharacter } from './actions';
 import { selector } from './characters.reducer';
 import styles from './liteStyles.less';
 
-import Head from 'common/components/Head';
 import ContentCard from 'common/components/ContentCard';
 import Item from './components/Item';
 import Portrait from './components/Portrait';
@@ -61,7 +60,6 @@ class CharacterLite extends Component {
       character,
       items,
       skins,
-      name,
     } = this.props;
 
     const equipment = get(character, 'equipment', {});
@@ -70,8 +68,6 @@ class CharacterLite extends Component {
 
     return (
       <div className={styles.root}>
-        <Head title={`${name} (Embed)`} />
-
         <div className={styles.cover}>
           <Portrait character={character} className={styles.litePortrait} />
         </div>
