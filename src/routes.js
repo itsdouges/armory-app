@@ -1,4 +1,7 @@
 import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router';
+
+import { pageView } from 'lib/tracking';
+
 import App from 'features/App';
 import Home from 'features/Home';
 import Login from 'features/Login';
@@ -15,16 +18,7 @@ import { authEnabled, authOnly } from 'features/Auth';
 
 function onRouteUpdate () {
   window.scrollTo(0, 0);
-
-  if (!window.ga || window.location.hostname.indexOf('localhost') >= 0) {
-    if (__DEVELOPMENT__) console.log('localhost -> NO TRACK');
-
-    return;
-  }
-
-  window.ga('send', 'pageview', {
-    page: window.location.pathname,
-  });
+  pageView();
 }
 
 const Routes = () => (
