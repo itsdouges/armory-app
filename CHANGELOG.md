@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [2.7.0] - 2016/12/09
+## [2.7.0] - 2016/10/13
 ### Added
 - Character hiding feature, you can find this by clicking the edit button on any character you own.
 

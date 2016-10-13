@@ -5,6 +5,10 @@ import Card from 'common/components/Card';
 
 /* eslint max-len:0 */
 const news = [{
+  title: 'Character Privacy',
+  date: '13/10/16',
+  content: 'Venture to your character pages, click edit, and you will now see a checkbox that you can use to hide your characters. Happy hiding!',
+}, {
   title: 'Embed Your Characters!',
   date: '7/10/16',
   content: 'Character embeddables are now available. Click on the embed icon for any character and copy and paste the markup onto your website.',
