@@ -19,7 +19,7 @@ const selector = createSelector(
   })
 );
 
-export const authEnabled = (ComposedComponent) => connect(selector)(
+export const authEnabled = () => (ComposedComponent) => connect(selector)(
   class AuthEnabled extends Component {
     static propTypes = {
       dispatch: PropTypes.func,
@@ -63,16 +63,12 @@ export const authEnabled = (ComposedComponent) => connect(selector)(
     }
 
     render () {
-      return (
-        this.props.checkingAuthentication
-          ? <ProgressIcon />
-          : <ComposedComponent {...this.props} />
-      );
+      return <ComposedComponent {...this.props} />;
     }
 });
 
 /* eslint react/no-multi-comp:0 */
-export const authOnly = (ComposedComponent) => class AuthOnly extends Component {
+export const authOnly = () => (ComposedComponent) => class AuthOnly extends Component {
   static contextTypes = {
     _checkingAuth: PropTypes.bool,
     _userAuthenticated: PropTypes.bool,

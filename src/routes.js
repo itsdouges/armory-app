@@ -29,7 +29,7 @@ function onRouteUpdate () {
 
 const Routes = () => (
   <Router onUpdate={onRouteUpdate} history={browserHistory}>
-    <Route path="/" component={authEnabled(App)}>
+    <Route path="/" component={authEnabled()(App)}>
       <IndexRoute component={Home} />
       <Redirect from="/in" to="/login" />
       <Redirect from="/me" to="/settings" />
@@ -38,7 +38,7 @@ const Routes = () => (
       <Route path="/login" component={Login} />
       <Route path="/join" component={Join} />
       <Route path="/search(/:term)" component={Search} />
-      <Route path="/settings" component={authOnly(Settings)} />
+      <Route path="/settings" component={authOnly()(Settings)} />
       <Route path="/forgot-my-password" component={ForgotMyPassword} />
       <Route path="/404" component={NotFound} />
       <Route path="/g/:guildName" component={Guild} />
