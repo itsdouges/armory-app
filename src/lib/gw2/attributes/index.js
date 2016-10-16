@@ -1,4 +1,4 @@
-import parseCharacter from 'gw2e-item-attributes/parseCharacter';
+import parseCharacter from 'gw2e-item-attributes/build/parseCharacter';
 import reduce from 'lodash/reduce';
 import lowerFirst from 'lodash/lowerFirst';
 import includes from 'lodash/includes';

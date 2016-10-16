@@ -8,7 +8,7 @@ import cx from 'classnames';
 import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter, selectCharacterMode, updateCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
-import { calculate as calculateAttributes } from 'lib/gw2/attributes/new';
+import { calculate as calculateAttributes } from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
 import Checkbox from 'common/components/Checkbox';
