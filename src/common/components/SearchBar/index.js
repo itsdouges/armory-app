@@ -9,7 +9,7 @@ import SvgIcon from 'common/components/Icon/Svg';
 function onSearch (event) {
   event.preventDefault();
 
-  const filter = event.nativeEvent.target[0].value;
+  const filter = event.nativeEvent.target[1].value;
   if (!filter) {
     return;
   }
@@ -24,7 +24,7 @@ const SearchBar = ({ className, ...props }) => (
       required
       placeholder="Search for users, characters, and guilds..."
       containerClassName={styles.textBoxContainer}
-      iconRight={(
+      iconLeft={(
         <button className={styles.searchButton}>
           <SvgIcon button className={styles.searchIcon} name="search" size="micro" />
         </button>

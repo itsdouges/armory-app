@@ -10,7 +10,9 @@ const Introduction = ({ className, ...props }) => (
     <div className={styles.text}>
       Guild Wars 2 Armory is an easy way to find, view, and
       share users, characters, and guilds with your friends
-      on your mobile and PC! Join today and start sharing!
+      on your mobile and PC!
+      <br />
+      Join today and start sharing!
     </div>
   </div>
 );

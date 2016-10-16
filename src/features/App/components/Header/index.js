@@ -16,12 +16,10 @@ const DEFAULT_LINKS = [
 const Header = ({ authenticated, alias, checkingAuthentication, simple }) => {
   const links = authenticated ?
     [<Link to={`/${alias}`}>{alias.toUpperCase()}</Link>, <Link to="/settings">SETTINGS</Link>] :
-    [<Link to="/join">JOIN</Link>, <Link to="/login">LOGIN</Link>];
+    [<Link to="/login">LOG IN</Link>, <Link to="/join">JOIN</Link>];
 
   return (
     <Card className={cx(styles.root, simple && styles.simple)}>
-      <div className={styles.heroImage}></div>
-
       <Container className={styles.innerContainer}>
         <Link to="/" key={0}>
           <Icon className={styles.icon} name="logo-small.png" size="mini" />

@@ -7,18 +7,13 @@
 
 .heroImageContainer {
   padding: 0 1em;
-  margin: 4em auto;
+  margin: 3em auto 5em;
   position: relative;
-  height: 326px;
 }
 
 .heroImage {
-  width: 300px;
-  height: 326px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateY(-50%) translateX(-50%);
+  height: 250px;
+  margin-bottom: 2em;
 }
 
 .introContainer {
@@ -30,22 +25,42 @@
 }
 
 .atfContainer {
+  padding: 3em 0;
   display: inherit;
+  min-height: 400px;
 }
 
-.searchContainer {
+.guildsContainer {
+  display: flex;
+  padding: 3em 0;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.introBackgroundContainer {
+  background-color: black;
+  position: relative;
+}
+
+.introBackground {
+  opacity: 0.3;
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  top: 45%;
+  bottom: 0;
+  background-image: url('assets/images/hero.jpg');
+  background-position: 26% 13%;
+  background-size: 160%;
 }
 
 .searchBar {
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 600px;
 
   > div {
-    padding: 0.4em;
+    padding: 0.5em;
     font-size: 1.1em;
   }
 }
@@ -53,5 +68,7 @@
 @media only screen and (min-width: @pc) {
   .atfContainer {
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

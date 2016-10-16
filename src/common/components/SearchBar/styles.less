@@ -5,16 +5,24 @@
 }
 
 .textBoxContainer {
-  margin-bottom: 0!important;
+  border-radius: 5px;
+  margin-bottom: 0 !important;
+  padding: 1em !important;
+  border: none;
+  composes: low from 'common/styles/box-shadow.less';
 
   input {
-    font-size: 1em;
+    font-size: 1.1em;
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.6);
+    }
   }
 }
 
 .searchIcon {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 
 .searchButton {
