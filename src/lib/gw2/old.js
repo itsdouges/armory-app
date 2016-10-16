@@ -283,8 +283,6 @@ export function calculate (character, items) {
     return defaultAttributes;
   }
 
-  console.log(parseItems(items));
-
   const base = calculateBaseAttribute(character.level);
   const bonusHealth = calculateBonusHealth(character.level, character.profession);
   const itemBonus = getItemAttributes(character, items);

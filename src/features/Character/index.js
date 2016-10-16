@@ -8,7 +8,7 @@ import cx from 'classnames';
 import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter, selectCharacterMode, updateCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
-import { calculate as calculateAttributes } from 'lib/gw2/attributes';
+import { calculate as calculateAttributes } from 'lib/gw2/attributes/new';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
 import Checkbox from 'common/components/Checkbox';
@@ -159,7 +159,7 @@ class Character extends Component {
     const { editMode } = this.state;
 
     /* eslint no-underscore-dangle:0 */
-    const attributes = calculateAttributes(character, items);
+    const attributes = calculateAttributes(character, { items, traits, skills });
 
     const ownCharacter = get(character, 'alias', false) === this.context._userAlias;
     const equipment = get(character, 'equipment', {});
