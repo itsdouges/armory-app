@@ -68,6 +68,15 @@ export const readItems = (ids) => {
   .then(({ data }) => mapItemsToObject(data));
 };
 
+export const readItemStats = (ids) => {
+  const delimitedIds = ids.join(',');
+
+  return get(`${config.gw2.endpoint}v2/itemStats?ids=${delimitedIds}`, {
+    ignoreAuth: true,
+  })
+  .then(({ data }) => mapItemsToObject(data));
+};
+
 export const readSkins = (ids) => {
   const delimitedIds = ids.join(',');
 

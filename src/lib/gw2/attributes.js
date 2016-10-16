@@ -1,3 +1,5 @@
+import { parseItems } from 'gw2e-item-attributes';
+
 const defaultAttributes = {
   power: 0,
   necromancer: 0,
@@ -280,6 +282,8 @@ export function calculate (character, items) {
   if (!character) {
     return defaultAttributes;
   }
+
+  console.log(parseItems(items));
 
   const base = calculateBaseAttribute(character.level);
   const bonusHealth = calculateBonusHealth(character.level, character.profession);

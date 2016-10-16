@@ -83,6 +83,7 @@ export function fetchCharacter (character, { redirect404 = true, ignoreAuth } = 
 
         dispatch(actions.fetchSkills(skills));
         dispatch(actions.fetchItems(items));
+        // dispatch(actions.fetchItemStats(items));
         dispatch(actions.fetchSkins(skins));
         dispatch(actions.fetchAmulets(amulets));
         dispatch(actions.fetchSpecializations(specializations));
