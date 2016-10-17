@@ -1,21 +1,27 @@
 @import '~common/styles/sizes.less';
 
-div.root {
+.root {
+  width: 100%;
+  position: relative;
+}
+
+.fixed {
   padding: 0.25em;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
-
-  background: url('assets/images/gw_bgrd.png');
-  background-position: center top;
-  background-size: cover;
+  z-index: 9999;
 }
 
-.simple {
-  background: none!important;
-  box-shadow: none!important;
+.background {
+  background: url('assets/images/gw_bgrd.png');
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
 }
 
 .innerContainer {
@@ -44,6 +50,27 @@ div.root {
 
 .icon {
   margin-right: 0.5em;
+}
+
+.bigSearchContainer {
+  padding: 5em 1em;
+  position: relative;
+  z-index: 150;
+}
+
+.heroImage {
+  width: 292px;
+  height: 202px;
+  margin-bottom: 2em;
+}
+
+.searchBar {
+  margin: 0 auto;
+
+  > div {
+    padding: 0.5em;
+    font-size: 1.1em;
+  }
 }
 
 @media only screen and (min-width: @mobile) {

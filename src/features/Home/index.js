@@ -2,8 +2,6 @@ import { Component } from 'react';
 import get from 'lodash/get';
 
 import Head from 'common/components/Head';
-import heroImage from 'assets/images/gw_logo.png';
-import SearchBar from 'common/components/SearchBar';
 import Container from 'common/components/Container';
 import ContentCard from 'common/components/ContentCard';
 import { Link } from 'react-router';
@@ -37,18 +35,6 @@ export default class Home extends Component {
     return (
       <div className={styles.root}>
         <Head title="Armor Up" />
-
-        <div id="search-box" className={styles.searchContainer}>
-          <Container>
-            <img
-              alt="Guild Wars 2 Armory"
-              title="Guild Wars 2 Armory"
-              className={styles.heroImage} src={heroImage}
-            />
-
-            <SearchBar className={styles.searchBar} />
-          </Container>
-        </div>
 
         <div className={styles.introBackground}>
           <Container className={styles.atfContainer}>

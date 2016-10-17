@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import Head from 'common/components/Head';
-import ScrollAssist from 'common/components/ScrollAssist';
 
 import styles from './styles.less';
 
@@ -49,17 +48,13 @@ class App extends Component {
         <div className={styles.app}>
           <Head />
 
-          <ScrollAssist target="#search-box">
-            <Header
-              simple={this.state.simpleHeader}
-              authenticated={this.props.userAuthenticated}
-              checkingAuthentication={this.props.checkingAuthentication}
-              alias={this.props.userAlias}
-            />
-          </ScrollAssist>
+          <Header
+            simple={this.state.simpleHeader}
+            authenticated={this.props.userAuthenticated}
+            checkingAuthentication={this.props.checkingAuthentication}
+            alias={this.props.userAlias}
+          />
 
-          {/* Empty div to abuse justify-content: space-between */}
-          <div />
           {this.props.children}
           <Footer />
         </div>
