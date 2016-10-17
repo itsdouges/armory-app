@@ -27,7 +27,12 @@
 .backgroundFloat {
   composes: background;
   position: fixed;
-  opacity: 0;
+  z-index: 99;
+}
+
+.anotherBackground {
+  composes: background;
+  z-index: 98;
 }
 
 .innerContainer {

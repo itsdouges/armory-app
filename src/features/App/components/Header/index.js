@@ -110,11 +110,12 @@ export default class Header extends Component {
           </Container>
         </div>
 
-        <div className={styles.background} />
+        <div className={styles.anotherBackground} />
+        <div className={styles.background} style={{ opacity: stickyHeader ? 0 : 1 }} />
 
         <div
           className={styles.backgroundFloat}
-          style={{ opacity: stickyHeader ? 1 : 0, ...stickyHeaderStyles }}
+          style={stickyHeaderStyles}
         />
 
         <div className={styles.bigSearchContainer}>
