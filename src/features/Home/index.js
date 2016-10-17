@@ -1,53 +1,78 @@
-import Head from 'common/components/Head';
+import { Component } from 'react';
+import get from 'lodash/get';
 
-import heroImage from 'assets/images/gw2-logo.jpg';
+import Head from 'common/components/Head';
+import heroImage from 'assets/images/gw_logo.png';
 import SearchBar from 'common/components/SearchBar';
 import Container from 'common/components/Container';
 import ContentCard from 'common/components/ContentCard';
+import { Link } from 'react-router';
 
 import styles from './styles.less';
 import News from './components/News';
 import Introduction from './components/Introduction';
 import RandomCharacter from './components/RandomCharacter';
 
-const Home = () => (
-  <div className={styles.root}>
-    <Head title="Armor Up" />
+export default class Home extends Component {
+  state = {
+    guilds: undefined,
+  };
 
-    <div className={styles.heroImageContainer}>
-      <Container>
-        <img
-          alt="Guild Wars 2 Armory"
-          title="Guild Wars 2 Armory"
-          className={styles.heroImage} src={heroImage}
-        />
+  componentDidMount () {
+    setTimeout(() => {
+      this.setState({
+        guilds: [
+          { name: 'Ultra Lux', tag: 'LUX' },
+          { name: 'Guild Of Madness', tag: 'GOM' },
+          { name: 'Tyrian Nomads', tag: 'TNM' },
+          { name: 'Haus Bergfried', tag: 'BERG' },
+        ],
+      });
+    }, 1500);
+  }
 
-        <SearchBar className={styles.searchBar} />
-      </Container>
-    </div>
+  render () {
+    const guilds = get(this.state, 'guilds', [undefined, undefined, undefined, undefined]);
 
-    <div className={styles.introBackgroundContainer}>
-      <div className={styles.introBackground} />
+    return (
+      <div className={styles.root}>
+        <Head title="Armor Up" />
 
-      <Container className={styles.atfContainer}>
-        <Introduction className={styles.introContainer} />
-        <RandomCharacter />
-      </Container>
-    </div>
+        <div className={styles.searchContainer}>
+          <Container>
+            <img
+              alt="Guild Wars 2 Armory"
+              title="Guild Wars 2 Armory"
+              className={styles.heroImage} src={heroImage}
+            />
 
-    <div className={styles.guildsContainer}>
-      <ContentCard type="guilds" content={{ name: 'Ultra Lux', tag: 'LUX' }} />
-      <ContentCard type="guilds" content={{ name: 'Guild Of Madness', tag: 'GOM' }} />
-      <ContentCard type="guilds" content={{ name: 'Tyrian Nomads', tag: 'TNM' }} />
-      <ContentCard type="guilds" content={{ name: 'Haus Bergfried', tag: 'BERG' }} />
-    </div>
+            <SearchBar className={styles.searchBar} />
+          </Container>
+        </div>
 
-    <Container>
-      <hr />
+        <div className={styles.introBackground}>
+          <Container className={styles.atfContainer}>
+            <Introduction className={styles.introContainer} />
+            <RandomCharacter />
+          </Container>
+        </div>
 
-      <News className={styles.newsContainer} />
-    </Container>
-  </div>
-);
+        <ul className={styles.guildsContainer}>
+          {guilds.map((guild, index) => (
+            <li key={index}>
+              <Link to={`g/${guild && guild.name}`}>
+                <ContentCard type="guilds" content={guild} />
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-export default Home;
+        <Container>
+          <hr />
+
+          <News className={styles.newsContainer} />
+        </Container>
+      </div>
+    );
+  }
+}

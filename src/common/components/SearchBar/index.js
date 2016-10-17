@@ -17,16 +17,21 @@ function onSearch (event) {
   browserHistory.push(`/search/${filter}`);
 }
 
-const SearchBar = ({ className, ...props }) => (
+const SearchBar = ({ className, simple, ...props }) => (
   <form {...props} className={cx(styles.root, className)} onSubmit={onSearch}>
     <Textbox
       autoFocus
       required
       placeholder="Search for users, characters, and guilds..."
-      containerClassName={styles.textBoxContainer}
+      containerClassName={cx(styles.textBoxContainer, { [styles.simple]: simple })}
       iconLeft={(
         <button className={styles.searchButton}>
-          <SvgIcon button className={styles.searchIcon} name="search" size="micro" />
+          <SvgIcon
+            button
+            className={cx(styles.searchIcon, { [styles.simple]: simple })}
+            name="search-new"
+            size="micro"
+          />
         </button>
       )}
     />
@@ -35,6 +40,7 @@ const SearchBar = ({ className, ...props }) => (
 
 SearchBar.propTypes = {
   className: PropTypes.string,
+  simple: PropTypes.bool,
 };
 
 export default SearchBar;

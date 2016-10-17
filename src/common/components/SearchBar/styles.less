@@ -8,7 +8,7 @@
   border-radius: 5px;
   margin-bottom: 0 !important;
   padding: 1em !important;
-  border: none;
+  border: none !important;
   composes: low from 'common/styles/box-shadow.less';
 
   input {
@@ -23,6 +23,24 @@
 .searchIcon {
   width: 30px;
   height: 30px;
+}
+
+.simple {
+  &.textBoxContainer {
+    padding: 0.25em !important;
+    box-shadow: none;
+    border-radius: 2px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+
+    input {
+      font-size: 0.9em;
+    }
+  }
+
+  &.searchIcon {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .searchButton {

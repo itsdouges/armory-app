@@ -55,6 +55,8 @@ class App extends Component {
             alias={this.props.userAlias}
           />
 
+          {/* Empty div to abuse justify-content: space-between */}
+          <div />
           {this.props.children}
           <Footer />
         </div>

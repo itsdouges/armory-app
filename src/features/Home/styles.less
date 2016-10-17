@@ -5,19 +5,24 @@
   text-align: left;
 }
 
-.heroImageContainer {
-  padding: 0 1em;
-  margin: 3em auto 5em;
+.searchContainer {
+  padding: 5em 1em;
   position: relative;
+  background: url('assets/images/gw_bgrd.png');
+  background-position: center;
+  background-size: cover;
 }
 
 .heroImage {
-  height: 250px;
+  width: 292px;
+  height: 202px;
   margin-bottom: 2em;
 }
 
 .introContainer {
-  margin: 2em 0;
+  margin: 0 auto;
+  padding: 2em 0.5em;
+  max-width: 500px;
 }
 
 .newsContainer {
@@ -25,34 +30,29 @@
 }
 
 .atfContainer {
-  padding: 3em 0;
   display: inherit;
   min-height: 400px;
+  padding: 3em 0;
 }
 
 .guildsContainer {
-  display: flex;
-  padding: 3em 0;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
   overflow: auto;
-}
+  padding: 3em 0;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 
-.introBackgroundContainer {
-  background-color: black;
-  position: relative;
+  li {
+    display: inline-block;
+    flex-shrink: 0;
+  }
 }
 
 .introBackground {
-  opacity: 0.3;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('assets/images/hero.jpg');
-  background-position: 26% 13%;
-  background-size: 160%;
+  background-image: url('assets/images/gw_whatisgw.png');
+  background-position: center;
+  background-size: cover;
 }
 
 .searchBar {

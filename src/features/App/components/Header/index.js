@@ -26,7 +26,7 @@ const Header = ({ authenticated, alias, checkingAuthentication, simple }) => {
           <h1 key={1}>Guild Wars 2 Armory</h1>
         </Link>
 
-        {!simple && <div className={styles.searchContainer}><SearchBar /></div>}
+        {!simple && <div className={styles.searchContainer}><SearchBar simple /></div>}
 
         <ul className={styles.linkContainer}>
           {!checkingAuthentication && links.map((link, index) =>
