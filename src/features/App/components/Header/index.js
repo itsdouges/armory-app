@@ -45,13 +45,13 @@ export default class Header extends Component {
 
     if (stick) {
       this.setState({
-        position: 'fixed',
         bottom: window.innerHeight - fixedHeight,
+        opacity: 1,
+        height: headerHeight,
       });
     } else {
       this.setState({
-        position: 'absolute',
-        bottom: 'inherit',
+        opacity: 0,
       });
     }
   };
@@ -67,9 +67,9 @@ export default class Header extends Component {
       <div className={cx(styles.root)} ref={(e) => (this._root = e)}>
         <div className={styles.fixed} ref={(e) => (this._fixed = e)}>
           <Container className={styles.innerContainer}>
-            <Link to="/" key={0}>
+            <Link to="/">
               <Icon className={styles.icon} name="logo-small.png" size="mini" />
-              <h1 key={1}>Guild Wars 2 Armory</h1>
+              <h1>Guild Wars 2 Armory</h1>
             </Link>
 
             {!simple && <div className={styles.searchContainer}><SearchBar simple /></div>}
@@ -88,7 +88,8 @@ export default class Header extends Component {
           </Container>
         </div>
 
-        <div className={styles.background} style={{ ...this.state }} />
+        <div className={styles.background} />
+        <div className={styles.backgroundFloat} style={{ ...this.state }} />
 
         <div className={styles.bigSearchContainer}>
           <Container>
