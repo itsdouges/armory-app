@@ -21,14 +21,15 @@ export default class Header extends Component {
     authenticated: PropTypes.bool,
     alias: PropTypes.string,
     checkingAuthentication: PropTypes.bool,
-    simple: PropTypes.bool,
   };
 
   state = {
-    translateY: 0,
+    stickyHeader: false,
   };
 
   componentDidMount () {
+    this.initStickyHeader();
+
     this.detatch = addEvent('scroll', this.onScroll);
   }
 
@@ -37,27 +38,43 @@ export default class Header extends Component {
   }
 
   onScroll = () => {
-    const fixedHeight = this._fixed.offsetHeight;
+    const { stickyHeader } = this.state;
+
+    const stickyHeaderHeight = this._fixed.offsetHeight;
     const headerHeight = this._root.offsetHeight;
     const headerBounds = this._root.getBoundingClientRect();
 
-    const stick = ((headerHeight + headerBounds.top) - fixedHeight) <= 0;
+    const sticky = ((headerHeight + headerBounds.top) - stickyHeaderHeight) <= 0;
 
-    if (stick) {
+    if (sticky && !stickyHeader) {
       this.setState({
-        bottom: window.innerHeight - fixedHeight,
-        opacity: 1,
-        height: headerHeight,
+        stickyHeader: true,
       });
-    } else {
+    } else if (!sticky && stickyHeader) {
       this.setState({
-        opacity: 0,
+        stickyHeader: false,
       });
     }
   };
 
+  initStickyHeader () {
+    if (this.initialised) {
+      return;
+    }
+
+    this.initialised = true;
+
+    this.setState({
+      stickyHeaderStyles: {
+        height: this._root.offsetHeight,
+        bottom: window.innerHeight - this._fixed.offsetHeight,
+      },
+    });
+  }
+
   render () {
-    const { authenticated, alias, checkingAuthentication, simple } = this.props;
+    const { authenticated, alias, checkingAuthentication } = this.props;
+    const { stickyHeader, stickyHeaderStyles } = this.state;
 
     const links = authenticated
       ? [<Link to={`/${alias}`}>{alias.toUpperCase()}</Link>, <Link to="/settings">SETTINGS</Link>]
@@ -72,7 +89,12 @@ export default class Header extends Component {
               <h1>Guild Wars 2 Armory</h1>
             </Link>
 
-            {!simple && <div className={styles.searchContainer}><SearchBar simple /></div>}
+            <div
+              className={styles.searchContainer}
+              style={{ opacity: stickyHeader ? 1 : 0 }}
+            >
+              <SearchBar simple />
+            </div>
 
             <ul className={styles.linkContainer}>
               {!checkingAuthentication && links.map((link, index) =>
@@ -89,7 +111,11 @@ export default class Header extends Component {
         </div>
 
         <div className={styles.background} />
-        <div className={styles.backgroundFloat} style={{ ...this.state }} />
+
+        <div
+          className={styles.backgroundFloat}
+          style={{ opacity: stickyHeader ? 1 : 0, ...stickyHeaderStyles }}
+        />
 
         <div className={styles.bigSearchContainer}>
           <Container>

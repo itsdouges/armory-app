@@ -49,7 +49,7 @@ class App extends Component {
           <Head />
 
           <Header
-            simple={this.state.simpleHeader}
+            forceSticky={!this.state.simpleHeader}
             authenticated={this.props.userAuthenticated}
             checkingAuthentication={this.props.checkingAuthentication}
             alias={this.props.userAlias}
