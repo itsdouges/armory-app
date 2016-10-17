@@ -38,7 +38,7 @@ export default class Home extends Component {
       <div className={styles.root}>
         <Head title="Armor Up" />
 
-        <div className={styles.searchContainer}>
+        <div id="search-box" className={styles.searchContainer}>
           <Container>
             <img
               alt="Guild Wars 2 Armory"
