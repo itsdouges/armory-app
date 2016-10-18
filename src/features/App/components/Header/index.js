@@ -26,6 +26,8 @@ export default class Header extends Component {
 
   state = {
     stickyHeader: false,
+    stickyHeaderStyles: {},
+    compactSpacer: {},
   };
 
   componentDidMount () {
@@ -70,6 +72,9 @@ export default class Header extends Component {
         height: this._root.offsetHeight || this._fixed.offsetHeight,
         top: this._fixed.offsetHeight,
       },
+      compactSpacer: {
+        height: this._fixed.offsetHeight,
+      },
     });
 
     if (!this.initialised) {
@@ -82,7 +87,7 @@ export default class Header extends Component {
 
   render () {
     const { authenticated, alias, checkingAuthentication, compact } = this.props;
-    const { stickyHeader, stickyHeaderStyles } = this.state;
+    const { stickyHeader, stickyHeaderStyles, compactSpacer } = this.state;
 
     const links = authenticated
       ? [<Link to={`/${alias}`}>{alias.toUpperCase()}</Link>, <Link to="/settings">SETTINGS</Link>]
@@ -90,6 +95,8 @@ export default class Header extends Component {
 
     return (
       <div className={cx(styles.root)} ref={(e) => (this._root = e)}>
+        {compact && <div style={{ height: compactSpacer.height }} />}
+
         <div className={styles.fixed} ref={(e) => (this._fixed = e)}>
           <Container className={styles.innerContainer}>
             <Link to="/" style={{ opacity: stickyHeader ? 1 : 0 }}>
@@ -108,7 +115,7 @@ export default class Header extends Component {
               {!checkingAuthentication && links.map((link, index) =>
                 <li className={styles.link} key={index}>{link}</li>)}
               {checkingAuthentication && (
-                <li className={styles.link}><ProgressIcon size="micro" /></li>
+                <li className={styles.link}><ProgressIcon size="nano" /></li>
               )}
 
               {DEFAULT_LINKS.map(
@@ -118,8 +125,8 @@ export default class Header extends Component {
           </Container>
         </div>
 
-        <div className={styles.anotherBackground} />
-        <div className={styles.background} style={{ opacity: stickyHeader ? 0 : 1 }} />
+        {compact || <div className={styles.anotherBackground} />}
+        {compact || <div className={styles.background} style={{ opacity: stickyHeader ? 0 : 1 }} />}
 
         <div
           className={styles.backgroundFloat}
