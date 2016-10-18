@@ -2,9 +2,8 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Head from 'common/components/Head';
 
-import styles from './styles.less';
+import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
-import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
 
 import {
@@ -31,12 +30,8 @@ class Guild extends Component {
     const { guild = { tag: '...' }, routeParams: { guildName } } = this.props;
 
     return (
-      <div className={styles.root}>
+      <Content content={guild} type="guilds">
         <Head title={`${guildName} [${guild.tag}]`} />
-
-        <div className={styles.inner}>
-          <ContentCard className={styles.card} content={guild} size="big" type="guilds" />
-        </div>
 
         <ContentCardList
           type="grid"
@@ -44,7 +39,7 @@ class Guild extends Component {
         />
 
         <SocialButtons />
-      </div>
+      </Content>
     );
   }
 }

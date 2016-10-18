@@ -94,6 +94,8 @@ class Settings extends Component {
       <span>
         <Head title="Settings" />
 
+        <br />
+
         <ImageUpload
           hintText={<span>Change your avatar<br />128 x 128</span>}
           uploadName="avatar"

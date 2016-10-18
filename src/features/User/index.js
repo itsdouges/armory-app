@@ -7,8 +7,9 @@ import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 
 import styles from './styles.less';
+
+import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
-import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
 import PvpStats from './components/PvpStats';
 import PvpRanking from './components/PvpRanking';
@@ -71,12 +72,8 @@ class User extends Component {
     const pvpStandings = get(user, 'pvpStandings', [undefined]);
 
     return (
-      <div className={styles.root}>
+      <Content type="users" content={user}>
         <Head title={alias} />
-
-        <div className={styles.inner}>
-          <ContentCard className={styles.card} content={user} size="big" type="users" />
-        </div>
 
         <ContentCardList
           type="grid"
@@ -102,7 +99,7 @@ class User extends Component {
         </div>
 
         <SocialButtons />
-      </div>
+      </Content>
     );
   }
 }

@@ -11,6 +11,8 @@ import { fetchUserCharacters, selectUser } from 'features/User/actions';
 import { calculate as calculateAttributes } from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
+import Content from 'common/layouts/Content';
+
 import Checkbox from 'common/components/Checkbox';
 import Head from 'common/components/Head';
 import ContentCardList from 'common/components/ContentCardList';
@@ -178,7 +180,7 @@ class Character extends Component {
     const showPvpEquipment = mode === 'pvp';
 
     return (
-      <div className={styles.root}>
+      <Content content={character} type="characters">
         <Head
           title={`${routeParams.character} | ${alias}`}
           description={buildDescription(character)}
@@ -208,8 +210,6 @@ class Character extends Component {
               </div>
             )}
           </div>
-
-          <ContentCard content={character} size="big" />
 
           <div className={styles.columns}>
             <div className={cx(styles.leftColumn, showPvpEquipment && styles.fade)}>
@@ -349,7 +349,7 @@ class Character extends Component {
 
         <SocialButtons />
         <Tooltip />
-      </div>
+      </Content>
     );
   }
 }
