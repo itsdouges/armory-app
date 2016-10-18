@@ -80,11 +80,12 @@ export function fetchCharacter (character, { redirect404 = true, ignoreAuth, bas
           const skillType = data.skills[key];
           return acc.concat([skillType.elite, skillType.heal]).concat(skillType.utilities);
         }, []);
+
         dispatch(actions.fetchItems(items));
+        dispatch(actions.fetchSkins(skins));
 
         if (!basicLoad) {
           dispatch(actions.fetchSkills(skills));
-          dispatch(actions.fetchSkins(skins));
           dispatch(actions.fetchAmulets(amulets));
           dispatch(actions.fetchSpecializations(specializations));
         }

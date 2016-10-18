@@ -21,6 +21,7 @@ export default class Header extends Component {
     authenticated: PropTypes.bool,
     alias: PropTypes.string,
     checkingAuthentication: PropTypes.bool,
+    compact: PropTypes.bool,
   };
 
   state = {
@@ -29,8 +30,14 @@ export default class Header extends Component {
 
   componentDidMount () {
     this.initStickyHeader();
+  }
 
-    this.detatch = addEvent('scroll', this.onScroll);
+  componentDidUpdate (prevProps) {
+    if (prevProps.compact === this.props.compact) {
+      return;
+    }
+
+    this.initStickyHeader();
   }
 
   componentWillUnmount () {
@@ -58,22 +65,23 @@ export default class Header extends Component {
   };
 
   initStickyHeader () {
-    if (this.initialised) {
-      return;
-    }
-
-    this.initialised = true;
-
     this.setState({
       stickyHeaderStyles: {
-        height: this._root.offsetHeight,
+        height: this._root.offsetHeight || this._fixed.offsetHeight,
         top: this._fixed.offsetHeight,
       },
     });
+
+    if (!this.initialised) {
+      this.detatch = addEvent('scroll', this.onScroll);
+    }
+
+    this.onScroll();
+    this.initialised = true;
   }
 
   render () {
-    const { authenticated, alias, checkingAuthentication } = this.props;
+    const { authenticated, alias, checkingAuthentication, compact } = this.props;
     const { stickyHeader, stickyHeaderStyles } = this.state;
 
     const links = authenticated
@@ -84,7 +92,7 @@ export default class Header extends Component {
       <div className={cx(styles.root)} ref={(e) => (this._root = e)}>
         <div className={styles.fixed} ref={(e) => (this._fixed = e)}>
           <Container className={styles.innerContainer}>
-            <Link to="/">
+            <Link to="/" style={{ opacity: stickyHeader ? 1 : 0 }}>
               <Icon className={styles.icon} name="logo-small.png" size="mini" />
               <h1>Guild Wars 2 Armory</h1>
             </Link>
@@ -118,7 +126,7 @@ export default class Header extends Component {
           style={stickyHeaderStyles}
         />
 
-        <div className={styles.bigSearchContainer}>
+        <div className={styles.bigSearchContainer} style={{ display: compact ? 'none' : '' }}>
           <Container>
             <img
               alt="Guild Wars 2 Armory"

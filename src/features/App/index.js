@@ -8,7 +8,7 @@ import styles from './styles.less';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Gw2ApiHealth from './components/Gw2ApiHealth';
+// import Gw2ApiHealth from './components/Gw2ApiHealth';
 
 const selector = createSelector(
   store => store.user.alias,
@@ -32,24 +32,29 @@ class App extends Component {
   };
 
   state = {
-    simpleHeader: this.props.location.pathname === '/',
+    smallHeader: this.shouldForceSmallHeader(),
   };
 
   componentWillReceiveProps (nextProps) {
     this.setState({
-      simpleHeader: nextProps.location.pathname === '/',
+      smallHeader: this.shouldForceSmallHeader(nextProps),
     });
+  }
+
+  shouldForceSmallHeader ({ location } = this.props) {
+    return location.pathname !== '/';
   }
 
   render () {
     return (
       <span>
-        <Gw2ApiHealth />
+        {/* <Gw2ApiHealth /> */}
+
         <div className={styles.app}>
           <Head />
 
           <Header
-            forceSticky={!this.state.simpleHeader}
+            compact={this.state.smallHeader}
             authenticated={this.props.userAuthenticated}
             checkingAuthentication={this.props.checkingAuthentication}
             alias={this.props.userAlias}
