@@ -67,7 +67,7 @@ export default class Header extends Component {
     this.setState({
       stickyHeaderStyles: {
         height: this._root.offsetHeight,
-        bottom: window.innerHeight - this._fixed.offsetHeight,
+        top: this._fixed.offsetHeight,
       },
     });
   }
