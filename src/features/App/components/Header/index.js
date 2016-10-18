@@ -59,7 +59,7 @@ export default class Header extends Component {
       this.setState({
         stickyHeader: true,
       });
-    } else if (!sticky && stickyHeader) {
+    } else if (!this.props.compact && !sticky && stickyHeader) {
       this.setState({
         stickyHeader: false,
       });
