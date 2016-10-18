@@ -60,6 +60,7 @@ class App extends Component {
             alias={this.props.userAlias}
           />
 
+          {/* SMELL */ this.state.smallHeader && <br />}
           {this.props.children}
           <Footer />
         </div>
