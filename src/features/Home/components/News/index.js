@@ -46,7 +46,7 @@ const News = (props) => (
   <div className={props.className}>
     <h2>Latest News</h2>
     <div className={styles.root}>
-      {news.slice(0, 5).map((item) => (
+      {news.map((item) => (
         <div className={styles.newsItem} key={item.title}>
           <Card className={styles.newsItemInner}>
             <div className={styles.newsItemHeader}>
@@ -60,8 +60,6 @@ const News = (props) => (
           </Card>
         </div>
       ))}
-
-      <div className={styles.newsItem}>Show All</div>
     </div>
   </div>
 );
