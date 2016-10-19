@@ -1,15 +1,14 @@
 import { Component } from 'react';
-import get from 'lodash/get';
 
 import Head from 'common/components/Head';
 import Container from 'common/components/Container';
-import ContentCard from 'common/components/ContentCard';
-import { Link } from 'react-router';
+
 
 import styles from './styles.less';
 import News from './components/News';
 import Introduction from './components/Introduction';
 import RandomCharacter from './components/RandomCharacter';
+import RandomGuilds from './components/RandomGuilds';
 
 export default class Home extends Component {
   state = {
@@ -30,8 +29,6 @@ export default class Home extends Component {
   }
 
   render () {
-    const guilds = get(this.state, 'guilds', [undefined, undefined, undefined, undefined]);
-
     return (
       <div className={styles.root}>
         <Head title="Armor Up" />
@@ -43,15 +40,7 @@ export default class Home extends Component {
           </Container>
         </div>
 
-        <ul className={styles.guildsContainer}>
-          {guilds.map((guild, index) => (
-            <li key={index}>
-              <Link to={`g/${guild && guild.name}`}>
-                <ContentCard type="guilds" content={guild} />
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <RandomGuilds />
 
         <Container>
           <hr />

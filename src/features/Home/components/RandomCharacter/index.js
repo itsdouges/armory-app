@@ -12,13 +12,12 @@ import styles from './styles.less';
 /* eslint max-len:0 */
 export default class RandomCharacter extends Component {
   state = {
-    loading: true,
     name: '',
   };
 
   componentDidMount () {
-    get(`${config.api.endpoint}random/character`)
-      .then(({ data }) => this.setState({ name: data }));
+    get(`${config.api.endpoint}random/characters/1`)
+      .then(({ data }) => this.setState({ name: data[0] }));
   }
 
   render () {
