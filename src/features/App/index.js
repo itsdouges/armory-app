@@ -8,7 +8,7 @@ import styles from './styles.less';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
-// import Gw2ApiHealth from './components/Gw2ApiHealth';
+import Gw2ApiHealth from './components/Gw2ApiHealth';
 
 const selector = createSelector(
   store => store.user.alias,
@@ -47,23 +47,21 @@ class App extends Component {
 
   render () {
     return (
-      <span>
-        {/* <Gw2ApiHealth /> */}
+      <div className={styles.app}>
+        <Head />
 
-        <div className={styles.app}>
-          <Head />
+        <Header
+          compact={this.state.smallHeader}
+          authenticated={this.props.userAuthenticated}
+          checkingAuthentication={this.props.checkingAuthentication}
+          alias={this.props.userAlias}
+        />
 
-          <Header
-            compact={this.state.smallHeader}
-            authenticated={this.props.userAuthenticated}
-            checkingAuthentication={this.props.checkingAuthentication}
-            alias={this.props.userAlias}
-          />
+        {this.props.children}
 
-          {this.props.children}
-          <Footer />
-        </div>
-      </span>
+        <Gw2ApiHealth />
+        <Footer />
+      </div>
     );
   }
 }
