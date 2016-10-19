@@ -187,30 +187,6 @@ class Character extends Component {
         />
 
         <div className={styles.inner}>
-          <div className={styles.editContainer}>
-            {ownCharacter && (
-              <div>
-                <Button
-                  key="edit-button"
-                  className={styles.editButton}
-                  type={editMode ? 'primary' : ''}
-                  onClick={this.toggleEditMode}
-                >
-                  {editMode ? 'I\'M DONE' : 'EDIT'}
-                </Button>
-
-                {editMode && [
-                  <Checkbox
-                    checked={!!showPublic}
-                    key="hide-checkbox"
-                    onChange={this.hide}
-                    label={showPublic ? 'Character Shown' : 'Character Hidden'}
-                  />,
-                ]}
-              </div>
-            )}
-          </div>
-
           <div className={styles.columns}>
             <div className={cx(styles.leftColumn, showPvpEquipment && styles.fade)}>
               {leftItems.map((item) => {
@@ -276,6 +252,30 @@ class Character extends Component {
             </ImageUpload>
 
             <div className={styles.rightColumn}>
+              <div className={styles.editContainer}>
+                {ownCharacter && (
+                  <div>
+                    <Button
+                      key="edit-button"
+                      className={styles.editButton}
+                      type={editMode ? 'primary' : ''}
+                      onClick={this.toggleEditMode}
+                    >
+                      {editMode ? 'I\'M DONE' : 'EDIT'}
+                    </Button>
+
+                    {editMode && [
+                      <Checkbox
+                        checked={!!showPublic}
+                        key="hide-checkbox"
+                        onChange={this.hide}
+                        label={showPublic ? 'Character Shown' : 'Character Hidden'}
+                      />,
+                    ]}
+                  </div>
+                )}
+              </div>
+
               <div className={styles.attributes}>
                 {Object.keys(attributes).map((key) => {
                   const value = attributes[key];
