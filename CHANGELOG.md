@@ -11,6 +11,7 @@
 ## [2.8.1] - 2016/10/20
 ### Changed
 - Character attribute calculation.
+- Health check endpoint.
 
 ## [2.8.0] - 2016/10/19
 ### Added
