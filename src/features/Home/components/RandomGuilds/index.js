@@ -8,7 +8,6 @@ import config from 'config';
 
 import styles from './styles.less';
 
-/* eslint max-len:0 */
 export default class RandomGuilds extends Component {
   state = {
     guilds: undefined,

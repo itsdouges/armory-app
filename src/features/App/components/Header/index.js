@@ -114,14 +114,14 @@ export default class Header extends Component {
 
         <div className={styles.fixed} ref={(e) => (this._fixed = e)}>
           <Container className={styles.innerContainer}>
-            <Link to="/" style={{ opacity: stickyHeader ? 1 : 0 }}>
+            <Link to="/" style={{ opacity: (compact || stickyHeader) ? 1 : 0 }}>
               <Icon className={styles.icon} name="logo-small.png" size="mini" />
               <h1>Guild Wars 2 Armory</h1>
             </Link>
 
             <div
               className={styles.searchContainer}
-              style={{ opacity: stickyHeader ? 1 : 0 }}
+              style={{ opacity: (compact || stickyHeader) ? 1 : 0 }}
             >
               <SearchBar simple />
             </div>

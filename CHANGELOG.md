@@ -8,6 +8,14 @@
 - Changes
 ```
 
+## [2.8.0] - 2016/10/20
+### Added
+- Random guilds on front page
+
+### Changed
+- Front page ui design
+- Fixed header design
+
 ## [2.7.0] - 2016/10/13
 ### Added
 - Character hiding feature, you can find this by clicking the edit button on any character you own.
