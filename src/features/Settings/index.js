@@ -94,14 +94,18 @@ class Settings extends Component {
       <span>
         <Head title="Settings" />
 
-        <br />
-
         <ImageUpload
           hintText={<span>Change your avatar<br />128 x 128</span>}
           uploadName="avatar"
           onUploadComplete={this.finishedUploading}
         >
-          <ContentCard content={content} type="users" size="big" forceUpdate={updateImage} />
+          <ContentCard
+            className={styles.contentCard}
+            content={content}
+            type="users"
+            size="big"
+            forceUpdate={updateImage}
+          />
         </ImageUpload>
 
         <div className={styles.spaceBelow}>

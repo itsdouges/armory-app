@@ -7,13 +7,16 @@ import styles from './styles.less';
 import { addEvent } from 'lib/dom';
 
 import heroImage from 'assets/images/gw_logo.png';
+
+import ResponsiveMenu from 'common/components/ResponsiveMenu';
 import Container from 'common/components/Container';
 import Icon from 'common/components/Icon';
 import ProgressIcon from 'common/components/Icon/Progress';
 import SearchBar from 'common/components/SearchBar';
 
 const DEFAULT_LINKS = [
-  <Link to="/stats">STATS</Link>,
+  <Link key="stats" to="/stats">Stats</Link>,
+  <Link key="settings" to="/settings">Settings</Link>,
 ];
 
 export default class Header extends Component {
@@ -89,9 +92,21 @@ export default class Header extends Component {
     const { authenticated, alias, checkingAuthentication, compact } = this.props;
     const { stickyHeader, stickyHeaderStyles, compactSpacer } = this.state;
 
-    const links = authenticated
-      ? [<Link to={`/${alias}`}>{alias.toUpperCase()}</Link>, <Link to="/settings">SETTINGS</Link>]
-      : [<Link to="/login">LOG IN</Link>, <Link to="/join">JOIN</Link>];
+    const authenticatedLinks = [
+      <Link key="alias" to={`/${alias}`}>{alias}</Link>,
+    ];
+
+    const unauthenticatedLinks = [
+      <Link key="login" to="/login">Log in</Link>,
+      <Link key="join" to="/join">Join</Link>,
+    ];
+
+    const linksForContext = authenticated ? authenticatedLinks : unauthenticatedLinks;
+
+    const links = [
+      ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
+      ...DEFAULT_LINKS,
+    ];
 
     return (
       <div className={cx(styles.root)} ref={(e) => (this._root = e)}>
@@ -111,17 +126,9 @@ export default class Header extends Component {
               <SearchBar simple />
             </div>
 
-            <ul className={styles.linkContainer}>
-              {!checkingAuthentication && links.map((link, index) =>
-                <li className={styles.link} key={index}>{link}</li>)}
-              {checkingAuthentication && (
-                <li className={styles.link}><ProgressIcon size="nano" /></li>
-              )}
-
-              {DEFAULT_LINKS.map(
-                (link, index) => <li className={styles.link} key={index}>{link}</li>
-              )}
-            </ul>
+            <ResponsiveMenu className={styles.linkContainer} itemClassName={styles.link}>
+              {links}
+            </ResponsiveMenu>
           </Container>
         </div>
 
