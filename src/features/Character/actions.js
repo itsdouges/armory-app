@@ -82,6 +82,7 @@ export function fetchCharacter (character, { redirect404 = true, ignoreAuth, bas
         }, []);
 
         dispatch(actions.fetchItems(items));
+        // dispatch(actions.fetchItemStats(items));
         dispatch(actions.fetchSkins(skins));
 
         if (!basicLoad) {

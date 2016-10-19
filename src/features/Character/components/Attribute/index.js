@@ -11,18 +11,18 @@ const attributeNameMapping = {
   precision: 'Precision',
   toughness: 'Toughness',
   vitality: 'Vitality',
-  boon: 'Boon Duration',
+  boonDuration: 'Boon Duration',
   conditionDamage: 'Condition Damage',
   conditionDuration: 'Condition Duration',
   ferocity: 'Ferocity',
-  healing: 'Healing Power',
+  healingPower: 'Healing Power',
   armor: 'Armor',
-  criticalChance: 'Critical Chance',
-  criticalDamage: 'Critical Damage',
+  critChance: 'Critical Chance',
+  critDamage: 'Critical Damage',
   health: 'Health',
   expertise: 'Expertise',
   concentration: 'Concentration',
-  agony: 'Agony Resistence',
+  agonyResistance: 'Agony Resistance',
   magic: 'Magic Find',
   elementalist: 'Attunement Recharge Rate',
   guardian: 'Virtue Recharge Rate',
@@ -35,11 +35,28 @@ const attributeNameMapping = {
   revanent: 'Revenant',
 };
 
+function parseValue (name, value) {
+  if (!value) {
+    return 0;
+  }
+
+  switch (name) {
+    case 'critChance':
+    case 'critDamage':
+    case 'boonDuration':
+    case 'conditionDuration':
+      return `${(value * 100).toFixed(2)}%`;
+
+    default:
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+}
+
 const Attribute = ({ value, name }) => (
   <TooltipTrigger data={attributeNameMapping[name]}>
     <div className={styles.root}>
       <Icon className={cx('icon', name)} size="micro" />
-      <span>{value}</span>
+      <span>{parseValue(name, value)}</span>
     </div>
   </TooltipTrigger>
 );

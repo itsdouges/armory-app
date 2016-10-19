@@ -59,6 +59,7 @@
     "airbnb-js-shims": "^1.0.1",
     "axios": "^0.13.1",
     "classnames": "^2.2.5",
+    "gw2e-item-attributes": "^1.2.0",
     "lodash": "^4.14.1",
     "normalize.css": "^4.2.0",
     "react": "^15.2.1",

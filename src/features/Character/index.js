@@ -161,7 +161,7 @@ class Character extends Component {
     const { editMode } = this.state;
 
     /* eslint no-underscore-dangle:0 */
-    const attributes = calculateAttributes(character, items);
+    const attributes = calculateAttributes(character, { items, traits, skills });
 
     const ownCharacter = get(character, 'alias', false) === this.context._userAlias;
     const equipment = get(character, 'equipment', {});

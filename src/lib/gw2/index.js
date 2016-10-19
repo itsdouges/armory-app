@@ -12,49 +12,42 @@ function reduceById (payload) {
 export const readPvpSeasons = (ids) =>
   get(`${config.gw2.endpoint}v2/pvp/seasons?ids=${ids.join(',')}`, {
     ignoreAuth: true,
-    cache: true,
   })
   .then(({ data }) => reduceById(data));
 
 export const readMaps = (ids) =>
   get(`${config.gw2.endpoint}v2/maps?ids=${ids.join(',')}`, {
     ignoreAuth: true,
-    cache: true,
   })
   .then(({ data }) => reduceById(data));
 
 export const readAmulets = (ids) =>
   get(`${config.gw2.endpoint}v2/pvp/amulets?ids=${ids.join(',')}`, {
     ignoreAuth: true,
-    cache: true,
   })
   .then(({ data }) => reduceById(data));
 
 export const readPvpSeasonIds = () =>
   get(`${config.gw2.endpoint}v2/pvp/seasons`, {
     ignoreAuth: true,
-    cache: true,
   })
   .then(({ data }) => data);
 
 export const readPvpSeason = (id) =>
   get(`${config.gw2.endpoint}v2/pvp/seasons/${id}`, {
     ignoreAuth: true,
-    cache: true,
   })
   .then(({ data }) => data);
 
 export const readSkills = (ids) =>
   get(`${config.gw2.endpoint}v2/skills?ids=${ids.join(',')}`, {
     ignoreAuth: true,
-    cache: true,
   })
   .then(({ data }) => reduceById(data));
 
 export const readAllItemIds = () =>
   get(`${config.gw2.endpoint}v2/items`, {
     ignoreAuth: true,
-    cache: true,
   })
   .then(({ data }) => data);
 
@@ -63,7 +56,15 @@ export const readItems = (ids) => {
 
   return get(`${config.gw2.endpoint}v2/items?ids=${delimitedIds}`, {
     ignoreAuth: true,
-    cache: true,
+  })
+  .then(({ data }) => mapItemsToObject(data));
+};
+
+export const readItemStats = (ids) => {
+  const delimitedIds = ids.join(',');
+
+  return get(`${config.gw2.endpoint}v2/itemStats?ids=${delimitedIds}`, {
+    ignoreAuth: true,
   })
   .then(({ data }) => mapItemsToObject(data));
 };
@@ -73,7 +74,6 @@ export const readSkins = (ids) => {
 
   return get(`${config.gw2.endpoint}v2/skins?ids=${delimitedIds}`, {
     ignoreAuth: true,
-    cache: true,
   })
   .then(({ data }) => reduceById(data));
 };
@@ -83,7 +83,6 @@ export const readSpecializations = (ids) => {
 
   return get(`${config.gw2.endpoint}v2/specializations?ids=${delimitedIds}`, {
     ignoreAuth: true,
-    cache: true,
   })
   .then(({ data }) => reduceById(data));
 };
@@ -93,7 +92,6 @@ export const readTraits = (ids) => {
 
   return get(`${config.gw2.endpoint}v2/traits?ids=${delimitedIds}`, {
     ignoreAuth: true,
-    cache: true,
   })
   .then(({ data }) => reduceById(data));
 };
@@ -101,6 +99,5 @@ export const readTraits = (ids) => {
 export const readGuild = (guid) =>
   get(`${config.gw2.endpoint}v1/guild_details.json?guild_id=${guid}`, {
     ignoreAuth: true,
-    cache: true,
   })
   .then(({ data }) => data);
