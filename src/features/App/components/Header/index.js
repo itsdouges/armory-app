@@ -16,7 +16,6 @@ import SearchBar from 'common/components/SearchBar';
 
 const DEFAULT_LINKS = [
   <Link key="stats" to="/stats">Stats</Link>,
-  <Link key="settings" to="/settings">Settings</Link>,
 ];
 
 export default class Header extends Component {
@@ -94,6 +93,7 @@ export default class Header extends Component {
 
     const authenticatedLinks = [
       <Link key="alias" to={`/${alias}`}>{alias}</Link>,
+      <Link key="settings" to="/settings">Settings</Link>,
     ];
 
     const unauthenticatedLinks = [
