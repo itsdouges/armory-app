@@ -1,12 +1,6 @@
 {
   "extends": ["./config/eslint.js", "airbnb"],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true,
-      "generators": true,
-      "experimentalObjectRestSpread": true
-    }
-  },
+  "parser": "babel-eslint",
   "plugins": [
     "flowtype"
   ],

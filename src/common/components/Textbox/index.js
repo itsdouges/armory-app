@@ -13,6 +13,7 @@ const Textbox = ({
   id,
   busy,
   error,
+  iconLeft,
   iconRight,
   showStatus,
   type,
@@ -24,6 +25,8 @@ const Textbox = ({
   return (
     <div className={cx(containerClassName, styles.container)}>
       {label && <label htmlFor={id}>{label}</label>}
+
+      {iconLeft}
 
       <input
         {...props}
@@ -58,6 +61,7 @@ Textbox.propTypes = {
   error: PropTypes.any,
   id: PropTypes.string,
   iconRight: PropTypes.any,
+  iconLeft: PropTypes.any,
 };
 
 export default Textbox;

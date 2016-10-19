@@ -99,7 +99,13 @@ class Settings extends Component {
           uploadName="avatar"
           onUploadComplete={this.finishedUploading}
         >
-          <ContentCard content={content} type="users" size="big" forceUpdate={updateImage} />
+          <ContentCard
+            className={styles.contentCard}
+            content={content}
+            type="users"
+            size="big"
+            forceUpdate={updateImage}
+          />
         </ImageUpload>
 
         <div className={styles.spaceBelow}>

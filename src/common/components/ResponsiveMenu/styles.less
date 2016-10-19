@@ -1,0 +1,77 @@
+@import '~common/styles/sizes.less';
+
+.root {
+  position: relative;
+
+  button {
+    background: none;
+    border: none;
+
+    > span {
+      display: none;
+    }
+  }
+}
+
+.listRoot {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.99);
+  composes: low from 'common/styles/box-shadow.less';
+}
+
+.item {
+  padding: 1.25em;
+  text-align: right;
+  width: 100%;
+}
+
+.shown {
+  .listRoot {
+    display: inherit;
+  }
+}
+
+.hidden {
+  .listRoot {
+    display: none;
+  }
+}
+
+.toggleButton {
+  padding: 0;
+  outline: none;
+}
+
+@media only screen and (min-width: @tablet) {
+  .item {
+    padding: 0.25em 1em;
+    text-align: inherit;
+    width: inherit;
+  }
+
+  .listRoot {
+    position: inherit;
+    background: none;
+    box-shadow: none;
+  }
+
+  .shown {
+    .listRoot {
+      display: inherit;
+    }
+  }
+
+  .hidden {
+    .listRoot {
+      display: inherit;
+    }
+  }
+
+  .toggleButton {
+    display: none;
+  }
+}

@@ -1,25 +1,40 @@
 @import '~common/styles/sizes.less';
 
-div.root {
-  background: #fff;
+.root {
+  width: 100%;
+  position: relative;
+}
+
+.fixed {
   padding: 0.25em;
-  margin-bottom: 5em;
-}
-
-.simple {
-  background: none!important;
-  box-shadow: none!important;
-}
-
-.heroImage {
-  background-image: url('assets/images/brush-stroke-2-3.png');
-  background-repeat: no-repeat;
-  position: absolute;
-  left: 0;
+  position: fixed;
   top: 0;
-  height: 147px;
-  width: 698px;
-  z-index: -1;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.background {
+  background: url('assets/images/gw_bgrd.png');
+  background-position: center top;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 101;
+}
+
+.backgroundFloat {
+  composes: background;
+  position: fixed;
+  z-index: 100;
+  transform: translateY(-100%);
+  composes: low from 'common/styles/box-shadow.less';
+}
+
+.anotherBackground {
+  composes: background;
+  z-index: 98;
 }
 
 .innerContainer {
@@ -29,25 +44,48 @@ div.root {
 }
 
 .searchContainer {
+  transition: opacity 0.2s;
   margin-right: auto;
   width: 100%;
 }
 
 .linkContainer {
-  padding: 0 0.25em;
-  margin: 0;
+  padding: 0 0 0 0.25em;
   font-weight: bold;
   flex-shrink: 0;
-  font-size: 0.75em;
 }
 
 .link {
-  padding: 0.25em 0.5em;
+  padding: 0.25em 1em;
   display: inline-block;
+  font-size: 0.85em;
+  text-transform: uppercase;
 }
 
 .icon {
   margin-right: 0.5em;
+  transition: opacity 0.2s;
+}
+
+.bigSearchContainer {
+  padding: 5em 1em;
+  position: relative;
+  z-index: 150;
+}
+
+.heroImage {
+  width: 292px;
+  height: 202px;
+  margin-bottom: 2em;
+}
+
+.searchBar {
+  margin: 0 auto;
+
+  > div {
+    padding: 0.5em;
+    font-size: 1.1em;
+  }
 }
 
 @media only screen and (min-width: @mobile) {
