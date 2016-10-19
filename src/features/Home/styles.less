@@ -5,24 +5,10 @@
   text-align: left;
 }
 
-.heroImageContainer {
-  padding: 0 1em;
-  margin: 4em auto;
-  position: relative;
-  height: 326px;
-}
-
-.heroImage {
-  width: 300px;
-  height: 326px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateY(-50%) translateX(-50%);
-}
-
 .introContainer {
-  margin: 2em 0;
+  margin: 0 auto;
+  padding: 2em 0.5em;
+  max-width: 500px;
 }
 
 .newsContainer {
@@ -31,27 +17,20 @@
 
 .atfContainer {
   display: inherit;
+  min-height: 400px;
+  padding: 3em 0;
 }
 
-.searchContainer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 45%;
-}
-
-.searchBar {
-  margin: 0 auto;
-  max-width: 500px;
-
-  > div {
-    padding: 0.4em;
-    font-size: 1.1em;
-  }
+.introBackground {
+  background-image: url('assets/images/gw_whatisgw.png');
+  background-position: center;
+  background-size: cover;
 }
 
 @media only screen and (min-width: @pc) {
   .atfContainer {
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

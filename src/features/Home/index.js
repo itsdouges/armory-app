@@ -1,44 +1,53 @@
-import Head from 'common/components/Head';
+import { Component } from 'react';
 
-import heroImage from 'assets/images/logo.png';
-import SearchBar from 'common/components/SearchBar';
+import Head from 'common/components/Head';
 import Container from 'common/components/Container';
+
 
 import styles from './styles.less';
 import News from './components/News';
 import Introduction from './components/Introduction';
 import RandomCharacter from './components/RandomCharacter';
+import RandomGuilds from './components/RandomGuilds';
 
-const Home = () => (
-  <div className={styles.root}>
-    <Head title="Armor Up" />
+export default class Home extends Component {
+  state = {
+    guilds: undefined,
+  };
 
-    <Container>
-      <div className={styles.heroImageContainer}>
-        <img
-          alt="Guild Wars 2 Armory"
-          title="Guild Wars 2 Armory"
-          className={styles.heroImage} src={heroImage}
-        />
+  componentDidMount () {
+    setTimeout(() => {
+      this.setState({
+        guilds: [
+          { name: 'Ultra Lux', tag: 'LUX' },
+          { name: 'Guild Of Madness', tag: 'GOM' },
+          { name: 'Tyrian Nomads', tag: 'TNM' },
+          { name: 'Haus Bergfried', tag: 'BERG' },
+        ],
+      });
+    }, 1500);
+  }
 
-        <div className={styles.searchContainer}>
-          <SearchBar className={styles.searchBar} />
+  render () {
+    return (
+      <div className={styles.root}>
+        <Head title="Armor Up" />
+
+        <div className={styles.introBackground}>
+          <Container className={styles.atfContainer}>
+            <Introduction className={styles.introContainer} />
+            <RandomCharacter />
+          </Container>
         </div>
+
+        <RandomGuilds />
+
+        <Container>
+          <hr />
+
+          <News className={styles.newsContainer} />
+        </Container>
       </div>
-
-      <hr />
-
-      <div className={styles.atfContainer}>
-        <Introduction className={styles.introContainer} />
-
-        <RandomCharacter />
-      </div>
-
-      <hr />
-
-      <News className={styles.newsContainer} />
-    </Container>
-  </div>
-);
-
-export default Home;
+    );
+  }
+}

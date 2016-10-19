@@ -32,33 +32,36 @@ class App extends Component {
   };
 
   state = {
-    simpleHeader: this.props.location.pathname === '/',
+    smallHeader: this.shouldForceSmallHeader(),
   };
 
   componentWillReceiveProps (nextProps) {
     this.setState({
-      simpleHeader: nextProps.location.pathname === '/',
+      smallHeader: this.shouldForceSmallHeader(nextProps),
     });
+  }
+
+  shouldForceSmallHeader ({ location } = this.props) {
+    return location.pathname !== '/';
   }
 
   render () {
     return (
-      <span>
+      <div className={styles.app}>
+        <Head />
+
+        <Header
+          compact={this.state.smallHeader}
+          authenticated={this.props.userAuthenticated}
+          checkingAuthentication={this.props.checkingAuthentication}
+          alias={this.props.userAlias}
+        />
+
+        {this.props.children}
+
         <Gw2ApiHealth />
-        <div className={styles.app}>
-          <Head />
-
-          <Header
-            simple={this.state.simpleHeader}
-            authenticated={this.props.userAuthenticated}
-            checkingAuthentication={this.props.checkingAuthentication}
-            alias={this.props.userAlias}
-          />
-
-          {this.props.children}
-          <Footer />
-        </div>
-      </span>
+        <Footer />
+      </div>
     );
   }
 }

@@ -11,6 +11,8 @@ import { fetchUserCharacters, selectUser } from 'features/User/actions';
 import { calculate as calculateAttributes } from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
+import Content from 'common/layouts/Content';
+
 import Checkbox from 'common/components/Checkbox';
 import Head from 'common/components/Head';
 import ContentCardList from 'common/components/ContentCardList';
@@ -178,39 +180,13 @@ class Character extends Component {
     const showPvpEquipment = mode === 'pvp';
 
     return (
-      <div className={styles.root}>
+      <Content content={character} type="characters">
         <Head
-          title={`${routeParams.character} - ${alias}`}
+          title={`${routeParams.character} | ${alias}`}
           description={buildDescription(character)}
         />
 
         <div className={styles.inner}>
-          <div className={styles.editContainer}>
-            {ownCharacter && (
-              <div>
-                <Button
-                  key="edit-button"
-                  className={styles.editButton}
-                  type={editMode ? 'primary' : ''}
-                  onClick={this.toggleEditMode}
-                >
-                  {editMode ? 'I\'M DONE' : 'EDIT'}
-                </Button>
-
-                {editMode && [
-                  <Checkbox
-                    checked={!!showPublic}
-                    key="hide-checkbox"
-                    onChange={this.hide}
-                    label={showPublic ? 'Character Shown' : 'Character Hidden'}
-                  />,
-                ]}
-              </div>
-            )}
-          </div>
-
-          <ContentCard content={character} size="big" />
-
           <div className={styles.columns}>
             <div className={cx(styles.leftColumn, showPvpEquipment && styles.fade)}>
               {leftItems.map((item) => {
@@ -276,6 +252,30 @@ class Character extends Component {
             </ImageUpload>
 
             <div className={styles.rightColumn}>
+              <div className={styles.editContainer}>
+                {ownCharacter && (
+                  <div>
+                    <Button
+                      key="edit-button"
+                      className={styles.editButton}
+                      type={editMode ? 'primary' : ''}
+                      onClick={this.toggleEditMode}
+                    >
+                      {editMode ? 'I\'M DONE' : 'EDIT'}
+                    </Button>
+
+                    {editMode && [
+                      <Checkbox
+                        checked={!!showPublic}
+                        key="hide-checkbox"
+                        onChange={this.hide}
+                        label={showPublic ? 'Character Shown' : 'Character Hidden'}
+                      />,
+                    ]}
+                  </div>
+                )}
+              </div>
+
               <div className={styles.attributes}>
                 {Object.keys(attributes).map((key) => {
                   const value = attributes[key];
@@ -349,7 +349,7 @@ class Character extends Component {
 
         <SocialButtons />
         <Tooltip />
-      </div>
+      </Content>
     );
   }
 }

@@ -65,7 +65,7 @@ function extractIds ({ specializations, equipment, equipment_pvp }) {
   return ids;
 }
 
-export function fetchCharacter (character, { redirect404 = true, ignoreAuth } = {}) {
+export function fetchCharacter (character, { redirect404 = true, ignoreAuth, basicLoad } = {}) {
   return (dispatch) => {
     dispatch(fetchingCharacter(true));
 
@@ -81,11 +81,14 @@ export function fetchCharacter (character, { redirect404 = true, ignoreAuth } = 
           return acc.concat([skillType.elite, skillType.heal]).concat(skillType.utilities);
         }, []);
 
-        dispatch(actions.fetchSkills(skills));
         dispatch(actions.fetchItems(items));
         dispatch(actions.fetchSkins(skins));
-        dispatch(actions.fetchAmulets(amulets));
-        dispatch(actions.fetchSpecializations(specializations));
+
+        if (!basicLoad) {
+          dispatch(actions.fetchSkills(skills));
+          dispatch(actions.fetchAmulets(amulets));
+          dispatch(actions.fetchSpecializations(specializations));
+        }
       }, () => redirect404 && browserHistory.replace('/404'));
   };
 }
