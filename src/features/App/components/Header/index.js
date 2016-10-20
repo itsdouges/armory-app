@@ -1,6 +1,7 @@
 import { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 import cx from 'classnames';
+import get from 'lodash/get';
 
 import styles from './styles.less';
 
@@ -29,7 +30,6 @@ export default class Header extends Component {
   state = {
     stickyHeader: false,
     stickyHeaderStyles: {},
-    compactSpacer: {},
   };
 
   componentDidMount () {
@@ -69,16 +69,6 @@ export default class Header extends Component {
   };
 
   initStickyHeader () {
-    this.setState({
-      stickyHeaderStyles: {
-        height: this._root.offsetHeight || this._fixed.offsetHeight,
-        top: this._fixed.offsetHeight,
-      },
-      compactSpacer: {
-        height: this._fixed.offsetHeight,
-      },
-    });
-
     if (!this.initialised) {
       this.detatch = addEvent('scroll', this.onScroll);
     }
@@ -89,7 +79,12 @@ export default class Header extends Component {
 
   render () {
     const { authenticated, alias, checkingAuthentication, compact } = this.props;
-    const { stickyHeader, stickyHeaderStyles, compactSpacer } = this.state;
+    const { stickyHeader } = this.state;
+
+    const stickyHeaderStyles = {
+      height: get(this._root, 'offsetHeight') || get(this._fixed, 'offsetHeight'),
+      top: get(this._fixed, 'offsetHeight'),
+    };
 
     const authenticatedLinks = [
       <Link key="alias" to={`/${alias}`}>{alias}</Link>,
@@ -97,7 +92,7 @@ export default class Header extends Component {
     ];
 
     const unauthenticatedLinks = [
-      <Link key="login" to="/login">Log in</Link>,
+      <Link key="login" to="/login">Login</Link>,
       <Link key="join" to="/join">Join</Link>,
     ];
 
@@ -110,7 +105,7 @@ export default class Header extends Component {
 
     return (
       <div className={cx(styles.root)} ref={(e) => (this._root = e)}>
-        {compact && <div style={{ height: compactSpacer.height }} />}
+        {compact && <div style={{ height: stickyHeaderStyles.top }} />}
 
         <div className={styles.fixed} ref={(e) => (this._fixed = e)}>
           <Container className={styles.innerContainer}>

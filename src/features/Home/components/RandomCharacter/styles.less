@@ -1,8 +1,10 @@
+@import '~common/styles/sizes.less';
+
 .root {
   text-align: left;
-  margin: 2em auto;
+  margin: 2em auto 0;
   position: relative;
-  width: 500px;
+  max-width: 500px;
   flex-shrink: 0;
 }
 
@@ -11,4 +13,11 @@
   top: 27px;
   right: 5px;
   z-index: 99;
+}
+
+
+@media only screen and (min-width: @pc) {
+  .root {
+    margin: 2em auto;
+  }
 }

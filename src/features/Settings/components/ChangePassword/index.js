@@ -44,7 +44,7 @@ export default class ChangePassword extends Component {
     const { currentPassword, password, passwordConfirm } = this.state;
 
     return (
-      <CardWithTitle size="medium" title="Change password" message={message}>
+      <CardWithTitle size="medium" title="Change Password" message={message}>
         <form onSubmit={this.changePassword}>
           <Textbox
             required

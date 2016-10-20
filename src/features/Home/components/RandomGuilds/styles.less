@@ -1,12 +1,21 @@
+@import '~common/styles/sizes.less';
+
 .root {
   overflow: auto;
   margin: 3em 0;
-  text-align: center;
+  text-align: left;
   -webkit-overflow-scrolling: touch;
   padding: 0;
 
   li {
+    text-align: left;
     display: inline-block;
     flex-shrink: 0;
+  }
+}
+
+@media only screen and (min-width: @tablet) {
+  .root {
+    text-align: center;
   }
 }

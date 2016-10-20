@@ -1,5 +1,3 @@
-import { Component } from 'react';
-
 import Head from 'common/components/Head';
 import Container from 'common/components/Container';
 
@@ -10,44 +8,25 @@ import Introduction from './components/Introduction';
 import RandomCharacter from './components/RandomCharacter';
 import RandomGuilds from './components/RandomGuilds';
 
-export default class Home extends Component {
-  state = {
-    guilds: undefined,
-  };
+const Home = () => (
+  <div className={styles.root}>
+    <Head title="Armor Up" />
 
-  componentDidMount () {
-    setTimeout(() => {
-      this.setState({
-        guilds: [
-          { name: 'Ultra Lux', tag: 'LUX' },
-          { name: 'Guild Of Madness', tag: 'GOM' },
-          { name: 'Tyrian Nomads', tag: 'TNM' },
-          { name: 'Haus Bergfried', tag: 'BERG' },
-        ],
-      });
-    }, 1500);
-  }
+    <div className={styles.introBackground}>
+      <Container className={styles.atfContainer}>
+        <Introduction className={styles.introContainer} />
+        <RandomCharacter />
+      </Container>
+    </div>
 
-  render () {
-    return (
-      <div className={styles.root}>
-        <Head title="Armor Up" />
+    <RandomGuilds />
 
-        <div className={styles.introBackground}>
-          <Container className={styles.atfContainer}>
-            <Introduction className={styles.introContainer} />
-            <RandomCharacter />
-          </Container>
-        </div>
+    <Container>
+      <hr />
 
-        <RandomGuilds />
+      <News className={styles.newsContainer} />
+    </Container>
+  </div>
+);
 
-        <Container>
-          <hr />
-
-          <News className={styles.newsContainer} />
-        </Container>
-      </div>
-    );
-  }
-}
+export default Home;

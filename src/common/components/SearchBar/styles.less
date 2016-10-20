@@ -1,3 +1,5 @@
+@import '~common/styles/sizes.less';
+
 .root {
   max-width: 550px;
   flex-grow: 1;
@@ -7,12 +9,12 @@
 .textBoxContainer {
   border-radius: 5px;
   margin-bottom: 0 !important;
-  padding: 1em !important;
   border: none !important;
   composes: low from 'common/styles/box-shadow.less';
+  padding: 12px !important;
 
   input {
-    font-size: 1.1em;
+    font-size: 1em;
 
     &::placeholder {
       color: rgba(0, 0, 0, 0.6);
@@ -21,8 +23,8 @@
 }
 
 .searchIcon {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
 }
 
 .simple {
@@ -49,4 +51,19 @@
   cursor: pointer;
   outline: none;
   display: flex;
+}
+
+@media only screen and (min-width: @mobile) {
+  .searchIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .textBoxContainer {
+    padding: 1em !important;
+
+    input {
+      font-size: 1.1em;
+    }
+  }
 }

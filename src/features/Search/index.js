@@ -111,9 +111,8 @@ export default class Search extends Component {
 
     const noResults = !error && !searching && !results.length && (
       <Message>
-        Couldn't find anything :-(..<br /><br />
-        Can't find your characters? Guild Wars Armory 2 is opt-in.<br /><br />
-        You'll have to <Link to="/join">join and add your gw2 api token(s) first!</Link>
+        Nothing was found... Thought you'd find something? <br /><br />
+        <Link to="/join">Join and add your gw2 api token(s) first!</Link>
       </Message>
     );
 

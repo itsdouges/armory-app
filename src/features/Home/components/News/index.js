@@ -44,14 +44,14 @@ const news = [{
 
 const News = (props) => (
   <div className={props.className}>
-    <h2>Latest News</h2>
+    <h2>Armory News</h2>
     <div className={styles.root}>
       {news.map((item) => (
         <div className={styles.newsItem} key={item.title}>
           <Card className={styles.newsItemInner}>
             <div className={styles.newsItemHeader}>
               <h3 className={styles.newsItemTitle}>{item.title}</h3>
-              <div>{item.date}</div>
+              <div><i>{item.date}</i></div>
             </div>
 
             <hr />
