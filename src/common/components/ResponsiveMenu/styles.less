@@ -24,9 +24,16 @@
 }
 
 .item {
-  padding: 1.25em;
   text-align: right;
   width: 100%;
+  cursor: pointer;
+  display: inline-block;
+
+  > a {
+    display: block;
+    padding: 1.25em;
+    width: 100%;
+  }
 }
 
 .shown {
@@ -44,13 +51,18 @@
 .toggleButton {
   padding: 0;
   outline: none;
+  cursor: pointer;
 }
 
 @media only screen and (min-width: @tablet) {
   .item {
-    padding: 0.25em 1em;
     text-align: inherit;
     width: inherit;
+
+    > a {
+      padding: 0.25em 1em;
+      width: inherit;
+    }
   }
 
   .listRoot {
