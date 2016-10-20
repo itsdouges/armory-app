@@ -25,7 +25,7 @@ const PvpStats = ({ stats }) => {
 
   return (
     <div className={styles.root}>
-      <h3>Pvp stats</h3>
+      <h3>Pvp Stats</h3>
       <Card className={styles.card}>
         <div className={styles.unrankedContainer}>
           <h4><Redacted redact={redact}>Unranked</Redacted></h4>

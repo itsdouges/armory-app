@@ -94,7 +94,7 @@ class User extends Component {
         <PvpStats stats={pvpStats} />
 
         <div className={styles.gamesContainer}>
-          <h3>Recent matches</h3>
+          <h3>Recent Matches</h3>
           {pvpGames.map((game, index) => <PvpGame game={game} key={index} maps={maps} />)}
         </div>
 
