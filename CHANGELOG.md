@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [2.9.0] - 2016/10/22
+### Added
+- Language translations (de, es, fr, ru).
+
 ## [2.8.1] - 2016/10/20
 ### Changed
 - Character attribute calculation
