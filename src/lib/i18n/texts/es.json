@@ -1,1 +1,107 @@
-{}
+{
+  "home": {
+    "whatIs": {
+      "title": "Que es",
+      "text": "Guild Wars 2 Armory es una manera fácil de encontrar, ver y compartir los usuarios, personajes y gremios con sus amigos en el móvil y el PC! Únete hoy y empieza a compartir!"
+    }
+  },
+  "login": {
+    "name": "Registrarse",
+    "joinCta": "¿No tienes una cuenta? ¡Únete a nosotros!",
+    "forgotMyPasswordCta": "Olvidé mi contraseña",
+    "buttons": {
+      "login": "Registrarse"
+    }
+  },
+  "forgotPassword": {
+    "name": "Olvidé mi Contraseña",
+    "nextCta": "Siguiente",
+    "changeCta": "Cambio",
+    "checkEmail": "Consultar su correo electrónico para su contador de reinicio!",
+    "success": "Su contraseña ha sido cambiada. Ir Identifícate!"
+  },
+  "join": {
+    "name": "Unirse",
+    "loginCta": "¿Ya tienes una cuenta? Ir Identifícate!",
+    "buttons": {
+      "join": "Registro"
+    }
+  },
+  "images": {
+    "tooBig": "Imagen debe ser inferior a 1 MB, elija otro.",
+    "wrongType": "Imagen debe ser JPEG o PNG, elija otro."
+  },
+  "stats": {
+    "name": "Estadística",
+    "refreshNote": "Armory estadísticas se actualizan cada treinta minutos."
+  },
+  "search": {
+    "textbox": "Búsqueda de usuarios, personajes y gremios",
+    "results": "Resultados de la búsqueda",
+    "minlength": "El término de búsqueda debe ser de 3 o más caracteres :-)",
+    "nonefound": "No se encontró nada ... Pensé que iba a encontrar algo?",
+    "joincta": "Unirse y añadir sus tokens de api gw2 primero!"
+  },
+  "users": {
+    "name": "Usuarios",
+    "recentMatches": "Partidos Recientes",
+    "pvpStats": {
+      "name": "Pvp Estadísticas",
+      "unranked": "Sin clasificar",
+      "ranked": "Clasificado",
+      "wins": "Victorias",
+      "byes": "Byes",
+      "losses": "Pérdidas",
+      "desertions": "Las deserciones",
+      "forfeits": "Prendas"
+    }
+  },
+  "guilds": {
+    "name": "Gremios"
+  },
+  "characters": {
+    "name": "Caracteres",
+    "embedCta": "Se trata de un personaje elegido al azar. Usted puede obtener una inserción al igual que este en su sitio web! Haga clic en el icono de incrustar en cualquier página personaje.",
+    "shown": "Se muestra el carácter",
+    "hidden": "Personaje oculto"
+  },
+  "settings": {
+    "name": "Ajustes",
+    "avatar": {
+      "cta": "Haga clic para cambiar su avatar",
+      "label": "Cambiar su avatar",
+      "finished": "Verse bien ;-)"
+    },
+    "apiKeys": {
+      "name": "Api Keys",
+      "noKeysCta": "Oh, no tiene claves de la API .. seguir generan una ..! Asegúrese de seleccionar caracteres, construye y permisos pvp :-).",
+      "inputs": {
+        "add": "Añadir clave"
+      },
+      "buttons": {
+        "add": "Añadir"
+      }
+    },
+    "changePassword": {
+      "name": "Cambia la contraseña",
+      "inputs": {
+        "current": "Contraseña actual",
+        "password": "Contraseña",
+        "confirm": "Confirmar contraseña"
+      }
+    },
+    "buttons": {
+      "logout": "Cerrar sesión"
+    }
+  },
+  "misc": {
+    "opensInNewWindow": "Se abre en una nueva ventana"
+  },
+  "items": {
+    "transmuted": "Transmutado",
+    "skinLocked": "Skin Locked",
+    "requiredLevel": "Nivel Requerido",
+    "weaponStrength": "Fuerza Arma",
+    "currentlyEquipped": "Actualmente Equipado"
+  }
+}
