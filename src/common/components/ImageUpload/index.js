@@ -1,7 +1,10 @@
 /* eslint no-return-assign:0 */
 import { PropTypes, Component } from 'react';
-import styles from './styles.less';
 import { get, put } from 'axios';
+import T from 'i18n-react';
+
+import styles from './styles.less';
+
 import config from 'config';
 import ProgressIcon from '../Icon/Progress';
 import Message from 'common/components/Message';
@@ -50,7 +53,7 @@ export default class ImageUpload extends Component {
 
     if (ALLOWED_FILE_TYPES.indexOf(file.type) === -1) {
       this.setState({
-        error: 'Image should be PNG or JPEG, click to choose another.',
+        error: T.translate('images.wrongType'),
       });
 
       return;
@@ -58,7 +61,7 @@ export default class ImageUpload extends Component {
 
     if (file.size > FILE_SIZE_LIMIT) {
       this.setState({
-        error: 'Image should be less than 1MB, click to choose another.',
+        error: T.translate('images.tooBig'),
       });
 
       return;
@@ -103,7 +106,7 @@ export default class ImageUpload extends Component {
     const showOverlay = this.props.forceShow || hovering || uploading || error;
     const overlayContent = (error && <Message type="error">{error}</Message>) ||
       (uploading && <ProgressIcon />) ||
-      <span className={styles.hintText}>{this.props.hintText || 'UPLOAD IMAGE'}</span>;
+      <span className={styles.hintText}>{this.props.hintText || 'Upload image'}</span>;
 
     return (
       <div

@@ -38,7 +38,7 @@ const PvpGame = ({ game, maps }) => {
           </div>
         </div>
 
-        <div className={cx('column', ', stretch', 'spreadItems')}>
+        <div className={cx('column', 'stretch', 'spreadItems')}>
           <div>
             <div className={styles.red}>RED</div>
             <Redacted redact={redacted}>{game.scores.red || '25'}</Redacted>

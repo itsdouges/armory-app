@@ -2,6 +2,7 @@ import { Component, PropTypes } from 'react';
 import { get } from 'axios';
 import { Link } from 'react-router';
 import Head from 'common/components/Head';
+import T from 'i18n-react';
 
 import config from 'config';
 import styles from './styles.less';
@@ -75,7 +76,7 @@ export default class Search extends Component {
 
     const characters = !!resources.characters.length && (
       <span>
-        <h2>Characters</h2>
+        <h2>{T.translate('characters.name')}</h2>
         <ContentCardList
           noBorder
           resource="characters"
@@ -87,7 +88,7 @@ export default class Search extends Component {
 
     const users = !!resources.users.length && (
       <span>
-        <h2>Users</h2>
+        <h2>{T.translate('users.name')}</h2>
         <ContentCardList
           noBorder
           resource="users"
@@ -99,7 +100,7 @@ export default class Search extends Component {
 
     const guilds = !!resources.guilds.length && (
       <span>
-        <h2>Guilds</h2>
+        <h2>{T.translate('guilds.name')}</h2>
         <ContentCardList
           noBorder
           resource="guilds"
@@ -111,8 +112,8 @@ export default class Search extends Component {
 
     const noResults = !error && !searching && !results.length && (
       <Message>
-        Nothing was found... Thought you'd find something? <br /><br />
-        <Link to="/join">Join and add your gw2 api token(s) first!</Link>
+        <T.span text={{ key: 'search.nonefound' }} /><br /><br />
+        <Link to="/join"><T.span text={{ key: 'search.joincta' }} /></Link>
       </Message>
     );
 
@@ -121,7 +122,7 @@ export default class Search extends Component {
         <Head title="Search" />
 
         <Message size="big" className={styles.message}>
-          <span>Search results for <strong><i>{term}</i></strong>...</span>
+          <span><T.span text={{ key: 'search.results' }} /> <strong><i>{term}</i></strong>...</span>
           {error && <div><br />{error}</div>}
         </Message>
 

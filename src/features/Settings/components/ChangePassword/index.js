@@ -1,4 +1,5 @@
 import { Component, PropTypes } from 'react';
+import T from 'i18n-react';
 
 import styles from './styles.less';
 
@@ -44,12 +45,16 @@ export default class ChangePassword extends Component {
     const { currentPassword, password, passwordConfirm } = this.state;
 
     return (
-      <CardWithTitle size="medium" title="Change Password" message={message}>
+      <CardWithTitle
+        size="medium"
+        title={T.translate('settings.changePassword.name')}
+        message={message}
+      >
         <form onSubmit={this.changePassword}>
           <Textbox
             required
             id="currentPassword"
-            placeholder="Current password"
+            placeholder={T.translate('settings.changePassword.inputs.current')}
             type="password"
             value={currentPassword}
             onChange={this.fieldChanged}

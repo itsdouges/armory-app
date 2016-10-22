@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
 import cx from 'classnames';
+import T from 'i18n-react';
 
 import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter, selectCharacterMode, updateCharacter } from './actions';
@@ -269,7 +270,11 @@ class Character extends Component {
                         checked={!!showPublic}
                         key="hide-checkbox"
                         onChange={this.hide}
-                        label={showPublic ? 'Character Shown' : 'Character Hidden'}
+                        label={
+                          showPublic
+                            ? `${T.translate('character.shown')}`
+                            : `${T.translate('character.hidden')}`
+                        }
                       />,
                     ]}
                   </div>

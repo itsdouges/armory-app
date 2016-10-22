@@ -1,6 +1,7 @@
+import { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 import cx from 'classnames';
-import { PropTypes } from 'react';
+import T from 'i18n-react';
 
 import styles from './styles.less';
 import Textbox from 'common/components/Textbox';
@@ -22,7 +23,7 @@ const SearchBar = ({ className, simple, ...props }) => (
     <Textbox
       autoFocus
       required
-      placeholder="Search for users, characters, and guilds..."
+      placeholder={`${T.translate('search.textbox')}...`}
       containerClassName={cx(styles.textBoxContainer, { [styles.simple]: simple })}
       iconLeft={(
         <button className={styles.searchButton}>

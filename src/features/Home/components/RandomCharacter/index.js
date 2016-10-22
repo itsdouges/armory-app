@@ -1,5 +1,6 @@
 import { get } from 'axios';
 import { Component } from 'react';
+import T from 'i18n-react';
 
 import config from 'config';
 import CharacterLite from 'features/Character/Lite';
@@ -28,7 +29,7 @@ export default class RandomCharacter extends Component {
         <CharacterLite name={name} />
 
         <TooltipTrigger
-          data="This is a character chosen at random. You can get an embed just like this on your website! Click the embed icon on any character page."
+          data={T.translate('characters.embedCta')}
         >
           <SvgIcon className={styles.helpIcon} name="help" />
         </TooltipTrigger>

@@ -5,10 +5,11 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 import 'airbnb-js-shims';
-
-import './styles.less';
 import 'normalize.css';
+
+import 'lib/i18n';
 import 'assets/fonts/menomonia.css';
+import './styles.less';
 
 const logger = __DEVELOPMENT__ && createLogger();
 

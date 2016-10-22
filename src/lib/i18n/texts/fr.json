@@ -1,0 +1,107 @@
+{
+  "home": {
+    "whatIs": {
+      "title": "Quel est",
+      "text": "Guild Wars 2 Armory est un moyen facile de trouver, visualiser et partager des utilisateurs, des personnages et des guildes avec vos amis sur votre mobile et PC! Inscrivez-vous aujourd'hui et commencez à partager!"
+    }
+  },
+  "login": {
+    "name": "Se connecter",
+    "joinCta": "Ne pas avoir un compte? Rejoignez-nous!",
+    "forgotMyPasswordCta": "Oublié mon mot de passe",
+    "buttons": {
+      "login": "Se connecter"
+    }
+  },
+  "forgotPassword": {
+    "name": "Oublié mon mot de passe",
+    "nextCta": "Prochain",
+    "changeCta": "Changement",
+    "checkEmail": "Vérifiez votre email pour votre jeton de réinitialisation!",
+    "success": "Votre mot de passe a été changé. Allez-vous!"
+  },
+  "join": {
+    "name": "Joindre",
+    "loginCta": "Vous avez déjà un compte? Allez-vous!",
+    "buttons": {
+      "join": "Registre"
+    }
+  },
+  "images": {
+    "tooBig": "L'image doit être inférieure à 1MB, choisir un autre.",
+    "wrongType": "L'image doit être PNG ou JPEG, choisissez un autre."
+  },
+  "stats": {
+    "name": "Statistiques",
+    "refreshNote": "Armory les statistiques sont actualisées toutes les trente minutes."
+  },
+  "search": {
+    "textbox": "Recherche pour les utilisateurs, les personnages, et les guildes",
+    "results": "Résultats de recherche pour",
+    "minlength": "Le terme de recherche devrait être de 3 ou plusieurs caractères :-)",
+    "nonefound": "Rien n'a été trouvé ... Je pensais que vous pouvez trouver quelque chose?",
+    "joincta": "Inscrivez-vous et ajoutez votre jeton d'api gw2 (s) d'abord!"
+  },
+  "users": {
+    "name": "Utilisateurs",
+    "recentMatches": "Matches Récents",
+    "pvpStats": {
+      "name": "Pvp Stats",
+      "unranked": "Unranked",
+      "ranked": "Classé",
+      "wins": "Victoires",
+      "byes": "Byes",
+      "losses": "Des pertes",
+      "desertions": "Désertions",
+      "forfeits": "Confiscations"
+    }
+  },
+  "guilds": {
+    "name": "Guildes"
+  },
+  "characters": {
+    "name": "Personnages",
+    "embedCta": "Ceci est un personnage choisi au hasard. Vous pouvez obtenir une intégration tout comme cela sur votre site! Cliquez sur l'icône d'intégration sur une page de caractères.",
+    "shown": "Caractère Montré",
+    "hidden": "Caractère caché"
+  },
+  "settings": {
+    "name": "Paramètres",
+    "avatar": {
+      "cta": "Cliquez pour changer votre avatar",
+      "label": "Modifier votre avatar",
+      "finished": "Vous cherchez une bonne ;-)"
+    },
+    "apiKeys": {
+      "name": "Clés Api",
+      "noKeysCta": "Oh, vous avez aucune clé de api .. vont générer un ..! Assurez-vous que vous sélectionnez les caractères, construit, et les autorisations de pvp :-).",
+      "inputs": {
+        "add": "Ajouter la clé"
+      },
+      "buttons": {
+        "add": "Ajouter"
+      }
+    },
+    "changePassword": {
+      "name": "Changer le mot de passe",
+      "inputs": {
+        "current": "Mot de passe actuel",
+        "password": "Mot de passe",
+        "confirm": "Confirmez le mot de passe"
+      }
+    },
+    "buttons": {
+      "logout": "Se déconnecter"
+    }
+  },
+  "misc": {
+    "opensInNewWindow": "Ouvre dans une nouvelle fenêtre"
+  },
+  "items": {
+    "transmuted": "Transmué",
+    "skinLocked": "Locked Peau",
+    "requiredLevel": "Niveau Requis",
+    "weaponStrength": "Arme Force",
+    "currentlyEquipped": "Actuellement équipée"
+  }
+}

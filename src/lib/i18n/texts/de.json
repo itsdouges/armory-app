@@ -1,0 +1,107 @@
+{
+  "home": {
+    "whatIs": {
+      "title": "Wat is",
+      "text": "Guild Wars 2 Armory is een gemakkelijke manier te vinden, bekijken en delen de gebruikers, karakters, en gilden met je vrienden op je mobiel en PC! Registreer nu en beginnen met het delen!"
+    }
+  },
+  "login": {
+    "name": "Aanmelden",
+    "joinCta": "Heeft u geen account? Doe met ons mee!",
+    "forgotMyPasswordCta": "Wachtwoord vergeten",
+    "buttons": {
+      "login": "Aanmelden"
+    }
+  },
+  "forgotPassword": {
+    "name": "Wachtwoord Vergeten",
+    "nextCta": "Volgende",
+    "changeCta": "Verandering",
+    "checkEmail": "Controleer uw e-mail voor uw reset token!",
+    "success": "Je wachtwoord is gewijzigd. Ga login!"
+  },
+  "join": {
+    "name": "Toetreden",
+    "loginCta": "Heeft u al een account? Ga login!",
+    "buttons": {
+      "join": "Registreren"
+    }
+  },
+  "images": {
+    "tooBig": "Afbeelding moet kleiner zijn dan 1 MB, kies een andere.",
+    "wrongType": "Afbeelding moet PNG of JPEG zijn, kies een andere."
+  },
+  "stats": {
+    "name": "Statistieken",
+    "refreshNote": "Armory statistieken worden ververst om de dertig minuten."
+  },
+  "search": {
+    "textbox": "Zoeken naar gebruikers, karakters, en gilden",
+    "results": "Zoekresultaten voor",
+    "minlength": "Zoekterm moet 3 of meer tekens :-)",
+    "nonefound": "Er werd niets gevonden ... Ik dacht dat je iets zou vinden?",
+    "joincta": "Doe mee en voeg uw gw2 api token(s) eerst!"
+  },
+  "users": {
+    "name": "Gebruikers",
+    "recentMatches": "Recente Wedstrijden",
+    "pvpStats": {
+      "name": "Pvp Stats",
+      "unranked": "Unranked",
+      "ranked": "Gerangschikt",
+      "wins": "Overwinningen",
+      "byes": "Byes",
+      "losses": "Verliezen",
+      "desertions": "Desertie",
+      "forfeits": "Verbeurt"
+    }
+  },
+  "guilds": {
+    "name": "Gilden"
+  },
+  "characters": {
+    "name": "Karakters",
+    "embedCta": "Dit is een karakter willekeurig gekozen. U kunt een embed krijgen net als dit op uw website! Klik op het pictogram embed op een willekeurig karakter pagina.",
+    "shown": "Karakter Getoond",
+    "hidden": "Karakter Verborgen"
+  },
+  "settings": {
+    "name": "Instellingen",
+    "avatar": {
+      "cta": "Klik hier om je avatar te veranderen",
+      "label": "Wijzig je avatar",
+      "finished": "Ziet er goed uit ;-)"
+    },
+    "apiKeys": {
+      "name": "Api Keys",
+      "noKeysCta": "Oh, heb je geen api sleutels .. ga genereren een ..! Zorg ervoor dat u tekens selecteert, characters, builds, and pvp permissions :-).",
+      "inputs": {
+        "add": "Add key"
+      },
+      "buttons": {
+        "add": "Add"
+      }
+    },
+    "changePassword": {
+      "name": "Verander Wachtwoord",
+      "inputs": {
+        "current": "Huidig Wachtwoord",
+        "password": "Wachtwoord",
+        "confirm": "Bevestig wachtwoord"
+      }
+    },
+    "buttons": {
+      "logout": "Uitloggen"
+    }
+  },
+  "misc": {
+    "opensInNewWindow": "Opent in een nieuw venster"
+  },
+  "items": {
+    "transmuted": "Getransmuteerd",
+    "skinLocked": "Huid Locked",
+    "requiredLevel": "Vereiste Niveau",
+    "weaponStrength": "Wapen Strength",
+    "currentlyEquipped": "Momenteel Uitgerust"
+  }
+}

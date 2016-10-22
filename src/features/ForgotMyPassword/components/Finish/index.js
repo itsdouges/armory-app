@@ -1,6 +1,7 @@
 import { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { put } from 'axios';
+import T from 'i18n-react';
 
 import Textbox from 'common/components/Textbox';
 import Button from 'common/components/Button';
@@ -19,7 +20,7 @@ export default class Finish extends Component {
 
   state = {
     token: this.props.initialToken || '',
-    message: this.props.initialToken ? '' : 'Check your email for your reset token!',
+    message: this.props.initialToken ? '' : T.translate('forgotPassword.checkEmail'),
     password: '',
     passwordConfirm: '',
     busy: false,
@@ -68,7 +69,7 @@ export default class Finish extends Component {
   render () {
     if (this.state.complete) {
       return (
-        <Message>Your password has been changed. <Link to="/login">Go login!</Link></Message>
+        <Message><Link to="/login">{T.translate('forgotPassword.success')}</Link></Message>
       );
     }
 
@@ -98,7 +99,7 @@ export default class Finish extends Component {
             busy={this.state.busy}
             disabled={!this.state.valid}
           >
-            Change
+            {T.translate('forgotPassword.changeCta')}
           </Button>
         </div>
       </form>

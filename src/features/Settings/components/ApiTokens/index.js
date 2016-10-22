@@ -1,4 +1,6 @@
 import { Component, PropTypes } from 'react';
+import T from 'i18n-react';
+
 import styles from './styles.less';
 
 import CardWithTitle from 'common/layouts/CardWithTitle';
@@ -49,7 +51,9 @@ export default class ApiTokens extends Component {
         <div className={styles.padding}>
           {!this.props.tokens.length &&
             <Message>
-              Oh, you have no api keys.. <a target="_blank" title="Opens in a new window" href="https://account.arena.net/applications/create"><strong>go generate one <i className="fa fa-external-link"></i></strong></a> ..! Make sure you select characters, builds, and pvp permissions :-).
+              <a target="_blank" title={T.translate('misc.opensInNewWindow')} href="https://account.arena.net/applications/create">
+                {T.translate('settings.apiKeys.noKeysCta')}
+              </a>
             </Message>}
 
           {this.props.tokens.map((token) =>
@@ -69,7 +73,7 @@ export default class ApiTokens extends Component {
             showStatus
             required
             id="newToken"
-            placeholder="Add key"
+            placeholder={T.translate('settings.apiKeys.inputs.add')}
             value={this.state.newToken}
             valid={this.props.valid}
             onChange={this.fieldChanged}
@@ -83,7 +87,7 @@ export default class ApiTokens extends Component {
             busy={this.props.adding}
             disabled={!this.props.valid}
           >
-            ADD
+            {T.translate('settings.apiKeys.buttons.add')}
           </Button>
         </form>
       </CardWithTitle>

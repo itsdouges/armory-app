@@ -1,0 +1,29 @@
+@import '~common/styles/sizes.less';
+
+.root {
+  cursor: default;
+  padding: 1em;
+}
+
+.lang {
+  font-size: 0.8em;
+  cursor: pointer;
+
+  &:not(:last-child):after {
+    content: "|";
+    color: black;
+    margin: 0.25em;
+  }
+}
+
+.lang:hover,
+.lang:focus,
+.selected {
+  color: #d63227;
+}
+
+@media only screen and (min-width: @tablet) {
+  .hr {
+    display: none;
+  }
+}

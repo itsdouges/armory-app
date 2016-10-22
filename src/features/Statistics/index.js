@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PieChart from 'recharts/lib/chart/PieChart';
 import Pie from 'recharts/lib/polar/Pie';
 import Cell from 'recharts/lib/component/Cell';
+import T from 'i18n-react';
 
 import styles from './styles.less';
 import { fetchStatistics } from './actions';
@@ -100,7 +101,7 @@ class Statistics extends Component {
 
     return (
       <Container className={styles.root}>
-        <Head title="Statistics" />
+        <Head title={T.translate('stats.name')} />
 
         {parsedStats.splice(0, 1).map(({ name, stats }) => (
           <span key={name}>
@@ -137,7 +138,7 @@ class Statistics extends Component {
           </span>
         ))}
 
-        <p><small>* Armory statistics are refreshed every thirty minutes.</small></p>
+        <p><small>* {T.translate('stats.refreshNote')}</small></p>
 
       </Container>
     );
