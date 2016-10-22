@@ -60,7 +60,10 @@
     "name": "Guilds"
   },
   "characters": {
-    "name": "Characters"
+    "name": "Characters",
+    "embedCta": "This is a character chosen at random. You can get an embed just like this on your website! Click the embed icon on any character page.",
+    "shown": "Character Shown",
+    "hidden": "Character Hidden"
   },
   "settings": {
     "name": "Settings",
