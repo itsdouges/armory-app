@@ -10,6 +10,7 @@ import { addEvent } from 'lib/dom';
 
 import heroImage from 'assets/images/gw_logo.png';
 
+import LangPicker from '../LangPicker';
 import ResponsiveMenu from 'common/components/ResponsiveMenu';
 import Container from 'common/components/Container';
 import Icon from 'common/components/Icon';
@@ -98,6 +99,7 @@ export default class Header extends Component {
     const links = [
       ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
       <Link key="stats" to="/stats">{T.translate('stats.name')}</Link>,
+      <LangPicker key="langPicker" />,
     ];
 
     return (

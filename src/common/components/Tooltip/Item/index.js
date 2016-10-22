@@ -1,6 +1,7 @@
 import { PropTypes } from 'react';
 import startCase from 'lodash/startCase';
 import get from 'lodash/get';
+import T from 'i18n-react';
 
 import SimpleTooltip from '../Simple';
 import colours from 'common/styles/colours.less';
@@ -47,7 +48,7 @@ const ItemsTooltip = ({ data: {
 
   return (
     <Background>
-      <SimpleTooltip data="Currently Equipped" />
+      <SimpleTooltip data={T.translate('items.currentlyEquipped')} />
 
       <ItemHeader
         name={buildName(item, skin, upgrades)}
@@ -62,7 +63,7 @@ const ItemsTooltip = ({ data: {
           </div>)}
 
         {item.type === 'Weapon' && <div>
-          <span>Weapon Strength: </span>
+          <span>{T.translate('items.weaponStrength')}: </span>
           <span className={colours.green}>
             {`${item.details.min_power} - ${item.details.max_power}`}
           </span>
@@ -98,7 +99,10 @@ const ItemsTooltip = ({ data: {
           </span>
         )}
 
-        <div>{isTransmuted ? 'Transmuted' : 'Skin Locked'}</div>
+        <div>
+          {isTransmuted ? T.translate('items.transmuted') : T.translate('items.skinLocked')}
+        </div>
+
         <div>{item.name}</div>
 
         <div>{item.rarity}</div>
@@ -109,7 +113,7 @@ const ItemsTooltip = ({ data: {
 
         <div>{markup(item.description)}</div>
 
-        {!!item.level && <div>Required Level: {item.level}</div>}
+        {!!item.level && <div>{T.translate('items.requiredLevel')}: {item.level}</div>}
 
         <div>{item.boundStatus}</div>
 

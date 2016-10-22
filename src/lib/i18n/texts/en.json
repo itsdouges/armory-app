@@ -93,5 +93,12 @@
   },
   "misc": {
     "opensInNewWindow": "Opens in a new window"
+  },
+  "items": {
+    "transmuted": "Transmuted",
+    "skinLocked": "Skin Locked",
+    "requiredLevel": "Required Level",
+    "weaponStrength": "Weapon Strength",
+    "currentlyEquipped": "Currently Equipped"
   }
 }
