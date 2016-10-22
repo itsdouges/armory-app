@@ -2,6 +2,7 @@ import { PropTypes, Component } from 'react';
 import { Link } from 'react-router';
 import cx from 'classnames';
 import get from 'lodash/get';
+import T from 'i18n-react';
 
 import styles from './styles.less';
 
@@ -14,10 +15,6 @@ import Container from 'common/components/Container';
 import Icon from 'common/components/Icon';
 import ProgressIcon from 'common/components/Icon/Progress';
 import SearchBar from 'common/components/SearchBar';
-
-const DEFAULT_LINKS = [
-  <Link key="stats" to="/stats">Stats</Link>,
-];
 
 export default class Header extends Component {
   static propTypes = {
@@ -88,19 +85,19 @@ export default class Header extends Component {
 
     const authenticatedLinks = [
       <Link key="alias" to={`/${alias}`}>{alias}</Link>,
-      <Link key="settings" to="/settings">Settings</Link>,
+      <Link key="settings" to="/settings">{T.translate('settings.name')}</Link>,
     ];
 
     const unauthenticatedLinks = [
-      <Link key="login" to="/login">Login</Link>,
-      <Link key="join" to="/join">Join</Link>,
+      <Link key="login" to="/login">{T.translate('login.name')}</Link>,
+      <Link key="join" to="/join">{T.translate('join.name')}</Link>,
     ];
 
     const linksForContext = authenticated ? authenticatedLinks : unauthenticatedLinks;
 
     const links = [
       ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
-      ...DEFAULT_LINKS,
+      <Link key="stats" to="/stats">{T.translate('stats.name')}</Link>,
     ];
 
     return (

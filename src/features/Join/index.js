@@ -1,10 +1,11 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import Head from 'common/components/Head';
+import T from 'i18n-react';
 
 import styles from './styles.less';
 
+import Head from 'common/components/Head';
 import CardWithTitle from 'common/layouts/CardWithTitle';
 import Textbox from 'common/components/Textbox';
 import Button from 'common/components/Button';
@@ -84,14 +85,14 @@ class Join extends Component {
   render () {
     return (
       <CardWithTitle
-        title="Join"
+        title={T.translate('join.name')}
         className={styles.root}
         size="medium"
         message={
-          <span>Already have an account? <Link to="/login"><strong>Go login!</strong></Link></span>
+          <Link to="/login">{T.translate('join.loginCta')}</Link>
         }
       >
-        <Head title="Join" />
+        <Head title={T.translate('join.name')} />
         <form onSubmit={this.register}>
           <Textbox
             showStatus
@@ -129,7 +130,7 @@ class Join extends Component {
               busy={this.props.user.registering}
               disabled={!this.props.canRegister}
             >
-              REGISTER
+              {T.translate('join.buttons.join')}
             </Button>
           </div>
         </form>

@@ -1,12 +1,13 @@
 import { Component } from 'react';
-import Head from 'common/components/Head';
+import T from 'i18n-react';
 
 import styles from './styles.less';
-
-import qs from 'lib/qs';
-import Card from 'common/components/Card';
 import Start from './components/Start';
 import Finish from './components/Finish';
+
+import qs from 'lib/qs';
+import Head from 'common/components/Head';
+import Card from 'common/components/Card';
 
 export default class ForgotMyPassword extends Component {
   constructor () {
@@ -48,9 +49,9 @@ export default class ForgotMyPassword extends Component {
 
     return (
       <span className={styles.root}>
-        <Head title="Forgot My Password" />
+        <Head title={T.translate('forgotPassword.name')} />
 
-        <h2>Forgot My Password</h2>
+        <h2>{T.translate('forgotPassword.name')}</h2>
         <Card size="small">
           {screen}
         </Card>

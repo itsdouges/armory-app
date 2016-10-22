@@ -1,4 +1,6 @@
 import { PropTypes } from 'react';
+import T from 'i18n-react';
+
 import Textbox from 'common/components/Textbox';
 
 const PasswordForm = ({ onFieldChange, valid, passwordValue, passwordConfirmValue, error }) => (
@@ -7,7 +9,7 @@ const PasswordForm = ({ onFieldChange, valid, passwordValue, passwordConfirmValu
       showStatus
       required
       id="password"
-      placeholder="Password"
+      placeholder={T.translate('settings.changePassword.inputs.password')}
       type="password"
       value={passwordValue}
       valid={valid}
@@ -18,7 +20,7 @@ const PasswordForm = ({ onFieldChange, valid, passwordValue, passwordConfirmValu
       showStatus
       required
       id="passwordConfirm"
-      placeholder="Confirm password"
+      placeholder={T.translate('settings.changePassword.inputs.confirm')}
       type="password"
       value={passwordConfirmValue}
       error={error}

@@ -5,6 +5,7 @@ import Head from 'common/components/Head';
 import get from 'lodash/get';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
+import T from 'i18n-react';
 
 import styles from './styles.less';
 
@@ -94,7 +95,7 @@ class User extends Component {
         <PvpStats stats={pvpStats} />
 
         <div className={styles.gamesContainer}>
-          <h3>Recent Matches</h3>
+          <h3>{T.translate('users.recentMatches')}</h3>
           {pvpGames.map((game, index) => <PvpGame game={game} key={index} maps={maps} />)}
         </div>
 

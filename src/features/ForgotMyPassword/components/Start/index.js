@@ -1,5 +1,6 @@
 import { Component, PropTypes } from 'react';
 import { post } from 'axios';
+import T from 'i18n-react';
 
 import Textbox from 'common/components/Textbox';
 import Button from 'common/components/Button';
@@ -67,7 +68,7 @@ export default class Start extends Component {
             busy={this.state.busy}
             disabled={!this.state.valid}
           >
-            Next
+            {T.translate('forgotPassword.nextCta')}
           </Button>
         </div>
       </form>

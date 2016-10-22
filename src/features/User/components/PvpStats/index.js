@@ -1,5 +1,7 @@
-import styles from './styles.less';
 import { PropTypes } from 'react';
+import T from 'i18n-react';
+
+import styles from './styles.less';
 import Card from 'common/components/Card';
 import Redacted from 'common/components/Redacted';
 
@@ -25,51 +27,68 @@ const PvpStats = ({ stats }) => {
 
   return (
     <div className={styles.root}>
-      <h3>Pvp Stats</h3>
+      <h3>{T.translate('users.pvpStats.name')}</h3>
       <Card className={styles.card}>
         <div className={styles.unrankedContainer}>
-          <h4><Redacted redact={redact}>Unranked</Redacted></h4>
+          <h4><Redacted redact={redact}>{T.translate('users.pvpStats.unranked')}</Redacted></h4>
 
           <div className={styles.win}>
             <div className={styles.bigWin}>
               <Redacted redact={redact}><strong>{unrankedWlRatio}</strong> W/L Ratio</Redacted>
             </div>
 
-            <Redacted redact={redact}>{unranked.wins || 0} Wins</Redacted>
+            <Redacted redact={redact}>
+              {unranked.wins || 0} {T.translate('users.pvpStats.wins')}
+            </Redacted>
 
             <div>
-              <Redacted redact={redact}>{unranked.byes || 0} Byes</Redacted>
+              <Redacted redact={redact}>
+                {unranked.byes || 0} {T.translate('users.pvpStats.byes')}
+              </Redacted>
             </div>
           </div>
           <div className={styles.lose}>
             <div>
-              <Redacted redact={redact}>{unranked.losses || 0} Losses</Redacted>
+              <Redacted redact={redact}>
+                {unranked.losses || 0} {T.translate('users.pvpStats.losses')}
+              </Redacted>
             </div>
             <div>
-              <Redacted redact={redact}>{unranked.desertions || 0} Desertions</Redacted>
+              <Redacted redact={redact}>
+                {unranked.desertions || 0} {T.translate('users.pvpStats.desertions')}
+              </Redacted>
             </div>
           </div>
         </div>
         <div className={styles.rankedContainer}>
-          <h4><Redacted redact={redact}>Ranked</Redacted></h4>
+          <h4><Redacted redact={redact}>{T.translate('users.pvpStats.ranked')}</Redacted></h4>
 
           <div className={styles.win}>
             <div className={styles.bigWin}>
               <Redacted redact={redact}><strong>{rankedWlRatio}</strong> W/L Ratio</Redacted>
             </div>
 
-            <Redacted redact={redact}>{ranked.wins || 0} Wins</Redacted>
+            <Redacted redact={redact}>
+              {ranked.wins || 0} {T.translate('users.pvpStats.wins')}
+            </Redacted>
 
             <div>
-              <Redacted redact={redact}>{ranked.byes || 0} Byes</Redacted>
+              <Redacted redact={redact}>
+                {ranked.byes || 0} {T.translate('users.pvpStats.byes')}
+              </Redacted>
             </div>
           </div>
           <div className={styles.lose}>
             <div>
-              <Redacted redact={redact}>{ranked.losses || 0} Losses</Redacted>
+              <Redacted redact={redact}>
+                {ranked.losses || 0} {T.translate('users.pvpStats.losses')}
+              </Redacted>
             </div>
+
             <div>
-              <Redacted redact={redact}>{ranked.forfeits || 0} Forfeits</Redacted>
+              <Redacted redact={redact}>
+                {ranked.forfeits || 0} {T.translate('users.pvpStats.forfeits')}
+              </Redacted>
             </div>
           </div>
         </div>

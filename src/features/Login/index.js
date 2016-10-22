@@ -1,10 +1,11 @@
 import { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import Head from 'common/components/Head';
+import T from 'i18n-react';
 
 import styles from './styles.less';
 
+import Head from 'common/components/Head';
 import CardWithTitle from 'common/layouts/CardWithTitle';
 import Textbox from 'common/components/Textbox';
 import Message from 'common/components/Message';
@@ -54,15 +55,11 @@ class Login extends Component {
   render () {
     const { error } = this.props;
 
-    const message = error || (
-      <span>
-        Don't have an account? <Link to="/join"><strong>Join us!</strong></Link>
-      </span>
-    );
+    const message = error || <Link to="/join">{T.translate('login.joinCta')}</Link>;
 
     return (
-      <CardWithTitle title="Login" message={message} className={styles.root}>
-        <Head title="Login" />
+      <CardWithTitle title={T.translate('login.name')} message={message} className={styles.root}>
+        <Head title={T.translate('login.name')} />
 
         <form onSubmit={this.login}>
           <Textbox
@@ -88,13 +85,13 @@ class Login extends Component {
               busy={this.props.busy}
               disabled={!this.state.canLogin}
             >
-              SIGN IN
+              {T.translate('login.buttons.login')}
             </Button>
           </div>
         </form>
 
         <Message className={styles.forgotPasswordContainer} type="small">
-          <Link to="/forgot-my-password">Forgot my password</Link>
+          <Link to="/forgot-my-password">{T.translate('login.forgotMyPasswordCta')}</Link>
         </Message>
       </CardWithTitle>
     );

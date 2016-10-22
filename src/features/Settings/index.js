@@ -1,13 +1,16 @@
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { selector } from './user.reducer';
-import ApiTokens from './components/ApiTokens';
-import ChangePassword from './components/ChangePassword';
 import debounce from 'lodash/debounce';
 import { browserHistory } from 'react-router';
-import Head from 'common/components/Head';
+import T from 'i18n-react';
 
 import styles from './styles.less';
+
+import ChangePassword from './components/ChangePassword';
+import { selector } from './user.reducer';
+import ApiTokens from './components/ApiTokens';
+
+import Head from 'common/components/Head';
 import ImageUpload from 'common/components/ImageUpload';
 import ContentCard from 'common/components/ContentCard';
 import Button from 'common/components/Button';
@@ -31,7 +34,7 @@ class Settings extends Component {
   };
 
   state = {
-    subTitle: 'Click to change your avatar',
+    subTitle: T.translate('settings.avatar.cta'),
     updateImage: false,
   };
 
@@ -75,7 +78,7 @@ class Settings extends Component {
 
   finishedUploading = () => {
     this.setState({
-      subTitle: 'Looking good ;-)',
+      subTitle: T.translate('settings.avatar.finished'),
       updateImage: true,
     });
   };
@@ -92,10 +95,10 @@ class Settings extends Component {
 
     return (
       <span>
-        <Head title="Settings" />
+        <Head title={T.translate('settings.name')} />
 
         <ImageUpload
-          hintText={<span>Change your avatar<br />128 x 128</span>}
+          hintText={<span>{T.translate('settings.avatar.label')}<br />128 x 128</span>}
           uploadName="avatar"
           onUploadComplete={this.finishedUploading}
         >
@@ -134,7 +137,9 @@ class Settings extends Component {
         </div>
 
         <div style={{ textAlign: 'center' }} className={styles.spaceBelow}>
-          <Button type="secondary" onClick={this.signOut}>LOGOUT</Button>
+          <Button type="secondary" onClick={this.signOut}>
+            {T.translate('settings.buttons.logout')}
+          </Button>
         </div>
       </span>
     );

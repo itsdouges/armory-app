@@ -1,0 +1,97 @@
+{
+  "home": {
+    "whatIs": {
+      "title": "What is",
+      "text": "Guild Wars 2 Armory is an easy way to find, view, and share users, characters, and guilds with your friends on your mobile and PC! Join today and start sharing!"
+    }
+  },
+  "login": {
+    "name": "Sign in",
+    "joinCta": "Don't have an account? Join us!",
+    "forgotMyPasswordCta": "Forgot my password",
+    "buttons": {
+      "login": "Sign in"
+    }
+  },
+  "forgotPassword": {
+    "name": "Forgot My Password",
+    "nextCta": "Next",
+    "changeCta": "Change",
+    "checkEmail": "Check your email for your reset token!",
+    "success": "Your password has been changed. Go login!"
+  },
+  "join": {
+    "name": "Join",
+    "loginCta": "Already have an account? Go login!",
+    "buttons": {
+      "join": "Register"
+    }
+  },
+  "images": {
+    "tooBig": "Image should be less than 1MB, choose another.",
+    "wrongType": "Image should be PNG or JPEG, choose another."
+  },
+  "stats": {
+    "name": "Statistics",
+    "refreshNote": "Armory statistics are refreshed every thirty minutes."
+  },
+  "search": {
+    "textbox": "Search for users, characters, and guilds",
+    "results": "Search results for",
+    "minlength": "Search term should be 3 or more characters :-)",
+    "nonefound": "Nothing was found... Thought you'd find something?",
+    "joincta": "Join and add your gw2 api token(s) first!"
+  },
+  "users": {
+    "name": "Users",
+    "recentMatches": "Recent Matches",
+    "pvpStats": {
+      "name": "Pvp Stats",
+      "unranked": "Unranked",
+      "ranked": "Ranked",
+      "wins": "Wins",
+      "byes": "Byes",
+      "losses": "Losses",
+      "desertions": "Desertions",
+      "forfeits": "Forfeits"
+    }
+  },
+  "guilds": {
+    "name": "Guilds"
+  },
+  "characters": {
+    "name": "Characters"
+  },
+  "settings": {
+    "name": "Settings",
+    "avatar": {
+      "cta": "Click to change your avatar",
+      "label": "Change your avatar",
+      "finished": "Looking good ;-)"
+    },
+    "apiKeys": {
+      "name": "Api Keys",
+      "noKeysCta": "Oh, you have no api keys.. go generate one ..! Make sure you select characters, builds, and pvp permissions :-).",
+      "inputs": {
+        "add": "Add key"
+      },
+      "buttons": {
+        "add": "Add"
+      }
+    },
+    "changePassword": {
+      "name": "Change Password",
+      "inputs": {
+        "current": "Current password",
+        "password": "Password",
+        "confirm": "Confirm password"
+      }
+    },
+    "buttons": {
+      "logout": "Logout"
+    }
+  },
+  "misc": {
+    "opensInNewWindow": "Opens in a new window"
+  }
+}
