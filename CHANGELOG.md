@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [2.11.0] - unreleased
+## [2.11.0] - 2016/10/24
 ### Added
 - Ranger pets to character page
 
