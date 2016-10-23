@@ -4,12 +4,11 @@ import includes from 'lodash/includes';
 import get from 'lodash/get';
 
 import { leftItems, rightItems } from 'lib/gw2/equipment';
+import ContentCard from 'common/components/ContentCard';
 
 import { fetchCharacter, selectCharacter } from './actions';
 import { selector } from './characters.reducer';
 import styles from './liteStyles.less';
-
-import ContentCard from 'common/components/ContentCard';
 import Item from './components/Item';
 import Portrait from './components/Portrait';
 

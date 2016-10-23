@@ -6,10 +6,26 @@ import {
   FETCH_PVP_STATS_RESULT,
   FETCH_PVP_GAMES_RESULT,
   FETCH_PVP_STANDINGS_RESULT,
+  FETCH_USER_ACHIEVEMENTS_RESULT,
   SELECT_USER,
 } from './actions';
 
 function fetchingUserResult (state, action) {
+  const newState = {
+    ...state,
+  };
+
+  const oldUser = newState.data[action.payload.alias];
+
+  newState.data[action.payload.alias] = {
+    ...oldUser,
+    ...action.payload,
+  };
+
+  return newState;
+}
+
+function fetchAchievementsResult (state, action) {
   const newState = {
     ...state,
   };
@@ -124,6 +140,9 @@ export default function reducer (state, action) {
 
     case FETCH_PVP_STANDINGS_RESULT:
       return fetchPvpStandingsResult(state, action);
+
+    case FETCH_USER_ACHIEVEMENTS_RESULT:
+      return fetchAchievementsResult(state, action);
 
     default:
       return state;

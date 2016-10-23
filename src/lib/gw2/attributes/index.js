@@ -46,9 +46,9 @@ export function calculate (character, { items }) {
   }, []);
 
   const equipItems = equipIds.map((id) => items[id]);
-  const loaded = equipItems.filter((equip) => !!equip).length > 0;
+  const fetching = equipItems.filter((equip) => !equip).length > 0;
 
-  if (!loaded) {
+  if (fetching) {
     return defaultAttributes;
   }
 

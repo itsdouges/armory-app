@@ -8,9 +8,17 @@
 - Changes
 ```
 
+## [2.10.0] - 2016/10/23
+### Added
+- User raid summary
+
+### Changed
+- Attribute calculation to not blow up before finished loading
+- Embed icon location on the character portrait
+
 ## [2.9.0] - 2016/10/22
 ### Added
-- Language translations (de, es, fr, ru).
+- Language translations (de, es, fr, ru)
 
 ## [2.8.1] - 2016/10/20
 ### Changed
