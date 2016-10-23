@@ -2,6 +2,7 @@ import axios from 'axios';
 import config from 'config';
 import { browserHistory } from 'react-router';
 import get from 'lodash/get';
+import forEach from 'lodash/forEach';
 
 import actions from 'features/Gw2/actions';
 
@@ -24,12 +25,13 @@ const fetchCharacterResultSuccess = (name, data) => ({
   },
 });
 
-function extractIds ({ specializations, equipment, equipment_pvp }) {
+function extractIds ({ specializations, equipment, equipment_pvp, skills }) {
   const ids = {
     items: [],
     skins: [],
     specializations: [],
     amulets: [],
+    pets: [],
   };
 
   specializations && Object.keys(specializations).forEach((key) => {
@@ -62,6 +64,8 @@ function extractIds ({ specializations, equipment, equipment_pvp }) {
     ids.amulets.push(equipment_pvp.amulet);
   }
 
+  forEach(skills, ({ pets }) => (ids.pets = ids.pets.concat(pets.terrestrial)));
+
   return ids;
 }
 
@@ -74,7 +78,7 @@ export function fetchCharacter (character, { redirect404 = true, ignoreAuth, bas
         dispatch(fetchCharacterResultSuccess(character, data));
         dispatch(fetchingCharacter(false));
 
-        const { items, skins, specializations, amulets } = extractIds(data);
+        const { items, skins, specializations, amulets, pets } = extractIds(data);
 
         const skills = Object.keys(get(data, 'skills', {})).reduce((acc, key) => {
           const skillType = data.skills[key];
@@ -82,10 +86,10 @@ export function fetchCharacter (character, { redirect404 = true, ignoreAuth, bas
         }, []);
 
         dispatch(actions.fetchItems(items));
-        // dispatch(actions.fetchItemStats(items));
         dispatch(actions.fetchSkins(skins));
 
         if (!basicLoad) {
+          dispatch(actions.fetchPets(pets));
           dispatch(actions.fetchSkills(skills));
           dispatch(actions.fetchAmulets(amulets));
           dispatch(actions.fetchSpecializations(specializations));

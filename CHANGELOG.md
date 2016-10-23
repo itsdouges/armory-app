@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [2.11.0] - unreleased
+### Added
+- Ranger pets to character page
+
 ## [2.10.0] - 2016/10/23
 ### Added
 - User raid summary

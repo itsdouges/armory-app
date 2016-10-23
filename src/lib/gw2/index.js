@@ -15,6 +15,12 @@ export const readAchievements = (ids) =>
   })
   .then(({ data }) => reduceById(data));
 
+export const readPets = (ids) =>
+  get(`${config.gw2.endpoint}v2/pets?ids=${ids.join(',')}`, {
+    ignoreAuth: true,
+  })
+  .then(({ data }) => reduceById(data));
+
 export const readPvpSeasons = (ids) =>
   get(`${config.gw2.endpoint}v2/pvp/seasons?ids=${ids.join(',')}`, {
     ignoreAuth: true,

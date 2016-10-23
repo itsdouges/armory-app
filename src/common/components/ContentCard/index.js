@@ -41,6 +41,14 @@ function extractData (content, { type, forceUpdate }) {
         },
       };
 
+    case 'pet':
+      return {
+        title: content.name,
+        imageStyle: {
+          backgroundImage: `url(${content.icon})`,
+        },
+      };
+
     default:
       return {};
   }
@@ -73,7 +81,7 @@ const ContentCard = ({ content, className, type = 'characters', size = 'small', 
 ContentCard.propTypes = {
   content: PropTypes.object,
   className: PropTypes.string,
-  type: PropTypes.oneOf(['characters', 'users', 'guilds']),
+  type: PropTypes.oneOf(['characters', 'users', 'guilds', 'pet']),
   size: PropTypes.oneOf(['small', 'big']),
   // I don't like this.
   forceUpdate: PropTypes.bool,

@@ -56,6 +56,7 @@ class Character extends Component {
     routeParams: PropTypes.object,
     location: PropTypes.object,
     amulets: PropTypes.object,
+    pets: PropTypes.object,
   };
 
   static contextTypes = {
@@ -157,6 +158,7 @@ class Character extends Component {
       traits,
       specializations,
       amulets,
+      pets,
     } = this.props;
 
     const { editMode } = this.state;
@@ -168,6 +170,8 @@ class Character extends Component {
     const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
     const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]);
+
+    const characterPetIds = get(character, `skills[${mode}].pets.terrestrial`, undefined);
     const characterSkills = get(character, `skills[${mode}]`, {});
     const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
     const crafting = get(character, 'crafting', [{}, {}, {}]);
@@ -181,7 +185,14 @@ class Character extends Component {
     const showPvpEquipment = mode === 'pvp';
 
     return (
-      <Content content={character} type="characters">
+      <Content
+        content={character}
+        type="characters"
+        extraContent={characterPetIds &&
+          characterPetIds.map((id) =>
+            <ContentCard className={styles.subContent} key={id} content={pets[id]} type="pet" />
+        )}
+      >
         <Head
           title={`${routeParams.character} | ${alias}`}
           description={buildDescription(character)}
