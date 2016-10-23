@@ -31,10 +31,10 @@ const ContentCardList = ({
   resource = 'characters',
 }) => {
   const content = items.length ?
-    items.map((item) => (
+    items.map((item, index) => (
       <Link
         to={buildUrl(item, alias, resource)}
-        key={item.name}
+        key={`${item.name}-${index}`}
         className={cx('item', 'withHover')}
       >
         <ContentCard type={item.resource} content={item} />

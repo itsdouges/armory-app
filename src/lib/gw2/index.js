@@ -9,6 +9,12 @@ function reduceById (payload) {
   }), {});
 }
 
+export const readAchievements = (ids) =>
+  get(`${config.gw2.endpoint}v2/achievements?ids=${ids.join(',')}`, {
+    ignoreAuth: true,
+  })
+  .then(({ data }) => reduceById(data));
+
 export const readPvpSeasons = (ids) =>
   get(`${config.gw2.endpoint}v2/pvp/seasons?ids=${ids.join(',')}`, {
     ignoreAuth: true,

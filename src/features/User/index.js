@@ -12,6 +12,8 @@ import styles from './styles.less';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
 import SocialButtons from 'common/components/SocialButtons';
+
+import RaidSummary from './components/RaidSummary';
 import PvpStats from './components/PvpStats';
 import PvpRanking from './components/PvpRanking';
 import PvpGame from './components/PvpGame';
@@ -70,6 +72,7 @@ class User extends Component {
       user.pvpGames) || [undefined, undefined];
 
     const pvpStats = get(user, 'pvpStats');
+    const userAchievements = get(user, 'achievements', []);
     const pvpStandings = get(user, 'pvpStandings', [undefined]);
 
     return (
@@ -90,6 +93,8 @@ class User extends Component {
           />
 
           <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
+
+          <RaidSummary userAchievements={userAchievements} />
         </div>
 
         <PvpStats stats={pvpStats} />
