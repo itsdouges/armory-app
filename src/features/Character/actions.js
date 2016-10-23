@@ -64,7 +64,9 @@ function extractIds ({ specializations, equipment, equipment_pvp, skills }) {
     ids.amulets.push(equipment_pvp.amulet);
   }
 
-  forEach(skills, ({ pets }) => (ids.pets = ids.pets.concat(pets.terrestrial)));
+  forEach(skills, ({ pets }) => {
+    pets && (ids.pets = ids.pets.concat(pets.terrestrial));
+  });
 
   return ids;
 }
