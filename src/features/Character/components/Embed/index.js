@@ -23,9 +23,17 @@ export default class Embed extends Component {
     shown: false,
   };
 
-  toggle = () => {
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.name !== this.props.name) {
+      this.setState({
+        shown: false,
+      });
+    }
+  }
+
+  show = () => {
     this.setState({
-      shown: !this.state.shown,
+      shown: true,
     });
   };
 
@@ -35,20 +43,16 @@ export default class Embed extends Component {
 
     return (
       <div className={cx(styles.root, className)}>
-        <TooltipTrigger data={shown ? 'Hide Embed Markup' : 'Show Embed Markup'}>
-          <SvgIcon
-            size="medium"
-            name="code"
-            onClick={this.toggle}
-            className={styles.icon}
-          />
-        </TooltipTrigger>
+        <span onClick={this.show} className={styles.embedText}>Embed</span>
 
         {shown && (
           <div className={styles.input}>
             <Textbox
               value={buildEmbedScript(name)}
               readOnly
+              autoSelect
+              singleClickSelect
+              containerClassName={styles.textboxContainer}
               iconRight={(
                 <TooltipTrigger data="Copy and paste this markup onto your website.">
                   <SvgIcon name="help-black" />

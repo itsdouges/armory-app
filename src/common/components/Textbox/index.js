@@ -17,6 +17,8 @@ const Textbox = ({
   iconRight,
   showStatus,
   type,
+  autoSelect,
+  singleClickSelect,
   ...props,
 }) => {
   const validity = valid ? <SvgIcon name="done" /> : <SvgIcon name="clear" />;
@@ -30,6 +32,8 @@ const Textbox = ({
 
       <input
         {...props}
+        onClick={singleClickSelect && ((e) => e.target.select())}
+        ref={autoSelect && ((c) => c.select())}
         disabled={busy}
         id={id}
         type={type || 'text'}
@@ -52,6 +56,8 @@ const Textbox = ({
 };
 
 Textbox.propTypes = {
+  autoSelect: PropTypes.bool,
+  singleClickSelect: PropTypes.bool,
   showStatus: PropTypes.bool,
   valid: PropTypes.bool,
   label: PropTypes.string,
