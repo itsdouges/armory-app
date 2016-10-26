@@ -1,0 +1,107 @@
+{
+  "home": {
+    "whatIs": {
+      "title": "什么是",
+      "text": "Guild Wars 2 Armory 是寻找，查看和共享用户，字符和行会与您的朋友在您的手机和PC的简单方法！今天就加入并开始分享！"
+    }
+  },
+  "login": {
+    "name": "签到",
+    "joinCta": "还没有账号？加入我们！",
+    "forgotMyPasswordCta": "忘了我的密码",
+    "buttons": {
+      "login": "签到"
+    }
+  },
+  "forgotPassword": {
+    "name": "忘了我的密码",
+    "nextCta": "下一个",
+    "changeCta": "更改",
+    "checkEmail": "检查你的电子邮件为您重置令牌！",
+    "success": "您的密码已被更改。去登录！"
+  },
+  "join": {
+    "name": "加入",
+    "loginCta": "已经有一个帐户？去登录！",
+    "buttons": {
+      "join": "寄存器"
+    }
+  },
+  "images": {
+    "tooBig": "图片应小于1MB，选择其他。",
+    "wrongType": "图片应该是PNG或JPEG格式，请选择其他。"
+  },
+  "stats": {
+    "name": "统计",
+    "refreshNote": "军械库统计每三十分钟刷新一次。"
+  },
+  "search": {
+    "textbox": "搜索用户，字符和行会",
+    "results": "为。。。。寻找结果",
+    "minlength": "搜索术语应该是3个或更多字符 :-)",
+    "nonefound": "什么都没有找到。。。我以为你会发现什么？",
+    "joincta": "加入和先加你的GW2 API令牌！"
+  },
+  "users": {
+    "name": "用户",
+    "recentMatches": "近期比赛",
+    "pvpStats": {
+      "name": "PVP统计",
+      "unranked": "未排序",
+      "ranked": "排名",
+      "wins": "胜",
+      "byes": "轮空",
+      "losses": "损失",
+      "desertions": "开小差",
+      "forfeits": "弃权"
+    }
+  },
+  "guilds": {
+    "name": "公会"
+  },
+  "characters": {
+    "name": "人物",
+    "embedCta": "这是随机选择的字符。你可以得到一个嵌入就这样在您的网站！点击任何字符页面上嵌入图标。",
+    "shown": "所示的字符",
+    "hidden": "隐藏人物"
+  },
+  "settings": {
+    "name": "设置",
+    "avatar": {
+      "cta": "点击改变你的头像",
+      "label": "改变你的头像",
+      "finished": "看起来不错 ;-)"
+    },
+    "apiKeys": {
+      "name": "API密钥",
+      "noKeysCta": "哦，你有没有API密钥..去生成一个..！确保你选择的字符，构建和PVP权限 :-)。",
+      "inputs": {
+        "add": "添加键"
+      },
+      "buttons": {
+        "add": "加"
+      }
+    },
+    "changePassword": {
+      "name": "更改密码",
+      "inputs": {
+        "current": "当前密码",
+        "password": "密码",
+        "confirm": "确认密码"
+      }
+    },
+    "buttons": {
+      "logout": "登出"
+    }
+  },
+  "misc": {
+    "opensInNewWindow": "打开一个新窗口"
+  },
+  "items": {
+    "transmuted": "蜕变",
+    "skinLocked": "锁定肌肤",
+    "requiredLevel": "需要等级",
+    "weaponStrength": "武器力量",
+    "currentlyEquipped": "目前装备"
+  }
+}
