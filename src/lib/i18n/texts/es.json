@@ -1,80 +1,80 @@
 {
   "home": {
     "whatIs": {
-      "title": "Que es",
-      "text": "Guild Wars 2 Armory es una manera fácil de encontrar, ver y compartir los usuarios, personajes y gremios con sus amigos en el móvil y el PC! Únete hoy y empieza a compartir!"
+      "title": "Qué es",
+      "text": "Guild Wars 2 Armory es la manera más fácil de encontrar, ver y compartir los usuarios, personajes y clanes con tus amigos en móvil y PC! Únete hoy y empieza a compartir!"
     }
   },
   "login": {
-    "name": "Registrarse",
-    "joinCta": "¿No tienes una cuenta? ¡Únete a nosotros!",
+    "name": "Entrar",
+    "joinCta": "¿Todavía no tienes una cuenta? ¡Has clic aquí!",
     "forgotMyPasswordCta": "Olvidé mi contraseña",
     "buttons": {
-      "login": "Registrarse"
+      "login": "Entrar"
     }
   },
   "forgotPassword": {
     "name": "Olvidé mi Contraseña",
     "nextCta": "Siguiente",
     "changeCta": "Cambio",
-    "checkEmail": "Consultar su correo electrónico para su contador de reinicio!",
-    "success": "Su contraseña ha sido cambiada. Ir Identifícate!"
+    "checkEmail": "Consulta tu correo electrónico para tu clave de reinicio!",
+    "success": "Tu contraseña ha sido cambiada. Identifícate!"
   },
   "join": {
-    "name": "Unirse",
-    "loginCta": "¿Ya tienes una cuenta? Ir Identifícate!",
+    "name": "Regístrate",
+    "loginCta": "¿Ya tienes una cuenta? Has clic aquí!",
     "buttons": {
       "join": "Registro"
     }
   },
   "images": {
-    "tooBig": "Imagen debe ser inferior a 1 MB, elija otro.",
-    "wrongType": "Imagen debe ser JPEG o PNG, elija otro."
+    "tooBig": "La imagen debe ser inferior a 1 MB, elije otra.",
+    "wrongType": "La imagen debe ser JPEG o PNG, elije otra."
   },
   "stats": {
-    "name": "Estadística",
-    "refreshNote": "Armory estadísticas se actualizan cada treinta minutos."
+    "name": "Estadísticas",
+    "refreshNote": "Las estadísticas se actualizan cada treinta minutos."
   },
   "search": {
-    "textbox": "Búsqueda de usuarios, personajes y gremios",
+    "textbox": "Búsqueda de usuarios, personajes y clanes",
     "results": "Resultados de la búsqueda",
     "minlength": "El término de búsqueda debe ser de 3 o más caracteres :-)",
-    "nonefound": "No se encontró nada ... Pensé que iba a encontrar algo?",
-    "joincta": "Unirse y añadir sus tokens de api gw2 primero!"
+    "nonefound": "No se encontró nada ... Pensaste que ibas a encontrar algo?",
+    "joincta": "Registra tus tokens de api gw2 primero!"
   },
   "users": {
     "name": "Usuarios",
-    "recentMatches": "Partidos Recientes",
+    "recentMatches": "Juegos Recientes",
     "pvpStats": {
-      "name": "Pvp Estadísticas",
-      "unranked": "Sin clasificar",
-      "ranked": "Clasificado",
+      "name": "Estadísticas Pvp",
+      "unranked": "Unranked",
+      "ranked": "Ranked",
       "wins": "Victorias",
       "byes": "Byes",
-      "losses": "Pérdidas",
-      "desertions": "Las deserciones",
-      "forfeits": "Prendas"
+      "losses": "Derrotas",
+      "desertions": "Deserciones",
+      "forfeits": "Abandonados"
     }
   },
   "guilds": {
-    "name": "Gremios"
+    "name": "Clanes"
   },
   "characters": {
-    "name": "Caracteres",
-    "embedCta": "Se trata de un personaje elegido al azar. Usted puede obtener una inserción al igual que este en su sitio web! Haga clic en el icono de incrustar en cualquier página personaje.",
-    "shown": "Se muestra el carácter",
+    "name": "Personajes",
+    "embedCta": "Se trata de un personaje elegido al azar. Puedes obtener el código para añadir en tu sitio web! Haz clic en el ícono para añadir en cualquier página.",
+    "shown": "Muestra al personaje",
     "hidden": "Personaje oculto"
   },
   "settings": {
     "name": "Ajustes",
     "avatar": {
-      "cta": "Haga clic para cambiar su avatar",
-      "label": "Cambiar su avatar",
-      "finished": "Verse bien ;-)"
+      "cta": "Haz clic para cambiar tu avatar",
+      "label": "Cambia tu avatar",
+      "finished": "Te ves bien ;-)"
     },
     "apiKeys": {
-      "name": "Api Keys",
-      "noKeysCta": "Oh, no tiene claves de la API .. seguir generan una ..! Asegúrese de seleccionar caracteres, construye y permisos pvp :-).",
+      "name": "Claves Api",
+      "noKeysCta": "No tienes claves de la API .. continúa para generarlas ..! Asegúrate de seleccionar personajes, construcción y permisos pvp :-).",
       "inputs": {
         "add": "Añadir clave"
       },
@@ -83,11 +83,11 @@
       }
     },
     "changePassword": {
-      "name": "Cambia la contraseña",
+      "name": "Cambia tu contraseña",
       "inputs": {
         "current": "Contraseña actual",
         "password": "Contraseña",
-        "confirm": "Confirmar contraseña"
+        "confirm": "Confirma la contraseña"
       }
     },
     "buttons": {
@@ -95,13 +95,13 @@
     }
   },
   "misc": {
-    "opensInNewWindow": "Se abre en una nueva ventana"
+    "opensInNewWindow": "se abre en una ventana nueva"
   },
   "items": {
     "transmuted": "Transmutado",
     "skinLocked": "Skin Locked",
     "requiredLevel": "Nivel Requerido",
-    "weaponStrength": "Fuerza Arma",
+    "weaponStrength": "Fuerza del Arma",
     "currentlyEquipped": "Actualmente Equipado"
   }
 }
