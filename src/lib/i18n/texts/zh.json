@@ -2,45 +2,45 @@
   "home": {
     "whatIs": {
       "title": "什么是",
-      "text": "Guild Wars 2 Armory 是寻找，查看和共享用户，字符和行会与您的朋友在您的手机和PC的简单方法！今天就加入并开始分享！"
+      "text": "Guild Wars 2 Armory 使您更容易在手机和电脑上与朋友寻找，查看，并共享用户，角色和行会！今天就加盟并开始分享吧！"
     }
   },
   "login": {
-    "name": "签到",
+    "name": "登录",
     "joinCta": "还没有账号？加入我们！",
     "forgotMyPasswordCta": "忘了我的密码",
     "buttons": {
-      "login": "签到"
+      "login": "登录"
     }
   },
   "forgotPassword": {
     "name": "忘了我的密码",
-    "nextCta": "下一个",
+    "nextCta": "下一步",
     "changeCta": "更改",
-    "checkEmail": "检查你的电子邮件为您重置令牌！",
-    "success": "您的密码已被更改。去登录！"
+    "checkEmail": "请检查你的电子邮件来获取您的重置令牌！",
+    "success": "您的密码已被更改。请前往登录！"
   },
   "join": {
     "name": "加入",
-    "loginCta": "已经有一个帐户？去登录！",
+    "loginCta": "已经有一个帐户？前往登录！",
     "buttons": {
-      "join": "寄存器"
+      "join": "注册"
     }
   },
   "images": {
-    "tooBig": "图片应小于1MB，选择其他。",
-    "wrongType": "图片应该是PNG或JPEG格式，请选择其他。"
+    "tooBig": "图片应小于1MB，请重新选择",
+    "wrongType": "图片应该是PNG或JPEG格式，请重新选择。"
   },
   "stats": {
     "name": "统计",
     "refreshNote": "军械库统计每三十分钟刷新一次。"
   },
   "search": {
-    "textbox": "搜索用户，字符和行会",
-    "results": "为。。。。寻找结果",
-    "minlength": "搜索术语应该是3个或更多字符 :-)",
-    "nonefound": "什么都没有找到。。。我以为你会发现什么？",
-    "joincta": "加入和先加你的GW2 API令牌！"
+    "textbox": "搜索用户，角色和行会",
+    "results": "对于。。。的查找结果",
+    "minlength": "搜索词应该是3个或更多字符 :-)",
+    "nonefound": "什么都没有找到。。。我还以为你会找到你想要的",
+    "joincta": "请先注册，并添加你的GW2 API令牌！"
   },
   "users": {
     "name": "用户",
@@ -60,10 +60,10 @@
     "name": "公会"
   },
   "characters": {
-    "name": "人物",
-    "embedCta": "这是随机选择的字符。你可以得到一个嵌入就这样在您的网站！点击任何字符页面上嵌入图标。",
+    "name": "角色",
+    "embedCta": "这是随机选择的字符。你可以将它嵌入在您的网站！请点击任何角色页面上的嵌入图标。",
     "shown": "所示的字符",
-    "hidden": "隐藏人物"
+    "hidden": "隐藏角色"
   },
   "settings": {
     "name": "设置",
@@ -74,9 +74,9 @@
     },
     "apiKeys": {
       "name": "API密钥",
-      "noKeysCta": "哦，你有没有API密钥..去生成一个..！确保你选择的字符，构建和PVP权限 :-)。",
+      "noKeysCta": "哦，你有没有API密钥..请前往生成一个..！确保你选择的字符，构建和PVP权限 :-)。",
       "inputs": {
-        "add": "添加键"
+        "add": "添加密钥"
       },
       "buttons": {
         "add": "加"
