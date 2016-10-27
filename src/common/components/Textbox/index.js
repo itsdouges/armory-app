@@ -33,7 +33,7 @@ const Textbox = ({
       <input
         {...props}
         onClick={singleClickSelect && ((e) => e.target.select())}
-        ref={autoSelect && ((c) => c.select())}
+        ref={autoSelect && ((c) => c && c.select())}
         disabled={busy}
         id={id}
         type={type || 'text'}
