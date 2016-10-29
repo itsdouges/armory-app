@@ -118,14 +118,14 @@ const WvwRank = ({ rank, worldId, worlds }) => {
   const worldName = get(world, 'name', 'Unknown');
 
   const rankName = reduce(rankToTitleMapping, (selectedName, wvwRankName, wvwRank) => (
-    rank >= wvwRank ? wvwRankName : selectedName
+    (rank || 1) >= wvwRank ? wvwRankName : selectedName
   ), '');
 
   return (
     <Summary
       leftIcon={<Icon name="wvw.png" size="xlarge" />}
-      title={`WvW Rank (${rank})`}
-      subTitle={`${rankName} on ${worldName}`}
+      title={`WvW Rank (${rank || 1})`}
+      subTitle={`${rankName} for ${worldName}`}
     />
   );
 };

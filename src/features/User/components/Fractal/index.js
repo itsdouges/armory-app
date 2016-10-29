@@ -10,7 +10,7 @@ const Fractal = ({ level }) => (
     title="Fractal Level"
     subTitle={
       <ProgressBar
-        current={level}
+        current={level || 0}
         max={100}
         backgroundColor="rgb(41, 41, 41)"
         barColor="rgb(85, 35, 164)"
