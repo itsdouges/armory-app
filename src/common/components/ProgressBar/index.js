@@ -1,5 +1,7 @@
-import styles from './styles.less';
 import { PropTypes } from 'react';
+import cx from 'classnames';
+
+import styles from './styles.less';
 
 function calcBarStyles (current, max, barColor) {
   const percent = max ? Math.ceil((current / max || 0) * 100) : 0;
@@ -10,12 +12,12 @@ function calcBarStyles (current, max, barColor) {
   };
 }
 
-const ProgressBar = ({ current, max, barColor, backgroundColor, icon }) => (
-  <div className={styles.root} style={{ backgroundColor }}>
+const ProgressBar = ({ current, max, barColor, backgroundColor, icon, simple, label }) => (
+  <div className={cx(styles.root, simple && styles.simple)} style={{ backgroundColor }}>
     {icon}
     <span className={styles.bar} style={calcBarStyles(current, max, barColor)} />
     <span className={styles.progress}>
-      {`${current}/${max}`}
+      {label || `${current}/${max}`}
     </span>
   </div>
 );
@@ -31,6 +33,8 @@ ProgressBar.propTypes = {
   current: PropTypes.number,
   max: PropTypes.number,
   icon: PropTypes.node,
+  simple: PropTypes.bool,
+  label: PropTypes.string,
 };
 
 export default ProgressBar;

@@ -105,9 +105,18 @@ class User extends Component {
           <DailyAp {...user} />
           <RaidSummary userAchievements={userAchievements} />
           <Fractal level={user && user.fractalLevel} />
+
+          <PvpStats
+            stats={get(pvpStats, 'ladders.unranked')}
+            title={T.translate('users.pvpStats.unranked')}
+          />
+
+          <PvpStats
+            stats={get(pvpStats, 'ladders.ranked')}
+            title={T.translate('users.pvpStats.ranked')}
+          />
         </div>
 
-        <PvpStats stats={pvpStats} />
 
         <div className={styles.gamesContainer}>
           <h3>{T.translate('users.recentMatches')}</h3>

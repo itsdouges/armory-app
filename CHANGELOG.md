@@ -8,6 +8,11 @@
 - Changes
 ```
 
+## [2.12.1] - unreleased
+### Changed
+- Pvp stats summary
+- Progress bar to allow custom label
+
 ## [2.12.0] - 2016/10/29
 ### Added
 - Wvw rank to user page
