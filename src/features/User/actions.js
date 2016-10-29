@@ -129,14 +129,15 @@ export const fetchPvpStandings = (alias) => (dispatch) =>
 
 export const fetchUser = (alias, { ignoreAuth } = {}) => (dispatch) => {
   dispatch(fetchingUser(true));
-  dispatch(fetchPvpStandings(alias));
-  dispatch(fetchPvpGames(alias));
-  dispatch(fetchPvpStats(alias));
-  dispatch(fetchUserAchievements(alias));
 
   return get(`${config.api.endpoint}users/${alias}`, { ignoreAuth })
-    .then((response) => {
-      dispatch(fetchUserResult(response.data));
+    .then(({ data }) => {
+      dispatch(fetchUserResult(data));
+      dispatch(fetchPvpStandings(alias));
+      dispatch(fetchPvpGames(alias));
+      dispatch(fetchPvpStats(alias));
+      dispatch(fetchUserAchievements(alias));
       dispatch(fetchingUser(false));
+      dispatch(actions.fetchWorlds([data.world]));
     }, ({ response: { status } }) => status === 404 && browserHistory.replace('/404'));
 };

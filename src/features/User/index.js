@@ -13,6 +13,9 @@ import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
 import SocialButtons from 'common/components/SocialButtons';
 
+import WvwRank from './components/WvwRank';
+import DailyAp from './components/DailyAp';
+import Fractal from './components/Fractal';
 import RaidSummary from './components/RaidSummary';
 import PvpStats from './components/PvpStats';
 import PvpRanking from './components/PvpRanking';
@@ -28,10 +31,12 @@ export const selector = createSelector(
   store => store.users.data[store.users.selected],
   store => filter(store.pvpSeasons, ((season) => isObject(season))),
   store => store.maps,
-  (user, pvpSeasons, maps) => ({
+  store => store.worlds,
+  (user, pvpSeasons, maps, worlds) => ({
     user,
     pvpSeasons,
     maps,
+    worlds,
   })
 );
 
@@ -40,6 +45,9 @@ class User extends Component {
     user: PropTypes.object,
     dispatch: PropTypes.func,
     routeParams: PropTypes.object,
+    worlds: PropTypes.object,
+    pvpSeasons: PropTypes.array,
+    maps: PropTypes.object,
   };
 
   static contextTypes = {
@@ -64,7 +72,7 @@ class User extends Component {
   }
 
   render () {
-    const { user, routeParams: { alias }, pvpSeasons, maps } = this.props;
+    const { user, routeParams: { alias }, pvpSeasons, maps, worlds } = this.props;
 
     const pvpGames = (user &&
       user.pvpGames &&
@@ -93,8 +101,10 @@ class User extends Component {
           />
 
           <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
-
+          <WvwRank worldId={user && user.world} worlds={worlds} rank={user && user.wvwRank} />
+          <DailyAp {...user} />
           <RaidSummary userAchievements={userAchievements} />
+          <Fractal level={user && user.fractalLevel} />
         </div>
 
         <PvpStats stats={pvpStats} />
@@ -109,11 +119,5 @@ class User extends Component {
     );
   }
 }
-
-User.propTypes = {
-  user: PropTypes.object,
-  pvpSeasons: PropTypes.array,
-  maps: PropTypes.object,
-};
 
 export default connect(selector)(User);

@@ -8,13 +8,23 @@
 - Changes
 ```
 
+## [2.12.0] - 2016/10/29
+### Added
+- Wvw rank to user page
+- Dail ap to user page
+- Fractal level to user page
+- Commander flair to user page
+
+### Changed
+- Front page image to have a default height
+
 ## [2.11.0] - 2016/10/24
 ### Added
 - Ranger pets to character page
 
 ## [2.10.0] - 2016/10/23
 ### Added
-- User raid summary
+- Raid boss summary to user page
 
 ### Changed
 - Attribute calculation to not blow up before finished loading

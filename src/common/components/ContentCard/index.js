@@ -2,7 +2,10 @@ import { PropTypes } from 'react';
 import styles from './styles.less';
 import config from 'config';
 import classnames from 'classnames/bind';
+
+import Icon from 'common/components/Icon';
 import Placeholder from './placeholder';
+
 const cx = classnames.bind(styles);
 
 function extractData (content, { type, forceUpdate }) {
@@ -13,7 +16,12 @@ function extractData (content, { type, forceUpdate }) {
         `${config.imagesEndpoint}${alias}/avatar${forceUpdate ? `?${+new Date()}` : ''}`;
 
       return {
-        title: alias,
+        title: (
+          <span>
+            {content.commander && <Icon name="commander-red.png" />}
+            {alias}
+          </span>
+        ),
         subTitle: content.accountName || 'User',
         imageStyle: {
           backgroundColor: '#c1c1c1',
