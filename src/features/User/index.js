@@ -13,8 +13,8 @@ import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
 import SocialButtons from 'common/components/SocialButtons';
 
+import WvwRank from './components/WvwRank';
 import DailyAp from './components/DailyAp';
-import World from './components/World';
 import Fractal from './components/Fractal';
 import RaidSummary from './components/RaidSummary';
 import PvpStats from './components/PvpStats';
@@ -101,13 +101,10 @@ class User extends Component {
           />
 
           <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
-
-          <RaidSummary userAchievements={userAchievements} />
-
-          <Fractal level={user && user.fractalLevel} />
-
-          <World id={user && user.world} worlds={worlds} />
+          <WvwRank worldId={user && user.world} worlds={worlds} rank={user && user.wvwRank} />
           <DailyAp {...user} />
+          <RaidSummary userAchievements={userAchievements} />
+          <Fractal level={user && user.fractalLevel} />
         </div>
 
         <PvpStats stats={pvpStats} />
