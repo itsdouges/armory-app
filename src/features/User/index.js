@@ -13,6 +13,7 @@ import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
 import SocialButtons from 'common/components/SocialButtons';
 
+import Fractal from './components/Fractal';
 import RaidSummary from './components/RaidSummary';
 import PvpStats from './components/PvpStats';
 import PvpRanking from './components/PvpRanking';
@@ -95,6 +96,8 @@ class User extends Component {
           <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
 
           <RaidSummary userAchievements={userAchievements} />
+
+          <Fractal level={user && user.fractalLevel} />
         </div>
 
         <PvpStats stats={pvpStats} />
