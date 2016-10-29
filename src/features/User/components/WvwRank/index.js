@@ -1,9 +1,7 @@
 import { PropTypes } from 'react';
 import reduce from 'lodash/reduce';
 import get from 'lodash/get';
-import startCase from 'lodash/startCase';
 
-import Redacted from 'common/components/Redacted';
 import Summary from 'common/layouts/Summary';
 import Icon from 'common/components/Icon';
 
