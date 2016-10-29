@@ -17,7 +17,7 @@ const Summary = ({ className, leftIcon, title, subTitle }) => (
 Summary.propTypes = {
   className: PropTypes.string,
   leftIcon: PropTypes.any,
-  title: PropTypes.string,
+  title: PropTypes.any,
   subTitle: PropTypes.any,
 };
 
