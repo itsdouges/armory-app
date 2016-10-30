@@ -12,6 +12,7 @@
 ### Changed
 - Pvp stats summary
 - Progress bar to allow custom label
+- Pvp match component, adds progress bar, modifies styles
 
 ## [2.12.0] - 2016/10/29
 ### Added

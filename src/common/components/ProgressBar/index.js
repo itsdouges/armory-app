@@ -4,21 +4,22 @@ import cx from 'classnames';
 import styles from './styles.less';
 
 function calcBarStyles (current, max, barColor) {
-  const percent = max ? Math.ceil((current / max || 0) * 100) : 0;
+  const percent = max ? Math.ceil((current / max || 0) * 100) : 100;
 
   return {
-    width: `${percent}%`,
+    width: '100%',
+    transform: `translateX(-${percent}%)`,
     backgroundColor: barColor,
   };
 }
 
-const ProgressBar = ({ current, max, barColor, backgroundColor, icon, simple, label }) => (
-  <div className={cx(styles.root, simple && styles.simple)} style={{ backgroundColor }}>
+const ProgressBar = ({ current, max, barColor, backgroundColor, icon, small, label }) => (
+  <div className={cx(styles.root, small && styles.small)} style={{ backgroundColor }}>
     {icon}
     <span className={styles.bar} style={calcBarStyles(current, max, barColor)} />
-    <span className={styles.progress}>
+    {small || <span className={styles.progress}>
       {label || `${current}/${max}`}
-    </span>
+    </span>}
   </div>
 );
 
@@ -33,7 +34,7 @@ ProgressBar.propTypes = {
   current: PropTypes.number,
   max: PropTypes.number,
   icon: PropTypes.node,
-  simple: PropTypes.bool,
+  small: PropTypes.bool,
   label: PropTypes.string,
 };
 

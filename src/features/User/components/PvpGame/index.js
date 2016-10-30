@@ -1,14 +1,15 @@
 import { PropTypes } from 'react';
-import classnames from 'classnames/bind';
+import get from 'lodash/get';
+import cx from 'classnames';
 
 import styles from './styles.less';
+import ProgressBar from 'common/components/ProgressBar';
 import Card from 'common/components/Card';
 import Icon from 'common/components/Icon';
 import Gw2Map from 'common/components/Gw2Map';
 import Redacted from 'common/components/Redacted';
-import get from 'lodash/get';
-
-const cx = classnames.bind(styles);
+import TooltipTrigger from 'common/components/TooltipTrigger';
+import Tooltip from 'common/components/Tooltip';
 
 function stringToDate (date) {
   return date && date.split('T')[0];
@@ -22,23 +23,46 @@ function calculateMatchInMinutes (start, end) {
   return new Date(new Date(end) - new Date(start)).getMinutes();
 }
 
+function calculateProgressBar ({ team, scores }) {
+  if (team === 'Red') {
+    return {
+      backgroundColor: 'blue',
+      barColor: 'red',
+      current: scores.blue,
+      max: scores.red + scores.blue,
+    };
+  }
+
+  return {
+    backgroundColor: 'red',
+    barColor: 'blue',
+    current: scores.red,
+    max: scores.red + scores.blue,
+  };
+}
+
 const PvpGame = ({ game, maps }) => {
   const redacted = game.scores.red !== 0 && !game.scores.red;
   const map = get(maps, `[${game.map_id}]`, { id: game.map_id });
 
+  const { current, max, barColor, backgroundColor } = calculateProgressBar(game);
+
   return (
     <Card className={styles.root}>
-      <Gw2Map data={map} />
+      <Gw2Map data={map} className={styles.map} />
 
       <div className={styles.inner}>
-        <div className={cx('column', 'resultsContainer')}>
-          <Icon size="medium" name={`${game.profession.toLowerCase()}-icon-small.png`} />
-          <div className={cx('result', game.team.toLowerCase())}>
-            <Redacted redact={redacted}>{game.result.toUpperCase()}</Redacted>
-          </div>
+        <div className={styles.score}>
+          <ProgressBar
+            small
+            current={current}
+            max={max}
+            barColor={barColor}
+            backgroundColor={backgroundColor}
+          />
         </div>
 
-        <div className={cx('column', 'stretch', 'spreadItems')}>
+        <div className={cx(styles.column, styles.spreadItems)}>
           <div>
             <div className={styles.red}>RED</div>
             <Redacted redact={redacted}>{game.scores.red || '25'}</Redacted>
@@ -49,14 +73,19 @@ const PvpGame = ({ game, maps }) => {
           </div>
         </div>
 
-        <div className={cx('column', 'stats', 'spreadItems', 'big')}>
-          <div>
-            <Redacted redact={redacted}>
-              <span className={styles[game.rating_type.toLowerCase()]}>
-                {game.rating_type.toUpperCase()}
-              </span>
-            </Redacted>
+        <div className={cx(styles.column, styles.resultsContainer)}>
+          <Icon size="medium" name={`${game.profession.toLowerCase()}-icon-small.png`} />
+          <div className={cx(styles.result, styles[game.team.toLowerCase()])}>
+            <Redacted redact={redacted}>{game.result.toUpperCase()}</Redacted>
           </div>
+        </div>
+
+        <div className={cx(styles.column, styles.stats, styles.spreadItems, styles.big)}>
+          <span className={cx(styles.rankIcon, game.rating_type === 'Ranked' && styles.ranked)}>
+            <TooltipTrigger data={game.rating_type}>
+              <Icon name="ranked.png" />
+            </TooltipTrigger>
+          </span>
 
           <div>
             <div>
@@ -68,6 +97,8 @@ const PvpGame = ({ game, maps }) => {
           </div>
         </div>
       </div>
+
+      <Tooltip />
     </Card>
   );
 };

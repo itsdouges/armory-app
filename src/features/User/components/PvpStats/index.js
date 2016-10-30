@@ -46,8 +46,8 @@ const PvpStats = ({ stats, title }) => {
             current={current}
             max={max}
             label={`${winLossRatio} WL Ratio`}
-            barColor="green"
-            backgroundColor="red"
+            barColor="#4CAF50"
+            backgroundColor="#F44336"
           />
           <span className={styles.small}>
             {smallLabel}
