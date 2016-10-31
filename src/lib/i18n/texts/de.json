@@ -2,81 +2,81 @@
   "home": {
     "whatIs": {
       "title": "Was ist",
-      "text": "Guild Wars 2 Armory ist eine einfache Möglichkeit, die Ansicht und Aktien Benutzer, Charaktere und Gilden mit Ihren Freunden auf Ihrem Handy und PC zu finden! Jetzt anmelden und starten das Teilen!"
+      "text": "Guild Wars 2 Armory ist eine einfache Möglichkeit, Charaktere und Gilden auf dem Handy und PC zu finden und mit Freunden zu teilen! Jetzt anmelden und starten!"
     }
   },
   "login": {
     "name": "Anmelden",
-    "joinCta": "Sie haben noch kein Konto? Begleiten Sie uns!",
-    "forgotMyPasswordCta": "Ich habe mein Passwort vergessen",
+    "joinCta": "Du hast noch kein Konto? Jetzt registrieren!",
+    "forgotMyPasswordCta": "Passwort vergessen?",
     "buttons": {
       "login": "Anmelden"
     }
   },
   "forgotPassword": {
-    "name": "Ich habe mein Passwort vergessen",
-    "nextCta": "Nächster",
-    "changeCta": "Veränderung",
-    "checkEmail": "Überprüfen Sie Ihre E-Mail für Ihre Reset-Token!",
-    "success": "Ihr Passwort wurde geändert. Zum anmelden!"
+    "name": "Passwort vergessen?",
+    "nextCta": "Weiter",
+    "changeCta": "Übernehmen",
+    "checkEmail": "Eine E-Mail mit dem Reset-Token wurde gesendet!",
+    "success": "Dein Passwort wurde erfolgreich geändert. Jetzt anmelden!"
   },
   "join": {
-    "name": "Beitreten",
-    "loginCta": "Habe schon einen Account? Zum anmelden!",
+    "name": "Registrieren",
+    "loginCta": "Hast du schon einen Account? Jetzt anmelden!",
     "buttons": {
-      "join": "Neu registrieren"
+      "join": "Jetzt registrieren"
     }
   },
   "images": {
-    "tooBig": "Bild sollte weniger als 1 MB, einen anderen wählen.",
-    "wrongType": "Bild sollte PNG oder JPEG sein, wählen Sie einen anderen."
+    "tooBig": "Das Bild darf maximal 1 MB groß sein, ein anderes wählen.",
+    "wrongType": "Das Bild muss ein PNG oder JPEG sein, ein anderes wählen."
   },
   "stats": {
     "name": "Statistiken",
-    "refreshNote": "Armory Statistiken werden alle 30 Minuten aktualisiert."
+    "refreshNote": "Die Statistiken werden alle 30 Minuten aktualisiert."
   },
   "search": {
-    "textbox": "Suchen Sie nach Benutzern, Charaktere und Gilden",
+    "textbox": "Suche nach Benutzern, Charakteren und Gilden",
     "results": "Suchergebnisse für",
-    "minlength": "Suchbegriff sollte 3 oder mehr Zeichen lang sein :-)",
-    "nonefound": "Nichts wurde gefunden ... Ich dachte, du etwas finden würde?",
-    "joincta": "Mitglied werden und fügen Sie Ihre GW2 api Token zuerst!"
+    "minlength": "Dein Suchbegriff sollte mehr als 3 Zeichen beinhalten :-)",
+    "nonefound": "Keine Treffer ... Dachtest du, du würdest etwas finden?",
+    "joincta": "Jetzt Mitglied werden und deinen GW2 API-Token einfügen, um gefunden zu werden!"
   },
   "users": {
     "name": "Benutzer",
-    "recentMatches": "Aktuelle Spieles",
+    "recentMatches": "Aktuelle Spiele",
     "pvpStats": {
-      "name": "Pvp Stats",
-      "unranked": "Unranked",
-      "ranked": "Auf Rang",
+      "name": "PvP Statistiken",
+      "unranked": "Nicht gewertet",
+      "ranked": "Gewertet",
       "wins": "Siege",
-      "byes": "Byes",
-      "losses": "Verluste",
-      "desertions": "Desertationen",
-      "forfeits": "einbüßt"
+      "byes": "Siege (Überzahl)",
+      "losses": "Niederlagen",
+      "desertions": "Verlassen",
+      "forfeits": "Niederlagen (Unterzahl)"
     }
   },
   "guilds": {
     "name": "Gilden"
   },
   "characters": {
-    "name": "Figuren",
-    "embedCta": "Dies ist ein Zeichen nach dem Zufallsprinzip ausgewählt. Sie können ein einbetten wie diese auf Ihrer Website! Klicken Sie auf das embed-Symbol auf einem beliebigen Zeichen Seite.",
-    "shown": "Charakter gezeigt",
-    "hidden": "Character Versteckt"
+    "name": "Charaktere",
+    "embedCta": "Das ist ein zufällig gewählter Charakter. Du kannst den Charakter auf deiner Webseite einbinden! Klicke einfach auf das EMBED Icon!",
+    "shown": "Charakter sichtbar",
+    "hidden": "Charakter versteckt"
   },
   "settings": {
     "name": "Einstellungen",
     "avatar": {
-      "cta": "Klicken Sie auf Ihren Avatar ändern",
-      "label": "Ändern Sie Ihren Avatar",
-      "finished": "Gut aussehen ;-)"
+      "cta": "Klicken, um den Avatar zu ändern",
+      "label": "Avatar ändern",
+      "finished": "Sieht besser aus ;-)"
     },
     "apiKeys": {
-      "name": "Api Keys",
-      "noKeysCta": "Oh, Sie haben keine api Schlüssel .. Zum einen erzeugen ..! Stellen Sie sicher, dass Sie Zeichen auswählen, baut und pvp Berechtigungen :-).",
+      "name": "API-Token",
+      "noKeysCta": "Oh, du hast noch keine API-Token hinterlegt.. Jetzt einen erstellen! Wähle am besten alle Berechtigungen aus, um die Seite in vollem Umfang nutzen zu können.",
       "inputs": {
-        "add": "Add key"
+        "add": "API-Token hinzufügen"
       },
       "buttons": {
         "add": "Hinzufügen"
@@ -86,22 +86,22 @@
       "name": "Passwort ändern",
       "inputs": {
         "current": "Aktuelles Passwort",
-        "password": "Passwort",
-        "confirm": "Bestätige das Passwort"
+        "password": "Neues Passwort",
+        "confirm": "Neues Passwort wiederholen"
       }
     },
     "buttons": {
-      "logout": "Ausloggen"
+      "logout": "Abmelden"
     }
   },
   "misc": {
-    "opensInNewWindow": "Öffnet in einem neuen Fenster"
+    "opensInNewWindow": "Wird in einem neuen Fenster geöffnet"
   },
   "items": {
     "transmuted": "Transmutiert",
-    "skinLocked": "Haut Gesperrt",
+    "skinLocked": "Skin gesperrt",
     "requiredLevel": "Benötigtes Level",
-    "weaponStrength": "Waffe Stärke",
-    "currentlyEquipped": "Currently Equipped"
+    "weaponStrength": "Waffenstärke",
+    "currentlyEquipped": "Aktuell ausgerüstet"
   }
 }
