@@ -4,11 +4,11 @@ import cx from 'classnames';
 import styles from './styles.less';
 
 function calcBarStyles (current, max, barColor) {
-  const percent = max ? Math.ceil((current / max || 0) * 100) : 100;
+  const percent = max ? Math.ceil((current / max || 0) * 100) : 0;
 
   return {
     width: '100%',
-    transform: `translateX(-${percent}%)`,
+    transform: `translateX(${percent - 100}%)`,
     backgroundColor: barColor,
   };
 }
