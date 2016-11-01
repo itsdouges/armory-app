@@ -53,7 +53,8 @@
       "byes": "Byes",
       "losses": "Des pertes",
       "desertions": "Désertions",
-      "forfeits": "Confiscations"
+      "forfeits": "Confiscations",
+      "finished": "Played"
     }
   },
   "guilds": {

@@ -21,6 +21,7 @@ import PvpStats from './components/PvpStats';
 import PvpRanking from './components/PvpRanking';
 import PvpGame from './components/PvpGame';
 import PvpLeague from './components/PvpSeason';
+import Tooltip from 'common/components/Tooltip';
 
 import {
   fetchUser,
@@ -124,6 +125,8 @@ class User extends Component {
         </div>
 
         <SocialButtons />
+
+        <Tooltip />
       </Content>
     );
   }

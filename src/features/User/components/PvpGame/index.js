@@ -1,6 +1,8 @@
 import { PropTypes } from 'react';
 import get from 'lodash/get';
 import cx from 'classnames';
+import moment from 'moment';
+import T from 'i18n-react';
 
 import styles from './styles.less';
 import ProgressBar from 'common/components/ProgressBar';
@@ -9,18 +11,13 @@ import Icon from 'common/components/Icon';
 import Gw2Map from 'common/components/Gw2Map';
 import Redacted from 'common/components/Redacted';
 import TooltipTrigger from 'common/components/TooltipTrigger';
-import Tooltip from 'common/components/Tooltip';
 
 function stringToDate (date) {
-  return date && date.split('T')[0];
-}
+  const now = moment();
+  const end = moment(date);
+  const diffInMs = now.diff(end);
 
-function calculateMatchInMinutes (start, end) {
-  if (!start || !end) {
-    return 0;
-  }
-
-  return new Date(new Date(end) - new Date(start)).getMinutes();
+  return `${moment.duration(diffInMs).humanize()} ago`;
 }
 
 function calculateProgressBar ({ team, scores }) {
@@ -87,18 +84,15 @@ const PvpGame = ({ game, maps }) => {
             </TooltipTrigger>
           </span>
 
-          <div>
+          <TooltipTrigger data={game.ended}>
             <div>
               <Redacted redact={redacted}>
-                {calculateMatchInMinutes(game.started, game.ended)} mins
+                {T.translate('users.pvpStats.finished')} {stringToDate(game.ended) || 'Never'}
               </Redacted>
             </div>
-            <Redacted redact={redacted}>{stringToDate(game.ended) || '2016-05-19'}</Redacted>
-          </div>
+          </TooltipTrigger>
         </div>
       </div>
-
-      <Tooltip />
     </Card>
   );
 };

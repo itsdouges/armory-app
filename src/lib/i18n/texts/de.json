@@ -53,7 +53,8 @@
       "byes": "Byes",
       "losses": "Verluste",
       "desertions": "Desertationen",
-      "forfeits": "einbüßt"
+      "forfeits": "einbüßt",
+      "finished": "Played"
     }
   },
   "guilds": {

@@ -10,7 +10,7 @@ const DailyAp = ({ dailyAp, monthlyAp }) => (
     title="Daily Ap"
     subTitle={
       <ProgressBar
-        current={dailyAp + monthlyAp}
+        current={(dailyAp + monthlyAp) || 0}
         max={15000}
         backgroundColor="rgb(41, 41, 41)"
         barColor="rgb(85, 35, 164)"
