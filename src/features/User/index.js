@@ -21,6 +21,8 @@ import PvpStats from './components/PvpStats';
 import PvpRanking from './components/PvpRanking';
 import PvpGame from './components/PvpGame';
 import PvpLeague from './components/PvpSeason';
+import FavouritePvpClass from './components/FavouritePvpClass';
+
 import Tooltip from 'common/components/Tooltip';
 
 import {
@@ -118,6 +120,8 @@ class User extends Component {
             stats={get(pvpStats, 'ladders.ranked')}
             title={T.translate('users.pvpStats.ranked')}
           />
+
+          <FavouritePvpClass professions={get(pvpStats, 'professions')} />
         </div>
 
 
