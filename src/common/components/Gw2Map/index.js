@@ -3,6 +3,8 @@ import cx from 'classnames';
 
 import styles from './styles.less';
 
+const cleanName = (name) => name && name.replace('Beta ', '');
+
 function getStyle (id = 0) {
   const image = require(`assets/images/maps/${id}.jpg`);
 
@@ -13,7 +15,9 @@ function getStyle (id = 0) {
 
 const Gw2Map = ({ data, className }) => (
   <div className={cx(styles.root, className)} style={getStyle(data.id)}>
-    {data.name && <span title={data.name} className={styles.name}>{data.name}</span>}
+    <a href={`https://wiki.guildwars2.com/wiki/${cleanName(data.name)}`} target="_blank">
+      {data.name && <span title={data.name} className={styles.name}>{data.name}</span>}
+    </a>
   </div>
 );
 

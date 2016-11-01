@@ -21,7 +21,7 @@ const RaidSummary = ({ userAchievements, className, simple }) => {
     ({ id, done }) => RAID_KILL_ACHIEVEMENTS[id] && done
   );
 
-  const raidKills = `Raid Boss Kills ${achievements.map(({ id }) =>
+  const raidKills = `Raid Bosses ${achievements.map(({ id }) =>
     `[${RAID_KILL_ACHIEVEMENTS[id]}]`).join('')}`;
 
   if (simple) {
