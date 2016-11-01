@@ -9,7 +9,7 @@ import Summary from 'common/layouts/Summary';
 
 function calculateWinLossRatio (stats) {
   if (!stats.wins) {
-    return { current: 0, max: 0, winLossRation: 0 };
+    return { current: 0, max: 1, winLossRatio: 0 };
   }
 
   const totalGames = stats.wins + stats.losses + stats.desertions + stats.byes;
