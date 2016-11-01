@@ -25,7 +25,7 @@ function calculateProgressBar ({ team, scores }) {
     return {
       backgroundColor: 'blue',
       barColor: 'red',
-      current: scores.blue,
+      current: scores.red,
       max: scores.red + scores.blue,
     };
   }
@@ -33,7 +33,7 @@ function calculateProgressBar ({ team, scores }) {
   return {
     backgroundColor: 'red',
     barColor: 'blue',
-    current: scores.red,
+    current: scores.blue,
     max: scores.red + scores.blue,
   };
 }

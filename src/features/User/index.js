@@ -95,6 +95,12 @@ class User extends Component {
         />
 
         <div className={styles.pvpContainer}>
+          <Fractal level={user && user.fractalLevel} />
+          <RaidSummary userAchievements={userAchievements} />
+
+          <DailyAp {...user} />
+          <WvwRank worldId={user && user.world} worlds={worlds} rank={user && user.wvwRank} />
+
           <PvpRanking
             rank={get(pvpStats, 'pvp_rank')}
             points={get(pvpStats, 'pvp_rank_points')}
@@ -102,10 +108,6 @@ class User extends Component {
           />
 
           <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
-          <WvwRank worldId={user && user.world} worlds={worlds} rank={user && user.wvwRank} />
-          <DailyAp {...user} />
-          <RaidSummary userAchievements={userAchievements} />
-          <Fractal level={user && user.fractalLevel} />
 
           <PvpStats
             stats={get(pvpStats, 'ladders.unranked')}
