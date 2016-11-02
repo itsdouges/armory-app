@@ -105,7 +105,6 @@ class User extends Component {
           <RaidSummary userAchievements={userAchievements} />
 
           <DailyAp {...user} />
-          <WvwRank worldId={user && user.world} worlds={worlds} rank={user && user.wvwRank} />
         </div>
 
         <h3 className={styles.gamesContainer}>
@@ -132,6 +131,8 @@ class User extends Component {
           />
 
           <FavouritePvpClass professions={get(pvpStats, 'professions')} />
+
+          <WvwRank worldId={user && user.world} worlds={worlds} rank={user && user.wvwRank} />
         </div>
 
 
