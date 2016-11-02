@@ -35,7 +35,7 @@ ProgressBar.propTypes = {
   max: PropTypes.number,
   icon: PropTypes.node,
   small: PropTypes.bool,
-  label: PropTypes.string,
+  label: PropTypes.any,
 };
 
 export default ProgressBar;

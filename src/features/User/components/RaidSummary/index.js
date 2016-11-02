@@ -3,6 +3,7 @@ import { PropTypes } from 'react';
 import ProgressBar from 'common/components/ProgressBar';
 import Icon from 'common/components/Icon';
 import Summary from 'common/layouts/Summary';
+import Redacted from 'common/components/Redacted';
 
 const RAID_KILL_ACHIEVEMENTS = {
   2654: 'Vg', // Vale Guardian
@@ -17,6 +18,7 @@ const RAID_KILL_ACHIEVEMENTS = {
 const TOTAL_KILLS = Object.keys(RAID_KILL_ACHIEVEMENTS).length;
 
 const RaidSummary = ({ userAchievements, className, simple }) => {
+  const redact = !userAchievements.length;
   const achievements = userAchievements.filter(
     ({ id, done }) => RAID_KILL_ACHIEVEMENTS[id] && done
   );
@@ -32,7 +34,7 @@ const RaidSummary = ({ userAchievements, className, simple }) => {
     <Summary
       className={className}
       leftIcon={<Icon name="raid.png" size="xlarge" />}
-      title={raidKills}
+      title={<Redacted redact={redact}>{raidKills}</Redacted>}
       subTitle={
         <ProgressBar
           current={achievements.length}

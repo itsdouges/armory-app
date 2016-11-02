@@ -6,6 +6,7 @@ import styles from './styles.less';
 import ProgressBar from 'common/components/ProgressBar';
 import Icon from 'common/components/Icon';
 import Summary from 'common/layouts/Summary';
+import Redacted from 'common/components/Redacted';
 
 function calculateWinLossRatio (stats) {
   if (!stats.wins) {
@@ -35,22 +36,23 @@ const PvpStats = ({ stats, title }) => {
 
   // eslint-disable-next-line max-len
   const smallLabel = `${wins} ${winsText} | ${byes} ${byesText} | ${losses} ${lossText} | ${desertions} ${deserText}`;
+  const redact = winLossRatio === 0;
 
   return (
     <Summary
       leftIcon={<Icon name="raid.png" size="xlarge" />}
-      title={`PvP ${title}`}
+      title={<Redacted redact={redact}>{`PvP ${title}`}</Redacted>}
       subTitle={
         <span>
           <ProgressBar
             current={current}
             max={max}
-            label={`${winLossRatio} WL Ratio`}
+            label={<Redacted redact={redact}>{`${winLossRatio} WL Ratio`}</Redacted>}
             barColor="#4CAF50"
             backgroundColor="#F44336"
           />
           <span className={styles.small}>
-            {smallLabel}
+            <Redacted redact={redact}>{smallLabel}</Redacted>
           </span>
         </span>
       }

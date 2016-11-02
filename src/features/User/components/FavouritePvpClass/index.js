@@ -3,12 +3,13 @@ import reduce from 'lodash/reduce';
 import maxBy from 'lodash/maxBy';
 import upperFirst from 'lodash/upperFirst';
 
+import Redacted from 'common/components/Redacted';
 import Summary from 'common/layouts/Summary';
 import Icon from 'common/components/Icon';
 
 const calculateFavouriteProfession = (professions) => {
   if (!professions) {
-    return { name: '...', count: 0 };
+    return { name: 'engineer', count: 0 };
   }
 
   const professionCounts = reduce(professions, (acc, value, key) => {
@@ -22,12 +23,15 @@ const calculateFavouriteProfession = (professions) => {
 
 const FavouriePvpClass = ({ professions }) => {
   const { name, count } = calculateFavouriteProfession(professions);
+  const redact = count === 0;
 
   return (
     <Summary
       leftIcon={<Icon name={`${name}-icon.png`} size="large" />}
-      title={`Favourite Profession: ${upperFirst(name)}`}
-      subTitle={`Played ${count} times`}
+      title={<Redacted redact={redact}>{`Favourite Profession: ${upperFirst(name)}`}</Redacted>}
+      subTitle={
+        <span><Redacted redact={redact}>{`Played ${count} times`}</Redacted></span>
+      }
     />
   );
 };
