@@ -167,7 +167,7 @@ function runDevServer (port) {
     openBrowser(port);
   });
 }
-//s
+
 function run (port) {
   setupCompiler(port);
   runDevServer(port);
