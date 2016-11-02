@@ -146,14 +146,14 @@
     "dailyAp": "Daily Ap"
   },
   "classes": {
-    "Druid": "Druid",
-    "Daredevil": "Daredevil",
-    "Berserker": "Berserker",
-    "Dragonhunter": "Dragonhunter",
-    "Reaper": "Reaper",
-    "Chronomancer": "Chronomancer",
-    "Scrapper": "Scrapper",
-    "Tempest": "Tempest",
-    "Herald": "Herald"
+    "druid": "Druid",
+    "daredevil": "Daredevil",
+    "berserker": "Berserker",
+    "dragonhunter": "Dragonhunter",
+    "reaper": "Reaper",
+    "chronomancer": "Chronomancer",
+    "scrapper": "Scrapper",
+    "tempest": "Tempest",
+    "herald": "Herald"
   }
 }
