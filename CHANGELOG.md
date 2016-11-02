@@ -8,6 +8,13 @@
 - Changes
 ```
 
+## [2.13.0] - 2016/11/02
+### Added
+- Linting in travis ci
+
+### Changed
+- Any linting errors found
+
 ## [2.12.0] - 2016/10/29
 ### Added
 - Wvw rank to user page
