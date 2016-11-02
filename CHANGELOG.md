@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [2.13.1] - unreleased
+## [2.14.0] - unreleased
 ### Changed
 - Pvp stats summary
 - Progress bar to allow custom label
@@ -17,13 +17,16 @@
 ### Added
 - Favourite profession to user page
 
+## [2.13.1] - 2016/11/02
+### Changed
+- Readme to be slightly more new friendly
+
 ## [2.13.0] - 2016/11/02
 ### Added
 - Linting in travis ci
 
 ### Changed
 - Any linting errors found
->>>>>>> master
 
 ## [2.12.0] - 2016/10/29
 ### Added
