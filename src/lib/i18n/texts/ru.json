@@ -57,13 +57,18 @@
     }
   },
   "guilds": {
-    "name": "гильдий"
+    "name": "гильдий",
+    "guild": "Guild",
+    "noGuild": "No Guild"
   },
   "characters": {
     "name": "Персонажи",
     "embedCta": "Этот персонаж выбирается случайным образом. Вы точно также можете добавить персонажа на свой сайт! Нажмите на иконку для вставки на любой странице с персонажем.",
     "shown": "Персонаж показан",
-    "hidden": "Персонаж скрыт"
+    "hidden": "Персонаж скрыт",
+    "done": "Done",
+    "edit": "Edit",
+    "changePortrait": "Change your character portrait"
   },
   "settings": {
     "name": "настройки",
@@ -102,6 +107,53 @@
     "skinLocked": "Кожа Закрытая",
     "requiredLevel": "Требуемый уровень",
     "weaponStrength": "оружие Прочность",
-    "currentlyEquipped": "В настоящее время Укомплектованная"
+    "defense": "defense",
+    "currentlyEquipped": "В настоящее время Укомплектованная",
+    "accountBound": "Account bound",
+    "soulBound": "Soulbound"
+  },
+  "itemAttributes": {
+    "power": "Attack Power",
+    "precision": "Precision",
+    "toughness": "Toughness",
+    "vitality": "Vitality",
+    "boonDuration": "Boon Duration",
+    "conditionDamage": "Condition Damage",
+    "conditionDuration": "Condition Duration",
+    "ferocity": "Ferocity",
+    "healingPower": "Healing Power",
+    "armor": "Armor",
+    "critChance": "Critical Chance",
+    "critDamage": "Critical Damage",
+    "health": "Health",
+    "expertise": "Expertise",
+    "concentration": "Concentration",
+    "agonyResistance": "Agony Resistance",
+    "magic": "Magic Find",
+    "elementalist": "Attunement Recharge Rate",
+    "guardian": "Virtue Recharge Rate",
+    "warrior": "Burst Recharge",
+    "engineer": "Tool Belt Recharge Rate",
+    "ranger": "Pet Attribute Bonus",
+    "thief": "Steal Recharge Rate",
+    "mesmer": "Shatter Skill Recharge Rate",
+    "necromancer": "Life Force Pool",
+    "revanent": "Revenant"
+  },
+  "accSummary": {
+    "raidBossKills": "Raid Boss Kills",
+    "fractalLvl": "Fractal Level",
+    "dailyAp": "Daily Ap"
+  },
+  "classes": {
+    "Druid": "Druid",
+    "Daredevil": "Daredevil",
+    "Berserker": "Berserker",
+    "Dragonhunter": "Dragonhunter",
+    "Reaper": "Reaper",
+    "Chronomancer": "Chronomancer",
+    "Scrapper": "Scrapper",
+    "Tempest": "Tempest",
+    "Herald": "Herald"
   }
 }

@@ -2,6 +2,7 @@ import get from 'lodash/get';
 import lowerFirst from 'lodash/lowerFirst';
 import merge from 'lodash/merge';
 import { createSelector } from 'reselect';
+import T from 'i18n-react';
 
 import {
   FETCH_CHARACTER_RESULT,
@@ -12,15 +13,15 @@ import {
 } from './actions';
 
 const eliteSpecMap = {
-  5: 'Druid',
-  7: 'Daredevil',
-  18: 'Berserker',
-  27: 'Dragonhunter',
-  34: 'Reaper',
-  40: 'Chronomancer',
-  43: 'Scrapper',
-  48: 'Tempest',
-  52: 'Herald',
+  5: T.translate('classes.druid'),
+  7: T.translate('classes.daredevil'),
+  18: T.translate('classes.berserker'),
+  27: T.translate('classes.dragonhunter'),
+  34: T.translate('classes.reaper'),
+  40: T.translate('classes.chronomancer'),
+  43: T.translate('classes.scrapper'),
+  48: T.translate('classes.tempest'),
+  52: T.translate('classes.herald')
 };
 
 function parseWeaponSwap (character) {

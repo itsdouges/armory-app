@@ -3,11 +3,12 @@ import { PropTypes } from 'react';
 import Summary from 'common/layouts/Summary';
 import ProgressBar from 'common/components/ProgressBar';
 import Icon from 'common/components/Icon';
+import T from 'i18n-react';
 
 const DailyAp = ({ dailyAp, monthlyAp }) => (
   <Summary
     leftIcon={<Icon name="daily.png" size="xlarge" />}
-    title="Daily Ap"
+    title={T.translate('accSummary.dailyAp')}
     subTitle={
       <ProgressBar
         current={dailyAp + monthlyAp}

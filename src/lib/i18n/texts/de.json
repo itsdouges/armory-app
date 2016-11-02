@@ -57,13 +57,18 @@
     }
   },
   "guilds": {
-    "name": "Gilden"
+    "name": "Gilden",
+    "guild": "Gilde",
+    "noGuild": "Keine Gilde"
   },
   "characters": {
     "name": "Charaktere",
     "embedCta": "Das ist ein zufällig gewählter Charakter. Du kannst den Charakter auf deiner Webseite einbinden! Klicke einfach auf das EMBED Icon!",
     "shown": "Charakter sichtbar",
-    "hidden": "Charakter versteckt"
+    "hidden": "Charakter versteckt",
+    "done": "Fertig",
+    "edit": "Bearbeiten",
+    "changePortrait": "Portrait wechseln"
   },
   "settings": {
     "name": "Einstellungen",
@@ -102,6 +107,53 @@
     "skinLocked": "Skin gesperrt",
     "requiredLevel": "Benötigtes Level",
     "weaponStrength": "Waffenstärke",
-    "currentlyEquipped": "Aktuell ausgerüstet"
+    "defense": "Verteidigung",
+    "currentlyEquipped": "Aktuell ausgerüstet",
+    "accountBound": "Accountgebunden",
+    "soulBound": "Seelengebunden"
+  },
+  "itemAttributes": {
+    "power": "Kraft",
+    "precision": "Präzision",
+    "toughness": "Zähigkeit",
+    "vitality": "Vitalität",
+    "boonDuration": "Segensdauer",
+    "conditionDamage": "Zustandsschaden",
+    "conditionDuration": "Zustandsdauer",
+    "ferocity": "Wildheit",
+    "healingPower": "Heilkraft",
+    "armor": "Rüstung",
+    "critChance": "Kritische Trefferchance",
+    "critDamage": "Kritischer Schaden",
+    "health": "Lebenspunkte",
+    "expertise": "Fachkenntnis",
+    "concentration": "Konzentration",
+    "agonyResistance": "Qual-Widerstand",
+    "magic": "Magisches Gespür",
+    "elementalist": "Klassenspezifisches Attribut",
+    "guardian": "Klassenspezifisches Attribut",
+    "warrior": "Klassenspezifisches Attribut",
+    "engineer": "Klassenspezifisches Attribut",
+    "ranger": "Klassenspezifisches Attribut",
+    "thief": "Klassenspezifisches Attribut",
+    "mesmer": "Klassenspezifisches Attribut",
+    "necromancer": "Klassenspezifisches Attribut",
+    "revanent": "Klassenspezifisches Attribut"
+  },
+  "accSummary": {
+    "raidBossKills": "Raid Boss Kills",
+    "fractalLvl": "Fraktal Level",
+    "dailyAp": "Tägliche Erfolge"
+  },
+  "classes": {
+    "druid": "Druide",
+    "daredevil": "Draufgänger",
+    "berserker": "Berserker",
+    "dragonhunter": "Drachenjäger",
+    "reaper": "Schnitter",
+    "chronomancer": "Chronomant",
+    "scrapper": "Schrotter",
+    "tempest": "Sturmbote",
+    "herald": "Herold"
   }
 }

@@ -59,7 +59,7 @@ const ItemsTooltip = ({ data: {
       <div>
         {!!item.details.defense && (
           <div>
-            Defense: <span className={colours.green}>{item.details.defense}</span>
+            {T.translate('items.defense')}: <span className={colours.green}>{item.details.defense}</span>
           </div>)}
 
         {item.type === 'Weapon' && <div>

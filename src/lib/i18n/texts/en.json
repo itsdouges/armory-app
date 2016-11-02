@@ -57,13 +57,18 @@
     }
   },
   "guilds": {
-    "name": "Guilds"
+    "name": "Guilds",
+    "guild": "Guild",
+    "noGuild": "No Guild"
   },
   "characters": {
     "name": "Characters",
     "embedCta": "This is a character chosen at random. You can get an embed just like this on your website! Click the embed icon on any character page.",
     "shown": "Character Shown",
-    "hidden": "Character Hidden"
+    "hidden": "Character Hidden",
+    "done": "Done",
+    "edit": "Edit",
+    "changePortrait": "Change your character portrait"
   },
   "settings": {
     "name": "Settings",
@@ -102,6 +107,53 @@
     "skinLocked": "Skin Locked",
     "requiredLevel": "Required Level",
     "weaponStrength": "Weapon Strength",
-    "currentlyEquipped": "Currently Equipped"
+    "defense": "defense",
+    "currentlyEquipped": "Currently Equipped",
+    "accountBound": "Account bound",
+    "soulBound": "Soulbound"
+  },
+  "itemAttributes": {
+     "power": "Attack Power",
+     "precision": "Precision",
+     "toughness": "Toughness",
+     "vitality": "Vitality",
+     "boonDuration": "Boon Duration",
+     "conditionDamage": "Condition Damage",
+     "conditionDuration": "Condition Duration",
+     "ferocity": "Ferocity",
+     "healingPower": "Healing Power",
+     "armor": "Armor",
+     "critChance": "Critical Chance",
+     "critDamage": "Critical Damage",
+     "health": "Health",
+     "expertise": "Expertise",
+     "concentration": "Concentration",
+     "agonyResistance": "Agony Resistance",
+     "magic": "Magic Find",
+     "elementalist": "Attunement Recharge Rate",
+     "guardian": "Virtue Recharge Rate",
+     "warrior": "Burst Recharge",
+     "engineer": "Tool Belt Recharge Rate",
+     "ranger": "Pet Attribute Bonus",
+     "thief": "Steal Recharge Rate",
+     "mesmer": "Shatter Skill Recharge Rate",
+     "necromancer": "Life Force Pool",
+     "revanent": "Revenant"
+  },
+  "accSummary": {
+    "raidBossKills": "Raid Boss Kills",
+    "fractalLvl": "Fractal Level",
+    "dailyAp": "Daily Ap"
+  },
+  "classes": {
+    "Druid": "Druid",
+    "Daredevil": "Daredevil",
+    "Berserker": "Berserker",
+    "Dragonhunter": "Dragonhunter",
+    "Reaper": "Reaper",
+    "Chronomancer": "Chronomancer",
+    "Scrapper": "Scrapper",
+    "Tempest": "Tempest",
+    "Herald": "Herald"
   }
 }

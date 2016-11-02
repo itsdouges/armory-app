@@ -57,13 +57,18 @@
     }
   },
   "guilds": {
-    "name": "公会"
+    "name": "公会",
+    "guild": "Guild",
+    "noGuild": "No Guild"
   },
   "characters": {
     "name": "角色",
     "embedCta": "这是随机选择的字符。你可以将它嵌入在您的网站！请点击任何角色页面上的嵌入图标。",
     "shown": "所示的字符",
-    "hidden": "隐藏角色"
+    "hidden": "隐藏角色",
+    "done": "Done",
+    "edit": "Edit",
+    "changePortrait": "Change your character portrait"
   },
   "settings": {
     "name": "设置",
@@ -102,6 +107,53 @@
     "skinLocked": "锁定肌肤",
     "requiredLevel": "需要等级",
     "weaponStrength": "武器力量",
-    "currentlyEquipped": "目前装备"
+    "defense": "defense",
+    "currentlyEquipped": "目前装备",
+    "accountBound": "Account bound",
+    "soulBound": "Soulbound"
+  },
+  "itemAttributes": {
+    "power": "Attack Power",
+    "precision": "Precision",
+    "toughness": "Toughness",
+    "vitality": "Vitality",
+    "boonDuration": "Boon Duration",
+    "conditionDamage": "Condition Damage",
+    "conditionDuration": "Condition Duration",
+    "ferocity": "Ferocity",
+    "healingPower": "Healing Power",
+    "armor": "Armor",
+    "critChance": "Critical Chance",
+    "critDamage": "Critical Damage",
+    "health": "Health",
+    "expertise": "Expertise",
+    "concentration": "Concentration",
+    "agonyResistance": "Agony Resistance",
+    "magic": "Magic Find",
+    "elementalist": "Attunement Recharge Rate",
+    "guardian": "Virtue Recharge Rate",
+    "warrior": "Burst Recharge",
+    "engineer": "Tool Belt Recharge Rate",
+    "ranger": "Pet Attribute Bonus",
+    "thief": "Steal Recharge Rate",
+    "mesmer": "Shatter Skill Recharge Rate",
+    "necromancer": "Life Force Pool",
+    "revanent": "Revenant"
+  },
+  "accSummary": {
+    "raidBossKills": "Raid Boss Kills",
+    "fractalLvl": "Fractal Level",
+    "dailyAp": "Daily Ap"
+  },
+  "classes": {
+    "Druid": "Druid",
+    "Daredevil": "Daredevil",
+    "Berserker": "Berserker",
+    "Dragonhunter": "Dragonhunter",
+    "Reaper": "Reaper",
+    "Chronomancer": "Chronomancer",
+    "Scrapper": "Scrapper",
+    "Tempest": "Tempest",
+    "Herald": "Herald"
   }
 }

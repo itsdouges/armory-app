@@ -2,6 +2,7 @@ import { PropTypes } from 'react';
 import styles from './styles.less';
 import config from 'config';
 import classnames from 'classnames/bind';
+import T from 'i18n-react';
 
 import Icon from 'common/components/Icon';
 import Placeholder from './placeholder';
@@ -41,8 +42,8 @@ function extractData (content, { type, forceUpdate }) {
 
     case 'guilds':
       return {
-        title: content.name || 'No Guild',
-        subTitle: (content.tag && `[${content.tag}]`) || 'Guild',
+        title: content.name || T.translate('guilds.noGuild'),
+        subTitle: (content.tag && `[${content.tag}]`) || T.translate('guilds.guild'),
         imageStyle: {
           backgroundImage: `url(https://guilds.gw2w2w.com/guilds/${content.name && content.name.replace(/\s+/g, '-')}/256.svg)`,
           borderRadius: '50%',
