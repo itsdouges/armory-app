@@ -96,13 +96,23 @@ class User extends Component {
           items={user && user.characters}
         />
 
-        <div className={styles.pvpContainer}>
+        <h3 className={styles.gamesContainer}>
+          PvE Summary
+        </h3>
+
+        <div className={styles.summaryContainer}>
           <Fractal level={user && user.fractalLevel} />
           <RaidSummary userAchievements={userAchievements} />
 
           <DailyAp {...user} />
           <WvwRank worldId={user && user.world} worlds={worlds} rank={user && user.wvwRank} />
+        </div>
 
+        <h3 className={styles.gamesContainer}>
+          PvP Summary
+        </h3>
+
+        <div className={styles.summaryContainer}>
           <PvpRanking
             rank={get(pvpStats, 'pvp_rank')}
             points={get(pvpStats, 'pvp_rank_points')}
