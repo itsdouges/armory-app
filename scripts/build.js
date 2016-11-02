@@ -1,21 +1,21 @@
 process.env.NODE_ENV = 'production';
 
-var chalk = require('chalk');
-var fs = require('fs');
-var path = require('path');
-var filesize = require('filesize');
-var gzipSize = require('gzip-size').sync;
-var rimrafSync = require('rimraf').sync;
-var webpack = require('webpack');
-var config = require('../config/webpack.config.prod');
-var paths = require('../config/paths');
+const chalk = require('chalk');
+const fs = require('fs');
+const path = require('path');
+const filesize = require('filesize');
+const gzipSize = require('gzip-size').sync;
+const rimrafSync = require('rimraf').sync;
+const webpack = require('webpack');
+const config = require('../config/webpack.config.prod');
+const paths = require('../config/paths');
 
 // Remove all content but keep the directory so that
 // if you're in it, you don't end up in Trash
-rimrafSync(paths.appBuild + '/*');
+rimrafSync(`${paths.appBuild}/*`);
 
 console.log('Creating an optimized production build...');
-webpack(config).run(function(err, stats) {
+webpack(config).run((err, stats) => {
   if (err) {
     console.error('Failed to create a production build. Reason:');
     console.error(err.message || err);
@@ -27,27 +27,29 @@ webpack(config).run(function(err, stats) {
 
   console.log('File sizes after gzip:');
   console.log();
-  var assets = stats.toJson().assets
+  const assets = stats.toJson().assets
     .filter(asset => /\.(js|css)$/.test(asset.name))
     .map(asset => {
-      var fileContents = fs.readFileSync(paths.appBuild + '/' + asset.name);
+      const fileContents = fs.readFileSync(`${paths.appBuild}/${asset.name}`);
       return {
         name: asset.name,
-        size: gzipSize(fileContents)
+        size: gzipSize(fileContents),
       };
     });
   assets.sort((a, b) => b.size - a.size);
   assets.forEach(asset => {
     console.log(
+      // eslint-disable-next-line
       '  ' + chalk.dim('build' + path.sep) + chalk.cyan(asset.name) + ': ' +
       chalk.green(filesize(asset.size))
     );
   });
   console.log();
 
-  var openCommand = process.platform === 'win32' ? 'start' : 'open';
-  var homepagePath = require(paths.appPackageJson).homepage;
+  const openCommand = process.platform === 'win32' ? 'start' : 'open';
+  const homepagePath = require(paths.appPackageJson).homepage;
   if (homepagePath) {
+    // eslint-disable-next-line
     console.log('You can now publish them at ' + homepagePath + '.');
     console.log('For example, if you use GitHub Pages:');
     console.log();
@@ -65,6 +67,7 @@ webpack(config).run(function(err, stats) {
     console.log();
     console.log('  npm install -g pushstate-server');
     console.log('  pushstate-server build');
+    // eslint-disable-next-line
     console.log('  ' + openCommand + ' http://localhost:9000');
     console.log();
   }

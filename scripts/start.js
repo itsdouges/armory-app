@@ -1,23 +1,23 @@
 process.env.NODE_ENV = 'development';
 
-var path = require('path');
-var chalk = require('chalk');
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var execSync = require('child_process').execSync;
-var opn = require('opn');
-var detect = require('detect-port');
-var prompt = require('./utils/prompt');
-var config = require('../webpack.config');
+const path = require('path');
+const chalk = require('chalk');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const execSync = require('child_process').execSync;
+const opn = require('opn');
+const detect = require('detect-port');
+const prompt = require('./utils/prompt');
+const config = require('../webpack.config');
 
 // Tools like Cloud9 rely on this
-var DEFAULT_PORT = process.env.PORT || 3000;
-var compiler;
+const DEFAULT_PORT = process.env.PORT || 3000;
+let compiler;
 
 // TODO: hide this behind a flag and eliminate dead code on eject.
 // This shouldn't be exposed to the user.
-var handleCompile;
-var isSmokeTest = process.argv.some(arg => arg.indexOf('--smoke-test') > -1);
+let handleCompile;
+const isSmokeTest = process.argv.some(arg => arg.indexOf('--smoke-test') > -1);
 if (isSmokeTest) {
   handleCompile = function (err, stats) {
     if (err || stats.hasErrors() || stats.hasWarnings()) {
@@ -28,16 +28,16 @@ if (isSmokeTest) {
   };
 }
 
-var friendlySyntaxErrorLabel = 'Syntax error:';
+const friendlySyntaxErrorLabel = 'Syntax error:';
 
-function isLikelyASyntaxError(message) {
+function isLikelyASyntaxError (message) {
   return message.indexOf(friendlySyntaxErrorLabel) !== -1;
 }
 
 // This is a little hacky.
 // It would be easier if webpack provided a rich error object.
 
-function formatMessage(message) {
+function formatMessage (message) {
   return message
     // Make some common errors shorter:
     .replace(
@@ -56,35 +56,38 @@ function formatMessage(message) {
     .replace('./~/css-loader!./~/postcss-loader!', '');
 }
 
-function clearConsole() {
+function clearConsole () {
   process.stdout.write('\x1bc');
 }
 
-function setupCompiler(port) {
+function setupCompiler (port) {
   compiler = webpack(config, handleCompile);
 
-  compiler.plugin('invalid', function() {
+  compiler.plugin('invalid', () => {
     clearConsole();
     console.log('Compiling...');
   });
 
-  compiler.plugin('done', function(stats) {
+  compiler.plugin('done', (stats) => {
     clearConsole();
-    var hasErrors = stats.hasErrors();
-    var hasWarnings = stats.hasWarnings();
+    const hasErrors = stats.hasErrors();
+    const hasWarnings = stats.hasWarnings();
     if (!hasErrors && !hasWarnings) {
       console.log(chalk.green('Compiled successfully!'));
       console.log();
+      // eslint-disable-next-line
       console.log('The app is running at http://localhost:' + port + '/');
       console.log();
       return;
     }
 
-    var json = stats.toJson();
-    var formattedErrors = json.errors.map(message =>
+    const json = stats.toJson();
+    const formattedErrors = json.errors.map(message =>
+      // eslint-disable-next-line
       'Error in ' + formatMessage(message)
     );
-    var formattedWarnings = json.warnings.map(message =>
+    const formattedWarnings = json.warnings.map(message =>
+      // eslint-disable-next-line
       'Warning in ' + formatMessage(message)
     );
 
@@ -95,6 +98,7 @@ function setupCompiler(port) {
         // If there are any syntax errors, show just them.
         // This prevents a confusing ESLint parsing error
         // preceding a much more useful Babel syntax error.
+        // eslint-disable-next-line
         formattedErrors = formattedErrors.filter(isLikelyASyntaxError);
       }
       formattedErrors.forEach(message => {
@@ -114,19 +118,22 @@ function setupCompiler(port) {
       });
 
       console.log('You may use special comments to disable some warnings.');
+      // eslint-disable-next-line
       console.log('Use ' + chalk.yellow('// eslint-disable-next-line') + ' to ignore the next line.');
+      // eslint-disable-next-line
       console.log('Use ' + chalk.yellow('/* eslint-disable */') + ' to ignore all warnings in a file.');
     }
   });
 }
 
-function openBrowser(port) {
+function openBrowser (port) {
   if (process.platform === 'darwin') {
     try {
       // Try our best to reuse existing tab
       // on OS X Google Chrome with AppleScript
       execSync('ps cax | grep "Google Chrome"');
       execSync(
+        // eslint-disable-next-line
         'osascript ' +
         path.resolve(__dirname, './utils/chrome.applescript') +
         ' http://localhost:' + port + '/'
@@ -138,16 +145,18 @@ function openBrowser(port) {
   }
   // Fallback to opn
   // (It will always open new tab)
+  // eslint-disable-next-line
   opn('http://localhost:' + port + '/');
 }
 
-function runDevServer(port) {
+function runDevServer (port) {
   new WebpackDevServer(compiler, {
     historyApiFallback: true,
     hot: true, // Note: only CSS is currently hot reloaded
     publicPath: config.output.publicPath,
     quiet: true,
-  }).listen(port, (err, result) => {
+    // eslint-disable-next-line
+  }).listen(port, (err) => {
     if (err) {
       return console.log(err);
     }
@@ -158,8 +167,8 @@ function runDevServer(port) {
     openBrowser(port);
   });
 }
-
-function run(port) {
+//s
+function run (port) {
   setupCompiler(port);
   runDevServer(port);
 }
@@ -171,8 +180,8 @@ detect(DEFAULT_PORT).then(port => {
   }
 
   clearConsole();
-  var question =
-    chalk.yellow('Something is already running at port ' + DEFAULT_PORT + '.') +
+  const question =
+    chalk.yellow('Something is already running at port ' + DEFAULT_PORT + '.') + // eslint-disable-line
     '\n\nWould you like to run the app at another port instead?';
 
   prompt(question, true).then(shouldChangePort => {
