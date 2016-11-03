@@ -9,6 +9,12 @@ function reduceById (payload) {
   }), {});
 }
 
+export const readTitles = (ids) =>
+  get(`${config.gw2.endpoint}v2/titles?ids=${ids.join(',')}`, {
+    ignoreAuth: true,
+  })
+  .then(({ data }) => reduceById(data));
+
 export const readWorlds = (ids) =>
   get(`${config.gw2.endpoint}v2/worlds?ids=${ids.join(',')}`, {
     ignoreAuth: true,

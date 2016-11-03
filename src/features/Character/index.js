@@ -57,6 +57,7 @@ class Character extends Component {
     location: PropTypes.object,
     amulets: PropTypes.object,
     pets: PropTypes.object,
+    title: PropTypes.object,
   };
 
   static contextTypes = {
@@ -159,6 +160,7 @@ class Character extends Component {
       specializations,
       amulets,
       pets,
+      title,
     } = this.props;
 
     const { editMode } = this.state;
@@ -183,10 +185,12 @@ class Character extends Component {
     };
 
     const showPvpEquipment = mode === 'pvp';
+    const characterTitle = get(title, 'name');
 
     return (
       <Content
         content={character}
+        extraSubtitle={characterTitle && <span><i>{characterTitle}</i> | </span>}
         type="characters"
         extraContent={characterPetIds &&
           characterPetIds.map((id) =>

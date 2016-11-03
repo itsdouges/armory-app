@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [2.15.0] - 2016/11/03
+### Added
+- Character title to character pages when appropriate
+
 ## [2.14.0] - 2016/11/03
 ### Changed
 - Pvp stats summary

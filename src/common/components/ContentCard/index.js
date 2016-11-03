@@ -62,7 +62,14 @@ function extractData (content, { type, forceUpdate }) {
   }
 }
 
-const ContentCard = ({ content, className, type = 'characters', size = 'small', forceUpdate }) => {
+const ContentCard = ({
+  content,
+  className,
+  type = 'characters',
+  size = 'small',
+  extraSubtitle,
+  forceUpdate,
+}) => {
   if (!content) {
     return <Placeholder size={size} className={className} />;
   }
@@ -78,9 +85,15 @@ const ContentCard = ({ content, className, type = 'characters', size = 'small', 
     <div className={cx('root', className, size)}>
       <div className={cx('image', imageClass)} style={imageStyle} />
       <div className={styles.textContainer}>
-        {size === 'big' ?
-          <h2 className={cx('title')}>{title}</h2> : <div className={cx('title')}>{title}</div>}
-        <div className={cx('subTitle')}>{subTitle}</div>
+        {size === 'big'
+          ? <h2 className={cx('title')}>{title}</h2>
+          : <div className={cx('title')}>{title}</div>
+
+        }
+        <div className={cx('subTitle')}>
+          {extraSubtitle}
+          {subTitle}
+        </div>
       </div>
     </div>
   );
@@ -91,6 +104,7 @@ ContentCard.propTypes = {
   className: PropTypes.string,
   type: PropTypes.oneOf(['characters', 'users', 'guilds', 'pet']),
   size: PropTypes.oneOf(['small', 'big']),
+  extraSubtitle: PropTypes.any,
   // I don't like this.
   forceUpdate: PropTypes.bool,
 };
