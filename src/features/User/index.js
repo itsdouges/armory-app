@@ -96,9 +96,9 @@ class User extends Component {
           items={user && user.characters}
         />
 
-        <h3 className={styles.gamesContainer}>
-          PvE Summary
-        </h3>
+        <div className={styles.gamesContainer}>
+          <h3>PvE Summary</h3>
+        </div>
 
         <div className={styles.summaryContainer}>
           <Fractal level={user && user.fractalLevel} />
@@ -107,9 +107,9 @@ class User extends Component {
           <DailyAp {...user} />
         </div>
 
-        <h3 className={styles.gamesContainer}>
-          PvP Summary
-        </h3>
+        <div className={styles.gamesContainer}>
+          <h3>PvP Summary</h3>
+        </div>
 
         <div className={styles.summaryContainer}>
           <PvpRanking
