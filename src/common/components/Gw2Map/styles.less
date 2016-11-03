@@ -1,8 +1,8 @@
+@import '~common/styles/colours.less';
+
 .root {
-  flex-shrink: 0;
   background: rgb(88, 88, 88);
   position: relative;
-  width: 25%;
   background-size: cover;
   background-position: center center;
 }
@@ -15,7 +15,11 @@
   left: 0;
   right: 0;
   color: white;
-  font-size: 0.75em;
   text-align: center;
   padding: 0.5em;
+
+  &:hover,
+  &:focus {
+    color: @primary;
+  }
 }

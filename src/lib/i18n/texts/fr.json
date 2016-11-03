@@ -53,7 +53,12 @@
       "byes": "Byes",
       "losses": "Des pertes",
       "desertions": "Désertions",
-      "forfeits": "Confiscations"
+      "forfeits": "Confiscations",
+      "finished": "Played"
+    },
+    "pvp": {
+      "favouriteClass": "Favourite Class",
+      "winLossAbbreviation": "W/L"
     }
   },
   "guilds": {
@@ -103,5 +108,11 @@
     "requiredLevel": "Niveau Requis",
     "weaponStrength": "Arme Force",
     "currentlyEquipped": "Actuellement équipée"
+  },
+  "words": {
+    "played": "Played",
+    "times": "times",
+    "ratio": "Ratio",
+    "rank": "Rank"
   }
 }

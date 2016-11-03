@@ -53,7 +53,12 @@
       "byes": "Byes",
       "losses": "Losses",
       "desertions": "Desertions",
-      "forfeits": "Forfeits"
+      "forfeits": "Forfeits",
+      "finished": "Played"
+    },
+    "pvp": {
+      "favouriteClass": "Favourite Class",
+      "winLossAbbreviation": "W/L"
     }
   },
   "guilds": {
@@ -103,5 +108,11 @@
     "requiredLevel": "Required Level",
     "weaponStrength": "Weapon Strength",
     "currentlyEquipped": "Currently Equipped"
+  },
+  "words": {
+    "played": "Played",
+    "times": "times",
+    "ratio": "Ratio",
+    "rank": "Rank"
   }
 }

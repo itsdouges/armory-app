@@ -21,6 +21,9 @@ import PvpStats from './components/PvpStats';
 import PvpRanking from './components/PvpRanking';
 import PvpGame from './components/PvpGame';
 import PvpLeague from './components/PvpSeason';
+import FavouritePvpClass from './components/FavouritePvpClass';
+
+import Tooltip from 'common/components/Tooltip';
 
 import {
   fetchUser,
@@ -93,7 +96,22 @@ class User extends Component {
           items={user && user.characters}
         />
 
-        <div className={styles.pvpContainer}>
+        <div className={styles.gamesContainer}>
+          <h3>PvE Summary</h3>
+        </div>
+
+        <div className={styles.summaryContainer}>
+          <Fractal level={user && user.fractalLevel} />
+          <RaidSummary userAchievements={userAchievements} />
+
+          <DailyAp {...user} />
+        </div>
+
+        <div className={styles.gamesContainer}>
+          <h3>PvP Summary</h3>
+        </div>
+
+        <div className={styles.summaryContainer}>
           <PvpRanking
             rank={get(pvpStats, 'pvp_rank')}
             points={get(pvpStats, 'pvp_rank_points')}
@@ -101,13 +119,22 @@ class User extends Component {
           />
 
           <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
+
+          <PvpStats
+            stats={get(pvpStats, 'ladders.unranked')}
+            title={T.translate('users.pvpStats.unranked')}
+          />
+
+          <PvpStats
+            stats={get(pvpStats, 'ladders.ranked')}
+            title={T.translate('users.pvpStats.ranked')}
+          />
+
+          <FavouritePvpClass professions={get(pvpStats, 'professions')} />
+
           <WvwRank worldId={user && user.world} worlds={worlds} rank={user && user.wvwRank} />
-          <DailyAp {...user} />
-          <RaidSummary userAchievements={userAchievements} />
-          <Fractal level={user && user.fractalLevel} />
         </div>
 
-        <PvpStats stats={pvpStats} />
 
         <div className={styles.gamesContainer}>
           <h3>{T.translate('users.recentMatches')}</h3>
@@ -115,6 +142,8 @@ class User extends Component {
         </div>
 
         <SocialButtons />
+
+        <Tooltip />
       </Content>
     );
   }

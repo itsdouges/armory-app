@@ -53,7 +53,12 @@
       "byes": "轮空",
       "losses": "损失",
       "desertions": "开小差",
-      "forfeits": "弃权"
+      "forfeits": "弃权",
+      "finished": "Played"
+    },
+    "pvp": {
+      "favouriteClass": "Favourite Class",
+      "winLossAbbreviation": "W/L"
     }
   },
   "guilds": {
@@ -103,5 +108,11 @@
     "requiredLevel": "需要等级",
     "weaponStrength": "武器力量",
     "currentlyEquipped": "目前装备"
+  },
+  "words": {
+    "played": "Played",
+    "times": "times",
+    "ratio": "Ratio",
+    "rank": "Rank"
   }
 }

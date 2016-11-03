@@ -53,7 +53,12 @@
       "byes": "Byes",
       "losses": "Поражения",
       "desertions": "Дезертирства",
-      "forfeits": "Штрафы"
+      "forfeits": "Штрафы",
+      "finished": "Played"
+    },
+    "pvp": {
+      "favouriteClass": "Favourite Class",
+      "winLossAbbreviation": "W/L"
     }
   },
   "guilds": {
@@ -103,5 +108,11 @@
     "requiredLevel": "Требуемый уровень",
     "weaponStrength": "оружие Прочность",
     "currentlyEquipped": "В настоящее время Укомплектован"
+  },
+  "words": {
+    "played": "Played",
+    "times": "times",
+    "ratio": "Ratio",
+    "rank": "Rank"
   }
 }

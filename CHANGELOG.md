@@ -8,6 +8,15 @@
 - Changes
 ```
 
+## [2.14.0] - 2016/11/03
+### Changed
+- Pvp stats summary
+- Progress bar to allow custom label
+- Pvp match component, adds progress bar, modifies styles
+
+### Added
+- Favourite profession to user page
+
 ## [2.13.1] - 2016/11/02
 ### Changed
 - Readme to be slightly more new friendly
