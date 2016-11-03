@@ -46,7 +46,13 @@ const PvpStats = ({ stats, title }) => {
           <ProgressBar
             current={current}
             max={max}
-            label={<Redacted redact={redact}>{`${winLossRatio} WL Ratio`}</Redacted>}
+            label={
+              <Redacted redact={redact}>
+                { // eslint-disable-next-line max-len
+                  `${winLossRatio} ${T.translate('users.pvp.winLossAbbreviation')} ${T.translate('words.ratio')}`
+                }
+              </Redacted>
+            }
             barColor="#4CAF50"
             backgroundColor="#F44336"
           />

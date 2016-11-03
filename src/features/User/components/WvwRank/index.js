@@ -1,6 +1,7 @@
 import { PropTypes } from 'react';
 import reduce from 'lodash/reduce';
 import get from 'lodash/get';
+import T from 'i18n-react';
 
 import Summary from 'common/layouts/Summary';
 import Redacted from 'common/components/Redacted';
@@ -120,12 +121,14 @@ const WvwRank = ({ rank, worldId, worlds }) => {
 
   const rankName = (rank && reduce(rankToTitleMapping, (selectedName, wvwRankName, wvwRank) => (
     rank >= wvwRank ? wvwRankName : selectedName
-  ), '')) || 'Someone';
+  ), '')) || '????';
 
   return (
     <Summary
       leftIcon={{ name: 'wvw.png', size: 'xlarge' }}
-      title={<Redacted redact={redact}>{`WvW Rank (${rank || 1})`}</Redacted>}
+      title={
+        <Redacted redact={redact}>{`WvW ${T.translate('words.rank')} (${rank || 1})`}</Redacted>
+      }
       subTitle={<span><Redacted redact={redact}>{rankName}</Redacted> for {worldName}</span>}
     />
   );

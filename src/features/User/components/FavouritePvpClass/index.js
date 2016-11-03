@@ -2,6 +2,7 @@ import { PropTypes } from 'react';
 import reduce from 'lodash/reduce';
 import maxBy from 'lodash/maxBy';
 import upperFirst from 'lodash/upperFirst';
+import T from 'i18n-react';
 
 import Redacted from 'common/components/Redacted';
 import Summary from 'common/layouts/Summary';
@@ -27,9 +28,17 @@ const FavouriePvpClass = ({ professions }) => {
   return (
     <Summary
       leftIcon={{ name: `${name}-icon.png`, size: 'large' }}
-      title={<Redacted redact={redact}>{`Favourite Profession: ${upperFirst(name)}`}</Redacted>}
+      title={
+        <Redacted redact={redact}>
+          {`${T.translate('users.pvp.favouriteClass')}: ${upperFirst(name)}`}
+        </Redacted>
+      }
       subTitle={
-        <span><Redacted redact={redact}>{`Played ${count} times`}</Redacted></span>
+        <span>
+          <Redacted redact={redact}>
+            {`${T.translate('words.played')} ${count} ${T.translate('words.times')}`}
+          </Redacted>
+        </span>
       }
     />
   );

@@ -59,6 +59,10 @@
       "desertions": "Verlassen",
       "forfeits": "Niederlagen (Unterzahl)",
       "finished": "Played"
+    },
+    "pvp": {
+      "favouriteClass": "Favourite Class",
+      "winLossAbbreviation": "W/L"
     }
   },
   "guilds": {
@@ -108,5 +112,10 @@
     "requiredLevel": "Benötigtes Level",
     "weaponStrength": "Waffenstärke",
     "currentlyEquipped": "Aktuell ausgerüstet"
+  },
+  "words": {
+    "played": "Played",
+    "times": "times",
+    "ratio": "Ratio"
   }
 }

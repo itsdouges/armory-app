@@ -7,8 +7,8 @@ import Redacted from 'common/components/Redacted';
 
 const World = ({ id, worlds }) => {
   const world = worlds[id];
-  const name = get(world, 'name', 'Unknown');
-  const population = startCase(get(world, 'population', 'Unknown'));
+  const name = get(world, 'name', '????');
+  const population = startCase(get(world, 'population', '????'));
   const redacted = !world;
 
   return (
