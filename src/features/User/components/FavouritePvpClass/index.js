@@ -5,7 +5,6 @@ import upperFirst from 'lodash/upperFirst';
 
 import Redacted from 'common/components/Redacted';
 import Summary from 'common/layouts/Summary';
-import Icon from 'common/components/Icon';
 
 const calculateFavouriteProfession = (professions) => {
   if (!professions) {
@@ -27,7 +26,7 @@ const FavouriePvpClass = ({ professions }) => {
 
   return (
     <Summary
-      leftIcon={<Icon name={`${name}-icon.png`} size="large" />}
+      leftIcon={{ name: `${name}-icon.png`, size: 'large' }}
       title={<Redacted redact={redact}>{`Favourite Profession: ${upperFirst(name)}`}</Redacted>}
       subTitle={
         <span><Redacted redact={redact}>{`Played ${count} times`}</Redacted></span>

@@ -1,7 +1,6 @@
 import { PropTypes } from 'react';
 
 import ProgressBar from 'common/components/ProgressBar';
-import Icon from 'common/components/Icon';
 import Summary from 'common/layouts/Summary';
 import Redacted from 'common/components/Redacted';
 
@@ -33,7 +32,7 @@ const RaidSummary = ({ userAchievements, className, simple }) => {
   return (
     <Summary
       className={className}
-      leftIcon={<Icon name="raid.png" size="xlarge" />}
+      leftIcon={{ name: 'raid.png', size: 'xlarge' }}
       title={<Redacted redact={redact}>{raidKills}</Redacted>}
       subTitle={
         <ProgressBar

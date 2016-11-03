@@ -4,7 +4,6 @@ import T from 'i18n-react';
 import styles from './styles.less';
 
 import ProgressBar from 'common/components/ProgressBar';
-import Icon from 'common/components/Icon';
 import Summary from 'common/layouts/Summary';
 import Redacted from 'common/components/Redacted';
 
@@ -40,7 +39,7 @@ const PvpStats = ({ stats, title }) => {
 
   return (
     <Summary
-      leftIcon={<Icon name="raid.png" size="xlarge" />}
+      leftIcon={{ name: 'raid.png', size: 'xlarge' }}
       title={<Redacted redact={redact}>{`PvP ${title}`}</Redacted>}
       subTitle={
         <span>

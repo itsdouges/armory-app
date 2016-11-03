@@ -4,7 +4,6 @@ import get from 'lodash/get';
 
 import Summary from 'common/layouts/Summary';
 import Redacted from 'common/components/Redacted';
-import Icon from 'common/components/Icon';
 
 const rankToTitleMapping = {
   1: 'Invader',
@@ -125,7 +124,7 @@ const WvwRank = ({ rank, worldId, worlds }) => {
 
   return (
     <Summary
-      leftIcon={<Icon name="wvw.png" size="xlarge" />}
+      leftIcon={{ name: 'wvw.png', size: 'xlarge' }}
       title={<Redacted redact={redact}>{`WvW Rank (${rank || 1})`}</Redacted>}
       subTitle={<span><Redacted redact={redact}>{rankName}</Redacted> for {worldName}</span>}
     />

@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [2.14.0] - unreleased
+## [2.14.0] - 2016/11/03
 ### Changed
 - Pvp stats summary
 - Progress bar to allow custom label

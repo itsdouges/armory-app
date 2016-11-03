@@ -1,7 +1,6 @@
 import { PropTypes } from 'react';
 
 import Summary from 'common/layouts/Summary';
-import Icon from 'common/components/Icon';
 import ProgressBar from 'common/components/ProgressBar';
 import Redacted from 'common/components/Redacted';
 
@@ -10,7 +9,7 @@ const Fractal = ({ level }) => {
 
   return (
     <Summary
-      leftIcon={<Icon name="raid.png" size="xlarge" />}
+      leftIcon={{ name: 'raid.png', size: 'xlarge' }}
       title={<Redacted redact={redact}>Fractal Level</Redacted>}
       subTitle={
         <ProgressBar
