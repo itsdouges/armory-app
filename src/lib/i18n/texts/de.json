@@ -116,6 +116,7 @@
   "words": {
     "played": "Played",
     "times": "times",
-    "ratio": "Ratio"
+    "ratio": "Ratio",
+    "rank": "Rank"
   }
 }
