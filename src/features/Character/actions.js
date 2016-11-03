@@ -91,6 +91,7 @@ export function fetchCharacter (character, { redirect404 = true, ignoreAuth, bas
         dispatch(actions.fetchSkins(skins));
 
         if (!basicLoad) {
+          dispatch(actions.fetchTitles([data.title]));
           dispatch(actions.fetchPets(pets));
           dispatch(actions.fetchSkills(skills));
           dispatch(actions.fetchAmulets(amulets));
