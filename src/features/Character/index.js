@@ -277,7 +277,8 @@ class Character extends Component {
                       type={editMode ? 'primary' : ''}
                       onClick={this.toggleEditMode}
                     >
-                      {editMode ? `${T.translate('characters.done')}` : `${T.translate('characters.edit')}`}
+                      {editMode ? `${T.translate('characters.done')}` :
+                                  `${T.translate('characters.edit')}`}
                     </Button>
 
                     {editMode && [

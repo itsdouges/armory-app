@@ -21,7 +21,7 @@ const eliteSpecMap = {
   40: T.translate('classes.chronomancer'),
   43: T.translate('classes.scrapper'),
   48: T.translate('classes.tempest'),
-  52: T.translate('classes.herald')
+  52: T.translate('classes.herald'),
 };
 
 function parseWeaponSwap (character) {

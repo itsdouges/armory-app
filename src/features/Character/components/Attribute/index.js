@@ -33,7 +33,7 @@ const attributeNameMapping = {
   thief: T.translate('itemAttributes.thief'),
   mesmer: T.translate('itemAttributes.mesmer'),
   necromancer: T.translate('itemAttributes.necromancer'),
-  revanent: T.translate('itemAttributes.revanent')
+  revanent: T.translate('itemAttributes.revanent'),
 };
 
 function parseValue (name, value) {
