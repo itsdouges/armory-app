@@ -118,7 +118,7 @@
     "soulBound": "Soulbound"
   },
   "itemAttributes": {
-    "power": "Attack Power",
+    "power": "Power",
     "precision": "Precision",
     "toughness": "Toughness",
     "vitality": "Vitality",
