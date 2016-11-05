@@ -4,17 +4,16 @@ import startCase from 'lodash/startCase';
 
 import Summary from 'common/layouts/Summary';
 import Redacted from 'common/components/Redacted';
-import Icon from 'common/components/Icon';
 
 const World = ({ id, worlds }) => {
   const world = worlds[id];
-  const name = get(world, 'name', 'Unknown');
-  const population = startCase(get(world, 'population', 'Unknown'));
+  const name = get(world, 'name', '????');
+  const population = startCase(get(world, 'population', '????'));
   const redacted = !world;
 
   return (
     <Summary
-      leftIcon={<Icon name="raid.png" size="xlarge" />}
+      leftIcon={{ name: 'raid.png', size: 'xlarge' }}
       title={<Redacted redact={redacted}>{name}</Redacted>}
       subTitle={<Redacted redact={redacted}>{population}</Redacted>}
     />

@@ -50,10 +50,19 @@
       "unranked": "Nicht gewertet",
       "ranked": "Gewertet",
       "wins": "Siege",
+      "byes": "Byes",
+      "losses": "Verluste",
+      "desertions": "Desertationen",
+      "forfeits": "einbüßt",
       "byes": "Siege (Überzahl)",
       "losses": "Niederlagen",
       "desertions": "Verlassen",
-      "forfeits": "Niederlagen (Unterzahl)"
+      "forfeits": "Niederlagen (Unterzahl)",
+      "finished": "Played"
+    },
+    "pvp": {
+      "favouriteClass": "Favourite Class",
+      "winLossAbbreviation": "W/L"
     }
   },
   "guilds": {
@@ -141,7 +150,7 @@
     "revanent": "Klassenspezifisches Attribut"
   },
   "accSummary": {
-    "raidBossKills": "Raid Boss Kills",
+    "raidBossKills": "Raid Bosse",
     "fractalLvl": "Fraktal Level",
     "dailyAp": "Tägliche Erfolge"
   },
@@ -155,5 +164,11 @@
     "scrapper": "Schrotter",
     "tempest": "Sturmbote",
     "herald": "Herold"
+  },
+  "words": {
+    "played": "Played",
+    "times": "times",
+    "ratio": "Ratio",
+    "rank": "Rank"
   }
 }

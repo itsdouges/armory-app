@@ -1,44 +1,65 @@
 import { PropTypes } from 'react';
-import classnames from 'classnames/bind';
+import get from 'lodash/get';
+import cx from 'classnames';
+import moment from 'moment';
+import T from 'i18n-react';
 
 import styles from './styles.less';
+import ProgressBar from 'common/components/ProgressBar';
 import Card from 'common/components/Card';
 import Icon from 'common/components/Icon';
 import Gw2Map from 'common/components/Gw2Map';
 import Redacted from 'common/components/Redacted';
-import get from 'lodash/get';
-
-const cx = classnames.bind(styles);
+import TooltipTrigger from 'common/components/TooltipTrigger';
 
 function stringToDate (date) {
-  return date && date.split('T')[0];
+  const now = moment();
+  const end = moment(date);
+  const diffInMs = now.diff(end);
+
+  return `${moment.duration(diffInMs).humanize()} ago`;
 }
 
-function calculateMatchInMinutes (start, end) {
-  if (!start || !end) {
-    return 0;
+function calculateProgressBar ({ team, scores }) {
+  if (team === 'Red') {
+    return {
+      backgroundColor: 'blue',
+      barColor: 'red',
+      current: scores.red,
+      max: scores.red + scores.blue,
+    };
   }
 
-  return new Date(new Date(end) - new Date(start)).getMinutes();
+  return {
+    backgroundColor: 'red',
+    barColor: 'blue',
+    current: scores.blue,
+    max: scores.red + scores.blue,
+  };
 }
 
 const PvpGame = ({ game, maps }) => {
   const redacted = game.scores.red !== 0 && !game.scores.red;
   const map = get(maps, `[${game.map_id}]`, { id: game.map_id });
 
+  const { current, max, barColor, backgroundColor } = calculateProgressBar(game);
+
   return (
     <Card className={styles.root}>
-      <Gw2Map data={map} />
+      <Gw2Map data={map} className={styles.map} />
 
       <div className={styles.inner}>
-        <div className={cx('column', 'resultsContainer')}>
-          <Icon size="medium" name={`${game.profession.toLowerCase()}-icon-small.png`} />
-          <div className={cx('result', game.team.toLowerCase())}>
-            <Redacted redact={redacted}>{game.result.toUpperCase()}</Redacted>
-          </div>
+        <div className={styles.score}>
+          <ProgressBar
+            small
+            current={current}
+            max={max}
+            barColor={barColor}
+            backgroundColor={backgroundColor}
+          />
         </div>
 
-        <div className={cx('column', 'stretch', 'spreadItems')}>
+        <div className={cx(styles.column, styles.spreadItems)}>
           <div>
             <div className={styles.red}>RED</div>
             <Redacted redact={redacted}>{game.scores.red || '25'}</Redacted>
@@ -49,23 +70,27 @@ const PvpGame = ({ game, maps }) => {
           </div>
         </div>
 
-        <div className={cx('column', 'stats', 'spreadItems', 'big')}>
-          <div>
-            <Redacted redact={redacted}>
-              <span className={styles[game.rating_type.toLowerCase()]}>
-                {game.rating_type.toUpperCase()}
-              </span>
-            </Redacted>
+        <div className={cx(styles.column, styles.resultsContainer)}>
+          <Icon size="medium" name={`${game.profession.toLowerCase()}-icon-small.png`} />
+          <div className={cx(styles.result, styles[game.team.toLowerCase()])}>
+            <Redacted redact={redacted}>{game.result.toUpperCase()}</Redacted>
           </div>
+        </div>
 
-          <div>
+        <div className={cx(styles.column, styles.stats, styles.spreadItems, styles.big)}>
+          <span className={cx(styles.rankIcon, game.rating_type === 'Ranked' && styles.ranked)}>
+            <TooltipTrigger data={game.rating_type}>
+              <Icon name="ranked.png" />
+            </TooltipTrigger>
+          </span>
+
+          <TooltipTrigger data={game.ended}>
             <div>
               <Redacted redact={redacted}>
-                {calculateMatchInMinutes(game.started, game.ended)} mins
+                {T.translate('users.pvpStats.finished')} {stringToDate(game.ended) || 'Never'}
               </Redacted>
             </div>
-            <Redacted redact={redacted}>{stringToDate(game.ended) || '2016-05-19'}</Redacted>
-          </div>
+          </TooltipTrigger>
         </div>
       </div>
     </Card>

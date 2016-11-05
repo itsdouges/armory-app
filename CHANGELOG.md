@@ -8,6 +8,30 @@
 - Changes
 ```
 
+## [2.15.0] - 2016/11/03
+### Added
+- Character title to character pages when appropriate
+
+## [2.14.0] - 2016/11/03
+### Changed
+- Pvp stats summary
+- Progress bar to allow custom label
+- Pvp match component, adds progress bar, modifies styles
+
+### Added
+- Favourite profession to user page
+
+## [2.13.1] - 2016/11/02
+### Changed
+- Readme to be slightly more new friendly
+
+## [2.13.0] - 2016/11/02
+### Added
+- Linting in travis ci
+
+### Changed
+- Any linting errors found
+
 ## [2.12.0] - 2016/10/29
 ### Added
 - Wvw rank to user page

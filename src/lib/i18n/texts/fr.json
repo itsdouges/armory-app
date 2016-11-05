@@ -53,7 +53,12 @@
       "byes": "Byes",
       "losses": "Des pertes",
       "desertions": "Désertions",
-      "forfeits": "Confiscations"
+      "forfeits": "Confiscations",
+      "finished": "Played"
+    },
+    "pvp": {
+      "favouriteClass": "Favourite Class",
+      "winLossAbbreviation": "W/L"
     }
   },
   "guilds": {
@@ -141,7 +146,7 @@
     "revanent": "Revenant"
   },
   "accSummary": {
-    "raidBossKills": "Raid Boss Kills",
+    "raidBossKills": "Raid Bosses",
     "fractalLvl": "Fractal Level",
     "dailyAp": "Daily Ap"
   },
@@ -155,5 +160,11 @@
     "scrapper": "Scrapper",
     "tempest": "Tempest",
     "herald": "Herald"
+  },
+  "words": {
+    "played": "Played",
+    "times": "times",
+    "ratio": "Ratio",
+    "rank": "Rank"
   }
 }

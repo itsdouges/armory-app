@@ -1,9 +1,10 @@
 import { PropTypes } from 'react';
 import reduce from 'lodash/reduce';
 import get from 'lodash/get';
+import T from 'i18n-react';
 
 import Summary from 'common/layouts/Summary';
-import Icon from 'common/components/Icon';
+import Redacted from 'common/components/Redacted';
 
 const rankToTitleMapping = {
   1: 'Invader',
@@ -115,17 +116,20 @@ const rankToTitleMapping = {
 
 const WvwRank = ({ rank, worldId, worlds }) => {
   const world = worlds[worldId];
-  const worldName = get(world, 'name', 'Unknown');
+  const worldName = get(world, 'name');
+  const redact = !rank;
 
-  const rankName = reduce(rankToTitleMapping, (selectedName, wvwRankName, wvwRank) => (
-    (rank || 1) >= wvwRank ? wvwRankName : selectedName
-  ), '');
+  const rankName = (rank && reduce(rankToTitleMapping, (selectedName, wvwRankName, wvwRank) => (
+    rank >= wvwRank ? wvwRankName : selectedName
+  ), '')) || '????';
 
   return (
     <Summary
-      leftIcon={<Icon name="wvw.png" size="xlarge" />}
-      title={`WvW Rank (${rank || 1})`}
-      subTitle={`${rankName} for ${worldName}`}
+      leftIcon={{ name: 'wvw.png', size: 'xlarge' }}
+      title={
+        <Redacted redact={redact}>{`WvW ${T.translate('words.rank')} (${rank || 1})`}</Redacted>
+      }
+      subTitle={<span><Redacted redact={redact}>{rankName}</Redacted> for {worldName}</span>}
     />
   );
 };

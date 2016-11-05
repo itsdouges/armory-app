@@ -1,7 +1,7 @@
 @import '~common/styles/sizes.less';
 
 @margin: 0.5em;
-@padding: 0.5em;
+@padding: 0.33em;
 
 .root {
   display: inline-flex;
@@ -10,6 +10,7 @@
   padding: 0;
   margin: 1em auto;
   margin-top: 0;
+  font-size: 0.9em;
 }
 
 .inner {
@@ -17,16 +18,29 @@
   flex-grow: 1;
   justify-content: space-between;
   padding: @padding;
+  position: relative;
+}
+
+.score {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .column {
   padding: @padding;
-  text-align: center;
+  text-align: left;
+}
+
+.map {
+  width: 20%;
 }
 
 .resultsContainer {
   width: 124px;
   flex-shrink: 0;
+  text-align: center;
 }
 
 .result {
@@ -48,25 +62,30 @@
   font-weight: bold;
 }
 
-.stretch {
-  text-align: center;
-}
-
 .spreadItems {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.stats {
-  text-align: right;
+.rankIcon {
+  opacity: 0.2;
 }
 
 .ranked {
-  font-weight: bold;
+  opacity: 1;
+}
+
+.stats {
+  text-align: right;
+  max-width: 100px;
 }
 
 @media only screen and (min-width: @tablet) {
+  .map {
+    width: 30%;
+  }
+
   .root {
     max-width: ~"calc(50% - 0.5em)";
   }
