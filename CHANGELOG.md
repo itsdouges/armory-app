@@ -8,10 +8,13 @@
 - Changes
 ```
 
-## [2.15.1] - unreleased
+## [unreleased]
 ### Changed
 - Pie chart to use on brand gw2 assets
 - Statistics to have placeholder pie charts while waiting for stats to load
+
+### Added
+- Basic prefix support helper for inline styles
 
 ## [2.15.0] - 2016/11/03
 ### Added

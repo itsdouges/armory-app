@@ -1,6 +1,7 @@
 import { Component, PropTypes } from 'react';
 
 import { isSmallScreen, addEvent } from 'lib/dom';
+import { prefix } from 'lib/css';
 
 export default class MouseFollow extends Component {
   static propTypes = {
@@ -78,13 +79,7 @@ export default class MouseFollow extends Component {
 
     const transform = `translate3d(${x}px, ${y}px, 0)`;
 
-    return {
-      WebkitTransform: transform,
-      MozTransform: transform,
-      msTransform: transform,
-      OTransform: transform,
-      transform,
-    };
+    return prefix('transform', transform);
   }
 
   calculatePin ({ tooltip, mouse }) {

@@ -2,6 +2,7 @@ import { PropTypes } from 'react';
 
 import styles from './styles.less';
 import upperFirst from 'lodash/upperFirst';
+import { prefix } from 'lib/css';
 
 const RADIAN = Math.PI / 180;
 
@@ -14,10 +15,12 @@ function calculateLabelPosition ({ rotationOffset, centralAngle, radius }) {
   const x = cx + radius * Math.cos(angle * RADIAN) * 0.7;
   const y = cy + radius * Math.sin(angle * RADIAN);
 
+  const translate = x <= cx && prefix('transform', 'translateX(-100%)');
+
   return {
     top: y,
     left: x,
-    transform: x <= cx && 'translateX(-100%)',
+    ...translate,
   };
 }
 

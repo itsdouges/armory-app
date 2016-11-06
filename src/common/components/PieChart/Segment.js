@@ -2,6 +2,7 @@ import { PropTypes } from 'react';
 
 import styles from './styles.less';
 import Divider from './Divider';
+import { prefix } from 'lib/css';
 
 const colorHueDegrees = {
   green: 0,
@@ -23,17 +24,15 @@ const Segment = ({ color, rotationOffset, centralAngle, hideDivider }) => {
   return (
     <div
       className={styles.segment}
-      style={{
-        transform: `rotate(${rotationOffset}deg) skewY(${skew * -1}deg)`,
-      }}
+      style={prefix('transform', `rotate(${rotationOffset}deg) skewY(${skew * -1}deg)`)}
     >
       <div
         className={styles.segmentContent}
-        style={{ transform: `skewY(${skew}deg) rotate(-${rotationOffset}deg)` }}
+        style={prefix('transform', `skewY(${skew}deg) rotate(-${rotationOffset}deg)`)}
       >
         <div
           className={styles.segmentBg}
-          style={{ filter: `hue-rotate(${colorHueDegrees[color]}deg)` }}
+          style={prefix('filter', `hue-rotate(${colorHueDegrees[color]}deg)`)}
         />
 
         {hideDivider || <Divider rotationOffset={rotationOffset} />}

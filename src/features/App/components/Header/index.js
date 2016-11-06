@@ -98,7 +98,7 @@ export default class Header extends Component {
 
     const links = [
       ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
-      <Link key="stats" to="/stats">{T.translate('stats.name')}</Link>,
+      <Link key="stats" to="/statistics">{T.translate('stats.name')}</Link>,
       <LangPicker key="langPicker" />,
     ];
 
