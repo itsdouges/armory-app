@@ -62,13 +62,18 @@
     }
   },
   "guilds": {
-    "name": "Guildes"
+    "name": "Guildes",
+    "guild": "Guild",
+    "noGuild": "No Guild"
   },
   "characters": {
     "name": "Personnages",
     "embedCta": "Ceci est un personnage choisi au hasard. Vous pouvez obtenir une intégration tout comme cela sur votre site! Cliquez sur l'icône d'intégration sur une page de caractères.",
     "shown": "Caractère Montré",
-    "hidden": "Caractère caché"
+    "hidden": "Caractère caché",
+    "done": "Done",
+    "edit": "Edit",
+    "changePortrait": "Change your character portrait"
   },
   "settings": {
     "name": "Paramètres",
@@ -107,7 +112,54 @@
     "skinLocked": "Locked Peau",
     "requiredLevel": "Niveau Requis",
     "weaponStrength": "Arme Force",
-    "currentlyEquipped": "Actuellement équipée"
+    "defense": "defense",
+    "currentlyEquipped": "Actuellement équipée",
+    "accountBound": "Account bound",
+    "soulBound": "Soulbound"
+  },
+  "itemAttributes": {
+    "power": "Power",
+    "precision": "Precision",
+    "toughness": "Toughness",
+    "vitality": "Vitality",
+    "boonDuration": "Boon Duration",
+    "conditionDamage": "Condition Damage",
+    "conditionDuration": "Condition Duration",
+    "ferocity": "Ferocity",
+    "healingPower": "Healing Power",
+    "armor": "Armor",
+    "critChance": "Critical Chance",
+    "critDamage": "Critical Damage",
+    "health": "Health",
+    "expertise": "Expertise",
+    "concentration": "Concentration",
+    "agonyResistance": "Agony Resistance",
+    "magic": "Magic Find",
+    "elementalist": "Attunement Recharge Rate",
+    "guardian": "Virtue Recharge Rate",
+    "warrior": "Burst Recharge",
+    "engineer": "Tool Belt Recharge Rate",
+    "ranger": "Pet Attribute Bonus",
+    "thief": "Steal Recharge Rate",
+    "mesmer": "Shatter Skill Recharge Rate",
+    "necromancer": "Life Force Pool",
+    "revanent": "Revenant"
+  },
+  "accSummary": {
+    "raidBossKills": "Raid Bosses",
+    "fractalLvl": "Fractal Level",
+    "dailyAp": "Daily Ap"
+  },
+  "classes": {
+    "druid": "Druid",
+    "daredevil": "Daredevil",
+    "berserker": "Berserker",
+    "dragonhunter": "Dragonhunter",
+    "reaper": "Reaper",
+    "chronomancer": "Chronomancer",
+    "scrapper": "Scrapper",
+    "tempest": "Tempest",
+    "herald": "Herald"
   },
   "words": {
     "played": "Played",

@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [2.16.0] - 2016/11/07
+### Added
+- Improved translations
+
 ## [2.15.0] - 2016/11/03
 ### Added
 - Character title to character pages when appropriate

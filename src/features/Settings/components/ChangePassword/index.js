@@ -74,7 +74,7 @@ export default class ChangePassword extends Component {
               type="primary"
               disabled={!valid}
             >
-              CHANGE
+              {T.translate('forgotPassword.changeCta')}
             </Button>
           </div>
         </form>

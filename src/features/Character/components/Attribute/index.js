@@ -3,36 +3,37 @@ import styles from './styles.less';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import classnames from 'classnames/bind';
 import Icon from 'common/components/Icon';
+import T from 'i18n-react';
 
 const cx = classnames.bind(styles);
 
 const attributeNameMapping = {
-  power: 'Attack Power',
-  precision: 'Precision',
-  toughness: 'Toughness',
-  vitality: 'Vitality',
-  boonDuration: 'Boon Duration',
-  conditionDamage: 'Condition Damage',
-  conditionDuration: 'Condition Duration',
-  ferocity: 'Ferocity',
-  healingPower: 'Healing Power',
-  armor: 'Armor',
-  critChance: 'Critical Chance',
-  critDamage: 'Critical Damage',
-  health: 'Health',
-  expertise: 'Expertise',
-  concentration: 'Concentration',
-  agonyResistance: 'Agony Resistance',
-  magic: 'Magic Find',
-  elementalist: 'Attunement Recharge Rate',
-  guardian: 'Virtue Recharge Rate',
-  warrior: 'Burst Recharge',
-  engineer: 'Tool Belt Recharge Rate',
-  ranger: 'Pet Attribute Bonus',
-  thief: 'Steal Recharge Rate',
-  mesmer: 'Shatter Skill Recharge Rate',
-  necromancer: 'Life Force Pool',
-  revanent: 'Revenant',
+  power: T.translate('itemAttributes.power'),
+  precision: T.translate('itemAttributes.precision'),
+  toughness: T.translate('itemAttributes.toughness'),
+  vitality: T.translate('itemAttributes.vitality'),
+  boonDuration: T.translate('itemAttributes.boonDuration'),
+  conditionDamage: T.translate('itemAttributes.conditionDamage'),
+  conditionDuration: T.translate('itemAttributes.conditionDuration'),
+  ferocity: T.translate('itemAttributes.ferocity'),
+  healingPower: T.translate('itemAttributes.healingPower'),
+  armor: T.translate('itemAttributes.armor'),
+  critChance: T.translate('itemAttributes.critChance'),
+  critDamage: T.translate('itemAttributes.critDamage'),
+  health: T.translate('itemAttributes.health'),
+  expertise: T.translate('itemAttributes.expertise'),
+  concentration: T.translate('itemAttributes.concentration'),
+  agonyResistance: T.translate('itemAttributes.agonyResistance'),
+  magic: T.translate('itemAttributes.magic'),
+  elementalist: T.translate('itemAttributes.elementalist'),
+  guardian: T.translate('itemAttributes.guardian'),
+  warrior: T.translate('itemAttributes.warrior'),
+  engineer: T.translate('itemAttributes.engineer'),
+  ranger: T.translate('itemAttributes.ranger'),
+  thief: T.translate('itemAttributes.thief'),
+  mesmer: T.translate('itemAttributes.mesmer'),
+  necromancer: T.translate('itemAttributes.necromancer'),
+  revanent: T.translate('itemAttributes.revanent'),
 };
 
 function parseValue (name, value) {

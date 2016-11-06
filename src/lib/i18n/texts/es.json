@@ -62,13 +62,18 @@
     }
   },
   "guilds": {
-    "name": "Clanes"
+    "name": "Clanes",
+    "guild": "Guild",
+    "noGuild": "No Guild"
   },
   "characters": {
     "name": "Personajes",
     "embedCta": "Se trata de un personaje elegido al azar. Puedes obtener el código para añadir en tu sitio web! Haz clic en el ícono para añadir en cualquier página.",
     "shown": "Muestra al personaje",
-    "hidden": "Personaje oculto"
+    "hidden": "Personaje oculto",
+    "done": "Done",
+    "edit": "Edit",
+    "changePortrait": "Change your character portrait"
   },
   "settings": {
     "name": "Ajustes",
@@ -107,7 +112,54 @@
     "skinLocked": "Skin Locked",
     "requiredLevel": "Nivel Requerido",
     "weaponStrength": "Fuerza del Arma",
-    "currentlyEquipped": "Actualmente Equipado"
+    "defense": "defense",
+    "currentlyEquipped": "Actualmente Equipado",
+    "accountBound": "Account bound",
+    "soulBound": "Soulbound"
+  },
+  "itemAttributes": {
+    "power": "Power",
+    "precision": "Precision",
+    "toughness": "Toughness",
+    "vitality": "Vitality",
+    "boonDuration": "Boon Duration",
+    "conditionDamage": "Condition Damage",
+    "conditionDuration": "Condition Duration",
+    "ferocity": "Ferocity",
+    "healingPower": "Healing Power",
+    "armor": "Armor",
+    "critChance": "Critical Chance",
+    "critDamage": "Critical Damage",
+    "health": "Health",
+    "expertise": "Expertise",
+    "concentration": "Concentration",
+    "agonyResistance": "Agony Resistance",
+    "magic": "Magic Find",
+    "elementalist": "Attunement Recharge Rate",
+    "guardian": "Virtue Recharge Rate",
+    "warrior": "Burst Recharge",
+    "engineer": "Tool Belt Recharge Rate",
+    "ranger": "Pet Attribute Bonus",
+    "thief": "Steal Recharge Rate",
+    "mesmer": "Shatter Skill Recharge Rate",
+    "necromancer": "Life Force Pool",
+    "revanent": "Revenant"
+  },
+  "accSummary": {
+    "raidBossKills": "Raid Bosses",
+    "fractalLvl": "Fractal Level",
+    "dailyAp": "Daily Ap"
+  },
+  "classes": {
+    "druid": "Druid",
+    "daredevil": "Daredevil",
+    "berserker": "Berserker",
+    "dragonhunter": "Dragonhunter",
+    "reaper": "Reaper",
+    "chronomancer": "Chronomancer",
+    "scrapper": "Scrapper",
+    "tempest": "Tempest",
+    "herald": "Herald"
   },
   "words": {
     "played": "Played",

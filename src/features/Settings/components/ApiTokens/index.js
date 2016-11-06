@@ -47,7 +47,7 @@ export default class ApiTokens extends Component {
 
   render () {
     return (
-      <CardWithTitle title="Api Keys" size="medium" type="compact">
+      <CardWithTitle title={T.translate('settings.apiKeys.name')} size="medium" type="compact">
         <div className={styles.padding}>
           {!this.props.tokens.length &&
             <Message>

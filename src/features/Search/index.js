@@ -39,7 +39,7 @@ export default class Search extends Component {
     if (term.length < SEARCH_TERM_MINIMUM) {
       this.setState({
         results: [],
-        error: `Search term should be ${SEARCH_TERM_MINIMUM} or more characters :-)`,
+        error: `${T.translate('search.minlength')}`,
       });
 
       return undefined;

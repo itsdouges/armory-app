@@ -1,4 +1,5 @@
 import colours from 'common/styles/colours.less';
+import T from 'i18n-react';
 
 function parseVendorValue (item) {
   const inItem = {
@@ -26,12 +27,12 @@ function parseFlags (item) {
     switch (flag) {
       case 'SoulBindOnUse':
       case 'SoulbindOnAcquire':
-        inItem.boundStatus = 'Soulbound';
+        inItem.boundStatus = T.translate('items.soulBound');
         return;
 
       case 'AccountBoundOnUse':
       case 'AccountBound':
-        inItem.boundStatus = 'Account Bound';
+        inItem.boundStatus = T.translate('items.accountBound');
         return;
     }
   });
