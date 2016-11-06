@@ -1,6 +1,6 @@
 {
   "name": "armory-react",
-  "version": "2.13.1",
+  "version": "2.16.1",
   "private": true,
   "scripts": {
     "start": "node ./scripts/start.js --prod",

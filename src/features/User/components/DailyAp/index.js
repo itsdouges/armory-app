@@ -2,6 +2,7 @@ import { PropTypes } from 'react';
 
 import Summary from 'common/layouts/Summary';
 import ProgressBar from 'common/components/ProgressBar';
+import T from 'i18n-react';
 import Redacted from 'common/components/Redacted';
 
 const DailyAp = ({ dailyAp, monthlyAp }) => {
@@ -10,7 +11,7 @@ const DailyAp = ({ dailyAp, monthlyAp }) => {
   return (
     <Summary
       leftIcon={{ name: 'daily.png', size: 'xlarge' }}
-      title={<Redacted redact={!count}>Daily Ap</Redacted>}
+      title={<Redacted redact={!count}>{T.translate('accSummary.dailyAp')}</Redacted>}
       subTitle={
         <ProgressBar
           current={count}

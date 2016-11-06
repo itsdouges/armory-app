@@ -8,13 +8,18 @@
 - Changes
 ```
 
-## [unreleased]
+## [2.16.1] - 2016/11/07
 ### Changed
 - Pie chart to use on brand gw2 assets
 - Statistics to have placeholder pie charts while waiting for stats to load
-
-### Added
 - Basic prefix support helper for inline styles
+
+## [2.16.0] - 2016/11/07
+### Added
+- Missing translation blocks throughout the app
+
+### Changed
+- Incorrect german translations
 
 ## [2.15.0] - 2016/11/03
 ### Added

@@ -228,7 +228,7 @@ class Character extends Component {
               onUploadComplete={this.onUploadComplete}
               disabled={!editMode}
               forceShow={editMode}
-              hintText={<span>CHANGE YOUR CHARACTER PORTRAIT<br />560 x 840</span>}
+              hintText={<span>{T.translate('characters.changePortrait')}<br />560 x 840</span>}
               uploadName={`characters/${character && character.name}`}
             >
               <Portrait forceUpdate={this.state.updateImage} character={character}>
@@ -277,7 +277,8 @@ class Character extends Component {
                       type={editMode ? 'primary' : ''}
                       onClick={this.toggleEditMode}
                     >
-                      {editMode ? 'I\'M DONE' : 'EDIT'}
+                      {editMode ? `${T.translate('characters.done')}` :
+                                  `${T.translate('characters.edit')}`}
                     </Button>
 
                     {editMode && [
@@ -287,8 +288,8 @@ class Character extends Component {
                         onChange={this.hide}
                         label={
                           showPublic
-                            ? `${T.translate('character.shown')}`
-                            : `${T.translate('character.hidden')}`
+                            ? `${T.translate('characters.shown')}`
+                            : `${T.translate('characters.hidden')}`
                         }
                       />,
                     ]}

@@ -2,6 +2,7 @@ import { PropTypes } from 'react';
 
 import ProgressBar from 'common/components/ProgressBar';
 import Summary from 'common/layouts/Summary';
+import T from 'i18n-react';
 import Redacted from 'common/components/Redacted';
 
 const RAID_KILL_ACHIEVEMENTS = {
@@ -22,7 +23,7 @@ const RaidSummary = ({ userAchievements, className, simple }) => {
     ({ id, done }) => RAID_KILL_ACHIEVEMENTS[id] && done
   );
 
-  const raidKills = `Raid Bosses ${achievements.map(({ id }) =>
+  const raidKills = `${T.translate('accSummary.raidBossKills')} ${achievements.map(({ id }) =>
     `[${RAID_KILL_ACHIEVEMENTS[id]}]`).join('')}`;
 
   if (simple) {
