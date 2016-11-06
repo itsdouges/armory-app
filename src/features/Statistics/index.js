@@ -37,10 +37,9 @@ const nameToColour = {
   Sylvari: 'lightgreen',
   yes: 'lightgreen',
   no: 'red',
-  '1 to 29': 'green',
-  '30 to 59': 'lightgreen',
-  '60 to 79': 'teal',
-  80: 'blue',
+  '1 to 39': 'green',
+  '40 to 79': 'lightgreen',
+  80: 'teal',
 };
 
 function mapRawStatsToData (data) {

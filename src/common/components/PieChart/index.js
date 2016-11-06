@@ -8,34 +8,34 @@ import Label from './Label';
 const PieChart = ({ dataValues, className, size }) => {
   const radius = size / 2;
   const max = dataValues.reduce((total, { value }) => (total + value), 0);
-  let currentRotationOffset = 0;
+  const segments = [];
+
+  dataValues.reduce((rotationOffset, data) => {
+    const centralAngle = 360 / (max / data.value);
+
+    segments.push(
+      <li key={data.name}>
+        <Label
+          radius={radius}
+          label={data.name}
+          centralAngle={centralAngle}
+          rotationOffset={rotationOffset}
+        />
+
+        <PieSegment
+          data={data}
+          centralAngle={centralAngle}
+          rotationOffset={rotationOffset}
+        />
+      </li>
+    );
+
+    return rotationOffset + centralAngle;
+  }, 0);
 
   return (
     <ul className={cx(styles.root, className)} style={{ width: size, height: size }}>
-      {dataValues.reduce((segments, data) => {
-        const centralAngle = 360 / (max / data.value);
-
-        segments.push(
-          <li key={data.name}>
-            <Label
-              radius={radius}
-              label={data.name}
-              centralAngle={centralAngle}
-              rotationOffset={currentRotationOffset}
-            />
-
-            <PieSegment
-              data={data}
-              centralAngle={centralAngle}
-              rotationOffset={currentRotationOffset}
-            />
-          </li>
-        );
-
-        currentRotationOffset += centralAngle;
-
-        return segments;
-      }, [])}
+      {segments}
     </ul>
   );
 };
