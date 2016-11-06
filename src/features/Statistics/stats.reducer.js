@@ -4,7 +4,32 @@ import {
   FETCH_STATISTICS,
 } from './actions';
 
-export const defaultState = {};
+export const defaultState = {
+  users: {
+    count: 1,
+  },
+  guilds: {
+    count: 1,
+  },
+  characters: {
+    race: {
+      Sylvari: 1,
+    },
+    gender: {
+      Male: 1,
+    },
+    profession: {
+      Engineer: 1,
+    },
+    level: {
+      80: 1,
+    },
+    guild: {
+      yes: 1,
+    },
+    count: 1,
+  },
+};
 
 function groupLevels (levels) {
   return Object.keys(levels).reduce((groupedLevels, level) => {

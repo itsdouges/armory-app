@@ -8,6 +8,11 @@
 - Changes
 ```
 
+## [2.15.1] - unreleased
+### Changed
+- Pie chart to use on brand gw2 assets
+- Statistics to have placeholder pie charts while waiting for stats to load
+
 ## [2.15.0] - 2016/11/03
 ### Added
 - Character title to character pages when appropriate
