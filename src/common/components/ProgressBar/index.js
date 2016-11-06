@@ -2,14 +2,15 @@ import { PropTypes } from 'react';
 import cx from 'classnames';
 
 import styles from './styles.less';
+import { prefix } from 'lib/css';
 
 function calcBarStyles (current, max, barColor) {
   const percent = max ? Math.ceil((current / max || 0) * 100) : 0;
 
   return {
     width: '100%',
-    transform: `translateX(${percent - 100}%)`,
     backgroundColor: barColor,
+    ...prefix('transform', `translateX(${percent - 100}%)`),
   };
 }
 

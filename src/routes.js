@@ -27,8 +27,9 @@ const Routes = () => (
       <IndexRoute component={Home} />
       <Redirect from="/in" to="/login" />
       <Redirect from="/me" to="/settings" />
+      <Redirect from="/stats" to="/statistics" />
       <Redirect from="/me/*" to="/settings" />
-      <Route path="/stats" component={Statistics} />
+      <Route path="/statistics" component={Statistics} />
       <Route path="/login" component={Login} />
       <Route path="/join" component={Join} />
       <Route path="/search(/:term)" component={Search} />

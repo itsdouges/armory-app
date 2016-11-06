@@ -1,0 +1,13 @@
+import upperFirst from 'lodash/upperFirst';
+
+const vendors = ['Webkit', 'Moz', 'ms', 'O'];
+
+export function prefix (key, value) {
+  const obj = {
+    [key]: value,
+  };
+
+  vendors.forEach((vendor) => (obj[`${vendor}${upperFirst(key)}`] = value));
+
+  return obj;
+}
