@@ -1,9 +1,8 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
 
 @potrait-top-spacer: 37px;
-@pz-foreground: 10;
-@pz-background: 1;
-@pz-middle: 5;
+@portraitDecorationZ: @_zindex20;
+@portraitBg: @_zindex10;
 
 .root {
   margin: 0.125em 0;
@@ -29,7 +28,7 @@
   right: 0;
   height: 239px;
   background-size: cover!important;
-  z-index: @pz-background;
+  z-index: @portraitBg;
 }
 
 .portraitBottomIn {
@@ -39,7 +38,7 @@
   right: 0;
   background-size: cover!important;
   height: 240px;
-  z-index: @pz-foreground;
+  z-index: @portraitDecorationZ;
 }
 
 .portrait {

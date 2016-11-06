@@ -1,4 +1,7 @@
-@import '~common/styles/colours.less';
+@import '~common/styles/base.less';
+
+@characterEmbedZ: @_zindex1;
+@portaitZ: @_zindexBehind;
 
 .root {
   position: relative;
@@ -6,7 +9,7 @@
   padding: 0.5em;
   max-width: 500px;
   margin: 0 auto;
-  z-index: 99;
+  z-index: @characterEmbedZ;
 
   a {
     color: #fff;
@@ -32,7 +35,7 @@
   right: 0;
   left: 0;
   bottom: 0;
-  z-index: -1;
+  z-index: @portaitZ;
   opacity: 0.8;
 }
 

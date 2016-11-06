@@ -1,5 +1,6 @@
-@import '~common/styles/box-shadow.less';
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@bigIconZ: @_zindex10;
 
 .bigIcon {
   position: relative;
@@ -18,14 +19,14 @@
   left: 0;
   width: 94px;
   height: 54px;
-  z-index: 2;
+  z-index: @bigIconZ;
   background: inherit;
 }
 
 .bigIconTop,
 .bigIconBottom {
   position: absolute;
-  z-index: 1;
+  z-index: @bigIconZ;
   width: 71px;
   height: 71px;
   overflow: hidden;

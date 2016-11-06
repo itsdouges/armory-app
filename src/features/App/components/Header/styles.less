@@ -1,4 +1,9 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@searchBarZ: @_zindex40;
+@bigBgZ: @_zindex30;
+@floatingBgZ: @_zindex20;
+@backBg: @_zindex10;
 
 .root {
   width: 100%;
@@ -11,7 +16,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9999;
+  z-index: @headerZ;
 }
 
 .background {
@@ -21,20 +26,20 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  z-index: 101;
+  z-index: @bigBgZ;
 }
 
 .backgroundFloat {
   composes: background;
   position: fixed;
-  z-index: 100;
+  z-index: @floatingBgZ;
   transform: translateY(-100%);
   composes: low from 'common/styles/box-shadow.less';
 }
 
 .anotherBackground {
   composes: background;
-  z-index: 98;
+  z-index: @backBg;
 }
 
 .innerContainer {
@@ -68,7 +73,7 @@
 .bigSearchContainer {
   padding: 5em 1em;
   position: relative;
-  z-index: 150;
+  z-index: @searchBarZ;
 }
 
 .heroImage {

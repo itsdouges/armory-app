@@ -16,7 +16,7 @@ function calcBarStyles (current, max, barColor) {
 
 const ProgressBar = ({ current, max, barColor, backgroundColor, icon, small, label }) => (
   <div className={cx(styles.root, small && styles.small)} style={{ backgroundColor }}>
-    {icon}
+    <span className={styles.icon}>{icon}</span>
     <span className={styles.bar} style={calcBarStyles(current, max, barColor)} />
     {small || <span className={styles.progress}>
       {label || `${current}/${max}`}

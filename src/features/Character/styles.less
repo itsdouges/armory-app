@@ -1,8 +1,11 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
 
 @thick-width: 192;
 @thin-width: 120;
 @content-width: 820px;
+
+@portraitButtonZ: @_zindex50;
+@brushDecorationZ: @_zindexBehind;
 
 .root {
   flex-grow: 1;
@@ -33,7 +36,7 @@
   position: absolute;
   top: 0.5em;
   right: 0.5em;
-  z-index: 99;
+  z-index: @portraitButtonZ;
 }
 
 .embedContainer {
@@ -41,7 +44,7 @@
   right: 0.5em;
   bottom: 0.5em;
   left: 0.5em;
-  z-index: 99;
+  z-index: @portraitButtonZ;
   text-align: right;
 }
 
@@ -112,7 +115,7 @@
 
 .brushStrokeContainer:before,
 .brushStrokeContainer:after {
-  z-index: -1;
+  z-index: @brushDecorationZ;
   content: "";
   position: absolute;
   width: 125px;
