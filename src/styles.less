@@ -1,4 +1,4 @@
-@import '~common/styles/colours.less';
+@import '~common/styles/base.less';
 
 * {
   box-sizing: border-box;
@@ -7,11 +7,11 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
-  background: #f7f9fa;
+  background: @background;
   overflow-x: hidden;
   width: 100%;
-  color: #333;
+  color: @text;
+  .secondaryFont();
 }
 
 body,
@@ -25,9 +25,9 @@ h1 {
 }
 
 h2, h3, h4 {
-  font-weight: normal;
-  font-family: 'Menomonia';
   margin: 0;
+  font-weight: normal;
+  .primaryFont();
 }
 
 h2 {
@@ -62,5 +62,5 @@ a:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: @gray;
+  background: @scrollBar;
 }

@@ -1,8 +1,8 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
 
 @padding: 0.5rem;
-@placeholderColor: #9a9a9a;
-@placeholderColorLight: #c5c5c5;
+@placeholderColor: @_gray;
+@placeholderColorLight: @_lightgray;
 
 .root,
 .placeholderRoot {
@@ -58,9 +58,9 @@
 .title {
   margin: 0;
   font-size: 1.7em;
-  font-family: 'Menomonia';
   font-weight: bold;
   word-break: break-word;
+  .primaryFont();
 }
 
 .subTitle {
