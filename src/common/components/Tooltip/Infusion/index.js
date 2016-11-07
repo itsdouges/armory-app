@@ -1,8 +1,6 @@
 import { PropTypes } from 'react';
-import styles from './styles.less';
 import colours from 'common/styles/colours.less';
 import Icon from 'common/components/Icon';
-import cx from 'classnames';
 
 const ItemInfusion = ({ data, data: {
   name,
@@ -12,14 +10,13 @@ const ItemInfusion = ({ data, data: {
   if (!data) {
     return (
       <div>
-        <span className={styles.icon}></span>
         <span>Unused Infusion Slot</span>
       </div>
     );
   }
 
   return (
-    <div className={cx(styles.root, colours.blue)}>
+    <div className={colours.blue}>
       <div>
         <Icon src={icon} size="micro" />
         <span> {name}</span>

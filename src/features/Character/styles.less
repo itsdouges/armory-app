@@ -1,10 +1,9 @@
 @import '~common/styles/base.less';
 
-@thick-width: 192;
-@thin-width: 120;
-@content-width: 820px;
+@thick: 192;
+@thin: 120;
+@content: 820px;
 
-@portraitButtonZ: @_zindex50;
 @brushDecorationZ: @_zindexBehind;
 
 .root {
@@ -14,7 +13,7 @@
 }
 
 .inner {
-  max-width: @content-width;
+  max-width: @content;
   margin: 0 auto;
   position: relative;
 }
@@ -36,7 +35,7 @@
   position: absolute;
   top: 0.5em;
   right: 0.5em;
-  z-index: @portraitButtonZ;
+  z-index: @portraitButtonsZ;
 }
 
 .embedContainer {
@@ -44,7 +43,7 @@
   right: 0.5em;
   bottom: 0.5em;
   left: 0.5em;
-  z-index: @portraitButtonZ;
+  z-index: @portraitButtonsZ;
   text-align: right;
 }
 
@@ -168,7 +167,7 @@
   }
 
   .rightColumn {
-    width: @thick-width * 1px;
+    width: @thick * 1px;
   }
 
   .attributes {

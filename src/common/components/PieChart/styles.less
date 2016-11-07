@@ -3,6 +3,9 @@
 @dividerZ: @_zindex10;
 @labelZ: @_zindex20;
 
+@text: @_white;
+@background: @_black;
+
 .root {
   position: relative;
   width: 100%;
@@ -55,7 +58,7 @@
   top: 50%;
   z-index: @labelZ;
   font-size: 0.7em;
-  color: white;
+  color: @text;
   padding: 0.25em;
-  background: rgba(0, 0, 0, 0.5);
+  background: @background;
 }

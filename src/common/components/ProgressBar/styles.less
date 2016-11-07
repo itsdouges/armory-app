@@ -3,7 +3,10 @@
 @barZ: @_zindex10;
 @progressBarTextZ: @_zindex20;
 @iconZ: @_zindex20;
+
 @barTip: @_white;
+@border: @_white;
+@textShadow: @_black;
 
 .root {
   text-align: left;
@@ -33,7 +36,7 @@
   box-sizing: border-box;
   display: block;
   width: 5px;
-  border-right: 4px solid white;
+  border-right: 4px solid @border;
   height: 100%;
   background: linear-gradient(to right, transparent, @barTip);
   float: right;
@@ -51,9 +54,9 @@
   z-index: @progressBarTextZ;
   text-align: center;
   font-size: 0.9em;
-  color: white;
+  color: @barTip;
   cursor: default;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 1px @textShadow;
 }
 
 .small {

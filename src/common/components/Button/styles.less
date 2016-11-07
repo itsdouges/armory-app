@@ -1,5 +1,10 @@
 @import '~common/styles/base.less';
 
+@disabledColor: @disabled;
+@disabledBackground: @disabledalt;
+@disabledBorder: @disabledalt;
+@buttonTextColour: @_white;
+
 .button {
   text-align: center;
   width: 10em;
@@ -18,15 +23,15 @@
 }
 
 .neutral {
-  color: #797979;
-  background-color: #dad9d9;
-  border-color: #dad9d9;
+  color: @disabledColor;
+  background-color: @disabledBackground;
+  border-color: @disabledBorder;
 }
 
 .primary {
   border-color: @positive;
   background-color: @positive;
-  color: #fff;
+  color: @buttonTextColour;
   font-weight: bold;
 
   &.disabled {
@@ -37,7 +42,7 @@
 .secondary {
   border-color: @negative;
   background-color: @negative;
-  color: #eee;
+  color: @buttonTextColour;
 
   &.disabled {
     color: @negative;

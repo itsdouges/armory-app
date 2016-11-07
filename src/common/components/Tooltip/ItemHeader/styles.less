@@ -1,3 +1,8 @@
+@import '~common/styles/base.less';
+
+@borderDark: @_darkergray;
+@borderLight: @_gray;
+
 .itemHeader {
   overflow: auto;
 }
@@ -11,11 +16,10 @@
 
 .tooltipIcon {
   border-radius: 1px;
-  border: 1px solid white;
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid @borderLight;
+  border-top: 1px solid @borderLight;
+  border-right: 1px solid @borderDark;
+  border-bottom: 1px solid @borderDark;
   float: left;
   margin-top: 3px;
   margin-right: 5px;

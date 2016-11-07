@@ -1,4 +1,7 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@itemHover: @_darkgray;
+@itemText: @_white;
 
 .root {
   position: relative;
@@ -78,9 +81,9 @@
 
 .withHover:hover {
   opacity: 1;
-  background: #4c4c4c;
+  background: @itemHover;
   cursor: pointer;
-  color: white;
+  color: @itemText;
 }
 
 .NumberOfSliderItems(@items) {
@@ -108,7 +111,7 @@
   }
 }
 
-@media only screen and (min-width: @big-pc) {
+@media only screen and (min-width: @largepc) {
   .grid .item,
   .list .item {
     .NumberOfSliderItems(5);

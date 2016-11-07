@@ -2,6 +2,8 @@
 
 @characterEmbedZ: @_zindex1;
 @portaitZ: @_zindexBehind;
+@text: @_white;
+@textShadow: @_black;
 
 .root {
   position: relative;
@@ -12,8 +14,8 @@
   z-index: @characterEmbedZ;
 
   a {
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    color: @text;
+    text-shadow: 0 1px 2px @textShadow;
 
     &:hover {
       color: @primary;

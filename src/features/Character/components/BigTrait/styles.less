@@ -1,15 +1,18 @@
 @import '~common/styles/base.less';
 
 @bigIconZ: @_zindex10;
+@icon: @_black;
+@iconBorder: @_darkestgray;
+@iconShadow: @_black;
 
 .bigIcon {
   position: relative;
   width: 100px;
   height: 58px;
   background-position: -102.5% 78%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.7);
-  border-left: solid 3px #0d0d0d;
-  border-right: solid 3px #0d0d0d;
+  box-shadow: 0 0 10px @icon;
+  border-left: solid 3px @iconBorder;
+  border-right: solid 3px @iconBorder;
 }
 
 .bigIcon:after {
@@ -33,7 +36,7 @@
   transform: scaleY(0.6) rotate(-45deg);
   background: inherit;
   left: 11.64px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.7);
+  box-shadow: 0 0 15px @iconShadow;
 }
 
 .bigIconTop:after,
@@ -49,8 +52,8 @@
 
 .bigIconTop {
   top: -35.5px;
-  border-top: solid 4px #0d0d0d;
-  border-right: solid 4px #0d0d0d;
+  border-top: solid 4px @iconBorder;
+  border-right: solid 4px @iconBorder;
 }
 
 .bigIconTop:after {
@@ -59,8 +62,8 @@
 
 .bigIconBottom {
   bottom: -35.5px;
-  border-bottom: solid 4.5px #0d0d0d;
-  border-left: solid 4.5px #0d0d0d;
+  border-bottom: solid 4.5px @iconBorder;
+  border-left: solid 4.5px @iconBorder;
 }
 
 .bigIconBottom:after {

@@ -1,6 +1,10 @@
-@import '~common/styles/colours.less';
+@import '~common/styles/base.less';
 
 @bottomSpacer: 2em;
+@borderBottom: @_black;
+@background: @_white;
+
+// TODO: Fix the !importants
 
 .error {
   position: absolute;
@@ -15,8 +19,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  background: #fff;
+  border-bottom: 1px solid @borderBottom;
+  background: @background;
   margin-bottom: @bottomSpacer;
 }
 

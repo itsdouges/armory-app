@@ -1,20 +1,24 @@
-@import '~common/styles/colours.less';
+@import '~common/styles/base.less';
+
+@backgroundColour: @_darkgray;
+@textBackground: @_black;
+@text: @_white;
 
 .root {
-  background: rgb(88, 88, 88);
+  background: @backgroundColour;
   position: relative;
   background-size: cover;
   background-position: center center;
 }
 
 .name {
-  background: rgba(22, 22, 22, 0.75);
+  background: @textBackground;
   position: absolute;
   bottom: 0;
   overflow: hidden;
   left: 0;
   right: 0;
-  color: white;
+  color: @text;
   text-align: center;
   padding: 0.5em;
 

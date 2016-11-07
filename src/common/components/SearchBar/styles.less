@@ -1,5 +1,10 @@
 @import '~common/styles/base.less';
 
+@placeholder: @_gray;
+@borderBottom: @_darkergray;
+
+// TODO: fix the !importants
+
 .root {
   max-width: 550px;
   flex-grow: 1;
@@ -17,7 +22,7 @@
     font-size: 1em;
 
     &::placeholder {
-      color: rgba(0, 0, 0, 0.6);
+      color: @placeholder;
     }
   }
 }
@@ -32,7 +37,6 @@
     padding: 0.25em 0.35em !important;
     box-shadow: none;
     border-radius: 3px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
 
     input {
       font-size: 0.9em;
