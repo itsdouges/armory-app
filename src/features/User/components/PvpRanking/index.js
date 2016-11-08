@@ -88,8 +88,6 @@ const PvpRanking = ({ rank, points, rankRollOvers }) => {
         </span>
 
         <ProgressBar
-          barColor="rgb(85, 35, 164)"
-          backgroundColor="rgb(41, 41, 41)"
           current={current}
           max={max}
         />

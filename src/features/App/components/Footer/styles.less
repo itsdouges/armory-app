@@ -1,12 +1,15 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@text: @_white;
+@background: @_darkergray;
 
 .root {
   width: 100%;
-  color: #fff;
+  color: @text;
   text-align: center;
   font-size: 0.7em;
   padding: 3em 2em;
-  background: #383232;
+  background: @background;
 }
 
 .container {
@@ -25,8 +28,8 @@
   }
 }
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .linkContainer > * {
     display: inline-block;
   }
-}
+});

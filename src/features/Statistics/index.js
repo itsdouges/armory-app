@@ -113,7 +113,7 @@ class Statistics extends Component {
           </span>
         ))}
 
-        <p><small>* {T.translate('stats.refreshNote')}</small></p>
+        <p className={styles.note}><small>* {T.translate('stats.refreshNote')}</small></p>
 
       </Container>
     );

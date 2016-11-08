@@ -1,11 +1,12 @@
-@import '~common/styles/colours.less';
+@import '~common/styles/base.less';
 
 @bottomSpacer: 2em;
+@borderBottom: @hr;
+@background: @_white;
 
-.error {
+div.error {
   position: absolute;
-  font-size: 0.8em!important;
-  white-space: wrap;
+  font-size: 0.8em;
   left: 0;
   right: 0;
   top: 39px;
@@ -15,8 +16,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  background: #fff;
+  border-bottom: 1px solid @borderBottom;
+  background: @background;
   margin-bottom: @bottomSpacer;
 }
 
@@ -27,12 +28,12 @@
   margin: 0;
   font-size: 1.3em;
   border-radius: 0;
-  outline: none!important;
-  transition: border-color 0.2s;
+  outline: none;
   -moz-mox-shadow: none;
+  .transition(border-color);
 
   &:invalid {
-      box-shadow: none;
+    box-shadow: none;
   }
 }
 

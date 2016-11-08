@@ -1,4 +1,6 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@background: @_white;
 
 .root {
   position: absolute;
@@ -10,10 +12,10 @@
 .icon {
   cursor: pointer;
   opacity: 0.9;
-  composes: low from 'common/styles/box-shadow.less';
-  background-color: #fff;
-  transition: transform 0.2s;
+  composes: low;
+  background-color: @background;
   transform: translate3d(10%, 0, 0);
+  .transition(transform);
 
   &:focus,
   &:hover {
@@ -22,8 +24,8 @@
   }
 }
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .root {
     position: fixed;
   }
-}
+});

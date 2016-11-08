@@ -1,15 +1,13 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
 
 @potrait-top-spacer: 37px;
-@pz-foreground: 10;
-@pz-background: 1;
-@pz-middle: 5;
+@portraitBg: @_zindex10;
 
 .root {
   margin: 0.125em 0;
   background-position: center center;
   background-repeat: no-repeat;
-  composes: low from 'common/styles/box-shadow.less';
+  composes: low;
   background: black;
   background-size: cover;
   position: relative;
@@ -22,24 +20,24 @@
   padding-top: 150%;
 }
 
-.portraitTopIn {
+div.portraitTopIn {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 239px;
-  background-size: cover!important;
-  z-index: @pz-background;
+  background-size: cover;
+  z-index: @portraitBg;
 }
 
-.portraitBottomIn {
+div.portraitBottomIn {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background-size: cover!important;
+  background-size: cover;
   height: 240px;
-  z-index: @pz-foreground;
+  z-index: @portraitDecorationZ;
 }
 
 .portrait {
@@ -51,7 +49,7 @@
   background-repeat: no-repeat;
 }
 
-@media only screen and (min-width: @mobile) {
+.fromMobile({
   .container:before {
     content: "";
     display: block;
@@ -61,9 +59,9 @@
   .container {
     margin-left: 0.5rem;
   }
-}
+});
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .container:before {
     content: "";
     display: block;
@@ -73,7 +71,7 @@
   .container {
     margin-left: 0;
   }
-}
+});
 
 .asura {
   background-image: url('assets/images/portrait-bgs/asura.png');

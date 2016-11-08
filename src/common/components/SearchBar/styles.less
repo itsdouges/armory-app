@@ -1,4 +1,7 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@placeholder: @_gray;
+@borderBottom: @_darkergray;
 
 .root {
   max-width: 550px;
@@ -6,18 +9,18 @@
   position: relative;
 }
 
-.textBoxContainer {
+div.textBoxContainer {
   border-radius: 5px;
-  margin-bottom: 0 !important;
-  border: none !important;
-  composes: low from 'common/styles/box-shadow.less';
-  padding: 12px !important;
+  margin-bottom: 0;
+  border: none;
+  padding: 12px;
+  .low;
 
   input {
     font-size: 1em;
 
     &::placeholder {
-      color: rgba(0, 0, 0, 0.6);
+      color: @placeholder;
     }
   }
 }
@@ -29,10 +32,9 @@
 
 .simple {
   &.textBoxContainer {
-    padding: 0.25em 0.35em !important;
+    padding: 0.25em 0.35em;
     box-shadow: none;
     border-radius: 3px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
 
     input {
       font-size: 0.9em;
@@ -53,17 +55,17 @@
   display: flex;
 }
 
-@media only screen and (min-width: @mobile) {
+.fromMobile({
   .searchIcon {
     width: 30px;
     height: 30px;
   }
 
-  .textBoxContainer {
-    padding: 1em !important;
+  div.textBoxContainer {
+    padding: 1em;
 
     input {
       font-size: 1.1em;
     }
   }
-}
+});

@@ -1,4 +1,7 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@text: @_darkestgray;
+@hover: @_red;
 
 .root {
   cursor: default;
@@ -11,7 +14,7 @@
 
   &:not(:last-child):after {
     content: "|";
-    color: black;
+    color: @text;
     margin: 0.25em;
   }
 }
@@ -19,11 +22,11 @@
 .lang:hover,
 .lang:focus,
 .selected {
-  color: #d63227;
+  color: @hover;
 }
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .hr {
     display: none;
   }
-}
+});

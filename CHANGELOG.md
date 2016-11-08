@@ -8,6 +8,13 @@
 - Changes
 ```
 
+## [2.16.2] - 2016/11/08
+### Added
+- Base css file to simply style depedency imports
+
+### Changed
+- Css to be more maintainable. This includes moving all colour, zindex, font declartions into the base area, as well as general cleanup.
+
 ## [2.16.1] - 2016/11/07
 ### Changed
 - Pie chart to use on brand gw2 assets

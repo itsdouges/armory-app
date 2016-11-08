@@ -1,4 +1,4 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
 
 .root {
   text-align: left;
@@ -12,12 +12,11 @@
   position: absolute;
   top: 27px;
   right: 5px;
-  z-index: 99;
+  z-index: @characterEmbedHelpIconZ;
 }
 
-
-@media only screen and (min-width: @pc) {
+.fromPc({
   .root {
     margin: 2em auto;
   }
-}
+});

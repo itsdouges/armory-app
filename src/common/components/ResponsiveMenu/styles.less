@@ -1,4 +1,6 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@background: @_white;
 
 .root {
   position: relative;
@@ -19,8 +21,8 @@
   right: 0;
   margin: 0;
   padding: 0;
-  background: rgba(255, 255, 255, 0.99);
-  composes: low from 'common/styles/box-shadow.less';
+  background: @background;
+  composes: low;
 }
 
 .item {
@@ -54,7 +56,7 @@
   cursor: pointer;
 }
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .item {
     text-align: inherit;
     width: inherit;
@@ -86,4 +88,4 @@
   .toggleButton {
     display: none;
   }
-}
+});

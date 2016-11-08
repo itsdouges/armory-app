@@ -4,6 +4,7 @@ import cx from 'classnames';
 import moment from 'moment';
 import T from 'i18n-react';
 
+import colours from 'common/styles/colours';
 import styles from './styles.less';
 import ProgressBar from 'common/components/ProgressBar';
 import Card from 'common/components/Card';
@@ -23,16 +24,16 @@ function stringToDate (date) {
 function calculateProgressBar ({ team, scores }) {
   if (team === 'Red') {
     return {
-      backgroundColor: 'blue',
-      barColor: 'red',
+      backgroundColor: colours._blue,
+      barColor: colours._red,
       current: scores.red,
       max: scores.red + scores.blue,
     };
   }
 
   return {
-    backgroundColor: 'red',
-    barColor: 'blue',
+    backgroundColor: colours._red,
+    barColor: colours._blue,
     current: scores.blue,
     max: scores.red + scores.blue,
   };
