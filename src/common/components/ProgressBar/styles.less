@@ -1,8 +1,7 @@
 @import '~common/styles/base.less';
 
-@barZ: @_zindex10;
-@progressBarTextZ: @_zindex20;
-@iconZ: @_zindex20;
+@barZ: @_zindex1;
+@iconZ: @_zindex10;
 
 @barTip: @_white;
 @border: @_white;
@@ -42,7 +41,7 @@
   float: right;
 }
 
-.progress {
+.label {
   position: absolute;
   top: 0;
   left: 0;
@@ -51,7 +50,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: @progressBarTextZ;
+  z-index: @progressBarLabelZ;
   text-align: center;
   font-size: 0.9em;
   color: @barTip;
@@ -67,7 +66,7 @@
     content: none;
   }
 
-  .progress {
+  .label {
     font-size: 0.5em;
   }
 }
