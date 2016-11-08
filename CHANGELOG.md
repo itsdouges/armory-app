@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [2.16.2] - unreleased
+## [2.16.2] - 2016/11/08
 ### Added
 - Base css file to simply style depedency imports
 
