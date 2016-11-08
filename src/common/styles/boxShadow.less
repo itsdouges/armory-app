@@ -1,11 +1,15 @@
+@import '~common/styles/base.less';
+
+@boxShadow: fade(@_black, 30%);
+
 .high {
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 4px @boxShadow;
 }
 
 .medium {
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 5px @boxShadow;
 }
 
 .low {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px @boxShadow;
 }

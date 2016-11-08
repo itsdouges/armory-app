@@ -1,13 +1,13 @@
 @import '~common/styles/base.less';
 
-@tooltip-opacity: 0.3;
+@textShadow: @_black;
 
 .root {
   -webkit-backface-visibility: hidden;
   z-index: @tooltipZ;
   font-size: 14px;
   text-align: left;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, @tooltip-opacity);
+  text-shadow: 1px 1px 1px fade(@textShadow, 30%);
   color: @tooltipTopFont;
   .secondaryFont();
 }

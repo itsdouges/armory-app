@@ -1,9 +1,14 @@
+@import '~common/styles/base.less';
+
+@text: @_white;
+@heading: @_orange;
+
 .root {
   padding: 0 0.5rem;
 
   h2 {
     margin: 0;
-    color: orange;
+    color: @heading;
   }
 }
 
@@ -13,5 +18,5 @@
   line-height: 1.4;
   margin: 0 auto;
   margin-top: 1rem;
-  color: #fff;
+  color: @text;
 }
