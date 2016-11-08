@@ -3,20 +3,18 @@
 @placeholder: @_gray;
 @borderBottom: @_darkergray;
 
-// TODO: fix the !importants
-
 .root {
   max-width: 550px;
   flex-grow: 1;
   position: relative;
 }
 
-.textBoxContainer {
+div.textBoxContainer {
   border-radius: 5px;
-  margin-bottom: 0 !important;
-  border: none !important;
-  composes: low;
-  padding: 12px !important;
+  margin-bottom: 0;
+  border: none;
+  padding: 12px;
+  .low;
 
   input {
     font-size: 1em;
@@ -34,7 +32,7 @@
 
 .simple {
   &.textBoxContainer {
-    padding: 0.25em 0.35em !important;
+    padding: 0.25em 0.35em;
     box-shadow: none;
     border-radius: 3px;
 
@@ -63,8 +61,8 @@
     height: 30px;
   }
 
-  .textBoxContainer {
-    padding: 1em !important;
+  div.textBoxContainer {
+    padding: 1em;
 
     input {
       font-size: 1.1em;
