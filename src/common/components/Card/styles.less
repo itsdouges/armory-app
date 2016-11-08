@@ -1,9 +1,5 @@
 @import '~common/styles/base.less';
 
-@large-card: 100%;
-@medium-card: 500px;
-@small-card: 200px;
-
 .root {
   border-radius: 1px;
   width: 100%;
@@ -14,7 +10,7 @@
   background: @cardbackground;
 }
 
-@media only screen and (min-width: @mobile) {
+.fromMobile({
   .card {
     flex-grow: 1;
   }
@@ -26,10 +22,10 @@
   .medium {
     width: @mobile - 20;
   }
-}
+});
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .medium {
     width: @tablet - 150;
   }
-}
+});

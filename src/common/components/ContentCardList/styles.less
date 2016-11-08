@@ -91,30 +91,30 @@
   width: (100 / @items) * 1%;
 }
 
-@media only screen and (min-width: @mobile) {
+.fromMobile({
   .grid .item,
   .list .item {
     .NumberOfSliderItems(2);
   }
-}
+});
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .grid .item,
   .list .item {
     .NumberOfSliderItems(3);
   }
-}
+});
 
-@media only screen and (min-width: @pc) {
+.fromPc({
   .grid .item,
   .list .item {
     .NumberOfSliderItems(4);
   }
-}
+});
 
-@media only screen and (min-width: @largepc) {
+.fromLargePc({
   .grid .item,
   .list .item {
     .NumberOfSliderItems(5);
   }
-}
+});

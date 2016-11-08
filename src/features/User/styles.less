@@ -1,4 +1,4 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
 
 @content-width: 820px;
 
@@ -34,7 +34,7 @@
   flex-wrap: wrap;
 }
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .gamesContainer {
     max-width: 1000px;
   }
@@ -50,4 +50,4 @@
       width: 50%;
     }
   }
-}
+});

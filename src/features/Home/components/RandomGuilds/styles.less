@@ -1,4 +1,4 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
 
 .root {
   overflow: auto;
@@ -14,8 +14,8 @@
   }
 }
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .root {
     text-align: center;
   }
-}
+});
