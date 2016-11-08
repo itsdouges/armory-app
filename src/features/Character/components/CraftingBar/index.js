@@ -1,7 +1,9 @@
 import { PropTypes } from 'react';
+
 import styles from './styles.less';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import ProgressBar from 'common/components/ProgressBar';
+import colours from 'common/styles/colours';
 
 import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
@@ -17,8 +19,8 @@ const CraftingBar = ({ craft }) => {
     <TooltipTrigger data={craft.discipline}>
       <div className={styles.root}>
         <ProgressBar
-          backgroundColor="black"
-          barColor="orange"
+          backgroundColor={colours._darkestgray}
+          barColor={colours._orange}
           icon={<span className={cx('icon', craft.discipline && craft.discipline.toLowerCase())} />}
           current={craft.rating}
           max={max}

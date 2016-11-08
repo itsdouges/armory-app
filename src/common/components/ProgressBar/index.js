@@ -3,6 +3,7 @@ import cx from 'classnames';
 
 import styles from './styles.less';
 import { prefix } from 'lib/css';
+import colours from 'common/styles/colours';
 
 function calcBarStyles (current, max, barColor) {
   const percent = max ? Math.ceil((current / max || 0) * 100) : 0;
@@ -27,6 +28,8 @@ const ProgressBar = ({ current, max, barColor, backgroundColor, icon, small, lab
 ProgressBar.defaultProps = {
   current: 0,
   max: 0,
+  backgroundColor: colours._darkestgray,
+  barColor: colours._purple,
 };
 
 ProgressBar.propTypes = {
