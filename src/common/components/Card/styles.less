@@ -1,9 +1,4 @@
-@import '~common/styles/colours.less';
-@import '~common/styles/sizes.less';
-
-@large-card: 100%;
-@medium-card: 500px;
-@small-card: 200px;
+@import '~common/styles/base.less';
 
 .root {
   border-radius: 1px;
@@ -11,18 +6,11 @@
   flex-grow: 0;
   padding: 1.5em;
   position: relative;
-  composes: low from 'common/styles/box-shadow.less';
-  background: @card-bg;
+  composes: low;
+  background: @cardbackground;
 }
 
-hr {
-  margin: 0;
-  border: 0;
-  background: rgba(0, 0, 0, 0.2);
-  height: 1px!important;
-}
-
-@media only screen and (min-width: @mobile) {
+.fromMobile({
   .card {
     flex-grow: 1;
   }
@@ -34,10 +22,10 @@ hr {
   .medium {
     width: @mobile - 20;
   }
-}
+});
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .medium {
     width: @tablet - 150;
   }
-}
+});

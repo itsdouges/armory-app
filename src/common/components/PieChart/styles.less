@@ -1,3 +1,10 @@
+@import "~common/styles/base.less";
+
+@dividerZ: @_zindex10;
+
+@text: @_white;
+@background: fade(@_black, 75%);
+
 .root {
   position: relative;
   width: 100%;
@@ -41,16 +48,16 @@
 .divider {
   background: url('assets/images/pie-divider.png');
   background-size: contain;
-  z-index: 99;
+  z-index: @dividerZ;
 }
 
 .label {
   position: absolute;
   left: 50%;
   top: 50%;
-  z-index: 99;
+  z-index: @pieChartLabelZ;
   font-size: 0.7em;
-  color: white;
+  color: @text;
   padding: 0.25em;
-  background: rgba(0, 0, 0, 0.5);
+  background: @background;
 }

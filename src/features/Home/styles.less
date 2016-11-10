@@ -1,4 +1,4 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
 
 .root {
   width: 100%;
@@ -27,11 +27,11 @@
   background-size: cover;
 }
 
-@media only screen and (min-width: @pc) {
+.fromPc({
   .atfContainer {
     padding: 3em 0;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-}
+});

@@ -1,4 +1,8 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@itemHover: @_darkgray;
+@itemText: @_white;
+@text: @_darkestgray;
 
 .root {
   position: relative;
@@ -61,7 +65,7 @@
   color: inherit;
   flex-shrink: 0;
   opacity: 0.8;
-  color: black;
+  color: @text;
 }
 
 .list .item {
@@ -78,39 +82,39 @@
 
 .withHover:hover {
   opacity: 1;
-  background: #4c4c4c;
+  background: @itemHover;
   cursor: pointer;
-  color: white;
+  color: @itemText;
 }
 
 .NumberOfSliderItems(@items) {
   width: (100 / @items) * 1%;
 }
 
-@media only screen and (min-width: @mobile) {
+.fromMobile({
   .grid .item,
   .list .item {
     .NumberOfSliderItems(2);
   }
-}
+});
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .grid .item,
   .list .item {
     .NumberOfSliderItems(3);
   }
-}
+});
 
-@media only screen and (min-width: @pc) {
+.fromPc({
   .grid .item,
   .list .item {
     .NumberOfSliderItems(4);
   }
-}
+});
 
-@media only screen and (min-width: @big-pc) {
+.fromLargePc({
   .grid .item,
   .list .item {
     .NumberOfSliderItems(5);
   }
-}
+});

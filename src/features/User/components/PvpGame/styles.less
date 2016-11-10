@@ -1,7 +1,10 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
 
 @margin: 0.5em;
 @padding: 0.33em;
+
+@blue: @_blue;
+@red: @_red;
 
 .root {
   display: inline-flex;
@@ -45,16 +48,16 @@
 
 .result {
   font-size: 1.75em;
-  font-family: 'Menomonia';
   font-weight: bold;
+  .primaryFont();
 }
 
 .blue {
-  color: blue;
+  color: @blue;
 }
 
 .red {
-  color: red;
+  color: @red;
 }
 
 .red,
@@ -81,7 +84,7 @@
   max-width: 100px;
 }
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .map {
     width: 30%;
   }
@@ -97,4 +100,4 @@
   .root:nth-child(odd) {
     margin-left: @margin;
   }
-}
+});

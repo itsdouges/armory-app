@@ -1,4 +1,6 @@
-@import '../../../styles/colours.less';
+@import '~common/styles/base.less';
+
+@skillTooltipHeading: @_gold;
 
 .root {
   position: relative;
@@ -6,9 +8,9 @@
 
 .title {
   font-size: 16px;
-  color: @gold;
-  font-family: 'Menomonia';
+  color: @skillTooltipHeading;
   padding-bottom: 5px;
+  .primaryFont();
 }
 
 .description {

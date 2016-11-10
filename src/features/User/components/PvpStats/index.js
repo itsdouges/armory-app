@@ -6,6 +6,7 @@ import styles from './styles.less';
 import ProgressBar from 'common/components/ProgressBar';
 import Summary from 'common/layouts/Summary';
 import Redacted from 'common/components/Redacted';
+import colours from 'common/styles/colours';
 
 function calculateWinLossRatio (stats) {
   if (!stats.wins) {
@@ -53,8 +54,8 @@ const PvpStats = ({ stats, title }) => {
                 }
               </Redacted>
             }
-            barColor="#4CAF50"
-            backgroundColor="#F44336"
+            barColor={colours._lightgreen}
+            backgroundColor={colours._red}
           />
           <span className={styles.small}>
             <Redacted redact={redact}>{smallLabel}</Redacted>

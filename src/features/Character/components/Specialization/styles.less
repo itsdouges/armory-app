@@ -1,5 +1,7 @@
-@import '~common/styles/box-shadow.less';
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@traitColumnZ: @_zindex10;
+@background: @_black;
 
 .overflowContainer {
   overflow: auto;
@@ -15,7 +17,7 @@
   display: flex;
   align-items: center;
   padding-left: 4.4em;
-  background-color: black;
+  background-color: @background;
   margin: 0 auto;
   position: relative;
   .low;
@@ -40,11 +42,11 @@
     clip-path: inset(2px 2px 2px 2px);
   }
 
-  z-index: 19;
+  z-index: @traitColumnZ;
 }
 
 .minorTraitColumn {
-  z-index: 19;
+  z-index: @traitColumnZ;
   margin: 5.3%;
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
 }
@@ -53,20 +55,8 @@
   margin-left: 0;
 }
 
-@media only screen and (min-width: 420px) {
-  .bigIcon {
-    // margin-left: -6em;
-  }
-}
-
-@media only screen and (min-width: @mobile) {
-  .bigIcon {
-    // margin-left: -3em;
-  }
-}
-
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .bigIcon {
     margin-left: 0;
   }
-}
+});

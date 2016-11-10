@@ -1,32 +1,45 @@
-@junk: #AAA;
+@json-import '/colours.json';
+
+@_orange: #e8980c;
+@_white: #fefefe;
+@_lightgreen: #8FBF7F;
+@_green: #05A009;
+@_lightgray: #f7f9fa;
+@_gray: #9d9e9f;
+@_darkgray: #606468;
+@_darkergray: #333;
+@_darkestgray: #292929;
+@_copper: #75441D;
+@_blue: #3C67A6;
+@_gold: #FFC90E;
+@_red: #d63227;
+@_pink: #FF7F7F;
+@_black: #000;
+@_purple: #5523A4;
+
+@junk: #aaa;
 @basic: #000;
-@fine: #62A4DA;
+@fine: #62a4da;
 @masterwork: #1a9306;
 @rare: #fcd00b;
 @exotic: #ffa405;
 @ascended: #fb3e8d;
 @legendary: #4c139d;
-
-@orange: #e8980c;
-@white: #fefefe;
-@green: #05A009;
-@gray: #9D9E9F;
-@dark-gray: #606468;
-@copper: #75441D;
-@blue: #3C67A6;
-@gold: #FFC90E;
-
 @flavor: #94dcd2;
-@primary: #d63227;
-@secondary: #d3a08e;
+@reminder: #4564a1;
 
-@text: #333;
+@primary: @_red;
+@text: @_darkergray;
+@cardbackground: @_white;
+@background: @_lightgray;
+@positive: @_lightgreen;
+@negative: @_pink;
+@disabled: @_darkgray;
+@disabledalt: @_lightgray;
+@hr: fade(@_gray, 50%);
 
-@card-bg: #FFF;
-@background: #EEE;
-
-@positive: rgb(143, 191, 127);
-@negative: rgb(255, 127, 127);
+@tooltipTopFont: @_gray;
+@scrollBar: @_gray;
 
 .negative {
   color: @negative;
@@ -47,7 +60,6 @@
 .fine {
   color: @fine;
 }
-
 
 .masterwork {
   color: @masterwork;
@@ -70,23 +82,23 @@
 }
 
 .copper {
-  color: @copper;
+  color: @_copper;
 }
 
 .green {
-  color: @green;
+  color: @_green;
 }
 
 .dark-gray {
-  color: @dark-gray;
+  color: @_darkgray;
 }
 
 .blue {
-  color: @blue;
+  color: @_blue;
 }
 
 .gold {
-  color: @gold;
+  color: @_gold;
 }
 
 // == GW2 MARKUP COLOURS ==
@@ -96,5 +108,5 @@
 }
 
 .reminder {
-  color: #4564a1;
+  color: @reminder;
 }

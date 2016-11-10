@@ -7,6 +7,7 @@ import T from 'i18n-react';
 
 import Icon from 'common/components/Icon';
 import Placeholder from './placeholder';
+import colours from 'common/styles/colours';
 
 const cx = classnames.bind(styles);
 
@@ -26,7 +27,7 @@ function extractData (content, { type, forceUpdate }) {
         ),
         subTitle: content.accountName || 'User',
         imageStyle: {
-          backgroundColor: '#c1c1c1',
+          backgroundColor: colours._gray,
           backgroundImage: `url(${url})`,
           borderRadius: '50%',
         },

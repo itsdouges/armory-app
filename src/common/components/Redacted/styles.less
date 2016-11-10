@@ -1,3 +1,7 @@
+@import '~common/styles/base.less';
+
+@redact: @_darkergray;
+
 .redact {
   position: relative;
 }
@@ -5,7 +9,7 @@
 .redact:after {
   content: "";
   position: absolute;
-  background: #333;
+  background: @redact;
   top: 25%;
   bottom: 25%;
   left: 5%;

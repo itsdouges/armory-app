@@ -1,4 +1,6 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@health: @_green;
 
 .root {
   display: flex;
@@ -108,5 +110,5 @@
 }
 
 .health + span {
-  color: #059202;
+  color: @health;
 }

@@ -1,14 +1,18 @@
-@import '~common/styles/box-shadow.less';
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
+
+@bigIconZ: @_zindex10;
+@icon: @_black;
+@iconBorder: @_darkestgray;
+@iconShadow: @_black;
 
 .bigIcon {
   position: relative;
   width: 100px;
   height: 58px;
   background-position: -102.5% 78%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.7);
-  border-left: solid 3px #0d0d0d;
-  border-right: solid 3px #0d0d0d;
+  box-shadow: 0 0 10px @icon;
+  border-left: solid 3px @iconBorder;
+  border-right: solid 3px @iconBorder;
 }
 
 .bigIcon:after {
@@ -18,21 +22,21 @@
   left: 0;
   width: 94px;
   height: 54px;
-  z-index: 2;
+  z-index: @bigIconZ;
   background: inherit;
 }
 
 .bigIconTop,
 .bigIconBottom {
   position: absolute;
-  z-index: 1;
+  z-index: @bigIconZ;
   width: 71px;
   height: 71px;
   overflow: hidden;
   transform: scaleY(0.6) rotate(-45deg);
   background: inherit;
   left: 11.64px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.7);
+  box-shadow: 0 0 15px @iconShadow;
 }
 
 .bigIconTop:after,
@@ -48,8 +52,8 @@
 
 .bigIconTop {
   top: -35.5px;
-  border-top: solid 4px #0d0d0d;
-  border-right: solid 4px #0d0d0d;
+  border-top: solid 4px @iconBorder;
+  border-right: solid 4px @iconBorder;
 }
 
 .bigIconTop:after {
@@ -58,8 +62,8 @@
 
 .bigIconBottom {
   bottom: -35.5px;
-  border-bottom: solid 4.5px #0d0d0d;
-  border-left: solid 4.5px #0d0d0d;
+  border-bottom: solid 4.5px @iconBorder;
+  border-left: solid 4.5px @iconBorder;
 }
 
 .bigIconBottom:after {

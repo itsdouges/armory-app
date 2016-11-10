@@ -1,15 +1,24 @@
-@import '~common/styles/sizes.less';
-@import '~common/styles/z-index.less';
-@import '~common/styles/colours.less';
+@import '~common/styles/base.less';
+
+@barZ: @_zindex1;
+@iconZ: @_zindex10;
+
+@barTip: @_white;
+@border: @_white;
+@textShadow: @_black;
 
 .root {
   text-align: left;
-  z-index: @bottom-z;
   position: relative;
   width: 100%;
   height: 30px;
   overflow: hidden;
-  composes: low from 'common/styles/box-shadow.less';
+  composes: low;
+}
+
+.icon {
+  z-index: @iconZ;
+  position: absolute;
 }
 
 .bar {
@@ -17,8 +26,8 @@
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: @behind-z;
-  transition: transform 0.5s;
+  z-index: @barZ;
+  .transition(transform, 0.5s);
 }
 
 .bar:after {
@@ -26,13 +35,13 @@
   box-sizing: border-box;
   display: block;
   width: 5px;
-  border-right: 4px solid white;
+  border-right: 4px solid @border;
   height: 100%;
-  background: linear-gradient(to right, transparent, @white);
+  background: linear-gradient(to right, transparent, @barTip);
   float: right;
 }
 
-.progress {
+.label {
   position: absolute;
   top: 0;
   left: 0;
@@ -41,12 +50,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: @middle-z;
+  z-index: @progressBarLabelZ;
   text-align: center;
   font-size: 0.9em;
-  color: white;
+  color: @barTip;
   cursor: default;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 1px @textShadow;
 }
 
 .small {
@@ -57,7 +66,7 @@
     content: none;
   }
 
-  .progress {
+  .label {
     font-size: 0.5em;
   }
 }

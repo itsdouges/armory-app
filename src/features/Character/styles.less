@@ -1,8 +1,10 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
 
-@thick-width: 192;
-@thin-width: 120;
-@content-width: 820px;
+@thick: 192;
+@thin: 120;
+@content: 820px;
+
+@brushDecorationZ: @_zindexBehind;
 
 .root {
   flex-grow: 1;
@@ -11,7 +13,7 @@
 }
 
 .inner {
-  max-width: @content-width;
+  max-width: @content;
   margin: 0 auto;
   position: relative;
 }
@@ -26,14 +28,14 @@
 }
 
 .editButton {
-  composes: low from 'common/styles/box-shadow.less';
+  composes: low;
 }
 
 .modeContainer {
   position: absolute;
   top: 0.5em;
   right: 0.5em;
-  z-index: 99;
+  z-index: @portraitButtonsZ;
 }
 
 .embedContainer {
@@ -41,7 +43,7 @@
   right: 0.5em;
   bottom: 0.5em;
   left: 0.5em;
-  z-index: 99;
+  z-index: @portraitButtonsZ;
   text-align: right;
 }
 
@@ -67,7 +69,7 @@
   flex-shrink: 0;
   flex-wrap: wrap;
   justify-content: center;
-  transition: opacity 0.2s;
+  .transition(opacity);
 }
 
 .leftColumn {
@@ -112,7 +114,7 @@
 
 .brushStrokeContainer:before,
 .brushStrokeContainer:after {
-  z-index: -1;
+  z-index: @brushDecorationZ;
   content: "";
   position: absolute;
   width: 125px;
@@ -135,8 +137,8 @@
   text-align: center;
 }
 
-.linkItem {
-  display: inline-flex!important;
+div.linkItem {
+  display: inline-flex;
   text-align: left;
 }
 
@@ -149,7 +151,7 @@
   display: inline-flex;
 }
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .columns {
     flex-direction: row;
   }
@@ -165,7 +167,7 @@
   }
 
   .rightColumn {
-    width: @thick-width * 1px;
+    width: @thick * 1px;
   }
 
   .attributes {
@@ -176,4 +178,4 @@
       width: 50%;
     }
   }
-}
+});

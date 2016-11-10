@@ -39,8 +39,6 @@ const RaidSummary = ({ userAchievements, className, simple }) => {
         <ProgressBar
           current={achievements.length}
           max={TOTAL_KILLS}
-          backgroundColor="rgb(41, 41, 41)"
-          barColor="rgb(85, 35, 164)"
         />
       }
     />

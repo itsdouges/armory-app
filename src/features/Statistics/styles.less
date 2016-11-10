@@ -1,3 +1,5 @@
+@import '~common/styles/base.less';
+
 .root {
   text-align: left;
 }
@@ -31,3 +33,13 @@
   justify-content: center;
   align-items: center;
 }
+
+.note {
+  text-align: center;
+}
+
+.fromTablet({
+  .note {
+    text-align: left;
+  }
+});

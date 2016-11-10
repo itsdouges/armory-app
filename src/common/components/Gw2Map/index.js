@@ -34,8 +34,8 @@ type Gw2MapProps = {
 
 const Gw2Map = ({ data, className }: Gw2MapProps) => (
   <div className={cx(styles.root, className)} style={getStyle(data.id)}>
-    <a href={`https://wiki-${LANGUAGE}.guildwars2.com/wiki/${cleanName(data.name)}`} target="_blank">
-      {data.name && <span title={data.name} className={styles.name}>{data.name}</span>}
+    <a href={`https://wiki-${LANGUAGE}.guildwars2.com/wiki/${cleanName(data.name)}`} target="_blank" className={styles.name}>
+      {data.name && <span title={data.name}>{data.name}</span>}
     </a>
   </div>
 );

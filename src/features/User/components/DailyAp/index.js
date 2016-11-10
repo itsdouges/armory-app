@@ -16,8 +16,6 @@ const DailyAp = ({ dailyAp, monthlyAp }) => {
         <ProgressBar
           current={count}
           max={15000}
-          backgroundColor="rgb(41, 41, 41)"
-          barColor="rgb(85, 35, 164)"
         />
       }
     />

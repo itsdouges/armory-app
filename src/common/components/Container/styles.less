@@ -1,17 +1,17 @@
-@import '~common/styles/sizes.less';
+@import '~common/styles/base.less';
 
 .container {
   margin: 0 auto;
   text-align: center;
 }
 
-@media only screen and (min-width: @mobile) {
+.fromMobile({
   .container {
     width: @mobile;
   }
-}
+});
 
-@media only screen and (min-width: @tablet) {
+.fromTablet({
   .container {
     width: @tablet;
   }
@@ -19,10 +19,10 @@
   .flexContainer {
     max-width: @tablet * 1.2;
   }
-}
+});
 
-@media only screen and (min-width: @pc) {
+.fromPc({
   .container {
     width: @pc;
   }
-}
+});

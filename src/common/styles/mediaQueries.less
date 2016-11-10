@@ -1,0 +1,31 @@
+@import '~common/styles/sizes.less';
+
+.fromMobile(@rules) {
+  @media only screen and (min-width: @mobile) {
+    @rules();
+  }
+}
+
+.fromLargeMobile(@rules) {
+  @media only screen and (min-width: @largemobile) {
+    @rules();
+  }
+}
+
+.fromTablet(@rules) {
+  @media only screen and (min-width: @tablet) {
+    @rules();
+  }
+}
+
+.fromPc(@rules) {
+  @media only screen and (min-width: @pc) {
+    @rules();
+  }
+}
+
+.fromLargePc(@rules) {
+  @media only screen and (min-width: @largepc) {
+    @rules();
+  }
+}
