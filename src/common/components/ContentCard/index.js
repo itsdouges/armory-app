@@ -73,12 +73,12 @@ type ContentType = 'characters' | 'users' | 'guilds' | 'pet';
 type CardSize = 'small' | 'big';
 
 type ContentCardProps = {
-  content: Object,
-  className: string,
-  type: ContentType,
-  size: CardSize,
-  extraSubtitle: any,
-  forceUpdate: bool,
+  content?: Object,
+  className?: string,
+  type?: ContentType,
+  size?: CardSize,
+  extraSubtitle?: any,
+  forceUpdate?: bool,
 };
 
 const ContentCard = ({

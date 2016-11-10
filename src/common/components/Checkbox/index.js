@@ -1,3 +1,5 @@
+// @flow
+
 import styles from './styles.less';
 
 type CheckboxProps = {

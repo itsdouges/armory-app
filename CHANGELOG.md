@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [2.17.0] - 2016/11/10
+### Added
+- Flow static type checking
+
 ## [2.16.1] - 2016/11/07
 ### Changed
 - Pie chart to use on brand gw2 assets

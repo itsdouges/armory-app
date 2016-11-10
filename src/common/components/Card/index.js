@@ -1,15 +1,17 @@
+// @flow
+
 import styles from './styles.less';
 import cx from 'classnames';
 
 type CardProps = {
-  size: string,
-  className: string,
-  children: any,
+  size?: string,
+  className?: string,
+  children?: Element<any>,
 };
 
-const Card = (props: CardProps) => (
-  <div {...props} className={cx(styles.root, props.size, props.className)}>
-    {props.children}
+const Card = ({ size, className, children, ...props }: CardProps) => (
+  <div {...props} className={cx(styles.root, styles[size], className)}>
+    {children}
   </div>
 );
 

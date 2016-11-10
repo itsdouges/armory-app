@@ -1,4 +1,5 @@
-import { PropTypes } from 'react';
+// @flow
+
 import cx from 'classnames';
 import includes from 'lodash/includes';
 
@@ -26,18 +27,18 @@ function getStyle (id = 0) {
   };
 }
 
-const Gw2Map = ({ data, className }) => (
+type Gw2MapProps = {
+  data: Object,
+  className: string,
+};
+
+const Gw2Map = ({ data, className }: Gw2MapProps) => (
   <div className={cx(styles.root, className)} style={getStyle(data.id)}>
     <a href={`https://wiki-${LANGUAGE}.guildwars2.com/wiki/${cleanName(data.name)}`} target="_blank">
       {data.name && <span title={data.name} className={styles.name}>{data.name}</span>}
     </a>
   </div>
 );
-
-Gw2Map.propTypes = {
-  data: PropTypes.object,
-  className: PropTypes.string,
-};
 
 Gw2Map.defaultProps = {
   data: {

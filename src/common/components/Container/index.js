@@ -1,14 +1,16 @@
+// @flow
+
 import styles from './styles.less';
 import cx from 'classnames';
 
 type ContainerProps = {
   className: string,
-  children: any,
+  children: Element<any>,
 };
 
-const Container = ({ className, ...props }: ContainerProps) => (
+const Container = ({ className, children, ...props }: ContainerProps) => (
   <div {...props} className={cx(styles.container, className)}>
-    {props.children}
+    {children}
   </div>
 );
 
