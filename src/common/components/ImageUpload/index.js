@@ -1,6 +1,8 @@
+// @flow
+
 /* eslint no-return-assign:0 */
-import { PropTypes, Component } from 'react';
-import { get, put } from 'axios';
+import { Component } from 'react';
+import axios from 'axios';
 import T from 'i18n-react';
 
 import styles from './styles.less';
@@ -12,16 +14,16 @@ import Message from 'common/components/Message';
 const FILE_SIZE_LIMIT = 1000000;
 const ALLOWED_FILE_TYPES = ['image/x-png', 'image/jpeg', 'image/png', 'image/jpg'];
 
-export default class ImageUpload extends Component {
-  static propTypes = {
-    children: PropTypes.any,
-    disabled: PropTypes.bool,
-    onUploadComplete: PropTypes.func,
-    hintText: PropTypes.any,
-    forceShow: PropTypes.bool,
-    uploadName: PropTypes.string,
-  };
+type ImageUploadProps = {
+  onUploadComplete: Function,
+  hintText: Element<any>,
+  children?: any,
+  disabled?: bool,
+  forceShow?: bool,
+  uploadName: string,
+};
 
+export default class ImageUpload extends Component {
   static defaultProps = {
     onUploadComplete: () => {},
   };
@@ -31,6 +33,9 @@ export default class ImageUpload extends Component {
     uploading: false,
     error: '',
   };
+
+  props: ImageUploadProps;
+  fileInput: HTMLInputElement;
 
   show = () => {
     this.setState({
@@ -44,7 +49,7 @@ export default class ImageUpload extends Component {
     });
   };
 
-  upload = (e) => {
+  upload = (e: EventHandler) => {
     const [file] = e.target.files;
 
     if (!file) {
@@ -74,9 +79,9 @@ export default class ImageUpload extends Component {
 
     const { uploadName } = this.props;
 
-    get(`${config.api.endpoint}sign-upload?contentType=${file.type}&fileName=${uploadName}`)
+    axios.get(`${config.api.endpoint}sign-upload?contentType=${file.type}&fileName=${uploadName}`)
       .then(({ data: { signedRequest } }) =>
-          put(signedRequest, file, {
+          axios.put(signedRequest, file, {
             headers: {
               Accept: '*/*',
               'Content-Type': file.type,
@@ -106,7 +111,7 @@ export default class ImageUpload extends Component {
     const showOverlay = this.props.forceShow || hovering || uploading || error;
     const overlayContent = (error && <Message type="error">{error}</Message>) ||
       (uploading && <ProgressIcon />) ||
-      <span className={styles.hintText}>{this.props.hintText || 'Upload image'}</span>;
+      <span className={styles.hintText}>{this.props.hintText}</span>;
 
     return (
       <div

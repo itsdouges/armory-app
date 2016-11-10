@@ -1,8 +1,17 @@
-import { PropTypes } from 'react';
+// @flow
+
 import Helmet from 'react-helmet';
 import config from 'config';
 
 import defaultImage from 'assets/images/logo.png';
+
+type HeadProps = {
+  description: string,
+  title: string,
+  canonical: string,
+  type: string,
+  image: string,
+};
 
 const Head = ({
   description,
@@ -11,7 +20,7 @@ const Head = ({
   type = 'website',
   image = defaultImage,
   ...extraProps,
-}) => {
+}: HeadProps) => {
   const fullTitle = `${title}${config.titleSuffix}`;
   const parsedDescription = description
     ? `${description} | ${config.description}`
@@ -36,15 +45,6 @@ const Head = ({
   return (
     <Helmet {...props} />
   );
-};
-
-Head.propTypes = {
-  description: PropTypes.string,
-  title: PropTypes.string,
-  type: PropTypes.string,
-  canonical: PropTypes.string,
-  image: PropTypes.string,
-  titleTemplate: PropTypes.string,
 };
 
 export default Head;

@@ -1,15 +1,24 @@
-import { PropTypes } from 'react';
-import styles from './styles.less';
-import classNames from 'classnames/bind';
-const cx = classNames.bind(styles);
+// @flow
 
-const Icon = ({ name, size, className, src, button, ...props }) => {
-  let image;
+import styles from './styles.less';
+import classnames from 'classnames/bind';
+const cx = classnames.bind(styles);
+
+type IconProps = {
+  name: string,
+  size?: string,
+  className?: string,
+  src?: string,
+  button?: bool,
+};
+
+const Icon = ({ name, size, className, src, button, ...props }: IconProps) => {
+  let image: string;
 
   try {
     image = require(`assets/images/${name}`);
   } catch (ex) {
-    image = undefined;
+    image = '';
   }
 
   return (
@@ -26,14 +35,6 @@ const Icon = ({ name, size, className, src, button, ...props }) => {
 
 Icon.defaultProps = {
   size: 'mini',
-};
-
-Icon.propTypes = {
-  name: PropTypes.string,
-  size: PropTypes.string,
-  className: PropTypes.string,
-  src: PropTypes.string,
-  button: PropTypes.bool,
 };
 
 export default Icon;

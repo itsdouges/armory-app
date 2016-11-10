@@ -1,4 +1,5 @@
-import { PropTypes } from 'react';
+// @flow
+
 import ContentCard from 'common/components/ContentCard';
 import Card from 'common/components/Card';
 import { Link } from 'react-router';
@@ -22,6 +23,15 @@ function buildUrl (item, aliasOverride, resource) {
   }
 }
 
+type ContentCardListProps = {
+  items: [],
+  alias: string,
+  resource: string,
+  noBorder: bool,
+  type: 'grid' | 'list',
+  bottomBorder: bool,
+};
+
 const ContentCardList = ({
   items = [],
   alias,
@@ -29,7 +39,7 @@ const ContentCardList = ({
   bottomBorder,
   noBorder,
   resource = 'characters',
-}) => {
+}: ContentCardListProps) => {
   const content = items.length ?
     items.map((item, index) => (
       <Link
@@ -60,15 +70,6 @@ const ContentCardList = ({
       </Card>
     </div>
   );
-};
-
-ContentCardList.propTypes = {
-  items: PropTypes.array,
-  alias: PropTypes.string,
-  resource: PropTypes.string,
-  noBorder: PropTypes.bool,
-  type: PropTypes.oneOf(['grid', 'list']),
-  bottomBorder: PropTypes.bool,
 };
 
 export default ContentCardList;

@@ -1,13 +1,11 @@
-import { Component, PropTypes } from 'react';
+// @flow
+
+import { Component } from 'react';
 
 import { isSmallScreen, addEvent } from 'lib/dom';
 import { prefix } from 'lib/css';
 
 export default class MouseFollow extends Component {
-  static propTypes = {
-    children: PropTypes.any,
-  };
-
   state = {
     style: {
       position: 'fixed',
@@ -46,7 +44,7 @@ export default class MouseFollow extends Component {
     this.removeEvent();
   }
 
-  onMouseMove = (event) => {
+  onMouseMove = (event: MouseEvent) => {
     // eslint-disable-next-line
     const tooltip = this._tooltip;
 
@@ -66,7 +64,11 @@ export default class MouseFollow extends Component {
     });
   };
 
-  calculateStyle ({ pin, mouse, tooltip }) {
+  _tooltip: Element;
+  removeEvent: Function;
+  props: { children?: any };
+
+  calculateStyle ({ pin, mouse, tooltip }: Object) {
     let { clientX: x, clientY: y } = mouse;
 
     if (pin.pinRight) {
@@ -82,7 +84,7 @@ export default class MouseFollow extends Component {
     return prefix('transform', transform);
   }
 
-  calculatePin ({ tooltip, mouse }) {
+  calculatePin ({ tooltip, mouse }: Object) {
     const { clientX: x, clientY: y } = mouse;
 
     let pinRight = false;

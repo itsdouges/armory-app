@@ -1,16 +1,17 @@
-import { PropTypes } from 'react';
+// @flow
+
 import styles from './styles.less';
 import cx from 'classnames';
 
-const Container = ({ className, ...props }) => (
+type ContainerProps = {
+  className: string,
+  children: Element<any>,
+};
+
+const Container = ({ className, children, ...props }: ContainerProps) => (
   <div {...props} className={cx(styles.container, className)}>
-    {props.children}
+    {children}
   </div>
 );
-
-Container.propTypes = {
-  children: PropTypes.any,
-  className: PropTypes.string,
-};
 
 export default Container;

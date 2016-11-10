@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [2.17.0] - 2016/11/10
+### Added
+- Flow static type checking
+
 ## [2.16.2] - 2016/11/08
 ### Added
 - Base css file to simply style depedency imports

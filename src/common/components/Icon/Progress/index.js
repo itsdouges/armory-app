@@ -1,9 +1,15 @@
-import { PropTypes } from 'react';
+// @flow
+
 import styles from './styles.less';
 import sizes from '../styles.less';
 import cx from 'classnames';
 
-const ProgressIcon = ({ size, className }) => (
+type ProgressIconProps = {
+  size?: string,
+  className?: string,
+};
+
+const ProgressIcon = ({ size, className }: ProgressIconProps) => (
   <svg
     className={cx(styles.spinner, sizes[size], className)}
     viewBox="0 0 66 66"
@@ -23,11 +29,6 @@ const ProgressIcon = ({ size, className }) => (
 
 ProgressIcon.defaultProps = {
   size: 'mini',
-};
-
-ProgressIcon.propTypes = {
-  size: PropTypes.string,
-  className: PropTypes.string,
 };
 
 export default ProgressIcon;

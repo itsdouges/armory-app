@@ -1,0 +1,23 @@
+[ignore]
+# https://github.com/facebook/fbjs/issues/64
+.*/node_modules/fbjs.*
+
+[include]
+
+[libs]
+flow/npm/
+flow/libdefs/
+
+[options]
+# Allow dynamic require statements
+module.ignore_non_literal_requires=true
+
+# Stub out less files so flow can import them
+module.name_mapper.extension='less' -> '<PROJECT_ROOT>/flow/CSSModule.js.flow'
+
+# Map for absolute paths
+module.name_mapper='^assets\/\(.*\)' -> '<PROJECT_ROOT>/src/assets/\1'
+module.name_mapper='^common\/\(.*\)' -> '<PROJECT_ROOT>/src/common/\1'
+module.name_mapper='^features\/\(.*\)' -> '<PROJECT_ROOT>/src/features/\1'
+module.name_mapper='^lib\/\(.*\)' -> '<PROJECT_ROOT>/src/lib/\1'
+module.name_mapper='^config$' -> '<PROJECT_ROOT>/src/config'

@@ -1,11 +1,21 @@
-import { PropTypes } from 'react';
+// @flow
+
 import styles from './styles.less';
 import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
 import ProgressIcon from 'common/components/Icon/Progress';
 
-const Button = (props) => (
+type ButtonProps = {
+  className: string,
+  type: string,
+  disabled: bool,
+  onClick: Function,
+  children: any,
+  busy: bool,
+};
+
+const Button = (props: ButtonProps) => (
   <button
     className={cx('button', props.className, props.type, {
       disabled: props.busy || props.disabled,
@@ -20,16 +30,6 @@ const Button = (props) => (
 Button.defaultProps = {
   onClick: () => {},
   type: 'neutral',
-};
-
-Button.propTypes = {
-  disabled: PropTypes.bool,
-  busy: PropTypes.bool,
-  type: PropTypes.string,
-  children: PropTypes.any,
-  containerClassName: PropTypes.string,
-  onClick: PropTypes.func,
-  className: PropTypes.string,
 };
 
 export default Button;
