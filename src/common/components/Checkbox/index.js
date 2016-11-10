@@ -1,8 +1,10 @@
-import { PropTypes } from 'react';
-
 import styles from './styles.less';
 
-const Checkbox = ({ label, ...props }) => (
+type CheckboxProps = {
+  label: string,
+};
+
+const Checkbox = ({ label, ...props }: CheckboxProps) => (
   <div className={styles.root}>
     <label>
       <input {...props} type="checkbox" className={styles.checkbox} />
@@ -10,9 +12,5 @@ const Checkbox = ({ label, ...props }) => (
     </label>
   </div>
 );
-
-Checkbox.propTypes = {
-  label: PropTypes.string,
-};
 
 export default Checkbox;

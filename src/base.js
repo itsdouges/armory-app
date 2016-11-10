@@ -1,4 +1,5 @@
-import { PropTypes } from 'react';
+// @flow
+
 import rootReducer from 'features/reducer';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -11,24 +12,25 @@ import 'lib/i18n';
 import 'assets/fonts/menomonia.css';
 import './styles.less';
 
-const logger = __DEVELOPMENT__ && createLogger();
+const middlewares = [thunk];
+
+if (__DEVELOPMENT__) {
+  middlewares.push(createLogger());
+}
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(...[
-    thunk,
-    logger,
-  ].filter((n) => !!n))
+  applyMiddleware(...middlewares)
 );
 
-const Base = ({ children }) => (
+type BaseProps = {
+  children?: Element<any>,
+};
+
+const Base = ({ children }: BaseProps) => (
   <Provider store={store}>
     {children}
   </Provider>
 );
-
-Base.propTypes = {
-  children: PropTypes.any,
-};
 
 export default Base;

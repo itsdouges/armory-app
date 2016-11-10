@@ -1,4 +1,5 @@
-import { PropTypes } from 'react';
+// @flow
+
 import styles from './styles.less';
 import config from 'config';
 import classnames from 'classnames/bind';
@@ -29,6 +30,7 @@ function extractData (content, { type, forceUpdate }) {
           backgroundImage: `url(${url})`,
           borderRadius: '50%',
         },
+        imageClass: '',
       };
     }
 
@@ -38,6 +40,7 @@ function extractData (content, { type, forceUpdate }) {
         // eslint-disable-next-line
         subTitle: `${content.level} ${content.race} ${content.eliteSpecialization || content.profession}`,
         imageClass: content.profession && content.profession.toLowerCase(),
+        imageStyle: '',
       };
 
     case 'guilds':
@@ -48,20 +51,35 @@ function extractData (content, { type, forceUpdate }) {
           backgroundImage: `url(https://guilds.gw2w2w.com/guilds/${content.name && content.name.replace(/\s+/g, '-')}/256.svg)`,
           borderRadius: '50%',
         },
+        imageClass: '',
       };
 
     case 'pet':
       return {
         title: content.name,
+        subTitle: '',
         imageStyle: {
           backgroundImage: `url(${content.icon})`,
         },
+        imageClass: '',
       };
 
     default:
-      return {};
+      return { title: '', subTitle: '', imageStyle: '', imageClass: '' };
   }
 }
+
+type ContentType = 'characters' | 'users' | 'guilds' | 'pet';
+type CardSize = 'small' | 'big';
+
+type ContentCardProps = {
+  content: Object,
+  className: string,
+  type: ContentType,
+  size: CardSize,
+  extraSubtitle: any,
+  forceUpdate: bool,
+};
 
 const ContentCard = ({
   content,
@@ -70,7 +88,7 @@ const ContentCard = ({
   size = 'small',
   extraSubtitle,
   forceUpdate,
-}) => {
+}: ContentCardProps) => {
   if (!content) {
     return <Placeholder size={size} className={className} />;
   }
@@ -98,16 +116,6 @@ const ContentCard = ({
       </div>
     </div>
   );
-};
-
-ContentCard.propTypes = {
-  content: PropTypes.object,
-  className: PropTypes.string,
-  type: PropTypes.oneOf(['characters', 'users', 'guilds', 'pet']),
-  size: PropTypes.oneOf(['small', 'big']),
-  extraSubtitle: PropTypes.any,
-  // I don't like this.
-  forceUpdate: PropTypes.bool,
 };
 
 export default ContentCard;

@@ -1,19 +1,16 @@
-import { PropTypes } from 'react';
 import styles from './styles.less';
-import classnames from 'classnames/bind';
-const cx = classnames.bind(styles);
+import cx from 'classnames';
 
-const Card = (props) => (
-  <div {...props} className={cx('root', props.size, props.className)}>
+type CardProps = {
+  size: string,
+  className: string,
+  children: any,
+};
+
+const Card = (props: CardProps) => (
+  <div {...props} className={cx(styles.root, props.size, props.className)}>
     {props.children}
   </div>
 );
-
-Card.propTypes = {
-  size: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.any,
-  background: PropTypes.string,
-};
 
 export default Card;
