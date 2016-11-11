@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+// @flow
 
 import styles from './styles.less';
 import { prefix } from 'lib/css';
@@ -16,8 +16,14 @@ const colorHueDegrees = {
   yellow: 325,
 };
 
+type SegmentProps = {
+  color: string,
+  rotationOffset: number,
+  centralAngle: number,
+};
+
 const MAX_SEGMENT_DEG = 90;
-const Segment = ({ color, rotationOffset, centralAngle }) => {
+const Segment = ({ color, rotationOffset, centralAngle }: SegmentProps) => {
   const skew = MAX_SEGMENT_DEG - centralAngle;
 
   return (
@@ -36,12 +42,6 @@ const Segment = ({ color, rotationOffset, centralAngle }) => {
       </div>
     </div>
   );
-};
-
-Segment.propTypes = {
-  color: PropTypes.string,
-  rotationOffset: PropTypes.number,
-  centralAngle: PropTypes.number,
 };
 
 export default Segment;

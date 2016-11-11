@@ -1,4 +1,5 @@
-import { PropTypes } from 'react';
+// @flow
+
 import cx from 'classnames';
 
 import styles from './styles.less';
@@ -15,7 +16,25 @@ function calcBarStyles (current, max, barColor) {
   };
 }
 
-const ProgressBar = ({ current, max, barColor, backgroundColor, icon, small, label }) => (
+type ProgressBarProps = {
+  current: number,
+  max: number,
+  barColor?: string,
+  backgroundColor?: string,
+  icon?: any,
+  small?: bool,
+  label?: string,
+};
+
+const ProgressBar = ({
+  current,
+  max,
+  barColor,
+  backgroundColor,
+  icon,
+  small,
+  label,
+}: ProgressBarProps) => (
   <div className={cx(styles.root, small && styles.small)} style={{ backgroundColor }}>
     <span className={styles.icon}>{icon}</span>
     <span className={styles.bar} style={calcBarStyles(current, max, barColor)} />
@@ -30,16 +49,6 @@ ProgressBar.defaultProps = {
   max: 0,
   backgroundColor: colours._darkestgray,
   barColor: colours._purple,
-};
-
-ProgressBar.propTypes = {
-  backgroundColor: PropTypes.string,
-  barColor: PropTypes.string,
-  current: PropTypes.number,
-  max: PropTypes.number,
-  icon: PropTypes.node,
-  small: PropTypes.bool,
-  label: PropTypes.any,
 };
 
 export default ProgressBar;

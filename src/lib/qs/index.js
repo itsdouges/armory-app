@@ -1,4 +1,9 @@
-export default function getParameterByName (name, url = window.location.href) {
+// @flow
+
+export default function getParameterByName (
+  name: string,
+  url: string = window.location.href
+): ?string {
   const normalisedName = name.replace(/[\[\]]/g, '\\$&');
 
   const regex = new RegExp(`[?&]${normalisedName}(=([^&#]*)|&|#|$)`);

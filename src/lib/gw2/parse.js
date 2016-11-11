@@ -1,3 +1,5 @@
+// @flow
+
 import colours from 'common/styles/colours.less';
 import T from 'i18n-react';
 
@@ -91,7 +93,7 @@ function parseAvailableWeaponSlots (item) {
   return inItem;
 }
 
-export function parseItem (item) {
+export function parseItem (item: Object) {
   let inItem = parseVendorValue(item);
   inItem = parseFlags(inItem);
   inItem = parseInfixDescription(inItem);
@@ -101,7 +103,7 @@ export function parseItem (item) {
 }
 
 // TODO: Stop using, use reduceById in index.js and map parseItem directly.
-export function mapItemsToObject (items) {
+export function mapItemsToObject (items: []) {
   const mappedItems = {};
 
   items.forEach((item) => {
@@ -112,7 +114,7 @@ export function mapItemsToObject (items) {
   return mappedItems;
 }
 
-export function markup (text) {
+export function markup (text: string) {
   if (!text) {
     return <span />;
   }

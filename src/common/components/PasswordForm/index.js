@@ -1,14 +1,30 @@
-import { PropTypes } from 'react';
+// @flow
+
 import T from 'i18n-react';
 
 import Textbox from 'common/components/Textbox';
 
-const PasswordForm = ({ onFieldChange, valid, passwordValue, passwordConfirmValue, error }) => (
+type PasswordFormProps = {
+  onFieldChange?: Function,
+  valid: bool,
+  passwordValue: string,
+  passwordConfirmValue: string,
+  error: string,
+};
+
+const PasswordForm = ({
+  onFieldChange,
+  valid,
+  passwordValue,
+  passwordConfirmValue,
+  error,
+}: PasswordFormProps) => (
   <span>
     <Textbox
       showStatus
       required
       id="password"
+      label={T.translate('settings.changePassword.inputs.password')}
       placeholder={T.translate('settings.changePassword.inputs.password')}
       type="password"
       value={passwordValue}
@@ -20,6 +36,7 @@ const PasswordForm = ({ onFieldChange, valid, passwordValue, passwordConfirmValu
       showStatus
       required
       id="passwordConfirm"
+      label={T.translate('settings.changePassword.inputs.confirm')}
       placeholder={T.translate('settings.changePassword.inputs.confirm')}
       type="password"
       value={passwordConfirmValue}
@@ -29,13 +46,5 @@ const PasswordForm = ({ onFieldChange, valid, passwordValue, passwordConfirmValu
     />
   </span>
 );
-
-PasswordForm.propTypes = {
-  onFieldChange: PropTypes.func,
-  valid: PropTypes.bool,
-  passwordValue: PropTypes.string,
-  passwordConfirmValue: PropTypes.string,
-  error: PropTypes.any,
-};
 
 export default PasswordForm;

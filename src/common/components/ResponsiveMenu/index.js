@@ -1,4 +1,6 @@
-import { PropTypes, Component } from 'react';
+// @flow
+
+import { Component } from 'react';
 import cx from 'classnames';
 
 import { addEvent, isDescendant } from 'lib/dom';
@@ -6,12 +8,13 @@ import SvgIcon from 'common/components/Icon/Svg';
 
 import styles from './styles.less';
 
+type MenuProps = {
+  children: any,
+  itemClassName: string,
+  className: string,
+};
+
 export default class ResponsiveMenu extends Component {
-  static propTypes = {
-    children: PropTypes.array,
-    itemClassName: PropTypes.string,
-    className: PropTypes.string,
-  };
 
   state = {
     shown: false,
@@ -25,8 +28,7 @@ export default class ResponsiveMenu extends Component {
     this.detatch();
   }
 
-
-  onWindowClick = (e) => {
+  onWindowClick = (e: { target: Element }) => {
     if (!this.state.shown || isDescendant(this._root, e.target)) {
       return;
     }
@@ -34,13 +36,17 @@ export default class ResponsiveMenu extends Component {
     this.reset();
   }
 
+  props: MenuProps;
+  detatch: Function;
+  _root: Element;
+
   reset = () => {
     this.setState({
       shown: false,
     });
   };
 
-  toggle = (e) => {
+  toggle = (e: MouseEvent) => {
     e.stopPropagation();
 
     this.setState({

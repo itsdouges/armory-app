@@ -1,3 +1,5 @@
+// @flow
+
 import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router';
 
 import { pageView } from 'lib/tracking';

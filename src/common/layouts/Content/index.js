@@ -1,9 +1,15 @@
-import { PropTypes } from 'react';
+// @flow
+
 import ContentCard from 'common/components/ContentCard';
 
 import styles from './styles.less';
 
-const Content = ({ children, extraContent, ...props }) => (
+type Props = {
+  children?: any,
+  extraContent?: any,
+};
+
+const Content = ({ children, extraContent, ...props }: Props) => (
   <div className={styles.root}>
     <div className={styles.inner}>
       <ContentCard {...props} size="big" />
@@ -13,10 +19,5 @@ const Content = ({ children, extraContent, ...props }) => (
     {children}
   </div>
 );
-
-Content.propTypes = {
-  children: PropTypes.any,
-  extraContent: PropTypes.any,
-};
 
 export default Content;

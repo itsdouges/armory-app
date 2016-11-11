@@ -1,10 +1,26 @@
-import { PropTypes } from 'react';
+// @flow
+
 import styles from './styles.less';
 import cx from 'classnames/bind';
 import SvgIcon from 'common/components/Icon/Svg';
 import ProgressIcon from 'common/components/Icon/Progress';
 
 import Message from 'common/components/Message';
+
+type TextboxProps = {
+  valid?: bool,
+  label: string,
+  containerClassName?: string,
+  id: string,
+  busy?: bool,
+  error?: string,
+  iconLeft?: any,
+  iconRight?: any,
+  showStatus?: bool,
+  type?: string,
+  autoSelect?: bool,
+  singleClickSelect?: bool,
+};
 
 const Textbox = ({
   valid,
@@ -20,7 +36,7 @@ const Textbox = ({
   autoSelect,
   singleClickSelect,
   ...props,
-}) => {
+}: TextboxProps) => {
   const validity = valid ? <SvgIcon name="done" /> : <SvgIcon name="clear" />;
   const status = valid ? 'valid' : 'invalid';
 
@@ -53,21 +69,6 @@ const Textbox = ({
         </div>}
     </div>
   );
-};
-
-Textbox.propTypes = {
-  autoSelect: PropTypes.bool,
-  singleClickSelect: PropTypes.bool,
-  showStatus: PropTypes.bool,
-  valid: PropTypes.bool,
-  label: PropTypes.string,
-  busy: PropTypes.bool,
-  type: PropTypes.string,
-  containerClassName: PropTypes.string,
-  error: PropTypes.any,
-  id: PropTypes.string,
-  iconRight: PropTypes.any,
-  iconLeft: PropTypes.any,
 };
 
 export default Textbox;
