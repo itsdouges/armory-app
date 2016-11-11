@@ -1,6 +1,10 @@
-import { get } from 'axios';
+// @flow
+
+import axios from 'axios';
 import config from 'config';
 import { mapItemsToObject } from './parse';
+
+const get = axios.get;
 
 function reduceById (payload) {
   return payload.reduce((acc, item) => ({
@@ -9,49 +13,49 @@ function reduceById (payload) {
   }), {});
 }
 
-export const readTitles = (ids) =>
+export const readTitles = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/titles?ids=${ids.join(',')}`, {
     ignoreAuth: true,
   })
   .then(({ data }) => reduceById(data));
 
-export const readWorlds = (ids) =>
+export const readWorlds = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/worlds?ids=${ids.join(',')}`, {
     ignoreAuth: true,
   })
   .then(({ data }) => reduceById(data));
 
-export const readLegends = (ids) =>
+export const readLegends = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/legends?ids=${ids.join(',')}`, {
     ignoreAuth: true,
   })
   .then(({ data }) => reduceById(data));
 
-export const readAchievements = (ids) =>
+export const readAchievements = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/achievements?ids=${ids.join(',')}`, {
     ignoreAuth: true,
   })
   .then(({ data }) => reduceById(data));
 
-export const readPets = (ids) =>
+export const readPets = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/pets?ids=${ids.join(',')}`, {
     ignoreAuth: true,
   })
   .then(({ data }) => reduceById(data));
 
-export const readPvpSeasons = (ids) =>
+export const readPvpSeasons = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/pvp/seasons?ids=${ids.join(',')}`, {
     ignoreAuth: true,
   })
   .then(({ data }) => reduceById(data));
 
-export const readMaps = (ids) =>
+export const readMaps = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/maps?ids=${ids.join(',')}`, {
     ignoreAuth: true,
   })
   .then(({ data }) => reduceById(data));
 
-export const readAmulets = (ids) =>
+export const readAmulets = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/pvp/amulets?ids=${ids.join(',')}`, {
     ignoreAuth: true,
   })
@@ -63,13 +67,13 @@ export const readPvpSeasonIds = () =>
   })
   .then(({ data }) => data);
 
-export const readPvpSeason = (id) =>
+export const readPvpSeason = (id: number) =>
   get(`${config.gw2.endpoint}v2/pvp/seasons/${id}`, {
     ignoreAuth: true,
   })
   .then(({ data }) => data);
 
-export const readSkills = (ids) =>
+export const readSkills = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/skills?ids=${ids.join(',')}`, {
     ignoreAuth: true,
   })
@@ -81,7 +85,7 @@ export const readAllItemIds = () =>
   })
   .then(({ data }) => data);
 
-export const readItems = (ids) => {
+export const readItems = (ids: Array<number>) => {
   const delimitedIds = ids.join(',');
 
   return get(`${config.gw2.endpoint}v2/items?ids=${delimitedIds}`, {
@@ -90,7 +94,7 @@ export const readItems = (ids) => {
   .then(({ data }) => mapItemsToObject(data));
 };
 
-export const readItemStats = (ids) => {
+export const readItemStats = (ids: Array<number>) => {
   const delimitedIds = ids.join(',');
 
   return get(`${config.gw2.endpoint}v2/itemStats?ids=${delimitedIds}`, {
@@ -99,7 +103,7 @@ export const readItemStats = (ids) => {
   .then(({ data }) => mapItemsToObject(data));
 };
 
-export const readSkins = (ids) => {
+export const readSkins = (ids: Array<number>) => {
   const delimitedIds = ids.join(',');
 
   return get(`${config.gw2.endpoint}v2/skins?ids=${delimitedIds}`, {
@@ -108,7 +112,7 @@ export const readSkins = (ids) => {
   .then(({ data }) => reduceById(data));
 };
 
-export const readSpecializations = (ids) => {
+export const readSpecializations = (ids: Array<number>) => {
   const delimitedIds = ids.join(',');
 
   return get(`${config.gw2.endpoint}v2/specializations?ids=${delimitedIds}`, {
@@ -117,7 +121,7 @@ export const readSpecializations = (ids) => {
   .then(({ data }) => reduceById(data));
 };
 
-export const readTraits = (ids) => {
+export const readTraits = (ids: Array<number>) => {
   const delimitedIds = ids.join(',');
 
   return get(`${config.gw2.endpoint}v2/traits?ids=${delimitedIds}`, {
@@ -126,7 +130,7 @@ export const readTraits = (ids) => {
   .then(({ data }) => reduceById(data));
 };
 
-export const readGuild = (guid) =>
+export const readGuild = (guid: string) =>
   get(`${config.gw2.endpoint}v1/guild_details.json?guild_id=${guid}`, {
     ignoreAuth: true,
   })

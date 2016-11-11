@@ -1,11 +1,29 @@
-import { PropTypes } from 'react';
+// @flow
 
 import styles from './styles.less';
 
 import Card from 'common/components/Card';
 import Message from 'common/components/Message';
 
-const CardWithTitle = ({ children, title, message, error, className, size = 'small', type }) => (
+type Props = {
+  children?: any,
+  title: any,
+  message?: any,
+  error?: string,
+  className?: string,
+  size?: 'compact' | 'standard',
+  type?: 'small' | 'medium' | 'large',
+};
+
+const CardWithTitle = ({
+  children,
+  title,
+  message,
+  error,
+  className,
+  type,
+  size = 'small',
+}: Props) => (
   <span className={className}>
     <h2>{title}</h2>
 
@@ -17,15 +35,5 @@ const CardWithTitle = ({ children, title, message, error, className, size = 'sma
     </Card>
   </span>
 );
-
-CardWithTitle.propTypes = {
-  title: PropTypes.any,
-  children: PropTypes.any,
-  message: PropTypes.any,
-  error: PropTypes.string,
-  className: PropTypes.string,
-  type: PropTypes.oneOf(['compact', 'standard']),
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-};
 
 export default CardWithTitle;

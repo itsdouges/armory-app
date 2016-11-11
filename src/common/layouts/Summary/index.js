@@ -1,10 +1,18 @@
-import { PropTypes } from 'react';
+// @flow
+
 import cx from 'classnames';
 
 import styles from './styles.less';
 import Icon from 'common/components/Icon';
 
-const Summary = ({ className, leftIcon, title, subTitle }) => (
+type Props = {
+  className?: string,
+  leftIcon?: any,
+  title: string,
+  subTitle: string,
+};
+
+const Summary = ({ className, leftIcon, title, subTitle }: Props) => (
   <div className={cx(className, styles.root)}>
     <div className={styles.icon}>
       <Icon {...leftIcon} />
@@ -16,12 +24,5 @@ const Summary = ({ className, leftIcon, title, subTitle }) => (
     </div>
   </div>
 );
-
-Summary.propTypes = {
-  className: PropTypes.string,
-  leftIcon: PropTypes.object,
-  title: PropTypes.any,
-  subTitle: PropTypes.any,
-};
 
 export default Summary;

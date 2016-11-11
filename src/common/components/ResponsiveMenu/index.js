@@ -28,7 +28,7 @@ export default class ResponsiveMenu extends Component {
     this.detatch();
   }
 
-  onWindowClick = (e: MouseEvent) => {
+  onWindowClick = (e: { target: Element }) => {
     if (!this.state.shown || isDescendant(this._root, e.target)) {
       return;
     }
