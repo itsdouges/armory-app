@@ -1,9 +1,15 @@
-import { PropTypes } from 'react';
+// @flow
+
 import styles from './styles.less';
 import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
-const Placeholder = ({ className, size = 'small' }) => (
+type PlaceholderProps = {
+  className: string,
+  size?: 'small' | 'big',
+};
+
+const Placeholder = ({ className, size = 'small' }: PlaceholderProps) => (
   <div className={cx('placeholderRoot', className, size)}>
     <div className={cx('image', 'placeholder')} />
     <div className={styles.textContainer}>
@@ -12,10 +18,5 @@ const Placeholder = ({ className, size = 'small' }) => (
     </div>
   </div>
 );
-
-Placeholder.propTypes = {
-  className: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'big']),
-};
 
 export default Placeholder;

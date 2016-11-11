@@ -1,10 +1,22 @@
-import { PropTypes } from 'react';
+// @flow
 
 import Segment from './Segment';
 import Divider from './Divider';
 
+export type SegmentTypes = {
+  color: string,
+  name: string,
+  value: number,
+};
+
+type PieSegmentProps = {
+  data: SegmentTypes,
+  rotationOffset: number,
+  centralAngle: number,
+};
+
 const MAX_SEGMENT_DEG = 90;
-const PieSegment = (props) => {
+const PieSegment = (props: PieSegmentProps) => {
   // For some reason destructoring props here makes rotationOffset work, but
   // destructoring the args directly makes rotationOffset return undefined
   // in child props..
@@ -56,16 +68,6 @@ const PieSegment = (props) => {
       <Divider rotationOffset={rotationOffset} />
     </div>
   );
-};
-
-PieSegment.propTypes = {
-  data: PropTypes.shape({
-    color: PropTypes.string,
-    name: PropTypes.string,
-    value: PropTypes.number,
-  }),
-  rotationOffset: PropTypes.number,
-  centralAngle: PropTypes.number,
 };
 
 export default PieSegment;

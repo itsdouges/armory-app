@@ -7,13 +7,15 @@
   "rules": {
     "space-before-function-paren": [2, "always"],
     "comma-dangle": ["error", "always-multiline"],
-    "default-case": 0,
-    "react/react-in-jsx-scope": 0,
-    "global-require": 0,
-    "import/no-unresolved": 0,
+    "default-case": "off",
+    "react/react-in-jsx-scope": "off",
+    "global-require": "off",
+    "import/no-unresolved": "off",
     "no-unused-expressions": "off",
     "camelcase": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "no-duplicate-imports": "off",
+    "import/no-duplicates": "error"
   },
   "globals": {
     "__DEVELOPMENT__": true,

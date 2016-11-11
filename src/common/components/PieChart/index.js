@@ -1,11 +1,20 @@
-import { PropTypes } from 'react';
+// @flow
+
 import cx from 'classnames';
 
 import styles from './styles.less';
 import PieSegment from './PieSegment';
 import Label from './Label';
 
-const PieChart = ({ dataValues, className, size }) => {
+import type { SegmentTypes } from './PieSegment';
+
+type PieChartProps = {
+  dataValues: Array<SegmentTypes>,
+  size: number,
+  className?: string,
+};
+
+const PieChart = ({ dataValues, className, size = 256 }: PieChartProps) => {
   const radius = size / 2;
   const max = dataValues.reduce((total, { value }) => (total + value), 0);
   const segments = [];
@@ -38,16 +47,6 @@ const PieChart = ({ dataValues, className, size }) => {
       {segments}
     </ul>
   );
-};
-
-PieChart.defaultProps = {
-  size: 256,
-};
-
-PieChart.propTypes = {
-  dataValues: PropTypes.arrayOf(PieSegment.propTypes.data),
-  className: PropTypes.string,
-  size: PropTypes.number,
 };
 
 export default PieChart;

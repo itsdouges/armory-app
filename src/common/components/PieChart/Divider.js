@@ -1,14 +1,10 @@
-import { PropTypes } from 'react';
+// @flow
 
 import styles from './styles.less';
 import { prefix } from 'lib/css';
 
-const Divider = ({ rotationOffset }) => (
+const Divider = ({ rotationOffset }: { rotationOffset: number }) => (
   <div className={styles.divider} style={prefix('transform', `rotate(${rotationOffset}deg)`)} />
 );
-
-Divider.propTypes = {
-  rotationOffset: PropTypes.number,
-};
 
 export default Divider;

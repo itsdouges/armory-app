@@ -1,9 +1,24 @@
-import { PropTypes } from 'react';
+// @flow
+
 import T from 'i18n-react';
 
 import Textbox from 'common/components/Textbox';
 
-const PasswordForm = ({ onFieldChange, valid, passwordValue, passwordConfirmValue, error }) => (
+type PasswordFormProps = {
+  onFieldChange?: Function,
+  valid: bool,
+  passwordValue: string,
+  passwordConfirmValue: string,
+  error: string,
+};
+
+const PasswordForm = ({
+  onFieldChange,
+  valid,
+  passwordValue,
+  passwordConfirmValue,
+  error,
+}: PasswordFormProps) => (
   <span>
     <Textbox
       showStatus
@@ -29,13 +44,5 @@ const PasswordForm = ({ onFieldChange, valid, passwordValue, passwordConfirmValu
     />
   </span>
 );
-
-PasswordForm.propTypes = {
-  onFieldChange: PropTypes.func,
-  valid: PropTypes.bool,
-  passwordValue: PropTypes.string,
-  passwordConfirmValue: PropTypes.string,
-  error: PropTypes.any,
-};
 
 export default PasswordForm;
