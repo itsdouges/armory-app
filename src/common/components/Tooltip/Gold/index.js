@@ -1,9 +1,16 @@
-import { PropTypes } from 'react';
+// @flow
+
 import colours from 'common/styles/colours.less';
 import styles from './styles.less';
 import Icon from 'common/components/Icon';
 
-const Gold = ({ copper, silver, gold }) => (
+type GoldProps = {
+  copper: number,
+  silver: number,
+  gold: number,
+};
+
+const Gold = ({ copper, silver, gold }: GoldProps) => (
   <div className={styles.root}>
 
   {!!gold && (
@@ -22,11 +29,5 @@ const Gold = ({ copper, silver, gold }) => (
     </span>)}
   </div>
 );
-
-Gold.propTypes = {
-  copper: PropTypes.number,
-  silver: PropTypes.number,
-  gold: PropTypes.number,
-};
 
 export default Gold;

@@ -1,4 +1,5 @@
-import { PropTypes } from 'react';
+// @flow
+
 import { browserHistory } from 'react-router';
 import cx from 'classnames';
 import T from 'i18n-react';
@@ -18,9 +19,16 @@ function onSearch (event) {
   browserHistory.push(`/search/${filter}`);
 }
 
-const SearchBar = ({ className, simple, ...props }) => (
+type SearchBarProps = {
+  className: string,
+  simple?: bool,
+};
+
+const SearchBar = ({ className, simple, ...props }: SearchBarProps) => (
   <form {...props} className={cx(styles.root, className)} onSubmit={onSearch}>
     <Textbox
+      id={`search${simple ? '-simple' : ''}`}
+      label={T.translate('search.textbox')}
       autoFocus
       required
       placeholder={`${T.translate('search.textbox')}...`}
@@ -38,10 +46,5 @@ const SearchBar = ({ className, simple, ...props }) => (
     />
   </form>
 );
-
-SearchBar.propTypes = {
-  className: PropTypes.string,
-  simple: PropTypes.bool,
-};
 
 export default SearchBar;

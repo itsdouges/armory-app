@@ -24,6 +24,7 @@ const PasswordForm = ({
       showStatus
       required
       id="password"
+      label={T.translate('settings.changePassword.inputs.password')}
       placeholder={T.translate('settings.changePassword.inputs.password')}
       type="password"
       value={passwordValue}
@@ -35,6 +36,7 @@ const PasswordForm = ({
       showStatus
       required
       id="passwordConfirm"
+      label={T.translate('settings.changePassword.inputs.confirm')}
       placeholder={T.translate('settings.changePassword.inputs.confirm')}
       type="password"
       value={passwordConfirmValue}

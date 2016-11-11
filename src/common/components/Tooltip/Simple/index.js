@@ -1,13 +1,9 @@
-import { PropTypes } from 'react';
+// @flow
+
 import styles from './styles.less';
 
-const SimpleTooltip = ({ data }) => (
+const SimpleTooltip = ({ data }: { data: string }) => (
   <div className={styles.simple}>{data}</div>
 );
-
-
-SimpleTooltip.propTypes = {
-  data: PropTypes.string,
-};
 
 export default SimpleTooltip;

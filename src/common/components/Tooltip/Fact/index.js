@@ -1,4 +1,5 @@
-import { PropTypes } from 'react';
+// @flow
+
 import cx from 'classnames';
 
 import styles from './styles.less';
@@ -15,7 +16,26 @@ function extractSubText (data) {
   );
 }
 
-const Fact = ({ data }) => {
+type FactProps = {
+  data: {
+    type: string,
+    value: string,
+    icon: string,
+    percent: string,
+    text: string,
+    target: string,
+    source: string,
+    duration: string,
+    status: string,
+    description: string,
+    prefix: {
+      status: string,
+      icon: string,
+    },
+  },
+};
+
+const Fact = ({ data }: FactProps) => {
   let content;
 
   switch (data.type) {
@@ -99,10 +119,6 @@ const Fact = ({ data }) => {
   }
 
   return <span className={styles.fact}>{content}</span>;
-};
-
-Fact.propTypes = {
-  data: PropTypes.object,
 };
 
 export default Fact;

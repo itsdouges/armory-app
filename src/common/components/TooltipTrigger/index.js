@@ -1,15 +1,19 @@
-import { PropTypes, Component, cloneElement } from 'react';
+// @flow
+
+import { Component, cloneElement } from 'react';
 import { connect } from 'react-redux';
 import { showTooltip } from 'features/Gw2/actions';
 import { isSmallScreen } from 'lib/dom';
 
+type Props = {
+  data: string | Object,
+  dispatch: Function,
+  children: React$Element<*>,
+  type: string,
+};
+
 class TooltipTrigger extends Component {
-  static propTypes = {
-    data: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    dispatch: PropTypes.func,
-    children: PropTypes.any,
-    type: PropTypes.string,
-  };
+  props: Props;
 
   showTooltip = () => {
     this.props.dispatch(showTooltip(true, {

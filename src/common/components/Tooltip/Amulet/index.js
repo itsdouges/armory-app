@@ -1,4 +1,5 @@
-import { PropTypes } from 'react';
+// @flow
+
 import get from 'lodash/get';
 
 import { markup } from 'lib/gw2/parse';
@@ -6,8 +7,16 @@ import colours from 'common/styles/colours.less';
 import SimpleTooltip from '../Simple';
 import Background from '../Background';
 import ItemHeader from '../ItemHeader';
+import map from 'lodash/map';
 
-const AmuletTooltip = ({ data: { item, name } }) => {
+type AmuletProps = {
+  data: {
+    item: Object,
+    name: string,
+  },
+};
+
+const AmuletTooltip = ({ data: { item, name } }: AmuletProps) => {
   if (!item.name) {
     return <Background><SimpleTooltip data={name || 'Amulet'} /></Background>;
   }
@@ -25,19 +34,12 @@ const AmuletTooltip = ({ data: { item, name } }) => {
       </div>
 
       <div className={colours.green}>
-        {item.attributes && Object
-          .entries(item.attributes)
-          .map(([attrName, value]) =>
-            <div key={`${value}${attrName}`}>{`+${value} ${attrName}`}</div>)
-        }
+        {map(item.attributes, (value, attrName) => (
+          <div key={`${value}${attrName}`}>{`+${value} ${attrName}`}</div>
+        ))}
       </div>
     </Background>
   );
-};
-
-AmuletTooltip.propTypes = {
-  data: PropTypes.object,
-  name: PropTypes.string,
 };
 
 export default AmuletTooltip;

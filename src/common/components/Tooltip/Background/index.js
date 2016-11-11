@@ -1,17 +1,18 @@
-import { PropTypes } from 'react';
+// @flow
+
 import cx from 'classnames';
 
 import styles from './styles.less';
 
-const Background = ({ children, className }) => (
+type Props = {
+  children?: any,
+  className?: string,
+};
+
+const Background = ({ children, className }: Props) => (
   <div className={cx(styles.root, className)}>
     {children}
   </div>
 );
-
-Background.propTypes = {
-  children: PropTypes.any,
-  className: PropTypes.string,
-};
 
 export default Background;

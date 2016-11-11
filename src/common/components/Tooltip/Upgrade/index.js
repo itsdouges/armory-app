@@ -1,10 +1,29 @@
-import { PropTypes } from 'react';
+// @flow
+
 import styles from './styles.less';
 import colours from 'common/styles/colours.less';
 import Icon from 'common/components/Icon';
 import { markup } from 'lib/gw2/parse';
 
-const ItemUpgrade = ({ data, count: { count } }) => {
+type Props = {
+  data: {
+    icon: string,
+    name: string,
+    details: {
+      bonuses: [],
+      infix_upgrade: {
+        buff: {
+          description: [],
+        },
+      },
+    },
+  },
+  count: {
+    count: number,
+  },
+};
+
+const ItemUpgrade = ({ data, count: { count } }: Props) => {
   const upgradeSlotUsed = !!data;
 
   if (!upgradeSlotUsed) {
@@ -44,11 +63,6 @@ const ItemUpgrade = ({ data, count: { count } }) => {
         <div key={index} className={colours.blue}>{markup(buff)}</div>)}
     </div>
   );
-};
-
-ItemUpgrade.propTypes = {
-  data: PropTypes.object,
-  count: PropTypes.object,
 };
 
 export default ItemUpgrade;

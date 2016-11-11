@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+// @flow
 
 import styles from './styles.less';
 import upperFirst from 'lodash/upperFirst';
@@ -15,12 +15,12 @@ function calculateLabelPosition ({ rotationOffset, centralAngle, radius }) {
   const x = cx + radius * Math.cos(angle * RADIAN) * 0.7;
   const y = cy + radius * Math.sin(angle * RADIAN);
 
-  const translate = x <= cx && prefix('transform', 'translateX(-100%)');
+  const translate = x <= cx ? prefix('transform', 'translateX(-100%)') : {};
 
   return {
+    ...translate,
     top: y,
     left: x,
-    ...translate,
   };
 }
 
@@ -28,7 +28,14 @@ function calculatePercent (centralAngle) {
   return Math.round(centralAngle / 360 * 100);
 }
 
-const Label = ({ label, rotationOffset, centralAngle, radius }) => (
+type LabelProps = {
+  label: string,
+  rotationOffset: number,
+  centralAngle: number,
+  radius: number,
+};
+
+const Label = ({ label, rotationOffset, centralAngle, radius }: LabelProps) => (
   <div
     style={calculateLabelPosition({ radius, rotationOffset, centralAngle })}
     className={styles.label}
@@ -37,12 +44,5 @@ const Label = ({ label, rotationOffset, centralAngle, radius }) => (
     <span>{calculatePercent(centralAngle)}%</span>
   </div>
 );
-
-Label.propTypes = {
-  rotationOffset: PropTypes.number,
-  centralAngle: PropTypes.number,
-  label: PropTypes.string,
-  radius: PropTypes.number,
-};
 
 export default Label;

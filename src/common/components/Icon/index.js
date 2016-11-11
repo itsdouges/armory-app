@@ -5,7 +5,7 @@ import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
 type IconProps = {
-  name: string,
+  name?: string,
   size?: string,
   className?: string,
   src?: string,

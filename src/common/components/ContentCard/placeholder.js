@@ -5,7 +5,7 @@ import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
 type PlaceholderProps = {
-  className: string,
+  className?: string,
   size?: 'small' | 'big',
 };
 

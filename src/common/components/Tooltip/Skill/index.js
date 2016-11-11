@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+// @flow
 
 import styles from './styles.less';
 import { markup } from 'lib/gw2/parse';
@@ -7,7 +7,18 @@ import Background from '../Background';
 import SimpleTooltip from '../Simple';
 import get from 'lodash/get';
 
-const Skill = ({ data }) => {
+type Gw2Skill = {
+  name: string,
+  description: string,
+  title: string,
+  facts: [],
+};
+
+type SkillProps = {
+  data: Gw2Skill,
+};
+
+const Skill = ({ data }: SkillProps) => {
   if (!data.name) {
     return <Background><SimpleTooltip data="Skill" /></Background>;
   }
@@ -25,10 +36,6 @@ const Skill = ({ data }) => {
       </Background>
     </div>
   );
-};
-
-Skill.propTypes = {
-  data: PropTypes.object,
 };
 
 export default Skill;

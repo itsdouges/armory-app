@@ -1,4 +1,6 @@
-import { PropTypes, Component } from 'react';
+// @flow
+
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -21,15 +23,21 @@ const selector = createSelector(
   })
 );
 
-class Tooltip extends Component {
-  static propTypes = {
-    tooltip: PropTypes.object,
-    dispatch: PropTypes.func,
-  };
+type Props = {
+  tooltip: {
+    show: bool,
+    type: string,
+    data: Object,
+  },
+  dispatch: Function,
+};
 
+class Tooltip extends Component {
   close = () => {
     this.props.dispatch(showTooltip(false));
   };
+
+  props: Props;
 
   render () {
     const { tooltip } = this.props;
@@ -38,26 +46,23 @@ class Tooltip extends Component {
 
     let content;
 
-    const type = typeof tooltip.data === 'string' ? 'simple' : tooltip.type;
+    if (typeof tooltip.data === 'string') {
+      content = <Background><SimpleTooltip data={tooltip.data} /></Background>;
+    } else {
+      switch (tooltip.type) {
+        case 'items':
+          content = <ItemTooltip data={tooltip.data} />;
+          break;
 
-    switch (type) {
-      case 'items':
-        content = <ItemTooltip data={tooltip.data} />;
-        break;
+        case 'amulets':
+          content = <AmuletTooltip data={tooltip.data} />;
+          break;
 
-      case 'amulets':
-        content = <AmuletTooltip data={tooltip.data} />;
-        break;
-
-      case 'trait':
-      case 'skill':
-        content = <SkillTooltip data={tooltip.data} />;
-        break;
-
-      case 'simple':
-      default:
-        content = <Background><SimpleTooltip data={tooltip.data} /></Background>;
-        break;
+        case 'trait':
+        case 'skill':
+          content = <SkillTooltip data={tooltip.data} />;
+          break;
+      }
     }
 
     return (
