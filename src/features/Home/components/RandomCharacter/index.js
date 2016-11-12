@@ -1,9 +1,11 @@
-import { get } from 'axios';
+// @flow
+
+import axios from 'axios';
 import { Component } from 'react';
 import T from 'i18n-react';
 
 import config from 'config';
-import CharacterLite from 'features/Character/Lite';
+import CharacterLite from 'embeds/components/Character';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import SvgIcon from 'common/components/Icon/Svg';
 import Tooltip from 'common/components/Tooltip';
@@ -17,7 +19,7 @@ export default class RandomCharacter extends Component {
   };
 
   componentDidMount () {
-    get(`${config.api.endpoint}random/characters/1`)
+    axios.get(`${config.api.endpoint}random/characters/1`)
       .then(({ data }) => this.setState({ name: data[0] }));
   }
 

@@ -17,7 +17,12 @@ module.exports = {
     character: [
       require.resolve('webpack-dev-server/client'),
       require.resolve('webpack/hot/dev-server'),
-      path.join(paths.appSrc, 'character'),
+      path.join(paths.embedSrc, 'character'),
+    ],
+    custom: [
+      require.resolve('webpack-dev-server/client'),
+      require.resolve('webpack/hot/dev-server'),
+      path.join(paths.embedSrc, 'custom'),
     ],
   },
   output: {
@@ -87,8 +92,14 @@ module.exports = {
     new HtmlWebpackPlugin(Object.assign({
       inject: true,
       template: paths.appHtml,
-      filename: `${config.embeds.character}/index.html`,
+      filename: `${config.embedEndpoints.character}/index.html`,
       chunks: ['character'],
+    }, config)),
+    new HtmlWebpackPlugin(Object.assign({
+      inject: true,
+      template: paths.appHtml,
+      filename: `${config.embedEndpoints.custom}/index.html`,
+      chunks: ['custom'],
     }, config)),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"development"',

@@ -18,7 +18,8 @@ module.exports = {
 
   titleSuffix: ' | Guild Wars 2 Armory',
 
-  embeds: {
-    character: 'character',
+  embedEndpoints: {
+    character: 'embeds/character',
+    custom: 'embeds/custom',
   },
 };

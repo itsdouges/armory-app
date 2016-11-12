@@ -1,3 +1,5 @@
+// @flow
+
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import includes from 'lodash/includes';
@@ -6,11 +8,11 @@ import get from 'lodash/get';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 import ContentCard from 'common/components/ContentCard';
 
-import { fetchCharacter, selectCharacter } from './actions';
-import { selector } from './characters.reducer';
-import styles from './liteStyles.less';
-import Item from './components/Item';
-import Portrait from './components/Portrait';
+import { fetchCharacter, selectCharacter } from 'features/Character/actions';
+import { selector } from 'features/Character/characters.reducer';
+import styles from './styles.less';
+import Item from 'features/Character/components/Item';
+import Portrait from 'features/Character/components/Portrait';
 
 class CharacterLite extends Component {
   static propTypes = {

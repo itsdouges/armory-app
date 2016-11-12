@@ -10,7 +10,8 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
     app: path.join(paths.appSrc, 'index'),
-    character: path.join(paths.appSrc, 'character'),
+    character: path.join(paths.embedSrc, 'character'),
+    custom: path.join(paths.embedSrc, 'custom'),
   },
   output: {
     path: paths.appBuild,
@@ -89,8 +90,26 @@ module.exports = {
     new HtmlWebpackPlugin(Object.assign({
       inject: true,
       template: paths.appHtml,
-      filename: `${config.embeds.character}/index.html`,
+      filename: `${config.embedEndpoints.character}/index.html`,
       chunks: ['character'],
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }, config)),
+    new HtmlWebpackPlugin(Object.assign({
+      inject: true,
+      template: paths.appHtml,
+      filename: `${config.embedEndpoints.custom}/index.html`,
+      chunks: ['custom'],
       minify: {
         removeComments: true,
         collapseWhitespace: true,
