@@ -28,27 +28,27 @@ function mapDispatchToProps () {
   };
 }
 
-// @connect(mapStateToProps, mapDispatchToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 export default class Custom extends Component {
   componentWillMount () {
-    // const {
-    //   user,
-    //   character,
-    //   dispatchFetchUser,
-    //   dispatchSelectUser,
-    //   dispatchFetchCharacter,
-    //   dispatchSelectCharacter,
-    // } = this.props;
+    const {
+      user,
+      character,
+      dispatchFetchUser,
+      dispatchSelectUser,
+      dispatchFetchCharacter,
+      dispatchSelectCharacter,
+    } = this.props;
 
-    // if (user) {
-    //   dispatchFetchUser(user);
-    //   dispatchSelectUser(user);
-    // }
+    if (user) {
+      dispatchFetchUser(user);
+      dispatchSelectUser(user);
+    }
 
-    // if (character) {
-    //   dispatchFetchCharacter(character);
-    //   dispatchSelectCharacter(character);
-    // }
+    if (character) {
+      dispatchFetchCharacter(character);
+      dispatchSelectCharacter(character);
+    }
   }
 
   props: CustomProps;
