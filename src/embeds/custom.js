@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 import Base from '../base';
 import Custom from './components/Custom';
+import Tooltip from 'common/components/Tooltip';
 import qs from 'lib/qs';
 import { pageView } from 'lib/tracking';
 
@@ -19,7 +20,10 @@ function readPropsFromQs (): Object {
 
 ReactDOM.render(
   <Base>
-    <Custom {...readPropsFromQs()} mode="pvp" characterComponents={qs('cc').split(',')} />
+    <div>
+      <Custom {...readPropsFromQs()} mode="pvp" characterComponents={qs('cc').split(',')} />
+      <Tooltip />
+    </div>
   </Base>,
   document.getElementById('root')
 );
