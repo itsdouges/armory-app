@@ -3,60 +3,79 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchUser, selectUser } from 'features/User/actions';
-import { fetchCharacter, selectCharacter } from 'features/Character/actions';
+import styles from './styles.less';
+import { fetchUser } from 'features/User/actions';
+import { fetchCharacter } from 'features/Character/actions';
+import characterComponentsMap from './characterComponents';
 
 type CustomProps = {
-  user?: string,
-  character?: string,
+  user: {},
+  userName?: string,
+  userComponents?: Array<string>,
+  character: {},
+  characterName?: string,
+  characterComponents?: Array<string>,
   dispatchFetchUser: Function,
-  dispatchSelectUser: Function,
   dispatchFetchCharacter: Function,
-  dispatchSelectCharacter: Function,
+  mode?: string,
+  items: {},
+  skins: {},
+  amulets: {},
+  skills: {},
 };
 
-function mapStateToProps () {
-  return {};
-}
-
-function mapDispatchToProps () {
+function mapStateToProps (state, props) {
   return {
-    dispatchFetchUser: fetchUser,
-    dispatchSelectUser: selectUser,
-    dispatchFetchCharacter: fetchCharacter,
-    dispatchSelectCharacter: selectCharacter,
+    character: state.characters.data[props.characterName],
+    user: state.users.data[props.userName],
+    items: state.items,
+    skins: state.skins,
+    amulets: state.amulets,
+    skills: state.skills,
+    specializations: state.specializations,
+    traits: state.traits,
   };
 }
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class Custom extends Component {
+@connect(mapStateToProps, {
+  dispatchFetchUser: fetchUser,
+  dispatchFetchCharacter: fetchCharacter,
+})
+export default class CustomEmbed extends Component {
   componentWillMount () {
     const {
-      user,
-      character,
+      userName,
+      characterName,
       dispatchFetchUser,
-      dispatchSelectUser,
       dispatchFetchCharacter,
-      dispatchSelectCharacter,
     } = this.props;
 
-    if (user) {
-      dispatchFetchUser(user);
-      dispatchSelectUser(user);
-    }
+    userName && dispatchFetchUser(userName, {
+      redirect404: false,
+      ignoreAuth: true,
+    });
 
-    if (character) {
-      dispatchFetchCharacter(character);
-      dispatchSelectCharacter(character);
-    }
+    characterName && dispatchFetchCharacter(characterName, {
+      redirect404: false,
+      ignoreAuth: true,
+    });
   }
 
   props: CustomProps;
 
   render () {
+    const {
+      character,
+      characterComponents,
+      ...props,
+    } = this.props;
+
     return (
-      <div>
-        hey
+      <div className={styles.root}>
+        {characterComponents &&
+          characterComponents.map(
+            (component) => characterComponentsMap[component](character, props)
+        )}
       </div>
     );
   }

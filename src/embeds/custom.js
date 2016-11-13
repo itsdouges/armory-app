@@ -7,10 +7,8 @@ import Custom from './components/Custom';
 import qs from 'lib/qs';
 import { pageView } from 'lib/tracking';
 
-pageView();
-
 function readPropsFromQs (): Object {
-  const props = ['user', 'character'];
+  const props = ['userName', 'characterName'];
 
   return props.reduce((obj, prop) => {
     // eslint-disable-next-line no-param-reassign
@@ -21,7 +19,9 @@ function readPropsFromQs (): Object {
 
 ReactDOM.render(
   <Base>
-    <Custom {...readPropsFromQs()} />
+    <Custom {...readPropsFromQs()} mode="pvp" characterComponents={qs('cc').split(',')} />
   </Base>,
   document.getElementById('root')
 );
+
+pageView();

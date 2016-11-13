@@ -139,5 +139,5 @@ export const fetchUser = (alias, { ignoreAuth } = {}) => (dispatch) => {
       dispatch(fetchUserAchievements(alias));
       dispatch(fetchingUser(false));
       dispatch(actions.fetchWorlds([data.world]));
-    }, ({ response: { status } }) => status === 404 && browserHistory.replace('/404'));
+    }, ({ response: { status } = {} } = {}) => status === 404 && browserHistory.replace('/404'));
 };
