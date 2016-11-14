@@ -22,7 +22,7 @@ const Specialization = ({ data, traits, specializations }) => {
   const bgStyle = getStyle(data, spec);
 
   return (
-    <div className={styles.overflowContainer}>
+    <div className={styles.rootOverflow}>
       <div className={styles.root}>
         <div
           className={styles.background}

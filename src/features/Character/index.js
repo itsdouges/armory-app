@@ -342,7 +342,11 @@ class Character extends Component {
           />
         )}
 
-        <Skills skills={skills} characterSkills={characterSkills} />
+        <Skills
+          skills={skills}
+          characterSkills={characterSkills}
+          className={styles.skills}
+        />
 
         <div className={styles.specializationContainer}>
           <div className={styles.brushStrokeContainer}>

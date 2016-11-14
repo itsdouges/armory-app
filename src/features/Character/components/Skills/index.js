@@ -17,11 +17,11 @@ Skill.propTypes = {
   className: PropTypes.string,
 };
 
-const Skills = ({ skills, characterSkills }) => {
+const Skills = ({ skills, characterSkills, className }) => {
   const utilities = get(characterSkills, 'utilities', [undefined, undefined, undefined]);
 
   return (
-    <div className={styles.root}>
+    <div className={cx(styles.root, className)}>
       <Skill data={skills[characterSkills.heal]} className={styles.heal} />
 
       {utilities.map((id, index) => <Skill key={id || index} data={skills[id]} />)}
@@ -34,6 +34,7 @@ const Skills = ({ skills, characterSkills }) => {
 Skills.propTypes = {
   skills: PropTypes.object,
   characterSkills: PropTypes.object,
+  className: PropTypes.string,
 };
 
 export default Skills;

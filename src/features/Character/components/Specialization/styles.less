@@ -3,6 +3,12 @@
 @traitColumnZ: @_zindex10;
 @background: @_black;
 
+.rootOverflow {
+  overflow: auto;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
 .root {
   display: block;
   height: 140px;
@@ -15,13 +21,6 @@
   position: relative;
   .low;
   overflow: auto;
-}
-
-.overflowContainer {
-  overflow: auto;
-  width: 100%;
-  // margin: 2.5em 0;
-  -webkit-overflow-scrolling: touch;
 }
 
 .background {

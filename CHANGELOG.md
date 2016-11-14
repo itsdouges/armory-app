@@ -8,6 +8,13 @@
 - Changes
 ```
 
+## [unreleased]
+### Added
+- Customisable armory embed
+
+### Changed
+- Character embed route from `/character` to `/embeds/character`
+
 ## [2.17.0] - 2016/11/10
 ### Added
 - Flow static type checking

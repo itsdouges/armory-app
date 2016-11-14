@@ -110,6 +110,10 @@
   max-width: 650px;
   margin: 0 auto;
   overflow: visible;
+
+  > div {
+    margin: 2.5em 0;
+  }
 }
 
 .brushStrokeContainer:before,
@@ -149,6 +153,18 @@ div.linkItem {
 .subContent {
   padding: 0;
   display: inline-flex;
+}
+
+.skills {
+  margin: 2.5em;
+
+  :first-child {
+    margin-right: 0.5em;
+  }
+
+  :last-child {
+    margin-left: 0.5em;
+  }
 }
 
 .fromTablet({
