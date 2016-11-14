@@ -10,17 +10,12 @@
 }
 
 .root {
-  display: block;
-  height: 140px;
-  width: 650px;
   display: flex;
   align-items: center;
-  padding-left: 4.4em;
-  background-color: @background;
-  margin: 0 auto;
   position: relative;
-  .low;
   overflow: auto;
+  background-color: @background;
+  .low;
 }
 
 .background {
@@ -46,16 +41,38 @@
 
 .minorTraitColumn {
   z-index: @traitColumnZ;
-  margin: 5.3%;
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
 }
 
-.bigIcon {
-  margin-left: 0;
+.compact {
+
 }
 
-.fromTablet({
+.small {
+  .root {
+    height: 140px;
+    width: 363px;
+    padding-left: 12px;
+  }
+
+  .background {
+    background-position: 10% 100%;
+  }
+}
+
+.large {
+  .root {
+    height: 140px;
+    width: 650px;
+    padding-left: 4.4em;
+    margin: 0 auto;
+  }
+
+  .minorTraitColumn {
+    margin: 30px;
+  }
+
   .bigIcon {
     margin-left: 0;
   }
-});
+}

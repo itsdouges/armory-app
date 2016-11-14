@@ -36,6 +36,7 @@ export default {
         {characterSpecializations.map((data, index) =>
           data && <Specialization
             key={(data.id) || index}
+            size="small"
             data={data}
             specializations={specializations} // eslint-disable-line react/prop-types
             traits={traits} // eslint-disable-line react/prop-types

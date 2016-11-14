@@ -14,6 +14,7 @@
 
 ### Changed
 - Character embed route from `/character` to `/embeds/character`
+- Character specializations to have `small` mode
 
 ## [2.17.0] - 2016/11/10
 ### Added
