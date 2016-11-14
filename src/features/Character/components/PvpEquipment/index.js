@@ -1,12 +1,21 @@
 import { PropTypes } from 'react';
 import includes from 'lodash/includes';
+import cx from 'classnames';
 
 import Item from '../Item';
 import styles from './styles.less';
 import { weapons, noSecondWeaponSet } from 'lib/gw2/equipment';
 
-const PvpEquipment = ({ equipment, pvpEquipment, items, skins, amulets, profession }) => (
-  <div className={styles.root}>
+const PvpEquipment = ({
+  equipment,
+  pvpEquipment,
+  items,
+  skins,
+  amulets,
+  profession,
+  className,
+}) => (
+  <div className={cx(styles.root, className)}>
     <div className={styles.weaponsContainer}>
       {weapons.map((item) => {
         const equip = equipment[item.key] || {};
@@ -75,6 +84,7 @@ PvpEquipment.propTypes = {
   pvpEquipment: PropTypes.object,
   items: PropTypes.object,
   amulets: PropTypes.object,
+  className: PropTypes.string,
 };
 
 export default PvpEquipment;

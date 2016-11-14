@@ -339,6 +339,7 @@ class Character extends Component {
             skins={skins}
             amulets={amulets}
             profession={profession}
+            className={styles.pvpEquipment}
           />
         )}
 
