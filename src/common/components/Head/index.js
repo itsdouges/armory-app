@@ -6,11 +6,11 @@ import config from 'config';
 import defaultImage from 'assets/images/logo.png';
 
 type HeadProps = {
-  description: string,
   title: string,
-  canonical: string,
-  type: string,
-  image: string,
+  description?: string,
+  canonical?: string,
+  type?: string,
+  image?: string,
 };
 
 const Head = ({

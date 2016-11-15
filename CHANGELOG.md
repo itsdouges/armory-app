@@ -11,6 +11,7 @@
 ## [unreleased]
 ### Added
 - Customisable armory embed
+- Page title to character embed
 
 ### Changed
 - Character embed route from `/character` to `/embeds/character`

@@ -7,6 +7,7 @@ import Custom from './components/Custom';
 import Tooltip from 'common/components/Tooltip';
 import qs from 'lib/qs';
 import { pageView } from 'lib/tracking';
+import Head from 'common/components/Head';
 
 type QueryProp = {
   prop: string,
@@ -49,10 +50,15 @@ function readPropsFromQs (): { [key: string]: any } {
   }, {});
 }
 
+const props = readPropsFromQs();
+
+const titleArray = [props.characterName, props.userName].filter((prop) => !!prop);
+
 ReactDOM.render(
   <Base>
     <div>
-      <Custom {...readPropsFromQs()} />
+      <Head title={`Custom Embed | ${titleArray.join(' | ')}`} />
+      <Custom {...props} />
       <Tooltip />
     </div>
   </Base>,

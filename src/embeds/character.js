@@ -6,10 +6,16 @@ import Base from '../base';
 import Character from './components/Character';
 import qs from 'lib/qs';
 import { pageView } from 'lib/tracking';
+import Head from 'common/components/Head';
+
+const characterName = qs('name');
 
 ReactDOM.render(
   <Base>
-    <Character name={qs('name')} />
+    <div>
+      <Head title={`Character Embed | ${characterName}`} />
+      <Character name={characterName} />
+    </div>
   </Base>,
   document.getElementById('root')
 );
