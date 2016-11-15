@@ -14,18 +14,33 @@ type QueryProp = {
   modify?: () => string,
 };
 
-const props = [
+const generalProps = [
   { prop: 'userName', queryString: 'un' },
   { prop: 'characterName', queryString: 'cn' },
   { prop: 'mode', queryString: 'm' },
   { prop: 'height', queryString: 'h' },
   { prop: 'width', queryString: 'w' },
-  { prop: 'characterComponents', queryString: 'cc', modify: (string) => string.split(',') },
   { prop: 'quadrants', queryString: 'qd', modify: (string) => string.split('x').map((n) => +n) },
+  {
+    prop: 'components',
+    queryString: 'c',
+    modify: (string) => string.split(',').reduce((obj, definition) => {
+      const [quadrantKey, componentName] = definition.split('|');
+
+      if (obj[quadrantKey]) {
+        obj[quadrantKey].push(componentName);
+      } else {
+        // eslint-disable-next-line
+        obj[quadrantKey] = [componentName];
+      }
+
+      return obj;
+    }, {}),
+  },
 ];
 
 function readPropsFromQs (): { [key: string]: any } {
-  return props.reduce((obj, { prop, queryString, modify }: QueryProp) => {
+  return generalProps.reduce((obj, { prop, queryString, modify }: QueryProp) => {
     const raw = qs(queryString);
     const value = modify ? modify(raw) : raw;
     // eslint-disable-next-line no-param-reassign

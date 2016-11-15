@@ -7,13 +7,16 @@ import noop from 'lodash/noop';
 import styles from './styles.less';
 import { fetchUser } from 'features/User/actions';
 import { fetchCharacter } from 'features/Character/actions';
-import characterComponentsMap from './characterComponents';
+import componentsMap from './components';
+
+type QuadrantComponentMap = {
+  [key: string]: Array<string>,
+};
 
 type CustomProps = {
   userName?: string,
-  userComponents?: Array<string>,
   characterName?: string,
-  characterComponents?: Array<string>,
+  components?: QuadrantComponentMap,
   mode?: string,
   height?: number,
   width?: number,
@@ -43,24 +46,27 @@ function mapStateToProps (state, props) {
   };
 }
 
-function generateCells ([x, y] = [1, 1]) {
+function generateCells ([x, y], { components, character, user, props }) {
   const rows = [];
-  const cellWidth = 1 / x * 100;
-  const rowHeight = 1 / y * 100;
+  // const cellWidth = 1 / x * 100;
+  // const rowHeight = 1 / y * 100;
 
   for (let i = 0; i < y; i++) {
     const cells = [];
 
     for (let n = 0; n < x; n++) {
+      const key = `${i}${n}`;
+      const componentNames = components[key] || [];
+
       cells.push(
-        <div style={{ width: `${cellWidth}%` }} className={styles.cell} key={`${i}${n}`}>
-          {x}{y}
+        <div className={styles.cell} key={key}>
+          {componentNames.map((name) => componentsMap[name]({ character, user, props }))}
         </div>
       );
     }
 
     rows.push(
-      <div style={{ height: `${rowHeight}%` }} className={styles.row} key={i}>{cells}</div>
+      <div className={styles.row} key={i}>{cells}</div>
     );
   }
 
@@ -96,21 +102,22 @@ export default class CustomEmbed extends Component {
   render () {
     const {
       character,
-      characterComponents,
+      user,
       height = 500,
       width = 500,
-      quadrants,
+      quadrants = [1, 1],
+      components = {},
       ...props,
     } = this.props;
 
     return (
       <div className={styles.root} style={{ height: `${height}px`, width: `${width}px` }}>
-        {generateCells(quadrants)}
-
-        {characterComponents &&
-          characterComponents.map(
-            (component) => characterComponentsMap[component](character, props)
-        )}
+        {generateCells(quadrants, {
+          user,
+          props,
+          character,
+          components,
+        })}
       </div>
     );
   }

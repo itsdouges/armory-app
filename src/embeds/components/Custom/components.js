@@ -9,11 +9,11 @@ import Specialization from 'features/Character/components/Specialization';
 import Skills from 'features/Character/components/Skills';
 
 export default {
-  contentCard: (character) => <ContentCard key="badge" type="characters" content={character} />,
+  contentCard: ({ character }) => <ContentCard key="badge" type="characters" content={character} />,
 
-  portrait: (character) => <Portrait key="portrait" character={character} />,
+  portrait: ({ character }) => <Portrait key="portrait" character={character} />,
 
-  pvpEquipment: (character, props) => {
+  pvpEquipment: ({ character, props }) => {
     const profession = get(character, 'profession');
     const equipment = get(character, 'equipment', {});
     const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
@@ -31,7 +31,7 @@ export default {
     );
   },
 
-  specializations: (character, props) => {
+  specializations: ({ character, props }) => {
     // eslint-disable-next-line react/prop-types
     const characterSpecializations = get(character, `specializations[${props.mode}]`, [{}, {}, {}]);
     const specializations = get(props, 'specializations', {});
@@ -51,7 +51,7 @@ export default {
     );
   },
 
-  skills: (character, props) => {
+  skills: ({ character, props }) => {
     // eslint-disable-next-line react/prop-types
     const characterSkills = get(character, `skills[${props.mode}]`, {});
 
