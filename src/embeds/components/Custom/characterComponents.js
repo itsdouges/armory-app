@@ -1,13 +1,18 @@
+// @flow
+
 import get from 'lodash/get';
 
-
+import ContentCard from 'common/components/ContentCard';
 import Portrait from 'features/Character/components/Portrait';
 import PvpEquipment from 'features/Character/components/PvpEquipment';
 import Specialization from 'features/Character/components/Specialization';
 import Skills from 'features/Character/components/Skills';
 
 export default {
+  contentCard: (character) => <ContentCard key="badge" type="characters" content={character} />,
+
   portrait: (character) => <Portrait key="portrait" character={character} />,
+
   pvpEquipment: (character, props) => {
     const profession = get(character, 'profession');
     const equipment = get(character, 'equipment', {});
@@ -25,6 +30,7 @@ export default {
       />
     );
   },
+
   specializations: (character, props) => {
     // eslint-disable-next-line react/prop-types
     const characterSpecializations = get(character, `specializations[${props.mode}]`, [{}, {}, {}]);
@@ -44,6 +50,7 @@ export default {
       </div>
     );
   },
+
   skills: (character, props) => {
     // eslint-disable-next-line react/prop-types
     const characterSkills = get(character, `skills[${props.mode}]`, {});

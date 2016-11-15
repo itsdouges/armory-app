@@ -2,6 +2,7 @@
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import noop from 'lodash/noop';
 
 import styles from './styles.less';
 import { fetchUser } from 'features/User/actions';
@@ -9,19 +10,24 @@ import { fetchCharacter } from 'features/Character/actions';
 import characterComponentsMap from './characterComponents';
 
 type CustomProps = {
-  user: {},
   userName?: string,
   userComponents?: Array<string>,
-  character: {},
   characterName?: string,
   characterComponents?: Array<string>,
-  dispatchFetchUser: Function,
-  dispatchFetchCharacter: Function,
   mode?: string,
-  items: {},
-  skins: {},
-  amulets: {},
-  skills: {},
+  height?: number,
+  width?: number,
+  quadrants?: [number, number],
+
+  // === Redux props ===
+  dispatchFetchUser?: Function,
+  dispatchFetchCharacter?: Function,
+  user?: {},
+  character?: {},
+  items?: {},
+  skins?: {},
+  amulets?: {},
+  skills?: {},
 };
 
 function mapStateToProps (state, props) {
@@ -37,6 +43,30 @@ function mapStateToProps (state, props) {
   };
 }
 
+function generateCells ([x, y] = [1, 1]) {
+  const rows = [];
+  const cellWidth = 1 / x * 100;
+  const rowHeight = 1 / y * 100;
+
+  for (let i = 0; i < y; i++) {
+    const cells = [];
+
+    for (let n = 0; n < x; n++) {
+      cells.push(
+        <div style={{ width: `${cellWidth}%` }} className={styles.cell} key={`${i}${n}`}>
+          {x}{y}
+        </div>
+      );
+    }
+
+    rows.push(
+      <div style={{ height: `${rowHeight}%` }} className={styles.row} key={i}>{cells}</div>
+    );
+  }
+
+  return rows;
+}
+
 @connect(mapStateToProps, {
   dispatchFetchUser: fetchUser,
   dispatchFetchCharacter: fetchCharacter,
@@ -46,8 +76,8 @@ export default class CustomEmbed extends Component {
     const {
       userName,
       characterName,
-      dispatchFetchUser,
-      dispatchFetchCharacter,
+      dispatchFetchUser = noop,
+      dispatchFetchCharacter = noop,
     } = this.props;
 
     userName && dispatchFetchUser(userName, {
@@ -67,11 +97,16 @@ export default class CustomEmbed extends Component {
     const {
       character,
       characterComponents,
+      height = 500,
+      width = 500,
+      quadrants,
       ...props,
     } = this.props;
 
     return (
-      <div className={styles.root}>
+      <div className={styles.root} style={{ height: `${height}px`, width: `${width}px` }}>
+        {generateCells(quadrants)}
+
         {characterComponents &&
           characterComponents.map(
             (component) => characterComponentsMap[component](character, props)
