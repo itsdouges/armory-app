@@ -8,12 +8,28 @@ import PvpEquipment from 'features/Character/components/PvpEquipment';
 import Specialization from 'features/Character/components/Specialization';
 import Skills from 'features/Character/components/Skills';
 
+type Props = {
+  character: {},
+  user: {},
+  props: {
+    items: {},
+    skins: {},
+    amulets: {},
+    skills: {},
+    mode: string,
+  },
+};
+
 export default {
-  contentCard: ({ character }) => <ContentCard key="badge" type="characters" content={character} />,
+  ucontentCard: ({ user }: Props) =>
+    <ContentCard key="user-badge" type="users" content={user} />,
 
-  portrait: ({ character }) => <Portrait key="portrait" character={character} />,
+  ccontentCard: ({ character }: Props) =>
+    <ContentCard key="character-badge" type="characters" content={character} />,
 
-  pvpEquipment: ({ character, props }) => {
+  portrait: ({ character }: Props) => <Portrait key="portrait" character={character} />,
+
+  pvpEquipment: ({ character, props }: Props) => {
     const profession = get(character, 'profession');
     const equipment = get(character, 'equipment', {});
     const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
@@ -21,6 +37,7 @@ export default {
     return (
       <PvpEquipment
         key="pvpEquipment"
+        display="inline"
         equipment={equipment}
         pvpEquipment={pvpEquipment}
         items={props.items} // eslint-disable-line react/prop-types
@@ -31,27 +48,23 @@ export default {
     );
   },
 
-  specializations: ({ character, props }) => {
+  specializations: ({ character, props }: Props) => {
     // eslint-disable-next-line react/prop-types
     const characterSpecializations = get(character, `specializations[${props.mode}]`, [{}, {}, {}]);
     const specializations = get(props, 'specializations', {});
     const traits = get(props, 'traits', {});
 
-    return (
-      <div key="specs">
-        {characterSpecializations.map((data, index) =>
-          data && <Specialization
-            key={(data.id) || index}
-            size="small"
-            data={data}
-            specializations={specializations} // eslint-disable-line react/prop-types
-            traits={traits} // eslint-disable-line react/prop-types
-          />)}
-      </div>
-    );
+    return characterSpecializations.map((data, index) =>
+      data && <Specialization
+        key={(data.id) || index}
+        size="small"
+        data={data}
+        specializations={specializations} // eslint-disable-line react/prop-types
+        traits={traits} // eslint-disable-line react/prop-types
+      />);
   },
 
-  skills: ({ character, props }) => {
+  skills: ({ character, props }: Props) => {
     // eslint-disable-next-line react/prop-types
     const characterSkills = get(character, `skills[${props.mode}]`, {});
 

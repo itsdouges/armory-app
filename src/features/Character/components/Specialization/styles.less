@@ -5,7 +5,6 @@
 
 .rootOverflow {
   overflow: auto;
-  width: 100%;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -49,6 +48,10 @@
 }
 
 .small {
+  .rootOverflow {
+    width: inherit;
+  }
+
   .root {
     height: 140px;
     width: 363px;
@@ -61,6 +64,10 @@
 }
 
 .large {
+  .rootOverflow {
+    width: 100%;
+  }
+
   .root {
     height: 140px;
     width: 650px;
