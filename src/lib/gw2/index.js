@@ -13,6 +13,12 @@ function reduceById (payload) {
   }), {});
 }
 
+export const readProfessions = (ids: Array<number>) =>
+  get(`${config.gw2.endpoint}v2/professions?ids=${ids.join(',')}`, {
+    ignoreAuth: true,
+  })
+  .then(({ data }) => reduceById(data));
+
 export const readTitles = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/titles?ids=${ids.join(',')}`, {
     ignoreAuth: true,

@@ -89,6 +89,7 @@ export function fetchCharacter (character, { redirect404 = true, ignoreAuth, bas
 
         dispatch(actions.fetchItems(items));
         dispatch(actions.fetchSkins(skins));
+        dispatch(actions.fetchProfessions([data.profession]));
 
         if (!basicLoad) {
           dispatch(actions.fetchTitles([data.title]));

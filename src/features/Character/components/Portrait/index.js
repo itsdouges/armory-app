@@ -7,12 +7,12 @@ import config from 'config';
 const endpoint = config.imagesEndpoint;
 
 type Props = {
-  character: {
+  character?: {
     race?: string,
     alias?: string,
     name?: string,
   },
-  forceUpdate: bool,
+  forceUpdate?: bool,
   children?: any,
   className?: string,
   compact?: bool,

@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable react/prop-types */
 
 import get from 'lodash/get';
 
@@ -9,13 +10,19 @@ import Specialization from 'features/Character/components/Specialization';
 import Skills from 'features/Character/components/Skills';
 
 type Props = {
-  character: {},
+  character: {
+    race?: string,
+    alias?: string,
+    name?: string,
+    profession?: string,
+  },
   user: {},
   props: {
     items: {},
     skins: {},
     amulets: {},
     skills: {},
+    professions: {},
     mode: string,
   },
 };
@@ -40,16 +47,15 @@ export default {
         display="inline"
         equipment={equipment}
         pvpEquipment={pvpEquipment}
-        items={props.items} // eslint-disable-line react/prop-types
-        skins={props.skins} // eslint-disable-line react/prop-types
-        amulets={props.amulets} // eslint-disable-line react/prop-types
+        items={props.items}
+        skins={props.skins}
+        amulets={props.amulets}
         profession={profession}
       />
     );
   },
 
   specializations: ({ character, props }: Props) => {
-    // eslint-disable-next-line react/prop-types
     const characterSpecializations = get(character, `specializations[${props.mode}]`, [{}, {}, {}]);
     const specializations = get(props, 'specializations', {});
     const traits = get(props, 'traits', {});
@@ -59,16 +65,25 @@ export default {
         key={(data.id) || index}
         size="small"
         data={data}
-        specializations={specializations} // eslint-disable-line react/prop-types
-        traits={traits} // eslint-disable-line react/prop-types
+        specializations={specializations}
+        traits={traits}
       />);
   },
 
   skills: ({ character, props }: Props) => {
     // eslint-disable-next-line react/prop-types
     const characterSkills = get(character, `skills[${props.mode}]`, {});
+    const professionData = get(props, `professions[${character.profession || ''}]`);
 
-    // eslint-disable-next-line react/prop-types
-    return <Skills key="skills" skills={props.skills} characterSkills={characterSkills} />;
+    return (
+      <Skills
+        mainHand="Axe"
+        offHand="Focus"
+        key="skills"
+        skills={props.skills}
+        characterSkills={characterSkills}
+        professionData={professionData}
+      />
+    );
   },
 };

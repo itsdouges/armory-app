@@ -32,6 +32,7 @@ type Props = {
   skins?: {},
   amulets?: {},
   skills?: {},
+  professions?: {},
 };
 
 function mapStateToProps (state, props) {
@@ -44,6 +45,7 @@ function mapStateToProps (state, props) {
     skills: state.skills,
     specializations: state.specializations,
     traits: state.traits,
+    professions: state.professions,
   };
 }
 
@@ -102,8 +104,8 @@ export default class CustomEmbed extends Component {
 
   render () {
     const {
-      character,
-      user,
+      character = {},
+      user = {},
       height = 500,
       width = 500,
       quadrants = [1, 1],
