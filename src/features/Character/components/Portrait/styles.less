@@ -4,7 +4,6 @@
 @portraitBg: @_zindex10;
 
 .root {
-  // margin: 0.125em 0;
   background-position: center center;
   background-repeat: no-repeat;
   composes: low;
@@ -12,6 +11,7 @@
   background-size: cover;
   position: relative;
   flex-grow: 1;
+  overflow: hidden;
 }
 
 .root:before {
@@ -47,6 +47,20 @@ div.portraitBottomIn {
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.compact {
+  div.portraitTopIn {
+    top: -55px;
+  }
+
+  div.portraitBottomIn {
+    bottom: -65px;
+  }
+
+  .portrait {
+    background-position: top center;
+  }
 }
 
 .fromMobile({

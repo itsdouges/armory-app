@@ -13,6 +13,7 @@ import { selector } from 'features/Character/characters.reducer';
 import styles from './styles.less';
 import Item from 'features/Character/components/Item';
 import Portrait from 'features/Character/components/Portrait';
+import ArmoryBadge from 'common/components/ArmoryBadge';
 
 class CharacterLite extends Component {
   static propTypes = {
@@ -74,6 +75,8 @@ class CharacterLite extends Component {
 
     return (
       <div className={styles.root}>
+        <ArmoryBadge />
+
         <div className={styles.cover}>
           <Portrait character={character} className={styles.litePortrait} />
         </div>
@@ -125,10 +128,6 @@ class CharacterLite extends Component {
             );
           })}
         </div>
-
-        <a href="https://gw2armory.com" className={styles.siteLink}>
-          gw2armory.com
-        </a>
       </div>
     );
   }

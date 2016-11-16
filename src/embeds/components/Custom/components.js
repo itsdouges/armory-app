@@ -27,7 +27,7 @@ export default {
   ccontentCard: ({ character }: Props) =>
     <ContentCard key="character-badge" type="characters" content={character} />,
 
-  portrait: ({ character }: Props) => <Portrait key="portrait" character={character} />,
+  portrait: ({ character }: Props) => <Portrait key="portrait" character={character} compact />,
 
   pvpEquipment: ({ character, props }: Props) => {
     const profession = get(character, 'profession');
