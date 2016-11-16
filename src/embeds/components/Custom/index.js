@@ -14,7 +14,7 @@ type QuadrantComponentMap = {
   [key: string]: Array<string>,
 };
 
-type CustomProps = {
+type Props = {
   userName?: string,
   characterName?: string,
   components?: QuadrantComponentMap,
@@ -98,7 +98,7 @@ export default class CustomEmbed extends Component {
     });
   }
 
-  props: CustomProps;
+  props: Props;
 
   render () {
     const {

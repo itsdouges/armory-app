@@ -1,1 +1,1 @@
-export default {};
+declare export default { [key: string]: string }

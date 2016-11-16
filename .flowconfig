@@ -1,11 +1,13 @@
 [ignore]
 # https://github.com/facebook/fbjs/issues/64
 .*/node_modules/fbjs.*
+<PROJECT_ROOT>/config/
+<PROJECT_ROOT>/scripts/
 
 [include]
 
 [libs]
-flow/npm/
+flow-typed/
 flow/libdefs/
 
 [options]
