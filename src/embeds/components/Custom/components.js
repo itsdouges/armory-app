@@ -74,11 +74,16 @@ export default {
     // eslint-disable-next-line react/prop-types
     const characterSkills = get(character, `skills[${props.mode}]`, {});
     const professionData = get(props, `professions[${character.profession || ''}]`);
+    const mainHandId = get(character, 'equipment.weaponA1.id');
+    const offHandId = get(character, 'equipment.weaponA2.id');
+
+    const mainHand = get(props, `items[${mainHandId}].details.type`);
+    const offHand = get(props, `items[${offHandId}].details.type`);
 
     return (
       <Skills
-        mainHand="Axe"
-        offHand="Focus"
+        mainHand={mainHand}
+        offHand={offHand}
         key="skills"
         skills={props.skills}
         characterSkills={characterSkills}
