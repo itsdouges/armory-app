@@ -9,9 +9,9 @@ import SvgIcon from 'common/components/Icon/Svg';
 import styles from './styles.less';
 
 type MenuProps = {
-  children: any,
-  itemClassName: string,
-  className: string,
+  children?: any,
+  itemClassName?: string,
+  className?: string,
 };
 
 export default class ResponsiveMenu extends Component {
@@ -69,7 +69,7 @@ export default class ResponsiveMenu extends Component {
         </button>
 
         <ul className={styles.listRoot} {...props}>
-          {children.map((item, index) => (
+          {children && children.map((item, index) => (
             <li
               key={index}
               onClick={this.reset}

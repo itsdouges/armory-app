@@ -12,10 +12,10 @@ import Head from 'common/components/Head';
 type QueryProp = {
   prop: string,
   queryString: string,
-  modify?: () => string,
+  modify?: (queryString: string) => any,
 };
 
-const generalProps = [
+const generalProps: Array<QueryProp> = [
   { prop: 'userName', queryString: 'un' },
   { prop: 'characterName', queryString: 'cn' },
   { prop: 'mode', queryString: 'm' },

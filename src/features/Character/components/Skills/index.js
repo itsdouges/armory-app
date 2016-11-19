@@ -20,22 +20,35 @@ type SkillsProps = {
     elite: number,
   },
   professionData: {},
-  mainHand: string,
-  offHand: string,
   className?: string,
+  items?: {},
+  character?: {},
+  showWeaponSkills?: bool,
 };
 
 const Skills = ({
   skills,
   characterSkills,
   professionData,
-  mainHand,
-  offHand,
+  items,
+  character,
   className,
+  showWeaponSkills,
 }: SkillsProps) => {
   const utilities = get(characterSkills, 'utilities', [undefined, undefined, undefined]);
-  const mainHandSkills = get(professionData, `weapons[${mainHand}].skills`, []);
-  const offHandSkills = get(professionData, `weapons[${offHand}].skills`, []);
+
+  let mainHandSkills = [];
+  let offHandSkills = [];
+
+  if (showWeaponSkills) {
+    const mainHandId = get(character, 'equipment.weaponA1.id');
+    const offHandId = get(character, 'equipment.weaponA2.id');
+    const mainHand = get(items, `[${mainHandId}].details.type`);
+    const offHand = get(items, `[${offHandId}].details.type`);
+
+    mainHandSkills = get(professionData, `weapons[${mainHand}].skills`, []);
+    offHandSkills = get(professionData, `weapons[${offHand}].skills`, []);
+  }
 
   return (
     <div className={cx(styles.root, className)}>

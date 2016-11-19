@@ -10,6 +10,7 @@ import Specialization from 'features/Character/components/Specialization';
 import Skills from 'features/Character/components/Skills';
 
 type Props = {
+  options?: { [key: string]: any },
   character: {
     race?: string,
     alias?: string,
@@ -28,15 +29,19 @@ type Props = {
 };
 
 export default {
-  ucontentCard: ({ user }: Props) =>
-    <ContentCard key="user-badge" type="users" content={user} />,
+  ucontentCard ({ user }: Props) {
+    return <ContentCard key="user-badge" type="users" content={user} />;
+  },
 
-  ccontentCard: ({ character }: Props) =>
-    <ContentCard key="character-badge" type="characters" content={character} />,
+  ccontentCard ({ character }: Props) {
+    return <ContentCard key="character-badge" type="characters" content={character} />;
+  },
 
-  portrait: ({ character }: Props) => <Portrait key="portrait" character={character} compact />,
+  portrait ({ character }: Props) {
+    return <Portrait key="portrait" character={character} compact />;
+  },
 
-  pvpEquipment: ({ character, props }: Props) => {
+  pvpEquipment ({ character, props }: Props) {
     const profession = get(character, 'profession');
     const equipment = get(character, 'equipment', {});
     const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
@@ -55,7 +60,7 @@ export default {
     );
   },
 
-  specializations: ({ character, props }: Props) => {
+  specializations ({ character, props }: Props) {
     const characterSpecializations = get(character, `specializations[${props.mode}]`, [{}, {}, {}]);
     const specializations = get(props, 'specializations', {});
     const traits = get(props, 'traits', {});
@@ -70,25 +75,24 @@ export default {
       />);
   },
 
-  skills: ({ character, props }: Props) => {
-    // eslint-disable-next-line react/prop-types
+  skills ({ character, props }: Props, options: { showWeaponSkills: bool }) {
     const characterSkills = get(character, `skills[${props.mode}]`, {});
     const professionData = get(props, `professions[${character.profession || ''}]`);
-    const mainHandId = get(character, 'equipment.weaponA1.id');
-    const offHandId = get(character, 'equipment.weaponA2.id');
-
-    const mainHand = get(props, `items[${mainHandId}].details.type`);
-    const offHand = get(props, `items[${offHandId}].details.type`);
 
     return (
       <Skills
-        mainHand={mainHand}
-        offHand={offHand}
+        showWeaponSkills={options.showWeaponSkills}
+        character={character}
+        items={props.items}
         key="skills"
         skills={props.skills}
         characterSkills={characterSkills}
         professionData={professionData}
       />
     );
+  },
+
+  allSkills (data: Props) {
+    return this.skills(data, { showWeaponSkills: true });
   },
 };

@@ -1,4 +1,6 @@
-import { PropTypes, Component } from 'react';
+// @flow
+
+import { Component } from 'react';
 import { Link } from 'react-router';
 import cx from 'classnames';
 import get from 'lodash/get';
@@ -17,13 +19,19 @@ import Icon from 'common/components/Icon';
 import ProgressIcon from 'common/components/Icon/Progress';
 import SearchBar from 'common/components/SearchBar';
 
+type Props = {
+  authenticated: bool,
+  alias: string,
+  checkingAuthentication: bool,
+  compact: bool,
+};
+
 export default class Header extends Component {
-  static propTypes = {
-    authenticated: PropTypes.bool,
-    alias: PropTypes.string,
-    checkingAuthentication: PropTypes.bool,
-    compact: PropTypes.bool,
-  };
+  props: Props;
+  detatch: Function;
+  _fixed: HTMLElement;
+  _root: HTMLElement;
+  initialised: bool;
 
   state = {
     stickyHeader: false,
@@ -34,7 +42,7 @@ export default class Header extends Component {
     this.initStickyHeader();
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Props) {
     if (prevProps.compact === this.props.compact) {
       return;
     }

@@ -22,4 +22,6 @@ module.exports = {
     character: 'embeds/character',
     custom: 'embeds/custom',
   },
+
+  refreshDelay: 1000 * 60 * 5,
 };

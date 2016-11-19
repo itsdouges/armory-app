@@ -1,4 +1,6 @@
-import { get } from 'axios';
+// @flow
+
+import axios from 'axios';
 import { browserHistory } from 'react-router';
 
 import { readPvpSeasonIds } from 'lib/gw2';
@@ -46,20 +48,22 @@ const fetchingUserCharacters = (fetching) => ({
   payload: fetching,
 });
 
-export const fetchUserCharacters = (alias, { ignoreAuth } = {}) => (dispatch) => {
-  dispatch(fetchingUserCharacters(true));
+export const fetchUserCharacters = (alias: string, { ignoreAuth }: {
+  ignoreAuth: bool,
+} = {}): ReduxThunk =>
+  (dispatch) => {
+    dispatch(fetchingUserCharacters(true));
 
-  return get(`${config.api.endpoint}users/${alias}/characters`, { ignoreAuth })
-    .then((response) => {
-      dispatch(fetchUserCharactersResult(alias, response.data));
-      dispatch(fetchingUserCharacters(false));
-    });
-};
+    return axios.get(`${config.api.endpoint}users/${alias}/characters`, { ignoreAuth })
+      .then((response) => {
+        dispatch(fetchUserCharactersResult(alias, response.data));
+        dispatch(fetchingUserCharacters(false));
+      });
+  };
 
 const MAX_IDS = 200;
-
-export const fetchUserAchievements = (alias) => (dispatch) =>
-  get(`${config.api.endpoint}users/${alias}/achievements`)
+export const fetchUserAchievements = (alias: string): ReduxThunk => (dispatch) =>
+  axios.get(`${config.api.endpoint}users/${alias}/achievements`)
     .then(({ data }) => {
       const ids = data.map((achievement) => achievement.id);
 
@@ -75,7 +79,7 @@ export const fetchUserAchievements = (alias) => (dispatch) =>
       return dispatch(fetchUserAchievementsResult(alias, data));
     });
 
-export const fetchPvpStatsSuccess = (alias, data) => ({
+export const fetchPvpStatsSuccess = (alias: string, data: {}) => ({
   type: FETCH_PVP_STATS_RESULT,
   payload: {
     alias,
@@ -83,7 +87,7 @@ export const fetchPvpStatsSuccess = (alias, data) => ({
   },
 });
 
-export const fetchPvpGamesSuccess = (alias, data) => ({
+export const fetchPvpGamesSuccess = (alias: string, data: {}) => ({
   type: FETCH_PVP_GAMES_RESULT,
   payload: {
     alias,
@@ -91,7 +95,7 @@ export const fetchPvpGamesSuccess = (alias, data) => ({
   },
 });
 
-export const fetchPvpStandingsSuccess = (alias, data) => ({
+export const fetchPvpStandingsSuccess = (alias: string, data: {}) => ({
   type: FETCH_PVP_STANDINGS_RESULT,
   payload: {
     alias,
@@ -99,19 +103,19 @@ export const fetchPvpStandingsSuccess = (alias, data) => ({
   },
 });
 
-export const selectUser = (alias) => ({
+export const selectUser = (alias: string) => ({
   type: SELECT_USER,
   payload: alias,
 });
 
-export const fetchPvpStats = (alias) => (dispatch) =>
-  get(`${config.api.endpoint}users/${alias}/pvp/stats`)
+export const fetchPvpStats = (alias: string): ReduxThunk => (dispatch) =>
+  axios.get(`${config.api.endpoint}users/${alias}/pvp/stats`)
   .then((response) => {
     dispatch(fetchPvpStatsSuccess(alias, response.data));
   });
 
-export const fetchPvpGames = (alias) => (dispatch) =>
-  get(`${config.api.endpoint}users/${alias}/pvp/games`)
+export const fetchPvpGames = (alias: string): ReduxThunk => (dispatch) =>
+  axios.get(`${config.api.endpoint}users/${alias}/pvp/games`)
   .then(({ data }) => {
     dispatch(fetchPvpGamesSuccess(alias, data));
 
@@ -119,25 +123,26 @@ export const fetchPvpGames = (alias) => (dispatch) =>
     dispatch(actions.fetchMaps(ids));
   });
 
-export const fetchPvpStandings = (alias) => (dispatch) =>
-  get(`${config.api.endpoint}users/${alias}/pvp/standings`)
+export const fetchPvpStandings = (alias: string): ReduxThunk => (dispatch) =>
+ axios.get(`${config.api.endpoint}users/${alias}/pvp/standings`)
   .then(({ data }) => {
     dispatch(fetchPvpStandingsSuccess(alias, data));
     return readPvpSeasonIds();
   })
   .then((ids) => dispatch(actions.fetchPvpSeasons(ids)));
 
-export const fetchUser = (alias, { ignoreAuth } = {}) => (dispatch) => {
-  dispatch(fetchingUser(true));
+export const fetchUser = (alias: string, { ignoreAuth }: { ignoreAuth: bool } = {}): ReduxThunk =>
+  (dispatch) => {
+    dispatch(fetchingUser(true));
 
-  return get(`${config.api.endpoint}users/${alias}`, { ignoreAuth })
-    .then(({ data }) => {
-      dispatch(fetchUserResult(data));
-      dispatch(fetchPvpStandings(alias));
-      dispatch(fetchPvpGames(alias));
-      dispatch(fetchPvpStats(alias));
-      dispatch(fetchUserAchievements(alias));
-      dispatch(fetchingUser(false));
-      dispatch(actions.fetchWorlds([data.world]));
-    }, ({ response: { status } = {} } = {}) => status === 404 && browserHistory.replace('/404'));
-};
+    return axios.get(`${config.api.endpoint}users/${alias}`, { ignoreAuth })
+      .then(({ data }) => {
+        dispatch(fetchUserResult(data));
+        dispatch(fetchPvpStandings(alias));
+        dispatch(fetchPvpGames(alias));
+        dispatch(fetchPvpStats(alias));
+        dispatch(fetchUserAchievements(alias));
+        dispatch(fetchingUser(false));
+        dispatch(actions.fetchWorlds([data.world]));
+      }, ({ response: { status } = {} } = {}) => status === 404 && browserHistory.replace('/404'));
+  };

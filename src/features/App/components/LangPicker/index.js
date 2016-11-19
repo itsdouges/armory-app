@@ -1,3 +1,5 @@
+// @flow
+
 import { Component } from 'react';
 import { languages, set, get } from 'lib/i18n';
 import cx from 'classnames';
@@ -9,7 +11,7 @@ export default class LangPicker extends Component {
     selected: get(),
   };
 
-  pick (lang) {
+  pick (lang: string) {
     window.localStorage.clear();
     set(lang);
     window.location.reload();

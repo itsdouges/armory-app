@@ -3,8 +3,8 @@
 .*/node_modules/fbjs.*
 .*/node_modules/config-chain/test/broken.json
 .*/node_modules/npm/test/.*
-<PROJECT_ROOT>/config/
-<PROJECT_ROOT>/scripts/
+config/
+scripts/
 
 [include]
 

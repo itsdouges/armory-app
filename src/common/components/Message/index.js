@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 type MessageProps = {
-  type: string,
+  type?: string,
   title?: string,
   children?: any,
   className?: string,

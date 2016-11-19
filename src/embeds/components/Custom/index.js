@@ -9,6 +9,7 @@ import { fetchUser } from 'features/User/actions';
 import { fetchCharacter } from 'features/Character/actions';
 import componentsMap from './components';
 import ArmoryBadge from 'common/components/ArmoryBadge';
+import config from 'config';
 
 type QuadrantComponentMap = {
   [key: string]: Array<string>,
@@ -22,6 +23,7 @@ type Props = {
   height?: number,
   width?: number,
   quadrants?: [number, number],
+  autoUpdate?: bool,
 
   // === Redux props ===
   dispatchFetchUser?: Function,
@@ -51,8 +53,6 @@ function mapStateToProps (state, props) {
 
 function generateCells ([x, y], { components, character, user, props }) {
   const rows = [];
-  // const cellWidth = 1 / x * 100;
-  // const rowHeight = 1 / y * 100;
 
   for (let i = 0; i < y; i++) {
     const cells = [];
@@ -81,26 +81,49 @@ function generateCells ([x, y], { components, character, user, props }) {
   dispatchFetchCharacter: fetchCharacter,
 })
 export default class CustomEmbed extends Component {
+  props: Props;
+
   componentWillMount () {
     const {
       userName,
       characterName,
+      autoUpdate,
+    } = this.props;
+
+    if (userName) {
+      this.fetchUser();
+      autoUpdate && setInterval(this.fetchUser, config.refreshDelay);
+    }
+
+    if (characterName) {
+      this.fetchCharacter();
+      autoUpdate && setInterval(this.fetchCharacter, config.refreshDelay);
+    }
+  }
+
+  fetchUser = () => {
+    const {
+      userName,
       dispatchFetchUser = noop,
+    } = this.props;
+
+    dispatchFetchUser(userName, {
+      redirect404: false,
+      ignoreAuth: true,
+    });
+  };
+
+  fetchCharacter = () => {
+    const {
+      characterName,
       dispatchFetchCharacter = noop,
     } = this.props;
 
-    userName && dispatchFetchUser(userName, {
+    dispatchFetchCharacter(characterName, {
       redirect404: false,
       ignoreAuth: true,
     });
-
-    characterName && dispatchFetchCharacter(characterName, {
-      redirect404: false,
-      ignoreAuth: true,
-    });
-  }
-
-  props: Props;
+  };
 
   render () {
     const {
@@ -114,7 +137,7 @@ export default class CustomEmbed extends Component {
     } = this.props;
 
     return (
-      <div className={styles.root} style={{ height: `${height}px`, width: `${width}px` }}>
+      <div className={styles.root} style={{ height, width }}>
         <ArmoryBadge />
 
         {generateCells(quadrants, {

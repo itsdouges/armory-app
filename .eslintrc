@@ -15,11 +15,11 @@
     "camelcase": "off",
     "no-underscore-dangle": "off",
     "no-duplicate-imports": "off",
-    "import/no-duplicates": "error"
+    "import/no-duplicates": "error",
+    "react/sort-comp": "warn"
   },
   "globals": {
     "__DEVELOPMENT__": true,
-    "__DATE__": true,
-    "__SHORT_GIT_HASH__": true
+    "ReduxThunk": true
   }
 }

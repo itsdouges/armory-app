@@ -20,7 +20,7 @@ function onSearch (event) {
 }
 
 type SearchBarProps = {
-  className: string,
+  className?: string,
   simple?: bool,
 };
 

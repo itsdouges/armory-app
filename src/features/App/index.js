@@ -1,8 +1,8 @@
-import { PropTypes, Component } from 'react';
+// @flow
+
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-
-import Head from 'common/components/Head';
 
 import styles from './styles.less';
 
@@ -21,35 +21,38 @@ const selector = createSelector(
   })
 );
 
-class App extends Component {
-  static propTypes = {
-    children: PropTypes.any,
-    userAuthenticated: PropTypes.bool,
-    userAlias: PropTypes.string,
-    userToken: PropTypes.string,
-    checkingAuthentication: PropTypes.bool,
-    location: PropTypes.object,
-  };
+type Props = {
+  children?: any,
+  userAuthenticated: bool,
+  userAlias: string,
+  userToken: string,
+  location: {
+    pathname: string,
+  },
+  checkingAuthentication: bool,
+};
+
+@connect(selector)
+export default class App extends Component {
+  props: Props;
 
   state = {
-    smallHeader: this.shouldForceSmallHeader(),
+    smallHeader: this.shouldForceSmallHeader(this.props),
   };
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps: Props) {
     this.setState({
       smallHeader: this.shouldForceSmallHeader(nextProps),
     });
   }
 
-  shouldForceSmallHeader ({ location } = this.props) {
+  shouldForceSmallHeader ({ location }: Props) {
     return location.pathname !== '/';
   }
 
   render () {
     return (
       <div className={styles.app}>
-        <Head />
-
         <Header
           compact={this.state.smallHeader}
           authenticated={this.props.userAuthenticated}
@@ -65,5 +68,3 @@ class App extends Component {
     );
   }
 }
-
-export default connect(selector)(App);

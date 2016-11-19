@@ -1,3 +1,5 @@
+// @flow
+
 import axios from 'axios';
 import config from 'config';
 import { browserHistory } from 'react-router';
@@ -71,7 +73,11 @@ function extractIds ({ specializations, equipment, equipment_pvp, skills }) {
   return ids;
 }
 
-export function fetchCharacter (character, { redirect404 = true, ignoreAuth, basicLoad } = {}) {
+export function fetchCharacter (character: string, { redirect404 = true, ignoreAuth, basicLoad }: {
+  redirect404: bool,
+  ignoreAuth: bool,
+  basicLoad: bool,
+} = {}): ReduxThunk {
   return (dispatch) => {
     dispatch(fetchingCharacter(true));
 
@@ -112,19 +118,19 @@ function updateCharacterAuth (name, authorization) {
   };
 }
 
-export function updateCharacter (name, { showPublic }) {
+export function updateCharacter (name: string, { showPublic }: { showPublic: bool }): ReduxThunk {
   return (dispatch) => {
     dispatch(updateCharacterAuth(name, { showPublic }));
     return axios.put(`${config.api.endpoint}characters/${name}`, { showPublic });
   };
 }
 
-export const selectCharacter = (name) => ({
+export const selectCharacter = (name: string) => ({
   type: SELECT_CHARACTER,
   payload: name,
 });
 
-export const selectCharacterMode = (mode) => ({
+export const selectCharacterMode = (mode: 'pvp' | 'pve' | 'wvw') => ({
   type: SELECT_CHARACTER_MODE,
   payload: mode,
 });
