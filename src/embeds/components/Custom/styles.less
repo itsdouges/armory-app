@@ -2,15 +2,27 @@
 
 .root {
   position: relative;
+  margin: 0 auto;
 }
 
 .cell {
   display: flex;
   flex-wrap: wrap;
-  flex-grow: 1;
   width: 100%;
 }
 
 .row {
   display: flex;
+}
+
+// == Component styles ==
+
+.equipment {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.portrait {
+  flex-shrink: 0;
+  width: 100%;
 }

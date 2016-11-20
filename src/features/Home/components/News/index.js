@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+// @flow
 
 import styles from './styles.less';
 import Card from 'common/components/Card';
@@ -42,7 +42,7 @@ const news = [{
   content: <span>The user interface has been remade, it's now faster, leaner, and easier to develop with. <a href="https://github.com/madou/armory-react"><strong>Check it out on Github</strong></a> if you're into that kind of thing ;-).</span>,
 }];
 
-const News = (props) => (
+const News = (props: { className?: string }) => (
   <div className={props.className}>
     <h2>Armory News</h2>
     <div className={styles.root}>
@@ -63,9 +63,5 @@ const News = (props) => (
     </div>
   </div>
 );
-
-News.propTypes = {
-  className: PropTypes.string,
-};
 
 export default News;

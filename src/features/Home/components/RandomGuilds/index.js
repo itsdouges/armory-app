@@ -1,3 +1,5 @@
+// @flow
+
 import axios from 'axios';
 import { Component } from 'react';
 import ContentCard from 'common/components/ContentCard';

@@ -21,7 +21,7 @@ const generalProps: Array<QueryProp> = [
   { prop: 'mode', queryString: 'm' },
   { prop: 'height', queryString: 'h' },
   { prop: 'width', queryString: 'w' },
-  { prop: 'quadrants', queryString: 'qd', modify: (string) => string.split('x').map((n) => +n) },
+  { prop: 'cells', queryString: 'cls', modify: (string) => string.split('x').map((n) => +n) },
   {
     prop: 'components',
     queryString: 'c',

@@ -98,8 +98,8 @@ export default class Header extends Component {
     ];
 
     const unauthenticatedLinks = [
-      <Link key="login" to="/login">{T.translate('login.name')}</Link>,
       <Link key="join" to="/join">{T.translate('join.name')}</Link>,
+      <Link key="login" to="/login">{T.translate('login.name')}</Link>,
     ];
 
     const linksForContext = authenticated ? authenticatedLinks : unauthenticatedLinks;
@@ -107,6 +107,7 @@ export default class Header extends Component {
     const links = [
       ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
       <Link key="stats" to="/statistics">{T.translate('stats.name')}</Link>,
+      <Link key="embeds" to="/embeds">{T.translate('embeds.name')}</Link>,
       <LangPicker key="langPicker" />,
     ];
 

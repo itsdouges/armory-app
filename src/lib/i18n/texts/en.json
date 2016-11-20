@@ -5,6 +5,14 @@
       "text": "Guild Wars 2 Armory is an easy way to find, view, and share users, characters, and guilds with your friends on your mobile and PC! Join today and start sharing!"
     }
   },
+  "embeds": {
+    "name": "Embeds",
+    "upsell": "Guild Wars 2 Armory has a rich embed system that allows all users to embed characters and users on their own websites.",
+    "characterCustom": "Customisable Character Embed",
+    "characterPvpPreset": "Character PvP Preset",
+    "characterPvePreset": "Character PvE Preset",
+    "characterOriginal": "Minimal Character Embed"
+  },
   "login": {
     "name": "Sign in",
     "joinCta": "Don't have an account? Join us!",

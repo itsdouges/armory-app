@@ -12,7 +12,7 @@ import ArmoryBadge from 'common/components/ArmoryBadge';
 import config from 'config';
 
 type QuadrantComponentMap = {
-  [key: string]: Array<string>,
+  [key: any]: Array<string>,
 };
 
 type Props = {
@@ -20,9 +20,9 @@ type Props = {
   characterName?: string,
   components?: QuadrantComponentMap,
   mode?: string,
-  height?: number,
-  width?: number,
-  quadrants?: [number, number],
+  height?: string,
+  width?: string,
+  cells?: [number, number],
   autoUpdate?: bool,
 
   // === Redux props ===
@@ -127,11 +127,11 @@ export default class CustomEmbed extends Component {
 
   render () {
     const {
-      character = {},
-      user = {},
+      character,
+      user,
       height = 500,
       width = 500,
-      quadrants = [1, 1],
+      cells = [1, 1],
       components = {},
       ...props,
     } = this.props;
@@ -140,7 +140,7 @@ export default class CustomEmbed extends Component {
       <div className={styles.root} style={{ height, width }}>
         <ArmoryBadge />
 
-        {generateCells(quadrants, {
+        {generateCells(cells, {
           user,
           props,
           character,

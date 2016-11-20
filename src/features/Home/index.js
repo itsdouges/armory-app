@@ -1,3 +1,5 @@
+// @flow
+
 import Head from 'common/components/Head';
 import Container from 'common/components/Container';
 

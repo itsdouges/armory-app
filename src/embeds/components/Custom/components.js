@@ -2,16 +2,20 @@
 /* eslint-disable react/prop-types */
 
 import get from 'lodash/get';
+import includes from 'lodash/includes';
 
+import styles from './styles.less';
 import ContentCard from 'common/components/ContentCard';
 import Portrait from 'features/Character/components/Portrait';
 import PvpEquipment from 'features/Character/components/PvpEquipment';
 import Specialization from 'features/Character/components/Specialization';
 import Skills from 'features/Character/components/Skills';
+import { leftItems, rightItems } from 'lib/gw2/equipment';
+import Item from 'features/Character/components/Item';
 
 type Props = {
   options?: { [key: string]: any },
-  character: {
+  character?: {
     race?: string,
     alias?: string,
     name?: string,
@@ -28,17 +32,68 @@ type Props = {
   },
 };
 
+function getItems (ids: [] = [], props: { items: {} }) {
+  return ids.map((id) => props.items[id]);
+}
+
 export default {
-  ucontentCard ({ user }: Props) {
+  contentCardU ({ user }: Props) {
     return <ContentCard key="user-badge" type="users" content={user} />;
   },
 
-  ccontentCard ({ character }: Props) {
+  contentCardC ({ character }: Props) {
     return <ContentCard key="character-badge" type="characters" content={character} />;
   },
 
   portrait ({ character }: Props) {
-    return <Portrait key="portrait" character={character} compact />;
+    return <Portrait className={styles.portrait} key="portrait" character={character} compact />;
+  },
+
+  equipment ({ character, props }: Props) {
+    const equipment = get(character, 'equipment', {});
+    const profession = get(character, 'profession');
+
+    return (
+      <div key="equipment" className={styles.equipment}>
+        {leftItems.map((item) => {
+          const equip = equipment[item.key] || {};
+
+          return (
+            <Item
+              {...item}
+              small
+              hide={includes(item.hideForClasses, profession)}
+              key={item.key}
+              upgradeCounts={equip.upgradeCounts}
+              upgrades={getItems(equip.upgrades, props)}
+              infusions={getItems(equip.infusions, props)}
+              item={props.items[equip.id]}
+              skin={props.skins[equip.skin]}
+              stats={equip.stats}
+            />
+          );
+        })}
+
+        {rightItems.map((item) => {
+          const equip = equipment[item.key] || {};
+
+          return (
+            <Item
+              {...item}
+              small
+              hide={includes(item.hideForClasses, profession)}
+              key={item.key}
+              upgradeCounts={equip.upgradeCounts}
+              upgrades={getItems(equip.upgrades, props)}
+              infusions={getItems(equip.infusions, props)}
+              item={props.items[equip.id]}
+              skin={props.skins[equip.skin]}
+              stats={equip.stats}
+            />
+          );
+        })}
+      </div>
+    );
   },
 
   pvpEquipment ({ character, props }: Props) {
@@ -75,9 +130,10 @@ export default {
       />);
   },
 
-  skills ({ character, props }: Props, options: { showWeaponSkills: bool }) {
+  skills ({ character, props }: Props, options: { showWeaponSkills?: bool } = {}) {
+    const profession = get(character, 'profession', '');
     const characterSkills = get(character, `skills[${props.mode}]`, {});
-    const professionData = get(props, `professions[${character.profession || ''}]`);
+    const professionData = get(props, `professions[${profession}]`);
 
     return (
       <Skills
