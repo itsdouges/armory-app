@@ -7,7 +7,7 @@ module.exports = function (question, isYesDefault) {
   if (typeof isYesDefault !== 'boolean') {
     throw new Error('Provide explicit boolean isYesDefault as second argument.');
   }
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const rlInterface = rl.createInterface({
       input: process.stdin,
       output: process.stdout,

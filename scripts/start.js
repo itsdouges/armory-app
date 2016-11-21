@@ -17,7 +17,7 @@ let compiler;
 // TODO: hide this behind a flag and eliminate dead code on eject.
 // This shouldn't be exposed to the user.
 let handleCompile;
-const isSmokeTest = process.argv.some(arg => arg.indexOf('--smoke-test') > -1);
+const isSmokeTest = process.argv.some((arg) => arg.indexOf('--smoke-test') > -1);
 if (isSmokeTest) {
   handleCompile = function (err, stats) {
     if (err || stats.hasErrors() || stats.hasWarnings()) {
@@ -51,7 +51,7 @@ function formatMessage (message) {
       'Module not found:'
     )
     // Internal stacks are generally useless so we strip them
-    .replace(/^\s*at\s.*:\d+:\d+[\s\)]*\n/gm, '') // at ... ...:x:y
+    .replace(/^\s*at\s.*:\d+:\d+[\s)]*\n/gm, '') // at ... ...:x:y
     // Webpack loader names obscure CSS filenames
     .replace('./~/css-loader!./~/postcss-loader!', '');
 }
@@ -82,11 +82,11 @@ function setupCompiler (port) {
     }
 
     const json = stats.toJson();
-    const formattedErrors = json.errors.map(message =>
+    const formattedErrors = json.errors.map((message) =>
       // eslint-disable-next-line
       'Error in ' + formatMessage(message)
     );
-    const formattedWarnings = json.warnings.map(message =>
+    const formattedWarnings = json.warnings.map((message) =>
       // eslint-disable-next-line
       'Warning in ' + formatMessage(message)
     );
@@ -101,7 +101,7 @@ function setupCompiler (port) {
         // eslint-disable-next-line
         formattedErrors = formattedErrors.filter(isLikelyASyntaxError);
       }
-      formattedErrors.forEach(message => {
+      formattedErrors.forEach((message) => {
         console.log(message);
         console.log();
       });
@@ -112,7 +112,7 @@ function setupCompiler (port) {
     if (hasWarnings) {
       console.log(chalk.yellow('Compiled with warnings.'));
       console.log();
-      formattedWarnings.forEach(message => {
+      formattedWarnings.forEach((message) => {
         console.log(message);
         console.log();
       });
@@ -173,7 +173,7 @@ function run (port) {
   runDevServer(port);
 }
 
-detect(DEFAULT_PORT).then(port => {
+detect(DEFAULT_PORT).then((port) => {
   if (port === DEFAULT_PORT) {
     run(port);
     return;
@@ -184,7 +184,7 @@ detect(DEFAULT_PORT).then(port => {
     chalk.yellow('Something is already running at port ' + DEFAULT_PORT + '.') + // eslint-disable-line
     '\n\nWould you like to run the app at another port instead?';
 
-  prompt(question, true).then(shouldChangePort => {
+  prompt(question, true).then((shouldChangePort) => {
     if (shouldChangePort) {
       run(port);
     }
