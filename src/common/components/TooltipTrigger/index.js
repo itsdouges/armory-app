@@ -3,7 +3,6 @@
 import { Component, cloneElement } from 'react';
 import { connect } from 'react-redux';
 import { showTooltip } from 'features/Gw2/actions';
-import { isSmallScreen } from 'lib/dom';
 
 type Props = {
   data: string | Object,
@@ -23,10 +22,6 @@ class TooltipTrigger extends Component {
   };
 
   hideTooltip = () => {
-    if (isSmallScreen()) {
-      return;
-    }
-
     this.props.dispatch(showTooltip(false));
   };
 

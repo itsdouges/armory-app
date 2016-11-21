@@ -17,7 +17,6 @@ type MenuProps = {
 export default class ResponsiveMenu extends Component {
   props: MenuProps;
   detatch: Function;
-  _root: Element;
 
   state = {
     shown: false,
@@ -59,7 +58,6 @@ export default class ResponsiveMenu extends Component {
 
     return (
       <div
-        ref={(e) => (this._root = e)}
         className={cx(styles.root, className, shown ? styles.shown : styles.hidden)}
       >
         <button className={styles.toggleButton} onClick={this.toggle}>

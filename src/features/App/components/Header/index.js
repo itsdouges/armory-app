@@ -7,6 +7,7 @@ import get from 'lodash/get';
 import T from 'i18n-react';
 
 import styles from './styles.less';
+import decoration from 'common/styles/decoration.less';
 
 import { addEvent } from 'lib/dom';
 
@@ -107,7 +108,7 @@ export default class Header extends Component {
     const links = [
       ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
       <Link key="stats" to="/statistics">{T.translate('stats.name')}</Link>,
-      <Link key="embeds" to="/embeds">{T.translate('embeds.name')}</Link>,
+// <Link key="embeds" className={decoration.new} to="/embeds">{T.translate('embeds.name')}</Link>,
       <LangPicker key="langPicker" />,
     ];
 

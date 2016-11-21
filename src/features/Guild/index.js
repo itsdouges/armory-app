@@ -34,6 +34,7 @@ class Guild extends Component {
         <Head title={`${guildName} [${guild.tag}]`} />
 
         <ContentCardList
+          noBorder
           type="grid"
           items={guild && guild.characters}
         />

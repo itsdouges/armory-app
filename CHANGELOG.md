@@ -12,10 +12,15 @@
 ### Added
 - Customisable armory embed
 - Page title to character embed
+- Embed details page
 
 ### Changed
 - Character embed route from `/character` to `/embeds/character`
 - Character specializations to have `small` mode
+- Eslint major version
+
+### Removed
+- News from front page
 
 ## [2.17.0] - 2016/11/10
 ### Added

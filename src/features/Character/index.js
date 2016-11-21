@@ -274,7 +274,7 @@ class Character extends Component {
                     <Button
                       key="edit-button"
                       className={styles.editButton}
-                      type={editMode ? 'primary' : 'neutral'}
+                      type={editMode ? 'primary' : 'minimal'}
                       onClick={this.toggleEditMode}
                     >
                       {editMode ? `${T.translate('characters.done')}` :
@@ -371,7 +371,7 @@ class Character extends Component {
           </Link>
         </div>
 
-        <ContentCardList bottomBorder alias={alias} items={characters} />
+        <ContentCardList noBorder alias={alias} items={characters} />
 
         <SocialButtons />
         <Tooltip />

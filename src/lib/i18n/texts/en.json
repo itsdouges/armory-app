@@ -7,8 +7,8 @@
   },
   "embeds": {
     "name": "Embeds",
-    "upsell": "Guild Wars 2 Armory has a rich embed system that allows all users to embed characters and users on their own websites.",
-    "characterCustom": "Customisable Character Embed",
+    "upsell": "Guild Wars 2 Armory has a rich embed system that allows for highly customised embeds that can display user and character data in any way you see fit.",
+    "custom": "Customisable Embed",
     "characterPvpPreset": "Character PvP Preset",
     "characterPvePreset": "Character PvE Preset",
     "characterOriginal": "Minimal Character Embed"

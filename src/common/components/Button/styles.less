@@ -9,13 +9,12 @@
   text-align: center;
   width: 10em;
   height: 3em;
-  border-radius: 15px;
+  border-radius: 5px;
   margin: 0 auto;
   border: 1px solid transparent;
   cursor: pointer;
   outline: none;
   text-transform: uppercase;
-  .transition(border);
 }
 
 .progress {
@@ -26,6 +25,12 @@
   color: @disabledColor;
   background: @disabledBackground;
   border-color: @disabledBorder;
+}
+
+.minimal {
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
 .primary {

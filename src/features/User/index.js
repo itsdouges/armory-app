@@ -91,6 +91,7 @@ class User extends Component {
         <Head title={alias} />
 
         <ContentCardList
+          noBorder
           type="grid"
           alias={alias}
           items={user && user.characters}

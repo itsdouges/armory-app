@@ -6,6 +6,9 @@ import CustomEmbed from 'embeds/components/Custom';
 import RandomCharacter from 'features/Home/components/RandomCharacter';
 import Head from 'common/components/Head';
 import Tooltip from 'common/components/Tooltip';
+import Container from 'common/components/Container';
+
+import styles from './styles.less';
 
 const characterPvpPreset = {
   components: {
@@ -21,40 +24,31 @@ const characterPvpPreset = {
   mode: 'pvp',
 };
 
-const characterPvePreset = {
-  components: {
-    '00': ['contentCardC'],
-    '10': ['equipment'],
-    '20': ['allSkills'],
-    '30': ['portrait'],
-    '31': ['specializations'],
-  },
-  width: '600px',
-  height: '628px',
-  cells: [2, 4],
-  mode: 'pve',
-};
+// const characterPvePreset = {
+//   components: {
+//     '00': ['contentCardC'],
+//     '10': ['equipment'],
+//     '20': ['allSkills'],
+//     '30': ['portrait'],
+//     '31': ['specializations'],
+//   },
+//   width: '600px',
+//   height: '628px',
+//   cells: [2, 4],
+//   mode: 'pve',
+// };
 
 const EmbedExamples = () => (
-  <div>
+  <Container className={styles.root}>
     <Head title="Embeds" />
 
     <T.p text={{ key: 'embeds.upsell' }} />
 
-    <h2>{T.translate('embeds.characterCustom')}</h2>
-
-    <h3>{T.translate('embeds.characterPvpPreset')}</h3>
+    <h2>{T.translate('embeds.custom')} | {T.translate('embeds.characterPvpPreset')}</h2>
 
     <CustomEmbed
       characterName="Cyberplus"
       {...characterPvpPreset}
-    />
-
-    <h3>{T.translate('embeds.characterPvePreset')}</h3>
-
-    <CustomEmbed
-      characterName="Cyberplus"
-      {...characterPvePreset}
     />
 
     <h2>{T.translate('embeds.characterOriginal')}</h2>
@@ -62,7 +56,7 @@ const EmbedExamples = () => (
     <RandomCharacter />
 
     <Tooltip />
-  </div>
+  </Container>
 );
 
 export default EmbedExamples;
