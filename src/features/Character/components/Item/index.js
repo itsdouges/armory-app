@@ -7,27 +7,27 @@ import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
 type Props = {
-  type: string,
-  busy: boolean,
-  name: boolean,
-  item: {
+  type?: string,
+  busy?: boolean,
+  name?: string,
+  item?: {
     icon?: string,
   },
-  skin: {
+  skin?: {
     icon?: string,
   },
-  upgrades: [],
-  infusions: [],
-  stats: {},
-  upgradeCounts: {},
-  hide: boolean,
-  small: boolean,
-  size: 'micro' | 'small',
+  upgrades?: [],
+  infusions?: [],
+  stats?: {},
+  upgradeCounts?: {},
+  hide?: boolean,
+  small?: boolean,
+  size?: 'micro' | 'small',
   tooltipType: string,
 };
 
 const Item = ({
-  type,
+  type = '',
   busy,
   name,
   item = {},

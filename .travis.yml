@@ -5,7 +5,7 @@ install:
   - npm install yarn -g
   - yarn
 script:
-  - npm run lint && npm run flow && npm run test && npm run build
+  - npm run test && npm run build
 deploy:
   skip_cleanup: true
   provider: script

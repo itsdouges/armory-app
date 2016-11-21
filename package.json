@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./scripts/start.js --prod",
-    "test": "echo \"\n=== NO TESTS IMPLEMENTED YET :( ===\n\"",
+    "test": "npm run lint && npm run flow",
     "flow": "flow",
     "flowtypes": "flow-typed install --overwrite",
     "lint": "eslint .",
