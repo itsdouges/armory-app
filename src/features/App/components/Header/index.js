@@ -7,7 +7,7 @@ import get from 'lodash/get';
 import T from 'i18n-react';
 
 import styles from './styles.less';
-import decoration from 'common/styles/decoration.less';
+// import decoration from 'common/styles/decoration.less';
 
 import { addEvent } from 'lib/dom';
 
