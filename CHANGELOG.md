@@ -8,11 +8,11 @@
 - Changes
 ```
 
-## [unreleased]
+## 2.18.0 - 2016/11/22
 ### Added
 - Customisable armory embed
 - Page title to character embed
-- Embed details page
+- Embed details page (but is currently disabled)
 
 ### Changed
 - Character embed route from `/character` to `/embeds/character`
