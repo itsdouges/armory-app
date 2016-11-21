@@ -51,7 +51,12 @@ export default class ApiTokens extends Component {
         <div className={styles.padding}>
           {!this.props.tokens.length &&
             <Message>
-              <a target="_blank" title={T.translate('misc.opensInNewWindow')} href="https://account.arena.net/applications/create">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                title={T.translate('misc.opensInNewWindow')}
+                href="https://account.arena.net/applications/create"
+              >
                 {T.translate('settings.apiKeys.noKeysCta')}
               </a>
             </Message>}

@@ -17,7 +17,7 @@ import SimpleTooltip from './Simple';
 import Background from './Background';
 
 const selector = createSelector(
-  state => state.tooltip,
+  (state) => state.tooltip,
   (tooltip) => ({
     tooltip,
   })
@@ -25,7 +25,7 @@ const selector = createSelector(
 
 type Props = {
   tooltip: {
-    show: bool,
+    show: boolean,
     type: string,
     data: Object,
   },
@@ -33,11 +33,11 @@ type Props = {
 };
 
 class Tooltip extends Component {
+  props: Props;
+
   close = () => {
     this.props.dispatch(showTooltip(false));
   };
-
-  props: Props;
 
   render () {
     const { tooltip } = this.props;

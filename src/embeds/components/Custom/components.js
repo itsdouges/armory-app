@@ -130,7 +130,7 @@ export default {
       />);
   },
 
-  skills ({ character, props }: Props, options: { showWeaponSkills?: bool } = {}) {
+  skills ({ character, props }: Props, options: { showWeaponSkills?: boolean } = {}) {
     const profession = get(character, 'profession', '');
     const characterSkills = get(character, `skills[${props.mode}]`, {});
     const professionData = get(props, `professions[${profession}]`);

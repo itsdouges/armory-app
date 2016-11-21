@@ -1,11 +1,11 @@
 import { PropTypes } from 'react';
+import classnames from 'classnames/bind';
 
 import styles from './styles.less';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import ProgressBar from 'common/components/ProgressBar';
 import colours from 'common/styles/colours';
 
-import classnames from 'classnames/bind';
 const cx = classnames.bind(styles);
 
 function getTotal (discipline) {

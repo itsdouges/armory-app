@@ -18,7 +18,7 @@ function buildName (item, skin, upgrades) {
     return item.name;
   }
 
-  const regex = /[\w'\-]+/;
+  const regex = /[\w'-]+/;
   const prefix = regex.exec(item.name);
   const prefixedName = `${prefix} ${skin.name}`;
 

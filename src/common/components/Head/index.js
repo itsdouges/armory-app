@@ -19,7 +19,7 @@ const Head = ({
   canonical = location.href,
   type = 'website',
   image = defaultImage,
-  ...extraProps,
+  ...extraProps
 }: HeadProps) => {
   const fullTitle = `${title}${config.titleSuffix}`;
   const parsedDescription = description

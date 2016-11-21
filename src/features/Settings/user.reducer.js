@@ -24,7 +24,7 @@ const addGw2TokenResultReducer = (state, action) => {
 };
 
 export const selector = createSelector(
-  store => store.user,
+  (store) => store.user,
   (user) => ({
     user,
   })

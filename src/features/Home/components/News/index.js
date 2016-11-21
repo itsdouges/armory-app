@@ -39,7 +39,7 @@ const news = [{
 }, {
   title: 'UI Refresh',
   date: '22/08/16',
-  content: <span>The user interface has been remade, it's now faster, leaner, and easier to develop with. <a href="https://github.com/madou/armory-react"><strong>Check it out on Github</strong></a> if you're into that kind of thing ;-).</span>,
+  content: <span>The user interface has been remade, it is now faster, leaner, and easier to develop with. <a href="https://github.com/madou/armory-react"><strong>Check it out on Github</strong></a> if you are into that kind of thing ;-).</span>,
 }];
 
 const News = (props: { className?: string }) => (

@@ -74,9 +74,9 @@ function extractIds ({ specializations, equipment, equipment_pvp, skills }) {
 }
 
 export function fetchCharacter (character: string, { redirect404 = true, ignoreAuth, basicLoad }: {
-  redirect404: bool,
-  ignoreAuth: bool,
-  basicLoad: bool,
+  redirect404: boolean,
+  ignoreAuth: boolean,
+  basicLoad: boolean,
 } = {}): ReduxThunk {
   return (dispatch) => {
     dispatch(fetchingCharacter(true));
@@ -118,7 +118,10 @@ function updateCharacterAuth (name, authorization) {
   };
 }
 
-export function updateCharacter (name: string, { showPublic }: { showPublic: bool }): ReduxThunk {
+export function updateCharacter (
+  name: string,
+  { showPublic }: { showPublic: boolean },
+): ReduxThunk {
   return (dispatch) => {
     dispatch(updateCharacterAuth(name, { showPublic }));
     return axios.put(`${config.api.endpoint}characters/${name}`, { showPublic });

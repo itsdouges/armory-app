@@ -6,16 +6,16 @@ import cx from 'classnames';
 
 import styles from './styles.less';
 
+function pick (lang: string) {
+  window.localStorage.clear();
+  set(lang);
+  window.location.reload();
+}
+
 export default class LangPicker extends Component {
   state = {
     selected: get(),
   };
-
-  pick (lang: string) {
-    window.localStorage.clear();
-    set(lang);
-    window.location.reload();
-  }
 
   render () {
     return (
@@ -25,13 +25,13 @@ export default class LangPicker extends Component {
         <div className={styles.root}>
 
           {languages.map((lang) =>
-            <a
+            <button
               key={lang}
               className={cx(styles.lang, { [styles.selected]: this.state.selected === lang })}
-              onClick={() => this.pick(lang)}
+              onClick={() => pick(lang)}
             >
               {lang}
-            </a>)}
+            </button>)}
         </div>
       </span>
     );

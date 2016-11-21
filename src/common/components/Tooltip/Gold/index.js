@@ -12,18 +12,17 @@ type GoldProps = {
 
 const Gold = ({ copper, silver, gold }: GoldProps) => (
   <div className={styles.root}>
-
-  {!!gold && (
+    {!!gold && (
     <span className={`${styles.money} ${colours.gold}`}>
       {gold} <Icon name="gold.png" size="micro" />
     </span>)}
 
-  {!!silver && (
+    {!!silver && (
     <span className={`${styles.money} ${colours.silver}`}>
       {silver} <Icon name="silver.png" size="micro" />
     </span>)}
 
-  {!!copper && (
+    {!!copper && (
     <span className={`${styles.money} ${colours.copper}`}>
       {copper} <Icon name="copper.png" size="micro" />
     </span>)}

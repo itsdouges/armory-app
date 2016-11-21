@@ -24,13 +24,13 @@
 
 .neutral {
   color: @disabledColor;
-  background-color: @disabledBackground;
+  background: @disabledBackground;
   border-color: @disabledBorder;
 }
 
 .primary {
   border-color: @positive;
-  background-color: @positive;
+  background: @positive;
   color: @buttonTextColour;
   font-weight: bold;
 
@@ -41,7 +41,7 @@
 
 .secondary {
   border-color: @negative;
-  background-color: @negative;
+  background: @negative;
   color: @buttonTextColour;
 
   &.disabled {
@@ -50,6 +50,6 @@
 }
 
 .disabled {
-  background-color: transparent;
+  background: transparent;
   cursor: not-allowed;
 }

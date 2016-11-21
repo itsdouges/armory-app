@@ -2,6 +2,7 @@
 
 import styles from './styles.less';
 import classNames from 'classnames/bind';
+
 const cx = classNames.bind(styles);
 
 type MessageProps = {
@@ -22,7 +23,7 @@ const Message = ({ children, type, title, className, size }: MessageProps) => {
       title={title}
       className={cx('container', className, type, size)}
     >
-        {children}
+      {children}
     </div>
   );
 };

@@ -2,7 +2,8 @@ language: node_js
 node_js:
   - "6.9.1"
 install:
-  - npm install --silent
+  - npm install yarn -g
+  - yarn
 script:
   - npm run lint && npm run flow && npm run test && npm run build
 deploy:

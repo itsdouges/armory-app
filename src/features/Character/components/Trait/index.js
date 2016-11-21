@@ -2,6 +2,7 @@ import { PropTypes } from 'react';
 import styles from './styles.less';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import classnames from 'classnames/bind';
+
 const cx = classnames.bind(styles);
 
 const Trait = ({ data, className, active }) => (

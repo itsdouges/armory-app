@@ -43,7 +43,12 @@ export default class Embed extends Component {
 
     return (
       <div className={cx(styles.root, className)}>
-        <span onClick={this.show} className={styles.embedText}>Embed</span>
+        <button
+          onClick={this.show}
+          className={styles.embedText}
+        >
+          Embed
+        </button>
 
         {shown && (
           <div className={styles.input}>

@@ -117,24 +117,24 @@ function extractEliteSpecialization (character, mode) {
 }
 
 export const selector = createSelector(
-  store => store.characters.data[store.characters.selected],
-  store => {
+  (store) => store.characters.data[store.characters.selected],
+  (store) => {
     const user = store.users.data[store.users.selected];
     return user && user.characters;
   },
-  store => store.items,
-  store => store.skins,
-  store => store.specializations,
-  store => store.traits,
-  store => store.items.fetching ||
+  (store) => store.items,
+  (store) => store.skins,
+  (store) => store.specializations,
+  (store) => store.traits,
+  (store) => store.items.fetching ||
     store.skins.fetching ||
     store.traits.fetching ||
     store.specializations.fetching,
-  store => store.characters.mode,
-  store => store.skills,
-  store => store.amulets,
-  store => store.pets,
-  store => store.titles[get(store.characters.data, `[${store.characters.selected}].title`, '')],
+  (store) => store.characters.mode,
+  (store) => store.skills,
+  (store) => store.amulets,
+  (store) => store.pets,
+  (store) => store.titles[get(store.characters.data, `[${store.characters.selected}].title`, '')],
   // eslint-disable-next-line
   (character, characters, items, skins, specializations, traits, fetchingGw2Data, mode, skills, amulets, pets, title) => ({
     character: character && {

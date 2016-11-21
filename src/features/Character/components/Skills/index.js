@@ -23,7 +23,7 @@ type SkillsProps = {
   className?: string,
   items?: {},
   character?: {},
-  showWeaponSkills?: bool,
+  showWeaponSkills?: boolean,
 };
 
 const Skills = ({

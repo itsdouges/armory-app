@@ -12,10 +12,10 @@ type Props = {
     alias?: string,
     name?: string,
   },
-  forceUpdate?: bool,
+  forceUpdate?: boolean,
   children?: any,
   className?: string,
-  compact?: bool,
+  compact?: boolean,
 };
 
 /* eslint max-len:0 */

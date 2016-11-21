@@ -1,5 +1,5 @@
 // @flow
-
+/* eslint-disable jsx-a11y/label-has-for */
 import styles from './styles.less';
 
 type CheckboxProps = {

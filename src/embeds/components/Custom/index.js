@@ -23,7 +23,7 @@ type Props = {
   height?: string,
   width?: string,
   cells?: [number, number],
-  autoUpdate?: bool,
+  autoUpdate?: boolean,
 
   // === Redux props ===
   dispatchFetchUser?: Function,
@@ -133,7 +133,7 @@ export default class CustomEmbed extends Component {
       width = 500,
       cells = [1, 1],
       components = {},
-      ...props,
+      ...props
     } = this.props;
 
     return (

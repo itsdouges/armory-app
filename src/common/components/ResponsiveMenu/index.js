@@ -3,7 +3,7 @@
 import { Component } from 'react';
 import cx from 'classnames';
 
-import { addEvent, isDescendant } from 'lib/dom';
+import { addEvent } from 'lib/dom';
 import SvgIcon from 'common/components/Icon/Svg';
 
 import styles from './styles.less';
@@ -15,6 +15,9 @@ type MenuProps = {
 };
 
 export default class ResponsiveMenu extends Component {
+  props: MenuProps;
+  detatch: Function;
+  _root: Element;
 
   state = {
     shown: false,
@@ -28,17 +31,13 @@ export default class ResponsiveMenu extends Component {
     this.detatch();
   }
 
-  onWindowClick = (e: { target: Element }) => {
-    if (!this.state.shown || isDescendant(this._root, e.target)) {
+  onWindowClick = () => {
+    if (!this.state.shown) {
       return;
     }
 
     this.reset();
   }
-
-  props: MenuProps;
-  detatch: Function;
-  _root: Element;
 
   reset = () => {
     this.setState({
@@ -71,9 +70,8 @@ export default class ResponsiveMenu extends Component {
         <ul className={styles.listRoot} {...props}>
           {children && children.map((item, index) => (
             <li
-              key={index}
-              onClick={this.reset}
               className={cx(styles.item, itemClassName)}
+              key={index}
             >
               {item}
             </li>

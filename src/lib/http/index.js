@@ -5,6 +5,7 @@ import env from 'config';
 
 import * as lang from 'lib/i18n';
 
+// eslint-disable-next-line import/prefer-default-export
 export function setApiToken (token: string): Function {
   const id = axios.interceptors.request.use((config) => {
     if (config.headers && !config.ignoreAuth && config.url.indexOf(env.api.endpoint) >= 0) {

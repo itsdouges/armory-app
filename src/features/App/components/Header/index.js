@@ -20,10 +20,10 @@ import ProgressIcon from 'common/components/Icon/Progress';
 import SearchBar from 'common/components/SearchBar';
 
 type Props = {
-  authenticated: bool,
+  authenticated: boolean,
   alias: string,
-  checkingAuthentication: bool,
-  compact: bool,
+  checkingAuthentication: boolean,
+  compact: boolean,
 };
 
 export default class Header extends Component {
@@ -31,7 +31,7 @@ export default class Header extends Component {
   detatch: Function;
   _fixed: HTMLElement;
   _root: HTMLElement;
-  initialised: bool;
+  initialised: boolean;
 
   state = {
     stickyHeader: false,

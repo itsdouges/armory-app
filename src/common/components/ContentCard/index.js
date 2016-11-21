@@ -86,7 +86,7 @@ type ContentCardProps = {
   type?: ContentType,
   size?: CardSize,
   extraSubtitle?: any,
-  forceUpdate?: bool,
+  forceUpdate?: boolean,
 };
 
 const ContentCard = ({

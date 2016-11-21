@@ -82,6 +82,7 @@ class CharacterLite extends Component {
         </div>
 
         <a
+          rel="noopener noreferrer"
           target="_blank"
           href={`/${safeCharacter.alias}/c/${safeCharacter.name}`}
           className={styles.header}

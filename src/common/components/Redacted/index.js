@@ -2,11 +2,12 @@
 
 import styles from './styles.less';
 import classnames from 'classnames/bind';
+
 const cx = classnames.bind(styles);
 
 type Props = {
   children?: any,
-  redact: bool,
+  redact: boolean,
 };
 
 const Redacted = ({ children, redact }: Props) => (

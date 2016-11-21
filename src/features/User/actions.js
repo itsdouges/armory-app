@@ -49,7 +49,7 @@ const fetchingUserCharacters = (fetching) => ({
 });
 
 export const fetchUserCharacters = (alias: string, { ignoreAuth }: {
-  ignoreAuth: bool,
+  ignoreAuth: boolean,
 } = {}): ReduxThunk =>
   (dispatch) => {
     dispatch(fetchingUserCharacters(true));
@@ -131,7 +131,10 @@ export const fetchPvpStandings = (alias: string): ReduxThunk => (dispatch) =>
   })
   .then((ids) => dispatch(actions.fetchPvpSeasons(ids)));
 
-export const fetchUser = (alias: string, { ignoreAuth }: { ignoreAuth: bool } = {}): ReduxThunk =>
+export const fetchUser = (
+  alias: string,
+  { ignoreAuth }: { ignoreAuth: boolean } = {},
+): ReduxThunk =>
   (dispatch) => {
     dispatch(fetchingUser(true));
 
