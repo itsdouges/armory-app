@@ -9,13 +9,12 @@
   text-align: center;
   width: 10em;
   height: 3em;
-  border-radius: 15px;
+  border-radius: 5px;
   margin: 0 auto;
   border: 1px solid transparent;
   cursor: pointer;
   outline: none;
   text-transform: uppercase;
-  .transition(border);
 }
 
 .progress {
@@ -24,13 +23,19 @@
 
 .neutral {
   color: @disabledColor;
-  background-color: @disabledBackground;
+  background: @disabledBackground;
   border-color: @disabledBorder;
+}
+
+.minimal {
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
 .primary {
   border-color: @positive;
-  background-color: @positive;
+  background: @positive;
   color: @buttonTextColour;
   font-weight: bold;
 
@@ -41,7 +46,7 @@
 
 .secondary {
   border-color: @negative;
-  background-color: @negative;
+  background: @negative;
   color: @buttonTextColour;
 
   &.disabled {
@@ -50,6 +55,6 @@
 }
 
 .disabled {
-  background-color: transparent;
+  background: transparent;
   cursor: not-allowed;
 }

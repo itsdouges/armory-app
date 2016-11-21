@@ -12,7 +12,7 @@ const IGNORE_EQUIPS_LIST = [
   'HelmAquatic',
 ];
 
-export function calculate (character, { items }) {
+export default function calculate (character, { items }) {
   if (!character) {
     return defaultAttributes;
   }

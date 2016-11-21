@@ -1,12 +1,38 @@
-import { PropTypes } from 'react';
+// @flow
+
 import includes from 'lodash/includes';
+import cx from 'classnames';
 
 import Item from '../Item';
 import styles from './styles.less';
 import { weapons, noSecondWeaponSet } from 'lib/gw2/equipment';
 
-const PvpEquipment = ({ equipment, pvpEquipment, items, skins, amulets, profession }) => (
-  <div className={styles.root}>
+type Props = {
+  equipment: {},
+  pvpEquipment: {
+    sigils: [],
+    rune: number,
+    amulet: number,
+  },
+  items: {},
+  skins: {},
+  amulets: {},
+  profession: string,
+  className?: string,
+  display: string,
+};
+
+const PvpEquipment = ({
+  equipment,
+  pvpEquipment,
+  items,
+  skins,
+  amulets,
+  profession,
+  className,
+  display,
+}: Props) => (
+  <div className={cx(styles.root, className, styles[display])}>
     <div className={styles.weaponsContainer}>
       {weapons.map((item) => {
         const equip = equipment[item.key] || {};
@@ -26,21 +52,21 @@ const PvpEquipment = ({ equipment, pvpEquipment, items, skins, amulets, professi
 
     <div className={styles.sigilsContainer}>
       <Item
-        small
+        small={display !== 'inline'}
         name="Sigil"
         tooltipType="amulets"
         item={items[pvpEquipment.sigils[0]]}
       />
 
       <Item
-        small
+        small={display !== 'inline'}
         name="Sigil"
         tooltipType="amulets"
         item={items[pvpEquipment.sigils[1]]}
       />
 
       <Item
-        small
+        small={display !== 'inline'}
         name="Sigil"
         tooltipType="amulets"
         item={items[pvpEquipment.sigils[2]]}
@@ -48,7 +74,7 @@ const PvpEquipment = ({ equipment, pvpEquipment, items, skins, amulets, professi
       />
 
       <Item
-        small
+        small={display !== 'inline'}
         name="Sigil"
         tooltipType="amulets"
         item={items[pvpEquipment.sigils[3]]}
@@ -66,15 +92,6 @@ const PvpEquipment = ({ equipment, pvpEquipment, items, skins, amulets, professi
 PvpEquipment.defaultProps = {
   equipment: {},
   pvpEquipment: {},
-};
-
-PvpEquipment.propTypes = {
-  profession: PropTypes.string,
-  equipment: PropTypes.object,
-  skins: PropTypes.object,
-  pvpEquipment: PropTypes.object,
-  items: PropTypes.object,
-  amulets: PropTypes.object,
 };
 
 export default PvpEquipment;

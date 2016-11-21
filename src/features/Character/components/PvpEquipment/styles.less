@@ -1,19 +1,19 @@
-@import '~common/styles/sizes.less';
-
-@margin: 3;
-@itemMargin: 0.125;
-
-.root {
-  margin-top: 2.5em;
-}
-
 .weaponsContainer,
 .sigilsContainer,
 .upgradesContainer {
   text-align: center;
+  flex-shrink: 0;
 
   > * {
     display: inline-block;
-    margin: @itemMargin * 1rem;
   }
+}
+
+.weaponsContainer {
+  white-space: nowrap;
+}
+
+.inline {
+  display: flex;
+  height: 60px;
 }

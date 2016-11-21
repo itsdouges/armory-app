@@ -8,18 +8,18 @@ import ProgressIcon from 'common/components/Icon/Progress';
 import Message from 'common/components/Message';
 
 type TextboxProps = {
-  valid?: bool,
+  valid?: boolean,
   label: string,
   containerClassName?: string,
   id: string,
-  busy?: bool,
+  busy?: boolean,
   error?: string,
   iconLeft?: any,
   iconRight?: any,
-  showStatus?: bool,
+  showStatus?: boolean,
   type?: string,
-  autoSelect?: bool,
-  singleClickSelect?: bool,
+  autoSelect?: boolean,
+  singleClickSelect?: boolean,
 };
 
 const Textbox = ({
@@ -35,7 +35,7 @@ const Textbox = ({
   type,
   autoSelect,
   singleClickSelect,
-  ...props,
+  ...props
 }: TextboxProps) => {
   const validity = valid ? <SvgIcon name="done" /> : <SvgIcon name="clear" />;
   const status = valid ? 'valid' : 'invalid';

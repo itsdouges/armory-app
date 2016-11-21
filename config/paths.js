@@ -9,6 +9,7 @@ module.exports = {
   appHtml: resolve('../src/index.html'),
   appPackageJson: resolve('../package.json'),
   appSrc: resolve('../src'),
+  embedSrc: resolve('../src/embeds'),
   appNodeModules: resolve('../node_modules'),
   ownNodeModules: resolve('../node_modules'),
 };

@@ -1,3 +1,5 @@
+// @flow
+
 import axios from 'axios';
 import { Component } from 'react';
 import ContentCard from 'common/components/ContentCard';
@@ -14,12 +16,12 @@ export default class RandomGuilds extends Component {
   };
 
   componentDidMount () {
-    axios.get(`${config.api.endpoint}random/guilds/4`)
+    axios.get(`${config.api.endpoint}random/guilds/8`)
       .then(({ data }) => this.setState({ guilds: data }));
   }
 
   render () {
-    const guilds = get(this.state, 'guilds', [undefined, undefined, undefined, undefined]);
+    const guilds = get(this.state, 'guilds', [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined]);
 
     return (
       <ul className={styles.root}>

@@ -1,16 +1,21 @@
 [ignore]
 # https://github.com/facebook/fbjs/issues/64
 .*/node_modules/fbjs.*
+.*/node_modules/config-chain/test/broken.json
+.*/node_modules/npm/test/.*
+config/
+scripts/
 
 [include]
 
 [libs]
-flow/npm/
+flow-typed/
 flow/libdefs/
 
 [options]
 # Allow dynamic require statements
 module.ignore_non_literal_requires=true
+esproposal.decorators=ignore
 
 # Stub out less files so flow can import them
 module.name_mapper.extension='less' -> '<PROJECT_ROOT>/flow/CSSModule.js.flow'
@@ -19,5 +24,6 @@ module.name_mapper.extension='less' -> '<PROJECT_ROOT>/flow/CSSModule.js.flow'
 module.name_mapper='^assets\/\(.*\)' -> '<PROJECT_ROOT>/src/assets/\1'
 module.name_mapper='^common\/\(.*\)' -> '<PROJECT_ROOT>/src/common/\1'
 module.name_mapper='^features\/\(.*\)' -> '<PROJECT_ROOT>/src/features/\1'
+module.name_mapper='^embeds\/\(.*\)' -> '<PROJECT_ROOT>/src/embeds/\1'
 module.name_mapper='^lib\/\(.*\)' -> '<PROJECT_ROOT>/src/lib/\1'
 module.name_mapper='^config$' -> '<PROJECT_ROOT>/src/config'

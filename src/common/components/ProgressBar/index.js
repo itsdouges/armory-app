@@ -22,7 +22,7 @@ type ProgressBarProps = {
   barColor?: string,
   backgroundColor?: string,
   icon?: any,
-  small?: bool,
+  small?: boolean,
   label?: string,
 };
 

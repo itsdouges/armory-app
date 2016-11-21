@@ -1,5 +1,8 @@
+// @flow
+
+import cx from 'classnames';
+
 import styles from './styles.less';
-import { PropTypes } from 'react';
 import Trait from '../Trait';
 import BigTrait from '../BigTrait';
 
@@ -17,12 +20,29 @@ function isActive (id, { traits }) {
   return traits.indexOf(id) >= 0;
 }
 
-const Specialization = ({ data, traits, specializations }) => {
+type Props = {
+  data: {
+    id: number,
+    traits: [],
+  },
+  traits: {},
+  specializations: {
+    [key: number]: {
+      name: string,
+      background: string,
+      minor_traits: Array<number>,
+      major_traits: Array<number>,
+    },
+  },
+  size: 'compact' | 'small' | 'large',
+};
+
+const Specialization = ({ data, traits, specializations, size = 'large' }: Props) => {
   const spec = specializations[data.id] || { major_traits: [], minor_traits: [] };
   const bgStyle = getStyle(data, spec);
 
   return (
-    <div className={styles.overflowContainer}>
+    <div className={cx(styles.rootOverflow, styles[size])}>
       <div className={styles.root}>
         <div
           className={styles.background}
@@ -66,12 +86,6 @@ const Specialization = ({ data, traits, specializations }) => {
       </div>
     </div>
   );
-};
-
-Specialization.propTypes = {
-  data: PropTypes.object,
-  traits: PropTypes.object,
-  specializations: PropTypes.object,
 };
 
 export default Specialization;

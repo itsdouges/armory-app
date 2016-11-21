@@ -1,11 +1,33 @@
-import { PropTypes } from 'react';
+// @flow
+
 import styles from './styles.less';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import classnames from 'classnames/bind';
+
 const cx = classnames.bind(styles);
 
+type Props = {
+  type?: string,
+  busy?: boolean,
+  name?: string,
+  item?: {
+    icon?: string,
+  },
+  skin?: {
+    icon?: string,
+  },
+  upgrades?: [],
+  infusions?: [],
+  stats?: {},
+  upgradeCounts?: {},
+  hide?: boolean,
+  small?: boolean,
+  size?: 'micro' | 'small',
+  tooltipType: string,
+};
+
 const Item = ({
-  type,
+  type = '',
   busy,
   name,
   item = {},
@@ -17,7 +39,7 @@ const Item = ({
   hide,
   small,
   tooltipType,
-}) => {
+}: Props) => {
   if (hide) return null;
 
   return (
@@ -36,28 +58,11 @@ const Item = ({
       <div className={cx('root', `${type}Icon`, { busy, small })}>
         <div
           className={styles.item}
-          style={{ backgroundImage: `url(${skin.icon || item.icon})` }}
+          style={{ backgroundImage: `url(${skin.icon || item.icon || ''})` }}
         />
       </div>
     </TooltipTrigger>
   );
-};
-
-Item.propTypes = {
-  slotName: PropTypes.string,
-  type: PropTypes.string,
-  showTooltip: PropTypes.func,
-  busy: PropTypes.bool,
-  item: PropTypes.object,
-  skin: PropTypes.object,
-  infusions: PropTypes.array,
-  hide: PropTypes.bool,
-  name: PropTypes.string,
-  stats: PropTypes.object,
-  upgrades: PropTypes.array,
-  upgradeCounts: PropTypes.object,
-  small: PropTypes.bool,
-  tooltipType: PropTypes.string,
 };
 
 export default Item;

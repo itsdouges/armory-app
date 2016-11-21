@@ -1,8 +1,8 @@
-import { PropTypes, Component } from 'react';
+// @flow
+
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-
-import Head from 'common/components/Head';
 
 import styles from './styles.less';
 
@@ -11,9 +11,9 @@ import Header from './components/Header';
 import Gw2ApiHealth from './components/Gw2ApiHealth';
 
 const selector = createSelector(
-  store => store.user.alias,
-  store => store.user.loggedIn,
-  store => store.user.checkingAuthentication,
+  (store) => store.user.alias,
+  (store) => store.user.loggedIn,
+  (store) => store.user.checkingAuthentication,
   (userAlias, userAuthenticated, checkingAuthentication) => ({
     userAlias,
     userAuthenticated,
@@ -21,35 +21,38 @@ const selector = createSelector(
   })
 );
 
-class App extends Component {
-  static propTypes = {
-    children: PropTypes.any,
-    userAuthenticated: PropTypes.bool,
-    userAlias: PropTypes.string,
-    userToken: PropTypes.string,
-    checkingAuthentication: PropTypes.bool,
-    location: PropTypes.object,
-  };
+type Props = {
+  children?: any,
+  userAuthenticated: boolean,
+  userAlias: string,
+  userToken: string,
+  location: {
+    pathname: string,
+  },
+  checkingAuthentication: boolean,
+};
+
+function shouldForceSmallHeader ({ location }: Props) {
+  return location.pathname !== '/';
+}
+
+@connect(selector)
+export default class App extends Component {
+  props: Props;
 
   state = {
-    smallHeader: this.shouldForceSmallHeader(),
+    smallHeader: shouldForceSmallHeader(this.props),
   };
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps: Props) {
     this.setState({
-      smallHeader: this.shouldForceSmallHeader(nextProps),
+      smallHeader: shouldForceSmallHeader(nextProps),
     });
-  }
-
-  shouldForceSmallHeader ({ location } = this.props) {
-    return location.pathname !== '/';
   }
 
   render () {
     return (
       <div className={styles.app}>
-        <Head />
-
         <Header
           compact={this.state.smallHeader}
           authenticated={this.props.userAuthenticated}
@@ -65,5 +68,3 @@ class App extends Component {
     );
   }
 }
-
-export default connect(selector)(App);

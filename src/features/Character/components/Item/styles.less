@@ -7,10 +7,9 @@
   height: 60px;
   font-size: 0;
   position: relative;
-  border-radius: 2px;
   composes: low;
   background-size: cover;
-  background-color: black;
+  background-color: @_black;
   border: 1px solid @border;
 }
 
@@ -20,20 +19,7 @@
 }
 
 .busy {
-  animation-name: busy;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-@keyframes busy {
-  from {
-    opacity: 0.5;
-  }
-
-  to {
-    opacity: 0.8;
-  }
+  .busyAnimation();
 }
 
 .item {

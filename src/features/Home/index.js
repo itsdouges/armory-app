@@ -1,8 +1,9 @@
+// @flow
+
 import Head from 'common/components/Head';
 import Container from 'common/components/Container';
 
 import styles from './styles.less';
-import News from './components/News';
 import Introduction from './components/Introduction';
 import RandomCharacter from './components/RandomCharacter';
 import RandomGuilds from './components/RandomGuilds';
@@ -19,12 +20,6 @@ const Home = () => (
     </div>
 
     <RandomGuilds />
-
-    <Container>
-      <hr />
-
-      <News className={styles.newsContainer} />
-    </Container>
   </div>
 );
 

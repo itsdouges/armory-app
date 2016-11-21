@@ -4,9 +4,9 @@ import SvgIcon from 'common/components/Icon/Svg';
 
 const ApiToken = ({ token: { accountName, primary, permissions }, remove, setPrimary }) => (
   <div className={styles.root}>
-    <div onClick={setPrimary}>
+    <button onClick={setPrimary}>
       <SvgIcon button name={primary ? 'cb-checked' : 'cb-clear'} />
-    </div>
+    </button>
 
     <div className={styles.information}>
       <div className={styles.accountName}>{`${accountName}${primary ? ' (primary)' : ''}`}</div>
@@ -16,9 +16,9 @@ const ApiToken = ({ token: { accountName, primary, permissions }, remove, setPri
       </div>
     </div>
 
-    <div onClick={remove}>
+    <button onClick={remove}>
       <SvgIcon button name="delete-forever" />
-    </div>
+    </button>
   </div>
 );
 

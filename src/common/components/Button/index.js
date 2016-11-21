@@ -2,6 +2,7 @@
 
 import styles from './styles.less';
 import classnames from 'classnames/bind';
+
 const cx = classnames.bind(styles);
 
 import ProgressIcon from 'common/components/Icon/Progress';
@@ -9,10 +10,10 @@ import ProgressIcon from 'common/components/Icon/Progress';
 type ButtonProps = {
   className: string,
   type: string,
-  disabled: bool,
+  disabled: boolean,
   onClick: Function,
   children: any,
-  busy: bool,
+  busy: boolean,
 };
 
 const Button = (props: ButtonProps) => (

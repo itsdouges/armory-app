@@ -31,10 +31,10 @@ import {
 } from './actions';
 
 export const selector = createSelector(
-  store => store.users.data[store.users.selected],
-  store => filter(store.pvpSeasons, ((season) => isObject(season))),
-  store => store.maps,
-  store => store.worlds,
+  (store) => store.users.data[store.users.selected],
+  (store) => filter(store.pvpSeasons, ((season) => isObject(season))),
+  (store) => store.maps,
+  (store) => store.worlds,
   (user, pvpSeasons, maps, worlds) => ({
     user,
     pvpSeasons,
@@ -91,6 +91,7 @@ class User extends Component {
         <Head title={alias} />
 
         <ContentCardList
+          noBorder
           type="grid"
           alias={alias}
           items={user && user.characters}

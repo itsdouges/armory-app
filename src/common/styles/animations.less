@@ -1,0 +1,40 @@
+@import '~common/styles/base.less';
+
+@placeholderColor: @_gray;
+@placeholderColorLight: @_lightgray;
+
+@keyframes loading {
+  from {
+    background: @placeholderColorLight;
+    color: @placeholderColorLight;
+  }
+
+  to {
+    background: @placeholderColor;
+    color: @placeholderColor;
+  }
+}
+
+@keyframes busy {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 0.8;
+  }
+}
+
+.loadingAnimation() {
+  animation-name: loading;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.busyAnimation() {
+  animation-name: busy;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}

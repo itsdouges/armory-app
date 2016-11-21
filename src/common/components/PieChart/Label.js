@@ -12,8 +12,8 @@ function calculateLabelPosition ({ rotationOffset, centralAngle, radius }) {
 
    // Forces calculation to start at top of the circle.
   const angle = (rotationOffset + (centralAngle / 2)) - 90;
-  const x = cx + radius * Math.cos(angle * RADIAN) * 0.7;
-  const y = cy + radius * Math.sin(angle * RADIAN);
+  const x = cx + ((radius * Math.cos(angle * RADIAN)) * 0.7);
+  const y = cy + (radius * Math.sin(angle * RADIAN));
 
   const translate = x <= cx ? prefix('transform', 'translateX(-100%)') : {};
 
@@ -25,7 +25,7 @@ function calculateLabelPosition ({ rotationOffset, centralAngle, radius }) {
 }
 
 function calculatePercent (centralAngle) {
-  return Math.round(centralAngle / 360 * 100);
+  return Math.round((centralAngle / 360) * 100);
 }
 
 type LabelProps = {

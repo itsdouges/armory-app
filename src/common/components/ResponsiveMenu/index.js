@@ -3,18 +3,20 @@
 import { Component } from 'react';
 import cx from 'classnames';
 
-import { addEvent, isDescendant } from 'lib/dom';
+import { addEvent } from 'lib/dom';
 import SvgIcon from 'common/components/Icon/Svg';
 
 import styles from './styles.less';
 
 type MenuProps = {
-  children: any,
-  itemClassName: string,
-  className: string,
+  children?: any,
+  itemClassName?: string,
+  className?: string,
 };
 
 export default class ResponsiveMenu extends Component {
+  props: MenuProps;
+  detatch: Function;
 
   state = {
     shown: false,
@@ -28,17 +30,13 @@ export default class ResponsiveMenu extends Component {
     this.detatch();
   }
 
-  onWindowClick = (e: { target: Element }) => {
-    if (!this.state.shown || isDescendant(this._root, e.target)) {
+  onWindowClick = () => {
+    if (!this.state.shown) {
       return;
     }
 
     this.reset();
   }
-
-  props: MenuProps;
-  detatch: Function;
-  _root: Element;
 
   reset = () => {
     this.setState({
@@ -60,7 +58,6 @@ export default class ResponsiveMenu extends Component {
 
     return (
       <div
-        ref={(e) => (this._root = e)}
         className={cx(styles.root, className, shown ? styles.shown : styles.hidden)}
       >
         <button className={styles.toggleButton} onClick={this.toggle}>
@@ -69,11 +66,10 @@ export default class ResponsiveMenu extends Component {
         </button>
 
         <ul className={styles.listRoot} {...props}>
-          {children.map((item, index) => (
+          {children && children.map((item, index) => (
             <li
-              key={index}
-              onClick={this.reset}
               className={cx(styles.item, itemClassName)}
+              key={index}
             >
               {item}
             </li>

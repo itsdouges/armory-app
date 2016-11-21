@@ -5,7 +5,47 @@ import { Component } from 'react';
 import { isSmallScreen, addEvent } from 'lib/dom';
 import { prefix } from 'lib/css';
 
+function calculateStyle ({ pin, mouse, tooltip }: Object) {
+  let { clientX: x, clientY: y } = mouse;
+
+  if (pin.pinRight) {
+    x = window.innerWidth - tooltip.offsetWidth - 19;
+  }
+
+  if (pin.pinBottom) {
+    y = window.innerHeight - tooltip.offsetHeight - 9;
+  }
+
+  const transform = `translate3d(${x}px, ${y}px, 0)`;
+
+  return prefix('transform', transform);
+}
+
+function calculatePin ({ tooltip, mouse }: Object) {
+  const { clientX: x, clientY: y } = mouse;
+
+  let pinRight = false;
+  let pinBottom = false;
+
+  if ((x + tooltip.offsetWidth + 10) > window.innerWidth) {
+    pinRight = true;
+  }
+
+  if ((y + tooltip.offsetHeight + 10) > window.innerHeight) {
+    pinBottom = true;
+  }
+
+  return {
+    pinRight,
+    pinBottom,
+  };
+}
+
 export default class MouseFollow extends Component {
+  _tooltip: Element;
+  removeEvent: Function;
+  props: { children?: any };
+
   state = {
     style: {
       position: 'fixed',
@@ -48,8 +88,8 @@ export default class MouseFollow extends Component {
     // eslint-disable-next-line
     const tooltip = this._tooltip;
 
-    const pin = this.calculatePin({ tooltip, mouse: event });
-    const style = this.calculateStyle({
+    const pin = calculatePin({ tooltip, mouse: event });
+    const style = calculateStyle({
       tooltip,
       pin,
       mouse: event,
@@ -63,46 +103,6 @@ export default class MouseFollow extends Component {
       },
     });
   };
-
-  _tooltip: Element;
-  removeEvent: Function;
-  props: { children?: any };
-
-  calculateStyle ({ pin, mouse, tooltip }: Object) {
-    let { clientX: x, clientY: y } = mouse;
-
-    if (pin.pinRight) {
-      x = window.innerWidth - tooltip.offsetWidth - 19;
-    }
-
-    if (pin.pinBottom) {
-      y = window.innerHeight - tooltip.offsetHeight - 9;
-    }
-
-    const transform = `translate3d(${x}px, ${y}px, 0)`;
-
-    return prefix('transform', transform);
-  }
-
-  calculatePin ({ tooltip, mouse }: Object) {
-    const { clientX: x, clientY: y } = mouse;
-
-    let pinRight = false;
-    let pinBottom = false;
-
-    if ((x + tooltip.offsetWidth + 10) > window.innerWidth) {
-      pinRight = true;
-    }
-
-    if ((y + tooltip.offsetHeight + 10) > window.innerHeight) {
-      pinBottom = true;
-    }
-
-    return {
-      pinRight,
-      pinBottom,
-    };
-  }
 
   render () {
     const { children, ...props } = this.props;

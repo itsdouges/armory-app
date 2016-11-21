@@ -2,6 +2,7 @@
 
 import styles from './styles.less';
 import classnames from 'classnames/bind';
+
 const cx = classnames.bind(styles);
 
 type IconProps = {
@@ -9,7 +10,7 @@ type IconProps = {
   size?: string,
   className?: string,
   src?: string,
-  button?: bool,
+  button?: boolean,
 };
 
 const Icon = ({ name, size, className, src, button, ...props }: IconProps) => {

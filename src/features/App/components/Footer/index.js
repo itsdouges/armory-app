@@ -1,3 +1,5 @@
+// @flow
+
 import styles from './styles.less';
 import Container from 'common/components/Container';
 import SvgIcon from 'common/components/Icon/Svg';

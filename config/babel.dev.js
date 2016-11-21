@@ -1,6 +1,5 @@
 module.exports = {
   babelrc: false,
-  cacheDirectory: true,
   presets: [
     'babel-preset-es2015',
     'babel-preset-es2016',
@@ -8,6 +7,7 @@ module.exports = {
   ].map(require.resolve),
   plugins: [
     'babel-plugin-syntax-trailing-function-commas',
+    'babel-plugin-transform-decorators-legacy',
     'babel-plugin-transform-class-properties',
     'babel-plugin-transform-object-rest-spread',
   ].map(require.resolve).concat([
@@ -17,4 +17,5 @@ module.exports = {
       regenerator: true,
     }],
   ]),
+  cacheDirectory: true,
 };

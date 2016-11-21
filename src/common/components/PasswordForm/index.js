@@ -6,7 +6,7 @@ import Textbox from 'common/components/Textbox';
 
 type PasswordFormProps = {
   onFieldChange?: Function,
-  valid: bool,
+  valid: boolean,
   passwordValue: string,
   passwordConfirmValue: string,
   error: string,

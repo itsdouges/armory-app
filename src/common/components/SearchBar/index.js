@@ -20,8 +20,8 @@ function onSearch (event) {
 }
 
 type SearchBarProps = {
-  className: string,
-  simple?: bool,
+  className?: string,
+  simple?: boolean,
 };
 
 const SearchBar = ({ className, simple, ...props }: SearchBarProps) => (

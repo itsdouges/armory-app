@@ -13,8 +13,8 @@ import {
 } from './actions';
 
 export const selector = createSelector(
-  state => state.user,
-  state => !!state.user.aliasValid && !!state.user.emailValid && !!state.user.passwordValue,
+  (state) => state.user,
+  (state) => !!state.user.aliasValid && !!state.user.emailValid && !!state.user.passwordValue,
   (user, canRegister) => ({
     user,
     canRegister,

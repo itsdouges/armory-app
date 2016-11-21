@@ -1,1 +1,1 @@
-declare var __DEVELOPMENT__: bool;
+declare var __DEVELOPMENT__: boolean;

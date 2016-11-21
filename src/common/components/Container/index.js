@@ -4,8 +4,8 @@ import styles from './styles.less';
 import cx from 'classnames';
 
 type ContainerProps = {
-  className: string,
-  children: Element<any>,
+  className?: string,
+  children?: Element<any>,
 };
 
 const Container = ({ className, children, ...props }: ContainerProps) => (

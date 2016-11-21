@@ -1,8 +1,6 @@
 @import '~common/styles/base.less';
 
 @padding: 0.5rem;
-@placeholderColor: @_gray;
-@placeholderColorLight: @_lightgray;
 
 .root,
 .placeholderRoot {
@@ -23,28 +21,12 @@
       align-items: center;
     }
   }
-
-  height: 100%;
 }
 
-@keyframes loading {
-  from {
-    background: @placeholderColorLight;
-    color: @placeholderColorLight;
-  }
-
-  to {
-    background: @placeholderColor;
-    color: @placeholderColor;
-  }
-}
 
 .placeholder {
   opacity: 0.5;
-  animation-name: loading;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  .loadingAnimation();
 }
 
 .textContainer {

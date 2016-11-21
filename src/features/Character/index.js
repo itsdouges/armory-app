@@ -9,7 +9,7 @@ import T from 'i18n-react';
 import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter, selectCharacterMode, updateCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
-import { calculate as calculateAttributes } from 'lib/gw2/attributes';
+import calculateAttributes from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
 import Content from 'common/layouts/Content';
@@ -274,7 +274,7 @@ class Character extends Component {
                     <Button
                       key="edit-button"
                       className={styles.editButton}
-                      type={editMode ? 'primary' : ''}
+                      type={editMode ? 'primary' : 'minimal'}
                       onClick={this.toggleEditMode}
                     >
                       {editMode ? `${T.translate('characters.done')}` :
@@ -305,23 +305,23 @@ class Character extends Component {
               </div>
 
               <div className={cx(styles.rightItemColumn, showPvpEquipment && styles.fade)}>
-              {rightItems.map((item) => {
-                const equip = equipment[item.key] || {};
+                {rightItems.map((item) => {
+                  const equip = equipment[item.key] || {};
 
-                return (
-                  <Item
-                    {...item}
-                    hide={includes(item.hideForClasses, profession)}
-                    key={item.key}
-                    upgradeCounts={equip.upgradeCounts}
-                    upgrades={this.getItems(equip.upgrades)}
-                    infusions={this.getItems(equip.infusions)}
-                    item={items[equip.id]}
-                    skin={skins[equip.skin]}
-                    stats={equip.stats}
-                  />
-                );
-              })}
+                  return (
+                    <Item
+                      {...item}
+                      hide={includes(item.hideForClasses, profession)}
+                      key={item.key}
+                      upgradeCounts={equip.upgradeCounts}
+                      upgrades={this.getItems(equip.upgrades)}
+                      infusions={this.getItems(equip.infusions)}
+                      item={items[equip.id]}
+                      skin={skins[equip.skin]}
+                      stats={equip.stats}
+                    />
+                  );
+                })}
               </div>
 
               <div className={styles.craftingContainer}>
@@ -339,10 +339,15 @@ class Character extends Component {
             skins={skins}
             amulets={amulets}
             profession={profession}
+            className={styles.pvpEquipment}
           />
         )}
 
-        <Skills skills={skills} characterSkills={characterSkills} />
+        <Skills
+          skills={skills}
+          characterSkills={characterSkills}
+          className={styles.skills}
+        />
 
         <div className={styles.specializationContainer}>
           <div className={styles.brushStrokeContainer}>
@@ -366,7 +371,7 @@ class Character extends Component {
           </Link>
         </div>
 
-        <ContentCardList bottomBorder alias={alias} items={characters} />
+        <ContentCardList noBorder alias={alias} items={characters} />
 
         <SocialButtons />
         <Tooltip />

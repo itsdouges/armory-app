@@ -10,7 +10,7 @@ import styles from './styles.less';
 
 const buildEmbedScript = (name) => (
   // eslint-disable-next-line
-  `<iframe margin="0" frameBorder="0" width="500" height="192" src="${window.location.origin}/${config.embeds.character}/index.html?name=${name}" />`
+  `<iframe margin="0" frameBorder="0" width="500" height="192" src="${window.location.origin}/${config.embedEndpoints.character}/index.html?name=${name}" />`
 );
 
 export default class Embed extends Component {
@@ -43,7 +43,12 @@ export default class Embed extends Component {
 
     return (
       <div className={cx(styles.root, className)}>
-        <span onClick={this.show} className={styles.embedText}>Embed</span>
+        <button
+          onClick={this.show}
+          className={styles.embedText}
+        >
+          Embed
+        </button>
 
         {shown && (
           <div className={styles.input}>

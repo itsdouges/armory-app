@@ -1,6 +1,6 @@
 // @flow
 
-export function isSmallScreen (): bool {
+export function isSmallScreen (): boolean {
   return window.innerWidth <= 480;
 }
 
@@ -9,7 +9,7 @@ export function addEvent (event: string, cb: Function) {
   return () => window.removeEventListener(event, cb, false);
 }
 
-export function isDescendant (parent: Element, child: Element): bool {
+export function isDescendant (parent: Element, child: Element): boolean {
   let node = child.parentNode;
 
   while (node != null) {

@@ -1,10 +1,13 @@
-import { PropTypes, Component } from 'react';
+// @flow
+
+import { Component } from 'react';
 import { Link } from 'react-router';
 import cx from 'classnames';
 import get from 'lodash/get';
 import T from 'i18n-react';
 
 import styles from './styles.less';
+// import decoration from 'common/styles/decoration.less';
 
 import { addEvent } from 'lib/dom';
 
@@ -17,13 +20,19 @@ import Icon from 'common/components/Icon';
 import ProgressIcon from 'common/components/Icon/Progress';
 import SearchBar from 'common/components/SearchBar';
 
+type Props = {
+  authenticated: boolean,
+  alias: string,
+  checkingAuthentication: boolean,
+  compact: boolean,
+};
+
 export default class Header extends Component {
-  static propTypes = {
-    authenticated: PropTypes.bool,
-    alias: PropTypes.string,
-    checkingAuthentication: PropTypes.bool,
-    compact: PropTypes.bool,
-  };
+  props: Props;
+  detatch: Function;
+  _fixed: HTMLElement;
+  _root: HTMLElement;
+  initialised: boolean;
 
   state = {
     stickyHeader: false,
@@ -34,7 +43,7 @@ export default class Header extends Component {
     this.initStickyHeader();
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Props) {
     if (prevProps.compact === this.props.compact) {
       return;
     }
@@ -90,8 +99,8 @@ export default class Header extends Component {
     ];
 
     const unauthenticatedLinks = [
-      <Link key="login" to="/login">{T.translate('login.name')}</Link>,
       <Link key="join" to="/join">{T.translate('join.name')}</Link>,
+      <Link key="login" to="/login">{T.translate('login.name')}</Link>,
     ];
 
     const linksForContext = authenticated ? authenticatedLinks : unauthenticatedLinks;
@@ -99,6 +108,7 @@ export default class Header extends Component {
     const links = [
       ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
       <Link key="stats" to="/statistics">{T.translate('stats.name')}</Link>,
+// <Link key="embeds" className={decoration.new} to="/embeds">{T.translate('embeds.name')}</Link>,
       <LangPicker key="langPicker" />,
     ];
 

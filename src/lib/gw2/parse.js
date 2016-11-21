@@ -35,7 +35,6 @@ function parseFlags (item) {
       case 'AccountBoundOnUse':
       case 'AccountBound':
         inItem.boundStatus = T.translate('items.accountBound');
-        return;
     }
   });
 

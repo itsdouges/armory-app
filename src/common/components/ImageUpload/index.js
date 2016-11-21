@@ -18,12 +18,15 @@ type ImageUploadProps = {
   onUploadComplete: Function,
   hintText: Element<any>,
   children?: any,
-  disabled?: bool,
-  forceShow?: bool,
+  disabled?: boolean,
+  forceShow?: boolean,
   uploadName: string,
 };
 
 export default class ImageUpload extends Component {
+  props: ImageUploadProps;
+  fileInput: HTMLInputElement;
+
   static defaultProps = {
     onUploadComplete: () => {},
   };
@@ -33,9 +36,6 @@ export default class ImageUpload extends Component {
     uploading: false,
     error: '',
   };
-
-  props: ImageUploadProps;
-  fileInput: HTMLInputElement;
 
   show = () => {
     this.setState({

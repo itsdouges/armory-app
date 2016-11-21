@@ -11,11 +11,12 @@ type Props = {
 
 const Content = ({ children, extraContent, ...props }: Props) => (
   <div className={styles.root}>
-    <div className={styles.inner}>
-      <ContentCard {...props} size="big" />
-      {extraContent}
+    <div className={styles.heroBg}>
+      <div className={styles.inner}>
+        <ContentCard {...props} size="big" />
+        {extraContent}
+      </div>
     </div>
-
     {children}
   </div>
 );

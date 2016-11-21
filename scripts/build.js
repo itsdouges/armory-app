@@ -28,8 +28,8 @@ webpack(config).run((err, stats) => {
   console.log('File sizes after gzip:');
   console.log();
   const assets = stats.toJson().assets
-    .filter(asset => /\.(js|css)$/.test(asset.name))
-    .map(asset => {
+    .filter((asset) => /\.(js|css)$/.test(asset.name))
+    .map((asset) => {
       const fileContents = fs.readFileSync(`${paths.appBuild}/${asset.name}`);
       return {
         name: asset.name,
@@ -37,7 +37,7 @@ webpack(config).run((err, stats) => {
       };
     });
   assets.sort((a, b) => b.size - a.size);
-  assets.forEach(asset => {
+  assets.forEach((asset) => {
     console.log(
       // eslint-disable-next-line
       '  ' + chalk.dim('build' + path.sep) + chalk.cyan(asset.name) + ': ' +

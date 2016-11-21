@@ -12,7 +12,7 @@ import Head from 'common/components/Head';
 import Container from 'common/components/Container';
 
 export const selector = createSelector(
-  store => store.stats,
+  (store) => store.stats,
   (armoryStats) => ({
     armoryStats,
   })

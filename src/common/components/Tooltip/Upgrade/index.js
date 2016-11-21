@@ -29,7 +29,7 @@ const ItemUpgrade = ({ data, count: { count } }: Props) => {
   if (!upgradeSlotUsed) {
     return (
       <div>
-        <span className={styles.icon}></span>
+        <span className={styles.icon} />
         <span>Unused Upgrade Slot</span>
       </div>
     );

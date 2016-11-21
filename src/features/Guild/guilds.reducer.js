@@ -8,7 +8,7 @@ export const defaultState = {
 };
 
 export const selector = createSelector(
-  store => store.guilds.data[store.guilds.selected],
+  (store) => store.guilds.data[store.guilds.selected],
   (guild) => ({
     guild,
   })

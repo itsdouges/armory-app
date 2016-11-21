@@ -5,6 +5,7 @@ import Card from 'common/components/Card';
 import { Link } from 'react-router';
 import styles from './styles.less';
 import classnames from 'classnames/bind';
+
 const cx = classnames.bind(styles);
 
 function buildUrl (item, aliasOverride, resource) {
@@ -27,9 +28,9 @@ type ContentCardListProps = {
   items: [],
   alias: string,
   resource: string,
-  noBorder: bool,
+  noBorder: boolean,
   type: 'grid' | 'list',
-  bottomBorder: bool,
+  bottomBorder: boolean,
 };
 
 const ContentCardList = ({
@@ -60,8 +61,8 @@ const ContentCardList = ({
     <div className={styles.root}>
       {!noBorder && (
         <div className={cx('borderContainer', borderStyle)}>
-          <div className={cx('border', 'borderLeft')}></div>
-          <div className={cx('border', 'borderRight')}></div>
+          <div className={cx('border', 'borderLeft')} />
+          <div className={cx('border', 'borderRight')} />
         </div>
       )}
 

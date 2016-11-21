@@ -7,10 +7,10 @@ import { authenticateUser, checkingAuthentication } from './actions';
 import ProgressIcon from 'common/components/Icon/Progress';
 
 const selector = createSelector(
-  store => store.user.token,
-  store => store.user.loggedIn,
-  store => store.user.checkingAuthentication,
-  store => store.user.alias,
+  (store) => store.user.token,
+  (store) => store.user.loggedIn,
+  (store) => store.user.checkingAuthentication,
+  (store) => store.user.alias,
   (userToken, userAuthenticated, checkinAuthentication, userAlias) => ({
     userToken,
     userAuthenticated,
