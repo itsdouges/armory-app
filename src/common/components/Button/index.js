@@ -8,12 +8,12 @@ const cx = classnames.bind(styles);
 import ProgressIcon from 'common/components/Icon/Progress';
 
 type ButtonProps = {
-  className: string,
-  type: string,
-  disabled: boolean,
-  onClick: Function,
-  children: any,
-  busy: boolean,
+  className?: string,
+  type?: string,
+  disabled?: boolean,
+  onClick?: Function,
+  children?: any,
+  busy?: boolean,
 };
 
 const Button = (props: ButtonProps) => (

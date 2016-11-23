@@ -1,0 +1,40 @@
+@import '~common/styles/base.less';
+
+@tabsBg: @_lightishgray;
+@tabSelected: fade(@_gray, 30%);
+@tabHover: fade(@_gray, 10%);
+
+.tabsBg {
+  background: @tabsBg;
+  border-bottom: 1px solid @tabSelected;
+}
+
+.tabsContainer {
+  display: flex;
+  font-size: 0.9em;
+
+  > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+  }
+}
+
+.tab {
+  padding: 1em 2em;
+}
+
+.tab:hover,
+.tab:focus {
+  background: @tabHover;
+}
+
+.selected,
+.selected.tab:hover,
+.selected.tab:focus {
+  background: @tabSelected;
+}

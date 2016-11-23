@@ -34,7 +34,7 @@ type Props = {
       major_traits: Array<number>,
     },
   },
-  size: 'compact' | 'small' | 'large',
+  size?: 'compact' | 'small' | 'large',
 };
 
 const Specialization = ({ data, traits, specializations, size = 'large' }: Props) => {

@@ -19,7 +19,7 @@ type Props = {
   amulets: {},
   profession: string,
   className?: string,
-  display: string,
+  display?: string,
 };
 
 const PvpEquipment = ({

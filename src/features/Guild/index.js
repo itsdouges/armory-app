@@ -1,10 +1,10 @@
-import { Component, PropTypes } from 'react';
+// @flow
+
+import { Component } from 'react';
 import { connect } from 'react-redux';
-import Head from 'common/components/Head';
 
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
-import SocialButtons from 'common/components/SocialButtons';
 
 import {
   selectGuild,
@@ -12,41 +12,52 @@ import {
 } from './actions';
 import { selector } from './guilds.reducer';
 
-class Guild extends Component {
-  static propTypes = {
-    guild: PropTypes.object,
-    dispatch: PropTypes.func,
-    routeParams: PropTypes.object,
+@connect(selector, {
+  dispatchSelectGuild: selectGuild,
+  dispatchFetchGuild: fetchGuild,
+})
+export default class Guild extends Component {
+  props: {
+    guild: {
+      tag: string,
+      characters?: [],
+    },
+    routeParams: {
+      guildName: string,
+    },
+    dispatchSelectGuild: (name: string) => void,
+    dispatchFetchGuild: (name: string) => void,
   };
 
   componentWillMount () {
     const { guildName } = this.props.routeParams;
+    const { dispatchSelectGuild, dispatchFetchGuild } = this.props;
 
-    this.props.dispatch(selectGuild(guildName));
-    this.props.dispatch(fetchGuild(guildName));
+    dispatchSelectGuild(guildName);
+    dispatchFetchGuild(guildName);
   }
 
   render () {
-    const { guild = { tag: '...' }, routeParams: { guildName } } = this.props;
+    const { guild = { tag: '...', characters: undefined }, routeParams: { guildName } } = this.props;
 
     return (
-      <Content content={guild} type="guilds">
-        <Head title={`${guildName} [${guild.tag}]`} />
-
-        <ContentCardList
-          noBorder
-          type="grid"
-          items={guild && guild.characters}
-        />
-
-        <SocialButtons />
-      </Content>
+      <Content
+        title={`${guildName} [${guild.tag}]`}
+        content={guild}
+        type="guilds"
+        tabs={[
+          {
+            name: 'Characters',
+            content: (
+              <ContentCardList
+                noBorder
+                type="grid"
+                items={guild && guild.characters}
+              />
+            ),
+          },
+        ]}
+      />
     );
   }
 }
-
-Guild.propTypes = {
-  guild: PropTypes.object,
-};
-
-export default connect(selector)(Guild);

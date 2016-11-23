@@ -25,12 +25,12 @@ function buildUrl (item, aliasOverride, resource) {
 }
 
 type ContentCardListProps = {
-  items: [],
-  alias: string,
-  resource: string,
-  noBorder: boolean,
-  type: 'grid' | 'list',
-  bottomBorder: boolean,
+  items?: [],
+  alias?: string,
+  noBorder?: boolean,
+  resource?: string,
+  type?: 'grid' | 'list',
+  bottomBorder?: boolean,
 };
 
 const ContentCardList = ({

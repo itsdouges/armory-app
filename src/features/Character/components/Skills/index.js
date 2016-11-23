@@ -19,7 +19,7 @@ type SkillsProps = {
     heal: number,
     elite: number,
   },
-  professionData: {},
+  professionData?: {},
   className?: string,
   items?: {},
   character?: {},

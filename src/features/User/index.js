@@ -1,7 +1,8 @@
+// @flow
+
 import { Component, PropTypes } from 'react';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
-import Head from 'common/components/Head';
 import get from 'lodash/get';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
@@ -11,7 +12,6 @@ import styles from './styles.less';
 
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
-import SocialButtons from 'common/components/SocialButtons';
 
 import WvwRank from './components/WvwRank';
 import DailyAp from './components/DailyAp';
@@ -43,25 +43,39 @@ export const selector = createSelector(
   })
 );
 
-class User extends Component {
-  static propTypes = {
-    user: PropTypes.object,
-    dispatch: PropTypes.func,
-    routeParams: PropTypes.object,
-    worlds: PropTypes.object,
-    pvpSeasons: PropTypes.array,
-    maps: PropTypes.object,
-  };
+type Props = {
+  user?: {
+    fractalLevel: number,
+    wvwRank: number,
+    world: number,
+    characters: [],
+  },
+  dispatchFetchUser: () => void,
+  dispatchSelectUser: () => void,
+  routeParams: {
+    alias: string,
+  },
+  worlds: {},
+  pvpSeasons: [],
+  maps: {},
+};
+
+@connect(selector, {
+  dispatchFetchUser: fetchUser,
+  dispatchSelectUser: selectUser,
+})
+export default class User extends Component {
+  props: Props;
 
   static contextTypes = {
     _userAlias: PropTypes.string,
   };
 
   componentWillMount () {
-    this.loadUser();
+    this.loadUser(this.props.routeParams.alias);
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps: Props) {
     if (this.props.routeParams.alias === nextProps.routeParams.alias) {
       return;
     }
@@ -69,85 +83,100 @@ class User extends Component {
     this.loadUser(nextProps.routeParams.alias);
   }
 
-  loadUser (alias = this.props.routeParams.alias) {
-    this.props.dispatch(fetchUser(alias, { ignoreAuth: this.context._userAlias !== alias }));
-    this.props.dispatch(selectUser(alias));
+  loadUser (alias: string) {
+    const { dispatchFetchUser, dispatchSelectUser } = this.props;
+
+    dispatchFetchUser(alias, { ignoreAuth: this.context._userAlias !== alias });
+    dispatchSelectUser(alias);
   }
 
   render () {
     const { user, routeParams: { alias }, pvpSeasons, maps, worlds } = this.props;
 
-    const pvpGames = (user &&
-      user.pvpGames &&
-      user.pvpGames.length &&
-      user.pvpGames) || [undefined, undefined];
-
+    const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
     const pvpStats = get(user, 'pvpStats');
     const userAchievements = get(user, 'achievements', []);
     const pvpStandings = get(user, 'pvpStandings', [undefined]);
 
     return (
-      <Content type="users" content={user}>
-        <Head title={alias} />
+      <Content
+        type="users"
+        title={alias}
+        content={user}
+        tabs={[
+          {
+            name: 'Overview',
+            content: (
+              <div>
+                <div className={styles.gamesContainer}>
+                  <h3>Player Versus. Environment</h3>
+                </div>
 
-        <ContentCardList
-          noBorder
-          type="grid"
-          alias={alias}
-          items={user && user.characters}
-        />
+                <div className={styles.summaryContainer}>
+                  <Fractal level={user && user.fractalLevel} />
+                  <RaidSummary userAchievements={userAchievements} />
 
-        <div className={styles.gamesContainer}>
-          <h3>PvE Summary</h3>
-        </div>
+                  <DailyAp {...user} />
+                </div>
 
-        <div className={styles.summaryContainer}>
-          <Fractal level={user && user.fractalLevel} />
-          <RaidSummary userAchievements={userAchievements} />
+                <div className={styles.gamesContainer}>
+                  <h3>Player Versus. Player</h3>
+                </div>
 
-          <DailyAp {...user} />
-        </div>
+                <div className={styles.summaryContainer}>
+                  <PvpRanking
+                    rank={get(pvpStats, 'pvp_rank')}
+                    points={get(pvpStats, 'pvp_rank_points')}
+                    rankRollOvers={get(pvpStats, 'pvp_rank_rollovers')}
+                  />
 
-        <div className={styles.gamesContainer}>
-          <h3>PvP Summary</h3>
-        </div>
+                  <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
 
-        <div className={styles.summaryContainer}>
-          <PvpRanking
-            rank={get(pvpStats, 'pvp_rank')}
-            points={get(pvpStats, 'pvp_rank_points')}
-            rankRollOvers={get(pvpStats, 'pvp_rank_rollovers')}
-          />
+                  <PvpStats
+                    stats={get(pvpStats, 'ladders.unranked')}
+                    title={T.translate('users.pvpStats.unranked')}
+                  />
 
-          <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
+                  <PvpStats
+                    stats={get(pvpStats, 'ladders.ranked')}
+                    title={T.translate('users.pvpStats.ranked')}
+                  />
 
-          <PvpStats
-            stats={get(pvpStats, 'ladders.unranked')}
-            title={T.translate('users.pvpStats.unranked')}
-          />
+                  <FavouritePvpClass professions={get(pvpStats, 'professions')} />
 
-          <PvpStats
-            stats={get(pvpStats, 'ladders.ranked')}
-            title={T.translate('users.pvpStats.ranked')}
-          />
-
-          <FavouritePvpClass professions={get(pvpStats, 'professions')} />
-
-          <WvwRank worldId={user && user.world} worlds={worlds} rank={user && user.wvwRank} />
-        </div>
-
-
-        <div className={styles.gamesContainer}>
-          <h3>{T.translate('users.recentMatches')}</h3>
-          {pvpGames.map((game, index) => <PvpGame game={game} key={index} maps={maps} />)}
-        </div>
-
-        <SocialButtons />
-
+                  <WvwRank
+                    rank={user && user.wvwRank}
+                    worlds={worlds}
+                    worldId={user && user.world}
+                  />
+                </div>
+              </div>
+            ),
+          },
+          {
+            name: 'Characters',
+            content: (
+              <ContentCardList
+                noBorder
+                type="grid"
+                alias={alias}
+                items={user && user.characters}
+              />
+            ),
+          },
+          {
+            name: 'Recent Matches',
+            content: (
+              <div className={styles.gamesContainer}>
+                <h3>{T.translate('users.recentMatches')}</h3>
+                {pvpGames.map((game, index) => <PvpGame game={game} key={index} maps={maps} />)}
+              </div>
+            ),
+          },
+        ]}
+      >
         <Tooltip />
       </Content>
     );
   }
 }
-
-export default connect(selector)(User);

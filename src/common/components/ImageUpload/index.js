@@ -16,7 +16,7 @@ const ALLOWED_FILE_TYPES = ['image/x-png', 'image/jpeg', 'image/png', 'image/jpg
 
 type ImageUploadProps = {
   onUploadComplete: Function,
-  hintText: Element<any>,
+  hintText: any,
   children?: any,
   disabled?: boolean,
   forceShow?: boolean,

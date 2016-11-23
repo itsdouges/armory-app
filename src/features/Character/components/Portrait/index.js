@@ -4,14 +4,12 @@ import styles from './styles.less';
 import cx from 'classnames/bind';
 import config from 'config';
 
+import type { Character } from 'flowTypes';
+
 const endpoint = config.imagesEndpoint;
 
 type Props = {
-  character?: {
-    race?: string,
-    alias?: string,
-    name?: string,
-  },
+  character?: Character,
   forceUpdate?: boolean,
   children?: any,
   className?: string,
