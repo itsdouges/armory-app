@@ -106,6 +106,7 @@ export default class User extends Component {
         tabs={[
           {
             name: 'Overview',
+            to: `/${alias}`,
             content: (
               <div>
                 <div className={styles.gamesContainer}>
@@ -155,6 +156,7 @@ export default class User extends Component {
           },
           {
             name: 'Characters',
+            to: `/${alias}/characters`,
             content: (
               <ContentCardList
                 noBorder
@@ -166,6 +168,7 @@ export default class User extends Component {
           },
           {
             name: 'Recent Matches',
+            to: `/${alias}/matches`,
             content: (
               <div className={styles.gamesContainer}>
                 <h3>{T.translate('users.recentMatches')}</h3>

@@ -1,20 +1,24 @@
 // @flow
 
-import styles from './styles.less';
+import { Link } from 'react-router';
 import cx from 'classnames';
+
+import styles from './styles.less';
 
 const Tab = ({
   selected,
   name,
   index,
   onClick,
-}: { selected: boolean, name: string, index: number, onClick: Function }) => (
-  <button
-    onClick={() => onClick(index)}
+  to,
+}: { selected: boolean, name: string, index: number, to?: string, onClick?: Function }) => (
+  <Link
+    to={`${to || ''}`}
+    onClick={() => onClick && onClick(index)}
     className={cx(styles.tab, { [styles.selected]: selected })}
   >
     {name}
-  </button>
+  </Link>
 );
 
 export default Tab;
