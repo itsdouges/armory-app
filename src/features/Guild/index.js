@@ -48,6 +48,8 @@ export default class Guild extends Component {
         tabs={[
           {
             name: 'Characters',
+            ignoreTitle: true,
+            to: window.location.pathname,
             content: (
               <ContentCardList
                 noBorder

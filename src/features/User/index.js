@@ -105,8 +105,9 @@ export default class User extends Component {
         content={user}
         tabs={[
           {
-            name: 'Overview',
             to: `/${alias}`,
+            name: 'Overview',
+            ignoreTitle: true,
             content: (
               <div>
                 <div className={styles.gamesContainer}>
@@ -155,8 +156,8 @@ export default class User extends Component {
             ),
           },
           {
-            name: 'Characters',
             to: `/${alias}/characters`,
+            name: 'Characters',
             content: (
               <ContentCardList
                 noBorder
@@ -167,11 +168,11 @@ export default class User extends Component {
             ),
           },
           {
-            name: 'Recent Matches',
             to: `/${alias}/matches`,
+            name: T.translate('users.recentMatches'),
             content: (
               <div className={styles.gamesContainer}>
-                <h3>{T.translate('users.recentMatches')}</h3>
+                <span />
                 {pvpGames.map((game, index) => <PvpGame game={game} key={index} maps={maps} />)}
               </div>
             ),

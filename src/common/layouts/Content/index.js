@@ -27,7 +27,7 @@ const Content = ({ children, extraContent, tabs, title, description, ...props }:
       </div>
     </div>
 
-    {tabs && <Tabs tabs={tabs} />}
+    {tabs && <Tabs titleSuffix={title} tabs={tabs} />}
 
     {children}
   </div>

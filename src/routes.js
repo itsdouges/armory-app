@@ -41,6 +41,7 @@ const Routes = () => (
       <Route path="/forgot-my-password" component={ForgotMyPassword} />
       <Route path="/404" component={NotFound} />
       <Route path="/g/:guildName" component={Guild} />
+      <Route path="/g/:guildName(/:subRoute)" component={Guild} />
       <Route path="/:alias" component={User} />
       <Route path="/:alias(/:subRoute)" component={User} />
       <Redirect from="/:alias/characters" to="/:alias" />
