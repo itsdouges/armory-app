@@ -5,7 +5,7 @@ import Container from 'common/components/Container';
 import SvgIcon from 'common/components/Icon/Svg';
 
 const Footer = () => (
-  <div className={styles.root}>
+  <footer className={styles.root}>
     <Container className={styles.container}>
       <div>
         © 2015-2016 gw2armory.com © 2010–2016 ArenaNet, LLC. All
@@ -22,7 +22,7 @@ const Footer = () => (
         <a title="Found something weird? Want to make a suggestion? Come post on reddit!" href="https://www.reddit.com/r/gw2armory"><SvgIcon name="reddit" /></a>
       </div>
     </Container>
-  </div>
+  </footer>
 );
 
 export default Footer;

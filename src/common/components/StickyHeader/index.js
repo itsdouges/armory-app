@@ -97,7 +97,7 @@ export default class StickyHeader extends Component {
     const fixedOffsetHeight = this._fixed && this._fixed.offsetHeight;
 
     return (
-      <div className={cx(styles.root, className)} ref={(e) => (this._root = e)}>
+      <header className={cx(styles.root, className)} ref={(e) => (this._root = e)}>
         <div className={styles.fixed} ref={(e) => (this._fixed = e)}>
           {header}
         </div>
@@ -125,7 +125,7 @@ export default class StickyHeader extends Component {
         />}
 
         {headerOnly || children}
-      </div>
+      </header>
     );
   }
 }
