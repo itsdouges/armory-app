@@ -28,6 +28,7 @@ const Routes = () => (
   <Router onUpdate={onRouteUpdate} history={browserHistory}>
     <Route path="/" component={authEnabled()(App)}>
       <IndexRoute component={Home} />
+
       <Redirect from="/in" to="/login" />
       <Redirect from="/me" to="/settings" />
       <Redirect from="/stats" to="/statistics" />
@@ -40,14 +41,22 @@ const Routes = () => (
       <Route path="/settings" component={authOnly()(Settings)} />
       <Route path="/forgot-my-password" component={ForgotMyPassword} />
       <Route path="/404" component={NotFound} />
+
+      <Redirect from="/g/:guildName/" to="/g/:guildName" />
+      <Redirect from="/g/:guildName(/:subRoute)/" to="/g/:guildName(/:subRoute)" />
+
       <Route path="/g/:guildName" component={Guild} />
       <Route path="/g/:guildName(/:subRoute)" component={Guild} />
-      <Route path="/:alias" component={User} />
+
+      <Redirect from="/:alias/" to="/:alias" />
       <Redirect from="/:alias/c" to="/:alias/characters" />
-      <Route path="/:alias(/:subRoute)" component={User} />
+      <Redirect from="/:alias(/:subRoute)/" to="/:alias(/:subRoute)" />
       <Redirect from="/:alias/characters/:character" to="/:alias/c/:character" />
+
+      <Route path="/:alias" component={User} />
+      <Route path="/:alias(/:subRoute)" component={User} />
       <Route path="/:alias/c/:character" component={Character} />
-      <Redirect from="/:alias/*" to="/:alias" />
+
       <Route path="*" component={NotFound} />
     </Route>
   </Router>
