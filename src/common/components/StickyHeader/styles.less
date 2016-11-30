@@ -1,0 +1,46 @@
+@import '~common/styles/base.less';
+
+@searchBarZ: @_zindex40;
+@bigBgZ: @_zindex30;
+@floatingBgZ: @_zindex20;
+@backBg: @_zindex10;
+
+.root {
+  width: 100%;
+  position: relative;
+}
+
+.fixed {
+  padding: 0.25em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: @headerZ;
+}
+
+.background {
+  background-position: center top;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: @bigBgZ;
+}
+
+.foregroundBg {
+  composes: background;
+}
+
+.midgroundBg {
+  composes: background;
+  position: fixed;
+  z-index: @floatingBgZ;
+  transform: translateY(-100%);
+  composes: low;
+}
+
+.backgroundBg {
+  composes: background;
+  z-index: @backBg;
+}
