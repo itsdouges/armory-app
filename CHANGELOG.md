@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [unreleased]
+## 2.19.0 - 2016/11/30
 ### Changed
 - Header, extracted sticky header component out in anticipation for creating a standalone module
 - Character portrait and items to be slightly smalelr
