@@ -8,6 +8,15 @@
 - Changes
 ```
 
+## [unreleased]
+### Changed
+- Header, extracted sticky header component out in anticipation for creating a standalone module
+- Character portrait and items to be slightly smalelr
+- Extract user page into three sub pages, overview, characters, and recent matches
+
+### Added
+- Tabs to user and guild pages
+
 ## 2.18.0 - 2016/11/22
 ### Added
 - Customisable armory embed
