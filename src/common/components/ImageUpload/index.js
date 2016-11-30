@@ -4,6 +4,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 import T from 'i18n-react';
+import cx from 'classnames';
 
 import styles from './styles.less';
 
@@ -21,6 +22,7 @@ type ImageUploadProps = {
   disabled?: boolean,
   forceShow?: boolean,
   uploadName: string,
+  className?: string,
 };
 
 export default class ImageUpload extends Component {
@@ -106,6 +108,7 @@ export default class ImageUpload extends Component {
       return this.props.children;
     }
 
+    const { className } = this.props;
     const { hovering, uploading, error } = this.state;
 
     const showOverlay = this.props.forceShow || hovering || uploading || error;
@@ -117,7 +120,7 @@ export default class ImageUpload extends Component {
       <div
         onMouseLeave={this.hide}
         onMouseEnter={this.show}
-        className={styles.root}
+        className={cx(styles.root, className)}
       >
         {showOverlay && (
           <div className={styles.uploadOverlay}>
