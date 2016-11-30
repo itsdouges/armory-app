@@ -253,7 +253,10 @@ export default class Character extends Component {
               hintText={<span>{T.translate('characters.changePortrait')}<br />560 x 840</span>}
               uploadName={`characters/${(character && character.name) || ''}`}
             >
-              <Portrait forceUpdate={this.state.updateImage} character={character}>
+              <Portrait
+                character={character}
+                forceUpdate={this.state.updateImage}
+              >
                 <div className={styles.modeContainer}>
                   <TooltipTrigger data="PvE">
                     <Icon

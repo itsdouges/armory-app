@@ -19,7 +19,9 @@ type Props = {
 /* eslint max-len:0 */
 const Portrait = ({ character = {}, forceUpdate, children, className, compact }: Props) => (
   <div
-    className={cx(styles.root,
+    className={cx(
+      styles.root,
+      className,
       styles.portraitBgDefault,
       character.race && styles[character.race.toLowerCase()],
       { [styles.compact]: compact },
@@ -27,7 +29,7 @@ const Portrait = ({ character = {}, forceUpdate, children, className, compact }:
   >
     <div className={cx(styles.portraitTopIn, styles.borderStrip1)} />
     <div
-      className={cx(styles.portrait, className)}
+      className={cx(styles.portrait)}
       style={{
         backgroundImage: encodeURI(`url(${endpoint}${character.alias || ''}/characters/${character.name || ''}${forceUpdate ? `?${+new Date()}` : ''})`),
       }}
