@@ -286,41 +286,38 @@ export default class Character extends Component {
                   </TooltipTrigger>
                 </div>
 
-                <div className={styles.embedContainer}>
-                  <Embed name={routeParams.character} />
-                </div>
+                <Embed name={routeParams.character} className={styles.embedContainer} />
               </Portrait>
             </ImageUpload>
 
             <div className={styles.rightColumn}>
-              <div className={styles.editContainer}>
-                {ownCharacter && (
-                  <div>
-                    <Button
-                      key="edit-button"
-                      className={styles.editButton}
-                      type={editMode ? 'primary' : 'minimal'}
-                      onClick={this.toggleEditMode}
-                    >
-                      {editMode ? `${T.translate('characters.done')}` :
-                                  `${T.translate('characters.edit')}`}
-                    </Button>
+              {ownCharacter && (
+                <div className={styles.editContainer}>
+                  <Button
+                    key="edit-button"
+                    className={styles.editButton}
+                    type={editMode ? 'primary' : 'minimal'}
+                    onClick={this.toggleEditMode}
+                  >
+                    {editMode
+                      ? T.translate('characters.done')
+                      : T.translate('characters.edit')}
+                  </Button>
 
-                    {editMode && [
-                      <Checkbox
-                        checked={!!showPublic}
-                        key="hide-checkbox"
-                        onChange={this.hide}
-                        label={
-                          showPublic
-                            ? `${T.translate('characters.shown')}`
-                            : `${T.translate('characters.hidden')}`
-                        }
-                      />,
-                    ]}
-                  </div>
-                )}
-              </div>
+                  {editMode && [
+                    <Checkbox
+                      checked={!!showPublic}
+                      key="hide-checkbox"
+                      onChange={this.hide}
+                      label={
+                        showPublic
+                          ? T.translate('characters.shown')
+                          : T.translate('characters.hidden')
+                      }
+                    />,
+                  ]}
+                </div>
+              )}
 
               <div className={styles.attributes}>
                 {Object.keys(attributes).map((key) => {

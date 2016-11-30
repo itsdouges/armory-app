@@ -13,6 +13,7 @@
 - Header, extracted sticky header component out in anticipation for creating a standalone module
 - Character portrait and items to be slightly smalelr
 - Extract user page into three sub pages, overview, characters, and recent matches
+- Edit button on character page to be slightly nicer looking
 
 ### Added
 - Tabs to user and guild pages

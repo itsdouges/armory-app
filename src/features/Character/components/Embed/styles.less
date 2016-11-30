@@ -1,6 +1,7 @@
 @import '~common/styles/base.less';
 
 @text: @_white;
+@hover: @_red;
 
 .root {
   position: relative;
@@ -11,6 +12,10 @@
   cursor: pointer;
   color: @text;
   text-transform: uppercase;
+
+  &:hover {
+    color: @hover;
+  }
 }
 
 .input {
