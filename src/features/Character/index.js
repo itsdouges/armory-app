@@ -1,3 +1,5 @@
+// @flow
+
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
@@ -15,7 +17,6 @@ import { leftItems, rightItems } from 'lib/gw2/equipment';
 import Content from 'common/layouts/Content';
 
 import Checkbox from 'common/components/Checkbox';
-import Head from 'common/components/Head';
 import ContentCardList from 'common/components/ContentCardList';
 import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
@@ -36,29 +37,52 @@ import Embed from './components/Embed';
 
 import styles from './styles.less';
 
+import type { Character as CharacterType } from 'flowTypes';
+
 function buildDescription (character = {}) {
   // eslint-disable-next-line
   return `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
 }
 
-class Character extends Component {
-  static propTypes = {
-    character: PropTypes.object,
-    dispatch: PropTypes.func,
-    characters: PropTypes.array,
-    items: PropTypes.object,
-    skins: PropTypes.object,
-    fetchingGw2Data: PropTypes.bool,
-    specializations: PropTypes.object,
-    traits: PropTypes.object,
-    mode: PropTypes.oneOf(['pve', 'pvp', 'wvw']),
-    skills: PropTypes.object,
-    routeParams: PropTypes.object,
-    location: PropTypes.object,
-    amulets: PropTypes.object,
-    pets: PropTypes.object,
-    title: PropTypes.object,
-  };
+type Props = {
+  character?: CharacterType,
+  characters: [],
+  items: {},
+  skins: {},
+  specializations: {},
+  traits: {},
+  mode: 'pve' | 'pvp' | 'wvw',
+  skills: {},
+  routeParams: {
+    character: string,
+    alias: string,
+  },
+  location: {
+    query: {
+      mode?: string,
+    },
+  },
+  amulets: {},
+  pets: {},
+  title: {},
+  dispatchSelectCharacterMode: (mode: string) => void,
+  dispatchFetchCharacter: (mode: string) => void,
+  dispatchFetchUserCharacters: (mode: string) => void,
+  dispatchSelectCharacter: (mode: string) => void,
+  dispatchSelectUser: (mode: string) => void,
+  dispatchUpdateCharacter: (mode: string) => void,
+};
+
+@connect(selector, {
+  dispatchSelectCharacterMode: selectCharacterMode,
+  dispatchFetchCharacter: fetchCharacter,
+  dispatchFetchUserCharacters: fetchUserCharacters,
+  dispatchSelectCharacter: selectCharacter,
+  dispatchSelectUser: selectUser,
+  dispatchUpdateCharacter: updateCharacter,
+})
+export default class Character extends Component {
+  props: Props;
 
   static contextTypes = {
     _userAlias: PropTypes.string,
@@ -73,12 +97,14 @@ class Character extends Component {
   componentWillMount () {
     this.loadCharacter();
 
-    if (this.props.location.query.mode) {
-      this.props.dispatch(selectCharacterMode(this.props.location.query.mode));
+    const { dispatchSelectCharacterMode, location } = this.props;
+
+    if (location.query.mode) {
+      dispatchSelectCharacterMode(location.query.mode);
     }
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Props) {
     if (prevProps.routeParams.character !== this.props.routeParams.character) {
       this.loadCharacter();
     }
@@ -90,24 +116,16 @@ class Character extends Component {
     });
   };
 
-  getItems (ids = []) {
+  getItems (ids: number[] = []) {
     return ids.map((id) => this.props.items[id]);
   }
 
-  setPve = () => {
-    this.setMode('pve');
-  };
+  setPve = () => this.setMode('pve');
+  setPvp = () => this.setMode('pvp');
+  setWvw = () => this.setMode('wvw');
 
-  setPvp = () => {
-    this.setMode('pvp');
-  };
-
-  setWvw = () => {
-    this.setMode('wvw');
-  };
-
-  setMode (mode) {
-    this.props.dispatch(selectCharacterMode(mode));
+  setMode (mode: string) {
+    this.props.dispatchSelectCharacterMode(mode);
 
     this.context.router.replace({
       pathname: location.pathname,
@@ -117,17 +135,23 @@ class Character extends Component {
 
   loadCharacter () {
     const { character, alias } = this.props.routeParams;
+    const {
+      dispatchFetchCharacter,
+      dispatchFetchUserCharacters,
+      dispatchSelectCharacter,
+      dispatchSelectUser,
+    } = this.props;
 
-    this.props.dispatch(fetchCharacter(character, {
+    dispatchFetchCharacter(character, {
       ignoreAuth: this.context._userAlias !== alias,
-    }));
+    });
 
-    this.props.dispatch(fetchUserCharacters(alias, {
+    dispatchFetchUserCharacters(alias, {
       ignoreAuth: this.context._userAlias !== alias,
-    }));
+    });
 
-    this.props.dispatch(selectCharacter(character));
-    this.props.dispatch(selectUser(alias));
+    dispatchSelectCharacter(character);
+    dispatchSelectUser(alias);
   }
 
   toggleEditMode = () => {
@@ -138,12 +162,13 @@ class Character extends Component {
     });
   };
 
-  hide = (e) => {
+  hide = (e: EventHandler) => {
     const { character } = this.props.routeParams;
+    const { dispatchUpdateCharacter } = this.props;
 
-    this.props.dispatch(updateCharacter(character, {
+    dispatchUpdateCharacter(character, {
       showPublic: e.target.checked,
-    }));
+    });
   }
 
   render () {
@@ -189,6 +214,8 @@ class Character extends Component {
 
     return (
       <Content
+        title={`${routeParams.character} | ${alias}`}
+        description={buildDescription(character)}
         content={character}
         extraSubtitle={characterTitle && <span><i>{characterTitle}</i> | </span>}
         type="characters"
@@ -197,11 +224,6 @@ class Character extends Component {
             <ContentCard className={styles.subContent} key={id} content={pets[id]} type="pet" />
         )}
       >
-        <Head
-          title={`${routeParams.character} | ${alias}`}
-          description={buildDescription(character)}
-        />
-
         <div className={styles.inner}>
           <div className={styles.columns}>
             <div className={cx(styles.leftColumn, showPvpEquipment && styles.fade)}>
@@ -229,9 +251,12 @@ class Character extends Component {
               disabled={!editMode}
               forceShow={editMode}
               hintText={<span>{T.translate('characters.changePortrait')}<br />560 x 840</span>}
-              uploadName={`characters/${character && character.name}`}
+              uploadName={`characters/${(character && character.name) || ''}`}
             >
-              <Portrait forceUpdate={this.state.updateImage} character={character}>
+              <Portrait
+                character={character}
+                forceUpdate={this.state.updateImage}
+              >
                 <div className={styles.modeContainer}>
                   <TooltipTrigger data="PvE">
                     <Icon
@@ -261,41 +286,38 @@ class Character extends Component {
                   </TooltipTrigger>
                 </div>
 
-                <div className={styles.embedContainer}>
-                  <Embed name={routeParams.character} />
-                </div>
+                <Embed name={routeParams.character} className={styles.embedContainer} />
               </Portrait>
             </ImageUpload>
 
             <div className={styles.rightColumn}>
-              <div className={styles.editContainer}>
-                {ownCharacter && (
-                  <div>
-                    <Button
-                      key="edit-button"
-                      className={styles.editButton}
-                      type={editMode ? 'primary' : 'minimal'}
-                      onClick={this.toggleEditMode}
-                    >
-                      {editMode ? `${T.translate('characters.done')}` :
-                                  `${T.translate('characters.edit')}`}
-                    </Button>
+              {ownCharacter && (
+                <div className={styles.editContainer}>
+                  <Button
+                    key="edit-button"
+                    className={styles.editButton}
+                    type={editMode ? 'primary' : 'minimal'}
+                    onClick={this.toggleEditMode}
+                  >
+                    {editMode
+                      ? T.translate('characters.done')
+                      : T.translate('characters.edit')}
+                  </Button>
 
-                    {editMode && [
-                      <Checkbox
-                        checked={!!showPublic}
-                        key="hide-checkbox"
-                        onChange={this.hide}
-                        label={
-                          showPublic
-                            ? `${T.translate('characters.shown')}`
-                            : `${T.translate('characters.hidden')}`
-                        }
-                      />,
-                    ]}
-                  </div>
-                )}
-              </div>
+                  {editMode && [
+                    <Checkbox
+                      checked={!!showPublic}
+                      key="hide-checkbox"
+                      onChange={this.hide}
+                      label={
+                        showPublic
+                          ? T.translate('characters.shown')
+                          : T.translate('characters.hidden')
+                      }
+                    />,
+                  ]}
+                </div>
+              )}
 
               <div className={styles.attributes}>
                 {Object.keys(attributes).map((key) => {
@@ -362,11 +384,11 @@ class Character extends Component {
         </div>
 
         <div className={styles.links}>
-          <Link to={`/${character && character.alias}`}>
+          <Link to={`/${(character && character.alias) || ''}`}>
             <ContentCard type="users" content={character} className={styles.linkItem} />
           </Link>
 
-          <Link to={`/g/${guild && guild.name}`}>
+          <Link to={`/g/${(guild && guild.name) || ''}`}>
             <ContentCard type="guilds" content={guild} className={styles.linkItem} />
           </Link>
         </div>
@@ -379,5 +401,3 @@ class Character extends Component {
     );
   }
 }
-
-export default connect(selector)(Character);

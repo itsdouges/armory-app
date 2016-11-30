@@ -5,6 +5,10 @@
 @disabledBorder: @disabledalt;
 @buttonTextColour: @_white;
 
+@minimal: @positive;
+@primary: @positive;
+@secondary: @negative;
+
 .button {
   text-align: center;
   width: 10em;
@@ -29,28 +33,33 @@
 
 .minimal {
   background: none;
-  border: none;
+  border: 2px solid black;
   box-shadow: none;
+
+  &:hover {
+    border: 2px solid @minimal;
+    color: @minimal;
+  }
 }
 
 .primary {
-  border-color: @positive;
-  background: @positive;
+  border-color: @primary;
+  background: @primary;
   color: @buttonTextColour;
   font-weight: bold;
 
   &.disabled {
-    color: @positive;
+    color: @primary;
   }
 }
 
 .secondary {
-  border-color: @negative;
-  background: @negative;
+  border-color: @secondary;
+  background: @secondary;
   color: @buttonTextColour;
 
   &.disabled {
-    color: @negative;
+    color: @secondary;
   }
 }
 

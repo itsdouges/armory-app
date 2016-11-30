@@ -2,23 +2,20 @@
 
 import { Component } from 'react';
 import { Link } from 'react-router';
-import cx from 'classnames';
-import get from 'lodash/get';
 import T from 'i18n-react';
 
-import styles from './styles.less';
-// import decoration from 'common/styles/decoration.less';
-
-import { addEvent } from 'lib/dom';
-
+import StickyHeader from 'common/components/StickyHeader';
 import heroImage from 'assets/images/gw_logo.png';
+import headerBg from 'assets/images/gw_bgrd.png';
 
-import LangPicker from '../LangPicker';
 import ResponsiveMenu from 'common/components/ResponsiveMenu';
 import Container from 'common/components/Container';
 import Icon from 'common/components/Icon';
 import ProgressIcon from 'common/components/Icon/Progress';
 import SearchBar from 'common/components/SearchBar';
+
+import styles from './styles.less';
+import LangPicker from '../LangPicker';
 
 type Props = {
   authenticated: boolean,
@@ -27,71 +24,26 @@ type Props = {
   compact: boolean,
 };
 
+type State = {
+  showExtraHeaderItems: boolean,
+};
+
 export default class Header extends Component {
   props: Props;
-  detatch: Function;
-  _fixed: HTMLElement;
-  _root: HTMLElement;
-  initialised: boolean;
 
-  state = {
-    stickyHeader: false,
-    stickyHeaderStyles: {},
+  state: State = {
+    showExtraHeaderItems: false,
   };
 
-  componentDidMount () {
-    this.initStickyHeader();
-  }
-
-  componentDidUpdate (prevProps: Props) {
-    if (prevProps.compact === this.props.compact) {
-      return;
-    }
-
-    this.initStickyHeader();
-  }
-
-  componentWillUnmount () {
-    this.detatch();
-  }
-
-  onScroll = () => {
-    const { stickyHeader } = this.state;
-
-    const stickyHeaderHeight = this._fixed.offsetHeight;
-    const headerHeight = this._root.offsetHeight;
-    const headerBounds = this._root.getBoundingClientRect();
-
-    const sticky = ((headerHeight + headerBounds.top) - stickyHeaderHeight) <= 0;
-
-    if (sticky && !stickyHeader) {
-      this.setState({
-        stickyHeader: true,
-      });
-    } else if (!this.props.compact && !sticky && stickyHeader) {
-      this.setState({
-        stickyHeader: false,
-      });
-    }
+  onSticky = (isSticky: boolean) => {
+    this.setState({
+      showExtraHeaderItems: isSticky,
+    });
   };
-
-  initStickyHeader () {
-    if (!this.initialised) {
-      this.detatch = addEvent('scroll', this.onScroll);
-    }
-
-    this.onScroll();
-    this.initialised = true;
-  }
 
   render () {
     const { authenticated, alias, checkingAuthentication, compact } = this.props;
-    const { stickyHeader } = this.state;
-
-    const stickyHeaderStyles = {
-      height: get(this._root, 'offsetHeight') || get(this._fixed, 'offsetHeight'),
-      top: get(this._fixed, 'offsetHeight'),
-    };
+    const { showExtraHeaderItems } = this.state;
 
     const authenticatedLinks = [
       <Link key="alias" to={`/${alias}`}>{alias}</Link>,
@@ -108,42 +60,36 @@ export default class Header extends Component {
     const links = [
       ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
       <Link key="stats" to="/statistics">{T.translate('stats.name')}</Link>,
-// <Link key="embeds" className={decoration.new} to="/embeds">{T.translate('embeds.name')}</Link>,
       <LangPicker key="langPicker" />,
     ];
 
-    return (
-      <div className={cx(styles.root)} ref={(e) => (this._root = e)}>
-        {compact && <div style={{ height: stickyHeaderStyles.top }} />}
-
-        <div className={styles.fixed} ref={(e) => (this._fixed = e)}>
-          <Container className={styles.innerContainer}>
-            <Link to="/" style={{ opacity: (compact || stickyHeader) ? 1 : 0 }}>
-              <Icon className={styles.icon} name="logo-small.png" size="mini" />
-              <h1>Guild Wars 2 Armory</h1>
-            </Link>
-
-            <div
-              className={styles.searchContainer}
-              style={{ opacity: (compact || stickyHeader) ? 1 : 0 }}
-            >
-              <SearchBar simple />
-            </div>
-
-            <ResponsiveMenu className={styles.linkContainer} itemClassName={styles.link}>
-              {links}
-            </ResponsiveMenu>
-          </Container>
-        </div>
-
-        {compact || <div className={styles.anotherBackground} />}
-        {compact || <div className={styles.background} style={{ opacity: stickyHeader ? 0 : 1 }} />}
+    const header = (
+      <Container className={styles.innerContainer}>
+        <Link to="/" style={{ opacity: (compact || showExtraHeaderItems) ? 1 : 0 }}>
+          <Icon className={styles.icon} name="logo-small.png" size="mini" />
+          <h1>Guild Wars 2 Armory</h1>
+        </Link>
 
         <div
-          className={styles.backgroundFloat}
-          style={stickyHeaderStyles}
-        />
+          className={styles.searchContainer}
+          style={{ opacity: (compact || showExtraHeaderItems) ? 1 : 0 }}
+        >
+          <SearchBar simple />
+        </div>
 
+        <ResponsiveMenu className={styles.linkContainer} itemClassName={styles.link}>
+          {links}
+        </ResponsiveMenu>
+      </Container>
+    );
+
+    return (
+      <StickyHeader
+        header={header}
+        backgroundSrc={headerBg}
+        headerOnly={compact}
+        onSticky={this.onSticky}
+      >
         <div className={styles.bigSearchContainer} style={{ display: compact ? 'none' : '' }}>
           <Container>
             <img
@@ -155,7 +101,7 @@ export default class Header extends Component {
             <SearchBar className={styles.searchBar} />
           </Container>
         </div>
-      </div>
+      </StickyHeader>
     );
   }
 }

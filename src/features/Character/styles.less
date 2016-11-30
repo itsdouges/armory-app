@@ -1,8 +1,8 @@
 @import '~common/styles/base.less';
 
-@thick: 192;
-@thin: 120;
-@content: 820px;
+@leftColumnWidth: @itemSize + 4px;
+@rightColumnWidth: (@itemSize * 3) + (4px * 3);
+@portraitWidth: 770px;
 
 @brushDecorationZ: @_zindexBehind;
 
@@ -13,7 +13,7 @@
 }
 
 .inner {
-  max-width: @content;
+  max-width: @portraitWidth;
   margin: 0 auto;
   position: relative;
 }
@@ -24,7 +24,7 @@
 
 .editContainer {
   text-align: center;
-  margin: 1em;
+  margin-bottom: 0.5em;
 }
 
 .modeContainer {
@@ -41,6 +41,11 @@
   left: 0.5em;
   z-index: @portraitButtonsZ;
   text-align: right;
+  width: inherit;
+}
+
+.portrait {
+  margin-top: 0.125rem;
 }
 
 .modeIcon {
@@ -95,6 +100,7 @@
   align-items: center;
   margin-top: 0.5rem;
   padding-bottom: 0.25rem;
+  font-size: 0.8em;
 
   > * {
     width: 33.3333%;
@@ -184,12 +190,12 @@ div.linkItem {
   }
 
   .leftColumn {
-    width: 64px;
+    width: @leftColumnWidth;
     flex-direction: column;
   }
 
   .rightColumn {
-    width: @thick * 1px;
+    width: @rightColumnWidth;
   }
 
   .attributes {

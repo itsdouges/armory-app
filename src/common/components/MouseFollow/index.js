@@ -88,19 +88,21 @@ export default class MouseFollow extends Component {
     // eslint-disable-next-line
     const tooltip = this._tooltip;
 
-    const pin = calculatePin({ tooltip, mouse: event });
-    const style = calculateStyle({
-      tooltip,
-      pin,
-      mouse: event,
-    });
+    window.requestAnimationFrame(() => {
+      const pin = calculatePin({ tooltip, mouse: event });
+      const style = calculateStyle({
+        tooltip,
+        pin,
+        mouse: event,
+      });
 
-    this.setState({
-      style: {
-        ...this.state.style,
-        ...style,
-        opacity: 1,
-      },
+      this.setState({
+        style: {
+          ...this.state.style,
+          ...style,
+          opacity: 1,
+        },
+      });
     });
   };
 
