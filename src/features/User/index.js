@@ -111,17 +111,6 @@ export default class User extends Component {
             content: (
               <div>
                 <div className={styles.gamesContainer}>
-                  <h3>Player Versus. Environment</h3>
-                </div>
-
-                <div className={styles.summaryContainer}>
-                  <Fractal level={user && user.fractalLevel} />
-                  <RaidSummary userAchievements={userAchievements} />
-
-                  <DailyAp {...user} />
-                </div>
-
-                <div className={styles.gamesContainer}>
                   <h3>Player Versus. Player</h3>
                 </div>
 
@@ -151,6 +140,17 @@ export default class User extends Component {
                     worlds={worlds}
                     worldId={user && user.world}
                   />
+                </div>
+
+                <div className={styles.gamesContainer}>
+                  <h3>Player Versus. Environment</h3>
+                </div>
+
+                <div className={styles.summaryContainer}>
+                  <Fractal level={user && user.fractalLevel} />
+                  <RaidSummary userAchievements={userAchievements} />
+
+                  <DailyAp {...user} />
                 </div>
               </div>
             ),

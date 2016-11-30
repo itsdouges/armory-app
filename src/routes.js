@@ -43,9 +43,8 @@ const Routes = () => (
       <Route path="/g/:guildName" component={Guild} />
       <Route path="/g/:guildName(/:subRoute)" component={Guild} />
       <Route path="/:alias" component={User} />
+      <Redirect from="/:alias/c" to="/:alias/characters" />
       <Route path="/:alias(/:subRoute)" component={User} />
-      <Redirect from="/:alias/characters" to="/:alias" />
-      <Redirect from="/:alias/c" to="/:alias" />
       <Redirect from="/:alias/characters/:character" to="/:alias/c/:character" />
       <Route path="/:alias/c/:character" component={Character} />
       <Redirect from="/:alias/*" to="/:alias" />
