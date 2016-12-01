@@ -8,6 +8,7 @@ import StickyHeader from 'common/components/StickyHeader';
 import heroImage from 'assets/images/gw_logo.png';
 import headerBg from 'assets/images/gw_bgrd.png';
 
+import buttonStyles from 'common/components/Button/styles.less';
 import ResponsiveMenu from 'common/components/ResponsiveMenu';
 import Container from 'common/components/Container';
 import Icon from 'common/components/Icon';
@@ -51,16 +52,15 @@ export default class Header extends Component {
     ];
 
     const unauthenticatedLinks = [
-      <Link key="join" to="/join">{T.translate('join.name')}</Link>,
       <Link key="login" to="/login">{T.translate('login.name')}</Link>,
+      <Link key="join" to="/join" className={buttonStyles.cta}>{T.translate('join.name')}</Link>,
     ];
 
     const linksForContext = authenticated ? authenticatedLinks : unauthenticatedLinks;
 
     const links = [
-      ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
       <Link key="stats" to="/statistics">{T.translate('stats.name')}</Link>,
-      <LangPicker key="langPicker" />,
+      ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
     ];
 
     const header = (
@@ -74,8 +74,10 @@ export default class Header extends Component {
           className={styles.searchContainer}
           style={{ opacity: (compact || showExtraHeaderItems) ? 1 : 0 }}
         >
-          <SearchBar simple />
+          <SearchBar simple className={styles.smallSearchBar} />
         </div>
+
+        <LangPicker key="langPicker" />
 
         <ResponsiveMenu className={styles.linkContainer} itemClassName={styles.link}>
           {links}

@@ -55,7 +55,7 @@ module.exports = {
         test: /\.(css|less)$/,
         include: [paths.appSrc, paths.appNodeModules],
         // eslint-disable-next-line
-        loader: 'style!css?localIdentName=[name]--[local]--[hash:base64:5]&modules&importLoaders=1!postcss!less',
+        loader: 'style!css?localIdentName=[path][name]--[local]--[hash:base64:5]&modules&importLoaders=1!postcss!less',
       },
       {
         test: /\.json$/,

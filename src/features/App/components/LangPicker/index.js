@@ -4,6 +4,9 @@ import { Component } from 'react';
 import { languages, set, get } from 'lib/i18n';
 import cx from 'classnames';
 
+import SvgIcon from 'common/components/Icon/Svg';
+import SelectList from 'common/components/SelectList';
+
 import styles from './styles.less';
 
 function pick (lang: string) {
@@ -19,21 +22,17 @@ export default class LangPicker extends Component {
 
   render () {
     return (
-      <span>
-        <hr className={styles.hr} />
-
-        <div className={styles.root}>
-
-          {languages.map((lang) =>
-            <button
-              key={lang}
-              className={cx(styles.lang, { [styles.selected]: this.state.selected === lang })}
-              onClick={() => pick(lang)}
-            >
-              {lang}
-            </button>)}
-        </div>
-      </span>
+      <SelectList icon={<SvgIcon name="globe" size="micro" />}>
+        {languages.map(({ short, long }) =>
+          <button
+            key={short}
+            className={cx(styles.lang, { [styles.selected]: this.state.selected === short })}
+            onClick={() => pick(short)}
+          >
+            {long}
+          </button>)
+        }
+      </SelectList>
     );
   }
 }
