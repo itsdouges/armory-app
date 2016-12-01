@@ -5,6 +5,7 @@
 @disabledBorder: @disabledalt;
 @buttonTextColour: @_white;
 
+@cta: @_red;
 @minimal: @positive;
 @primary: @positive;
 @secondary: @negative;
@@ -23,6 +24,24 @@
 
 .progress {
   margin-top: 3px;
+}
+
+.cta {
+  composes: button;
+  display: flex;
+  width: inherit;
+  height: inherit;
+  padding: 0.75em 2em !important;
+  background: @cta;
+  border: 2px solid @cta;
+  box-shadow: none;
+  color: @buttonTextColour;
+
+  &:hover,
+  &:focus {
+    background: inherit;
+    color: @cta;
+  }
 }
 
 .neutral {

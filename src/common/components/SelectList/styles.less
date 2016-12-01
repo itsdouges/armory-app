@@ -1,0 +1,42 @@
+@import '~common/styles/base.less';
+
+.root {
+  position: relative;
+
+  &:hover,
+  &:focus, {
+    .listContainer {
+      display: inherit;
+    }
+  }
+}
+
+.selector {
+  display: flex;
+  pointer-events: none;
+  padding: 0.25em;
+}
+
+div.listContainer {
+  position: absolute;
+  top: 100%;
+  width: inherit;
+  right: -50%;
+  display: none;
+  padding: 0.5em;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: block;
+  padding: 0.5em;
+  white-space: nowrap;
+
+  > * {
+    width: 100%;
+  }
+}

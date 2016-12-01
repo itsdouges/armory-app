@@ -8,6 +8,12 @@
 - Changes
 ```
 
+## 2.20.0 - 2016/12/01
+### Changed
+- Join link on header to be more prominent
+- Language picker to be a select list
+- Small search bar to be slightly bigger
+
 ## 2.19.0 - 2016/11/30
 ### Changed
 - Header, extracted sticky header component out in anticipation for creating a standalone module
