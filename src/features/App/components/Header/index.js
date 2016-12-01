@@ -47,8 +47,8 @@ export default class Header extends Component {
     const { showExtraHeaderItems } = this.state;
 
     const authenticatedLinks = [
-      <Link key="alias" to={`/${alias}`}>{alias}</Link>,
       <Link key="settings" to="/settings">{T.translate('settings.name')}</Link>,
+      <Link key="alias" to={`/${alias}`}>{alias}</Link>,
     ];
 
     const unauthenticatedLinks = [
