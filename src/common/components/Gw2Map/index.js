@@ -17,7 +17,7 @@ function getWikiSupportedLanguage (language) {
 
 const LANGUAGE = getWikiSupportedLanguage(i18n.get());
 
-const cleanName = (name) => name && name.replace('Beta ', '');
+const cleanName = (name) => name && name.replace('Beta ', '').replace(' BETA', '');
 
 function getStyle (id = 0) {
   const image = require(`assets/images/maps/${id}.jpg`);

@@ -8,10 +8,17 @@
 - Changes
 ```
 
+## 2.20.1 - 2016/12/02
+### Fixed
+- Gw2 map component from linking to wiki BETA map that doesn't exist
+
 ## 2.20.0 - 2016/12/01
+### Added
+- New select list component
+
 ### Changed
 - Join link on header to be more prominent
-- Language picker to be a select list
+- Language picker to use a select list
 - Small search bar to be slightly bigger
 
 ## 2.19.0 - 2016/11/30
