@@ -87,6 +87,7 @@ type ContentCardProps = {
   size?: CardSize,
   extraSubtitle?: any,
   forceUpdate?: boolean,
+  children?: any,
 };
 
 const ContentCard = ({
@@ -96,6 +97,7 @@ const ContentCard = ({
   size = 'small',
   extraSubtitle,
   forceUpdate,
+  children,
 }: ContentCardProps) => {
   if (!content) {
     return <Placeholder size={size} className={className} />;
@@ -122,6 +124,8 @@ const ContentCard = ({
           {subTitle}
         </div>
       </div>
+
+      {children}
     </div>
   );
 };

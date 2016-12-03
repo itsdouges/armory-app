@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [2.21.0] - unreleased
+### Added
+- User access to user content card on user page
+
 ## [2.20.1] - 2016/12/02
 ### Fixed
 - Gw2 map component from linking to wiki BETA map that doesn't exist

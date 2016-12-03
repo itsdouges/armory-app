@@ -7,9 +7,12 @@ import get from 'lodash/get';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 import T from 'i18n-react';
+import startCase from 'lodash/startCase';
 
 import styles from './styles.less';
 
+import Card from 'common/components/Card';
+import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
 
@@ -49,6 +52,7 @@ type Props = {
     wvwRank: number,
     world: number,
     characters: [],
+    access: string,
   },
   dispatchFetchUser: () => void,
   dispatchSelectUser: () => void,
@@ -100,6 +104,12 @@ export default class User extends Component {
 
     return (
       <Content
+        cardExtra={user && (
+          <Card className={styles.access}>
+            <Icon size="mini" name={`${user.access}.png`} />
+            <span>{startCase(user.access)}</span>
+          </Card>
+        )}
         type="users"
         title={alias}
         content={user}
