@@ -11,6 +11,7 @@
 ## [2.21.0] - unreleased
 ### Added
 - User access to user content card on user page
+- User guilds to user page
 
 ## [2.20.1] - 2016/12/02
 ### Fixed
