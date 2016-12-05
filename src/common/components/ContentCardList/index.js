@@ -6,6 +6,8 @@ import { Link } from 'react-router';
 import styles from './styles.less';
 import classnames from 'classnames/bind';
 
+import type { ContentType } from 'common/components/ContentCard';
+
 const cx = classnames.bind(styles);
 
 function buildUrl (item, aliasOverride, resource) {
@@ -28,7 +30,7 @@ type ContentCardListProps = {
   items?: [],
   alias?: string,
   noBorder?: boolean,
-  resource?: 'characters' | 'users' | 'guilds' | 'pet',
+  resource?: ContentType,
   type?: 'grid' | 'list',
   bottomBorder?: boolean,
 };

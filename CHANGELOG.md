@@ -13,6 +13,9 @@
 - User access to user content card on user page
 - User guilds to user page
 
+### Changed
+- User account name to be more appropriate when unavailable
+
 ## [2.20.1] - 2016/12/02
 ### Fixed
 - Gw2 map component from linking to wiki BETA map that doesn't exist

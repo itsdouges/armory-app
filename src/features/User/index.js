@@ -104,7 +104,7 @@ export default class User extends Component {
 
     return (
       <Content
-        cardExtra={user && (
+        cardExtra={user && user.access && (
           <Card className={styles.access}>
             <Icon size="mini" name={`${user.access}.png`} />
             <span>{startCase(user.access)}</span>
