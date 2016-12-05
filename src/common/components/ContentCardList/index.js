@@ -28,7 +28,7 @@ type ContentCardListProps = {
   items?: [],
   alias?: string,
   noBorder?: boolean,
-  resource?: string,
+  resource?: 'characters' | 'users' | 'guilds' | 'pet',
   type?: 'grid' | 'list',
   bottomBorder?: boolean,
 };
@@ -48,7 +48,7 @@ const ContentCardList = ({
         key={`${item.name}-${index}`}
         className={cx('item', 'withHover')}
       >
-        <ContentCard type={item.resource} content={item} />
+        <ContentCard type={resource || item.resource} content={item} />
       </Link>)
     ) :
     [0, 0].map((data, index) => (

@@ -9,13 +9,13 @@ import filter from 'lodash/filter';
 import T from 'i18n-react';
 import startCase from 'lodash/startCase';
 
-import styles from './styles.less';
-
 import Card from 'common/components/Card';
 import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
+import Tooltip from 'common/components/Tooltip';
 
+import styles from './styles.less';
 import WvwRank from './components/WvwRank';
 import DailyAp from './components/DailyAp';
 import Fractal from './components/Fractal';
@@ -26,7 +26,6 @@ import PvpGame from './components/PvpGame';
 import PvpLeague from './components/PvpSeason';
 import FavouritePvpClass from './components/FavouritePvpClass';
 
-import Tooltip from 'common/components/Tooltip';
 
 import {
   fetchUser,
@@ -101,6 +100,7 @@ export default class User extends Component {
     const pvpStats = get(user, 'pvpStats');
     const userAchievements = get(user, 'achievements', []);
     const pvpStandings = get(user, 'pvpStandings', [undefined]);
+    const guilds = get(user, 'guilds', []);
 
     return (
       <Content
@@ -174,6 +174,19 @@ export default class User extends Component {
                 type="grid"
                 alias={alias}
                 items={user && user.characters}
+              />
+            ),
+          },
+          {
+            to: `/${alias}/guilds`,
+            name: T.translate('guilds.name'),
+            content: (
+              <ContentCardList
+                noBorder
+                type="grid"
+                alias={alias}
+                resource="guilds"
+                items={guilds}
               />
             ),
           },
