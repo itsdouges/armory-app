@@ -15,6 +15,7 @@
 
 ### Changed
 - User account name to be more appropriate when unavailable
+- Sign up button margins
 
 ## [2.20.1] - 2016/12/02
 ### Fixed
