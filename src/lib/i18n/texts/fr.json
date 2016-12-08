@@ -1,70 +1,70 @@
 {
   "home": {
     "whatIs": {
-      "title": "Quel est",
+      "title": "Qu'est-ce que",
       "text": "Guild Wars 2 Armory est un moyen facile de trouver, visualiser et partager des utilisateurs, des personnages et des guildes avec vos amis sur votre mobile et PC! Inscrivez-vous aujourd'hui et commencez à partager!"
     }
   },
   "login": {
     "name": "Se connecter",
-    "joinCta": "Ne pas avoir un compte? Rejoignez-nous!",
-    "forgotMyPasswordCta": "Oublié mon mot de passe",
+    "joinCta": "Vous n'avez pas de compte ? Rejoignez-nous!",
+    "forgotMyPasswordCta": "Mot de passe oublié",
     "buttons": {
       "login": "Se connecter"
     }
   },
   "forgotPassword": {
-    "name": "Oublié mon mot de passe",
-    "nextCta": "Prochain",
-    "changeCta": "Changement",
-    "checkEmail": "Vérifiez votre email pour votre jeton de réinitialisation!",
-    "success": "Votre mot de passe a été changé. Allez-vous!"
+    "name": "Mot de passe oublié",
+    "nextCta": "Suivant",
+    "changeCta": "Changer",
+    "checkEmail": "Vérifiez votre email pour le lien de réinitialisation !",
+    "success": "Votre mot de passe a été changé. Connectez-vous !"
   },
   "join": {
-    "name": "Joindre",
-    "loginCta": "Vous avez déjà un compte? Allez-vous!",
+    "name": "Rejoindre",
+    "loginCta": "Vous avez déjà un compte? Connectez-vous !",
     "buttons": {
-      "join": "Registre"
+      "join": "Inscription"
     }
   },
   "images": {
-    "tooBig": "L'image doit être inférieure à 1MB, choisir un autre.",
-    "wrongType": "L'image doit être PNG ou JPEG, choisissez un autre."
+    "tooBig": "Le poids de l'image doit être inférieur à 1 Mo, choisissez-en une autre.",
+    "wrongType": "L'image doit être de format PNG ou JPEG, choisissez-en une autre."
   },
   "stats": {
     "name": "Statistiques",
     "refreshNote": "Armory les statistiques sont actualisées toutes les trente minutes."
   },
   "search": {
-    "textbox": "Recherche pour les utilisateurs, les personnages, et les guildes",
+    "textbox": "Recherchez des utilisateurs, des personnages, et des guildes",
     "results": "Résultats de recherche pour",
-    "minlength": "Le terme de recherche devrait être de 3 ou plusieurs caractères :-)",
-    "nonefound": "Rien n'a été trouvé ... Je pensais que vous pouvez trouver quelque chose?",
-    "joincta": "Inscrivez-vous et ajoutez votre jeton d'api gw2 (s) d'abord!"
+    "minlength": "Votre recherche doit faire 3 caractères ou plus :-)",
+    "nonefound": "Rien n'a été trouvé ... Pensiez-vous trouver quelque chose ?",
+    "joincta": "Inscrivez-vous et ajoutez votre clé d'application(s) en premier!"
   },
   "users": {
     "name": "Utilisateurs",
     "recentMatches": "Matches Récents",
     "pvpStats": {
-      "name": "Pvp Stats",
-      "unranked": "Unranked",
+      "name": "Stats PvP",
+      "unranked": "Non Classé",
       "ranked": "Classé",
       "wins": "Victoires",
       "byes": "Byes",
-      "losses": "Des pertes",
+      "losses": "Défaites",
       "desertions": "Désertions",
-      "forfeits": "Confiscations",
-      "finished": "Played"
+      "forfeits": "Abandons",
+      "finished": "Joués"
     },
     "pvp": {
-      "favouriteClass": "Favourite Class",
-      "winLossAbbreviation": "W/L"
+      "favouriteClass": "Classe Favorite",
+      "winLossAbbreviation": "V/D"
     }
   },
   "guilds": {
     "name": "Guildes",
-    "guild": "Guild",
-    "noGuild": "No Guild"
+    "guild": "Guilde",
+    "noGuild": "Sans Guilde"
   },
   "characters": {
     "name": "Personnages",
@@ -80,11 +80,11 @@
     "avatar": {
       "cta": "Cliquez pour changer votre avatar",
       "label": "Modifier votre avatar",
-      "finished": "Vous cherchez une bonne ;-)"
+      "finished": "Ca a l'air bien ;-)"
     },
     "apiKeys": {
       "name": "Clés Api",
-      "noKeysCta": "Oh, vous avez aucune clé de api .. vont générer un ..! Assurez-vous que vous sélectionnez les caractères, construit, et les autorisations de pvp :-).",
+      "noKeysCta": "Oh, vous avez aucune clé d'application .. Allez en générez une ..! Assurez-vous de sélectionner les permissions character,build et pvp :-).",
       "inputs": {
         "add": "Ajouter la clé"
       },
@@ -105,38 +105,38 @@
     }
   },
   "misc": {
-    "opensInNewWindow": "Ouvre dans une nouvelle fenêtre"
+    "opensInNewWindow": "Ouvrir dans une nouvelle fenêtre"
   },
   "items": {
-    "transmuted": "Transmué",
-    "skinLocked": "Locked Peau",
+    "transmuted": "Transmuté",
+    "skinLocked": "Apparence verrouillée",
     "requiredLevel": "Niveau Requis",
-    "weaponStrength": "Arme Force",
-    "defense": "defense",
+    "weaponStrength": "Puissance de l'arme",
+    "defense": "défense",
     "currentlyEquipped": "Actuellement équipée",
-    "accountBound": "Account bound",
-    "soulBound": "Soulbound"
+    "accountBound": "Lié au compte",
+    "soulBound": "Lié à l'âme"
   },
   "itemAttributes": {
-    "power": "Power",
-    "precision": "Precision",
-    "toughness": "Toughness",
-    "vitality": "Vitality",
-    "boonDuration": "Boon Duration",
-    "conditionDamage": "Condition Damage",
-    "conditionDuration": "Condition Duration",
-    "ferocity": "Ferocity",
-    "healingPower": "Healing Power",
-    "armor": "Armor",
-    "critChance": "Critical Chance",
-    "critDamage": "Critical Damage",
-    "health": "Health",
+    "power": "Puissance",
+    "precision": "Précision",
+    "toughness": "Robustesse",
+    "vitality": "Vitalité",
+    "boonDuration": "Durée d'avantage",
+    "conditionDamage": "Dégâts par altération",
+    "conditionDuration": "Durée d'altération",
+    "ferocity": "Férocité",
+    "healingPower": "Guérison",
+    "armor": "Armure",
+    "critChance": "Chance de coup critique",
+    "critDamage": "Dégâts critiques",
+    "health": "Santé",
     "expertise": "Expertise",
     "concentration": "Concentration",
-    "agonyResistance": "Agony Resistance",
-    "magic": "Magic Find",
-    "elementalist": "Attunement Recharge Rate",
-    "guardian": "Virtue Recharge Rate",
+    "agonyResistance": "Résistance à l'agonie",
+    "magic": "Découverte de magie",
+    "elementalist": "Vitesse de recharge de l'affinité",
+    "guardian": "Vitesse de recharge des vertus",
     "warrior": "Burst Recharge",
     "engineer": "Tool Belt Recharge Rate",
     "ranger": "Pet Attribute Bonus",
@@ -146,25 +146,25 @@
     "revanent": "Revenant"
   },
   "accSummary": {
-    "raidBossKills": "Raid Bosses",
-    "fractalLvl": "Fractal Level",
+    "raidBossKills": "Bosses de raid",
+    "fractalLvl": "Niveau de fractales",
     "dailyAp": "Daily Ap"
   },
   "classes": {
-    "druid": "Druid",
-    "daredevil": "Daredevil",
+    "druid": "Druide",
+    "daredevil": "Fracasseur",
     "berserker": "Berserker",
-    "dragonhunter": "Dragonhunter",
-    "reaper": "Reaper",
-    "chronomancer": "Chronomancer",
-    "scrapper": "Scrapper",
-    "tempest": "Tempest",
-    "herald": "Herald"
+    "dragonhunter": "Draconnier",
+    "reaper": "Faucheur",
+    "chronomancer": "Chronomancien",
+    "scrapper": "Mécatronicien",
+    "tempest": "Catalyste",
+    "herald": "Héraut"
   },
   "words": {
-    "played": "Played",
-    "times": "times",
+    "played": "Joué",
+    "times": "fois",
     "ratio": "Ratio",
-    "rank": "Rank"
+    "rank": "Rang"
   }
 }
