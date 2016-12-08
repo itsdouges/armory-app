@@ -7,7 +7,6 @@ import get from 'lodash/get';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 import T from 'i18n-react';
-import startCase from 'lodash/startCase';
 
 import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
