@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [2.22.0] - unreleased
+## [2.22.0] - 2016/12/08
 ### Added
 - Users to guild page
 
