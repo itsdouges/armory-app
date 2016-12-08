@@ -112,7 +112,10 @@ const ContentCard = ({
 
   return (
     <div className={cx('root', className, size)}>
-      <div className={cx('image', imageClass)} style={imageStyle} />
+      <div className={cx('image', imageClass)} style={imageStyle}>
+        {children}
+      </div>
+
       <div className={styles.textContainer}>
         {size === 'big'
           ? <h2 className={cx('title')}>{title}</h2>
@@ -124,8 +127,6 @@ const ContentCard = ({
           {subTitle}
         </div>
       </div>
-
-      {children}
     </div>
   );
 };

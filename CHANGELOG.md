@@ -8,6 +8,14 @@
 - Changes
 ```
 
+## [2.22.0] - 2016/12/08
+### Added
+- Users to guild page
+
+### Changed
+- Sets users to be default tab on guild page
+- User access icon to a nicer location
+
 ## [2.21.0] - 2016/12/08
 ### Added
 - User access to user content card on user page
@@ -166,7 +174,7 @@
 ### Changed
 - Form cards into a common view component
 
-### Deleted
+### Removed
 - Old `Avatar` component
 
 ## [2.3.0] - 2016/09/27

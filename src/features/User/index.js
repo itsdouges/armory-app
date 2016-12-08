@@ -7,7 +7,6 @@ import get from 'lodash/get';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 import T from 'i18n-react';
-import startCase from 'lodash/startCase';
 
 import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
@@ -24,7 +23,6 @@ import PvpRanking from './components/PvpRanking';
 import PvpGame from './components/PvpGame';
 import PvpLeague from './components/PvpSeason';
 import FavouritePvpClass from './components/FavouritePvpClass';
-
 
 import {
   fetchUser,
@@ -104,10 +102,7 @@ export default class User extends Component {
     return (
       <Content
         cardExtra={user && user.access && (
-          <div className={styles.access}>
-            <Icon size="mini" name={`${user.access}.png`} />
-            <span>{startCase(user.access)}</span>
-          </div>
+          <Icon size="mini" className={styles.access} name={`${user.access}.png`} />
         )}
         type="users"
         title={alias}
