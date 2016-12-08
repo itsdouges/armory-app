@@ -7,6 +7,9 @@
 ### Added|Changed|Fixed|Removed
 - Changes
 ```
+## [3.4.1] - 2016/12/09
+### Changed
+- French translations
 
 ## [3.4.0] - 2016/12/08
 ### Added
