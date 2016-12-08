@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [2.22.0] - 2016/12/08
+## [3.4.0] - 2016/12/08
 ### Added
 - Users to guild page
 
@@ -16,7 +16,7 @@
 - Sets users to be default tab on guild page
 - User access icon to a nicer location
 
-## [2.21.0] - 2016/12/08
+## [3.3.0] - 2016/12/08
 ### Added
 - User access to user content card on user page
 - User guilds to user page
@@ -26,11 +26,11 @@
 - Sign up button margins
 - Buttons border width to 2px
 
-## [2.20.1] - 2016/12/02
+## [3.2.1] - 2016/12/02
 ### Fixed
 - Gw2 map component from linking to wiki BETA map that doesn't exist
 
-## [2.20.0] - 2016/12/01
+## [3.2.0] - 2016/12/01
 ### Added
 - New select list component
 
@@ -39,7 +39,7 @@
 - Language picker to use a select list
 - Small search bar to be slightly bigger
 
-## [2.19.0] - 2016/11/30
+## [3.1.0] - 2016/11/30
 ### Changed
 - Header, extracted sticky header component out in anticipation for creating a standalone module
 - Character portrait and items to be slightly smalelr
@@ -49,7 +49,7 @@
 ### Added
 - Tabs to user and guild pages
 
-## [2.18.0] - 2016/11/22
+## [3.0.0] - 2016/11/22
 ### Added
 - Customisable armory embed
 - Page title to character embed
