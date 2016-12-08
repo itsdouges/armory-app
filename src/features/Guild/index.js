@@ -21,6 +21,7 @@ export default class Guild extends Component {
     guild: {
       tag: string,
       characters?: [],
+      users?: [],
     },
     routeParams: {
       guildName: string,
@@ -38,7 +39,7 @@ export default class Guild extends Component {
   }
 
   render () {
-    const { guild = { tag: '...', characters: undefined }, routeParams: { guildName } } = this.props;
+    const { guild = { tag: '...', characters: undefined, users: undefined }, routeParams: { guildName } } = this.props;
 
     return (
       <Content
@@ -49,12 +50,24 @@ export default class Guild extends Component {
           {
             name: 'Characters',
             ignoreTitle: true,
-            to: window.location.pathname,
+            to: `/g/${guildName}`,
             content: (
               <ContentCardList
                 noBorder
                 type="grid"
                 items={guild && guild.characters}
+              />
+            ),
+          },
+          {
+            name: 'Users',
+            to: `/g/${encodeURI(guildName)}/users`,
+            content: (
+              <ContentCardList
+                noBorder
+                type="grid"
+                resource="users"
+                items={guild && guild.users}
               />
             ),
           },

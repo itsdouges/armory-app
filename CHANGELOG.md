@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [2.22.0] - unreleased
+### Added
+- Users to guild page
+
 ## [2.21.0] - 2016/12/08
 ### Added
 - User access to user content card on user page
