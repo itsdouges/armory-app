@@ -14,6 +14,7 @@
 
 ### Changed
 - Sets users to be default tab on guild page
+- User access icon to a nicer location
 
 ## [2.21.0] - 2016/12/08
 ### Added
