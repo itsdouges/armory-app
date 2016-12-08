@@ -32,7 +32,7 @@ function extractData (content, { type, forceUpdate }): CardData {
             {alias}
           </span>
         ),
-        subTitle: content.accountName || 'User',
+        subTitle: content.accountName || 'No api key added...',
         imageStyle: {
           backgroundColor: colours._gray,
           backgroundImage: `url(${url})`,
@@ -77,7 +77,7 @@ function extractData (content, { type, forceUpdate }): CardData {
   }
 }
 
-type ContentType = 'characters' | 'users' | 'guilds' | 'pet';
+export type ContentType = 'characters' | 'users' | 'guilds' | 'pet';
 type CardSize = 'small' | 'big';
 
 type ContentCardProps = {
@@ -87,6 +87,7 @@ type ContentCardProps = {
   size?: CardSize,
   extraSubtitle?: any,
   forceUpdate?: boolean,
+  children?: any,
 };
 
 const ContentCard = ({
@@ -96,6 +97,7 @@ const ContentCard = ({
   size = 'small',
   extraSubtitle,
   forceUpdate,
+  children,
 }: ContentCardProps) => {
   if (!content) {
     return <Placeholder size={size} className={className} />;
@@ -122,6 +124,8 @@ const ContentCard = ({
           {subTitle}
         </div>
       </div>
+
+      {children}
     </div>
   );
 };

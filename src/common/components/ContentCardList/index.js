@@ -6,6 +6,8 @@ import { Link } from 'react-router';
 import styles from './styles.less';
 import classnames from 'classnames/bind';
 
+import type { ContentType } from 'common/components/ContentCard';
+
 const cx = classnames.bind(styles);
 
 function buildUrl (item, aliasOverride, resource) {
@@ -28,7 +30,7 @@ type ContentCardListProps = {
   items?: [],
   alias?: string,
   noBorder?: boolean,
-  resource?: string,
+  resource?: ContentType,
   type?: 'grid' | 'list',
   bottomBorder?: boolean,
 };
@@ -48,7 +50,7 @@ const ContentCardList = ({
         key={`${item.name}-${index}`}
         className={cx('item', 'withHover')}
       >
-        <ContentCard type={item.resource} content={item} />
+        <ContentCard type={resource || item.resource} content={item} />
       </Link>)
     ) :
     [0, 0].map((data, index) => (

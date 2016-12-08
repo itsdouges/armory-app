@@ -13,16 +13,25 @@ type Props = {
   tabs?: [],
   title: string,
   description?: string,
+  cardExtra?: any,
 };
 
-const Content = ({ children, extraContent, tabs, title, description, ...props }: Props) => (
+const Content = ({
+  children,
+  extraContent,
+  tabs,
+  title,
+  description,
+  cardExtra,
+  ...props
+}: Props) => (
   <div className={styles.root}>
     <Head title={title} description={description} />
     <SocialButtons />
 
     <div className={styles.heroBg}>
       <div className={styles.inner}>
-        <ContentCard {...props} size="big" />
+        <ContentCard {...props} size="big">{cardExtra}</ContentCard>
         {extraContent}
       </div>
     </div>

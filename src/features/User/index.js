@@ -7,12 +7,14 @@ import get from 'lodash/get';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 import T from 'i18n-react';
+import startCase from 'lodash/startCase';
 
-import styles from './styles.less';
-
+import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
+import Tooltip from 'common/components/Tooltip';
 
+import styles from './styles.less';
 import WvwRank from './components/WvwRank';
 import DailyAp from './components/DailyAp';
 import Fractal from './components/Fractal';
@@ -23,7 +25,6 @@ import PvpGame from './components/PvpGame';
 import PvpLeague from './components/PvpSeason';
 import FavouritePvpClass from './components/FavouritePvpClass';
 
-import Tooltip from 'common/components/Tooltip';
 
 import {
   fetchUser,
@@ -49,6 +50,7 @@ type Props = {
     wvwRank: number,
     world: number,
     characters: [],
+    access: string,
   },
   dispatchFetchUser: () => void,
   dispatchSelectUser: () => void,
@@ -97,9 +99,16 @@ export default class User extends Component {
     const pvpStats = get(user, 'pvpStats');
     const userAchievements = get(user, 'achievements', []);
     const pvpStandings = get(user, 'pvpStandings', [undefined]);
+    const guilds = get(user, 'guilds', []);
 
     return (
       <Content
+        cardExtra={user && user.access && (
+          <div className={styles.access}>
+            <Icon size="mini" name={`${user.access}.png`} />
+            <span>{startCase(user.access)}</span>
+          </div>
+        )}
         type="users"
         title={alias}
         content={user}
@@ -164,6 +173,19 @@ export default class User extends Component {
                 type="grid"
                 alias={alias}
                 items={user && user.characters}
+              />
+            ),
+          },
+          {
+            to: `/${alias}/guilds`,
+            name: T.translate('guilds.name'),
+            content: (
+              <ContentCardList
+                noBorder
+                type="grid"
+                alias={alias}
+                resource="guilds"
+                items={guilds}
               />
             ),
           },
