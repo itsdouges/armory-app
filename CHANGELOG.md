@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [2.21.0] - unreleased
+## [2.21.0] - 2016/12/08
 ### Added
 - User access to user content card on user page
 - User guilds to user page
@@ -16,6 +16,7 @@
 ### Changed
 - User account name to be more appropriate when unavailable
 - Sign up button margins
+- Buttons border width to 2px
 
 ## [2.20.1] - 2016/12/02
 ### Fixed
