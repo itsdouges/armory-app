@@ -9,7 +9,6 @@ import filter from 'lodash/filter';
 import T from 'i18n-react';
 import startCase from 'lodash/startCase';
 
-import Card from 'common/components/Card';
 import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
