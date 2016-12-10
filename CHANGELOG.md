@@ -7,6 +7,11 @@
 ### Added|Changed|Fixed|Removed
 - Changes
 ```
+
+## [3.5.0] - unreleased
+### Added
+- Call to action for claiming guilds on guild page
+
 ## [3.4.1] - 2016/12/09
 ### Changed
 - French translations
