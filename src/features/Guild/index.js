@@ -2,9 +2,14 @@
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import T from 'i18n-react';
 
+import SvgIcon from 'common/components/Icon/Svg';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
+import TooltipTrigger from 'common/components/TooltipTrigger';
+
+import styles from './styles.less';
 
 import {
   selectGuild,
@@ -18,8 +23,9 @@ import { selector } from './guilds.reducer';
 })
 export default class Guild extends Component {
   props: {
-    guild: {
+    guild?: {
       tag: string,
+      claimed: boolean,
       characters?: [],
       users?: [],
     },
@@ -39,12 +45,23 @@ export default class Guild extends Component {
   }
 
   render () {
-    const { guild = { tag: '...', characters: undefined, users: undefined }, routeParams: { guildName } } = this.props;
+    const { guild, routeParams: { guildName } } = this.props;
     const encodedGuildName = encodeURI(guildName);
+
+    const claimed = guild && guild.claimed;
+    const claimedData = {
+      logo: claimed ? 'done' : 'error-outline',
+      message: claimed ? T.translate('guilds.claimed') : T.translate('guilds.unclaimed'),
+    };
 
     return (
       <Content
-        title={`${guildName} [${guild.tag}]`}
+        title={`${guildName} [${(guild && guild.tag) || '...'}]`}
+        cardExtra={(
+          <TooltipTrigger data={claimedData.message}>
+            <SvgIcon size="mini" className={styles.claimCta} name={claimedData.logo} />
+          </TooltipTrigger>
+        )}
         content={guild}
         type="guilds"
         tabs={[

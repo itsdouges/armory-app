@@ -11,7 +11,6 @@ import T from 'i18n-react';
 import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
-import Tooltip from 'common/components/Tooltip';
 
 import styles from './styles.less';
 import WvwRank from './components/WvwRank';
@@ -103,7 +102,7 @@ export default class User extends Component {
       <Content
         cardExtra={user && user.access && (
           <Icon size="mini" className={styles.access} name={`${user.access}.png`} />
-        )}
+      )}
         type="users"
         title={alias}
         content={user}
@@ -195,9 +194,7 @@ export default class User extends Component {
             ),
           },
         ]}
-      >
-        <Tooltip />
-      </Content>
+      />
     );
   }
 }

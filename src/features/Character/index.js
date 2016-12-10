@@ -22,7 +22,6 @@ import ContentCard from 'common/components/ContentCard';
 import SocialButtons from 'common/components/SocialButtons';
 import ImageUpload from 'common/components/ImageUpload';
 import Button from 'common/components/Button';
-import Tooltip from 'common/components/Tooltip';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Icon from 'common/components/Icon';
 
@@ -396,7 +395,6 @@ export default class Character extends Component {
         <ContentCardList noBorder alias={alias} items={characters} />
 
         <SocialButtons />
-        <Tooltip />
       </Content>
     );
   }
