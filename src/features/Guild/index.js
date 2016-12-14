@@ -8,6 +8,7 @@ import SvgIcon from 'common/components/Icon/Svg';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
 import TooltipTrigger from 'common/components/TooltipTrigger';
+import Overview from './components/Overview';
 
 import styles from './styles.less';
 
@@ -54,6 +55,8 @@ export default class Guild extends Component {
       message: claimed ? T.translate('guilds.claimed') : T.translate('guilds.unclaimed'),
     };
 
+    console.log('info', guild);
+
     return (
       <Content
         title={`${guildName} [${(guild && guild.tag) || '...'}]`}
@@ -66,9 +69,16 @@ export default class Guild extends Component {
         type="guilds"
         tabs={[
           {
-            name: 'Users',
+            name: 'Overview',
             to: `/g/${encodedGuildName}`,
             ignoreTitle: true,
+            content: (
+              <Overview />
+            ),
+          },
+          {
+            name: 'Users',
+            to: `/g/${encodedGuildName}/users`,
             content: (
               <ContentCardList
                 noBorder
