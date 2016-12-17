@@ -55,8 +55,6 @@ export default class Guild extends Component {
       message: claimed ? T.translate('guilds.claimed') : T.translate('guilds.unclaimed'),
     };
 
-    console.log('info', guild);
-
     return (
       <Content
         title={`${guildName} [${(guild && guild.tag) || '...'}]`}
@@ -73,7 +71,7 @@ export default class Guild extends Component {
             to: `/g/${encodedGuildName}`,
             ignoreTitle: true,
             content: (
-              <Overview />
+              <Overview data={guild} />
             ),
           },
           {
