@@ -31,6 +31,8 @@ export function checkingAuthentication (checking) {
 }
 
 export function authenticateUser (token) {
+  clearApiToken = setApiToken(token);
+
   return (dispatch) => {
     dispatch(checkingAuthentication(true));
 
@@ -41,10 +43,10 @@ export function authenticateUser (token) {
     })
     .then(({ data }) => {
       dispatch(userAuthenticated(data));
-      clearApiToken = setApiToken(token);
       dispatch(checkingAuthentication(false));
     }, () => {
       dispatch(checkingAuthentication(false));
+      clearApiToken();
     });
   };
 }

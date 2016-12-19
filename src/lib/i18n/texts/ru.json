@@ -64,7 +64,9 @@
   "guilds": {
     "name": "гильдий",
     "guild": "Guild",
-    "noGuild": "No Guild"
+    "noGuild": "No Guild",
+    "claimed": "This guild has been claimed!",
+    "unclaimed": "This guild hasn't been claimed yet, if you're the guild leader add an api key with the guilds permission!"
   },
   "characters": {
     "name": "Персонажи",

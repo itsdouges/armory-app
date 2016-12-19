@@ -4,6 +4,7 @@ import ContentCard from 'common/components/ContentCard';
 import Tabs from 'common/components/Tabs';
 import Head from 'common/components/Head';
 import SocialButtons from 'common/components/SocialButtons';
+import Tooltip from 'common/components/Tooltip';
 
 import styles from './styles.less';
 
@@ -39,6 +40,8 @@ const Content = ({
     {tabs && <Tabs titleSuffix={title} tabs={tabs} />}
 
     {children}
+
+    <Tooltip />
   </div>
 );
 

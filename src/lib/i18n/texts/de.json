@@ -68,7 +68,9 @@
   "guilds": {
     "name": "Gilden",
     "guild": "Gilde",
-    "noGuild": "Keine Gilde"
+    "noGuild": "Keine Gilde",
+    "claimed": "This guild has been claimed!",
+    "unclaimed": "This guild hasn't been claimed yet, if you're the guild leader add an api key with the guilds permission!"
   },
   "characters": {
     "name": "Charaktere",
