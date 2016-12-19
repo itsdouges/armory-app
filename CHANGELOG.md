@@ -8,9 +8,10 @@
 - Changes
 ```
 
-## [3.5.0] - unreleased
+## [3.5.0] - 2016/12/20
 ### Added
 - Call to action for claiming guilds on guild page
+- Adds guild overview page
 
 ## [3.4.1] - 2016/12/09
 ### Changed

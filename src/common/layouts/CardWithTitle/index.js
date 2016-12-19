@@ -11,8 +11,8 @@ type Props = {
   message?: any,
   error?: string,
   className?: string,
-  size?: 'compact' | 'standard',
-  type?: 'small' | 'medium' | 'large',
+  size?: 'small' | 'medium' | 'large',
+  type?: 'compact' | 'standard',
 };
 
 const CardWithTitle = ({
