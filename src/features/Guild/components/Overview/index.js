@@ -6,18 +6,13 @@ import SummaryProgress from 'common/layouts/SummaryProgress';
 import Card from 'common/layouts/CardWithTitle';
 import styles from './styles.less';
 
+import type { Guild } from 'flowTypes';
+
 type Props = {
-  data: {
-    motd?: string,
-    aetherium?: number,
-    influence?: number,
-    resonance?: number,
-    favor?: number,
-    level?: number,
-  },
+  data: Guild,
 };
 
-const motdPlaceholder = 'Some cool text';
+const motdPlaceholder = 'Today we\'re going to go for an adventure...';
 
 function parseNewLines (string = '') {
   return string

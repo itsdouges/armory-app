@@ -4,6 +4,8 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import T from 'i18n-react';
 
+import type { Guild as GuildType } from 'flowTypes';
+
 import SvgIcon from 'common/components/Icon/Svg';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
@@ -24,12 +26,7 @@ import { selector } from './guilds.reducer';
 })
 export default class Guild extends Component {
   props: {
-    guild?: {
-      tag: string,
-      claimed: boolean,
-      characters?: [],
-      users?: [],
-    },
+    guild?: GuildType,
     routeParams: {
       guildName: string,
     },
