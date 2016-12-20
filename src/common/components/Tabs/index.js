@@ -6,9 +6,9 @@ import styles from './styles.less';
 import findIndex from 'lodash/findIndex';
 import Head from 'common/components/Head';
 
-type TabInput = {
-  name: string,
-  to?: string,
+import type { Tab$Props } from './Tab';
+
+type TabInput = Tab$Props & {
   content: any,
   ignoreTitle?: boolean,
 };

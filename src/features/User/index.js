@@ -13,15 +13,10 @@ import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
 
 import styles from './styles.less';
-import WvwRank from './components/WvwRank';
-import DailyAp from './components/DailyAp';
-import Fractal from './components/Fractal';
-import RaidSummary from './components/RaidSummary';
-import PvpStats from './components/PvpStats';
-import PvpRanking from './components/PvpRanking';
 import PvpGame from './components/PvpGame';
-import PvpLeague from './components/PvpSeason';
-import FavouritePvpClass from './components/FavouritePvpClass';
+import Overview from './components/Overview';
+
+import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
 
 import {
   fetchUser,
@@ -42,21 +37,15 @@ export const selector = createSelector(
 );
 
 type Props = {
-  user?: {
-    fractalLevel: number,
-    wvwRank: number,
-    world: number,
-    characters: [],
-    access: string,
-  },
+  user?: UserType,
   dispatchFetchUser: () => void,
   dispatchSelectUser: () => void,
   routeParams: {
     alias: string,
   },
-  worlds: {},
-  pvpSeasons: [],
-  maps: {},
+  worlds: Worlds,
+  pvpSeasons: PvpSeasons,
+  maps: Maps,
 };
 
 @connect(selector, {
@@ -93,9 +82,7 @@ export default class User extends Component {
     const { user, routeParams: { alias }, pvpSeasons, maps, worlds } = this.props;
 
     const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
-    const pvpStats = get(user, 'pvpStats');
-    const userAchievements = get(user, 'achievements', []);
-    const pvpStandings = get(user, 'pvpStandings', [undefined]);
+
     const guilds = get(user, 'guilds', []);
 
     return (
@@ -112,50 +99,7 @@ export default class User extends Component {
             name: 'Overview',
             ignoreTitle: true,
             content: (
-              <div>
-                <div className={styles.gamesContainer}>
-                  <h3>Player Versus. Player</h3>
-                </div>
-
-                <div className={styles.summaryContainer}>
-                  <PvpRanking
-                    rank={get(pvpStats, 'pvp_rank')}
-                    points={get(pvpStats, 'pvp_rank_points')}
-                    rankRollOvers={get(pvpStats, 'pvp_rank_rollovers')}
-                  />
-
-                  <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
-
-                  <PvpStats
-                    stats={get(pvpStats, 'ladders.unranked')}
-                    title={T.translate('users.pvpStats.unranked')}
-                  />
-
-                  <PvpStats
-                    stats={get(pvpStats, 'ladders.ranked')}
-                    title={T.translate('users.pvpStats.ranked')}
-                  />
-
-                  <FavouritePvpClass professions={get(pvpStats, 'professions')} />
-
-                  <WvwRank
-                    rank={user && user.wvwRank}
-                    worlds={worlds}
-                    worldId={user && user.world}
-                  />
-                </div>
-
-                <div className={styles.gamesContainer}>
-                  <h3>Player Versus. Environment</h3>
-                </div>
-
-                <div className={styles.summaryContainer}>
-                  <Fractal level={user && user.fractalLevel} />
-                  <RaidSummary userAchievements={userAchievements} />
-
-                  <DailyAp {...user} />
-                </div>
-              </div>
+              <Overview data={user} pvpSeasons={pvpSeasons} worlds={worlds} />
             ),
           },
           {

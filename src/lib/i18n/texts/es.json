@@ -66,7 +66,8 @@
     "guild": "Guild",
     "noGuild": "No Guild",
     "claimed": "This guild has been claimed!",
-    "unclaimed": "This guild hasn't been claimed yet, if you're the guild leader add an api key with the guilds permission!"
+    "unclaimed": "This guild hasn't been claimed yet, if you're the guild leader add an api key with the guilds permission!",
+    "motd": "Message of the day"
   },
   "characters": {
     "name": "Personajes",

@@ -5,13 +5,21 @@ import cx from 'classnames';
 
 import styles from './styles.less';
 
+export type Tab$Props = {
+  name: any,
+  selected?: boolean,
+  index?: number,
+  to?: string,
+  onClick?: Function,
+};
+
 const Tab = ({
   selected,
   name,
   index,
   onClick,
   to,
-}: { selected: boolean, name: string, index: number, to?: string, onClick?: Function }) => (
+}: Tab$Props) => (
   <Link
     to={`${to || ''}`}
     onClick={() => onClick && onClick(index)}

@@ -5,6 +5,7 @@ import cx from 'classnames/bind';
 import config from 'config';
 
 import type { Character } from 'flowTypes';
+import { defaultCharacter } from 'flowTypes';
 
 const endpoint = config.imagesEndpoint;
 
@@ -17,7 +18,7 @@ type Props = {
 };
 
 /* eslint max-len:0 */
-const Portrait = ({ character = {}, forceUpdate, children, className, compact }: Props) => (
+const Portrait = ({ character = defaultCharacter, forceUpdate, children, className, compact }: Props) => (
   <div
     className={cx(
       styles.root,

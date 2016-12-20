@@ -8,6 +8,14 @@
 - Changes
 ```
 
+## [3.6.0] - 2016/12/21
+### Added
+- Motd into i18n texts
+- New decoration to guild overview tab
+
+### Changed
+- Guild overview page to look nicer on mobile viewports
+
 ## [3.5.0] - 2016/12/20
 ### Added
 - Call to action for claiming guilds on guild page

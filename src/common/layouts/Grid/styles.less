@@ -1,0 +1,21 @@
+@import '~common/styles/base.less';
+
+.root {
+  margin: 0 auto;
+  margin-top: 1em;
+  flex-wrap: wrap;
+}
+
+.fromTablet({
+  .root {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 1em;
+    align-items: flex-start;
+
+    > div {
+      width: 50%;
+    }
+  }
+});

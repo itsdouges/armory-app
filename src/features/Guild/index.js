@@ -10,8 +10,9 @@ import SvgIcon from 'common/components/Icon/Svg';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
 import TooltipTrigger from 'common/components/TooltipTrigger';
-import Overview from './components/Overview';
+import decoration from 'common/styles/decoration.less';
 
+import Overview from './components/Overview';
 import styles from './styles.less';
 
 import {
@@ -64,7 +65,7 @@ export default class Guild extends Component {
         type="guilds"
         tabs={[
           {
-            name: 'Overview',
+            name: <span className={decoration.new}>Overview</span>,
             to: `/g/${encodedGuildName}`,
             ignoreTitle: true,
             content: (

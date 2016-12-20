@@ -9,25 +9,22 @@ import ContentCard from 'common/components/ContentCard';
 import Portrait from 'features/Character/components/Portrait';
 import PvpEquipment from 'features/Character/components/PvpEquipment';
 import Specialization from 'features/Character/components/Specialization';
-import Skills from 'features/Character/components/Skills';
+import CharacterSkills from 'features/Character/components/Skills';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 import Item from 'features/Character/components/Item';
 
+import type { Character, User, Items, Skins, Amulets, Skills, Professions } from 'flowTypes';
+
 type Props = {
   options?: { [key: string]: any },
-  character?: {
-    race?: string,
-    alias?: string,
-    name?: string,
-    profession?: string,
-  },
-  user: {},
+  character?: Character,
+  user: User,
   props: {
-    items: {},
-    skins: {},
-    amulets: {},
-    skills: {},
-    professions: {},
+    items: Items,
+    skins: Skins,
+    amulets: Amulets,
+    skills: Skills,
+    professions: Professions,
     mode: string,
   },
 };
@@ -136,7 +133,7 @@ export default {
     const professionData = get(props, `professions[${profession}]`);
 
     return (
-      <Skills
+      <CharacterSkills
         showWeaponSkills={options.showWeaponSkills}
         character={character}
         items={props.items}
