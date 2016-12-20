@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.6.1] - 2016/12/21
+### Fixed
+- User page from not displaying overview
+
 ## [3.6.0] - 2016/12/21
 ### Added
 - Motd into i18n texts

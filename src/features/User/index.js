@@ -99,7 +99,7 @@ export default class User extends Component {
             name: 'Overview',
             ignoreTitle: true,
             content: (
-              <Overview data={user} pvpSeasons={pvpSeasons} worlds={worlds} />
+              <Overview user={user} pvpSeasons={pvpSeasons} worlds={worlds} />
             ),
           },
           {
