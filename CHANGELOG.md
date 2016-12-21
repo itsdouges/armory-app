@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.8.0] - unreleased
+### Added
+- Guild logs page
+
 ## [3.7.0] - 2016/12/25
 ### Added
 - Christmas cheer

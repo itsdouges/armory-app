@@ -40,11 +40,34 @@ export const defaultUser: User = {
   access: '',
 };
 
+
+// See: https://wiki.guildwars2.com/wiki/API:2/guild/:id/log
+type Log = {
+  id: number,
+  time: string,
+  type: string,
+  user: string,
+  count?: number,
+  motd?: string,
+  invited_by?: string,
+  kicked_by?: string,
+  changed_by?: string,
+  old_rank?: string,
+  new_rank?: string,
+  item_id?: number,
+  count?: number,
+  operation?: 'deposit' | 'withdraw',
+  coins?: number,
+  type?: 'queued' | 'cancelled' | 'completed' | 'sped_up',
+  update_id?: number,
+};
+
 export type Guild = {
   tag: string,
   name: string,
   claimed: boolean,
   characters: Array<Character>,
+  logs?: Array<Log>,
   users: Array<User>,
   motd?: string,
   aetherium?: number,

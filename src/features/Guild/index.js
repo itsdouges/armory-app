@@ -12,6 +12,7 @@ import ContentCardList from 'common/components/ContentCardList';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import decoration from 'common/styles/decoration.less';
 
+import Logs from './components/Logs';
 import Overview from './components/Overview';
 import styles from './styles.less';
 
@@ -71,6 +72,11 @@ export default class Guild extends Component {
             content: (
               <Overview data={guild} />
             ),
+          },
+          {
+            name: 'Logs',
+            to: `/g/${encodedGuildName}/logs`,
+            content: <Logs guildName={guildName} />,
           },
           {
             name: 'Users',
