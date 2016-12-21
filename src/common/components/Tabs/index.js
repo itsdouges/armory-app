@@ -28,7 +28,7 @@ const Tabs = ({ tabs, titleSuffix }: { tabs: Array<TabInput>, titleSuffix: strin
         <Container className={styles.tabsContainer}>
           <ul>
             {tabs.map((tab, index) => (
-              <li key={tab.name}>
+              <li key={tab.to}>
                 <Tab
                   {...tab}
                   index={index}

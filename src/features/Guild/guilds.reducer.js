@@ -1,4 +1,4 @@
-import { FETCHING_GUILD, SELECT_GUILD, FETCH_GUILD_RESULT } from './actions';
+import { FETCHING_GUILD, SELECT_GUILD, FETCH_GUILD_RESULT, FETCH_GUILD_LOGS } from './actions';
 import { createSelector } from 'reselect';
 
 export const defaultState = {
@@ -36,6 +36,21 @@ export default function reducer (state, action) {
           [action.payload.name]: action.payload.data,
         },
       };
+
+    case FETCH_GUILD_LOGS: {
+      const previous = state.data[action.payload.name];
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.payload.name]: {
+            ...previous,
+            logs: action.payload.data,
+          },
+        },
+      };
+    }
 
     default:
       return undefined;
