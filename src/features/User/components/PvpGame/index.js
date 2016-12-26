@@ -1,8 +1,8 @@
 import { PropTypes } from 'react';
 import get from 'lodash/get';
 import cx from 'classnames';
-import moment from 'moment';
 import T from 'i18n-react';
+import { humanize } from 'lib/date';
 
 import colours from 'common/styles/colours';
 import styles from './styles.less';
@@ -12,14 +12,6 @@ import Icon from 'common/components/Icon';
 import Gw2Map from 'common/components/Gw2Map';
 import Redacted from 'common/components/Redacted';
 import TooltipTrigger from 'common/components/TooltipTrigger';
-
-function stringToDate (date) {
-  const now = moment();
-  const end = moment(date);
-  const diffInMs = now.diff(end);
-
-  return `${moment.duration(diffInMs).humanize()} ago`;
-}
 
 function calculateProgressBar ({ team, scores }) {
   if (team === 'Red') {
@@ -88,7 +80,7 @@ const PvpGame = ({ game, maps }) => {
           <TooltipTrigger data={game.ended}>
             <div>
               <Redacted redact={redacted}>
-                {T.translate('users.pvpStats.finished')} {stringToDate(game.ended) || 'Never'}
+                {T.translate('users.pvpStats.finished')} {humanize(game.ended) || 'Never'}
               </Redacted>
             </div>
           </TooltipTrigger>
