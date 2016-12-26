@@ -3,10 +3,14 @@
 import { Component } from 'react';
 import { Link } from 'react-router';
 import T from 'i18n-react';
+import cx from 'classnames';
 
 import StickyHeader from 'common/components/StickyHeader';
-import heroImage from 'assets/images/gw_logo.png';
-import headerBg from 'assets/images/gw_bgrd.png';
+import armoryLogo from 'assets/images/gw_logo.png';
+import config from 'config';
+
+const heroImage = config.features.christmas ? 'xmas-hero.jpg' : 'gw_bgrd.png';
+const headerBg = require(`assets/images/${heroImage}`);
 
 import buttonStyles from 'common/components/Button/styles.less';
 import ResponsiveMenu from 'common/components/ResponsiveMenu';
@@ -63,10 +67,12 @@ export default class Header extends Component {
       ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
     ];
 
+    const smallIconName = config.features.christmas ? 'gift.png' : 'logo-small.png';
+
     const header = (
       <Container className={styles.innerContainer}>
         <Link to="/" style={{ opacity: (compact || showExtraHeaderItems) ? 1 : 0 }}>
-          <Icon className={styles.icon} name="logo-small.png" size="mini" />
+          <Icon className={styles.icon} name={smallIconName} size="mini" />
           <h1>Guild Wars 2 Armory</h1>
         </Link>
 
@@ -79,7 +85,10 @@ export default class Header extends Component {
 
         <LangPicker key="langPicker" />
 
-        <ResponsiveMenu className={styles.linkContainer} itemClassName={styles.link}>
+        <ResponsiveMenu
+          className={styles.linkContainer}
+          itemClassName={cx(styles.link, { [styles.christmas]: config.features.christmas })}
+        >
           {links}
         </ResponsiveMenu>
       </Container>
@@ -97,7 +106,7 @@ export default class Header extends Component {
             <img
               alt="Guild Wars 2 Armory"
               title="Guild Wars 2 Armory"
-              className={styles.heroImage} src={heroImage}
+              className={styles.armoryLogo} src={armoryLogo}
             />
 
             <SearchBar className={styles.searchBar} />

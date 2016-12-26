@@ -16,6 +16,10 @@ module.exports = {
     title: 'Armor Up',
   },
 
+  features: {
+    christmas: true,
+  },
+
   titleSuffix: ' | Guild Wars 2 Armory',
 
   embedEndpoints: {

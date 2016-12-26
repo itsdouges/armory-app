@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.7.0] - 2016/12/25
+### Added
+- Christmas cheer
+
 ## [3.6.1] - 2016/12/21
 ### Fixed
 - User page from not displaying overview
