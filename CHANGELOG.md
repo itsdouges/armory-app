@@ -12,6 +12,10 @@
 ### Added
 - Guild logs page
 
+## [3.7.1] - 2016/12/26
+### Fixed
+- Christmas cheer hiding response menu text
+
 ## [3.7.0] - 2016/12/25
 ### Added
 - Christmas cheer
