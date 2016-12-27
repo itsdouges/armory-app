@@ -8,6 +8,14 @@
 - Changes
 ```
 
+## [3.8.0] - 2016/12/27
+### Added
+- Guild logs page
+
+### Fixed
+- Z position of social buttons
+- Guild overview nulls and undefineds
+
 ## [3.7.1] - 2016/12/26
 ### Fixed
 - Christmas cheer hiding response menu text

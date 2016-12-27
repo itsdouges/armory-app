@@ -14,6 +14,7 @@ module.exports = {
     'global-require': 'off',
     'camelcase': 'off',
     'arrow-parens': ['error', 'always'],
+    'max-len': 'warn',
 
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-unused-expressions': 'off',
