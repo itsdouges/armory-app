@@ -16,7 +16,7 @@ const SummaryProgress = ({ current, max, title, subTitle, iconName, ...props }: 
     title={<Redacted redact={!current && !subTitle}>{title}</Redacted>}
     leftIcon={{ name: iconName || 'raid.png', size: 'xlarge' }}
     subTitle={
-      subTitle || <ProgressBar
+      subTitle !== undefined ? subTitle : <ProgressBar
         current={current}
         max={max}
       />

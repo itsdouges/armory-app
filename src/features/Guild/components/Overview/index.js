@@ -32,11 +32,11 @@ const Overview = ({ data = defaultGuild }: Props) => (
     </Card>
 
     <Grid>
-      <SummaryProgress title="Level" max={69} current={data.level} />
-      <SummaryProgress title="Favor" max={6000} current={data.favor} />
-      <SummaryProgress title="Aetherium" max={25000} current={data.aetherium} />
-      <SummaryProgress title="Resonance" subTitle={data.resonance} />
-      <SummaryProgress title="Influence" subTitle={data.influence} />
+      <SummaryProgress title="Level" max={69} current={data.level || 0} />
+      <SummaryProgress title="Favor" max={6000} current={data.favor || 0} />
+      <SummaryProgress title="Aetherium" max={25000} current={data.aetherium || 0} />
+      <SummaryProgress title="Resonance" subTitle={data.resonance || 0} />
+      <SummaryProgress title="Influence" subTitle={data.influence || 0} />
     </Grid>
   </Container>
 );
