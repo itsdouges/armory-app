@@ -5,6 +5,7 @@ import cx from 'classnames';
 
 import { addEvent } from 'lib/dom';
 import SvgIcon from 'common/components/Icon/Svg';
+import config from 'config';
 
 import styles from './styles.less';
 
@@ -55,6 +56,7 @@ export default class ResponsiveMenu extends Component {
   render () {
     const { children, className, itemClassName, ...props } = this.props;
     const { shown } = this.state;
+    const moreVertIconName = config.features.christmas ? 'more-vert-white' : 'more-vert';
 
     return (
       <div
@@ -62,7 +64,7 @@ export default class ResponsiveMenu extends Component {
       >
         <button className={styles.toggleButton} onClick={this.toggle}>
           <span>{shown ? 'Hide Menu' : 'Show Menu'}</span>
-          <SvgIcon name="more-vert" />
+          <SvgIcon name={moreVertIconName} />
         </button>
 
         <ul className={styles.listRoot} {...props}>
