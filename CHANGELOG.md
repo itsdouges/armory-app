@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [3.8.0] - unreleased
+## [3.8.0] - 2016/12/27
 ### Added
 - Guild logs page
 
