@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [3.9.0] - 2016/12/27
+## [3.9.0] - 2016/12/29
 ### Changed
 - Guild users page name to members
 
