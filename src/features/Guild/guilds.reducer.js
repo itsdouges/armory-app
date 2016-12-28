@@ -4,6 +4,7 @@ import {
   FETCH_GUILD_RESULT,
   FETCH_GUILD_LOGS,
   FETCH_GUILD_MEMBERS,
+  FETCH_GUILD_TEAMS,
 } from './actions';
 
 import { createSelector } from 'reselect';
@@ -20,6 +21,21 @@ export const selector = createSelector(
     guild,
   })
 );
+
+const createReducer = (state, action, rootName) => {
+  const previous = state.data[action.payload.name];
+
+  return {
+    ...state,
+    data: {
+      ...state.data,
+      [action.payload.name]: {
+        ...previous,
+        [rootName]: action.payload.data,
+      },
+    },
+  };
+};
 
 export default function reducer (state, action) {
   switch (action.type) {
@@ -44,35 +60,14 @@ export default function reducer (state, action) {
         },
       };
 
-    case FETCH_GUILD_LOGS: {
-      const previous = state.data[action.payload.name];
+    case FETCH_GUILD_LOGS:
+      return createReducer(state, action, 'logs');
 
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          [action.payload.name]: {
-            ...previous,
-            logs: action.payload.data,
-          },
-        },
-      };
-    }
+    case FETCH_GUILD_MEMBERS:
+      return createReducer(state, action, 'members');
 
-    case FETCH_GUILD_MEMBERS: {
-      const previous = state.data[action.payload.name];
-
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          [action.payload.name]: {
-            ...previous,
-            members: action.payload.data,
-          },
-        },
-      };
-    }
+    case FETCH_GUILD_TEAMS:
+      return createReducer(state, action, 'teams');
 
     default:
       return undefined;
