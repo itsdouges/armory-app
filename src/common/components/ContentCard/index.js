@@ -25,6 +25,14 @@ function extractData (content, { type, forceUpdate }): CardData {
       const url = alias &&
         `${config.imagesEndpoint}${alias}/avatar${forceUpdate ? `?${+new Date()}` : ''}`;
 
+      if (content.gw2Only) {
+        return {
+          title: content.name,
+          subTitle: content.rank,
+          imageClass: styles.anonymous,
+        };
+      }
+
       return {
         title: (
           <span>

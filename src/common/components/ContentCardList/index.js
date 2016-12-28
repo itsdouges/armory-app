@@ -4,11 +4,9 @@ import ContentCard from 'common/components/ContentCard';
 import Card from 'common/components/Card';
 import { Link } from 'react-router';
 import styles from './styles.less';
-import classnames from 'classnames/bind';
+import cx from 'classnames/bind';
 
 import type { ContentType } from 'common/components/ContentCard';
-
-const cx = classnames.bind(styles);
 
 function buildUrl (item, aliasOverride, resource) {
   switch (resource) {
@@ -33,6 +31,7 @@ type ContentCardListProps = {
   resource?: ContentType,
   type?: 'grid' | 'list',
   bottomBorder?: boolean,
+  children?: any,
 };
 
 const ContentCardList = ({
@@ -42,17 +41,26 @@ const ContentCardList = ({
   bottomBorder,
   noBorder,
   resource = 'characters',
+  children,
 }: ContentCardListProps) => {
   const content = items.length ?
-    items.map((item, index) => (
-      <Link
-        to={buildUrl(item, alias, resource)}
-        key={`${item.name}-${index}`}
-        className={cx('item', 'withHover')}
-      >
-        <ContentCard type={resource || item.resource} content={item} />
-      </Link>)
-    ) :
+    items.map((item, index) => {
+      const card = <ContentCard type={resource || item.resource} content={item} />;
+      const key = `${item.name}-${index}`;
+
+      if (item.gw2Only) {
+        return <div key={key} className={styles.item}>{card}</div>;
+      }
+
+      return (
+        <Link
+          to={buildUrl(item, alias, resource)}
+          key={key}
+          className={cx(styles.item, styles.withHover)}
+        >
+          {card}
+        </Link>);
+    }) :
     [0, 0].map((data, index) => (
       <ContentCard className={styles.item} key={index} />)
     );
@@ -62,14 +70,15 @@ const ContentCardList = ({
   return (
     <div className={styles.root}>
       {!noBorder && (
-        <div className={cx('borderContainer', borderStyle)}>
-          <div className={cx('border', 'borderLeft')} />
-          <div className={cx('border', 'borderRight')} />
+        <div className={cx(styles.borderContainer, styles[borderStyle])}>
+          <div className={cx(styles.border, styles.borderLeft)} />
+          <div className={cx(styles.border, styles.borderRight)} />
         </div>
       )}
 
-      <Card className={cx('container', type)}>
+      <Card className={cx(styles.container, styles[type])}>
         {content}
+        {children}
       </Card>
     </div>
   );

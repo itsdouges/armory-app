@@ -8,6 +8,13 @@
 - Changes
 ```
 
+## [3.9.0] - 2016/12/27
+### Changed
+- Guild users page name to members
+
+### Added
+- Gw2 members to guild new members page
+
 ## [3.8.0] - 2016/12/27
 ### Added
 - Guild logs page

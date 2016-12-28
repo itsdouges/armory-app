@@ -1,24 +1,17 @@
 @import '~common/styles/base.less';
 
-.new,
-.preview {
+.new {
   position: relative;
 }
 
-.preview:after,
 .new:after {
   position: absolute;
   right: -19px;
   top: -7px;
   font-size: 0.8em;
-  color: @primary;
-
 }
 
 .new:after {
   content: "new";
-}
-
-.preview:after {
-  content: "preview";
+  color: @primary;
 }

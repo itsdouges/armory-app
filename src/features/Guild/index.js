@@ -10,8 +10,8 @@ import SvgIcon from 'common/components/Icon/Svg';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
 import TooltipTrigger from 'common/components/TooltipTrigger';
-import decoration from 'common/styles/decoration.less';
 
+import Members from './components/Members';
 import Logs from './components/Logs';
 import Overview from './components/Overview';
 import styles from './styles.less';
@@ -66,29 +66,19 @@ export default class Guild extends Component {
         type="guilds"
         tabs={[
           {
-            name: <span className={decoration.new}>Overview</span>,
+            name: 'Overview',
             to: `/g/${encodedGuildName}`,
             ignoreTitle: true,
             content: (
               <Overview data={guild} />
             ),
+            flair: 'new',
           },
           {
-            name: 'Logs',
-            to: `/g/${encodedGuildName}/logs`,
-            content: <Logs guildName={guildName} />,
-          },
-          {
-            name: 'Users',
+            name: 'Members',
             to: `/g/${encodedGuildName}/users`,
-            content: (
-              <ContentCardList
-                noBorder
-                type="grid"
-                resource="users"
-                items={guild && guild.users}
-              />
-            ),
+            content: <Members guildName={guildName} />,
+            flair: 'new',
           },
           {
             name: 'Characters',
@@ -100,6 +90,12 @@ export default class Guild extends Component {
                 items={guild && guild.characters}
               />
             ),
+          },
+          {
+            name: 'Logs',
+            to: `/g/${encodedGuildName}/logs`,
+            content: <Logs guildName={guildName} />,
+            flair: 'new',
           },
         ]}
       />
