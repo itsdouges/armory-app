@@ -76,6 +76,7 @@ export type Guild = {
   resonance?: number,
   favor?: number,
   level?: number,
+  members?: Array<User>,
 };
 
 export const defaultGuild: Guild = {
