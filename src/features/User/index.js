@@ -117,6 +117,7 @@ export default class User extends Component {
           {
             to: `/${alias}/guilds`,
             name: T.translate('guilds.name'),
+            flair: 'new',
             content: (
               <ContentCardList
                 noBorder
