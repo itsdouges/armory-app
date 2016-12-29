@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.10.0] - 2016/12/29
+### Added
+- "New" flair to guilds tab on user page
+
 ## [3.9.0] - 2016/12/29
 ### Changed
 - Guild users page name to members
