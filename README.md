@@ -28,4 +28,4 @@ Feel like contributing? Look at the [issues](https://github.com/madou/armory-rea
 - [Bugs](https://github.com/madou/armory-react/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 - [Chores](https://github.com/madou/armory-react/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
 
-© 2016 ArenaNet, gw2armory.com
+© 2015-2017 gw2armory.com
