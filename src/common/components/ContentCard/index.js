@@ -28,8 +28,12 @@ function extractData (content, { type, forceUpdate }): CardData {
       if (content.gw2Only) {
         return {
           title: content.name,
-          subTitle: content.rank,
+          subTitle: content.rank || content.role,
           imageClass: styles.anonymous,
+          imageStyle: {
+            backgroundColor: colours._gray,
+            borderRadius: '50%',
+          },
         };
       }
 

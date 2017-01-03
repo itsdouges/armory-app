@@ -1,6 +1,5 @@
 @import '~common/styles/base.less';
 
-@margin: 0.5em;
 @padding: 0.33em;
 
 @blue: @_blue;
@@ -8,11 +7,8 @@
 
 .root {
   display: inline-flex;
-  white-space: normal;
   font-size: 1rem;
   padding: 0;
-  margin: 1em auto;
-  margin-top: 0;
   font-size: 0.9em;
 }
 
@@ -88,16 +84,16 @@
   .map {
     width: 30%;
   }
-
-  .root {
-    max-width: ~"calc(50% - 0.5em)";
-  }
-
-  .root:nth-child(even) {
-    margin-right: @margin;
-  }
-
-  .root:nth-child(odd) {
-    margin-left: @margin;
-  }
 });
+
+.small {
+  font-size: 0.8em;
+
+  .resultsContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

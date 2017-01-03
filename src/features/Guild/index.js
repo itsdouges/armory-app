@@ -11,6 +11,7 @@ import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 
+import Teams from './components/Teams';
 import Members from './components/Members';
 import Logs from './components/Logs';
 import Overview from './components/Overview';
@@ -90,6 +91,12 @@ export default class Guild extends Component {
                 items={guild && guild.characters}
               />
             ),
+          },
+          {
+            name: 'Teams',
+            to: `/g/${encodedGuildName}/teams`,
+            content: <Teams guildName={guildName} />,
+            flair: 'new',
           },
           {
             name: 'Logs',

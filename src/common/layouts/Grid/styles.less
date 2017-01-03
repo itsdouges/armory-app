@@ -2,7 +2,6 @@
 
 .root {
   margin: 0 auto;
-  margin-top: 1em;
   flex-wrap: wrap;
 }
 
@@ -10,8 +9,6 @@
   .root {
     display: flex;
     max-width: 1000px;
-    margin: 0 auto;
-    margin-top: 1em;
     align-items: flex-start;
 
     > div {
@@ -19,3 +16,33 @@
     }
   }
 });
+
+.NumberOfItems(@items) {
+  width: (100 / @items) * 1%;
+}
+
+.four {
+  .fromMobile({
+    &.root {
+      > div {
+        .NumberOfItems(2);
+      }
+    }
+  });
+
+  .fromTablet({
+    &.root {
+      > div {
+        .NumberOfItems(3);
+      }
+    }
+  });
+
+  .fromPc({
+    &.root {
+      > div {
+        .NumberOfItems(4);
+      }
+    }
+  });
+}

@@ -77,6 +77,7 @@ export type Guild = {
   favor?: number,
   level?: number,
   members?: Array<User>,
+  teams?: any,
 };
 
 export const defaultGuild: Guild = {

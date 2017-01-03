@@ -1,4 +1,5 @@
-import { PropTypes } from 'react';
+// @flow
+
 import get from 'lodash/get';
 import cx from 'classnames';
 import T from 'i18n-react';
@@ -31,14 +32,31 @@ function calculateProgressBar ({ team, scores }) {
   };
 }
 
-const PvpGame = ({ game, maps }) => {
+type Props = {
+  small?: boolean,
+  game: {
+    team: 'red' | 'blue',
+    map_id: number,
+    scores: {
+      red: number,
+      blue: number,
+    },
+    profession?: string,
+    result: string,
+    rating_type: string,
+    ended: string,
+  },
+  maps: {},
+};
+
+const PvpGame = ({ game, maps, small }: Props) => {
   const redacted = game.scores.red !== 0 && !game.scores.red;
   const map = get(maps, `[${game.map_id}]`, { id: game.map_id });
 
   const { current, max, barColor, backgroundColor } = calculateProgressBar(game);
 
   return (
-    <Card className={styles.root}>
+    <Card className={cx(styles.root, { [styles.small]: small })}>
       <Gw2Map data={map} className={styles.map} />
 
       <div className={styles.inner}>
@@ -64,7 +82,7 @@ const PvpGame = ({ game, maps }) => {
         </div>
 
         <div className={cx(styles.column, styles.resultsContainer)}>
-          <Icon size="medium" name={`${game.profession.toLowerCase()}-icon-small.png`} />
+          {game.profession && <Icon size="medium" name={`${game.profession.toLowerCase()}-icon-small.png`} />}
           <div className={cx(styles.result, styles[game.team.toLowerCase()])}>
             <Redacted redact={redacted}>{game.result.toUpperCase()}</Redacted>
           </div>
@@ -98,12 +116,6 @@ PvpGame.defaultProps = {
     scores: {},
     profession: 'warrior',
   },
-};
-
-PvpGame.propTypes = {
-  game: PropTypes.object,
-  season: PropTypes.object,
-  maps: PropTypes.object,
 };
 
 export default PvpGame;

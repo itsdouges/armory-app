@@ -16,7 +16,7 @@ import type { Guild as GuildType } from 'flowTypes';
 @connect(selector, {
   fetchGuildMembers,
 })
-export default class GuildLogs extends Component {
+export default class GuildMembers extends Component {
   props: {
     guild?: GuildType,
     guildName: string,

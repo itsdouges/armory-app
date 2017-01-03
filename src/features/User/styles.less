@@ -1,6 +1,7 @@
 @import '~common/styles/base.less';
 
 @content-width: 820px;
+@margin: 0.5em;
 
 .root {
   flex-grow: 1;
@@ -40,5 +41,17 @@
 .fromTablet({
   .gamesContainer {
     max-width: 1000px;
+  }
+
+  .game {
+    max-width: ~"calc(50% - 0.5em)";
+  }
+
+  .game:nth-child(even) {
+    margin-right: @margin;
+  }
+
+  .game:nth-child(odd) {
+    margin-left: @margin;
   }
 });
