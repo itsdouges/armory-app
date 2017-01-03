@@ -6,10 +6,11 @@ import styles from './styles.less';
 type Props = {
   children?: any,
   className?: string,
+  columns?: 'four',
 };
 
-const Grid = ({ children, className }: Props) => (
-  <div className={cx(styles.root, className)}>
+const Grid = ({ children, className, columns }: Props) => (
+  <div className={cx(styles.root, className, styles[columns])}>
     {children}
   </div>
 );

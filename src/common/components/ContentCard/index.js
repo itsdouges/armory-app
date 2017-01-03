@@ -30,6 +30,10 @@ function extractData (content, { type, forceUpdate }): CardData {
           title: content.name,
           subTitle: content.rank || content.role,
           imageClass: styles.anonymous,
+          imageStyle: {
+            backgroundColor: colours._gray,
+            borderRadius: '50%',
+          },
         };
       }
 

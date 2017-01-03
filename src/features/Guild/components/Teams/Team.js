@@ -5,8 +5,11 @@ import get from 'lodash/get';
 
 import PvpGame from 'features/User/components/PvpGame';
 import PvpStats from 'features/User/components/PvpStats';
-import ContentCardList from 'common/components/ContentCardList';
-import Container from 'common/components/Container';
+import ContentCard from 'common/components/ContentCard';
+import Card from 'common/components/Card';
+import Grid from 'common/layouts/Grid';
+
+import styles from './styles.less';
 
 type Props = {
   name: string,
@@ -35,32 +38,33 @@ const sortGamesByDate = (a, b) => {
 
 const Team = (props: Props) => (
   <span>
-    <Container>
-      <h2>{props.state} {props.name}</h2>
-    </Container>
+    <Card className={styles.teamRoot}>
+      <div className={styles.teamHeader}>
+        <h3>{props.name} ({props.state})</h3>
+      </div>
 
-    <ContentCardList
-      noBorder
-      type="grid"
-      resource="users"
-      items={props.members}
-    />
+      {<Grid columns="four">
+        {props.members.map((member) => <ContentCard content={member} key={member.name} type="users" />)}
+      </Grid>}
 
-    <Container>
-      <PvpStats
-        stats={get(props, 'ladders.unranked')}
-        title={T.translate('users.pvpStats.unranked')}
-      />
+      <Grid>
+        <PvpStats
+          stats={get(props, 'ladders.unranked')}
+          title={T.translate('users.pvpStats.unranked')}
+        />
 
-      <PvpStats
-        stats={get(props, 'ladders.ranked')}
-        title={T.translate('users.pvpStats.ranked')}
-      />
+        <PvpStats
+          stats={get(props, 'ladders.ranked')}
+          title={T.translate('users.pvpStats.ranked')}
+        />
+      </Grid>
 
-      {props.games
-        .sort(sortGamesByDate)
-        .map((game) => <PvpGame game={game} maps={props.maps} small />)}
-    </Container>
+      <Grid columns="four">
+        {props.games
+          .sort(sortGamesByDate)
+          .map((game) => <PvpGame key={game.id} game={game} maps={props.maps} small />)}
+      </Grid>
+    </Card>
   </span>
 );
 

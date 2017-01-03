@@ -87,34 +87,34 @@
   color: @itemText;
 }
 
-.NumberOfSliderItems(@items) {
+.NumberOfItems(@items) {
   width: (100 / @items) * 1%;
 }
 
 .fromMobile({
   .grid .item,
   .list .item {
-    .NumberOfSliderItems(2);
+    .NumberOfItems(2);
   }
 });
 
 .fromTablet({
   .grid .item,
   .list .item {
-    .NumberOfSliderItems(3);
+    .NumberOfItems(3);
   }
 });
 
 .fromPc({
   .grid .item,
   .list .item {
-    .NumberOfSliderItems(4);
+    .NumberOfItems(4);
   }
 });
 
 .fromLargePc({
   .grid .item,
   .list .item {
-    .NumberOfSliderItems(5);
+    .NumberOfItems(5);
   }
 });

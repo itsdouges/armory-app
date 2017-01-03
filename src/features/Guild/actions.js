@@ -51,7 +51,16 @@ const fetchGuildTeamsResult = (name: string, teams) => ({
   type: FETCH_GUILD_TEAMS,
   payload: {
     name,
-    data: teams.map((team) => ({ ...team, members: addGw2Only(team.members) })),
+    data: teams.map((team) => ({
+      ...team,
+      members: addGw2Only(team.members),
+      seasons: [{
+        id: '44B85826-B5ED-4890-8C77-82DDF9F2CF2B',
+        wins: 1,
+        losses: 0,
+        rating: 1437,
+      }],
+    })),
   },
 });
 

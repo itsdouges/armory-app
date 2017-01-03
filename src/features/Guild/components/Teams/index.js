@@ -2,27 +2,39 @@
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
-// import get from 'lodash/get';
+import { createSelector } from 'reselect';
 
 import styles from './styles.less';
 import Progress from 'common/components/Icon/Progress';
+import Container from 'common/components/Container';
 
 import Team from './Team';
 
 import { fetchGuildTeams } from '../../actions';
-import { selector } from '../../guilds.reducer';
 
-import type { Guild as GuildType } from 'flowTypes';
+import type { Guild as GuildType, Maps } from 'flowTypes';
+
+export const selector = createSelector(
+  (store) => store.guilds.data[store.guilds.selected],
+  (store) => store.maps,
+  (guild, maps) => ({
+    guild,
+    maps,
+  })
+);
+
+type Props = {
+  guild?: GuildType,
+  guildName: string,
+  fetchGuildTeams?: (name: string) => void,
+  maps: Maps,
+};
 
 @connect(selector, {
   fetchGuildTeams,
 })
 export default class GuildTeams extends Component {
-  props: {
-    guild?: GuildType,
-    guildName: string,
-    fetchGuildTeams?: (name: string) => void,
-  };
+  props: Props;
 
   componentWillMount () {
     const { guildName } = this.props;
@@ -30,14 +42,16 @@ export default class GuildTeams extends Component {
   }
 
   render () {
-    const { guild } = this.props;
+    const { guild, maps } = this.props;
+
+    const showProgress = !guild || !guild.teams;
 
     return (
-      <div>
-        {guild && guild.teams && guild.teams.map((team) => <Team key={team.id} {...team} />)}
+      <Container>
+        {guild && guild.teams && guild.teams.map((team) => <Team key={team.id} {...team} maps={maps} />)}
 
-        {(!guild || !guild.teams) && <div className={styles.progress}><Progress /></div>}
-      </div>
+        {showProgress && <div className={styles.progress}><Progress /></div>}
+      </Container>
     );
   }
 }
