@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.10.1] - 2017/01/04
+### Removed
+- Christmas cheer
+
 ## [3.10.0] - 2016/12/29
 ### Added
 - "New" flair to guilds tab on user page

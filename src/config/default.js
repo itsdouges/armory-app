@@ -17,7 +17,7 @@ module.exports = {
   },
 
   features: {
-    christmas: true,
+    christmas: false,
   },
 
   titleSuffix: ' | Guild Wars 2 Armory',
