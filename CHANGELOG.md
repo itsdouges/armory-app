@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.10.2] - 2017/01/04
+### Removed
+- Snow storm dependency
+
 ## [3.10.1] - 2017/01/04
 ### Removed
 - Christmas cheer

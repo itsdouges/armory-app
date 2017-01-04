@@ -9,9 +9,6 @@ import styles from './styles.less';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Gw2ApiHealth from './components/Gw2ApiHealth';
-import config from 'config';
-
-const SnowStorm = config.features.christmas && require('react-snowstorm');
 
 const selector = createSelector(
   (store) => store.user.alias,
@@ -67,8 +64,6 @@ export default class App extends Component {
 
         <Gw2ApiHealth />
         <Footer />
-
-        {SnowStorm && <SnowStorm />}
       </div>
     );
   }

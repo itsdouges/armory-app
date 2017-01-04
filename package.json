@@ -1,6 +1,6 @@
 {
   "name": "armory-react",
-  "version": "3.10.1",
+  "version": "3.10.2",
   "scripts": {
     "start": "node ./scripts/start.js --prod",
     "test": "npm run lint && npm run flow",
@@ -26,7 +26,6 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.6.1",
     "react-share": "^1.9.3",
-    "react-snowstorm": "^0.0.2",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
     "reselect": "^2.5.3"
