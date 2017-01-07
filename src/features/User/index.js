@@ -49,6 +49,13 @@ type Props = {
   maps: Maps,
 };
 
+function getActiveStanding ({ pvpStandings = [] } = {}, pvpSeasons) {
+  const [activePvpSeason] = filter(pvpSeasons, ({ active }) => active);
+  const seasonId = activePvpSeason && activePvpSeason.id;
+  const standings = pvpStandings.filter(({ season_id }) => season_id === seasonId);
+  return standings[0] || {};
+}
+
 @connect(selector, {
   dispatchFetchUser: fetchUser,
   dispatchSelectUser: selectUser,
@@ -84,11 +91,10 @@ export default class User extends Component {
 
     const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
     const guilds = get(user, 'guilds', []);
-    const [activePvpSeason] = filter(pvpSeasons, ({ active }) => active);
-    const [standing] = get(user, 'pvpStandings', []).filter(({ season_id }) => season_id === activePvpSeason.id);
+
+    const standing = getActiveStanding(user, pvpSeasons);
     const rating = get(standing, 'current.rating');
     const ranking = get(user, 'ranking');
-
     const winsText = T.translate('users.pvpStats.wins');
     const byesText = T.translate('users.pvpStats.byes');
     const lossText = T.translate('users.pvpStats.losses');

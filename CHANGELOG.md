@@ -8,6 +8,11 @@
 - Changes
 ```
 
+## [3.11.1] - 2017/01/07
+### Fixed
+- User page from throwing when pvp season info wasn't available
+- Responsive menu to be correctly aligned in Firefox
+
 ## [3.11.0] - 2017/01/07
 ### Added
 - User ranking strip
