@@ -31,6 +31,6 @@ module.exports = {
   refreshDelay: 1000 * 60 * 5,
 
   descriptions: {
-    pvpLeaderboard: 'Guild Wars 2 season five now underway! Keep track of Guild Wars 2 Armory users as they climb the pvp ranks!',
+    pvpLeaderboard: 'Guild Wars 2 season five now underway! Keep track of Guild Wars 2 Armory users as they climb the pvp ranks! See the top 250 right here.',
   },
 };

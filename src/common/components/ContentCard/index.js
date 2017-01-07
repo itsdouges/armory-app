@@ -110,7 +110,7 @@ const ContentCard = ({
   rightComponent,
 }: ContentCardProps) => {
   if (!content) {
-    return <Placeholder size={size} className={className} />;
+    return <Placeholder size={size} className={className} rightComponent={rightComponent} />;
   }
 
   const {

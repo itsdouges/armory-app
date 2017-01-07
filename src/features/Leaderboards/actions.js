@@ -4,7 +4,7 @@ import config from 'config';
 export const FETCH_PVP_LEADERBOARD = 'FETCH_PVP_LEADERBOARD';
 
 const fetchPvpLeaderboardSuccess = (data) => ({
-  payload: data,
+  payload: data.slice(0, 250),
   type: FETCH_PVP_LEADERBOARD,
 });
 

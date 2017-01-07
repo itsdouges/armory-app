@@ -34,7 +34,11 @@ function createInner (standing?: PvpStanding, index) {
     );
   }
 
-  return !!standing && <div className={styles.everyoneElse}>{`${standing.alias} - ${standing.ratingCurrent}`}</div>;
+  return !!standing && (
+    <div className={styles.everyoneElse}>
+      {`${standing.alias} | ${standing.accountName} | ${standing.ratingCurrent}`}
+    </div>
+  );
 }
 
 function mapStateToProps (state) {

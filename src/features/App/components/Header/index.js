@@ -126,7 +126,7 @@ export default class Header extends Component {
           className={styles.linkContainer}
           itemClassName={cx(styles.link, { [styles.christmas]: config.features.christmas })}
         >
-          {links.map(({ to, name }) => <Link to={to}>{name}</Link>)}
+          {links.map(({ to, name }) => <Link to={to} key={to}>{name}</Link>)}
         </ResponsiveMenu>
       </Container>
     );
