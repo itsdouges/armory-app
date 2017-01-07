@@ -14,10 +14,10 @@ const CLOSE_TO_FIRST_THRESHOLD = 5;
 // $FlowFixMe
 const STUB_STANDINGS = [undefined, undefined, undefined, undefined, undefined];
 
-function buildContent (standing) {
+function buildContent (standing, rank) {
   return standing && {
     alias: standing.alias,
-    accountName: `${standing.accountName} | ${standing.ratingCurrent}`,
+    accountName: `#${rank} ${standing.accountName} | ${standing.ratingCurrent}`,
   };
 }
 
@@ -28,15 +28,16 @@ function createInner (standing?: PvpStanding, index) {
         <ContentCard
           type="users"
           size={index === 0 ? 'big' : 'small'}
-          content={buildContent(standing)}
+          content={buildContent(standing, index + 1)}
         />
+        {index === 0 && <div className={styles.firstContainerBg} />}
       </div>
     );
   }
 
   return !!standing && (
     <div className={styles.everyoneElse}>
-      {`${standing.alias} | ${standing.accountName} | ${standing.ratingCurrent}`}
+      {`#${index + 1} ${standing.alias} | ${standing.accountName} | ${standing.ratingCurrent}`}
     </div>
   );
 }
