@@ -19,12 +19,13 @@
   margin: 4em 0 2em;
   color: @leaderText;
   text-shadow: 0 0 20px @_black;
+  width: 100%;
 }
 
 .firstContainerBg {
   position: absolute;
   left: 0;
-  top: -45px;
+  top: 10px;
   width: 500px;
   height: 215px;
   background-image: url('assets/images/stroke-a.png');
@@ -40,3 +41,13 @@
   margin: 1em;
   margin-left: 76px;
 }
+
+.fromTablet({
+  .firstContainer {
+    width: auto;
+  }
+
+  .firstContainerBg {
+    top: -45px;
+  }
+});
