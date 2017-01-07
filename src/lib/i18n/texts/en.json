@@ -57,7 +57,10 @@
       "name": "Pvp Stats",
       "unranked": "Unranked",
       "ranked": "Ranked",
+      "ranking": "Ranking",
+      "rating": "Rating",
       "wins": "Wins",
+      "winRate": "Win Rate",
       "byes": "Byes",
       "losses": "Losses",
       "desertions": "Desertions",
@@ -177,5 +180,8 @@
     "times": "times",
     "ratio": "Ratio",
     "rank": "Rank"
+  },
+  "leaderboards": {
+    "name": "Leaderboards"
   }
 }

@@ -28,16 +28,17 @@ export type User = {
   fractalLevel: number,
   wvwRank: number,
   world: number,
-  characters: [],
   access: string,
+  characters: [],
+  pvpStandings?: [],
 };
 
 export const defaultUser: User = {
   fractalLevel: 0,
   wvwRank: 0,
   world: 0,
-  characters: [],
   access: '',
+  characters: [],
 };
 
 
@@ -102,3 +103,15 @@ export type Amulets = {};
 export type Skills = {};
 
 export type Professions = {};
+
+export type PvpStanding = {
+  seasonId: string,
+  totalPointsCurrent: number,
+  divisionCurrent: number,
+  pointsCurrent: number,
+  repeatsCurrent: number,
+  ratingCurrent: number,
+  decayCurrent: number,
+  alias: string,
+  accountName: string,
+};

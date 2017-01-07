@@ -5,12 +5,13 @@ import Tabs from 'common/components/Tabs';
 import Head from 'common/components/Head';
 import SocialButtons from 'common/components/SocialButtons';
 import Tooltip from 'common/components/Tooltip';
+import Container from 'common/components/Container';
 
 import styles from './styles.less';
 
 type Props = {
-  children?: ReactClass<>,
-  extraContent?: ReactClass<>,
+  children?: any,
+  extraContent?: any,
   tabs?: [],
   title: string,
   description?: string,
@@ -31,10 +32,10 @@ const Content = ({
     <SocialButtons />
 
     <div className={styles.heroBg}>
-      <div className={styles.inner}>
+      <Container className={styles.inner}>
         <ContentCard {...props} size="big">{cardExtra}</ContentCard>
         {extraContent}
-      </div>
+      </Container>
     </div>
 
     {tabs && <Tabs titleSuffix={title} tabs={tabs} />}

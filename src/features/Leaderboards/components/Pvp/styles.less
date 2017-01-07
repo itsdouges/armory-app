@@ -1,0 +1,53 @@
+@import '~common/styles/base.less';
+
+@leaderText: @_white;
+
+.root {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 1em;
+}
+
+.firstContainer,
+.closeToFirstContainer,
+.everyoneElse {
+  display: inline-block;
+  position: relative;
+}
+
+.firstContainer {
+  margin: 4em 0 2em;
+  color: @leaderText;
+  text-shadow: 0 0 20px @_black;
+  width: 100%;
+}
+
+.firstContainerBg {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 500px;
+  height: 215px;
+  background-image: url('assets/images/stroke-a.png');
+  z-index: -1;
+  transform: scaleX(-1);
+}
+
+.closeToFirstContainer {
+  margin: 0.5em 0 0.5em 20px;
+}
+
+.everyoneElse {
+  margin: 1em;
+  margin-left: 76px;
+}
+
+.fromTablet({
+  .firstContainer {
+    width: auto;
+  }
+
+  .firstContainerBg {
+    top: -45px;
+  }
+});

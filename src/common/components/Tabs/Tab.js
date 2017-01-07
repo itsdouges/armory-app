@@ -3,7 +3,7 @@
 import { Link } from 'react-router';
 import cx from 'classnames';
 
-import decoration from 'common/styles/decoration.less';
+import Flair from 'common/components/Flair';
 import styles from './styles.less';
 
 export type Tab$Props = {
@@ -12,7 +12,7 @@ export type Tab$Props = {
   index?: number,
   to?: string,
   onClick?: Function,
-  flair?: 'new' | 'updated',
+  flair?: 'new',
 };
 
 const Tab = ({
@@ -28,7 +28,7 @@ const Tab = ({
     onClick={() => onClick && onClick(index)}
     className={cx(styles.tab, { [styles.selected]: selected })}
   >
-    {flair ? <span className={decoration[flair]}>{name}</span> : name}
+    {flair ? <Flair type={flair}>{name}</Flair> : name}
   </Link>
 );
 

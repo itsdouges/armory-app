@@ -16,6 +16,7 @@ import Search from 'features/Search';
 import Character from 'features/Character';
 import NotFound from 'features/NotFound';
 import Statistics from 'features/Statistics';
+import Leaderboards from 'features/Leaderboards';
 // import EmbedExamples from 'features/EmbedExamples';
 import { authEnabled, authOnly } from 'features/Auth';
 
@@ -40,6 +41,8 @@ const Routes = () => (
       <Route path="/search(/:term)" component={Search} />
       <Route path="/settings" component={authOnly()(Settings)} />
       <Route path="/forgot-my-password" component={ForgotMyPassword} />
+      <Route path="/leaderboards" component={Leaderboards} />
+      <Route path="/leaderboards(/:subRoute)/" component={Leaderboards} />
       <Route path="/404" component={NotFound} />
 
       <Redirect from="/g/:guildName/" to="/g/:guildName" />

@@ -13,6 +13,7 @@ const heroImage = config.features.christmas ? 'xmas-hero.jpg' : 'gw_bgrd.png';
 const headerBg = require(`assets/images/${heroImage}`);
 
 import buttonStyles from 'common/components/Button/styles.less';
+import Flair from 'common/components/Flair';
 import ResponsiveMenu from 'common/components/ResponsiveMenu';
 import Container from 'common/components/Container';
 import Icon from 'common/components/Icon';
@@ -33,6 +34,59 @@ type State = {
   showExtraHeaderItems: boolean,
 };
 
+type LinkDefs = {
+  name: any,
+  to: string,
+};
+
+const STATIC_LINKS = [{
+  name: <Flair type="new">{T.translate('leaderboards.name')}</Flair>,
+  to: '/leaderboards',
+}, {
+  name: T.translate('stats.name'),
+  to: '/statistics',
+}];
+
+const UNAUTHENTICATED_STATIC_LINKS = [{
+  name: T.translate('login.name'),
+  to: '/login',
+}, {
+  name: <span className={buttonStyles.cta}>{T.translate('join.name')}</span>,
+  to: '/join',
+}];
+
+const AUTHENTICATED_STATIC_LINKS = [{
+  name: T.translate('settings.name'),
+  to: '/settings',
+}];
+
+const LOADING_INDICATOR = [{
+  name: <ProgressIcon key="progress" size="nano" />,
+  to: '',
+}];
+
+const buildLinks = ({ checkingAuthentication, authenticated, alias }): Array<LinkDefs> => {
+  let linksForContext;
+
+  if (checkingAuthentication) {
+    linksForContext = LOADING_INDICATOR;
+  } else {
+    linksForContext = authenticated
+      ? [
+        ...AUTHENTICATED_STATIC_LINKS,
+        ...[{
+          name: alias,
+          to: `/${alias}`,
+        }],
+      ] : UNAUTHENTICATED_STATIC_LINKS;
+  }
+
+  return [
+    ...STATIC_LINKS,
+    ...linksForContext,
+  ];
+};
+
 export default class Header extends Component {
   props: Props;
 
@@ -49,24 +103,7 @@ export default class Header extends Component {
   render () {
     const { authenticated, alias, checkingAuthentication, compact } = this.props;
     const { showExtraHeaderItems } = this.state;
-
-    const authenticatedLinks = [
-      <Link key="settings" to="/settings">{T.translate('settings.name')}</Link>,
-      <Link key="alias" to={`/${alias}`}>{alias}</Link>,
-    ];
-
-    const unauthenticatedLinks = [
-      <Link key="login" to="/login">{T.translate('login.name')}</Link>,
-      <Link key="join" to="/join" className={buttonStyles.cta}>{T.translate('join.name')}</Link>,
-    ];
-
-    const linksForContext = authenticated ? authenticatedLinks : unauthenticatedLinks;
-
-    const links = [
-      <Link key="stats" to="/statistics">{T.translate('stats.name')}</Link>,
-      ...checkingAuthentication ? [<ProgressIcon key="progress" size="nano" />] : linksForContext,
-    ];
-
+    const links = buildLinks({ authenticated, checkingAuthentication, alias });
     const smallIconName = config.features.christmas ? 'gift.png' : 'logo-small.png';
 
     const header = (
@@ -89,7 +126,7 @@ export default class Header extends Component {
           className={styles.linkContainer}
           itemClassName={cx(styles.link, { [styles.christmas]: config.features.christmas })}
         >
-          {links}
+          {links.map(({ to, name }) => <Link to={to} key={to}>{name}</Link>)}
         </ResponsiveMenu>
       </Container>
     );
