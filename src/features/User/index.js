@@ -7,6 +7,7 @@ import get from 'lodash/get';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 import T from 'i18n-react';
+import { Link } from 'react-router';
 
 import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
@@ -82,14 +83,42 @@ export default class User extends Component {
     const { user, routeParams: { alias }, pvpSeasons, maps, worlds } = this.props;
 
     const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
-
     const guilds = get(user, 'guilds', []);
+    const [activePvpSeason] = filter(pvpSeasons, ({ active }) => active);
+    const [standing] = get(user, 'pvpStandings', []).filter(({ season_id }) => season_id === activePvpSeason.id);
+    const rating = get(standing, 'current.rating');
+
+    const winsText = T.translate('users.pvpStats.wins');
+    const byesText = T.translate('users.pvpStats.byes');
+    const lossText = T.translate('users.pvpStats.losses');
+    const winLossByes = `${winsText}/${lossText}/${byesText}`;
+
+    const { wins, losses, byes } = get(user, 'pvpStats.ladders.ranked', {});
+    const statSummary = (wins || losses || byes) ? `${wins}-${losses}-${byes}` : '-';
 
     return (
       <Content
         cardExtra={user && user.access && (
           <Icon size="mini" className={styles.access} name={`${user.access}.png`} />
-      )}
+        )}
+        rightComponent={
+          <ul className={styles.rating}>
+            <li>
+              <Link to="/leaderboard">
+                <span>-</span>
+                <div>GW2A {T.translate('users.pvpStats.ranking')}</div>
+              </Link>
+            </li>
+            <li>
+              <span>{statSummary}</span>
+              <div>{winLossByes}</div>
+            </li>
+            <li>
+              <span>{rating || '-'}</span>
+              <div>{T.translate('users.pvpStats.rating')}</div>
+            </li>
+          </ul>
+        }
         type="users"
         title={alias}
         content={user}

@@ -30,11 +30,30 @@
 
 .access {
   position: absolute;
-  right: -10px;
-  top: -10px;
+  right: 0;
+  top: 0;
   border-radius: 50%;
   background-color: @_white;
   composes: low;
+}
+
+.rating {
+  text-align: center;
+  font-size: 0.75rem;
+
+  li {
+    padding: 1em;
+    display: inline-block;
+    text-transform: uppercase;
+  }
+
+  span {
+    font-size: 1.4em;
+  }
+
+  div {
+    margin-top: 0.3em;
+  }
 }
 
 .fromTablet({

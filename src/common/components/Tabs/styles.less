@@ -1,17 +1,20 @@
 @import '~common/styles/base.less';
 
 @tabsBg: @_lightishgray;
-@tabSelected: fade(@_gray, 30%);
 @tabHover: fade(@_gray, 10%);
+@tabsBorder: fade(@_gray, 50%);
+
+.root {
+  font-size: 0.75rem;
+}
 
 .tabsBg {
   background: @tabsBg;
-  border-bottom: 1px solid @tabSelected;
+  border-bottom: 1px solid @tabsBorder;
 }
 
 .tabsContainer {
   display: flex;
-  font-size: 0.9em;
 
   > ul {
     margin: 0;
@@ -27,15 +30,20 @@
 .tab {
   display: block;
   padding: 1em 2em;
-}
-
-.tab:hover,
-.tab:focus {
-  background: @tabHover;
+  color: @_darkgray;
 }
 
 .selected,
 .selected.tab:hover,
-.selected.tab:focus {
-  background: @tabSelected;
+.selected.tab:focus,
+.tab:hover,
+.tab:focus {
+  background: @tabHover;
+  color: @_darkergray;
 }
+
+.fromTablet({
+  .root {
+    font-size: 0.85rem;
+  }
+});

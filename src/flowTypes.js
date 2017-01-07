@@ -28,16 +28,17 @@ export type User = {
   fractalLevel: number,
   wvwRank: number,
   world: number,
-  characters: [],
   access: string,
+  characters: [],
+  pvpStandings?: [],
 };
 
 export const defaultUser: User = {
   fractalLevel: 0,
   wvwRank: 0,
   world: 0,
-  characters: [],
   access: '',
+  characters: [],
 };
 
 

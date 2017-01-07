@@ -11,7 +11,7 @@ import SvgIcon from 'common/components/Icon/Svg';
 function onSearch (event) {
   event.preventDefault();
 
-  const filter = event.nativeEvent.target[1].value;
+  const filter = event.nativeEvent.target[0].value;
   if (!filter) {
     return;
   }
@@ -33,8 +33,8 @@ const SearchBar = ({ className, simple, ...props }: SearchBarProps) => (
       required
       placeholder={`${T.translate('search.textbox')}...`}
       containerClassName={cx(styles.textBoxContainer, { [styles.simple]: simple })}
-      iconLeft={(
-        <button className={styles.searchButton}>
+      iconRight={(
+        <button type="submit" className={styles.searchButton}>
           <SvgIcon
             button
             className={cx(styles.searchIcon, { [styles.simple]: simple })}

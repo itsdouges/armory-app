@@ -21,7 +21,7 @@ const Tabs = ({ tabs, titleSuffix }: { tabs: Array<TabInput>, titleSuffix: strin
   const { content, name, ignoreTitle } = tabs[zeroIndex(selected)];
 
   return (
-    <div>
+    <div className={styles.root}>
       {ignoreTitle || <Head title={`${name} | ${titleSuffix}`} />}
 
       <div className={styles.tabsBg}>

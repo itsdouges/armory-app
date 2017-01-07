@@ -35,7 +35,7 @@ const PvpStats = ({ stats, title }) => {
   const deserText = T.translate('users.pvpStats.desertions');
 
   // eslint-disable-next-line max-len
-  const smallLabel = `${wins} ${winsText} | ${byes} ${byesText} | ${losses} ${lossText} | ${desertions} ${deserText}`;
+  const smallLabel = `${wins} ${winsText} | ${losses} ${lossText} | ${byes} ${byesText} | ${desertions} ${deserText}`;
   const redact = winLossRatio === 0;
 
   return (

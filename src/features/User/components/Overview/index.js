@@ -13,8 +13,6 @@ import PvpRanking from '../PvpRanking';
 import PvpLeague from '../PvpSeason';
 import FavouritePvpClass from '../FavouritePvpClass';
 
-import styles from '../../styles.less';
-
 import type { User, PvpSeasons, Worlds } from 'flowTypes';
 
 type Props = {
@@ -29,50 +27,38 @@ const Overview = ({ user, pvpSeasons, worlds }: Props) => {
   const pvpStandings = get(user, 'pvpStandings', [undefined]);
 
   return (
-    <div>
-      <div className={styles.gamesContainer}>
-        <h3>Player Versus. Player</h3>
-      </div>
+    <Grid>
+      <PvpRanking
+        rank={get(pvpStats, 'pvp_rank')}
+        points={get(pvpStats, 'pvp_rank_points')}
+        rankRollOvers={get(pvpStats, 'pvp_rank_rollovers')}
+      />
 
-      <Grid>
-        <PvpRanking
-          rank={get(pvpStats, 'pvp_rank')}
-          points={get(pvpStats, 'pvp_rank_points')}
-          rankRollOvers={get(pvpStats, 'pvp_rank_rollovers')}
-        />
+      <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
 
-        <PvpLeague standings={pvpStandings} seasons={pvpSeasons} />
+      <PvpStats
+        stats={get(pvpStats, 'ladders.unranked')}
+        title={T.translate('users.pvpStats.unranked')}
+      />
 
-        <PvpStats
-          stats={get(pvpStats, 'ladders.unranked')}
-          title={T.translate('users.pvpStats.unranked')}
-        />
+      <PvpStats
+        stats={get(pvpStats, 'ladders.ranked')}
+        title={T.translate('users.pvpStats.ranked')}
+      />
 
-        <PvpStats
-          stats={get(pvpStats, 'ladders.ranked')}
-          title={T.translate('users.pvpStats.ranked')}
-        />
+      <FavouritePvpClass professions={get(pvpStats, 'professions')} />
 
-        <FavouritePvpClass professions={get(pvpStats, 'professions')} />
+      <WvwRank
+        rank={user && user.wvwRank}
+        worlds={worlds}
+        worldId={user && user.world}
+      />
 
-        <WvwRank
-          rank={user && user.wvwRank}
-          worlds={worlds}
-          worldId={user && user.world}
-        />
-      </Grid>
+      <Fractal level={user && user.fractalLevel} />
+      <RaidSummary userAchievements={userAchievements} />
 
-      <div className={styles.gamesContainer}>
-        <h3>Player Versus. Environment</h3>
-      </div>
-
-      <Grid>
-        <Fractal level={user && user.fractalLevel} />
-        <RaidSummary userAchievements={userAchievements} />
-
-        <DailyAp {...user} />
-      </Grid>
-    </div>
+      <DailyAp {...user} />
+    </Grid>
   );
 };
 
