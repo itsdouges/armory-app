@@ -8,6 +8,22 @@
 - Changes
 ```
 
+## [3.11.0] - 2017/01/07
+### Added
+- User ranking strip
+- Current pvp season leaderboard for gw2a
+- Layout prop to Tab component
+
+### Changed
+- Content card (big) styles
+- Search bar icon to the right
+- Search bar to be bigger
+- How the header link generation works
+- Copyright year
+
+### Fixed
+- Front page from not working if users auth became invalid
+
 ## [3.10.2] - 2017/01/04
 ### Removed
 - Snow storm dependency

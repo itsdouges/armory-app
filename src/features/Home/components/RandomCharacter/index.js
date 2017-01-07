@@ -19,7 +19,9 @@ export default class RandomCharacter extends Component {
   };
 
   componentDidMount () {
-    axios.get(`${config.api.endpoint}random/characters/1`)
+    axios.get(`${config.api.endpoint}random/characters/1`, {
+      ignoreAuth: true,
+    })
       .then(({ data }) => this.setState({ name: data[0] }));
   }
 

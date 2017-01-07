@@ -104,7 +104,7 @@ export default class User extends Component {
         rightComponent={
           <ul className={styles.rating}>
             <li>
-              <Link to="/leaderboard">
+              <Link to="/leaderboards">
                 <span>-</span>
                 <div>GW2A {T.translate('users.pvpStats.ranking')}</div>
               </Link>

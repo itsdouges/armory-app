@@ -180,5 +180,8 @@
     "times": "times",
     "ratio": "Ratio",
     "rank": "Rank"
+  },
+  "leaderboards": {
+    "name": "Leaderboards"
   }
 }

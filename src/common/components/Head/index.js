@@ -6,7 +6,7 @@ import config from 'config';
 import defaultImage from 'assets/images/logo.png';
 
 type HeadProps = {
-  title: string,
+  title?: string,
   description?: string,
   canonical?: string,
   type?: string,
@@ -22,9 +22,7 @@ const Head = ({
   ...extraProps
 }: HeadProps) => {
   const fullTitle = `${title}${config.titleSuffix}`;
-  const parsedDescription = description
-    ? `${description} | ${config.description}`
-    : config.description;
+  const parsedDescription = description || config.description;
 
   const props = {
     title: fullTitle,

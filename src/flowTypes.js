@@ -103,3 +103,15 @@ export type Amulets = {};
 export type Skills = {};
 
 export type Professions = {};
+
+export type PvpStanding = {
+  seasonId: string,
+  totalPointsCurrent: number,
+  divisionCurrent: number,
+  pointsCurrent: number,
+  repeatsCurrent: number,
+  ratingCurrent: number,
+  decayCurrent: number,
+  alias: string,
+  accountName: string,
+};
