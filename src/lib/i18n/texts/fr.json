@@ -54,7 +54,9 @@
       "losses": "Défaites",
       "desertions": "Désertions",
       "forfeits": "Abandons",
-      "finished": "Joués"
+      "finished": "Joués",
+      "ranking": "Ranking",
+      "rating": "Rating"
     },
     "pvp": {
       "favouriteClass": "Classe Favorite",
@@ -169,5 +171,8 @@
     "times": "fois",
     "ratio": "Ratio",
     "rank": "Rang"
+  },
+  "leaderboards": {
+    "name": "Leaderboards"
   }
 }

@@ -54,7 +54,9 @@
       "losses": "Поражения",
       "desertions": "Дезертирства",
       "forfeits": "Штрафы",
-      "finished": "Played"
+      "finished": "Played",
+      "ranking": "Ranking",
+      "rating": "Rating"
     },
     "pvp": {
       "favouriteClass": "Favourite Class",
@@ -169,5 +171,8 @@
     "times": "times",
     "ratio": "Ratio",
     "rank": "Rank"
+  },
+  "leaderboards": {
+    "name": "Leaderboards"
   }
 }

@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.11.2] - 2017/01/08
+### Fixed
+- Languages to have basic english text if not found
+
 ## [3.11.1] - 2017/01/07
 ### Fixed
 - User page from throwing when pvp season info wasn't available

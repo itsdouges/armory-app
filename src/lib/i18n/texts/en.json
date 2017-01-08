@@ -57,15 +57,15 @@
       "name": "Pvp Stats",
       "unranked": "Unranked",
       "ranked": "Ranked",
-      "ranking": "Ranking",
-      "rating": "Rating",
       "wins": "Wins",
       "winRate": "Win Rate",
       "byes": "Byes",
       "losses": "Losses",
       "desertions": "Desertions",
       "forfeits": "Forfeits",
-      "finished": "Played"
+      "finished": "Played",
+      "ranking": "Ranking",
+      "rating": "Rating"
     },
     "pvp": {
       "favouriteClass": "Favourite Class",
