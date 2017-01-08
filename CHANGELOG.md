@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.11.3] - 2017/01/09
+### Changed
+- Gw2a pvp leaderboard to have `Gw2a` in the page title and tab
+
 ## [3.11.2] - 2017/01/08
 ### Fixed
 - Languages to have basic english text if not found

@@ -13,7 +13,7 @@ const Leaderboards = () => (
       titleSuffix={T.translate('leaderboards.name')}
       tabs={[{
         to: '/leaderboards',
-        name: 'Pvp',
+        name: 'Pvp (GW2A)',
         content: <PvpLeaderboard />,
         description: config.descriptions.pvpLeaderboard,
       }]}
