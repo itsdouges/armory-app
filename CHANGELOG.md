@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.12.1] - 2017/01/10
+### Added
+- Conversion tracking to settings page
+
 ## [3.12.0] - 2017/01/10
 ### Added
 - Open search configuration

@@ -31,6 +31,19 @@ export type User = {
   access: string,
   characters: [],
   pvpStandings?: [],
+  alias: string,
+};
+
+export type AuthenticatedUser = User & {
+  validGw2Token: boolean,
+  validatingGw2Token: boolean,
+  gw2Tokens: Array<string>,
+  gw2TokenError: string,
+  addingGw2Token: boolean,
+  passwordValid: boolean,
+  passwordErrors: Array<string>,
+  changingPassword: boolean,
+  passwordSuccess: string,
 };
 
 export const defaultUser: User = {
@@ -39,6 +52,7 @@ export const defaultUser: User = {
   world: 0,
   access: '',
   characters: [],
+  alias: '',
 };
 
 

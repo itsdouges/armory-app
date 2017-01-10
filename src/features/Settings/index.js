@@ -1,4 +1,8 @@
-import { Component, PropTypes } from 'react';
+// @flow
+
+import type { AuthenticatedUser } from 'flowTypes';
+
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
 import { browserHistory } from 'react-router';
@@ -14,6 +18,7 @@ import Head from 'common/components/Head';
 import ImageUpload from 'common/components/ImageUpload';
 import ContentCard from 'common/components/ContentCard';
 import Button from 'common/components/Button';
+import { conversion as trackConversion } from 'lib/tracking';
 
 import { validatePasswords } from 'features/Join/actions';
 import { clearUserData } from 'features/Auth/actions';
@@ -26,23 +31,32 @@ import {
   changePassword,
 } from './actions';
 
-class Settings extends Component {
-  static propTypes = {
-    router: PropTypes.object,
-    dispatch: PropTypes.func,
-    user: PropTypes.object,
-  };
+type Props = {
+  router: {},
+  dispatch: () => void,
+  user: AuthenticatedUser,
+};
 
-  state = {
+type State = {
+  subTitle: string,
+  updateImage: boolean,
+};
+
+@connect(selector)
+class Settings extends Component {
+  props: Props;
+
+  state: State = {
     subTitle: T.translate('settings.avatar.cta'),
     updateImage: false,
   };
 
   componentWillMount () {
     this.props.dispatch(fetchGw2Tokens());
+    trackConversion();
   }
 
-  setPrimaryToken = (token) => {
+  setPrimaryToken = (token: string) => {
     this.props.dispatch(selectPrimaryGw2Token(token));
   };
 
@@ -54,25 +68,25 @@ class Settings extends Component {
     this.props.dispatch(validateGw2Token(token));
   });
 
-  addToken = (token) => {
+  addToken = (token: string) => {
     this.props.dispatch(addGw2Token(token));
   };
 
-  removeToken = (token) => {
+  removeToken = (token: string) => {
     this.props.dispatch(removeGw2Token(token));
   };
 
-  signOut = (e) => {
+  signOut = (e: SyntheticEvent) => {
     e.preventDefault();
     browserHistory.replace('/');
     this.props.dispatch(clearUserData());
   };
 
-  validatePasswords = (newPassword, newPasswordConfirm) => {
+  validatePasswords = (newPassword: string, newPasswordConfirm: string) => {
     this.props.dispatch(validatePasswords(newPassword, newPasswordConfirm));
   };
 
-  changePassword = (currentPassword, newPassword) => {
+  changePassword = (currentPassword: string, newPassword: string) => {
     this.props.dispatch(changePassword(currentPassword, newPassword));
   };
 
@@ -84,13 +98,12 @@ class Settings extends Component {
   };
 
   render () {
-    const { alias, avatar } = this.props.user;
+    const { alias } = this.props.user;
     const { updateImage, subTitle } = this.state;
 
     const content = {
       alias,
       accountName: subTitle,
-      avatar,
     };
 
     return (
@@ -146,4 +159,4 @@ class Settings extends Component {
   }
 }
 
-export default connect(selector)(Settings);
+export default Settings;

@@ -2,6 +2,7 @@ import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import T from 'i18n-react';
+import debounce from 'lodash/debounce';
 
 import styles from './styles.less';
 
@@ -19,8 +20,6 @@ import {
 } from './actions';
 
 import { selector } from './user.reducer';
-
-import debounce from 'lodash/debounce';
 
 class Join extends Component {
   static propTypes = {
