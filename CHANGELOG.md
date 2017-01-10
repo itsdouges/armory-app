@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [3.12.0] - unreleased
+## [3.12.0] - 2017/01/10
 ### Added
 - Open search configuration
 
