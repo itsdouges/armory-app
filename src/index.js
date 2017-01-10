@@ -1,12 +1,12 @@
 // @flow
 
 import ReactDOM from 'react-dom';
-import Routes from './routes';
+import Router from './Router';
 import Base from './base';
 
 ReactDOM.render(
   <Base>
-    <Routes />
+    <Router />
   </Base>,
   document.getElementById('root')
 );

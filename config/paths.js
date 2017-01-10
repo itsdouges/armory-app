@@ -6,7 +6,7 @@ function resolve (relativePath) {
 
 module.exports = {
   appBuild: resolve('../dist'),
-  appHtml: resolve('../src/index.html'),
+  appHtml: resolve('../src/index.html.ejs'),
   appPackageJson: resolve('../package.json'),
   appSrc: resolve('../src'),
   embedSrc: resolve('../src/embeds'),
