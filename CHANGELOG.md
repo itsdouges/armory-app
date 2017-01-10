@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.12.0] - 2017/01/10
+### Added
+- Open search configuration
+
 ## [3.11.3] - 2017/01/09
 ### Changed
 - Gw2a pvp leaderboard to have `Gw2a` in the page title and tab

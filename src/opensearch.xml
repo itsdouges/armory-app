@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>gw2armory</ShortName>
+  <Description>Search for users, characters, and guilds...</Description>
+  <Tags>guildwars2 gw2armory gw2 gw2a guildwars account user character</Tags>
+  <Url type="text/html" template="https://gw2armory.com/search/{searchTerms}"/>
+  <AdultContent>false</AdultContent>
+  <Language>en</Language>
+  <Language>fr</Language>
+  <Language>de</Language>
+  <Language>es</Language>
+  <Language>zh</Language>
+  <Language>ru</Language>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <InputEncoding>UTF-8</InputEncoding>
+</OpenSearchDescription>
