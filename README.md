@@ -23,9 +23,9 @@ Feel like contributing? Look at the [issues](https://github.com/madou/armory-rea
 
 ### Issues Quick Find
 
+- [Good first contribution](https://github.com/madou/armory-react/labels/good%20first%20contribution)
 - [New features](https://github.com/madou/armory-react/issues?q=is%3Aopen+is%3Aissue+label%3Afeature)
 - [Feature enhancements](https://github.com/madou/armory-react/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement)
 - [Bugs](https://github.com/madou/armory-react/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-- [Chores](https://github.com/madou/armory-react/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
 
 © 2015-2017 gw2armory.com
