@@ -6,6 +6,7 @@ import Head from 'common/components/Head';
 import SocialButtons from 'common/components/SocialButtons';
 import Tooltip from 'common/components/Tooltip';
 import Container from 'common/components/Container';
+import DisplayAd from 'common/components/DisplayAd';
 
 import styles from './styles.less';
 
@@ -31,7 +32,10 @@ const Content = ({
     <Head title={title} description={description} />
     <SocialButtons />
 
+    <DisplayAd />
+
     <div className={styles.heroBg}>
+
       <Container className={styles.inner}>
         <ContentCard {...props} size="big">{cardExtra}</ContentCard>
         {extraContent}
@@ -42,6 +46,7 @@ const Content = ({
 
     {children}
 
+    <DisplayAd />
     <Tooltip />
   </div>
 );
