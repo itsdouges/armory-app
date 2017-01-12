@@ -8,6 +8,14 @@
 - Changes
 ```
 
+## [3.13.0] - unreleased
+### Added
+- Display ads
+- Donation link to footer
+
+### Removed
+- Trello link in footer
+
 ## [3.12.1] - 2017/01/10
 ### Added
 - Conversion tracking to settings page

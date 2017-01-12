@@ -3,6 +3,7 @@
 import styles from './styles.less';
 import Container from 'common/components/Container';
 import SvgIcon from 'common/components/Icon/Svg';
+import Icon from 'common/components/Icon';
 
 const Footer = () => (
   <footer className={styles.root}>
@@ -17,9 +18,17 @@ const Footer = () => (
       </div>
 
       <div className={styles.linkContainer}>
-        <a title="Check out the code on Github!" href="https://github.com/madou/armory-react"><SvgIcon name="github" /></a>
-        <a title="Check out what features are coming next!" href="https://trello.com/b/qGvDe622"><SvgIcon name="trello" /></a>
-        <a title="Found something weird? Want to make a suggestion? Come post on reddit!" href="https://www.reddit.com/r/gw2armory"><SvgIcon name="reddit" /></a>
+        <a title="Check out the code on Github!" href="https://github.com/madou/armory-react">
+          <SvgIcon name="github" />
+        </a>
+
+        <a title="Found something weird? Want to make a suggestion? Come post on reddit!" href="https://www.reddit.com/r/gw2armory">
+          <SvgIcon name="reddit" />
+        </a>
+
+        <a title="Donations keep the site running!" href="https://paypal.me/gw2armory">
+          <Icon name="paypal.png" size="" className={styles.paypal} />
+        </a>
       </div>
     </Container>
   </footer>
