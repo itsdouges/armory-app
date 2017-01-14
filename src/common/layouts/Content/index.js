@@ -32,7 +32,7 @@ const Content = ({
     <Head title={title} description={description} />
     <SocialButtons />
 
-    <DisplayAd />
+    <DisplayAd className={styles.ad} />
 
     <div className={styles.heroBg}>
 
@@ -46,7 +46,7 @@ const Content = ({
 
     {children}
 
-    <DisplayAd />
+    <DisplayAd className={styles.ad} />
     <Tooltip />
   </div>
 );

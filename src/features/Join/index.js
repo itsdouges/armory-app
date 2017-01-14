@@ -11,6 +11,7 @@ import CardWithTitle from 'common/layouts/CardWithTitle';
 import Textbox from 'common/components/Textbox';
 import Button from 'common/components/Button';
 import PasswordForm from 'common/components/PasswordForm';
+import AffiliateAd from 'common/components/AffiliateAd';
 
 import {
   register,
@@ -83,57 +84,60 @@ class Join extends Component {
 
   render () {
     return (
-      <CardWithTitle
-        title={T.translate('join.name')}
-        className={styles.root}
-        size="medium"
-        message={
-          <Link to="/login">{T.translate('join.loginCta')}</Link>
-        }
-      >
-        <Head title={T.translate('join.name')} />
-        <form onSubmit={this.register}>
-          <Textbox
-            showStatus
-            required
-            id="email"
-            placeholder="Email"
-            value={this.state.email}
-            error={this.props.user.emailErrors}
-            valid={this.props.user.emailValid}
-            onChange={this.fieldChanged}
-          />
+      <div className={styles.root}>
+        <CardWithTitle
+          title={T.translate('join.name')}
+          size="medium"
+          message={
+            <Link to="/login">{T.translate('join.loginCta')}</Link>
+          }
+        >
+          <Head title={T.translate('join.name')} />
+          <form onSubmit={this.register}>
+            <Textbox
+              showStatus
+              required
+              id="email"
+              placeholder="Email"
+              value={this.state.email}
+              error={this.props.user.emailErrors}
+              valid={this.props.user.emailValid}
+              onChange={this.fieldChanged}
+            />
 
-          <Textbox
-            showStatus
-            required
-            id="alias"
-            placeholder="Alias"
-            value={this.state.alias}
-            error={this.props.user.aliasErrors}
-            valid={this.props.user.aliasValid}
-            onChange={this.fieldChanged}
-          />
+            <Textbox
+              showStatus
+              required
+              id="alias"
+              placeholder="Alias"
+              value={this.state.alias}
+              error={this.props.user.aliasErrors}
+              valid={this.props.user.aliasValid}
+              onChange={this.fieldChanged}
+            />
 
-          <PasswordForm
-            onFieldChange={this.fieldChanged}
-            valid={this.props.user.passwordValid}
-            passwordValue={this.state.password}
-            passwordConfirmValue={this.state.passwordConfirm}
-            error={this.props.user.passwordErrors}
-          />
+            <PasswordForm
+              onFieldChange={this.fieldChanged}
+              valid={this.props.user.passwordValid}
+              passwordValue={this.state.password}
+              passwordConfirmValue={this.state.passwordConfirm}
+              error={this.props.user.passwordErrors}
+            />
 
-          <div className={styles.buttons}>
-            <Button
-              type="primary"
-              busy={this.props.user.registering}
-              disabled={!this.props.canRegister}
-            >
-              {T.translate('join.buttons.join')}
-            </Button>
-          </div>
-        </form>
-      </CardWithTitle>
+            <div className={styles.buttons}>
+              <Button
+                type="primary"
+                busy={this.props.user.registering}
+                disabled={!this.props.canRegister}
+              >
+                {T.translate('join.buttons.join')}
+              </Button>
+            </div>
+          </form>
+        </CardWithTitle>
+
+        <AffiliateAd className={styles.gw2Sale} />
+      </div>
     );
   }
 }

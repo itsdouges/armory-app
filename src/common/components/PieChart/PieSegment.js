@@ -6,7 +6,7 @@ import Divider from './Divider';
 export type SegmentTypes = {
   color: string,
   name: string,
-  value: number,
+  value: any,
 };
 
 type PieSegmentProps = {

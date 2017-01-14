@@ -9,7 +9,7 @@ const fetchPvpLeaderboardSuccess = (data) => ({
 });
 
 export function fetchPvpLeaderboard () {
-  return (dispatch) => get(`${config.api.endpoint}leaderboards/pvp`, {
+  return (dispatch) => get(`${config.api.endpoint}leaderboards/pvp/gw2a`, {
     ignoreAuth: true,
   }).then(({ data }) => dispatch(fetchPvpLeaderboardSuccess(data)));
 }

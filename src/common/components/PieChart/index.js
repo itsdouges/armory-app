@@ -10,7 +10,7 @@ import type { SegmentTypes } from './PieSegment';
 
 type PieChartProps = {
   dataValues: Array<SegmentTypes>,
-  size: number,
+  size?: number,
   className?: string,
 };
 

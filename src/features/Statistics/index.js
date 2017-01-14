@@ -1,3 +1,5 @@
+// @flow
+
 import { PropTypes, Component } from 'react';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
@@ -10,6 +12,7 @@ import { fetchStatistics } from './actions';
 import PieChart from 'common/components/PieChart';
 import Head from 'common/components/Head';
 import Container from 'common/components/Container';
+import DisplayAd from 'common/components/DisplayAd';
 
 export const selector = createSelector(
   (store) => store.stats,
@@ -39,6 +42,7 @@ const nameToColour = {
   no: 'red',
   '1 to 39': 'green',
   '40 to 79': 'lightgreen',
+  // $FlowFixMe
   80: 'teal',
 };
 
@@ -65,6 +69,7 @@ function mapRawStats (stats) {
   });
 }
 
+@connect(selector)
 class Statistics extends Component {
   static propTypes = {
     dispatch: PropTypes.func,
@@ -77,7 +82,7 @@ class Statistics extends Component {
 
   render () {
     const { armoryStats = {
-      characters: { race: { lol: { value: 100, name: 'ok' } } },
+      characters: { race: { Asura: { value: 100, name: 'ok' } } },
     } } = this.props;
 
     const parsedStats = Object.keys(armoryStats).sort().map((name) => {
@@ -92,6 +97,7 @@ class Statistics extends Component {
     return (
       <Container className={styles.root}>
         <Head title={T.translate('stats.name')} />
+        <DisplayAd className={styles.ad} />
 
         {parsedStats.slice(0, 1).map(({ name, stats }) => (
           <span key={name}>
@@ -115,9 +121,10 @@ class Statistics extends Component {
 
         <p className={styles.note}><small>* {T.translate('stats.refreshNote')}</small></p>
 
+        <DisplayAd className={styles.ad} />
       </Container>
     );
   }
 }
 
-export default connect(selector)(Statistics);
+export default Statistics;

@@ -10,6 +10,7 @@ import CardWithTitle from 'common/layouts/CardWithTitle';
 import Textbox from 'common/components/Textbox';
 import Message from 'common/components/Message';
 import Button from 'common/components/Button';
+import AffiliateAd from 'common/components/AffiliateAd';
 
 import { fetchToken } from './actions';
 
@@ -58,42 +59,46 @@ class Login extends Component {
     const message = error || <Link to="/join">{T.translate('login.joinCta')}</Link>;
 
     return (
-      <CardWithTitle title={T.translate('login.name')} message={message} className={styles.root}>
-        <Head title={T.translate('login.name')} />
+      <div className={styles.root}>
+        <CardWithTitle title={T.translate('login.name')} message={message}>
+          <Head title={T.translate('login.name')} />
 
-        <form onSubmit={this.login}>
-          <Textbox
-            required
-            id="email"
-            placeholder="Email"
-            value={this.state.email}
-            onChange={this.fieldChanged}
-          />
+          <form onSubmit={this.login}>
+            <Textbox
+              required
+              id="email"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={this.fieldChanged}
+            />
 
-          <Textbox
-            required
-            id="password"
-            placeholder="Password"
-            type="password"
-            value={this.state.password}
-            onChange={this.fieldChanged}
-          />
+            <Textbox
+              required
+              id="password"
+              placeholder="Password"
+              type="password"
+              value={this.state.password}
+              onChange={this.fieldChanged}
+            />
 
-          <div className={styles.buttons}>
-            <Button
-              type="primary"
-              busy={this.props.busy}
-              disabled={!this.state.canLogin}
-            >
-              {T.translate('login.buttons.login')}
-            </Button>
-          </div>
-        </form>
+            <div className={styles.buttons}>
+              <Button
+                type="primary"
+                busy={this.props.busy}
+                disabled={!this.state.canLogin}
+              >
+                {T.translate('login.buttons.login')}
+              </Button>
+            </div>
+          </form>
 
-        <Message className={styles.forgotPasswordContainer} type="small">
-          <Link to="/forgot-my-password">{T.translate('login.forgotMyPasswordCta')}</Link>
-        </Message>
-      </CardWithTitle>
+          <Message className={styles.forgotPasswordContainer} type="small">
+            <Link to="/forgot-my-password">{T.translate('login.forgotMyPasswordCta')}</Link>
+          </Message>
+        </CardWithTitle>
+
+        <AffiliateAd className={styles.gw2Sale} />
+      </div>
     );
   }
 }

@@ -94,7 +94,7 @@ export default class User extends Component {
 
     const standing = getActiveStanding(user, pvpSeasons);
     const rating = get(standing, 'current.rating');
-    const ranking = get(user, 'ranking');
+    const gw2aRank = get(user, 'gw2aRank');
     const winsText = T.translate('users.pvpStats.wins');
     const byesText = T.translate('users.pvpStats.byes');
     const lossText = T.translate('users.pvpStats.losses');
@@ -112,7 +112,7 @@ export default class User extends Component {
           <ul className={styles.rating}>
             <li>
               <Link to="/leaderboards">
-                <span>{ranking || '-'}</span>
+                <span>{(gw2aRank && `#${gw2aRank}`) || '-'}</span>
                 <div>GW2A {T.translate('users.pvpStats.ranking')}</div>
               </Link>
             </li>
