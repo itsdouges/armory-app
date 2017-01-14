@@ -14,6 +14,10 @@ export default class DisplayAd extends Component {
   props: Props;
 
   componentDidMount () {
+    if (!config.features.ads) {
+      return;
+    }
+
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   }
 

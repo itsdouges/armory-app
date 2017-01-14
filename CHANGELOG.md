@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.13.1] - 2017/01/14
+### Fixed
+- Ads breaking the site, lol
+
 ## [3.13.0] - 2017/01/14
 ### Added
 - Display ads (disabled for now)
