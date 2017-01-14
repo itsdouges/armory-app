@@ -8,6 +8,21 @@
 - Changes
 ```
 
+## [3.13.0] - 2017/01/14
+### Added
+- Display ads (disabled for now)
+- Donation link to footer
+- Affiliate ads for guild wars 2
+
+### Changed
+- Gw2a leaderboard api uri
+
+### Fixed
+- Gw2aRank on user page display
+
+### Removed
+- Trello link in footer
+
 ## [3.12.1] - 2017/01/10
 ### Added
 - Conversion tracking to settings page

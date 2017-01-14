@@ -22,3 +22,10 @@ export function isDescendant (parent: Element, child: Element): boolean {
 
   return false;
 }
+
+export function addScript (src: string) {
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = src;
+  window.document.head.appendChild(script);
+}
