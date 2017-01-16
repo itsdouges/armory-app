@@ -88,7 +88,7 @@ export default class PvpLeaderboard extends Component {
               key={index}
               className={styles.standing}
             >
-              <Link to={standing && standing.alias}>{createInner(standing, index)}</Link>
+              <Link to={`/${standing ? standing.alias : ''}`}>{createInner(standing, index)}</Link>
             </li>
           ))}
         </ul>

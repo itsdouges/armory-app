@@ -56,6 +56,8 @@ function getActiveStanding ({ pvpStandings = [] } = {}, pvpSeasons) {
   return standings[0] || {};
 }
 
+const addHash = (str) => (str ? `#${str}` : '-');
+
 @connect(selector, {
   dispatchFetchUser: fetchUser,
   dispatchSelectUser: selectUser,
@@ -95,6 +97,8 @@ export default class User extends Component {
     const standing = getActiveStanding(user, pvpSeasons);
     const rating = get(standing, 'current.rating');
     const gw2aRank = get(user, 'gw2aRank');
+    const euRank = get(user, 'euRank');
+    const naRank = get(user, 'naRank');
     const winsText = T.translate('users.pvpStats.wins');
     const byesText = T.translate('users.pvpStats.byes');
     const lossText = T.translate('users.pvpStats.losses');
@@ -111,8 +115,20 @@ export default class User extends Component {
         rightComponent={
           <ul className={styles.rating}>
             <li>
-              <Link to="/leaderboards">
-                <span>{(gw2aRank && `#${gw2aRank}`) || '-'}</span>
+              <Link to="/leaderboards/pvp/eu">
+                <span>{addHash(euRank)}</span>
+                <div>EU {T.translate('users.pvpStats.ranking')}</div>
+              </Link>
+            </li>
+            <li>
+              <Link to="/leaderboards/pvp/na">
+                <span>{addHash(naRank)}</span>
+                <div>NA {T.translate('users.pvpStats.ranking')}</div>
+              </Link>
+            </li>
+            <li>
+              <Link to="/leaderboards/pvp">
+                <span>{addHash(gw2aRank)}</span>
                 <div>GW2A {T.translate('users.pvpStats.ranking')}</div>
               </Link>
             </li>
