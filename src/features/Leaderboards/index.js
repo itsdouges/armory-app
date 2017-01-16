@@ -15,9 +15,19 @@ const Leaderboards = () => (
     <Tabs
       titleSuffix={T.translate('leaderboards.name')}
       tabs={[{
-        to: '/leaderboards',
-        name: 'Pvp (GW2A)',
-        content: <PvpLeaderboard />,
+        to: '/leaderboards/pvp',
+        name: 'PvP (GW2A)',
+        content: <PvpLeaderboard region="gw2a" />,
+        description: config.descriptions.pvpLeaderboard,
+      }, {
+        to: '/leaderboards/pvp/na',
+        name: 'PvP (NA)',
+        content: <PvpLeaderboard region="na" />,
+        description: config.descriptions.pvpLeaderboard,
+      }, {
+        to: '/leaderboards/pvp/eu',
+        name: 'PvP (EU)',
+        content: <PvpLeaderboard region="eu" />,
         description: config.descriptions.pvpLeaderboard,
       }]}
     />

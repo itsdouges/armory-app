@@ -42,15 +42,16 @@ function createInner (standing?: PvpStanding, index) {
   );
 }
 
-function mapStateToProps (state) {
+function mapStateToProps (state, props) {
   return {
-    leaderboard: state.leaderboards.pvp,
+    leaderboard: state.leaderboards.pvp[props.region],
   };
 }
 
 type Props = {
   fetchPvpLeaderboard?: () => void,
   leaderboard?: Array<PvpStanding>,
+  region: 'gw2a' | 'na' | 'eu',
 };
 
 @connect(mapStateToProps, {
@@ -60,8 +61,18 @@ export default class PvpLeaderboard extends Component {
   props: Props;
 
   componentWillMount () {
+    this.readLadder(this.props.region);
+  }
+
+  componentWillUpdate (nextProps: Props) {
+    if (nextProps.region !== this.props.region) {
+      this.readLadder(nextProps.region);
+    }
+  }
+
+  readLadder (region: string) {
     const { fetchPvpLeaderboard: fetchLeaderboard } = this.props;
-    fetchLeaderboard && fetchLeaderboard();
+    fetchLeaderboard && fetchLeaderboard(region);
   }
 
   render () {

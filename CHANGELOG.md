@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.14.0] - unreleased
+### Added
+- Na/eu leaderboards
+
 ## [3.13.1] - 2017/01/14
 ### Fixed
 - Ads breaking the site, lol

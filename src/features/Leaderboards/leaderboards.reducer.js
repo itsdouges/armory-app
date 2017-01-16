@@ -3,7 +3,7 @@ import {
 } from './actions';
 
 export const defaultState = {
-  pvp: [],
+  pvp: {},
 };
 
 export default (state, action) => {
@@ -11,7 +11,10 @@ export default (state, action) => {
     case FETCH_PVP_LEADERBOARD:
       return {
         ...state,
-        pvp: action.payload,
+        pvp: {
+          ...state.pvp,
+          [action.payload.region]: action.payload.data,
+        },
       };
 
     default:
