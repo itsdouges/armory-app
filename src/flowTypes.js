@@ -24,13 +24,30 @@ export const defaultCharacter: Character = {
   level: 0,
 };
 
+type PvpGame = {
+  id: string,
+};
+
+export type PvpStanding = {
+  seasonId: string,
+  totalPointsCurrent: number,
+  divisionCurrent: number,
+  pointsCurrent: number,
+  repeatsCurrent: number,
+  ratingCurrent: number,
+  decayCurrent: number,
+  alias: string,
+  accountName: string,
+};
+
 export type User = {
   fractalLevel: number,
   wvwRank: number,
   world: number,
   access: string,
-  characters: [],
-  pvpStandings?: [],
+  characters: Array<Character>,
+  pvpStandings?: Array<any>,
+  pvpGames?: Array<PvpGame>,
   alias: string,
 };
 
@@ -117,15 +134,3 @@ export type Amulets = {};
 export type Skills = {};
 
 export type Professions = {};
-
-export type PvpStanding = {
-  seasonId: string,
-  totalPointsCurrent: number,
-  divisionCurrent: number,
-  pointsCurrent: number,
-  repeatsCurrent: number,
-  ratingCurrent: number,
-  decayCurrent: number,
-  alias: string,
-  accountName: string,
-};

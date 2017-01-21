@@ -28,7 +28,7 @@ export default class RandomGuilds extends Component {
     return (
       <ul className={styles.root}>
         {guilds.map((guild, index) => (
-          <li key={index}>
+          <li key={guild ? guild.name : index}>
             <Link to={`g/${guild && guild.name}`}>
               <ContentCard type="guilds" content={guild} />
             </Link>

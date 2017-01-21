@@ -1,5 +1,5 @@
-// flow-typed signature: 8b6a390c8f84a79f68a5ba41f3665db0
-// flow-typed version: 25c06ef4a8/moment_v2.x.x/flow_>=v0.28.x
+// flow-typed signature: b7d5419a7f10309b2328eeaf6d58f528
+// flow-typed version: b96843401b/moment_v2.x.x/flow_>=v0.28.x
 
 type moment$MomentOptions = {
   y?: number|string,
@@ -96,6 +96,7 @@ declare class moment$MomentDuration {
   as(unit: string): number;
   get(unit: string): number;
   toJSON(): string;
+  toISOString(): string;
 }
 declare class moment$Moment {
   static ISO_8601: string;
@@ -173,7 +174,7 @@ declare class moment$Moment {
   static min(...dates: Array<moment$Moment>): moment$Moment;
   static min(dates: Array<moment$Moment>): moment$Moment;
   add(value: number|moment$MomentDuration|moment$Moment|Object, unit?: string): this;
-  subtract(value: number|moment$MomentDuration|moment$Moment|string, unit?: string): this;
+  subtract(value: number|moment$MomentDuration|moment$Moment|string|Object, unit?: string): this;
   startOf(unit: string): this;
   endOf(unit: string): this;
   local(): this;
@@ -195,19 +196,20 @@ declare class moment$Moment {
   toJSON(): string;
   toISOString(): string;
   toObject(): moment$MomentObject;
-  isBefore(date: moment$Moment|string|number|Date|Array<number>): bool;
-  isSame(date: moment$Moment|string|number|Date|Array<number>): bool;
-  isAfter(date: moment$Moment|string|number|Date|Array<number>): bool;
-  isSameOrBefore(date: moment$Moment|string|number|Date|Array<number>): bool;
-  isSameOrAfter(date: moment$Moment|string|number|Date|Array<number>): bool;
+  isBefore(date?: moment$Moment|string|number|Date|Array<number>): bool;
+  isSame(date?: moment$Moment|string|number|Date|Array<number>): bool;
+  isAfter(date?: moment$Moment|string|number|Date|Array<number>): bool;
+  isSameOrBefore(date?: moment$Moment|string|number|Date|Array<number>): bool;
+  isSameOrAfter(date?: moment$Moment|string|number|Date|Array<number>): bool;
   isBetween(date: moment$Moment|string|number|Date|Array<number>): bool;
   isDST(): bool;
   isDSTShifted(): bool;
   isLeapYear(): bool;
   clone(): moment$Moment;
   static isMoment(obj: any): bool;
-  static isDatE(obj: any): bool;
+  static isDate(obj: any): bool;
   static locale(locale: string, localeData?: Object): string;
+  static updateLocale(locale: string, localeData?: ?Object): void;
   static locale(locales: Array<string>): string;
   locale(locale: string, customization?: Object|null): moment$Moment;
   locale(): string;

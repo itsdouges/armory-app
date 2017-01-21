@@ -10,7 +10,7 @@ import { weapons, noSecondWeaponSet } from 'lib/gw2/equipment';
 type Props = {
   equipment: {},
   pvpEquipment: {
-    sigils: [],
+    sigils: Array<any>,
     rune: number,
     amulet: number,
   },

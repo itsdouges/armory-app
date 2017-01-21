@@ -10,7 +10,7 @@ import Tab from './Tab';
 
 import type { Tab$Props } from './Tab';
 
-type TabInput = Tab$Props & {
+export type TabInput = Tab$Props & {
   content: any,
   ignoreTitle?: boolean,
   description?: string,

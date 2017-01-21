@@ -17,7 +17,10 @@ const SelectList = ({ children = [], icon, selected = 0 }: Props) => (
 
     <Card className={styles.listContainer}>
       <ul className={styles.list}>
-        {children.map((item, index) => <li key={index} className={styles.item}>{item}</li>)}
+        {
+          // eslint-disable-next-line react/no-array-index-key
+          children.map((item, index) => <li key={index} className={styles.item}>{item}</li>)
+        }
       </ul>
     </Card>
   </div>

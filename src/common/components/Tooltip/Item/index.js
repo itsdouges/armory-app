@@ -76,11 +76,11 @@ const ItemsTooltip = ({ data: {
           </div>
         ))}
 
-        {Object.keys(attributes).map((attribute, index) => {
+        {Object.keys(attributes).map((attribute) => {
           const modifier = attributes[attribute];
 
           return (
-            <div key={index} className={colours.green}>
+            <div key={attribute} className={colours.green}>
               {`+${modifier} ${startCase(attribute)}`}
             </div>
           );
@@ -88,13 +88,14 @@ const ItemsTooltip = ({ data: {
 
         <br />
 
-        {upgrades.map((upgrade, index) =>
-          <span key={index}>
+        {upgrades.map((upgrade) =>
+          <span key={upgrade.id}>
             <Upgrade data={upgrade} count={upgradeCounts[upgrade.id]} /><br />
           </span>
         )}
 
         {infusions.map((infusion, index) =>
+          // eslint-disable-next-line react/no-array-index-key
           <span key={index}>
             <Infusion data={infusion} /><br />
           </span>

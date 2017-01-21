@@ -1,12 +1,12 @@
 // @flow
 
+import type { ContentType } from 'common/components/ContentCard';
+
 import ContentCard from 'common/components/ContentCard';
 import Card from 'common/components/Card';
 import { Link } from 'react-router';
 import styles from './styles.less';
 import cx from 'classnames/bind';
-
-import type { ContentType } from 'common/components/ContentCard';
 
 function buildUrl (item, aliasOverride, resource) {
   switch (resource) {
@@ -25,7 +25,8 @@ function buildUrl (item, aliasOverride, resource) {
 }
 
 type ContentCardListProps = {
-  items?: [],
+  // TODO: Type properly.
+  items?: any,
   alias?: string,
   noBorder?: boolean,
   resource?: ContentType,
@@ -62,6 +63,7 @@ const ContentCardList = ({
         </Link>);
     }) :
     [0, 0].map((data, index) => (
+      // eslint-disable-next-line react/no-array-index-key
       <ContentCard className={styles.item} key={index} />)
     );
 

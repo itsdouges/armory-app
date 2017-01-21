@@ -46,6 +46,8 @@ module.exports = {
         'render',
       ],
     }],
+
+    'react/require-default-props': 'warn',
   },
   settings: {
     'import/resolver': 'webpack',
