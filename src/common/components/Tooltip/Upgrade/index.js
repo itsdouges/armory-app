@@ -55,12 +55,12 @@ const ItemUpgrade = ({ data, count: { count } }: Props) => {
       </div>
 
       {withBonus && data.details.bonuses.map((bonus, index) =>
-        <div key={index} className={index < count && colours.blue}>
+        <div key={bonus} className={index < count && colours.blue}>
           {`(${index + 1}):`}{markup(bonus)}
         </div>)}
 
-      {withBuffs && data.details.infix_upgrade.buff.description.map((buff, index) =>
-        <div key={index} className={colours.blue}>{markup(buff)}</div>)}
+      {withBuffs && data.details.infix_upgrade.buff.description.map((buff) =>
+        <div key={buff} className={colours.blue}>{markup(buff)}</div>)}
     </div>
   );
 };

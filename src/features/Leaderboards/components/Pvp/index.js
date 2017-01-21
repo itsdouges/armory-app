@@ -85,7 +85,7 @@ export default class PvpLeaderboard extends Component {
         <ul>
           {pvpLeaderboard.map((standing, index) => (
             <li
-              key={index}
+              key={standing ? standing.accountName : index}
               className={styles.standing}
             >
               <Link to={`/${standing ? standing.alias : ''}`}>{createInner(standing, index)}</Link>

@@ -60,8 +60,8 @@ const Skills = ({
 
   return (
     <div className={cx(styles.root, className)}>
-      {mainHandSkills.map(({ id }, index) => <Skill key={`${id}-${index}`} data={skills[id]} />)}
-      {offHandSkills.map(({ id }, index) => <Skill key={`${id}-${index}`} data={skills[id]} />)}
+      {mainHandSkills.map(({ id }) => <Skill key={id} data={skills[id]} />)}
+      {offHandSkills.map(({ id }) => <Skill key={id} data={skills[id]} />)}
       <Skill data={skills[characterSkills.heal]} className={styles.heal} />
       {utilities.map((id, index) => <Skill key={id || index} data={skills[id]} />)}
       <Skill data={skills[characterSkills.elite]} className={styles.elite} />

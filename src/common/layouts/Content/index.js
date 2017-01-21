@@ -1,5 +1,7 @@
 // @flow
 
+import type { TabInput as Tabs$TabInput } from 'common/components/Tabs';
+
 import ContentCard from 'common/components/ContentCard';
 import Tabs from 'common/components/Tabs';
 import Head from 'common/components/Head';
@@ -13,7 +15,7 @@ import styles from './styles.less';
 type Props = {
   children?: any,
   extraContent?: any,
-  tabs?: [],
+  tabs?: Array<Tabs$TabInput>,
   title: string,
   description?: string,
   cardExtra?: any,

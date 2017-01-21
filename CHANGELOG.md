@@ -12,6 +12,12 @@
 ### Added
 - Na/eu leaderboards
 
+## [3.13.2] - 2017/01/21
+### Changed
+- Upgraded dependencies
+- Fixes lint errors
+- Fixes flow errors
+
 ## [3.13.1] - 2017/01/14
 ### Fixed
 - Ads breaking the site, lol

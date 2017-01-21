@@ -40,6 +40,7 @@ const PieSegment = (props: PieSegmentProps) => {
         {segmentDegrees.map((degree, index) => {
           const component = (
             <Segment
+              // eslint-disable-next-line react/no-array-index-key
               key={`${name}-${degree}-${index}`}
               rotationOffset={startOffset}
               centralAngle={degree}

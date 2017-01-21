@@ -71,6 +71,7 @@ export default class ResponsiveMenu extends Component {
           {children && children.map((item, index) => (
             <li
               className={cx(styles.item, itemClassName)}
+              // eslint-disable-next-line react/no-array-index-key
               key={index}
             >
               {item}

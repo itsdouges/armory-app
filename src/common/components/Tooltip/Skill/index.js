@@ -32,7 +32,10 @@ const Skill = ({ data }: SkillProps) => {
 
         <div className={styles.description}>{markup(data.description)}</div>
 
-        {get(data, 'facts', []).map((fact, index) => <Fact key={index} data={fact} />)}
+        {get(data, 'facts', []).map((fact, index) =>
+          // eslint-disable-next-line react/no-array-index-key
+          <Fact key={index} data={fact} />)
+        }
       </Background>
     </div>
   );

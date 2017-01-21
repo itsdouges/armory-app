@@ -186,7 +186,7 @@ export default class User extends Component {
             content: (
               <div className={styles.gamesContainer}>
                 <span />
-                {pvpGames.map((game, index) => <PvpGame game={game} key={index} maps={maps} />)}
+                {pvpGames.map((game, index) => <PvpGame game={game} key={game ? game.id : index} maps={maps} />)}
               </div>
             ),
           },

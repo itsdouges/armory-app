@@ -106,8 +106,8 @@ class Statistics extends Component {
             <hr />
 
             <div className={styles.chartsContainer}>
-              {stats.filter((statData) => statData.name !== 'count').map((statData, index) => (
-                <span key={index} className={styles.chartContainer}>
+              {stats.filter((statData) => statData.name !== 'count').map((statData) => (
+                <span key={statData.name} className={styles.chartContainer}>
                   <h3>{upperFirst(statData.name)}</h3>
 
                   <PieChart className={styles.chart} dataValues={statData.data} />

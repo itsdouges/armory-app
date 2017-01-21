@@ -21,7 +21,7 @@ const motdPlaceholder = 'Today we\'re going to go for an adventure...';
 
 function parseNewLines (string = '') {
   return string
-    ? string.split('\n').map((tx, index) => <span key={index}>{tx}<br /></span>)
+    ? string.split('\n').map((tx) => <span key={tx}>{tx}<br /></span>)
     : motdPlaceholder;
 }
 
