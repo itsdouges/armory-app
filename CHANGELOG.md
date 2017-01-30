@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [3.14.0] - unreleased
+## [3.14.0] - 30/01/17
 ### Added
 - Na/eu leaderboards
 - Claiming call to action for placeholder users
