@@ -1,9 +1,10 @@
+// @flow
+
 import styles from './styles.less';
-import { PropTypes } from 'react';
 import ProgressBar from 'common/components/ProgressBar';
 import Redacted from 'common/components/Redacted';
 
-function calculateRankExperience (rank) {
+const calculateRankExperience = (rank) => {
   if (!rank || rank <= 1) {
     return 0;
   } else if (rank >= 2 && rank <= 5) {
@@ -19,9 +20,9 @@ function calculateRankExperience (rank) {
   }
 
   return 20000;
-}
+};
 
-function calculateExperienceInCurrentLevel (rank, rankPoints) {
+const calculateExperienceInCurrentLevel = (rank, rankPoints) => {
   let totalExperienceForNextLevel = 0;
   const nextLevel = rank;
 
@@ -30,9 +31,9 @@ function calculateExperienceInCurrentLevel (rank, rankPoints) {
   }
 
   return Math.abs(totalExperienceForNextLevel - rankPoints);
-}
+};
 
-function calculateIconStyle (rank) {
+const calculateIconStyle = (rank) => {
   let name;
 
   if (!rank || rank <= 9) {
@@ -49,15 +50,17 @@ function calculateIconStyle (rank) {
     name = 'Bear';
   } else if (rank >= 60 && rank <= 69) {
     name = 'Shark';
-  } else {
+  } else if (rank >= 70 && rank <= 79) {
     name = 'Phoenix';
+  } else {
+    name = 'Dragon';
   }
 
   return {
     name,
     image: require(`assets/images/pvp/${name.toLowerCase()}.png`),
   };
-}
+};
 
 function calculateRanking (rank, points) {
   const current = calculateExperienceInCurrentLevel(rank, points) || 0;
@@ -72,7 +75,13 @@ function calculateRanking (rank, points) {
   };
 }
 
-const PvpRanking = ({ rank, points, rankRollOvers }) => {
+type Props = {
+  rank: number,
+  points: number,
+  rankRollOvers: number,
+};
+
+const PvpRanking = ({ rank, points, rankRollOvers }: Props) => {
   const rolledOverRank = (rank + rankRollOvers) || 0;
   const { image, name, current, max } = calculateRanking(rank, points);
 
@@ -94,12 +103,6 @@ const PvpRanking = ({ rank, points, rankRollOvers }) => {
       </div>
     </div>
   );
-};
-
-PvpRanking.propTypes = {
-  rank: PropTypes.number,
-  points: PropTypes.number,
-  rankRollOvers: PropTypes.number,
 };
 
 export default PvpRanking;
