@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.14.3] - 31/01/17
+### Fixed
+- Tabs _again_ to not break when unicode characters are being used #morningbugfixes
+
 ## [3.14.2] - 31/01/17
 ### Fixed
 - Tabs not working where unicode characters are being used

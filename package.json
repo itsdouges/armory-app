@@ -1,6 +1,6 @@
 {
   "name": "armory-react",
-  "version": "3.14.2",
+  "version": "3.14.3",
   "scripts": {
     "start": "node ./scripts/start.js --prod",
     "test": "npm run lint && npm run flow",

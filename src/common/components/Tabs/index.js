@@ -41,9 +41,10 @@ const Tabs = ({ tabs, titleSuffix, tabLayout, pinnedTab }: TabsProps) => {
             {tabs.map((tab, index) => (
               <li key={tab.to}>
                 <Tab
-                  {...tab}
+                  to={encodeURI(tab.to || '')}
                   index={index}
                   selected={index === selected}
+                  {...tab}
                 />
               </li>
             ))}

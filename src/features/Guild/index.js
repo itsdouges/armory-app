@@ -46,7 +46,6 @@ export default class Guild extends Component {
 
   render () {
     const { guild, routeParams: { guildName } } = this.props;
-    const encodedGuildName = encodeURI(guildName);
 
     const claimed = guild && guild.claimed;
     const claimedData = {
@@ -67,7 +66,7 @@ export default class Guild extends Component {
         tabs={[
           {
             name: 'Overview',
-            to: `/g/${encodedGuildName}`,
+            to: `/g/${guildName}`,
             ignoreTitle: true,
             content: (
               <Overview data={guild} />
@@ -75,13 +74,13 @@ export default class Guild extends Component {
           },
           {
             name: 'Members',
-            to: `/g/${encodedGuildName}/users`,
+            to: `/g/${guildName}/users`,
             content: <Members guildName={guildName} />,
             flair: 'new',
           },
           {
             name: 'Characters',
-            to: `/g/${encodedGuildName}/characters`,
+            to: `/g/${guildName}/characters`,
             content: (
               <ContentCardList
                 noBorder
@@ -92,7 +91,7 @@ export default class Guild extends Component {
           },
           {
             name: 'Logs',
-            to: `/g/${encodedGuildName}/logs`,
+            to: `/g/${guildName}/logs`,
             content: <Logs guildName={guildName} />,
           },
         ]}
