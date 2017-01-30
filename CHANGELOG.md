@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.14.2] - 31/01/17
+### Fixed
+- Tabs not working where unicode characters are being used
+
 ## [3.14.1] - 31/01/17
 ### Fixed
 - User pvp ranking from not having Dragon ranking
