@@ -42,9 +42,14 @@ export function register (user) {
       alias: user.alias,
       email: user.email,
       password: user.password,
+      apiToken: user.apiToken,
     };
 
-    return post(`${config.api.endpoint}users`, mappedUser)
+    const url = mappedUser.apiToken
+      ? `${config.api.endpoint}claim/user`
+      : `${config.api.endpoint}users`;
+
+    return post(url, mappedUser)
       .then(() => {
         dispatch(registerResultSuccess());
         dispatch(fetchToken(mappedUser.email, mappedUser.password));

@@ -19,6 +19,7 @@ type Props = {
   title: string,
   description?: string,
   cardExtra?: any,
+  pinnedTab?: any,
 };
 
 const Content = ({
@@ -28,6 +29,7 @@ const Content = ({
   title,
   description,
   cardExtra,
+  pinnedTab,
   ...props
 }: Props) => (
   <div className={styles.root}>
@@ -44,7 +46,7 @@ const Content = ({
       </Container>
     </div>
 
-    {tabs && <Tabs titleSuffix={title} tabs={tabs} />}
+    {tabs && <Tabs titleSuffix={title} tabs={tabs} pinnedTab={pinnedTab} />}
 
     {children}
 

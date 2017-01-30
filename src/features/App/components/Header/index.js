@@ -41,7 +41,7 @@ type LinkDefs = {
 
 const STATIC_LINKS = [{
   name: <Flair type="new">{T.translate('leaderboards.name')}</Flair>,
-  to: '/leaderboards',
+  to: '/leaderboards/pvp',
 }, {
   name: T.translate('stats.name'),
   to: '/statistics',

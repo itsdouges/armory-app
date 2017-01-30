@@ -58,9 +58,14 @@ export type AuthenticatedUser = User & {
   gw2TokenError: string,
   addingGw2Token: boolean,
   passwordValid: boolean,
-  passwordErrors: Array<string>,
+  passwordErrors: string,
   changingPassword: boolean,
   passwordSuccess: string,
+  emailErrors: string,
+  emailValid: boolean,
+  aliasErrors: string,
+  aliasValid: boolean,
+  registering: boolean,
 };
 
 export const defaultUser: User = {

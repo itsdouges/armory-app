@@ -33,7 +33,15 @@ const Routes = () => (
       <Redirect from="/in" to="/login" />
       <Redirect from="/me" to="/settings" />
       <Redirect from="/stats" to="/statistics" />
+      <Redirect from="/leaderboards" to="/leaderboards/pvp" />
       <Redirect from="/me/*" to="/settings" />
+      <Redirect from="/g/:guildName/" to="/g/:guildName" />
+      <Redirect from="/g/:guildName(/:subRoute)/" to="/g/:guildName(/:subRoute)" />
+      <Redirect from="/:alias/" to="/:alias" />
+      <Redirect from="/:alias/c" to="/:alias/characters" />
+      <Redirect from="/:alias(/:subRoute)/" to="/:alias(/:subRoute)" />
+      <Redirect from="/:alias/characters/:character" to="/:alias/c/:character" />
+
       {/* <Route path="/embeds" component={EmbedExamples} /> */}
       <Route path="/statistics" component={Statistics} />
       <Route path="/login" component={Login} />
@@ -41,21 +49,10 @@ const Routes = () => (
       <Route path="/search(/:term)" component={Search} />
       <Route path="/settings" component={authOnly()(Settings)} />
       <Route path="/forgot-my-password" component={ForgotMyPassword} />
-      <Route path="/leaderboards" component={Leaderboards} />
-      <Route path="/leaderboards(/:subRoute)/" component={Leaderboards} />
+      <Route path="/leaderboards/:type(/:region)" component={Leaderboards} />
       <Route path="/404" component={NotFound} />
-
-      <Redirect from="/g/:guildName/" to="/g/:guildName" />
-      <Redirect from="/g/:guildName(/:subRoute)/" to="/g/:guildName(/:subRoute)" />
-
       <Route path="/g/:guildName" component={Guild} />
       <Route path="/g/:guildName(/:subRoute)" component={Guild} />
-
-      <Redirect from="/:alias/" to="/:alias" />
-      <Redirect from="/:alias/c" to="/:alias/characters" />
-      <Redirect from="/:alias(/:subRoute)/" to="/:alias(/:subRoute)" />
-      <Redirect from="/:alias/characters/:character" to="/:alias/c/:character" />
-
       <Route path="/:alias" component={User} />
       <Route path="/:alias(/:subRoute)" component={User} />
       <Route path="/:alias/c/:character" component={Character} />

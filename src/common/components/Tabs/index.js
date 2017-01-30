@@ -18,13 +18,14 @@ export type TabInput = Tab$Props & {
 
 type TabsProps = {
   tabLayout?: any,
+  pinnedTab?: any,
   tabs: Array<TabInput>,
   titleSuffix: string,
 };
 
 const zeroIndex = (index) => (index < 0 ? 0 : index);
 
-const Tabs = ({ tabs, titleSuffix, tabLayout }: TabsProps) => {
+const Tabs = ({ tabs, titleSuffix, tabLayout, pinnedTab }: TabsProps) => {
   const { pathname } = window.location;
   const selected = findIndex(tabs, (tab) => tab.to === pathname);
   const { content, name, ignoreTitle, description } = tabs[zeroIndex(selected)];
@@ -46,6 +47,10 @@ const Tabs = ({ tabs, titleSuffix, tabLayout }: TabsProps) => {
                 />
               </li>
             ))}
+
+            {pinnedTab && (
+              <li className={styles.pinnedRight}>{pinnedTab}</li>
+            )}
           </ul>
         </Container>
       </div>

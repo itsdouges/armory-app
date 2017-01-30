@@ -50,11 +50,11 @@ export const fetchGuildLogs = (name: string) => (dispatch: Dispatch) => axios
     dispatch(fetchGuildLogsResult(name, response.data));
   });
 
-export const fetchGuildMembers = (name: string) => (dispatch: Dispatch) => axios
-  .get(`${config.api.endpoint}guilds/${name}/members`)
-  .then((response) => {
-    dispatch(fetchGuildMembersResult(name, response.data));
-  });
+export const fetchGuildMembers = (name: string) => (dispatch: Dispatch) =>
+  axios.get(`${config.api.endpoint}guilds/${name}/members`)
+    .then((response) => {
+      dispatch(fetchGuildMembersResult(name, response.data));
+    });
 
 export const fetchGuild = (name: string) => (dispatch: Dispatch) => {
   dispatch(fetchingGuild(true));

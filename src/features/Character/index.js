@@ -346,7 +346,7 @@ export default class Character extends Component {
               </div>
 
               <div className={styles.craftingContainer}>
-                {crafting.map((craft) => <CraftingBar craft={craft} key={craft.discipline} />)}
+                {crafting.map((craft, index) => <CraftingBar craft={craft} key={craft.discipline || index} />)}
               </div>
             </div>
           </div>

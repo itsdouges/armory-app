@@ -9,7 +9,7 @@ import ProgressIcon from 'common/components/Icon/Progress';
 
 type ButtonProps = {
   className?: string,
-  type?: 'cta' | 'neutral' | 'minimal' | 'primary' | 'secondary',
+  type?: 'cta' | 'ctaMinimal' | 'neutral' | 'minimal' | 'primary' | 'secondary',
   disabled?: boolean,
   onClick?: Function,
   children?: any,

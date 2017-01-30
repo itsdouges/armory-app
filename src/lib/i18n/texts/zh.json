@@ -45,6 +45,7 @@
   "users": {
     "name": "用户",
     "recentMatches": "近期比赛",
+    "claimCta": "Claim user",
     "pvpStats": {
       "name": "PVP统计",
       "unranked": "未排序",
@@ -55,7 +56,7 @@
       "desertions": "开小差",
       "forfeits": "弃权",
       "finished": "Played",
-      "ranking": "Ranking",
+      "ranking": "Rank",
       "rating": "Rating"
     },
     "pvp": {

@@ -45,6 +45,7 @@
   "users": {
     "name": "Usuarios",
     "recentMatches": "Juegos Recientes",
+    "claimCta": "Claim user",
     "pvpStats": {
       "name": "Estadísticas Pvp",
       "unranked": "Unranked",
@@ -55,7 +56,7 @@
       "desertions": "Deserciones",
       "forfeits": "Abandonados",
       "finished": "Played",
-      "ranking": "Ranking",
+      "ranking": "Rank",
       "rating": "Rating"
     },
     "pvp": {
