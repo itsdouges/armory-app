@@ -1,8 +1,13 @@
-import { Component, PropTypes } from 'react';
+// @flow
+
+import type { AuthenticatedUser } from 'flowTypes';
+
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import T from 'i18n-react';
 import debounce from 'lodash/debounce';
+import qs from 'lib/qs';
 
 import styles from './styles.less';
 
@@ -20,24 +25,62 @@ import {
   validatePasswords,
 } from './actions';
 
+import { validateGw2Token } from 'features/Settings/actions';
+
 import { selector } from './user.reducer';
 
-class Join extends Component {
-  static propTypes = {
-    router: PropTypes.object,
-    dispatch: PropTypes.func,
-    user: PropTypes.object,
-    canRegister: PropTypes.bool,
-  };
+type State = {
+  email: string,
+  alias: string,
+  password: string,
+  passwordConfirm: string,
+  claimingUser?: string,
+  apiToken: string,
+};
 
-  state = {
+type Props = {
+  route: {},
+  dispatch: () => void,
+  user: AuthenticatedUser,
+  canRegister: boolean,
+  validateEmail: (string) => void,
+  validateAlias: (string) => void,
+  validatePasswords: (string, string) => void,
+  validateGw2Token: (string) => void,
+  register: (State) => void,
+};
+
+type FieldChanged = {
+  target: {
+    id: string,
+    value: string,
+  },
+};
+
+@connect(selector, {
+  validateEmail,
+  validateAlias,
+  validatePasswords,
+  validateGw2Token,
+  register,
+})
+export default class Join extends Component {
+  props: Props;
+  state: State = {
     email: '',
     alias: '',
     password: '',
     passwordConfirm: '',
+    apiToken: '',
   };
 
-  fieldChanged = ({ target: { id, value } }) => {
+  componentWillMount () {
+    this.setState({
+      claimingUser: qs('claiming'),
+    });
+  }
+
+  fieldChanged = ({ target: { id, value } }: FieldChanged) => {
     const newState = {
       ...this.state,
       [id]: value,
@@ -45,44 +88,55 @@ class Join extends Component {
 
     const passwordChanged = id.indexOf('password') >= 0;
     const methodName = passwordChanged ? 'password' : id;
-    const args = passwordChanged ?
-      [newState.password, newState.passwordConfirm] :
-      [value];
+    const args = passwordChanged
+      ? [newState.password, newState.passwordConfirm]
+      : [value];
 
+    // $FlowFixMe
     this[`check${methodName[0].toUpperCase() + methodName.slice(1)}`](...args);
     this.setState(newState);
   };
 
-  checkEmail = debounce((value) => {
+  checkApiToken = (value: string) => {
+    this.props.validateGw2Token(value);
+  };
+
+  checkEmail = debounce((value: string) => {
     if (!value.trim()) {
       return;
     }
 
-    this.props.dispatch(validateEmail(value));
+    this.props.validateEmail(value);
   }, 300);
 
-  checkAlias = debounce((value) => {
+  checkAlias = debounce((value: string) => {
     if (!value.trim()) {
       return;
     }
 
-    this.props.dispatch(validateAlias(value));
+    this.props.validateAlias(value);
   }, 300);
 
   checkPassword = debounce(
-    (password, passwordConfirm) =>
-      this.props.dispatch(validatePasswords(password, passwordConfirm)),
+    (password: string, passwordConfirm: string) =>
+      this.props.validatePasswords(password, passwordConfirm),
       300
   );
 
-  register = (event) => {
+  register = (event: SyntheticEvent) => {
     event.preventDefault();
 
-    const action = register(this.state);
-    this.props.dispatch(action);
+    this.props.register(this.state);
   };
 
   render () {
+    const { claimingUser, apiToken, alias, password, email, passwordConfirm } = this.state;
+    const { user, canRegister } = this.props;
+
+    const formValid = claimingUser
+      ? this.props.user.validGw2Token && canRegister
+      : canRegister;
+
     return (
       <div className={styles.root}>
         <CardWithTitle
@@ -94,14 +148,37 @@ class Join extends Component {
         >
           <Head title={T.translate('join.name')} />
           <form onSubmit={this.register}>
+            {claimingUser && (
+              <Textbox
+                disabled
+                id="claiming-user"
+                label="Claiming User"
+                value={claimingUser}
+              />
+            )}
+
+            {claimingUser && (
+              <Textbox
+                showStatus
+                required
+                id="apiToken"
+                label="Api token"
+                value={apiToken}
+                valid={user.validGw2Token}
+                onChange={this.fieldChanged}
+                error={user.gw2TokenError}
+                busy={user.validatingGw2Token}
+              />
+            )}
+
             <Textbox
               showStatus
               required
               id="email"
-              placeholder="Email"
-              value={this.state.email}
-              error={this.props.user.emailErrors}
-              valid={this.props.user.emailValid}
+              label="Email"
+              value={email}
+              error={user.emailErrors}
+              valid={user.emailValid}
               onChange={this.fieldChanged}
             />
 
@@ -109,26 +186,26 @@ class Join extends Component {
               showStatus
               required
               id="alias"
-              placeholder="Alias"
-              value={this.state.alias}
-              error={this.props.user.aliasErrors}
-              valid={this.props.user.aliasValid}
+              label="Alias"
+              value={alias}
+              error={user.aliasErrors}
+              valid={user.aliasValid}
               onChange={this.fieldChanged}
             />
 
             <PasswordForm
               onFieldChange={this.fieldChanged}
-              valid={this.props.user.passwordValid}
-              passwordValue={this.state.password}
-              passwordConfirmValue={this.state.passwordConfirm}
-              error={this.props.user.passwordErrors}
+              valid={user.passwordValid}
+              passwordValue={password}
+              passwordConfirmValue={passwordConfirm}
+              error={user.passwordErrors}
             />
 
             <div className={styles.buttons}>
               <Button
                 type="primary"
-                busy={this.props.user.registering}
-                disabled={!this.props.canRegister}
+                busy={user.registering}
+                disabled={!formValid}
               >
                 {T.translate('join.buttons.join')}
               </Button>
@@ -141,5 +218,3 @@ class Join extends Component {
     );
   }
 }
-
-export default connect(selector)(Join);

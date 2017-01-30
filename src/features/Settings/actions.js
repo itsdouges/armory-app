@@ -102,6 +102,10 @@ function validatingGw2Token (validating) {
 
 export function validateGw2Token (token) {
   return (dispatch) => {
+    if (!token) {
+      return dispatch(invalidateGw2Token());
+    }
+
     dispatch(validatingGw2Token(true));
 
     return get(`${config.api.endpoint}users/check/gw2-token/${token}`)

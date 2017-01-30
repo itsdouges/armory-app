@@ -1,4 +1,7 @@
-import { Component, PropTypes } from 'react';
+// @flow
+
+import { Component } from 'react';
+import qs from 'lib/qs';
 import T from 'i18n-react';
 
 import styles from './styles.less';
@@ -9,28 +12,47 @@ import Button from 'common/components/Button';
 import ApiToken from '../ApiToken';
 import Message from 'common/components/Message';
 
+type Token = {
+  token: string,
+  primary: boolean,
+};
+
+type Props = {
+  tokens: Array<Token>,
+  error: string,
+  add: Function,
+  remove: Function,
+  setPrimary: Function,
+  validate: Function,
+  valid: boolean,
+  validating: boolean,
+  adding: boolean,
+};
+
+type State = {
+  claimingUser: string,
+  newToken: string,
+};
+
 export default class ApiTokens extends Component {
-  static propTypes = {
-    tokens: PropTypes.array,
-    add: PropTypes.func,
-    remove: PropTypes.func,
-    valid: PropTypes.bool,
-    setPrimary: PropTypes.func,
-    validate: PropTypes.func,
-    validating: PropTypes.bool,
-    error: PropTypes.array,
-    adding: PropTypes.bool,
-  };
+  props: Props;
 
   static defaultProps = {
     tokens: [],
   };
 
-  state = {
+  state: State = {
+    claimingUser: '',
     newToken: '',
   };
 
-  fieldChanged = ({ target: { id, value } }) => {
+  componentWillMount () {
+    this.setState({
+      claimingUser: qs('claiming'),
+    });
+  }
+
+  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent) => {
     this.setState({
       ...this.state,
       [id]: value,
@@ -39,13 +61,19 @@ export default class ApiTokens extends Component {
     this.props.validate(value);
   };
 
-  add = (event) => {
+  add = (event: SyntheticEvent) => {
     event.preventDefault();
 
     this.props.add(this.state.newToken);
   };
 
   render () {
+    const { claimingUser } = this.state;
+
+    const addKeyLabel = claimingUser
+      ? `${T.translate('settings.apiKeys.inputs.add')} for ${claimingUser}`
+      : `${T.translate('settings.apiKeys.inputs.add')}`;
+
     return (
       <CardWithTitle title={T.translate('settings.apiKeys.name')} size="medium" type="compact">
         <div className={styles.padding}>
@@ -78,13 +106,14 @@ export default class ApiTokens extends Component {
             showStatus
             required
             id="newToken"
-            placeholder={T.translate('settings.apiKeys.inputs.add')}
+            label={addKeyLabel}
             value={this.state.newToken}
             valid={this.props.valid}
             onChange={this.fieldChanged}
             error={this.props.error}
             disabled={this.props.adding}
             busy={this.props.validating}
+            autoFocus={!!claimingUser}
           />
 
           <Button

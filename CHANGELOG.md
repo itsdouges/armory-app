@@ -11,6 +11,15 @@
 ## [3.14.0] - unreleased
 ### Added
 - Na/eu leaderboards
+- Claiming call to action for placeholder users
+- Eu/na rank to user pages
+
+## Changed
+- User rating to be sourced from main `user/{alias}` resource and then be overriden if found in `user/{alias}/pvp/standings`
+
+## Removed
+- Guild members api call
+- New flairs from some tabs
 
 ## [3.13.2] - 2017/01/21
 ### Changed

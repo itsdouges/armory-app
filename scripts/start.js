@@ -151,7 +151,9 @@ function openBrowser (port) {
 
 function runDevServer (port) {
   new WebpackDevServer(compiler, {
-    historyApiFallback: true,
+    historyApiFallback: {
+      disableDotRule: true,
+    },
     hot: true, // Note: only CSS is currently hot reloaded
     publicPath: config.output.publicPath,
     quiet: true,

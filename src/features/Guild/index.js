@@ -72,7 +72,6 @@ export default class Guild extends Component {
             content: (
               <Overview data={guild} />
             ),
-            flair: 'new',
           },
           {
             name: 'Members',
@@ -95,7 +94,6 @@ export default class Guild extends Component {
             name: 'Logs',
             to: `/g/${encodedGuildName}/logs`,
             content: <Logs guildName={guildName} />,
-            flair: 'new',
           },
         ]}
       />

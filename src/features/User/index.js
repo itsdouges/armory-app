@@ -9,6 +9,7 @@ import filter from 'lodash/filter';
 import T from 'i18n-react';
 import { Link } from 'react-router';
 
+import Button from 'common/components/Button';
 import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
 import ContentCardList from 'common/components/ContentCardList';
@@ -94,8 +95,9 @@ export default class User extends Component {
     const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
     const guilds = get(user, 'guilds', []);
 
+    const stubUser = get(user, 'stub');
     const standing = getActiveStanding(user, pvpSeasons);
-    const rating = get(standing, 'current.rating');
+    const rating = get(standing, 'current.rating') || get(user, 'rating');
     const gw2aRank = get(user, 'gw2aRank');
     const euRank = get(user, 'euRank');
     const naRank = get(user, 'naRank');
@@ -145,6 +147,11 @@ export default class User extends Component {
         type="users"
         title={alias}
         content={user}
+        pinnedTab={stubUser && (
+          <Link to={this.context._userAlias ? `settings?claiming=${alias}` : `join?claiming=${alias}`}>
+            <Button type="cta">{T.translate('users.claimCta')}</Button>
+          </Link>
+        )}
         tabs={[
           {
             to: `/${alias}`,
@@ -169,7 +176,6 @@ export default class User extends Component {
           {
             to: `/${alias}/guilds`,
             name: T.translate('guilds.name'),
-            flair: 'new',
             content: (
               <ContentCardList
                 noBorder
@@ -186,7 +192,8 @@ export default class User extends Component {
             content: (
               <div className={styles.gamesContainer}>
                 <span />
-                {pvpGames.map((game, index) => <PvpGame game={game} key={game ? game.id : index} maps={maps} />)}
+                {pvpGames.map((game, index) =>
+                  <PvpGame game={game} key={game ? game.id : index} maps={maps} />)}
               </div>
             ),
           },
