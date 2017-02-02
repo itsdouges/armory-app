@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.14.4] - 03/02/17
+### Changed
+- Travis ci config to use yarn through offical means
+
 ## [3.14.3] - 31/01/17
 ### Fixed
 - Tabs _again_ to not break when unicode characters are being used #morningbugfixes
