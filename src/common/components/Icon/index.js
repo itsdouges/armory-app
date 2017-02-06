@@ -11,9 +11,10 @@ type IconProps = {
   className?: string,
   src?: string,
   button?: boolean,
+  children?: any,
 };
 
-const Icon = ({ name, size, className, src, button, ...props }: IconProps) => {
+const Icon = ({ name, size, className, src, button, children, ...props }: IconProps) => {
   let image: string;
 
   try {
@@ -30,12 +31,19 @@ const Icon = ({ name, size, className, src, button, ...props }: IconProps) => {
         /* eslint prefer-template:0 */
         backgroundImage: (src || name) && 'url(' + (src || image) + ')',
       }}
-    />
+    >
+      {children}
+    </div>
   );
 };
 
 Icon.defaultProps = {
   size: 'mini',
+  name: '',
+  className: '',
+  src: '',
+  button: false,
+  children: undefined,
 };
 
 export default Icon;

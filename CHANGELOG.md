@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.15.0] - 06/02/17
+### Added
+- Rating change for pvp matches
+
 ## [3.14.4] - 03/02/17
 ### Changed
 - Travis ci config to use yarn through offical means
