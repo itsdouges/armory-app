@@ -34,13 +34,28 @@ function calculateProgressBar ({ team, scores }) {
 }
 
 type Props = {
-  game: Gw2PvpGame,
+  game?: Gw2PvpGame,
   maps: {
     [id: string]: Gw2MapType,
   },
 };
 
-const PvpGame = ({ game, maps }: Props) => {
+const defaultGame = {
+  map_id: '0',
+  rating_type: 'Ranked',
+  team: 'red',
+  result: 'forfeit',
+  scores: {
+    red: 0,
+    blue: 0,
+  },
+  profession: 'warrior',
+  ended: '',
+  started: '',
+  rating_change: 0,
+};
+
+const PvpGame = ({ game = defaultGame, maps }: Props) => {
   const redacted = game.scores.red !== 0 && !game.scores.red;
   const map = get(maps, `[${game.map_id}]`, { id: game.map_id });
 
@@ -100,20 +115,6 @@ const PvpGame = ({ game, maps }: Props) => {
       </div>
     </Card>
   );
-};
-
-PvpGame.defaultProps = {
-  game: {
-    map_id: 0,
-    rating_type: 'Ranked',
-    team: 'Red',
-    result: 'forfeit',
-    scores: {
-      red: 0,
-      blue: 0,
-    },
-    profession: 'warrior',
-  },
 };
 
 export default PvpGame;
