@@ -1,7 +1,7 @@
 // @flow
 
 import { Component } from 'react';
-import { languages, set, get } from 'lib/i18n';
+import { set, get } from 'lib/i18n';
 import cx from 'classnames';
 
 import config from 'config';
@@ -26,7 +26,7 @@ export default class LangPicker extends Component {
 
     return (
       <SelectList icon={<SvgIcon name={iconName} size="micro" />}>
-        {languages.map(({ short, long }) =>
+        {config.i18n.languages.map(({ short, long }) =>
           <button
             key={short}
             className={cx(styles.lang, { [styles.selected]: this.state.selected === short })}

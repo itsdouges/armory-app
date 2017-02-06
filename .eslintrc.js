@@ -29,6 +29,7 @@ module.exports = {
     'import/no-duplicates': 'error',
     'import/extensions': 'off',
 
+    'react/require-default-props': 'off',
     'react/forbid-prop-types': 'warn',
     'react/no-unused-prop-types': 'warn',
     'react/jsx-filename-extension': 'off',
@@ -46,8 +47,6 @@ module.exports = {
         'render',
       ],
     }],
-
-    'react/require-default-props': 'warn',
   },
   settings: {
     'import/resolver': 'webpack',
