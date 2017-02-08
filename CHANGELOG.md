@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [3.15.0] - 06/02/17
+## [3.15.0] - 08/02/17
 ### Added
 - Rating change for pvp matches
 

@@ -1,4 +1,6 @@
-export default {
+// Deliberately a commonjs export so it can be used in webpack config.
+// Until we're running webpack through babel this has to be done ;-).
+module.exports = {
   description: 'Guild Wars 2 Armory is an easy way to find, view, and share users, characters, and guilds with your friends on your mobile and pc! Join today and start sharing!',
   title: 'Guild Wars 2 Armory',
   titleSuffix: ' | Guild Wars 2 Armory',
