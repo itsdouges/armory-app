@@ -13,6 +13,10 @@ const RAID_KILL_ACHIEVEMENTS = {
   3017: 'Xr', // Xera
   3014: 'Kc', // Keep Construct
   2836: 'Mt', // Matthias
+  3321: 'Mrst', // Mursaat Overseer
+  3347: 'Smg', // Samarog
+  3349: 'Crn', // Cairn the Indomitable
+  3364: 'Dmn', // Demon
 };
 
 const TOTAL_KILLS = Object.keys(RAID_KILL_ACHIEVEMENTS).length;
