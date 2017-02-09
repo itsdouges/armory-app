@@ -8,6 +8,11 @@
 - Changes
 ```
 
+## [3.15.0] - 09/02/17
+### Added
+- Rating change for pvp matches
+- New raid boss achievements to raid component
+
 ## [3.14.4] - 03/02/17
 ### Changed
 - Travis ci config to use yarn through offical means

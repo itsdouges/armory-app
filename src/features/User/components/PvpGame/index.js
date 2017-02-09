@@ -1,4 +1,6 @@
-import { PropTypes } from 'react';
+// @flow
+
+import type { Gw2PvpGame, Gw2Map as Gw2MapType } from 'flowTypes';
 import get from 'lodash/get';
 import cx from 'classnames';
 import T from 'i18n-react';
@@ -31,11 +33,34 @@ function calculateProgressBar ({ team, scores }) {
   };
 }
 
-const PvpGame = ({ game, maps }) => {
+type Props = {
+  game?: Gw2PvpGame,
+  maps: {
+    [id: string]: Gw2MapType,
+  },
+};
+
+const defaultGame = {
+  map_id: '0',
+  rating_type: 'Ranked',
+  team: 'red',
+  result: 'forfeit',
+  scores: {
+    red: 0,
+    blue: 0,
+  },
+  profession: 'warrior',
+  ended: '',
+  started: '',
+  rating_change: 0,
+};
+
+const PvpGame = ({ game = defaultGame, maps }: Props) => {
   const redacted = game.scores.red !== 0 && !game.scores.red;
   const map = get(maps, `[${game.map_id}]`, { id: game.map_id });
 
   const { current, max, barColor, backgroundColor } = calculateProgressBar(game);
+  const ratingChangeStyle = game.rating_change >= 0 ? styles.positive : styles.negative;
 
   return (
     <Card className={styles.root}>
@@ -71,11 +96,13 @@ const PvpGame = ({ game, maps }) => {
         </div>
 
         <div className={cx(styles.column, styles.stats, styles.spreadItems, styles.big)}>
-          <span className={cx(styles.rankIcon, game.rating_type === 'Ranked' && styles.ranked)}>
-            <TooltipTrigger data={game.rating_type}>
-              <Icon name="ranked.png" />
-            </TooltipTrigger>
-          </span>
+          <TooltipTrigger data={game.rating_type}>
+            <Icon name="ranked.png" className={cx(styles.rankIcon, game.rating_type === 'Ranked' && styles.ranked)}>
+              {game.rating_change && <span className={cx(styles.ratingChange, ratingChangeStyle)}>
+                {Math.abs(game.rating_change)}
+              </span>}
+            </Icon>
+          </TooltipTrigger>
 
           <TooltipTrigger data={game.ended}>
             <div>
@@ -88,22 +115,6 @@ const PvpGame = ({ game, maps }) => {
       </div>
     </Card>
   );
-};
-
-PvpGame.defaultProps = {
-  game: {
-    rating_type: 'Ranked',
-    team: 'red',
-    result: 'forfeit',
-    scores: {},
-    profession: 'warrior',
-  },
-};
-
-PvpGame.propTypes = {
-  game: PropTypes.object,
-  season: PropTypes.object,
-  maps: PropTypes.object,
 };
 
 export default PvpGame;

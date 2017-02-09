@@ -1,5 +1,6 @@
 // @flow
 
+import type { Gw2Map as Gw2MapType } from 'flowTypes';
 import cx from 'classnames';
 import includes from 'lodash/includes';
 
@@ -7,13 +8,14 @@ import * as i18n from 'lib/i18n';
 import styles from './styles.less';
 
 const UNSUPPORTED = ['zh', 'ru'];
-function getWikiSupportedLanguage (language) {
+
+const getWikiSupportedLanguage = (language) => {
   if (includes(UNSUPPORTED, language)) {
     return 'en';
   }
 
   return language;
-}
+};
 
 const LANGUAGE = getWikiSupportedLanguage(i18n.get());
 
@@ -28,8 +30,8 @@ function getStyle (id = 0) {
 }
 
 type Gw2MapProps = {
-  data: Object,
-  className: string,
+  data: Gw2MapType,
+  className?: string,
 };
 
 const Gw2Map = ({ data, className }: Gw2MapProps) => (
@@ -50,6 +52,7 @@ Gw2Map.defaultProps = {
     name: '',
     id: 0,
   },
+  className: '',
 };
 
 export default Gw2Map;

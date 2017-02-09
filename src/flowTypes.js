@@ -139,3 +139,22 @@ export type Amulets = {};
 export type Skills = {};
 
 export type Professions = {};
+
+export type Gw2PvpGame = {
+  map_id: string,
+  scores: {
+    red: number,
+    blue: number,
+  },
+  rating_type: string,
+  team: 'red' | 'blue',
+  result: string,
+  profession: string,
+  ended: string,
+  rating_change: number,
+};
+
+export type Gw2Map = {
+  id: string,
+  name: string,
+};

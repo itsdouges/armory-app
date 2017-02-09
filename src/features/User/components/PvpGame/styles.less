@@ -73,6 +73,7 @@
 
 .rankIcon {
   opacity: 0.2;
+  position: relative;
 }
 
 .ranked {
@@ -80,8 +81,30 @@
 }
 
 .stats {
-  text-align: right;
   max-width: 100px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.ratingChange {
+  .absoluteCenter;
+  cursor: default;
+  color: @_white;
+  text-shadow: 0 1px 5px @_black;
+
+  &.negative:before {
+    content: "-";
+  }
+
+  &.positive:before {
+    content: "+";
+  }
+
+  &.negative:before,
+  &.positive:before {
+    position: absolute;
+    left: -10px;
+  }
 }
 
 .fromTablet({
