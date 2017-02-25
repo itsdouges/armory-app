@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [3.17.0] - 25/02/17
+### Added
+- Wins/losses from `/users/{alias}` to user page
+
 ## [3.16.0] - 25/02/17
 ### Added
 - Wins/losses to leaderboards

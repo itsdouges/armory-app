@@ -95,6 +95,7 @@ export default class User extends Component {
     const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
     const guilds = get(user, 'guilds', []);
 
+    const safeUser = user || {};
     const stubUser = get(user, 'stub');
     const standing = getActiveStanding(user, pvpSeasons);
     const rating = get(standing, 'current.rating') || get(user, 'rating');
@@ -106,8 +107,12 @@ export default class User extends Component {
     const lossText = T.translate('users.pvpStats.losses');
     const winLossByes = `${winsText}/${lossText}/${byesText}`;
 
-    const { wins, losses, byes } = get(user, 'pvpStats.ladders.ranked', {});
-    const statSummary = (wins || losses || byes) ? `${wins}-${losses}-${byes}` : '-';
+    const { byes, ...rankedStats } = get(user, 'pvpStats.ladders.ranked', {});
+
+    const wins = rankedStats.wins || safeUser.wins;
+    const losses = rankedStats.losses || safeUser.losses;
+
+    const statSummary = (wins || losses || byes) ? `${wins}-${losses}-${byes || 0}` : '-';
 
     return (
       <Content

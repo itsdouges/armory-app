@@ -51,6 +51,8 @@ export type User = {
   pvpStandings?: Array<any>,
   pvpGames?: Array<PvpGame>,
   alias: string,
+  wins: ?number,
+  losses: ?number,
 };
 
 export type AuthenticatedUser = User & {
