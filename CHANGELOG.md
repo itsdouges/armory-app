@@ -8,6 +8,13 @@
 - Changes
 ```
 
+## [3.16.0] - 25/02/17
+### Added
+- Wins/losses to leaderboards
+
+### Fixed
+- Healthcheck message spelling mistake
+
 ## [3.15.0] - 09/02/17
 ### Added
 - Rating change for pvp matches

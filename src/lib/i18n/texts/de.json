@@ -179,5 +179,8 @@
   },
   "leaderboards": {
     "name": "Leaderboards"
+  },
+  "messages": {
+    "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!"
   }
 }

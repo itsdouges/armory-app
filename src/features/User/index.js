@@ -152,52 +152,47 @@ export default class User extends Component {
             <Button type="cta">{T.translate('users.claimCta')}</Button>
           </Link>
         )}
-        tabs={[
-          {
-            to: `/${alias}`,
-            name: 'Overview',
-            ignoreTitle: true,
-            content: (
-              <Overview user={user} pvpSeasons={pvpSeasons} worlds={worlds} />
-            ),
-          },
-          {
-            to: `/${alias}/characters`,
-            name: 'Characters',
-            content: (
-              <ContentCardList
-                noBorder
-                type="grid"
-                alias={alias}
-                items={user && user.characters}
-              />
-            ),
-          },
-          {
-            to: `/${alias}/guilds`,
-            name: T.translate('guilds.name'),
-            content: (
-              <ContentCardList
-                noBorder
-                type="grid"
-                alias={alias}
-                resource="guilds"
-                items={guilds}
-              />
-            ),
-          },
-          {
-            to: `/${alias}/matches`,
-            name: T.translate('users.recentMatches'),
-            content: (
-              <div className={styles.gamesContainer}>
-                <span />
-                {pvpGames.map((game, index) =>
-                  <PvpGame game={game} key={game ? game.id : index} maps={maps} />)}
-              </div>
-            ),
-          },
-        ]}
+        tabs={[{
+          to: `/${alias}`,
+          name: 'Overview',
+          ignoreTitle: true,
+          content: (
+            <Overview user={user} pvpSeasons={pvpSeasons} worlds={worlds} />
+          ),
+        }, {
+          to: `/${alias}/characters`,
+          name: 'Characters',
+          content: (
+            <ContentCardList
+              noBorder
+              type="grid"
+              alias={alias}
+              items={user && user.characters}
+            />
+          ),
+        }, {
+          to: `/${alias}/guilds`,
+          name: T.translate('guilds.name'),
+          content: (
+            <ContentCardList
+              noBorder
+              type="grid"
+              alias={alias}
+              resource="guilds"
+              items={guilds}
+            />
+          ),
+        }, {
+          to: `/${alias}/matches`,
+          name: T.translate('users.recentMatches'),
+          content: (
+            <div className={styles.gamesContainer}>
+              <span />
+              {pvpGames.map((game, index) =>
+                <PvpGame game={game} key={game ? game.id : index} maps={maps} />)}
+            </div>
+          ),
+        }]}
       />
     );
   }
