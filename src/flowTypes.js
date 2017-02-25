@@ -38,8 +38,8 @@ export type PvpStanding = {
   decayCurrent: number,
   alias: string,
   accountName: string,
-  wins: number,
-  losses: number,
+  wins: ?number,
+  losses: ?number,
 };
 
 export type User = {

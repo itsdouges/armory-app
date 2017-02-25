@@ -21,7 +21,7 @@ function buildContent (standing, rank) {
 
   return standing && {
     alias: `#${rank} ${standing.alias}`,
-    accountName: `${standing.ratingCurrent} ${ratingText} | ${standing.wins} ${winsText} | ${standing.losses} ${lossesText}`,
+    accountName: `${standing.ratingCurrent} ${ratingText} | ${standing.wins || '-'} ${winsText} | ${standing.losses || '-'} ${lossesText}`,
   };
 }
 
