@@ -79,6 +79,8 @@ export const defaultUser: User = {
   access: '',
   characters: [],
   alias: '',
+  wins: null,
+  losses: null,
 };
 
 
