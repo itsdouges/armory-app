@@ -23,7 +23,8 @@ type Props = {
   hide?: boolean,
   small?: boolean,
   size?: 'micro' | 'small',
-  tooltipType: string,
+  tooltipType?: string,
+  className?: string,
 };
 
 const Item = ({
@@ -39,6 +40,7 @@ const Item = ({
   hide,
   small,
   tooltipType,
+  className,
 }: Props) => {
   if (hide) return null;
 
@@ -55,7 +57,7 @@ const Item = ({
         stats,
       }}
     >
-      <div className={cx('root', `${type}Icon`, { busy, small })}>
+      <div className={cx('root', `${type}Icon`, { busy, small }, className)}>
         <div
           className={styles.item}
           style={{ backgroundImage: `url(${skin.icon || item.icon || ''})` }}

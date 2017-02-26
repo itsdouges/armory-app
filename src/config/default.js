@@ -23,6 +23,7 @@ module.exports = {
   embedEndpoints: {
     character: 'embeds/character',
     custom: 'embeds/custom',
+    items: 'embeds/items',
   },
 
   descriptions: {

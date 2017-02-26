@@ -24,6 +24,11 @@ module.exports = {
       require.resolve('webpack/hot/dev-server'),
       path.join(paths.embedSrc, 'custom'),
     ],
+    items: [
+      require.resolve('webpack-dev-server/client'),
+      require.resolve('webpack/hot/dev-server'),
+      path.join(paths.embedSrc, 'items'),
+    ],
   },
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
@@ -100,6 +105,12 @@ module.exports = {
       template: paths.appHtml,
       filename: `${config.embedEndpoints.custom}/index.html`,
       chunks: ['custom'],
+    }, config)),
+    new HtmlWebpackPlugin(Object.assign({
+      inject: true,
+      template: paths.appHtml,
+      filename: `${config.embedEndpoints.items}/index.html`,
+      chunks: ['items'],
     }, config)),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"development"',
