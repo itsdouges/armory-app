@@ -8,14 +8,14 @@
 - Changes
 ```
 
-## [unreleased]
+## [3.18.0] - 26/02/17
 ### Changed
 - Header/introduction containers to have a background color
 - Search bar button to have a background color
 
-### [todo]
-- Loading indicator to pie chart
-- Import variable names from `LESS` with `less-vars-loader`
+### Added
+- Import variables from less with `less-vars-loader`
+- New links to the footer
 
 ## [3.17.0] - 25/02/17
 ### Added
