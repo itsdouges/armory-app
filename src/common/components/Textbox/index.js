@@ -21,6 +21,7 @@ type TextboxProps = {
   autoSelect?: boolean,
   singleClickSelect?: boolean,
   placeholder?: string,
+  className?: string,
 };
 
 const Textbox = ({
@@ -37,6 +38,7 @@ const Textbox = ({
   autoSelect,
   singleClickSelect,
   placeholder,
+  className,
   ...props
 }: TextboxProps) => {
   const validity = valid ? <SvgIcon name="done" /> : <SvgIcon name="clear" />;
@@ -55,7 +57,7 @@ const Textbox = ({
         disabled={busy}
         id={id}
         type={type || 'text'}
-        className={cx(styles.textbox, showStatus && status)}
+        className={cx(styles.textbox, showStatus && status, className)}
         placeholder={placeholder || label}
       />
 

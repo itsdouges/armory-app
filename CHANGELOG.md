@@ -8,6 +8,15 @@
 - Changes
 ```
 
+## [unreleased]
+### Changed
+- Header/introduction containers to have a background color
+- Search bar button to have a background color
+
+### [todo]
+- Loading indicator to pie chart
+- Import variable names from `LESS` with `less-vars-loader`
+
 ## [3.17.0] - 25/02/17
 ### Added
 - Wins/losses from `/users/{alias}` to user page
