@@ -1,6 +1,6 @@
 {
   "name": "armory-react",
-  "version": "3.17.0",
+  "version": "3.18.0",
   "scripts": {
     "start": "node ./scripts/start.js --prod",
     "test": "npm run lint && npm run flow",
@@ -69,6 +69,7 @@
     "json-loader": "^0.5.4",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "less-vars-loader": "^1.1.0",
     "opn": "^4.0.2",
     "postcss-loader": "^1.2.2",
     "promise": "^7.1.1",

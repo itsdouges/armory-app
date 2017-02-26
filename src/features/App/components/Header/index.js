@@ -137,6 +137,7 @@ export default class Header extends Component {
         backgroundSrc={headerBg}
         headerOnly={compact}
         onSticky={this.onSticky}
+        backgroundColor="#869395"
       >
         <div className={styles.bigSearchContainer} style={{ display: compact ? 'none' : '' }}>
           <Container>

@@ -3,69 +3,87 @@
 @placeholder: @_gray;
 @borderBottom: @_darkergray;
 
+@iconSmall: 20px;
+@iconMedium: 24px;
+@iconBig: 30px;
+
+@normalText: 1em;
+@smallText: 0.9em;
+
+@tinyMargin: 0.45em;
+@thinMargin: 12px;
+@thickMargin: 1em;
+
+@thinButton: 3em;
+@thickButton: 5em;
+
 .root {
-  max-width: 600px;
-  flex-grow: 1;
   position: relative;
 }
 
 div.textBoxContainer {
+  display: flex;
+  overflow: hidden;
+  align-items: stretch;
   border-radius: 5px;
   margin-bottom: 0;
   border: none;
-  padding: 12px;
   .low;
+}
 
-  input {
-    font-size: 1em;
+input.textbox {
+  font-size: @normalText;
+  margin: @thinMargin;
 
-    &::placeholder {
-      color: @placeholder;
-    }
+  &::placeholder {
+    color: @placeholder;
   }
 }
 
 .searchIcon {
-  width: 24px;
-  height: 24px;
+  width: @iconMedium;
+  height: @iconMedium;
 }
 
 .simple {
   &.textBoxContainer {
-    padding: 0.45em;
     box-shadow: none;
     border-radius: 2px;
+  }
 
-    input {
-      font-size: 0.9em;
-    }
+  input.textbox {
+    margin: @tinyMargin;
+    font-size: @smallText;
   }
 
   &.searchIcon {
-    width: 20px;
-    height: 20px;
+    width: @iconSmall;
+    height: @iconSmall;
+  }
+
+  .searchButton {
+    width: @thinButton;
   }
 }
 
 .searchButton {
-  background: transparent;
+  display: flex;
+  width: @thickButton;
   border: none;
+  background: @_red;
   cursor: pointer;
   outline: none;
-  display: flex;
+  justify-content: center;
 }
 
 .fromMobile({
   .searchIcon {
-    width: 30px;
-    height: 30px;
+    width: @iconBig;
+    height: @iconBig;
   }
 
-  div.textBoxContainer {
-    padding: 1em;
-
-    input {
-      font-size: 1em;
-    }
+  input.textbox {
+    font-size: @normalText;
+    margin: @thickMargin;
   }
 });

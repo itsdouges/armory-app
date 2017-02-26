@@ -1,6 +1,7 @@
 @import '~common/styles/base.less';
 
 @searchBarZ: @_zindex40;
+@searchBarMaxWidth: 625px;
 
 .innerContainer {
   display: flex;
@@ -45,17 +46,13 @@
 
 .searchBar {
   margin: 0 auto;
-
-  > div {
-    padding: 0.9em;
-    font-size: 1.6em;
-  }
+  font-size: 1.6em;
+  max-width: @searchBarMaxWidth;
 }
 
 .smallSearchBar {
   margin-right: 1em;
 }
-
 
 .fromMobile({
   .armoryLogo {

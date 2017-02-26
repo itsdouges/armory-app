@@ -32,6 +32,7 @@ const SearchBar = ({ className, simple, ...props }: SearchBarProps) => (
       autoFocus
       required
       placeholder={`${T.translate('search.textbox')}...`}
+      className={styles.textbox}
       containerClassName={cx(styles.textBoxContainer, { [styles.simple]: simple })}
       iconRight={(
         <button type="submit" className={styles.searchButton}>

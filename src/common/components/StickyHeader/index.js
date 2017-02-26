@@ -24,9 +24,9 @@ type State = {
 export default class StickyHeader extends Component {
   props: Props;
   detatch: () => void;
+  initialised: boolean;
   _fixed: HTMLElement;
   _root: HTMLElement;
-  initialised: boolean;
 
   state: State = {
     isSticky: false,

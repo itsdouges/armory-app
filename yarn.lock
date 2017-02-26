@@ -2933,6 +2933,19 @@ less-loader@^2.2.3:
   dependencies:
     loader-utils "^0.2.5"
 
+less-vars-loader@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/less-vars-loader/-/less-vars-loader-1.1.0.tgz#2f2245d9040225bfdf553fa5e0ddd8e47bca95b8"
+  dependencies:
+    camelcase "^3.0.0"
+    less-vars-to-js "^1.1.2"
+    loader-utils "^0.2.16"
+    object.entries "^1.0.3"
+
+less-vars-to-js@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/less-vars-to-js/-/less-vars-to-js-1.1.2.tgz#eef3e48e0ab8d0fb9a8b515753a2d7b502a9ab0c"
+
 less@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/less/-/less-2.7.1.tgz#6cbfea22b3b830304e9a5fb371d54fa480c9d7cf"
@@ -4649,13 +4662,13 @@ supports-color@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-2.0.0.tgz#535d045ce6b6363fa40117084629995e9df324c7"
 
-supports-color@^3.1.0, supports-color@^3.1.2:
+supports-color@^3.1.0, supports-color@^3.1.1, supports-color@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-3.1.2.tgz#72a262894d9d408b956ca05ff37b2ed8a6e2a2d5"
   dependencies:
     has-flag "^1.0.0"
 
-supports-color@^3.1.1, supports-color@^3.2.3:
+supports-color@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-3.2.3.tgz#65ac0504b3954171d8a64946b2ae3cbb8a5f54f6"
   dependencies:

@@ -5,6 +5,38 @@ import Container from 'common/components/Container';
 import SvgIcon from 'common/components/Icon/Svg';
 import Icon from 'common/components/Icon';
 
+const iconLinks = [{
+  title: 'Check out the code on Github!',
+  url: 'https://github.com/madou/armory-react',
+  icon: <SvgIcon name="github" />,
+}, {
+  title: 'Found something weird? Want to make a suggestion? Come post on reddit!',
+  url: 'https://www.reddit.com/r/gw2armory',
+  icon: <SvgIcon name="reddit" />,
+}, {
+  title: 'Donations keep the site running!',
+  url: 'https://paypal.me/gw2armory',
+  icon: <Icon name="paypal.png" size="" className={styles.paypal} />,
+}];
+
+const textLinks = [{
+  title: 'CHANGELOG',
+  url: 'https://github.com/madou/armory-react/blob/master/CHANGELOG.md',
+  text: 'Changelog',
+}, {
+  title: 'Tweet me @itsmadou',
+  url: 'https://twitter.com/itsmadou',
+  text: 'Twitter',
+}, {
+  title: 'Go to the official gw2 site',
+  url: 'https://guildwars2.com',
+  text: 'Guild Wars 2',
+}, {
+  title: 'GW2 Reddit',
+  url: 'https://www.reddit.com/r/guildwars2',
+  text: 'GW2 Reddit',
+}];
+
 const Footer = () => (
   <footer className={styles.root}>
     <Container className={styles.container}>
@@ -17,19 +49,27 @@ const Footer = () => (
         of their respective owners.
       </div>
 
-      <div className={styles.linkContainer}>
-        <a title="Check out the code on Github!" href="https://github.com/madou/armory-react">
-          <SvgIcon name="github" />
-        </a>
+      <ul className={styles.linkContainer}>
+        {iconLinks.map((link) => (
+          <li key={link.title}>
+            <a target="_blank" rel="noopener noreferrer" title={link.title} href={link.url}>
+              {link.icon}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Container>
 
-        <a title="Found something weird? Want to make a suggestion? Come post on reddit!" href="https://www.reddit.com/r/gw2armory">
-          <SvgIcon name="reddit" />
-        </a>
-
-        <a title="Donations keep the site running!" href="https://paypal.me/gw2armory">
-          <Icon name="paypal.png" size="" className={styles.paypal} />
-        </a>
-      </div>
+    <Container>
+      <ul className={styles.linkContainer}>
+        {textLinks.map((link) => (
+          <li key={link.title}>
+            <a target="_blank" rel="noopener noreferrer" title={link.title} href={link.url}>
+              {link.text}
+            </a>
+          </li>
+        ))}
+      </ul>
     </Container>
   </footer>
 );

@@ -8,6 +8,15 @@
 - Changes
 ```
 
+## [3.18.0] - 26/02/17
+### Changed
+- Header/introduction containers to have a background color
+- Search bar button to have a background color
+
+### Added
+- Import variables from less with `less-vars-loader`
+- New links to the footer
+
 ## [3.17.0] - 25/02/17
 ### Added
 - Wins/losses from `/users/{alias}` to user page
