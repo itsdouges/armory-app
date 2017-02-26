@@ -12,6 +12,7 @@ module.exports = {
     app: path.join(paths.appSrc, 'index'),
     character: path.join(paths.embedSrc, 'character'),
     custom: path.join(paths.embedSrc, 'custom'),
+    items: path.join(paths.embedSrc, 'items'),
   },
   output: {
     path: paths.appBuild,
@@ -110,6 +111,24 @@ module.exports = {
       template: paths.appHtml,
       filename: `${config.embedEndpoints.custom}/index.html`,
       chunks: ['custom'],
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }, config)),
+    new HtmlWebpackPlugin(Object.assign({
+      inject: true,
+      template: paths.appHtml,
+      filename: `${config.embedEndpoints.items}/index.html`,
+      chunks: ['items'],
       minify: {
         removeComments: true,
         collapseWhitespace: true,
