@@ -2,7 +2,7 @@
 
 import ReactDOM from 'react-dom';
 
-import Base from '../base';
+import Base from '../Base';
 import Custom from './components/Custom';
 import Tooltip from 'common/components/Tooltip';
 import qs from 'lib/qs';

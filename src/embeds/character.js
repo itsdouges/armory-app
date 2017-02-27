@@ -2,7 +2,7 @@
 
 import ReactDOM from 'react-dom';
 
-import Base from '../base';
+import Base from '../Base';
 import Character from './components/Character';
 import qs from 'lib/qs';
 import { pageView } from 'lib/tracking';
