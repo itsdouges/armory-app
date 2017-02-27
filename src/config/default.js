@@ -20,7 +20,7 @@ module.exports = {
     ads: false,
   },
 
-  embedEndpoints: {
+  embeds: {
     character: 'embeds/character',
     custom: 'embeds/custom',
     items: 'embeds/items',

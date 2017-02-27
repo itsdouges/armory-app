@@ -10,7 +10,7 @@ import styles from './styles.less';
 
 const buildEmbedScript = (name) => (
   // eslint-disable-next-line
-  `<iframe margin="0" frameBorder="0" width="500" height="192" src="${window.location.origin}/${config.embedEndpoints.character}/index.html?name=${name}" />`
+  `<iframe margin="0" frameBorder="0" width="500" height="192" src="${window.location.origin}/${config.embeds.character}/index.html?name=${name}" />`
 );
 
 export default class Embed extends Component {

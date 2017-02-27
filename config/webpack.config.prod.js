@@ -1,18 +1,18 @@
-const path = require('path');
-const autoprefixer = require('autoprefixer');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const paths = require('./paths');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const config = require('../src/config/default');
+import path from 'path';
+import autoprefixer from 'autoprefixer';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+
+import { createEmbedEntryPoints, createEmbedPlugins } from './embedBuilders';
+import paths from './paths';
+import config from '../src/config/default';
 
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
     app: path.join(paths.appSrc, 'index'),
-    character: path.join(paths.embedSrc, 'character'),
-    custom: path.join(paths.embedSrc, 'custom'),
-    items: path.join(paths.embedSrc, 'items'),
+    ...createEmbedEntryPoints(true),
   },
   output: {
     path: paths.appBuild,
@@ -25,44 +25,36 @@ module.exports = {
     extensions: ['', '.js', '.json'],
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        loader: 'eslint',
-        include: paths.appSrc,
+    preLoaders: [{
+      test: /\.js$/,
+      loader: 'eslint',
+      include: paths.appSrc,
+    }],
+    loaders: [{
+      test: /\.js$/,
+      include: paths.appSrc,
+      loader: 'babel',
+      query: require('./babel.prod'),
+    }, {
+      test: /\.(css|less)$/,
+      include: [paths.appSrc, paths.appNodeModules],
+      loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!postcss!less'),
+    }, {
+      test: /\.json$/,
+      include: [paths.appSrc, paths.appNodeModules],
+      loader: 'json',
+    }, {
+      test: /\.(ico|jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
+      include: [paths.appSrc, paths.appNodeModules],
+      loader: 'file',
+      query: {
+        name: 'assets/[hash:8].[ext]',
       },
-    ],
-    loaders: [
-      {
-        test: /\.js$/,
-        include: paths.appSrc,
-        loader: 'babel',
-        query: require('./babel.prod'),
-      },
-      {
-        test: /\.(css|less)$/,
-        include: [paths.appSrc, paths.appNodeModules],
-        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!postcss!less'),
-      },
-      {
-        test: /\.json$/,
-        include: [paths.appSrc, paths.appNodeModules],
-        loader: 'json',
-      },
-      {
-        test: /\.(ico|jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
-        include: [paths.appSrc, paths.appNodeModules],
-        loader: 'file',
-        query: {
-          name: 'assets/[hash:8].[ext]',
-        },
-      },
-      {
-        test: /\.(mp4|webm)$/,
-        include: [paths.appSrc, paths.appNodeModules],
-        loader: 'url?limit=10000',
-      },
-    ],
+    }, {
+      test: /\.(mp4|webm)$/,
+      include: [paths.appSrc, paths.appNodeModules],
+      loader: 'url?limit=10000',
+    }],
   },
   eslint: {
     useEslintrc: true,
@@ -71,7 +63,8 @@ module.exports = {
     return [autoprefixer];
   },
   plugins: [
-    new HtmlWebpackPlugin(Object.assign({
+    new HtmlWebpackPlugin({
+      ...config,
       inject: true,
       template: paths.appHtml,
       chunks: ['app'],
@@ -87,65 +80,10 @@ module.exports = {
         minifyCSS: true,
         minifyURLs: true,
       },
-    }, config)),
-    new HtmlWebpackPlugin(Object.assign({
-      inject: true,
-      template: paths.appHtml,
-      filename: `${config.embedEndpoints.character}/index.html`,
-      chunks: ['character'],
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-    }, config)),
-    new HtmlWebpackPlugin(Object.assign({
-      inject: true,
-      template: paths.appHtml,
-      filename: `${config.embedEndpoints.custom}/index.html`,
-      chunks: ['custom'],
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-    }, config)),
-    new HtmlWebpackPlugin(Object.assign({
-      inject: true,
-      template: paths.appHtml,
-      filename: `${config.embedEndpoints.items}/index.html`,
-      chunks: ['items'],
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-    }, config)),
+    }),
+    ...createEmbedPlugins(true),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
-      __DATE__: `${new Date()}`,
-      __SHORT_GIT_HASH__: '"local-build"',
       __DEVELOPMENT__: false,
     }),
     new webpack.ProvidePlugin({

@@ -1,10 +1,11 @@
-const path = require('path');
-const autoprefixer = require('autoprefixer');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import autoprefixer from 'autoprefixer';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const paths = require('./paths');
-const config = require('../src/config/default');
+import { createEmbedEntryPoints, createEmbedPlugins } from './embedBuilders';
+import paths from './paths';
+import config from '../src/config/default';
 
 module.exports = {
   devtool: 'eval',
@@ -14,21 +15,7 @@ module.exports = {
       require.resolve('webpack/hot/dev-server'),
       path.join(paths.appSrc, 'index'),
     ],
-    character: [
-      require.resolve('webpack-dev-server/client'),
-      require.resolve('webpack/hot/dev-server'),
-      path.join(paths.embedSrc, 'character'),
-    ],
-    custom: [
-      require.resolve('webpack-dev-server/client'),
-      require.resolve('webpack/hot/dev-server'),
-      path.join(paths.embedSrc, 'custom'),
-    ],
-    items: [
-      require.resolve('webpack-dev-server/client'),
-      require.resolve('webpack/hot/dev-server'),
-      path.join(paths.embedSrc, 'items'),
-    ],
+    ...createEmbedEntryPoints(),
   },
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
@@ -42,45 +29,37 @@ module.exports = {
     extensions: ['', '.js', '.json'],
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.js$/,
-        loader: 'eslint',
-        include: paths.appSrc,
+    preLoaders: [{
+      test: /\.js$/,
+      loader: 'eslint',
+      include: paths.appSrc,
+    }],
+    loaders: [{
+      test: /\.js$/,
+      include: paths.appSrc,
+      loader: 'babel',
+      query: require('./babel.dev'),
+    }, {
+      test: /\.(css|less)$/,
+      include: [paths.appSrc, paths.appNodeModules],
+      // eslint-disable-next-line
+      loader: 'style!css?localIdentName=[path][name]--[local]--[hash:base64:5]&modules&importLoaders=1!postcss!less',
+    }, {
+      test: /\.json$/,
+      include: [paths.appSrc, paths.appNodeModules],
+      loader: 'json',
+    }, {
+      test: /\.(ico|jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
+      include: [paths.appSrc, paths.appNodeModules],
+      loader: 'file',
+      query: {
+        name: '[name]--[hash:8].[ext]',
       },
-    ],
-    loaders: [
-      {
-        test: /\.js$/,
-        include: paths.appSrc,
-        loader: 'babel',
-        query: require('./babel.dev'),
-      },
-      {
-        test: /\.(css|less)$/,
-        include: [paths.appSrc, paths.appNodeModules],
-        // eslint-disable-next-line
-        loader: 'style!css?localIdentName=[path][name]--[local]--[hash:base64:5]&modules&importLoaders=1!postcss!less',
-      },
-      {
-        test: /\.json$/,
-        include: [paths.appSrc, paths.appNodeModules],
-        loader: 'json',
-      },
-      {
-        test: /\.(ico|jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
-        include: [paths.appSrc, paths.appNodeModules],
-        loader: 'file',
-        query: {
-          name: '[name]--[hash:8].[ext]',
-        },
-      },
-      {
-        test: /\.(mp4|webm)$/,
-        include: [paths.appSrc, paths.appNodeModules],
-        loader: 'url?limit=10000',
-      },
-    ],
+    }, {
+      test: /\.(mp4|webm)$/,
+      include: [paths.appSrc, paths.appNodeModules],
+      loader: 'url?limit=10000',
+    }],
   },
   eslint: {
     useEslintrc: true,
@@ -94,28 +73,9 @@ module.exports = {
       template: paths.appHtml,
       chunks: ['app'],
     }, config)),
-    new HtmlWebpackPlugin(Object.assign({
-      inject: true,
-      template: paths.appHtml,
-      filename: `${config.embedEndpoints.character}/index.html`,
-      chunks: ['character'],
-    }, config)),
-    new HtmlWebpackPlugin(Object.assign({
-      inject: true,
-      template: paths.appHtml,
-      filename: `${config.embedEndpoints.custom}/index.html`,
-      chunks: ['custom'],
-    }, config)),
-    new HtmlWebpackPlugin(Object.assign({
-      inject: true,
-      template: paths.appHtml,
-      filename: `${config.embedEndpoints.items}/index.html`,
-      chunks: ['items'],
-    }, config)),
+    ...createEmbedPlugins(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"development"',
-      __DATE__: `${new Date()}`,
-      __SHORT_GIT_HASH__: '"local-build"',
       __DEVELOPMENT__: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
