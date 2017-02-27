@@ -8,6 +8,12 @@
 - Changes
 ```
 
+## [3.19.0] - unreleased
+### Added
+- Skills embed
+- Items embed
+- Specialisations embed
+
 ## [3.18.0] - 26/02/17
 ### Changed
 - Header/introduction containers to have a background color

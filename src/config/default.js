@@ -25,6 +25,7 @@ module.exports = {
     custom: 'embeds/custom',
     items: 'embeds/items',
     skills: 'embeds/skills',
+    specializations: 'embeds/specializations',
   },
 
   descriptions: {
