@@ -1,7 +1,7 @@
 // @flow
 
 import ReactDOM from 'react-dom';
-import createEmbed from './embedDecorator';
+import createEmbed from './createEmbed';
 import qs from 'lib/qs';
 import Skills from './components/Skills';
 

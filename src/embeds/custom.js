@@ -2,7 +2,7 @@
 
 import ReactDOM from 'react-dom';
 
-import createEmbed from './embedDecorator';
+import createEmbed from './createEmbed';
 import Custom from './components/Custom';
 import qs from 'lib/qs';
 

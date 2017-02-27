@@ -8,7 +8,7 @@ import Head from 'common/components/Head';
 import Tooltip from 'common/components/Tooltip';
 import ArmoryBadge from 'common/components/ArmoryBadge';
 
-const embedDecorator = (title: string) => (WrappedComponent: any) => class extends Component {
+const createEmbed = (title: string) => (WrappedComponent: any) => class extends Component {
   componentWillMount () {
     pageView();
   }
@@ -16,15 +16,15 @@ const embedDecorator = (title: string) => (WrappedComponent: any) => class exten
   render () {
     return (
       <Base>
-        <span>
+        <div>
           <Head title={title} />
           <ArmoryBadge />
           <WrappedComponent {...this.props} />
           <Tooltip />
-        </span>
+        </div>
       </Base>
     );
   }
 };
 
-export default embedDecorator;
+export default createEmbed;

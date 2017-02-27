@@ -1,15 +1,16 @@
 // @flow
 
-import rootReducer from 'features/reducer';
+import 'airbnb-js-shims';
+import 'normalize.css';
+import 'lib/i18n';
+import 'assets/fonts/menomonia.css';
+
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
-import 'airbnb-js-shims';
-import 'normalize.css';
 
-import 'lib/i18n';
-import 'assets/fonts/menomonia.css';
+import rootReducer from 'features/reducer';
 import './styles.less';
 
 const middlewares = [thunk];
