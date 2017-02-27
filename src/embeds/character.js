@@ -1,23 +1,14 @@
 // @flow
 
 import ReactDOM from 'react-dom';
-
-import Base from '../Base';
+import createEmbed from './embedDecorator';
 import Character from './components/Character';
 import qs from 'lib/qs';
-import { pageView } from 'lib/tracking';
-import Head from 'common/components/Head';
 
 const characterName = qs('name');
+const CharacterEmbed = createEmbed(`Character Embed | ${characterName}`)(Character);
 
 ReactDOM.render(
-  <Base>
-    <div>
-      <Head title={`Character Embed | ${characterName}`} />
-      <Character name={characterName} />
-    </div>
-  </Base>,
+  <CharacterEmbed name={characterName} />,
   document.getElementById('root')
 );
-
-pageView();

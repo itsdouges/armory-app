@@ -5,7 +5,6 @@ import type { Items } from 'flowTypes';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ArmoryBadge from 'common/components/ArmoryBadge';
 import actions from 'features/Gw2/actions';
 import Item from 'features/Character/components/Item';
 
@@ -40,7 +39,6 @@ export default class ItemsEmbed extends Component {
 
     return (
       <div>
-        <ArmoryBadge />
         {ids.map((id) => <Item className={styles.item} key={id} item={items && items[id]} />)}
       </div>
     );

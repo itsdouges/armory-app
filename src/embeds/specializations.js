@@ -2,16 +2,12 @@
 
 import ReactDOM from 'react-dom';
 
+import createEmbed from './embedDecorator';
 import qs from 'lib/qs';
-import { pageView } from 'lib/tracking';
-import Head from 'common/components/Head';
-import Tooltip from 'common/components/Tooltip';
-import ArmoryBadge from 'common/components/ArmoryBadge';
-
-import Base from '../Base';
 import Specializations from './components/Specializations';
 
 const ids = qs('ids');
+const SpecializationsEmbed = createEmbed(`Specializations Embed | ${ids}`)(Specializations);
 
 const specs = ids.split(',').map((id) => ({
   id: +id,
@@ -19,15 +15,6 @@ const specs = ids.split(',').map((id) => ({
 }));
 
 ReactDOM.render(
-  <Base>
-    <div>
-      <Head title={`Specializations Embed | ${ids}`} />
-      <ArmoryBadge />
-      <Specializations specs={specs} />
-      <Tooltip />
-    </div>
-  </Base>,
+  <SpecializationsEmbed specs={specs} />,
   document.getElementById('root')
 );
-
-pageView();
