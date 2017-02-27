@@ -1,3 +1,5 @@
+require('babel-core/register');
+
 process.env.NODE_ENV = 'production';
 
 const chalk = require('chalk');

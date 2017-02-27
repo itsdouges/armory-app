@@ -1,3 +1,5 @@
+require('babel-core/register');
+
 const argv = require('yargs').argv;
 const s3 = require('s3');
 const http = require('http');
