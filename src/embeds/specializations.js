@@ -1,20 +1,22 @@
 // @flow
 
-import ReactDOM from 'react-dom';
-
-import createEmbed from './createEmbed';
-import qs from 'lib/qs';
 import Specializations from './components/Specializations';
 
-const ids = qs('ids');
-const SpecializationsEmbed = createEmbed(`Specializations Embed | ${ids}`)(Specializations);
+export default function (element: HTMLElement, ids: Array<number>) {
+  const traitIds = ids.map((id) => {
+    const rawId = element.getAttribute(`data-armory-opts-${id}`);
+    if (!rawId) {
+      return [];
+    }
 
-const specs = ids.split(',').map((id) => ({
-  id: +id,
-  traits: qs(id).split(',').map((traitId) => +traitId),
-}));
+    return rawId.split(',').map((traitId) => +traitId);
+  })
+  .reduce((arr, next) => arr.concat(next), []);
 
-ReactDOM.render(
-  <SpecializationsEmbed specs={specs} />,
-  document.getElementById('root')
-);
+  const specs = ids.map((id) => ({
+    id: +id,
+    traits: traitIds,
+  }));
+
+  return () => <Specializations specs={specs} />;
+}

@@ -11,14 +11,17 @@ type Props = {
   type: string,
 };
 
-class TooltipTrigger extends Component {
+@connect()
+export default class TooltipTrigger extends Component {
   props: Props;
 
   showTooltip = () => {
-    this.props.dispatch(showTooltip(true, {
+    const data = {
       data: this.props.data,
       type: this.props.type,
-    }));
+    };
+
+    this.props.dispatch(showTooltip(true, data));
   };
 
   hideTooltip = () => {
@@ -33,5 +36,3 @@ class TooltipTrigger extends Component {
     });
   }
 }
-
-export default connect()(TooltipTrigger);

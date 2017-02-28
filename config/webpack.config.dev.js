@@ -10,12 +10,17 @@ import config from '../src/config/default';
 module.exports = {
   devtool: 'eval',
   entry: {
+    ...createEmbedEntryPoints(),
     app: [
       require.resolve('webpack-dev-server/client'),
       require.resolve('webpack/hot/dev-server'),
       path.join(paths.appSrc, 'index'),
     ],
-    ...createEmbedEntryPoints(),
+    embed: [
+      require.resolve('webpack-dev-server/client'),
+      require.resolve('webpack/hot/dev-server'),
+      path.join(paths.embedSrc, 'index'),
+    ],
   },
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
@@ -68,12 +73,20 @@ module.exports = {
     return [autoprefixer];
   },
   plugins: [
-    new HtmlWebpackPlugin(Object.assign({
+    ...createEmbedPlugins(),
+    new HtmlWebpackPlugin({
+      ...config,
       inject: true,
       template: paths.appHtml,
       chunks: ['app'],
-    }, config)),
-    ...createEmbedPlugins(),
+    }),
+    new HtmlWebpackPlugin({
+      ...config,
+      inject: true,
+      template: paths.embedsHtml,
+      filename: 'embeds/index.html',
+      chunks: ['embed'],
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"development"',
       __DEVELOPMENT__: true,
