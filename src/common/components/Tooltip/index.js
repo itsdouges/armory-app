@@ -6,6 +6,7 @@ import { createSelector } from 'reselect';
 
 import { showTooltip } from 'features/Gw2/actions';
 
+import ArmoryBadge from 'common/components/ArmoryBadge';
 import MouseFollow from '../MouseFollow';
 import AmuletTooltip from './Amulet';
 import ItemTooltip from './Item';
@@ -28,6 +29,7 @@ type Props = {
     data: Object,
   },
   showTooltip?: () => void,
+  showBadge?: boolean,
 };
 
 @connect(selector, {
@@ -41,7 +43,7 @@ export default class Tooltip extends Component {
   };
 
   render () {
-    const { tooltip } = this.props;
+    const { tooltip, showBadge } = this.props;
 
     if (!tooltip || !tooltip.show) return null;
 
@@ -70,6 +72,7 @@ export default class Tooltip extends Component {
       <MouseFollow onTouchEnd={this.close}>
         <div className={styles.root}>
           {content}
+          {showBadge && <ArmoryBadge />}
         </div>
       </MouseFollow>
     );

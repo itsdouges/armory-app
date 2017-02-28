@@ -43,7 +43,7 @@ function bootstrapTooltip () {
 
   ReactDOM.render(
     <Base>
-      <Tooltip />
+      <Tooltip showBadge />
     </Base>,
     tooltipContainer
   );
