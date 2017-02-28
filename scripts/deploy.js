@@ -75,6 +75,7 @@ const SHORT_CACHE_FILES = [
   'index.html',
   'robots.txt',
   'sitemap.xml',
+  'gw2aEmbeds.js',
 ];
 
 Object.freeze(SHORT_CACHE_FILES);

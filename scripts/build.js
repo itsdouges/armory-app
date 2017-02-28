@@ -9,8 +9,12 @@ const filesize = require('filesize');
 const gzipSize = require('gzip-size').sync;
 const rimrafSync = require('rimraf').sync;
 const webpack = require('webpack');
-const config = require('../config/webpack.config.prod');
 const paths = require('../config/paths');
+
+const config = [
+  require('../config/webpack.config.embeds.prod'),
+  require('../config/webpack.config.prod'),
+];
 
 // Remove all content but keep the directory so that
 // if you're in it, you don't end up in Trash

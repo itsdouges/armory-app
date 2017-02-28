@@ -3,12 +3,14 @@
   "version": "3.19.0",
   "scripts": {
     "start": "node ./scripts/start.js --prod",
+    "start:embeds": "npm start -- --embeds",
     "test": "npm run lint && npm run flow",
     "flow": "flow",
     "flowtypes": "flow-typed install --overwrite",
     "lint": "eslint .",
     "dev": "node ./scripts/start.js",
-    "build": "node ./scripts/build.js",
+    "dev:embeds": "npm run dev -- --embeds",
+    "build": "node ./scripts/build.js --embeds",
     "deploy": "node ./scripts/deploy.js"
   },
   "dependencies": {

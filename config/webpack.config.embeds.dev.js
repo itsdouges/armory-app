@@ -3,26 +3,25 @@ import autoprefixer from 'autoprefixer';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-// import { createEmbedEntryPoints, createEmbedPlugins } from './embedBuilders';
 import paths from './paths';
 import config from '../src/config/default';
 
 module.exports = {
   devtool: 'eval',
   entry: {
-    app: [
+    gw2aEmbeds: [
       require.resolve('webpack-dev-server/client'),
       require.resolve('webpack/hot/dev-server'),
-      path.join(paths.appSrc, 'index'),
+      path.join(paths.embedSrc, 'index'),
     ],
   },
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
     path: paths.appBuild,
     pathinfo: true,
-    filename: '[name].js',
-    chunkFilename: '[name]-chunk.js',
     publicPath: '/',
+    filename: '[name].js',
+    chunkFilename: '[name]-chunk-[chunkhash:8].js',
   },
   resolve: {
     root: path.resolve('./src'),
@@ -55,10 +54,6 @@ module.exports = {
       query: {
         name: '[name]--[hash:8].[ext]',
       },
-    }, {
-      test: /\.(mp4|webm)$/,
-      include: [paths.appSrc, paths.appNodeModules],
-      loader: 'url?limit=10000',
     }],
   },
   eslint: {
@@ -71,8 +66,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       ...config,
       inject: true,
-      template: paths.appHtml,
-      chunks: ['app'],
+      template: paths.embedsHtml,
+      filename: 'embeds/example/index.html',
+      chunks: ['gw2aEmbeds'],
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"development"',
