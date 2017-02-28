@@ -4,7 +4,7 @@ import Specializations from './components/Specializations';
 
 export default function (element: HTMLElement, ids: Array<number>) {
   const traitIds = ids.map((id) => {
-    const rawId = element.getAttribute(`data-armory-opts-${id}`);
+    const rawId = element.getAttribute(`data-armory-${id}-traits`);
     if (!rawId) {
       return [];
     }

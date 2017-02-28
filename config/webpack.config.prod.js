@@ -4,15 +4,16 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-import { createEmbedEntryPoints, createEmbedPlugins } from './embedBuilders';
+// import { createEmbedEntryPoints, createEmbedPlugins } from './embedBuilders';
 import paths from './paths';
 import config from '../src/config/default';
 
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
+    // ...createEmbedEntryPoints(true),
     app: path.join(paths.appSrc, 'index'),
-    ...createEmbedEntryPoints(true),
+    gw2aEmbed: [path.join(paths.embedSrc, 'index')],
   },
   output: {
     path: paths.appBuild,
@@ -63,6 +64,7 @@ module.exports = {
     return [autoprefixer];
   },
   plugins: [
+    // ...createEmbedPlugins(true),
     new HtmlWebpackPlugin({
       ...config,
       inject: true,
@@ -81,7 +83,25 @@ module.exports = {
         minifyURLs: true,
       },
     }),
-    ...createEmbedPlugins(true),
+    new HtmlWebpackPlugin({
+      ...config,
+      inject: true,
+      template: paths.embedsHtml,
+      chunks: ['gw2aEmbed'],
+      filename: 'embeds/example/index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"',
       __DEVELOPMENT__: false,

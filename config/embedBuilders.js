@@ -12,7 +12,7 @@ const createDevEntry = (name) => [
 
 const createProdEntry = (name) => path.join(paths.embedSrc, name);
 
-export const createEmbedEntry = (name, prod) => ({
+export const createEntryPoint = (name, prod) => ({
   [name]: prod ? createProdEntry(name) : createDevEntry(name),
 });
 
@@ -43,7 +43,7 @@ export const createEmbedHtml = (name, prod) =>
 
 export const createEmbedEntryPoints = (prod) => Object.keys(config.embeds).reduce((obj, name) => ({
   ...obj,
-  ...createEmbedEntry(name, prod),
+  ...createEntryPoint(name, prod),
 }), {});
 
 export const createEmbedPlugins = (prod) =>
