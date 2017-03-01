@@ -6,6 +6,10 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import paths from './paths';
 import config from '../src/config/default';
 
+const publicPath = process.env.TRAVIS_BRANCH === 'master'
+  ? 'https://gw2armory.com/'
+  : 'https://preview.gw2armory.com/';
+
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
@@ -14,7 +18,7 @@ module.exports = {
   output: {
     path: paths.appBuild,
     pathinfo: true,
-    publicPath: '/',
+    publicPath,
     filename: '[name].js',
     chunkFilename: '[name]-chunk-[chunkhash:8].js',
   },
@@ -59,7 +63,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       ...config,
-      inject: true,
+      inject: false,
       template: paths.embedsHtml,
       chunks: ['gw2aEmbeds'],
       filename: 'embeds/example/index.html',
