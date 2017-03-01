@@ -76,6 +76,12 @@ const ItemsTooltip = ({ data: {
           </div>
         ))}
 
+        {get(item, 'details.infix_upgrade.buff.description', []).map((buff) => (
+          <div key={buff}>
+            {markup(buff)}
+          </div>
+        ))}
+
         {Object.keys(attributes).map((attribute) => {
           const modifier = attributes[attribute];
 
@@ -85,6 +91,10 @@ const ItemsTooltip = ({ data: {
             </div>
           );
         })}
+
+        <span className={colours.green}>
+          {markup(item.details.description, '\n')}
+        </span>
 
         <br />
 

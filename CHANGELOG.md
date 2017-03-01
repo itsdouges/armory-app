@@ -10,6 +10,8 @@
 
 ## [4.0.0] - unreleased
 ### Added
+- `details.description` to item tooltip
+- `details.infix_upgrade.buff.description` to item tooltip
 - New embed system (breaking change). See: `/embeds/example/index.html` for a working example. The new system works like the following:
 
 Add divs where you want embeds:

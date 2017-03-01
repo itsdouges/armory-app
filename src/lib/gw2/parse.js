@@ -113,12 +113,12 @@ export function mapItemsToObject (items: []) {
   return mappedItems;
 }
 
-export function markup (text: string) {
+export function markup (text: string, newlineCharacter: string = '<br>') {
   if (!text) {
     return <span />;
   }
 
-  const parsedText = text.replace(/<c=@([^>]*)>|<\/c>|<c>/g, '').split('<br>');
+  const parsedText = text.replace(/<c=@([^>]*)>|<\/c>|<c>/g, '').split(newlineCharacter);
   const result = /<c=@([^>]*)>/g.exec(text);
   const colour = result && result[1];
 
