@@ -8,15 +8,9 @@
 - Changes
 ```
 
-## [3.19.0] - unreleased
+## [4.0.0] - unreleased
 ### Added
-- New embed system (while keeping backwards compatability for current one). See: `/embeds/example/index.html` for a working example. The new system works like the following:
-
-Drop embed script onto your website:
-
-```
-<script async scr="https://gw2armory.com/gw2aEmbeds.js" />
-```
+- New embed system (breaking change). See: `/embeds/example/index.html` for a working example. The new system works like the following:
 
 Add divs where you want embeds:
 ```
@@ -48,7 +42,18 @@ Add divs where you want embeds:
 </div>
 ```
 
+Drop embed script onto your website:
+```
+<script async scr="https://gw2armory.com/gw2aEmbeds.js" />
+```
+
 At a later date a embed generator page will be made to help with the creation of embeds for your sites, for now you have to do everything manually-ish. Currently only `character`, `items`, `skills`, and `specializations` embeds are supported.
+
+## Removed
+- Old embed iframe system
+
+## Changed
+- Character page embed content to use new system
 
 ## [3.18.0] - 26/02/17
 ### Changed
