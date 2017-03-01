@@ -9,7 +9,7 @@ import config from '../src/config/default';
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
-    gw2aEmbeds: path.join(paths.embedSrc, 'index'),
+    gw2aEmbeds: [path.join(paths.embedSrc, 'index')],
   },
   output: {
     path: paths.appBuild,

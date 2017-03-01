@@ -5,13 +5,15 @@ import { connect } from 'react-redux';
 import { showTooltip } from 'features/Gw2/actions';
 
 type Props = {
-  data: string | Object,
-  dispatch: Function,
-  children: React$Element<*>,
-  type: string,
+  data?: string | Object,
+  showTooltip?: Function,
+  children?: React$Element<*>,
+  type?: string,
 };
 
-@connect()
+@connect(null, {
+  showTooltip,
+})
 export default class TooltipTrigger extends Component {
   props: Props;
 
@@ -21,14 +23,18 @@ export default class TooltipTrigger extends Component {
       type: this.props.type,
     };
 
-    this.props.dispatch(showTooltip(true, data));
+    this.props.showTooltip && this.props.showTooltip(true, data);
   };
 
   hideTooltip = () => {
-    this.props.dispatch(showTooltip(false));
+    this.props.showTooltip && this.props.showTooltip(false);
   };
 
   render () {
+    if (!this.props.children) {
+      return null;
+    }
+
     return cloneElement(this.props.children, {
       onMouseEnter: this.showTooltip,
       onMouseLeave: this.hideTooltip,
