@@ -12,7 +12,6 @@ import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 
 import rootReducer from 'features/reducer';
-import './styles.less';
 
 const middlewares = [thunk];
 

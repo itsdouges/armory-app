@@ -3,6 +3,7 @@
 import Base from '../Base';
 import ReactDOM from 'react-dom';
 import Tooltip from 'common/components/Tooltip';
+import styles from './styles.less';
 
 function bootstrapEmbeds () {
   if (!document.body) {
@@ -11,13 +12,8 @@ function bootstrapEmbeds () {
 
   const embedables = Array.from(document.body.querySelectorAll('[data-armory-embed]'));
   embedables.forEach((element) => {
-    let embedName = element.getAttribute('data-armory-embed');
+    const embedName = element.getAttribute('data-armory-embed');
     const rawIds = element.getAttribute('data-armory-ids');
-
-    if (embedName === 'character') {
-      embedName = 'characterNew';
-    }
-
     const ids = (rawIds || '').split(',');
 
     // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -27,7 +23,9 @@ function bootstrapEmbeds () {
 
       ReactDOM.render(
         <Base>
-          <Component />
+          <span className={styles.embed}>
+            <Component />
+          </span>
         </Base>,
         element
       );

@@ -65,7 +65,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       ...config,
-      inject: true,
+      inject: false,
       template: paths.embedsHtml,
       filename: 'embeds/example/index.html',
       chunks: ['gw2aEmbeds'],
