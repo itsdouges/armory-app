@@ -54,6 +54,7 @@ At a later date a embed generator page will be made to help with the creation of
 
 ## Changed
 - Character page embed content to use new system
+- Open Sans font to be bundled instead of loaded through Google Fonts
 
 ## [3.18.0] - 26/02/17
 ### Changed
