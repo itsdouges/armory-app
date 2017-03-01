@@ -15,7 +15,7 @@
 Drop embed script onto your website:
 
 ```
-<script async scr="https://gw2armory.com/gw2aEmbed.js" />
+<script async scr="https://gw2armory.com/gw2aEmbeds.js" />
 ```
 
 Add divs where you want embeds:
