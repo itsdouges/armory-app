@@ -1,3 +1,5 @@
+const argv = require('yargs').boolean('local').argv;
+
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import webpack from 'webpack';
@@ -18,7 +20,7 @@ module.exports = {
   output: {
     path: paths.appBuild,
     pathinfo: true,
-    publicPath,
+    publicPath: argv.local ? '/' : publicPath,
     filename: '[name].js',
     chunkFilename: '[name]-chunk-[chunkhash:8].js',
   },
@@ -40,7 +42,7 @@ module.exports = {
     }, {
       test: /\.(css|less)$/,
       include: [paths.appSrc, paths.appNodeModules],
-      loader: 'style!css?localIdentName=[path][name]--[local]--[hash:base64:5]&modules&importLoaders=1!postcss!less',
+      loader: 'style!css?&modules&importLoaders=1!postcss!less',
     }, {
       test: /\.json$/,
       include: [paths.appSrc, paths.appNodeModules],
