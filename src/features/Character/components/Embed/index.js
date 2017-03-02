@@ -1,17 +1,16 @@
 import { PropTypes, Component } from 'react';
 import cx from 'classnames';
 
-import config from 'config';
 import SvgIcon from 'common/components/Icon/Svg';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Textbox from 'common/components/Textbox';
 
 import styles from './styles.less';
 
-const buildEmbedScript = (name) => (
-  // eslint-disable-next-line
-  `<iframe margin="0" frameBorder="0" width="500" height="192" src="${window.location.origin}/${config.embedEndpoints.character}/index.html?name=${name}" />`
-);
+const buildEmbedScript = (name) => (`
+<div data-armory-embed="character" data-armory-name="${name}"></div>
+<script async type="text/javascript" src="${window.location.origin}/gw2aEmbeds.js"></script>
+`);
 
 export default class Embed extends Component {
   static propTypes = {

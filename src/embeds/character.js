@@ -1,23 +1,9 @@
 // @flow
 
-import ReactDOM from 'react-dom';
-
-import Base from '../base';
+// TODO: Remove character.js and replace with this to use in new system.
 import Character from './components/Character';
-import qs from 'lib/qs';
-import { pageView } from 'lib/tracking';
-import Head from 'common/components/Head';
 
-const characterName = qs('name');
-
-ReactDOM.render(
-  <Base>
-    <div>
-      <Head title={`Character Embed | ${characterName}`} />
-      <Character name={characterName} />
-    </div>
-  </Base>,
-  document.getElementById('root')
-);
-
-pageView();
+export default function (element: HTMLElement) {
+  const name = element.getAttribute('data-armory-name');
+  return () => <Character name={name} />;
+}

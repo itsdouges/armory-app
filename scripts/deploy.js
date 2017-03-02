@@ -1,3 +1,5 @@
+require('babel-core/register');
+
 const argv = require('yargs').argv;
 const s3 = require('s3');
 const http = require('http');
@@ -73,6 +75,7 @@ const SHORT_CACHE_FILES = [
   'index.html',
   'robots.txt',
   'sitemap.xml',
+  'gw2aEmbeds.js',
 ];
 
 Object.freeze(SHORT_CACHE_FILES);

@@ -8,7 +8,6 @@ import styles from './styles.less';
 import { fetchUser } from 'features/User/actions';
 import { fetchCharacter } from 'features/Character/actions';
 import componentsMap from './components';
-import ArmoryBadge from 'common/components/ArmoryBadge';
 import config from 'config';
 
 type QuadrantComponentMap = {
@@ -138,8 +137,6 @@ export default class CustomEmbed extends Component {
 
     return (
       <div className={styles.root} style={{ height, width }}>
-        <ArmoryBadge />
-
         {generateCells(cells, {
           user,
           props,

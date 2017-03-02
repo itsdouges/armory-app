@@ -1,5 +1,7 @@
 // @flow
 
+import type { Specializations, Traits } from 'flowTypes';
+
 import cx from 'classnames';
 
 import styles from './styles.less';
@@ -23,17 +25,10 @@ function isActive (id, { traits }) {
 type Props = {
   data: {
     id: number,
-    traits: [],
+    traits: Array<number>,
   },
-  traits: {},
-  specializations: {
-    [key: number]: {
-      name: string,
-      background: string,
-      minor_traits: Array<number>,
-      major_traits: Array<number>,
-    },
-  },
+  traits: Traits,
+  specializations: Specializations,
   size?: 'compact' | 'small' | 'large',
 };
 

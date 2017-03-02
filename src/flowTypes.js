@@ -146,6 +146,19 @@ export type Skills = {};
 
 export type Professions = {};
 
+type Specialization = {
+  name: string,
+  background: string,
+  minor_traits: Array<number>,
+  major_traits: Array<number>,
+};
+
+export type Specializations = {
+  [key: number]: Specialization,
+};
+
+export type Traits = {};
+
 export type Gw2PvpGame = {
   map_id: string,
   scores: {

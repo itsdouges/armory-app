@@ -1,5 +1,3 @@
-// @flow
-
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import includes from 'lodash/includes';
@@ -13,9 +11,9 @@ import { selector } from 'features/Character/characters.reducer';
 import styles from './styles.less';
 import Item from 'features/Character/components/Item';
 import Portrait from 'features/Character/components/Portrait';
-import ArmoryBadge from 'common/components/ArmoryBadge';
 
-class CharacterLite extends Component {
+@connect(selector)
+export default class CharacterLite extends Component {
   static propTypes = {
     character: PropTypes.object,
     dispatch: PropTypes.func,
@@ -75,8 +73,6 @@ class CharacterLite extends Component {
 
     return (
       <div className={styles.root}>
-        <ArmoryBadge />
-
         <div className={styles.cover}>
           <Portrait character={character} className={styles.litePortrait} />
         </div>
@@ -133,5 +129,3 @@ class CharacterLite extends Component {
     );
   }
 }
-
-export default connect(selector)(CharacterLite);

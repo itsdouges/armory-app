@@ -8,6 +8,56 @@
 - Changes
 ```
 
+## [4.0.0] - unreleased
+### Added
+- `details.description` to item tooltip
+- `details.infix_upgrade.buff.description` to item tooltip
+- New embed system (breaking change). See: `/embeds/example/index.html` for a working example. The new system works like the following:
+
+Add divs where you want embeds:
+```
+<div
+  data-armory-embed="specializations"
+  data-armory-ids="1,2,3"
+  data-armory-1-traits="700,1960,1950"
+  data-armory-2-traits="820,858,1694"
+  data-armory-3-traits="1761,1774,1749"
+>
+</div>
+
+<div
+  data-armory-embed="skills"
+  data-armory-ids="1175,5491"
+>
+</div>
+
+<div
+  data-armory-embed="items"
+  data-armory-ids="1,2,109"
+>
+</div>
+
+<div
+  data-armory-embed="character"
+  data-armory-name="Blastrn"
+>
+</div>
+```
+
+Drop embed script onto your website:
+```
+<script async scr="https://gw2armory.com/gw2aEmbeds.js" />
+```
+
+At a later date a embed generator page will be made to help with the creation of embeds for your sites, for now you have to do everything manually-ish. Currently only `character`, `items`, `skills`, and `specializations` embeds are supported.
+
+## Removed
+- Old embed iframe system
+
+## Changed
+- Character page embed content to use new system
+- Open Sans font to be bundled instead of loaded through Google Fonts
+
 ## [3.18.0] - 26/02/17
 ### Changed
 - Header/introduction containers to have a background color

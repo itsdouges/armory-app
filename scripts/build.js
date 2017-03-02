@@ -1,3 +1,5 @@
+require('babel-core/register');
+
 process.env.NODE_ENV = 'production';
 
 const chalk = require('chalk');
@@ -7,12 +9,31 @@ const filesize = require('filesize');
 const gzipSize = require('gzip-size').sync;
 const rimrafSync = require('rimraf').sync;
 const webpack = require('webpack');
-const config = require('../config/webpack.config.prod');
 const paths = require('../config/paths');
+
+const config = [
+  require('../config/webpack.config.embeds.prod'),
+  require('../config/webpack.config.prod'),
+];
 
 // Remove all content but keep the directory so that
 // if you're in it, you don't end up in Trash
 rimrafSync(`${paths.appBuild}/*`);
+
+function getAssets (multiStats) {
+  return multiStats.map((stats) =>
+    stats.toJson().assets
+      .filter((asset) => /\.(js|css)$/.test(asset.name))
+      .map((asset) => {
+        const fileContents = fs.readFileSync(`${paths.appBuild}/${asset.name}`);
+        return {
+          name: asset.name,
+          size: gzipSize(fileContents),
+        };
+      })
+      .sort((a, b) => b.size - a.size)
+  ).reduce((arr, stats) => arr.concat(stats), []);
+}
 
 console.log('Creating an optimized production build...');
 webpack(config).run((err, stats) => {
@@ -27,16 +48,8 @@ webpack(config).run((err, stats) => {
 
   console.log('File sizes after gzip:');
   console.log();
-  const assets = stats.toJson().assets
-    .filter((asset) => /\.(js|css)$/.test(asset.name))
-    .map((asset) => {
-      const fileContents = fs.readFileSync(`${paths.appBuild}/${asset.name}`);
-      return {
-        name: asset.name,
-        size: gzipSize(fileContents),
-      };
-    });
-  assets.sort((a, b) => b.size - a.size);
+
+  const assets = getAssets(stats.stats);
   assets.forEach((asset) => {
     console.log(
       // eslint-disable-next-line
@@ -44,6 +57,7 @@ webpack(config).run((err, stats) => {
       chalk.green(filesize(asset.size))
     );
   });
+
   console.log();
 
   const openCommand = process.platform === 'win32' ? 'start' : 'open';

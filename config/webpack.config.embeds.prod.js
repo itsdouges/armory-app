@@ -1,22 +1,28 @@
+const argv = require('yargs').boolean('local').argv;
+
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 import paths from './paths';
 import config from '../src/config/default';
 
+const publicPath = process.env.TRAVIS_BRANCH === 'master'
+  ? 'https://gw2armory.com/'
+  : 'https://preview.gw2armory.com/';
+
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
-    app: path.join(paths.appSrc, 'index'),
+    gw2aEmbeds: [path.join(paths.embedSrc, 'index')],
   },
   output: {
     path: paths.appBuild,
     pathinfo: true,
-    filename: '[name]-[hash:8].js',
-    publicPath: '/',
+    publicPath: argv.local ? '/' : publicPath,
+    filename: '[name].js',
+    chunkFilename: '[name]-chunk-[chunkhash:8].js',
   },
   resolve: {
     root: path.resolve('./src'),
@@ -36,7 +42,7 @@ module.exports = {
     }, {
       test: /\.(css|less)$/,
       include: [paths.appSrc, paths.appNodeModules],
-      loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!postcss!less'),
+      loader: 'style!css?modules&importLoaders=1!postcss!less',
     }, {
       test: /\.json$/,
       include: [paths.appSrc, paths.appNodeModules],
@@ -48,10 +54,6 @@ module.exports = {
       query: {
         name: 'assets/[hash:8].[ext]',
       },
-    }, {
-      test: /\.(mp4|webm)$/,
-      include: [paths.appSrc, paths.appNodeModules],
-      loader: 'url?limit=10000',
     }],
   },
   eslint: {
@@ -63,9 +65,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       ...config,
-      inject: true,
-      template: paths.appHtml,
-      chunks: ['app'],
+      inject: false,
+      template: paths.embedsHtml,
+      chunks: ['gw2aEmbeds'],
+      filename: 'embeds/example/index.html',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -101,6 +104,5 @@ module.exports = {
         screw_ie8: true,
       },
     }),
-    new ExtractTextPlugin('assets/[name].[contenthash:8].css'),
   ],
 };

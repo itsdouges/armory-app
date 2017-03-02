@@ -14,7 +14,7 @@ trim_trailing_whitespace = true
 indent_style = tab
 
 # Indentation override for all JS under lib directory
-[*.{js,css,less,json,yml,html}]
+[*.{js,css,less,json,yml,html,md}]
 indent_style = space
 indent_size = 2
 charset = utf-8

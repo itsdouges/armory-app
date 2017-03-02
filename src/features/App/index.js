@@ -4,6 +4,8 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
+import 'normalize.css';
+import '../../styles.less';
 import styles from './styles.less';
 
 import Footer from './components/Footer';

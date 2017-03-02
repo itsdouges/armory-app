@@ -1,6 +1,15 @@
+@import '~common/styles/base.less';
+
 .root {
- position: absolute;
- top: 5px;
- right: 5px;
- font-size: 0.75em;
+  font-size: 0.6em;
+  z-index: 2;
+  padding: 5px;
+  background: fade(@_white, 75%);
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  a {
+    color: @_black;
+    text-decoration: none;
+  }
 }

@@ -3,15 +3,8 @@
 import get from 'lodash/get';
 import cx from 'classnames';
 
-import TooltipTrigger from 'common/components/TooltipTrigger';
-import Icon from 'common/components/Icon';
 import styles from './styles.less';
-
-const Skill = ({ data, className }: { data: {}, className?: string }) => (
-  <TooltipTrigger type="skill" data={data || 'No Skill Selected'}>
-    <Icon src={get(data, 'icon')} size="mediumSmall" className={cx(styles.skill, className)} />
-  </TooltipTrigger>
-);
+import Skill from '../Skill';
 
 type SkillsProps = {
   skills: {},
