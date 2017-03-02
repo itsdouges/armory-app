@@ -43,7 +43,7 @@ function bootstrapTooltip () {
 
   ReactDOM.render(
     <Base>
-      <Tooltip showBadge />
+      <Tooltip showBadge className={styles.embed} />
     </Base>,
     tooltipContainer
   );

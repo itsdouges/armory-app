@@ -3,9 +3,9 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
+import cx from 'classnames';
 
 import { showTooltip } from 'features/Gw2/actions';
-
 import ArmoryBadge from 'common/components/ArmoryBadge';
 import MouseFollow from '../MouseFollow';
 import AmuletTooltip from './Amulet';
@@ -30,6 +30,7 @@ type Props = {
   },
   showTooltip?: () => void,
   showBadge?: boolean,
+  className?: string,
 };
 
 @connect(selector, {
@@ -43,7 +44,7 @@ export default class Tooltip extends Component {
   };
 
   render () {
-    const { tooltip, showBadge } = this.props;
+    const { tooltip, showBadge, className } = this.props;
 
     if (!tooltip || !tooltip.show) return null;
 
@@ -70,7 +71,7 @@ export default class Tooltip extends Component {
 
     return (
       <MouseFollow onTouchEnd={this.close}>
-        <div className={styles.root}>
+        <div className={cx(styles.root, className)}>
           {content}
           {showBadge && <ArmoryBadge />}
         </div>
