@@ -8,7 +8,11 @@
 - Changes
 ```
 
-## [4.0.0] - unreleased
+## [4.1.0] - unreleased
+### Added
+- Armory badge back to character embed
+
+## [4.0.0] - 2017/03/02
 ### Added
 - `details.description` to item tooltip
 - `details.infix_upgrade.buff.description` to item tooltip
@@ -58,7 +62,7 @@ At a later date a embed generator page will be made to help with the creation of
 - Character page embed content to use new system
 - Open Sans font to be bundled instead of loaded through Google Fonts
 
-## [3.18.0] - 26/02/17
+## [3.18.0] - 2017/02/26
 ### Changed
 - Header/introduction containers to have a background color
 - Search bar button to have a background color
@@ -67,39 +71,39 @@ At a later date a embed generator page will be made to help with the creation of
 - Import variables from less with `less-vars-loader`
 - New links to the footer
 
-## [3.17.0] - 25/02/17
+## [3.17.0] - 2017/02/25
 ### Added
 - Wins/losses from `/users/{alias}` to user page
 
-## [3.16.0] - 25/02/17
+## [3.16.0] - 2017/02/25
 ### Added
 - Wins/losses to leaderboards
 
 ### Fixed
 - Healthcheck message spelling mistake
 
-## [3.15.0] - 09/02/17
+## [3.15.0] - 2017/02/09
 ### Added
 - Rating change for pvp matches
 - New raid boss achievements to raid component
 
-## [3.14.4] - 03/02/17
+## [3.14.4] - 2017/02/03
 ### Changed
 - Travis ci config to use yarn through offical means
 
-## [3.14.3] - 31/01/17
+## [3.14.3] - 2017/01/30
 ### Fixed
 - Tabs _again_ to not break when unicode characters are being used #morningbugfixes
 
-## [3.14.2] - 31/01/17
+## [3.14.2] - 2017/01/30
 ### Fixed
 - Tabs not working where unicode characters are being used
 
-## [3.14.1] - 31/01/17
+## [3.14.1] - 2017/01/30
 ### Fixed
 - User pvp ranking from not having Dragon ranking
 
-## [3.14.0] - 30/01/17
+## [3.14.0] - 2017/01/30
 ### Added
 - Na/eu leaderboards
 - Claiming call to action for placeholder users

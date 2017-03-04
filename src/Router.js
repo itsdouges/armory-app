@@ -56,6 +56,7 @@ const Routes = () => (
       <Route path="/:alias" component={User} />
       <Route path="/:alias(/:subRoute)" component={User} />
       <Route path="/:alias/c/:character" component={Character} />
+      <Route path="/:alias/c/:character(/:subRoute)" component={Character} />
 
       <Route path="*" component={NotFound} />
     </Route>

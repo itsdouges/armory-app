@@ -24,6 +24,7 @@ import ImageUpload from 'common/components/ImageUpload';
 import Button from 'common/components/Button';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Icon from 'common/components/Icon';
+import Bags from './components/Bags';
 
 import PvpEquipment from './components/PvpEquipment';
 import Specialization from './components/Specialization';
@@ -172,7 +173,7 @@ export default class Character extends Component {
 
   render () {
     const {
-      routeParams: { alias },
+      routeParams: { alias, character: characterName },
       routeParams,
       characters,
       character,
@@ -222,6 +223,32 @@ export default class Character extends Component {
           characterPetIds.map((id) =>
             <ContentCard className={styles.subContent} key={id} content={pets[id]} type="pet" />
         )}
+        tabs={[{
+          to: `/${alias}/c/${characterName}`,
+          name: 'PvE',
+          ignoreTitle: true,
+          content: (
+            <div>woobois</div>
+          ),
+        }, {
+          to: `/${alias}/c/${characterName}?mode=pvp`,
+          name: 'PvP',
+          content: (
+            <div>yehh</div>
+          ),
+        }, {
+          to: `/${alias}/c/${characterName}?mode=wvw`,
+          name: 'WvW',
+          content: (
+            <div>nahh</div>
+          ),
+        }, {
+          to: `/${alias}/c/${characterName}/bags`,
+          name: 'Bags',
+          content: (
+            <Bags />
+          ),
+        }]}
       >
         <div className={styles.inner}>
           <div className={styles.columns}>
