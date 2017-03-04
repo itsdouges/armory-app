@@ -96,6 +96,12 @@ const ItemsTooltip = ({ data: {
           {markup(item.details.description, '\n')}
         </span>
 
+        {get(item, 'details.bonuses', []).map((bonusName, bonusId) => (
+          <div key={bonusId} className={colours.blue}>
+            {markup(`(${bonusId+1}): ${bonusName}`)}
+          </div>
+        ))}
+
         <br />
 
         {upgrades.map((upgrade) =>
