@@ -31,6 +31,20 @@ function buildName (item, skin, upgrades) {
   return prefixedName;
 }
 
+const ATTRIBUTE_MAPPING = {
+  "BoonDuration": "Concentration",
+  "ConditionDuration": "Expertise",
+  "CritDamage": "Ferocity",
+}
+
+function attributeName(attribute) {
+  if ( ATTRIBUTE_MAPPING[attribute] ) {
+    return ATTRIBUTE_MAPPING[attribute];
+  }
+
+  return startCase(attribute);
+}
+
 const ItemsTooltip = ({ data: {
   item,
   skin,
@@ -72,7 +86,7 @@ const ItemsTooltip = ({ data: {
 
         {get(item, 'details.infix_upgrade.attributes', []).map(({ modifier, attribute }) => (
           <div key={attribute} className={colours.green}>
-            {`+${modifier} ${startCase(attribute)}`}
+            {`+${modifier} ${attributeName(attribute)}`}
           </div>
         ))}
 
@@ -87,7 +101,7 @@ const ItemsTooltip = ({ data: {
 
           return (
             <div key={attribute} className={colours.green}>
-              {`+${modifier} ${startCase(attribute)}`}
+              {`+${modifier} ${attributeName(attribute)}`}
             </div>
           );
         })}
