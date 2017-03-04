@@ -58,6 +58,14 @@ At a later date a embed generator page will be made to help with the creation of
 - Character page embed content to use new system
 - Open Sans font to be bundled instead of loaded through Google Fonts
 
+## Fixed
+- Tooltip Fix - add bonus to runes
+- Tooltip Fix - show buffs only for upgrade components
+- Tooltip Fix - fix attribute adjust parsing
+- Tooltip Fix - add apply count badge to conditions
+- Tooltip Fix - add simple formula to Damage
+- Tooltip Fix - add mapping to attributes
+
 ## [3.18.0] - 26/02/17
 ### Changed
 - Header/introduction containers to have a background color
