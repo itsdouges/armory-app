@@ -5,6 +5,8 @@ import cx from 'classnames';
 import styles from './styles.less';
 import Icon from 'common/components/Icon';
 
+const BASE_DAMAGE = 266.0;
+
 function extractSubText (data) {
   return (
     data.hit_count ||
@@ -14,6 +16,12 @@ function extractSubText (data) {
     data.finisher_type ||
     `${data.percent}%`
   );
+}
+
+function extractDamage(data) {
+  const multiplier = data.dmg_multiplier || 1;
+
+  return BASE_DAMAGE * multiplier * data.hit_count
 }
 
 type FactProps = {
@@ -70,6 +78,14 @@ const Fact = ({ data }: FactProps) => {
       break;
 
     case 'Damage':
+      content = (
+        <div className={styles.center}>
+          <Icon src={data.icon} size="mini" />
+          {data.text}: {extractDamage(data)}
+        </div>
+      );
+      break;
+
     case 'Number':
     case 'Distance':
     case 'Radius':
