@@ -35,6 +35,19 @@ type FactProps = {
   },
 };
 
+const attributeTable = {
+  "ConditionDamage": "Condition Damage",
+  "Healing": "Healing Power",
+};
+
+const attributeToStat = (attribute) => {
+  if ( ! attributeTable[attribute] ) {
+    return attribute;
+  }
+
+  return attributeTable[attribute];
+}
+
 const Fact = ({ data }: FactProps) => {
   let content;
 
@@ -47,12 +60,20 @@ const Fact = ({ data }: FactProps) => {
       );
       break;
 
+    case 'AttributeAdjust':
+      content = (
+        <div className={styles.center}>
+          <Icon src={data.icon} size="mini" />
+          {attributeToStat(data.target)}: +{data.value}
+        </div>
+      );
+      break;
+
     case 'Damage':
     case 'Number':
     case 'Distance':
     case 'Radius':
     case 'Percent':
-    case 'AttributeAdjust':
     case 'Range':
     case 'ComboFinisher':
     case 'ComboField':
