@@ -127,7 +127,7 @@ const Fact = ({ data }: FactProps) => {
     case 'Type':
       content = (
         <div className={styles.center}>
-          <Icon src={data.icon} size="mini" />
+          <Icon src={data.icon} size="mini" applyCount={data.apply_count} />
           {data.status}{`(${data.duration}s)`}: {data.description}
         </div>
       );
