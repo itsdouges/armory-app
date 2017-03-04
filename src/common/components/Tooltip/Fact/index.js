@@ -18,10 +18,10 @@ function extractSubText (data) {
   );
 }
 
-function extractDamage(data) {
-  const multiplier = data.dmg_multiplier || 1;
+function extractDamage (data) {
+  const multiplier: number = data.dmg_multiplier || 1;
 
-  return BASE_DAMAGE * multiplier * data.hit_count
+  return BASE_DAMAGE * multiplier * data.hit_count;
 }
 
 type FactProps = {
@@ -36,6 +36,9 @@ type FactProps = {
     duration: string,
     status: string,
     description: string,
+    apply_count: number,
+    hit_count: number,
+    dmg_multiplier: number,
     prefix: {
       status: string,
       icon: string,
@@ -43,17 +46,13 @@ type FactProps = {
   },
 };
 
-const attributeTable = {
-  "ConditionDamage": "Condition Damage",
-  "Healing": "Healing Power",
+const ATTRIBUTE_MAPPING = {
+  ConditionDamage: 'Condition Damage',
+  Healing: 'Healing Power',
 };
 
-const attributeToStat = (attribute) => {
-  if ( ! attributeTable[attribute] ) {
-    return attribute;
-  }
-
-  return attributeTable[attribute];
+function attributeToStat (attribute) {
+  return ATTRIBUTE_MAPPING[attribute] || attribute;
 }
 
 const Fact = ({ data }: FactProps) => {

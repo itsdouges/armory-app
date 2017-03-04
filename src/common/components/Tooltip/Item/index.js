@@ -32,17 +32,13 @@ function buildName (item, skin, upgrades) {
 }
 
 const ATTRIBUTE_MAPPING = {
-  "BoonDuration": "Concentration",
-  "ConditionDuration": "Expertise",
-  "CritDamage": "Ferocity",
-}
+  BoonDuration: 'Concentration',
+  ConditionDuration: 'Expertise',
+  CritDamage: 'Ferocity',
+};
 
-function attributeName(attribute) {
-  if ( ATTRIBUTE_MAPPING[attribute] ) {
-    return ATTRIBUTE_MAPPING[attribute];
-  }
-
-  return startCase(attribute);
+function attributeName (attribute) {
+  return ATTRIBUTE_MAPPING[attribute] || startCase(attribute);
 }
 
 const ItemsTooltip = ({ data: {
@@ -111,8 +107,8 @@ const ItemsTooltip = ({ data: {
         </span>
 
         {get(item, 'details.bonuses', []).map((bonusName, bonusId) => (
-          <div key={bonusId} className={colours.blue}>
-            {markup(`(${bonusId+1}): ${bonusName}`)}
+          <div className={colours.blue}>
+            {markup(`(${bonusId + 1}): ${bonusName}`)}
           </div>
         ))}
 

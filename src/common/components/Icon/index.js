@@ -16,11 +16,12 @@ type IconProps = {
 };
 
 const Icon = ({ name, size, className, src, button, children, applyCount, ...props }: IconProps) => {
+  const APPLY_COUNT_THRESHOLD = 1;
   let image: string;
   let applyBadge: any;
 
-  if ( applyCount > 1 ) {
-    applyBadge = (<sub className={styles.applyBadge}>{applyCount}</sub>)
+  if (applyCount && applyCount > APPLY_COUNT_THRESHOLD) {
+    applyBadge = (<sub className={styles.applyBadge}>{applyCount}</sub>);
   }
 
   try {
