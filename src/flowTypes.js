@@ -146,6 +146,10 @@ export type Skills = {};
 
 export type Professions = {};
 
+export type CharactersList = Array<*>;
+
+export type Pets = {};
+
 type Specialization = {
   name: string,
   background: string,
@@ -177,3 +181,7 @@ export type Gw2Map = {
   id: string,
   name: string,
 };
+
+export type Gw2Title = {};
+
+export type Gw2Titles = Array<Gw2Title>;
