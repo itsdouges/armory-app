@@ -11,6 +11,10 @@
 ## [4.1.0] - unreleased
 ### Added
 - Armory badge back to character embed
+- Redux devtools
+
+### Removed
+- Redux middleware logging
 
 ## [4.0.0] - 2017/03/02
 ### Added

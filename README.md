@@ -17,6 +17,10 @@ npm run dev
 - If running locally make sure you add a `local.js` to the `src/env/` folder. Look at `local.sample.js` for help. This isn't checked in deliberately so we can play with local settings without affecting git history.
 - If needed you can get the api over at [armory-back](https://github.com/madou/armory-back). You will have to update your `config/local.js` to point to `localhost` if running the api locally.
 
+### Redux Dev Tools
+
+Enabled in dev mode only, [go install the extension](http://extension.remotedev.io/) and then open it while running the armory locally.
+
 ## Pull Requests
 
 Feel like contributing? Look at the [issues](https://github.com/madou/armory-react/issues) tab, or contact me on [reddit](https://www.reddit.com/r/gw2armory) or [twitter](https://twitter.com/itsmadou) to find something you'd like to work on, then make a pull request against the `master` branch.

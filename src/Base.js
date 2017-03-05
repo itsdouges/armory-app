@@ -6,23 +6,16 @@ import 'lib/i18n';
 import 'assets/fonts/menomonia.css';
 import 'assets/fonts/opensans.css';
 
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 
 import rootReducer from 'features/reducer';
 
-const middlewares = [thunk];
-
-if (__DEVELOPMENT__) {
-  middlewares.push(createLogger());
-}
-
-const store = createStore(
-  rootReducer,
-  applyMiddleware(...middlewares)
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(
+  applyMiddleware(thunk)
+));
 
 type BaseProps = {
   children?: Element<any>,
