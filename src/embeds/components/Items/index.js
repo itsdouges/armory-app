@@ -13,43 +13,73 @@ import styles from './styles.less';
 function mapStateToProps (state) {
   return {
     items: state.items,
+    itemstats: state.itemstats,
   };
 }
 
 type Props = {
   items?: Items,
+  itemstats?: Items,
   fetchItems?: (ids: Array<number>) => void,
+  fetchItemstats?: (ids: Array<number>) => void,
   ids: Array<number>,
   className?: string,
   mode?: 'rune' | 'item',
+  statIds: { [key: number]: number },
 };
 
 @connect(mapStateToProps, {
   fetchItems: actions.fetchItems,
+  fetchItemstats: actions.fetchItemstats,
 })
 export default class ItemsEmbed extends Component {
   props: Props;
 
+  static renderItem (items: Items, itemstats: Items, id: number, statId?: number, mode?: 'rune' | 'item') {
+    const item = Object.assign({}, items && items[id]);
+    const selectedStat = statId && itemstats && itemstats[statId];
+
+    // Apply stat on item.
+    if (item && selectedStat) {
+      console.log(selectedStat);
+      console.log(item);
+      const attributes = Object.keys(selectedStat.attributes)
+        .map((attribute) => ({
+          attribute,
+          // TODO: need to calculate modifier, how?
+          modifier: selectedStat.attributes[attribute],
+        })
+      );
+
+      item.name = `${selectedStat.name} ${item.name}`;
+      item.details.infix_upgrade = {
+        id: selectedStat.id,
+        attributes,
+      };
+    }
+
+    return (<Item
+      key={id}
+      item={items && items[id]}
+      name={mode === 'rune' ? 'Rune' : undefined}
+      tooltipType={mode === 'rune' ? 'amulets' : undefined}
+      className={styles.item}
+    />);
+  }
+
   componentWillMount () {
-    const { ids, fetchItems } = this.props;
+    const { ids, statIds, fetchItems, fetchItemstats } = this.props;
 
     fetchItems && fetchItems(ids);
+    fetchItemstats && fetchItemstats(Object.values(statIds));
   }
 
   render () {
-    const { ids, items, className, mode } = this.props;
+    const { ids, statIds, items, itemstats, className, mode } = this.props;
 
     return (
       <div className={className}>
-        {ids.map((id) => (
-          <Item
-            key={id}
-            item={items && items[id]}
-            name={mode === 'rune' ? 'Rune' : undefined}
-            tooltipType={mode === 'rune' ? 'amulets' : undefined}
-            className={styles.item}
-          />)
-        )}
+        {ids.map((id) => ItemsEmbed.renderItem(items, itemstats, id, statIds[id], mode))}
       </div>
     );
   }
