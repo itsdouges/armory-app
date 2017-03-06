@@ -4,6 +4,8 @@ import cx from 'classnames';
 
 import styles from './styles.less';
 import Icon from 'common/components/Icon';
+import T from 'i18n-react';
+import camelCase from 'lodash/camelCase';
 
 const BASE_DAMAGE = 266.0;
 
@@ -47,12 +49,12 @@ type FactProps = {
 };
 
 const ATTRIBUTE_MAPPING = {
-  ConditionDamage: 'Condition Damage',
-  Healing: 'Healing Power',
+  Healing: 'healingPower',
 };
 
 function attributeToStat (attribute) {
-  return ATTRIBUTE_MAPPING[attribute] || attribute;
+  const statName = ATTRIBUTE_MAPPING[attribute] || attribute;
+  return T.translate(`itemAttributes.${camelCase(statName)}`);
 }
 
 const Fact = ({ data }: FactProps) => {
@@ -111,10 +113,11 @@ const Fact = ({ data }: FactProps) => {
       break;
 
     case 'BuffConversion':
+      // XXX: String itself should be translated.
       content = (
         <div className={styles.center}>
           <Icon src={data.icon} size="mini" />
-          {`Gain ${data.target} based on a Percentage of ${data.source}: ${data.percent}%`}
+          {`Gain ${attributeToStat(data.target)} based on a Percentage of ${data.source}: ${data.percent}%`}
         </div>
       );
       break;

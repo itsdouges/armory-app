@@ -1,5 +1,6 @@
 import { PropTypes } from 'react';
 import startCase from 'lodash/startCase';
+import camelCase from 'lodash/camelCase';
 import get from 'lodash/get';
 import T from 'i18n-react';
 
@@ -32,13 +33,15 @@ function buildName (item, skin, upgrades) {
 }
 
 const ATTRIBUTE_MAPPING = {
-  BoonDuration: 'Concentration',
-  ConditionDuration: 'Expertise',
-  CritDamage: 'Ferocity',
+  BoonDuration: 'concentration',
+  ConditionDuration: 'expertise',
+  CritDamage: 'ferocity',
+  Healing: 'healingPower',
 };
 
 function attributeName (attribute) {
-  return ATTRIBUTE_MAPPING[attribute] || startCase(attribute);
+  const statName = ATTRIBUTE_MAPPING[attribute] || attribute;
+  return T.translate(`itemAttributes.${camelCase(statName)}`);
 }
 
 const ItemsTooltip = ({ data: {
