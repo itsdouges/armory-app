@@ -4,6 +4,10 @@ import cx from 'classnames';
 
 import styles from './styles.less';
 import Icon from 'common/components/Icon';
+import T from 'i18n-react';
+import camelCase from 'lodash/camelCase';
+
+const BASE_DAMAGE = 266.0;
 
 function extractSubText (data) {
   return (
@@ -14,6 +18,12 @@ function extractSubText (data) {
     data.finisher_type ||
     `${data.percent}%`
   );
+}
+
+function extractDamage (data) {
+  const multiplier: number = data.dmg_multiplier || 1;
+
+  return BASE_DAMAGE * multiplier * data.hit_count;
 }
 
 type FactProps = {
@@ -28,12 +38,24 @@ type FactProps = {
     duration: string,
     status: string,
     description: string,
+    apply_count: number,
+    hit_count: number,
+    dmg_multiplier: number,
     prefix: {
       status: string,
       icon: string,
     },
   },
 };
+
+const ATTRIBUTE_MAPPING = {
+  Healing: 'healingPower',
+};
+
+function attributeToStat (attribute) {
+  const statName = ATTRIBUTE_MAPPING[attribute] || attribute;
+  return T.translate(`itemAttributes.${camelCase(statName)}`);
+}
 
 const Fact = ({ data }: FactProps) => {
   let content;
@@ -47,12 +69,28 @@ const Fact = ({ data }: FactProps) => {
       );
       break;
 
+    case 'AttributeAdjust':
+      content = (
+        <div className={styles.center}>
+          <Icon src={data.icon} size="mini" />
+          {attributeToStat(data.target)}: +{data.value}
+        </div>
+      );
+      break;
+
     case 'Damage':
+      content = (
+        <div className={styles.center}>
+          <Icon src={data.icon} size="mini" />
+          {data.text}: {extractDamage(data)}
+        </div>
+      );
+      break;
+
     case 'Number':
     case 'Distance':
     case 'Radius':
     case 'Percent':
-    case 'AttributeAdjust':
     case 'Range':
     case 'ComboFinisher':
     case 'ComboField':
@@ -75,10 +113,11 @@ const Fact = ({ data }: FactProps) => {
       break;
 
     case 'BuffConversion':
+      // XXX: String itself should be translated.
       content = (
         <div className={styles.center}>
           <Icon src={data.icon} size="mini" />
-          {`Gain ${data.target} based on a Percentage of ${data.source}: ${data.percent}%`}
+          {`Gain ${attributeToStat(data.target)} based on a Percentage of ${data.source}: ${data.percent}%`}
         </div>
       );
       break;
@@ -106,7 +145,7 @@ const Fact = ({ data }: FactProps) => {
     case 'Type':
       content = (
         <div className={styles.center}>
-          <Icon src={data.icon} size="mini" />
+          <Icon src={data.icon} size="mini" applyCount={data.apply_count} />
           {data.status}{`(${data.duration}s)`}: {data.description}
         </div>
       );

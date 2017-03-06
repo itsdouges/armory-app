@@ -12,6 +12,9 @@ const detect = require('detect-port');
 const prompt = require('./utils/prompt');
 const config = require('../webpack.config');
 
+const embeds = process.argv.indexOf('--embeds') > -1;
+const basePath = embeds ? '/embeds/example/index.html' : '/';
+
 // Tools like Cloud9 rely on this
 const DEFAULT_PORT = process.env.PORT || 3000;
 let compiler;
@@ -74,11 +77,12 @@ function setupCompiler (port) {
     clearConsole();
     const hasErrors = stats.hasErrors();
     const hasWarnings = stats.hasWarnings();
+
     if (!hasErrors && !hasWarnings) {
       console.log(chalk.green('Compiled successfully!'));
       console.log();
       // eslint-disable-next-line
-      console.log('The app is running at http://localhost:' + port + '/');
+      console.log('The app is running at http://localhost:' + port + basePath);
       console.log();
       return;
     }
@@ -138,7 +142,7 @@ function openBrowser (port) {
         // eslint-disable-next-line
         'osascript ' +
         path.resolve(__dirname, './utils/chrome.applescript') +
-        ' http://localhost:' + port + '/'
+        ' http://localhost:' + port + basePath
       );
       return;
     } catch (err) {
@@ -148,7 +152,7 @@ function openBrowser (port) {
   // Fallback to opn
   // (It will always open new tab)
   // eslint-disable-next-line
-  opn('http://localhost:' + port + '/');
+  opn('http://localhost:' + port + basePath);
 }
 
 function runDevServer (port) {
