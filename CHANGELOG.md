@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.0.0] - unreleased
+## [4.0.0] - 2017/03/05
 ### Added
 - `details.description` to item tooltip
 - `details.infix_upgrade.buff.description` to item tooltip
