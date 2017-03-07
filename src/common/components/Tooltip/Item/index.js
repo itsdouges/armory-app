@@ -1,12 +1,12 @@
 import { PropTypes } from 'react';
 import startCase from 'lodash/startCase';
-import camelCase from 'lodash/camelCase';
+import includes from 'lodash/includes';
 import get from 'lodash/get';
 import T from 'i18n-react';
 
 import SimpleTooltip from '../Simple';
 import colours from 'common/styles/colours.less';
-import { markup } from 'lib/gw2/parse';
+import { markup, attributeToName } from 'lib/gw2/parse';
 
 import ItemHeader from '../ItemHeader';
 import Gold from '../Gold';
@@ -30,18 +30,6 @@ function buildName (item, skin, upgrades) {
   }
 
   return prefixedName;
-}
-
-const ATTRIBUTE_MAPPING = {
-  BoonDuration: 'concentration',
-  ConditionDuration: 'expertise',
-  CritDamage: 'ferocity',
-  Healing: 'healingPower',
-};
-
-function attributeName (attribute) {
-  const statName = ATTRIBUTE_MAPPING[attribute] || attribute;
-  return T.translate(`itemAttributes.${camelCase(statName)}`);
 }
 
 const ItemsTooltip = ({ data: {
@@ -85,11 +73,11 @@ const ItemsTooltip = ({ data: {
 
         {get(item, 'details.infix_upgrade.attributes', []).map(({ modifier, attribute }) => (
           <div key={attribute} className={colours.green}>
-            {`+${modifier} ${attributeName(attribute)}`}
+            {`+${modifier} ${attributeToName(attribute)}`}
           </div>
         ))}
 
-        {item.type === 'UpgradeComponent' && get(item, 'details.infix_upgrade.buff.description', []).map((buff) => (
+        {item.type === 'UpgradeComponent' && !includes(item.name, 'Infusion') && get(item, 'details.infix_upgrade.buff.description', []).map((buff) => (
           <div key={buff}>
             {markup(buff)}
           </div>
@@ -100,7 +88,7 @@ const ItemsTooltip = ({ data: {
 
           return (
             <div key={attribute} className={colours.green}>
-              {`+${modifier} ${attributeName(attribute)}`}
+              {`+${modifier} ${attributeToName(attribute)}`}
             </div>
           );
         })}
@@ -140,7 +128,7 @@ const ItemsTooltip = ({ data: {
 
         <div>{item.details.weight_class}</div>
 
-        <div>{startCase(item.details.type)} {item.type}</div>
+        <div>{startCase(item.details.type)} {startCase(item.type)}</div>
 
         <div>{markup(item.description)}</div>
 
