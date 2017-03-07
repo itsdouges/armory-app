@@ -6,6 +6,7 @@ import camelCase from 'lodash/camelCase';
 
 import Icon from 'common/components/Icon';
 import Gw2Icon from 'common/components/Gw2Icon';
+import { markup } from 'lib/gw2/parse';
 
 import styles from './styles.less';
 
@@ -129,7 +130,7 @@ const Fact = ({ data }: FactProps) => {
       content = (
         <div className={styles.center}>
           <Icon src={data.icon} size="mini" />
-          {data.text}
+          {markup(data.text)}
         </div>
       );
       break;
@@ -148,7 +149,7 @@ const Fact = ({ data }: FactProps) => {
       content = (
         <div className={styles.center}>
           <Gw2Icon src={data.icon} size="mini" applyCount={data.apply_count} />
-          {data.status}{`(${data.duration}s)`}: {data.description}
+          <div>{`${data.status} (${data.duration}s)`}: {markup(data.description)}</div>
         </div>
       );
       break;
