@@ -3,6 +3,7 @@
 import cx from 'classnames';
 import T from 'i18n-react';
 import camelCase from 'lodash/camelCase';
+import round from 'lodash/round';
 
 import Icon from 'common/components/Icon';
 import Gw2Icon from 'common/components/Gw2Icon';
@@ -26,7 +27,7 @@ function extractSubText (data) {
 function extractDamage (data) {
   const multiplier: number = data.dmg_multiplier || 1;
 
-  return BASE_DAMAGE * multiplier * data.hit_count;
+  return round(BASE_DAMAGE * multiplier * data.hit_count);
 }
 
 type FactProps = {
