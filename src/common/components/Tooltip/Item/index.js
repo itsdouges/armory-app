@@ -1,5 +1,6 @@
 import { PropTypes } from 'react';
 import startCase from 'lodash/startCase';
+import includes from 'lodash/includes';
 import get from 'lodash/get';
 import T from 'i18n-react';
 
@@ -76,12 +77,11 @@ const ItemsTooltip = ({ data: {
           </div>
         ))}
 
-        {/* WHAT IS THE BELOW NEEDED FOR? */}
-        {/* item.type === 'UpgradeComponent' && get(item, 'details.infix_upgrade.buff.description', []).map((buff) => (
+        {item.type === 'UpgradeComponent' && !includes(item.name, 'Infusion') && get(item, 'details.infix_upgrade.buff.description', []).map((buff) => (
           <div key={buff}>
             {markup(buff)}
           </div>
-        ))*/}
+        ))}
 
         {Object.keys(attributes).map((attribute) => {
           const modifier = attributes[attribute];
@@ -128,7 +128,7 @@ const ItemsTooltip = ({ data: {
 
         <div>{item.details.weight_class}</div>
 
-        <div>{startCase(item.details.type)} {item.type}</div>
+        <div>{startCase(item.details.type)} {startCase(item.type)}</div>
 
         <div>{markup(item.description)}</div>
 
