@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.1.0] - unreleased
+## [4.1.0] - 2017/03/07
 ### Changed
 - Embed example page to be more informative
 - Readme to be a little friendlier
