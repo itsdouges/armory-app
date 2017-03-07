@@ -8,6 +8,12 @@
 - Changes
 ```
 
+## [4.1.2] - unreleased
+### Fixed
+- Fact Tooltip: Showing extraneous infusion buffs
+- Fact Tooltip: Critical damage/healing power being used
+- Fact Tooltip: Defaults to `data.text` for AttributeAdjust facts
+
 ## [4.1.1] - 2017/03/07
 ### Fixed
 - Search icon from not being centered
