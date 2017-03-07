@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.1.2] - unreleased
+## [4.1.2] - 2017/03/08
 ### Fixed
 - Fact Tooltip: Showing extraneous infusion buffs
 - Fact Tooltip: Critical damage/healing power being used
