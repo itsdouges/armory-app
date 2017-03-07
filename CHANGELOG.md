@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.1.1] - 2017/03/07
+### Fixed
+- Search icon from not being centered
+
 ## [4.1.0] - 2017/03/07
 ### Changed
 - Embed example page to be more informative
@@ -15,6 +19,11 @@
 
 ### Added
 - Embeds link to header
+
+### Fixed
+- Tooltip fact spacing
+- Tooltip descriptions not being parsed via gw2 parser
+- Tooltip damage not being rounded
 
 ## [4.0.0] - 2017/03/05
 ### Added

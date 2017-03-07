@@ -43,6 +43,7 @@ input.textbox {
 .searchIcon {
   width: @iconMedium;
   height: @iconMedium;
+  .absoluteCenter();
 }
 
 .simple {
@@ -67,13 +68,12 @@ input.textbox {
 }
 
 .searchButton {
-  display: flex;
   width: @thickButton;
   border: none;
   background: @_red;
   cursor: pointer;
   outline: none;
-  justify-content: center;
+  position: relative;
 }
 
 .fromMobile({
