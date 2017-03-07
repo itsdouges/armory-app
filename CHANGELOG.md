@@ -8,6 +8,11 @@
 - Changes
 ```
 
+## [4.0.1] - unreleased
+### Changed
+- Embed example page to be more informative
+- Readme to be a little friendlier
+
 ## [4.0.0] - 2017/03/05
 ### Added
 - `details.description` to item tooltip
