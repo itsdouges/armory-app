@@ -1,11 +1,13 @@
 // @flow
 
 import cx from 'classnames';
-
-import styles from './styles.less';
-import Icon from 'common/components/Icon';
 import T from 'i18n-react';
 import camelCase from 'lodash/camelCase';
+
+import Icon from 'common/components/Icon';
+import Gw2Icon from 'common/components/Gw2Icon';
+
+import styles from './styles.less';
 
 const BASE_DAMAGE = 266.0;
 
@@ -145,7 +147,7 @@ const Fact = ({ data }: FactProps) => {
     case 'Type':
       content = (
         <div className={styles.center}>
-          <Icon src={data.icon} size="mini" applyCount={data.apply_count} />
+          <Gw2Icon src={data.icon} size="mini" applyCount={data.apply_count} />
           {data.status}{`(${data.duration}s)`}: {data.description}
         </div>
       );
