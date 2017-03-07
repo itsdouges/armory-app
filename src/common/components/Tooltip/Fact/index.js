@@ -66,7 +66,7 @@ const Fact = ({ data }: FactProps) => {
       content = (
         <div className={styles.center}>
           <Icon src={data.icon} size="mini" />
-          {attributeToName(data.target)}: +{data.value}
+          {data.text || attributeToName(data.target)}: +{data.value}
         </div>
       );
       break;
