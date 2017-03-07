@@ -8,6 +8,14 @@
 - Changes
 ```
 
+## [4.1.0] - 2017/03/07
+### Changed
+- Embed example page to be more informative
+- Readme to be a little friendlier
+
+### Added
+- Embeds link to header
+
 ## [4.0.0] - 2017/03/05
 ### Added
 - `details.description` to item tooltip

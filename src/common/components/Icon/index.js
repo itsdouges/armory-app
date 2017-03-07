@@ -5,24 +5,17 @@ import classnames from 'classnames/bind';
 
 const cx = classnames.bind(styles);
 
-type IconProps = {
+export type IconProps = {
   name?: string,
   size?: string,
   className?: string,
   src?: string,
   button?: boolean,
   children?: any,
-  applyCount?: number,
 };
 
-const Icon = ({ name, size, className, src, button, children, applyCount, ...props }: IconProps) => {
-  const APPLY_COUNT_THRESHOLD = 1;
-  let image: string;
-  let applyBadge: any;
-
-  if (applyCount && applyCount > APPLY_COUNT_THRESHOLD) {
-    applyBadge = (<sub className={styles.applyBadge}>{applyCount}</sub>);
-  }
+const Icon = ({ name, size, className, src, button, children, ...props }: IconProps) => {
+  let image;
 
   try {
     image = require(`assets/images/${name}`);
@@ -39,7 +32,6 @@ const Icon = ({ name, size, className, src, button, children, applyCount, ...pro
         backgroundImage: (src || name) && 'url(' + (src || image) + ')',
       }}
     >
-      {applyBadge}
       {children}
     </div>
   );
@@ -51,7 +43,6 @@ Icon.defaultProps = {
   className: '',
   src: '',
   button: false,
-  applyCount: 0,
   children: undefined,
 };
 

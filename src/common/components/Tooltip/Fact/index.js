@@ -1,11 +1,15 @@
 // @flow
 
 import cx from 'classnames';
-
-import styles from './styles.less';
-import Icon from 'common/components/Icon';
 import T from 'i18n-react';
 import camelCase from 'lodash/camelCase';
+import round from 'lodash/round';
+
+import Icon from 'common/components/Icon';
+import Gw2Icon from 'common/components/Gw2Icon';
+import { markup } from 'lib/gw2/parse';
+
+import styles from './styles.less';
 
 const BASE_DAMAGE = 266.0;
 
@@ -23,7 +27,7 @@ function extractSubText (data) {
 function extractDamage (data) {
   const multiplier: number = data.dmg_multiplier || 1;
 
-  return BASE_DAMAGE * multiplier * data.hit_count;
+  return round(BASE_DAMAGE * multiplier * data.hit_count);
 }
 
 type FactProps = {
@@ -127,7 +131,7 @@ const Fact = ({ data }: FactProps) => {
       content = (
         <div className={styles.center}>
           <Icon src={data.icon} size="mini" />
-          {data.text}
+          {markup(data.text)}
         </div>
       );
       break;
@@ -145,8 +149,8 @@ const Fact = ({ data }: FactProps) => {
     case 'Type':
       content = (
         <div className={styles.center}>
-          <Icon src={data.icon} size="mini" applyCount={data.apply_count} />
-          {data.status}{`(${data.duration}s)`}: {data.description}
+          <Gw2Icon src={data.icon} size="mini" applyCount={data.apply_count} />
+          <div>{`${data.status} (${data.duration}s)`}: {markup(data.description)}</div>
         </div>
       );
       break;
