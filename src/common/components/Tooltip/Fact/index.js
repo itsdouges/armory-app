@@ -1,13 +1,11 @@
 // @flow
 
 import cx from 'classnames';
-import T from 'i18n-react';
-import camelCase from 'lodash/camelCase';
 import round from 'lodash/round';
 
 import Icon from 'common/components/Icon';
 import Gw2Icon from 'common/components/Gw2Icon';
-import { markup } from 'lib/gw2/parse';
+import { markup, attributeToName } from 'lib/gw2/parse';
 
 import styles from './styles.less';
 
@@ -52,15 +50,6 @@ type FactProps = {
   },
 };
 
-const ATTRIBUTE_MAPPING = {
-  Healing: 'healingPower',
-};
-
-function attributeToStat (attribute) {
-  const statName = ATTRIBUTE_MAPPING[attribute] || attribute;
-  return T.translate(`itemAttributes.${camelCase(statName)}`);
-}
-
 const Fact = ({ data }: FactProps) => {
   let content;
 
@@ -77,7 +66,7 @@ const Fact = ({ data }: FactProps) => {
       content = (
         <div className={styles.center}>
           <Icon src={data.icon} size="mini" />
-          {attributeToStat(data.target)}: +{data.value}
+          {attributeToName(data.target)}: +{data.value}
         </div>
       );
       break;
@@ -121,7 +110,7 @@ const Fact = ({ data }: FactProps) => {
       content = (
         <div className={styles.center}>
           <Icon src={data.icon} size="mini" />
-          {`Gain ${attributeToStat(data.target)} based on a Percentage of ${data.source}: ${data.percent}%`}
+          {`Gain ${attributeToName(data.target)} based on a Percentage of ${data.source}: ${data.percent}%`}
         </div>
       );
       break;

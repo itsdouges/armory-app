@@ -1,7 +1,8 @@
 // @flow
 
-import colours from 'common/styles/colours.less';
 import T from 'i18n-react';
+import colours from 'common/styles/colours.less';
+import camelCase from 'lodash/camelCase';
 
 function parseVendorValue (item) {
   const inItem = {
@@ -99,6 +100,18 @@ export function parseItem (item: Object) {
   inItem = parseAvailableWeaponSlots(inItem);
 
   return inItem;
+}
+
+const ATTRIBUTE_MAPPING = {
+  BoonDuration: 'concentration',
+  ConditionDuration: 'expertise',
+  CritDamage: 'ferocity',
+  CriticalDamage: 'ferocity',
+};
+
+export function attributeToName (attribute: string) {
+  const statName = ATTRIBUTE_MAPPING[attribute] || attribute;
+  return T.translate(`itemAttributes.${camelCase(statName)}`);
 }
 
 // TODO: Stop using, use reduceById in index.js and map parseItem directly.
