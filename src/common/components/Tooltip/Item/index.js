@@ -76,11 +76,12 @@ const ItemsTooltip = ({ data: {
           </div>
         ))}
 
-        {item.type === 'UpgradeComponent' && get(item, 'details.infix_upgrade.buff.description', []).map((buff) => (
+        {/* WHAT IS THE BELOW NEEDED FOR? */}
+        {/* item.type === 'UpgradeComponent' && get(item, 'details.infix_upgrade.buff.description', []).map((buff) => (
           <div key={buff}>
             {markup(buff)}
           </div>
-        ))}
+        ))*/}
 
         {Object.keys(attributes).map((attribute) => {
           const modifier = attributes[attribute];
