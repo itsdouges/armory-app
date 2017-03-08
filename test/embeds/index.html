@@ -2,6 +2,10 @@
 <html>
   <head>
     <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #444444;
   font-family: 'Open Sans', sans-serif;
@@ -9,47 +13,189 @@ body {
 
 .container {
   margin: 0 auto;
-  background-color: #2b2b2b;
   max-width: 650px;
+  padding-bottom: 5em;
+}
+
+.inner-container {
+  background-color: #2b2b2b;
+  overflow: auto;
 }
 
 .embed {
   text-align: center;
 }
+
+h1 {
+  margin: 3em 0 0.5em !important;
+  color: #fff;
+}
+
+h2 {
+  color: #fff;
+  padding: 1em 1em 0;
+}
+
+pre {
+  background: #fff;
+  padding: 1em;
+  margin: 2em;
+  font-family: monospace, monospace;
+  font-size: 0.8rem !important;
+}
+
+p,
+ul {
+  color: #fff;
+}
+
+p {
+  margin: 2em;
+}
+
+.back {
+  color: #fff;
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.back:hover {
+  color: #d63227;
+}
     </style>
 
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <title>Embeds | Guild Wars 2 Armory</title>
+<script>
+document.GW2A_EMBED_OPTIONS = {
+  lang: 'en',
+};
+</script>
   </head>
   <body>
     <div class="container">
-      <div
-        data-armory-embed="character"
-        data-armory-name="Blastrn"
-      >
-      </div>
+      <h1>Guild Wars 2 Armory Embeds</h1>
 
-      <div
-        class="embed"
-        data-armory-embed="skills"
-        data-armory-ids="5507,5508,5510,5515,5516,5517"
-      >
-      </div>
+      <a class="back" href="https://gw2armory.com">Back to Guild Wars 2 Armory</a>
 
-      <div
-        class="embed"
-        data-armory-embed="items"
-        data-armory-ids="139,8633,46774,74847,993,109"
-      >
-      </div>
+      <div class="inner-container">
+        <h2>Embed Options</h2>
 
-      <div
-        data-armory-embed="specializations"
-        data-armory-ids="1,2,3"
-        data-armory-1-traits="700,1960,1950"
-        data-armory-2-traits="820,858,1694"
-        data-armory-3-traits="1761,1774,1749"
-      >
+        <p>Valid languages</p>
+        <ul>
+          <li>en (ENGLISH)</li>
+          <li>fr (FRENCH)</li>
+          <li>de (GERMAN)</li>
+          <li>es (SPANISH)</li>
+          <li>zh (CHINESE)</li>
+          <li>ru (RUSSIAN [limited support])</li>
+        </ul>
+
+<pre>
+document.GW2A_EMBED_OPTIONS = {
+  lang: 'en',
+};
+</pre>
+
+        <h2>Character</h2>
+
+        <div
+          data-armory-embed="character"
+          data-armory-name="Blastrn"
+        >
+        </div>
+
+        <ul>
+          <li>data-armory-embed="character"</li>
+          <li>data-armory-name="{CHARACTER_NAME}"</li>
+        </ul>
+
+        <pre>&lt;div
+  data-armory-embed="character"
+  data-armory-name="Blastrn"
+&gt;
+&lt;/div&gt;
+
+&lt;script async src="https://gw2armory.com/gw2aEmbeds.js"&gt;&lt;/script&gt;</pre>
+
+        <h2>Skills</h2>
+        <div
+          class="embed"
+          data-armory-embed="skills"
+          data-armory-ids="5507,5508,5510,5515,5516,5517,30662,5542"
+        >
+        </div>
+
+        <ul>
+          <li>data-armory-embed="skills"</li>
+          <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
+        </ul>
+
+        <pre>&lt;div
+  data-armory-embed="skills"
+  data-armory-ids="5507,5508,5510,5515,5516,5517,30662,5542"
+&gt;
+&lt;/div&gt;
+
+&lt;script async src="https://gw2armory.com/gw2aEmbeds.js"&gt;&lt;/script&gt;</pre>
+
+        <h2>Items</h2>
+        <div
+          class="embed"
+          data-armory-embed="items"
+          data-armory-ids="7139,8633,46774,74847,993,109,24836,74412,39620"
+        >
+        </div>
+
+        <ul>
+          <li>data-armory-embed="items"</li>
+          <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
+        </ul>
+
+        <pre>&lt;div
+  data-armory-embed="items"
+  data-armory-ids="7139,8633,46774,74847,993,109,24836,74412"
+&gt;
+&lt;/div&gt;
+
+&lt;script async src="https://gw2armory.com/gw2aEmbeds.js"&gt;&lt;/script&gt;</pre>
+
+        <h2>Specializations</h2>
+        <div
+          data-armory-embed="specializations"
+          data-armory-ids="1,2,3,39,11,16"
+          data-armory-1-traits="700,1960,1950"
+          data-armory-2-traits="820,858,1694"
+          data-armory-3-traits="1761,1774,1749"
+          data-armory-39-traits="815,816,801"
+          data-armory-16-traits="577,578,1686"
+          data-armory-11-traits="1471,1482,1711"
+        >
+        </div>
+
+        <ul>
+          <li>data-armory-embed="specializations"</li>
+          <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
+          <li>data-armory-{SPECIALIZATION_ID}="{TRAIT_IDS_COMMA_SEPARATED}"</li>
+        </ul>
+
+        <pre>&lt;div
+  data-armory-embed="specializations"
+  data-armory-ids="1,2,3,39,11,16"
+  data-armory-1-traits="700,1960,1950"
+  data-armory-2-traits="820,858,1694"
+  data-armory-3-traits="1761,1774,1749"
+  data-armory-39-traits="815,816,801"
+  data-armory-16-traits="577,578,1686"
+  data-armory-11-traits="1471,1482,1711"
+&gt;
+&lt;/div&gt;
+
+&lt;script async src="https://gw2armory.com/gw2aEmbeds.js"&gt;&lt;/script&gt;</pre>
       </div>
     </div>
 

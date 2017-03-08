@@ -26,7 +26,7 @@ module.exports = {
   },
 
   descriptions: {
-    pvpLeaderboard: 'Guild Wars 2 season five now underway! Keep track of Guild Wars 2 Armory users as they climb the pvp ranks! See the top 250 right here.',
+    pvpLeaderboard: 'Season six is finally here! Track users through the ranks while they climb their way to the top 250!',
   },
 
   i18n: {

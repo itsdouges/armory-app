@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.1.0] - unreleased
+## [4.3.0] - unreleased
 ### Added
 - Armory badge back to character embed
 - Redux devtools
@@ -16,7 +16,42 @@
 ### Removed
 - Redux middleware logging
 
-## [4.0.0] - 2017/03/02
+## [4.2.1] - 2017/03/09
+### Fixed
+- i18n being set with `'undefined'`
+
+## [4.2.0] - 2017/03/08
+### Added
+- i18n support for embeds
+
+## [4.1.3] - 2017/03/08
+### Changed
+- Pvp leaderboard description
+
+## [4.1.2] - 2017/03/08
+### Fixed
+- Fact Tooltip: Showing extraneous infusion buffs
+- Fact Tooltip: Critical damage/healing power being used
+- Fact Tooltip: Defaults to `data.text` for AttributeAdjust facts
+
+## [4.1.1] - 2017/03/07
+### Fixed
+- Search icon from not being centered
+
+## [4.1.0] - 2017/03/07
+### Changed
+- Embed example page to be more informative
+- Readme to be a little friendlier
+
+### Added
+- Embeds link to header
+
+### Fixed
+- Tooltip fact spacing
+- Tooltip descriptions not being parsed via gw2 parser
+- Tooltip damage not being rounded
+
+## [4.0.0] - 2017/03/05
 ### Added
 - `details.description` to item tooltip
 - `details.infix_upgrade.buff.description` to item tooltip
@@ -67,6 +102,14 @@ At a later date a embed generator page will be made to help with the creation of
 - Open Sans font to be bundled instead of loaded through Google Fonts
 
 ## [3.18.0] - 2017/02/26
+## Fixed
+- Tooltip Fix - add bonus to runes
+- Tooltip Fix - show buffs only for upgrade components
+- Tooltip Fix - fix attribute adjust parsing
+- Tooltip Fix - add apply count badge to conditions
+- Tooltip Fix - add simple formula to Damage
+- Tooltip Fix - add mapping to attributes
+
 ### Changed
 - Header/introduction containers to have a background color
 - Search bar button to have a background color

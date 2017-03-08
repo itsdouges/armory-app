@@ -37,14 +37,21 @@ type State = {
 type LinkDefs = {
   name: any,
   to: string,
+  external?: boolean,
 };
 
 const STATIC_LINKS = [{
   name: <Flair type="new">{T.translate('leaderboards.name')}</Flair>,
   to: '/leaderboards/pvp',
+  external: false,
 }, {
   name: T.translate('stats.name'),
   to: '/statistics',
+  external: false,
+}, {
+  name: <Flair type="new">Embeds</Flair>,
+  to: '/embeds/example/index.html',
+  external: true,
 }];
 
 const UNAUTHENTICATED_STATIC_LINKS = [{
@@ -126,7 +133,11 @@ export default class Header extends Component {
           className={styles.linkContainer}
           itemClassName={cx(styles.link, { [styles.christmas]: config.features.christmas })}
         >
-          {links.map(({ to, name }) => <Link to={to} key={to}>{name}</Link>)}
+          {links.map(({ to, name, external }) => (
+            external
+              ? <a href={to} key={to}>{name}</a>
+              : <Link to={to} key={to}>{name}</Link>
+          ))}
         </ResponsiveMenu>
       </Container>
     );

@@ -5,7 +5,7 @@ import classnames from 'classnames/bind';
 
 const cx = classnames.bind(styles);
 
-type IconProps = {
+export type IconProps = {
   name?: string,
   size?: string,
   className?: string,
@@ -15,7 +15,7 @@ type IconProps = {
 };
 
 const Icon = ({ name, size, className, src, button, children, ...props }: IconProps) => {
-  let image: string;
+  let image;
 
   try {
     image = require(`assets/images/${name}`);

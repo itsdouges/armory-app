@@ -7,10 +7,29 @@
 ```
 git clone https://github.com/madou/armory-react.git
 cd armory-react
-npm i
-cp src/config/local.sample.js src/config/local.js
+npm i // or yarn
+cp src/config/local.sample.js src/config/local.js // You need to create a local config yourself!
+```
+
+### Website
+
+```
 npm run dev
 ```
+
+### Embeds
+
+```
+npm run dev:embeds
+```
+
+### Technologies
+
+- React (view engine)
+- Redux (data container)
+- Flow (static type checking)
+- Webpack (asset bundler)
+- LESS (css preprocessor)
 
 ## Notes for Local Development
 

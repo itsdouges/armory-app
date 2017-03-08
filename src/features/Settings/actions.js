@@ -100,6 +100,12 @@ function validatingGw2Token (validating) {
   };
 }
 
+function invalidateGw2Token () {
+  return {
+    type: INVALIDATE_GW2_TOKEN,
+  };
+}
+
 export function validateGw2Token (token) {
   return (dispatch) => {
     if (!token) {
@@ -150,12 +156,6 @@ function deleteGw2Token (token) {
   return {
     type: REMOVE_GW2_TOKEN,
     payload: token,
-  };
-}
-
-function invalidateGw2Token () {
-  return {
-    type: INVALIDATE_GW2_TOKEN,
   };
 }
 
