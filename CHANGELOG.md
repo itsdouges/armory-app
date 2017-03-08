@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.2.1] - 2017/03/09
+### Fixed
+- i18n being set with `'undefined'`
+
 ## [4.2.0] - 2017/03/08
 ### Added
 - i18n support for embeds

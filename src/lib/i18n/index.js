@@ -12,7 +12,12 @@ export function set (lang: string) {
 }
 
 export function get (): string {
-  return ls.get(LANGUAGE_KEY) || DEFAULT_LANGUAGE;
+  const lang = ls.get(LANGUAGE_KEY);
+  if (!lang || lang === 'undefined' || lang === 'null') {
+    return DEFAULT_LANGUAGE;
+  }
+
+  return lang;
 }
 
 set(get());
