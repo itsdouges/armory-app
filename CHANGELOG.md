@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.1.3] - 2017/03/08
+### Changed
+- Pvp leaderboard description
+
 ## [4.1.2] - 2017/03/08
 ### Fixed
 - Fact Tooltip: Showing extraneous infusion buffs
