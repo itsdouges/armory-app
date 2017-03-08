@@ -1,5 +1,6 @@
 // @flow
 
+import { set as setLang } from 'lib/i18n';
 import Base from '../Base';
 import ReactDOM from 'react-dom';
 import Tooltip from 'common/components/Tooltip';
@@ -49,7 +50,21 @@ function bootstrapTooltip () {
   );
 }
 
+type Options = {
+  lang: string,
+};
+
+function setOptions () {
+  // $FlowFixMe
+  const options: Options = document.GW2A_EMBED_OPTIONS || {
+    lang: 'en',
+  };
+
+  setLang(options.lang);
+}
+
 export default function bootstrap () {
+  setOptions();
   bootstrapEmbeds();
   bootstrapTooltip();
 }

@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.2.0] - 2017/03/08
+### Added
+- i18n support for embeds
+
 ## [4.1.3] - 2017/03/08
 ### Changed
 - Pvp leaderboard description

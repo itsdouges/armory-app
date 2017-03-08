@@ -52,7 +52,8 @@ module.exports = {
     'import/resolver': 'webpack',
   },
   globals: {
-    __DEVELOPMENT__: true,
     ReduxThunk: true,
+    GW2A_EMBED_OPTIONS: true,
+    __DEVELOPMENT__: true,
   },
 };

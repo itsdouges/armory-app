@@ -44,8 +44,13 @@ pre {
   font-size: 0.8rem !important;
 }
 
+p,
 ul {
   color: #fff;
+}
+
+p {
+  margin: 2em;
 }
 
 .back {
@@ -65,6 +70,11 @@ ul {
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <title>Embeds | Guild Wars 2 Armory</title>
+<script>
+document.GW2A_EMBED_OPTIONS = {
+  lang: 'en',
+};
+</script>
   </head>
   <body>
     <div class="container">
@@ -73,6 +83,24 @@ ul {
       <a class="back" href="https://gw2armory.com">Back to Guild Wars 2 Armory</a>
 
       <div class="inner-container">
+        <h2>Embed Options</h2>
+
+        <p>Valid languages</p>
+        <ul>
+          <li>en (ENGLISH)</li>
+          <li>fr (FRENCH)</li>
+          <li>de (GERMAN)</li>
+          <li>es (SPANISH)</li>
+          <li>zh (CHINESE)</li>
+          <li>ru (RUSSIAN [limited support])</li>
+        </ul>
+
+<pre>
+document.GW2A_EMBED_OPTIONS = {
+  lang: 'en',
+};
+</pre>
+
         <h2>Character</h2>
 
         <div
