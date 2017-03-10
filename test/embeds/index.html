@@ -73,6 +73,7 @@ p {
 <script>
 document.GW2A_EMBED_OPTIONS = {
   lang: 'en',
+  showBadge: true,
 };
 </script>
   </head>
@@ -85,19 +86,27 @@ document.GW2A_EMBED_OPTIONS = {
       <div class="inner-container">
         <h2>Embed Options</h2>
 
-        <p>Valid languages</p>
+        <p>Add options in the head of your webpage. Ensure it is set immediately and not after the page has loaded (don't use inside document.onReady or equivalent).</p>
+
+        <p>lang</p>
         <ul>
-          <li>en (ENGLISH)</li>
-          <li>fr (FRENCH)</li>
-          <li>de (GERMAN)</li>
-          <li>es (SPANISH)</li>
-          <li>zh (CHINESE)</li>
-          <li>ru (RUSSIAN [limited support])</li>
+          <li>'en' (ENGLISH)</li>
+          <li>'fr' (FRENCH)</li>
+          <li>'de' (GERMAN)</li>
+          <li>'es' (SPANISH)</li>
+          <li>'zh' (CHINESE)</li>
+          <li>'ru' (RUSSIAN [limited support])</li>
         </ul>
 
+        <p>showBadge</p>
+        <ul>
+          <li>true</li>
+          <li>false</li>
+        </ul>
 <pre>
 document.GW2A_EMBED_OPTIONS = {
   lang: 'en',
+  showBadge: true,
 };
 </pre>
 

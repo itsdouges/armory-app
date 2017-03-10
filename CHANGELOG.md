@@ -8,6 +8,13 @@
 - Changes
 ```
 
+## [4.3.0] - 2017/03/10
+### Added
+- Ability to turn off embed badge
+
+### Changed
+- Armory badge for tooltip to have dark background
+
 ## [4.2.1] - 2017/03/09
 ### Fixed
 - i18n being set with `'undefined'`

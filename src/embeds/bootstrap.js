@@ -6,6 +6,11 @@ import ReactDOM from 'react-dom';
 import Tooltip from 'common/components/Tooltip';
 import styles from './styles.less';
 
+type Options = {
+  lang: string,
+  showBadge: boolean,
+};
+
 function bootstrapEmbeds () {
   if (!document.body) {
     throw new Error('Document body not loaded!');
@@ -34,7 +39,7 @@ function bootstrapEmbeds () {
   });
 }
 
-function bootstrapTooltip () {
+function bootstrapTooltip (options: Options) {
   const tooltipContainer = document.createElement('div');
   if (!document.body) {
     throw new Error('Document body not loaded!');
@@ -44,27 +49,21 @@ function bootstrapTooltip () {
 
   ReactDOM.render(
     <Base>
-      <Tooltip showBadge className={styles.embed} />
+      <Tooltip showBadge={options.showBadge} className={styles.embed} />
     </Base>,
     tooltipContainer
   );
 }
 
-type Options = {
-  lang: string,
-};
-
-function setOptions () {
-  // $FlowFixMe
-  const options: Options = document.GW2A_EMBED_OPTIONS || {
+export default function bootstrap () {
+  const options: Options = {
     lang: 'en',
+    showBadge: true,
+    // $FlowFixMe
+    ...document.GW2A_EMBED_OPTIONS,
   };
 
   setLang(options.lang);
-}
-
-export default function bootstrap () {
-  setOptions();
   bootstrapEmbeds();
-  bootstrapTooltip();
+  bootstrapTooltip(options);
 }
