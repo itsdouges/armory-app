@@ -61,7 +61,6 @@ function getCalcFunctionCelectiel (itemAttributes) {
 
 function getCalcFunction (itemAttributes, selectedStat) {
   if (selectedStat.name.includes(' and ')) {
-    console.log(selectedStat);
     return getCalcFunctionQuadOld(itemAttributes, selectedStat);
   }
 
