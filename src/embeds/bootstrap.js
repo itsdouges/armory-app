@@ -14,6 +14,10 @@ type Options = {
   showBadge: boolean,
 };
 
+export type EmbedProps = {
+  className: string,
+};
+
 const makeClassName = (str) => `gw2a-${str}-embed`;
 
 function bootstrapEmbeds () {
