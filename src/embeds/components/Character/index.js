@@ -18,13 +18,13 @@ import Item from 'features/Character/components/Item';
 import Portrait from 'features/Character/components/Portrait';
 
 type Props = {
-  character: Character,
-  selectCharacter: (name: string) => void,
-  fetchCharacter: (name: string) => void,
-  items: Items,
-  skins: Skins,
   name: string,
-  className: string,
+  character?: Character,
+  selectCharacter?: (name: string) => void,
+  fetchCharacter?: (name: string) => void,
+  items?: Items,
+  skins?: Skins,
+  className?: string,
 };
 
 @connect(selector, {
@@ -52,17 +52,17 @@ export default class CharacterLite extends Component {
   }
 
   getItems (ids: Array<number> = []) {
-    return ids.map((id) => this.props.items[id]);
+    return ids.map((id) => (this.props.items || [])[id]);
   }
 
   loadCharacter (name: string) {
-    this.props.fetchCharacter(name, {
+    this.props.fetchCharacter && this.props.fetchCharacter(name, {
       redirect404: false,
       ignoreAuth: true,
       basicLoad: true,
     });
 
-    this.props.selectCharacter(name);
+    this.props.selectCharacter && this.props.selectCharacter(name);
   }
 
   render () {
@@ -105,8 +105,8 @@ export default class CharacterLite extends Component {
                 upgradeCounts={equip.upgradeCounts}
                 upgrades={this.getItems(equip.upgrades)}
                 infusions={this.getItems(equip.infusions)}
-                item={items[equip.id]}
-                skin={skins[equip.skin]}
+                item={(items || [])[equip.id]}
+                skin={(skins || [])[equip.skin]}
                 stats={equip.stats}
               />
             );
@@ -124,8 +124,8 @@ export default class CharacterLite extends Component {
                 upgradeCounts={equip.upgradeCounts}
                 upgrades={this.getItems(equip.upgrades)}
                 infusions={this.getItems(equip.infusions)}
-                item={items[equip.id]}
-                skin={skins[equip.skin]}
+                item={(items || [])[equip.id]}
+                skin={(skins || [])[equip.skin]}
                 stats={equip.stats}
               />
             );

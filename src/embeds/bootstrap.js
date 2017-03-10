@@ -24,6 +24,10 @@ function bootstrapEmbeds () {
   const embedables = Array.from(document.body.querySelectorAll('[data-armory-embed]'));
   embedables.forEach((element) => {
     const embedName = element.getAttribute('data-armory-embed');
+    if (!embedName) {
+      return;
+    }
+
     const rawIds = element.getAttribute('data-armory-ids');
     const ids = (rawIds || '').split(',');
 
