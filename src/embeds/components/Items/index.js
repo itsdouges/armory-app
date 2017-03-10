@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import actions from 'features/Gw2/actions';
 import Item from 'features/Character/components/Item';
+import applyAttributes from 'lib/gw2/itemStats';
 
 import styles from './styles.less';
 
@@ -41,15 +42,7 @@ export default class ItemsEmbed extends Component {
 
     // Apply stat on item.
     if (item && selectedStat) {
-      console.log(selectedStat);
-      console.log(item);
-      const attributes = Object.keys(selectedStat.attributes)
-        .map((attribute) => ({
-          attribute,
-          // TODO: need to calculate modifier, how?
-          modifier: selectedStat.attributes[attribute],
-        })
-      );
+      const attributes = applyAttributes(item, selectedStat);
 
       item.name = `${selectedStat.name} ${item.name}`;
       item.details.infix_upgrade = {
