@@ -3,5 +3,5 @@
 import Skills from './components/Skills';
 
 export default function (element: HTMLElement, ids: Array<number>) {
-  return () => <Skills ids={ids} />;
+  return (props: any) => <Skills {...props} ids={ids} />;
 }

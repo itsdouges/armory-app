@@ -8,9 +8,10 @@
 - Changes
 ```
 
-## [4.3.0] - 2017/03/10
+## [4.3.0] - 2017/03/11
 ### Added
 - Ability to turn off embed badge
+- Classes for consumers of embeds to use to override styles
 
 ### Changed
 - Armory badge for tooltip to have dark background

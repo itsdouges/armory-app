@@ -1,8 +1,11 @@
 // @flow
 
-import { set as setLang } from 'lib/i18n';
+// Base is deliberately at the top.
 import Base from '../Base';
 import ReactDOM from 'react-dom';
+import cx from 'classnames';
+
+import { set as setLang } from 'lib/i18n';
 import Tooltip from 'common/components/Tooltip';
 import styles from './styles.less';
 
@@ -10,6 +13,8 @@ type Options = {
   lang: string,
   showBadge: boolean,
 };
+
+const makeClassName = (str) => `gw2a-${str}-embed`;
 
 function bootstrapEmbeds () {
   if (!document.body) {
@@ -29,9 +34,7 @@ function bootstrapEmbeds () {
 
       ReactDOM.render(
         <Base>
-          <span className={styles.embed}>
-            <Component />
-          </span>
+          <Component className={cx(styles.embed, makeClassName(embedName))} />
         </Base>,
         element
       );
@@ -49,7 +52,7 @@ function bootstrapTooltip (options: Options) {
 
   ReactDOM.render(
     <Base>
-      <Tooltip showBadge={options.showBadge} className={styles.embed} />
+      <Tooltip showBadge={options.showBadge} className={cx(styles.embed, makeClassName('tooltip'))} />
     </Base>,
     tooltipContainer
   );

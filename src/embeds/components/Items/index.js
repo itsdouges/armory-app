@@ -20,6 +20,7 @@ type Props = {
   items?: Items,
   fetchItems?: (ids: Array<number>) => void,
   ids: Array<number>,
+  className?: string,
 };
 
 @connect(mapStateToProps, {
@@ -35,10 +36,10 @@ export default class ItemsEmbed extends Component {
   }
 
   render () {
-    const { ids, items } = this.props;
+    const { ids, items, className } = this.props;
 
     return (
-      <div>
+      <div className={className}>
         {ids.map((id) => <Item className={styles.item} key={id} item={items && items[id]} />)}
       </div>
     );

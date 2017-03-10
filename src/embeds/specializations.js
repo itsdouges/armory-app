@@ -18,5 +18,5 @@ export default function (element: HTMLElement, ids: Array<number>) {
     traits: traitIds,
   }));
 
-  return () => <Specializations specs={specs} />;
+  return (props: any) => <Specializations {...props} specs={specs} />;
 }
