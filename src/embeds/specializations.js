@@ -1,5 +1,7 @@
 // @flow
 
+import type { EmbedProps } from './bootstrap';
+
 import Specializations from './components/Specializations';
 
 export default function (element: HTMLElement, ids: Array<number>) {
@@ -18,5 +20,5 @@ export default function (element: HTMLElement, ids: Array<number>) {
     traits: traitIds,
   }));
 
-  return () => <Specializations specs={specs} />;
+  return (props: EmbedProps) => <Specializations {...props} specs={specs} />;
 }

@@ -25,6 +25,7 @@ type Props = {
     id: number,
     traits: Array<number>,
   }>,
+  className?: string,
 };
 
 @connect(mapStateToProps, {
@@ -40,10 +41,10 @@ export default class SkillsEmbed extends Component {
   }
 
   render () {
-    const { specs, specializations = {}, traits = {} } = this.props;
+    const { specs, specializations = {}, traits = {}, className } = this.props;
 
     return (
-      <div>
+      <div className={className}>
         {specs.map((spec) => (
           <Specialization
             data={spec}

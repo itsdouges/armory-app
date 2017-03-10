@@ -5,7 +5,7 @@ import { Component } from 'react';
 import T from 'i18n-react';
 
 import config from 'config';
-import CharacterLite from 'embeds/components/Character';
+import CharacterEmbed from 'embeds/components/Character';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import SvgIcon from 'common/components/Icon/Svg';
 import Tooltip from 'common/components/Tooltip';
@@ -30,7 +30,7 @@ export default class RandomCharacter extends Component {
 
     return (
       <div className={styles.root}>
-        <CharacterLite name={name} />
+        <CharacterEmbed name={name} />
 
         <TooltipTrigger
           data={T.translate('characters.embedCta')}

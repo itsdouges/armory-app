@@ -1,10 +1,24 @@
 // @flow
 
-import { set as setLang } from 'lib/i18n';
+// Base is deliberately at the top.
 import Base from '../Base';
 import ReactDOM from 'react-dom';
+import cx from 'classnames';
+
+import { set as setLang } from 'lib/i18n';
 import Tooltip from 'common/components/Tooltip';
 import styles from './styles.less';
+
+type Options = {
+  lang: string,
+  showBadge: boolean,
+};
+
+export type EmbedProps = {
+  className: string,
+};
+
+const makeClassName = (str) => `gw2a-${str}-embed`;
 
 function bootstrapEmbeds () {
   if (!document.body) {
@@ -14,6 +28,10 @@ function bootstrapEmbeds () {
   const embedables = Array.from(document.body.querySelectorAll('[data-armory-embed]'));
   embedables.forEach((element) => {
     const embedName = element.getAttribute('data-armory-embed');
+    if (!embedName) {
+      return;
+    }
+
     const rawIds = element.getAttribute('data-armory-ids');
     const ids = (rawIds || '').split(',');
 
@@ -24,9 +42,7 @@ function bootstrapEmbeds () {
 
       ReactDOM.render(
         <Base>
-          <span className={styles.embed}>
-            <Component />
-          </span>
+          <Component className={cx(styles.embed, makeClassName(embedName))} />
         </Base>,
         element
       );
@@ -34,7 +50,7 @@ function bootstrapEmbeds () {
   });
 }
 
-function bootstrapTooltip () {
+function bootstrapTooltip (options: Options) {
   const tooltipContainer = document.createElement('div');
   if (!document.body) {
     throw new Error('Document body not loaded!');
@@ -44,27 +60,21 @@ function bootstrapTooltip () {
 
   ReactDOM.render(
     <Base>
-      <Tooltip showBadge className={styles.embed} />
+      <Tooltip showBadge={options.showBadge} className={cx(styles.embed, makeClassName('tooltip'))} />
     </Base>,
     tooltipContainer
   );
 }
 
-type Options = {
-  lang: string,
-};
-
-function setOptions () {
-  // $FlowFixMe
-  const options: Options = document.GW2A_EMBED_OPTIONS || {
+export default function bootstrap () {
+  const options: Options = {
     lang: 'en',
+    showBadge: true,
+    // $FlowFixMe
+    ...document.GW2A_EMBED_OPTIONS,
   };
 
   setLang(options.lang);
-}
-
-export default function bootstrap () {
-  setOptions();
   bootstrapEmbeds();
-  bootstrapTooltip();
+  bootstrapTooltip(options);
 }

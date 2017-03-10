@@ -73,7 +73,7 @@ export default class Tooltip extends Component {
       <MouseFollow onTouchEnd={this.close}>
         <div className={cx(styles.root, className)}>
           {content}
-          {showBadge && <ArmoryBadge />}
+          {showBadge && <Background><ArmoryBadge className={styles.badge} /></Background>}
         </div>
       </MouseFollow>
     );
