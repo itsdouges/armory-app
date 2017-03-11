@@ -7,7 +7,7 @@
 ### Added|Changed|Fixed|Removed
 - Changes
 ```
-## [4.2.2] - 2017/03/12
+## [4.3.1] - 2017/03/12
 ### Fixed
 - Tooltip: limit skills on traits to show only first skill
 
