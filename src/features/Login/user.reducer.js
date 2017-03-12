@@ -3,9 +3,9 @@ import {
   FETCHING_TOKEN,
 } from './actions';
 
-import { set, get } from 'lib/local-storage';
+import { set, get } from 'lib/localStorage';
 
-export const TOKEN_KEY = 'USER_TOKEN_LOCALSTORAGE_KEY';
+export const TOKEN_KEY = 'USER_TOKEN';
 
 export const defaultState = {
   token: get(TOKEN_KEY),

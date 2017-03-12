@@ -7,6 +7,18 @@
 ### Added|Changed|Fixed|Removed
 - Changes
 ```
+
+## [4.4.0] - unreleased
+### Added
+- Local storage reset
+
+### Changed
+- Local storage to compress/decompress data
+- Local storage keys to be consistent
+
+### Fixed
+- Root embed style to have box sizing style
+
 ## [4.3.1] - 2017/03/12
 ### Fixed
 - Tooltip: limit skills on traits to show only first skill

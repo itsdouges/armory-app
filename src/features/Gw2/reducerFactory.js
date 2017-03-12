@@ -1,11 +1,12 @@
-import { clearIfPastStoreInterval, set, get } from 'lib/local-storage';
+import { clearIfPastStoreInterval, set, get } from 'lib/localStorage';
 import { generateActions } from './actions';
 
 export default function gw2ReducerFactory (resourceName, getResource, {
   afterGet,
 } = {}) {
-  const LS_KEY = `LOCAL-${resourceName}-DATA`;
+  const LS_KEY = `${resourceName.toUpperCase()}_DATA`;
   const { fetching, result } = generateActions(resourceName, getResource, afterGet);
+  const initialData = get(LS_KEY);
 
   clearIfPastStoreInterval(LS_KEY);
 
@@ -34,7 +35,7 @@ export default function gw2ReducerFactory (resourceName, getResource, {
       }
     },
     defaultState: {
-      ...JSON.parse(get(LS_KEY)),
+      ...initialData && JSON.parse(initialData),
       fetching: false,
     },
   };

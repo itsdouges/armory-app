@@ -5,7 +5,7 @@ import {
 } from './actions';
 
 import { TOKEN_KEY } from 'features/Login/user.reducer';
-import { clear } from 'lib/local-storage';
+import { clear } from 'lib/localStorage';
 
 export const defaultState = {
   checkingAuthentication: true,
