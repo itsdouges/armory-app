@@ -5,7 +5,7 @@ import {
 } from './actions';
 
 import { TOKEN_KEY } from 'features/Login/user.reducer';
-import { clear } from 'lib/localStorage';
+import * as ls from 'lib/localStorage';
 
 export const defaultState = {
   checkingAuthentication: true,
@@ -14,7 +14,7 @@ export const defaultState = {
 export default (state, action) => {
   switch (action.type) {
     case CLEAR_USER_DATA:
-      clear(TOKEN_KEY);
+      ls.clear(TOKEN_KEY);
       return {};
 
     case AUTHENTICATE_USER:

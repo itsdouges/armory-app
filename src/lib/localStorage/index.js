@@ -5,7 +5,7 @@ import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
 const LAST_STORAGE_CLEAN_DATE_KEY = 'LAST_CLEAN_DATE';
 const CLEAR_INTERVAL_IN_DAYS = 7;
 
-const makeKey = (str) => `GW2A:${str}`;
+const makeKey = (str) => `GW2A:${str.toUpperCase()}`;
 
 export function set (key: string, value: string) {
   const compressed = compressToUTF16(value);

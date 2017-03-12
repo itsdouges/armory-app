@@ -1,14 +1,14 @@
-import { clearIfPastStoreInterval, set, get } from 'lib/localStorage';
+import * as ls from 'lib/localStorage';
 import { generateActions } from './actions';
 
 export default function gw2ReducerFactory (resourceName, getResource, {
   afterGet,
 } = {}) {
-  const LS_KEY = `${resourceName.toUpperCase()}_DATA`;
+  const LS_KEY = `${resourceName}_DATA`;
   const { fetching, result } = generateActions(resourceName, getResource, afterGet);
-  const initialData = get(LS_KEY);
+  const initialData = ls.get(LS_KEY);
 
-  clearIfPastStoreInterval(LS_KEY);
+  ls.clearIfPastStoreInterval(LS_KEY);
 
   return {
     reducer: (state, action) => {
@@ -25,7 +25,7 @@ export default function gw2ReducerFactory (resourceName, getResource, {
             ...action.payload,
           };
 
-          set(LS_KEY, JSON.stringify(newState));
+          ls.set(LS_KEY, JSON.stringify(newState));
 
           return newState;
         }

@@ -1,8 +1,8 @@
 // @flow
 
-import { reset as resetLocalStorage } from 'lib/localStorage';
+import * as ls from 'lib/localStorage';
 
-resetLocalStorage();
+ls.reset();
 
 import ReactDOM from 'react-dom';
 import Router from './Router';
