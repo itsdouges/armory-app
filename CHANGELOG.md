@@ -18,6 +18,7 @@
 
 ### Fixed
 - Root embed style to have box sizing style
+- Local storage set from throwing if local storage is full
 
 ## [4.3.1] - 2017/03/12
 ### Fixed

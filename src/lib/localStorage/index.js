@@ -9,7 +9,15 @@ const makeKey = (str) => `GW2A:${str}`;
 
 export function set (key: string, value: string) {
   const compressed = compressToUTF16(value);
-  localStorage.setItem(makeKey(key), compressed);
+  try {
+    localStorage.setItem(makeKey(key), compressed);
+  } catch (e) {
+    // TODO: How do we want to handle local storage
+    // being full? We could clear everything and
+    // start over - but perhaps that's not right
+    // to consumers using the embeds.
+    console.error('Local storage is full!');
+  }
 }
 
 export function get (key: string): ?string {
@@ -45,7 +53,7 @@ export function reset () {
   // Increment RESET_N when you need local storage to be
   // reset before the application bootstraps. Do this
   // cautiously, and varely rarely.
-  const lsKey = 'GW2A:RESET_1';
+  const lsKey = 'RESET_1';
   if (!get(lsKey)) {
     localStorage.clear();
     set(lsKey, 'true');
