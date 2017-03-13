@@ -8,6 +8,26 @@
 - Changes
 ```
 
+## [4.4.0] - 2017/03/13
+### Added
+- Local storage reset
+
+### Changed
+- Local storage to compress/decompress data
+- Local storage keys to be consistent
+
+### Fixed
+- Root embed style to have box sizing style
+- Local storage set from throwing if local storage is full
+
+## [4.3.2] - 2017/03/13
+### Fixed
+- Deployment script to error when sitemap is unavailable during run
+
+## [4.3.1] - 2017/03/12
+### Fixed
+- Tooltip: limit skills on traits to show only first skill
+
 ## [4.3.0] - 2017/03/11
 ### Added
 - Ability to turn off embed badge

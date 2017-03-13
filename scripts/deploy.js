@@ -65,6 +65,13 @@ function downloadSitemap (cb) {
 
   const file = fs.createWriteStream('./dist/sitemap.xml');
   http.get('http://api.gw2armory.com/sitemap.xml', (response) => {
+    if (response.statusCode >= 500) {
+      console.error('Error downloading sitemap!');
+      console.error(`${response.statusCode} - ${response.statusMessage}`);
+      process.exit(1);
+      return;
+    }
+
     response.pipe(file);
     console.log('Downloaded!');
     cb();
@@ -124,9 +131,9 @@ function sync (s3Client, bucket, folder) {
   };
 
   const uploader = s3Client.uploadDir(params);
-  uploader.on('error', (err) => {
-    console.log('Unable to sync, check your region maybe?');
-    throw err;
+  uploader.on('error', () => {
+    console.error('Unable to sync, check your region maybe?');
+    process.exit(1);
   });
 
   uploader.on('fileUploadStart', (localFilePath, s3Key) => {
