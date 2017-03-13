@@ -22,7 +22,8 @@ type Props = {
   items?: Items,
   itemstats?: Items,
   fetchItems?: (ids: Array<number>) => void,
-  fetchItemstats?: (ids: Array<number>) => void,
+  // XXX: Why flow doesn't accept number in ids?
+  fetchItemstats?: (ids: Array<mixed>) => void,
   ids: Array<number>,
   className?: string,
   mode?: 'rune' | 'item',
@@ -71,11 +72,12 @@ export default class ItemsEmbed extends Component {
     const { ids, statIds, items, itemstats, className, mode } = this.props;
 
     // Do not render until all items are loaded.
-    const existingItems = Object.keys(items);
-    const itemsExists = ids.reduce((exists, curId) =>
+    const existingItems = items && Object.keys(items);
+    const itemsExists = existingItems && ids.reduce((exists, curId) =>
       exists && (existingItems.indexOf(curId) > -1),
     true);
-    if (!itemsExists) {
+
+    if (!itemsExists || !items || !itemstats) {
       /* Use empty placeholder till all items are loaded */
       return (<div className={className} />);
     }
