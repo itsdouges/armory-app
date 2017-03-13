@@ -7,6 +7,11 @@
 ### Added|Changed|Fixed|Removed
 - Changes
 ```
+
+## [4.3.2] - 2017/03/13
+### Fixed
+- Deployment script to error when sitemap is unavailable during run
+
 ## [4.3.1] - 2017/03/12
 ### Fixed
 - Tooltip: limit skills on traits to show only first skill
