@@ -21,6 +21,7 @@ type Props = {
   fetchItems?: (ids: Array<number>) => void,
   ids: Array<number>,
   className?: string,
+  mode?: 'rune' | 'item',
 };
 
 @connect(mapStateToProps, {
@@ -36,11 +37,19 @@ export default class ItemsEmbed extends Component {
   }
 
   render () {
-    const { ids, items, className } = this.props;
+    const { ids, items, className, mode } = this.props;
 
     return (
       <div className={className}>
-        {ids.map((id) => <Item className={styles.item} key={id} item={items && items[id]} />)}
+        {ids.map((id) => (
+          <Item
+            key={id}
+            item={items && items[id]}
+            name={mode === 'rune' ? 'Rune' : undefined}
+            tooltipType={mode === 'rune' ? 'amulets' : undefined}
+            className={styles.item}
+          />)
+        )}
       </div>
     );
   }
