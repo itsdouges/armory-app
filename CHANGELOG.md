@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.5.0] - unreleased
+## [4.5.0] - 2017/03/13
 ### Added
 - Amulets embed
 
