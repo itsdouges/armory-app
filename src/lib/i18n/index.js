@@ -1,9 +1,9 @@
 // @flow
 
 import T from 'i18n-react';
-import * as ls from 'lib/local-storage';
+import * as ls from 'lib/localStorage';
 
-const LANGUAGE_KEY = 'LANGUAGE_LS_KEY';
+const LANGUAGE_KEY = 'LANGUAGE';
 const DEFAULT_LANGUAGE = 'en';
 
 export function set (lang: string) {
