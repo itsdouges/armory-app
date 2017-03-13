@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.4.0] - unreleased
+## [4.4.0] - 2017/03/13
 ### Added
 - Local storage reset
 
@@ -19,6 +19,10 @@
 ### Fixed
 - Root embed style to have box sizing style
 - Local storage set from throwing if local storage is full
+
+## [4.3.2] - 2017/03/13
+### Fixed
+- Deployment script to error when sitemap is unavailable during run
 
 ## [4.3.1] - 2017/03/12
 ### Fixed
