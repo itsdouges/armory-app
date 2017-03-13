@@ -70,6 +70,16 @@ export default class ItemsEmbed extends Component {
   render () {
     const { ids, statIds, items, itemstats, className, mode } = this.props;
 
+    // Do not render until all items are loaded.
+    const existingItems = Object.keys(items);
+    const itemsExists = ids.reduce((exists, curId) =>
+      exists && (existingItems.indexOf(curId) > -1),
+    true);
+    if (!itemsExists) {
+      /* Use empty placeholder till all items are loaded */
+      return (<div className={className} />);
+    }
+
     return (
       <div className={className}>
         {ids.map((id) => ItemsEmbed.renderItem(items, itemstats, id, statIds[id], mode))}
