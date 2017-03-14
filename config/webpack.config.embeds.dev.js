@@ -2,6 +2,8 @@ import path from 'path';
 import autoprefixer from 'autoprefixer';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import ManifestPlugin from 'webpack-manifest-plugin';
 
 import paths from './paths';
 import config from '../src/config/default';
@@ -42,7 +44,7 @@ module.exports = {
       test: /\.(css|less)$/,
       include: [paths.appSrc, paths.appNodeModules],
       // eslint-disable-next-line
-      loader: 'style!css?localIdentName=[path][name]--[local]--[hash:base64:5]&modules&importLoaders=1!postcss!less',
+      loader: ExtractTextPlugin.extract('style', 'css?localIdentName=[path][name]--[local]--[hash:base64:5]&modules&importLoaders=1!postcss!less'),
     }, {
       test: /\.json$/,
       include: [paths.appSrc, paths.appNodeModules],
@@ -78,5 +80,9 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: 'react',
     }),
+    new ExtractTextPlugin('assets/[name].[contenthash:8].css', {
+      allChunks: true,
+    }),
+    new ManifestPlugin(),
   ],
 };

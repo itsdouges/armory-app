@@ -83,6 +83,7 @@ const SHORT_CACHE_FILES = [
   'robots.txt',
   'sitemap.xml',
   'gw2aEmbeds.js',
+  'manifest.json',
 ];
 
 Object.freeze(SHORT_CACHE_FILES);

@@ -1,9 +1,13 @@
-const argv = require('yargs').boolean('local').argv;
+const argv = require('yargs')
+  .boolean('local')
+  .argv;
 
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import ManifestPlugin from 'webpack-manifest-plugin';
 
 import paths from './paths';
 import config from '../src/config/default';
@@ -22,18 +26,13 @@ module.exports = {
     pathinfo: true,
     publicPath: argv.local ? '/' : publicPath,
     filename: '[name].js',
-    chunkFilename: '[name]-chunk-[chunkhash:8].js',
+    chunkFilename: 'chunk-[chunkhash:8].js',
   },
   resolve: {
     root: path.resolve('./src'),
     extensions: ['', '.js', '.json'],
   },
   module: {
-    preLoaders: [{
-      test: /\.js$/,
-      loader: 'eslint',
-      include: paths.appSrc,
-    }],
     loaders: [{
       test: /\.js$/,
       include: paths.appSrc,
@@ -42,7 +41,7 @@ module.exports = {
     }, {
       test: /\.(css|less)$/,
       include: [paths.appSrc, paths.appNodeModules],
-      loader: 'style!css?modules&importLoaders=1!postcss!less',
+      loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!postcss!less'),
     }, {
       test: /\.json$/,
       include: [paths.appSrc, paths.appNodeModules],
@@ -104,5 +103,9 @@ module.exports = {
         screw_ie8: true,
       },
     }),
+    new ExtractTextPlugin('assets/[name].[contenthash:8].css', {
+      allChunks: true,
+    }),
+    new ManifestPlugin(),
   ],
 };

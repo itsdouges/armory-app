@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "dev": "node ./scripts/start.js",
     "dev:embeds": "npm run dev -- --embeds",
-    "build": "node ./scripts/build.js --embeds",
+    "build": "node ./scripts/build.js",
     "deploy": "node ./scripts/deploy.js"
   },
   "dependencies": {
@@ -84,6 +84,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.16.2",
+    "webpack-manifest-plugin": "^1.1.0",
     "yargs": "^6.6.0"
   }
 }

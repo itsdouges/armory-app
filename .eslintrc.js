@@ -55,5 +55,6 @@ module.exports = {
     ReduxThunk: true,
     GW2A_EMBED_OPTIONS: true,
     __DEVELOPMENT__: true,
+    __webpack_public_path__: true,
   },
 };
