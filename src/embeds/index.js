@@ -10,6 +10,7 @@ const loadBootstrap = require('promise?global!./bootstrap'); // eslint-disable-l
 
 function appendStyle (src) {
   const style = document.createElement('link');
+  // $FlowFixMe
   style.href = `${__webpack_public_path__}${src}`;
   style.setAttribute('rel', 'stylesheet');
   style.setAttribute('type', 'text/css');
@@ -18,8 +19,9 @@ function appendStyle (src) {
 
 function init () {
   loadBootstrap().then(({ default: bootstrap }) => bootstrap());
-  axios
-    .get(`${__webpack_public_path__}manifest.json`)
+
+  // $FlowFixMe
+  axios.get(`${__webpack_public_path__}manifest.json`)
     .then((response) => appendStyle(response.data['gw2aEmbeds.css']));
 }
 
