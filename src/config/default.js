@@ -39,4 +39,14 @@ module.exports = {
       { short: 'ru', long: 'Pу́сский язы́к' },
     ],
   },
+
+  cache: {
+    short: [
+      'index.html',
+      'robots.txt',
+      'sitemap.xml',
+      'gw2aEmbeds.js',
+      'manifest.json',
+    ],
+  },
 };
