@@ -91,7 +91,7 @@ function sync (s3Client, bucket, folder) {
   });
 
   uploader.on('end', () => {
-    log(`Finished sync of s3 bucket ${bucket}`);
+    log(`==> Finished sync of s3 bucket ${bucket}`);
   });
 }
 
