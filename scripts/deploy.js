@@ -3,7 +3,7 @@ const argv = require('yargs').argv;
 const s3 = require('s3');
 const http = require('http');
 const fs = require('fs');
-const config = require('../src/config');
+const config = require('../src/config/default');
 
 const ENVIRONMENT = argv.env;
 const ACCESS_KEY_ID = process.env.ACCESS_KEY_ID;
