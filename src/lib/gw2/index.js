@@ -103,7 +103,7 @@ export const readItems = (ids: Array<number>) => {
 export const readItemStats = (ids: Array<number>) => {
   const delimitedIds = ids.join(',');
 
-  return get(`${config.gw2.endpoint}v2/itemStats?ids=${delimitedIds}`, {
+  return get(`${config.gw2.endpoint}v2/itemstats?ids=${delimitedIds}`, {
     ignoreAuth: true,
   })
   .then(({ data }) => mapItemsToObject(data));

@@ -1,7 +1,12 @@
-import { Component, PropTypes } from 'react';
+// @flow
+
+import type { Character, Items, Skins } from 'flowTypes';
+
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
+import cx from 'classnames';
 
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 import ContentCard from 'common/components/ContentCard';
@@ -13,22 +18,22 @@ import styles from './styles.less';
 import Item from 'features/Character/components/Item';
 import Portrait from 'features/Character/components/Portrait';
 
-@connect(selector)
+type Props = {
+  name: string,
+  character?: Character,
+  selectCharacter?: (name: string) => void,
+  fetchCharacter?: (name: string) => void,
+  items?: Items,
+  skins?: Skins,
+  className?: string,
+};
+
+@connect(selector, {
+  fetchCharacter,
+  selectCharacter,
+})
 export default class CharacterLite extends Component {
-  static propTypes = {
-    character: PropTypes.object,
-    dispatch: PropTypes.func,
-    items: PropTypes.object,
-    skins: PropTypes.object,
-    specializations: PropTypes.object,
-    traits: PropTypes.object,
-    mode: PropTypes.oneOf(['pve', 'pvp', 'wvw']),
-    skills: PropTypes.object,
-    routeParams: PropTypes.object,
-    location: PropTypes.object,
-    amulets: PropTypes.object,
-    name: PropTypes.string,
-  };
+  props: Props;
 
   componentWillMount () {
     const name = this.props.name;
@@ -39,7 +44,7 @@ export default class CharacterLite extends Component {
     this.loadCharacter(name);
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps: Props) {
     if (this.props.name === nextProps.name) {
       return;
     }
@@ -47,18 +52,18 @@ export default class CharacterLite extends Component {
     this.loadCharacter(nextProps.name);
   }
 
-  getItems (ids = []) {
-    return ids.map((id) => this.props.items[id]);
+  getItems (ids: Array<number> = []) {
+    return ids.map((id) => (this.props.items || [])[id]);
   }
 
-  loadCharacter (name) {
-    this.props.dispatch(fetchCharacter(name, {
+  loadCharacter (name: string) {
+    this.props.fetchCharacter && this.props.fetchCharacter(name, {
       redirect404: false,
       ignoreAuth: true,
       basicLoad: true,
-    }));
+    });
 
-    this.props.dispatch(selectCharacter(name));
+    this.props.selectCharacter && this.props.selectCharacter(name);
   }
 
   render () {
@@ -66,6 +71,7 @@ export default class CharacterLite extends Component {
       character,
       items,
       skins,
+      className,
     } = this.props;
 
     const equipment = get(character, 'equipment', {});
@@ -73,7 +79,7 @@ export default class CharacterLite extends Component {
     const safeCharacter = get(this.props, 'character', {});
 
     return (
-      <div className={styles.root}>
+      <div className={cx(styles.root, className)}>
         <ArmoryBadge className={styles.badge} />
 
         <div className={styles.cover}>
@@ -102,8 +108,8 @@ export default class CharacterLite extends Component {
                 upgradeCounts={equip.upgradeCounts}
                 upgrades={this.getItems(equip.upgrades)}
                 infusions={this.getItems(equip.infusions)}
-                item={items[equip.id]}
-                skin={skins[equip.skin]}
+                item={(items || [])[equip.id]}
+                skin={(skins || [])[equip.skin]}
                 stats={equip.stats}
               />
             );
@@ -121,8 +127,8 @@ export default class CharacterLite extends Component {
                 upgradeCounts={equip.upgradeCounts}
                 upgrades={this.getItems(equip.upgrades)}
                 infusions={this.getItems(equip.infusions)}
-                item={items[equip.id]}
-                skin={skins[equip.skin]}
+                item={(items || [])[equip.id]}
+                skin={(skins || [])[equip.skin]}
                 stats={equip.stats}
               />
             );

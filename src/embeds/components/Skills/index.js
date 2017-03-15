@@ -20,6 +20,7 @@ type Props = {
   skills?: Skills,
   fetchSkills?: (ids: Array<number>) => void,
   ids: Array<number>,
+  className?: string,
 };
 
 @connect(mapStateToProps, {
@@ -35,10 +36,10 @@ export default class SkillsEmbed extends Component {
   }
 
   render () {
-    const { ids, skills } = this.props;
+    const { ids, skills, className } = this.props;
 
     return (
-      <div>
+      <div className={className}>
         {ids.map((id) => <Skill className={styles.skill} key={id} data={skills && skills[id]} />)}
       </div>
     );

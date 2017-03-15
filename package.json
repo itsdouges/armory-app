@@ -1,6 +1,6 @@
 {
   "name": "armory-react",
-  "version": "4.3.0",
+  "version": "4.7.0",
   "scripts": {
     "start": "node ./scripts/start.js --prod",
     "start:embeds": "npm start -- --embeds --local",
@@ -18,8 +18,10 @@
     "axios": "^0.15.3",
     "classnames": "^2.2.5",
     "gw2e-item-attributes": "^1.2.0",
+    "gw2itemstats": "^0.0.2",
     "i18n-react": "^0.3.0-ts1",
     "lodash": "^4.14.1",
+    "lz-string": "^1.4.4",
     "moment": "^2.15.2",
     "normalize.css": "^4.2.0",
     "react": "^15.4.2",

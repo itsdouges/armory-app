@@ -3,6 +3,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import noop from 'lodash/noop';
+import cx from 'classnames';
 
 import styles from './styles.less';
 import { fetchUser } from 'features/User/actions';
@@ -23,6 +24,7 @@ type Props = {
   width?: string,
   cells?: [number, number],
   autoUpdate?: boolean,
+  className?: string,
 
   // === Redux props ===
   dispatchFetchUser?: Function,
@@ -132,11 +134,12 @@ export default class CustomEmbed extends Component {
       width = 500,
       cells = [1, 1],
       components = {},
+      className,
       ...props
     } = this.props;
 
     return (
-      <div className={styles.root} style={{ height, width }}>
+      <div className={cx(styles.root, className)} style={{ height, width }}>
         {generateCells(cells, {
           user,
           props,

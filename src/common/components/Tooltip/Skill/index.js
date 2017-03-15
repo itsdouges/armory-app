@@ -22,10 +22,12 @@ const Skill = ({ data }: SkillProps) => {
   if (!data.name) {
     return <Background><SimpleTooltip data="Skill" /></Background>;
   }
+  // XXX: Hidden more then 1 skill.
+  const skills = get(data, 'skills', []).slice(0, 1);
 
   return (
     <div>
-      {get(data, 'skills', []).map((skill) => <Skill key={skill.id} data={skill} />)}
+      {skills.map((skill) => <Skill key={skill.id} data={skill} />)}
 
       <Background className={styles.root}>
         <div className={styles.title}>{data.name}</div>

@@ -8,13 +8,50 @@
 - Changes
 ```
 
-## [4.3.0] - unreleased
+## [4.7.0] - unreleased
 ### Added
 - Armory badge back to character embed
 - Redux devtools
 
 ### Removed
 - Redux middleware logging
+
+## [4.6.0] - 2017/03/15
+### Added
+- Ability to select item stats for item embed
+
+## [4.5.0] - 2017/03/13
+### Added
+- Amulets embed
+
+## [4.4.0] - 2017/03/13
+### Added
+- Local storage reset
+
+### Changed
+- Local storage to compress/decompress data
+- Local storage keys to be consistent
+
+### Fixed
+- Root embed style to have box sizing style
+- Local storage set from throwing if local storage is full
+
+## [4.3.2] - 2017/03/13
+### Fixed
+- Deployment script to error when sitemap is unavailable during run
+
+## [4.3.1] - 2017/03/12
+### Fixed
+- Tooltip: limit skills on traits to show only first skill
+
+## [4.3.0] - 2017/03/11
+### Added
+- Ability to turn off embed badge
+- Classes for consumers of embeds to use to override styles
+
+### Changed
+- Armory badge for tooltip to have dark background
+>>>>>>> d419ad8a66003f1778d417130d70f7d7413cb34b
 
 ## [4.2.1] - 2017/03/09
 ### Fixed
