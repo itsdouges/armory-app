@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.6.0] - 2017/03/15
+### Added
+- Ability to select item stats for item embed
+
 ## [4.5.0] - 2017/03/13
 ### Added
 - Amulets embed
