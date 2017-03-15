@@ -83,7 +83,6 @@ export const defaultUser: User = {
   losses: null,
 };
 
-
 // See: https://wiki.guildwars2.com/wiki/API:2/guild/:id/log
 type Log = {
   id: number,
@@ -137,6 +136,8 @@ export type Worlds = {};
 export type Maps = {};
 
 export type Items = {};
+
+export type ItemStats = {};
 
 export type Skins = {};
 
