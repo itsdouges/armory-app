@@ -8,12 +8,16 @@
 - Changes
 ```
 
-## [4.5.1] - unreleased
+## [4.6.1] - unreleased
 ### Changed
 - GW2AEmbeds css to be bundled in a stylesheet and to be loaded asynchronously
 
 ### Fixed
 - Embeds from dragging in `normalize.css`
+
+## [4.6.0] - 2017/03/15
+### Added
+- Ability to select item stats for item embed
 
 ## [4.5.0] - 2017/03/13
 ### Added
