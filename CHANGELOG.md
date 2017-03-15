@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.5.1] - unreleased
+### Changed
+- GW2AEmbeds css to be loaded asynchronously in a style sheet
+
 ## [4.5.0] - 2017/03/13
 ### Added
 - Amulets embed

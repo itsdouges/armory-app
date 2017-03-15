@@ -8,6 +8,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
+import Md5HashPlugin from 'webpack-md5-hash';
 
 import paths from './paths';
 import config from '../src/config/default';
@@ -26,7 +27,7 @@ module.exports = {
     pathinfo: true,
     publicPath: argv.local ? '/' : publicPath,
     filename: '[name].js',
-    chunkFilename: 'chunk-[chunkhash:8].js',
+    chunkFilename: '[name]-chunk-[chunkhash:8].js',
   },
   resolve: {
     root: path.resolve('./src'),
@@ -88,6 +89,10 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: 'react',
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'gw2aEmbeds',
+      minChunks: Infinity,
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -107,5 +112,6 @@ module.exports = {
       allChunks: true,
     }),
     new ManifestPlugin(),
+    new Md5HashPlugin(),
   ],
 };

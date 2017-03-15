@@ -1,10 +1,16 @@
 // @flow
 
+import * as ls from 'lib/localStorage';
+
+ls.reset();
+
 // Base is deliberately at the top.
 import Base from '../Base';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
+import axios from 'axios';
 
+import { addStyleSheet } from 'lib/dom';
 import { set as setLang } from 'lib/i18n';
 import Tooltip from 'common/components/Tooltip';
 import styles from './styles.less';
@@ -73,6 +79,10 @@ export default function bootstrap () {
     // $FlowFixMe
     ...document.GW2A_EMBED_OPTIONS,
   };
+
+  axios
+    .get(`${__webpack_public_path__}manifest.json`)
+    .then((response) => addStyleSheet(`${__webpack_public_path__}${response.data['gw2aEmbeds.css']}`));
 
   setLang(options.lang);
   bootstrapEmbeds();

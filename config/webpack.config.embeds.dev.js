@@ -23,7 +23,7 @@ module.exports = {
     pathinfo: true,
     publicPath: '/',
     filename: '[name].js',
-    chunkFilename: '[name]-chunk-[chunkhash:8].js',
+    chunkFilename: '[name]-chunk.js',
   },
   resolve: {
     root: path.resolve('./src'),
@@ -54,7 +54,7 @@ module.exports = {
       include: [paths.appSrc, paths.appNodeModules],
       loader: 'file',
       query: {
-        name: '[name]--[hash:8].[ext]',
+        name: '[name].[ext]',
       },
     }],
   },
