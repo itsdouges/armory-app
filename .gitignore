@@ -8,7 +8,7 @@ dist
 
 # misc
 .DS_Store
-npm-debug.log
+*.log
 
 # local env
 /src/config/local.js
