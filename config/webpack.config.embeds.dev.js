@@ -80,7 +80,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: 'react',
     }),
-    new ExtractTextPlugin('assets/[name].[contenthash:8].css', {
+    new ExtractTextPlugin('assets/[name].css', {
       allChunks: true,
     }),
     new ManifestPlugin(),
