@@ -8,7 +8,6 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
-import Md5HashPlugin from 'webpack-md5-hash';
 
 import paths from './paths';
 import config from '../src/config/default';
@@ -108,6 +107,5 @@ module.exports = {
       allChunks: true,
     }),
     new ManifestPlugin(),
-    new Md5HashPlugin(),
   ],
 };
