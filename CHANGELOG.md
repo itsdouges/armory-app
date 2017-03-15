@@ -14,6 +14,7 @@
 
 ### Fixed
 - Embeds from dragging in `normalize.css`
+- Healing from not being in `i18n` translation files
 
 ## [4.6.0] - 2017/03/15
 ### Added
