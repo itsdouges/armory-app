@@ -3,7 +3,6 @@ import autoprefixer from 'autoprefixer';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-// import { createEmbedEntryPoints, createEmbedPlugins } from './embedBuilders';
 import paths from './paths';
 import config from '../src/config/default';
 
@@ -29,11 +28,6 @@ module.exports = {
     extensions: ['', '.js', '.json'],
   },
   module: {
-    preLoaders: [{
-      test: /\.js$/,
-      loader: 'eslint',
-      include: paths.appSrc,
-    }],
     loaders: [{
       test: /\.js$/,
       include: paths.appSrc,

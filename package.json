@@ -1,6 +1,6 @@
 {
   "name": "armory-react",
-  "version": "4.6.0",
+  "version": "4.6.1",
   "scripts": {
     "start": "node ./scripts/start.js --prod",
     "start:embeds": "npm start -- --embeds --local",
@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "dev": "node ./scripts/start.js",
     "dev:embeds": "npm run dev -- --embeds",
-    "build": "node ./scripts/build.js --embeds",
+    "build": "node ./scripts/build.js",
     "deploy": "node ./scripts/deploy.js"
   },
   "dependencies": {
@@ -85,6 +85,8 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.16.2",
+    "webpack-manifest-plugin": "^1.1.0",
+    "webpack-md5-hash": "^0.0.5",
     "yargs": "^6.6.0"
   }
 }

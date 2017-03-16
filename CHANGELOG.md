@@ -8,6 +8,14 @@
 - Changes
 ```
 
+## [4.6.1] - 2016/03/16
+### Changed
+- GW2AEmbeds css to be bundled in a stylesheet and to be loaded asynchronously
+
+### Fixed
+- Embeds from dragging in `normalize.css`
+- Healing from not being in `i18n` translation files
+
 ## [4.6.0] - 2017/03/15
 ### Added
 - Ability to select item stats for item embed
