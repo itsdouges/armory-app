@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.6.1] - unreleased
+## [4.6.1] - 2016/03/16
 ### Changed
 - GW2AEmbeds css to be bundled in a stylesheet and to be loaded asynchronously
 
