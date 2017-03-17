@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.7.0] - 2017/03/17
+### Added
+- Tracking to embeds pagee
+
 ## [4.6.2] - 2017/03/17
 ### Removed
 - Ability to turn off armory tooltip badge with embeds
