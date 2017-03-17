@@ -8,13 +8,29 @@
 - Changes
 ```
 
-## [4.7.0] - unreleased
+## [4.8.0] - unreleased
 ### Added
 - Armory badge back to character embed
 - Redux devtools
 
 ### Removed
 - Redux middleware logging
+
+## [4.7.0] - 2017/03/17
+### Added
+- Tracking to embeds pagee
+
+## [4.6.2] - 2017/03/17
+### Removed
+- Ability to turn off armory tooltip badge with embeds
+
+## [4.6.1] - 2016/03/16
+### Changed
+- GW2AEmbeds css to be bundled in a stylesheet and to be loaded asynchronously
+
+### Fixed
+- Embeds from dragging in `normalize.css`
+- Healing from not being in `i18n` translation files
 
 ## [4.6.0] - 2017/03/15
 ### Added
@@ -51,7 +67,6 @@
 
 ### Changed
 - Armory badge for tooltip to have dark background
->>>>>>> d419ad8a66003f1778d417130d70f7d7413cb34b
 
 ## [4.2.1] - 2017/03/09
 ### Fixed

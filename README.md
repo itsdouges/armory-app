@@ -11,16 +11,28 @@ npm i // or yarn
 cp src/config/local.sample.js src/config/local.js // You need to create a local config yourself!
 ```
 
-### Website
+### Website (DEV)
 
 ```
 npm run dev
 ```
 
-### Embeds
+### Website (PROD)
+
+```
+npm run start
+```
+
+### Embeds (DEV)
 
 ```
 npm run dev:embeds
+```
+
+### Embeds (PROD)
+
+```
+npm run start:embeds
 ```
 
 ### Technologies
