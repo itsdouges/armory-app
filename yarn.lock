@@ -2332,6 +2332,10 @@ gw2e-item-attributes@^1.2.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/gw2e-item-attributes/-/gw2e-item-attributes-1.2.3.tgz#5631edf4ec13f368b90d8a4d88c38982c76a2157"
 
+gw2itemstats@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/gw2itemstats/-/gw2itemstats-0.0.2.tgz#899f5e180653fda51cbd44dcbe4a90cad41b007c"
+
 gzip-size@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-3.0.0.tgz#546188e9bdc337f673772f81660464b389dce520"

@@ -151,6 +151,8 @@ export type CharactersList = Array<*>;
 
 export type Pets = {};
 
+export type Bags = Array;
+
 type Specialization = {
   name: string,
   background: string,

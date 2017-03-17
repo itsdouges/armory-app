@@ -2,9 +2,7 @@
 
 import styles from './styles.less';
 import TooltipTrigger from 'common/components/TooltipTrigger';
-import classnames from 'classnames/bind';
-
-const cx = classnames.bind(styles);
+import cx from 'classnames';
 
 type Props = {
   type?: string,
@@ -25,6 +23,7 @@ type Props = {
   size?: 'micro' | 'small',
   tooltipType?: string,
   className?: string,
+  inline?: boolean,
 };
 
 const Item = ({
@@ -41,6 +40,7 @@ const Item = ({
   small,
   tooltipType,
   className,
+  inline,
 }: Props) => {
   if (hide) return null;
 
@@ -57,7 +57,7 @@ const Item = ({
         stats,
       }}
     >
-      <div className={cx('root', `${type}Icon`, { busy, small }, className)}>
+      <div className={cx(styles.root, styles[`${type}Icon`], { busy, small, [styles.inline]: inline }, className)}>
         <div
           className={styles.item}
           style={{ backgroundImage: `url(${skin.icon || item.icon || ''})` }}

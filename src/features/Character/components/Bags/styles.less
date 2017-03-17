@@ -1,0 +1,14 @@
+@itemMargin: 2px;
+
+.root {
+  display: flex;
+}
+
+.bags,
+.items {
+  margin: @itemMargin;
+
+  > * {
+    margin: @itemMargin @itemMargin -2px + @itemMargin
+  }
+}
