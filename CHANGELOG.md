@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.6.1] - 2017/03/17
+### Removed
+- Ability to turn off armory tooltip badge with embeds
+
 ## [4.6.0] - 2017/03/15
 ### Added
 - Ability to select item stats for item embed

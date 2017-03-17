@@ -50,7 +50,7 @@ function bootstrapEmbeds () {
   });
 }
 
-function bootstrapTooltip (options: Options) {
+function bootstrapTooltip () {
   const tooltipContainer = document.createElement('div');
   if (!document.body) {
     throw new Error('Document body not loaded!');
@@ -60,7 +60,7 @@ function bootstrapTooltip (options: Options) {
 
   ReactDOM.render(
     <Base>
-      <Tooltip showBadge={options.showBadge} className={cx(styles.embed, makeClassName('tooltip'))} />
+      <Tooltip showBadge className={cx(styles.embed, makeClassName('tooltip'))} />
     </Base>,
     tooltipContainer
   );
@@ -69,12 +69,11 @@ function bootstrapTooltip (options: Options) {
 export default function bootstrap () {
   const options: Options = {
     lang: 'en',
-    showBadge: true,
     // $FlowFixMe
     ...document.GW2A_EMBED_OPTIONS,
   };
 
   setLang(options.lang);
   bootstrapEmbeds();
-  bootstrapTooltip(options);
+  bootstrapTooltip();
 }
