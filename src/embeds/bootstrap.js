@@ -37,7 +37,6 @@ function fetchStyles () {
 function setOptions () {
   const options: Options = {
     lang: 'en',
-    showBadge: true,
     // $FlowFixMe
     ...document.GW2A_EMBED_OPTIONS,
   };
@@ -92,18 +91,10 @@ function bootstrapTooltip () {
 }
 
 export default function bootstrap () {
-<<<<<<< HEAD
-  const options: Options = {
-    lang: 'en',
-    // $FlowFixMe
-    ...document.GW2A_EMBED_OPTIONS,
-  };
-
-=======
   const options = setOptions();
-  fetchStyles();
->>>>>>> 264d21e1a06d6a0a38bd0ce08113756730fa1dc6
+
   setLang(options.lang);
+  fetchStyles();
   bootstrapEmbeds();
   bootstrapTooltip();
 }
