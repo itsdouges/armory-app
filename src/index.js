@@ -1,10 +1,12 @@
 // @flow
 
+import 'normalize.css';
+import ReactDOM from 'react-dom';
+
 import * as ls from 'lib/localStorage';
 
 ls.reset();
 
-import ReactDOM from 'react-dom';
 import Router from './Router';
 import Base from './Base';
 

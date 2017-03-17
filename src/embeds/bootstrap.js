@@ -1,10 +1,16 @@
 // @flow
 
+import * as ls from 'lib/localStorage';
+
+ls.reset();
+
 // Base is deliberately at the top.
 import Base from '../Base';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
+import axios from 'axios';
 
+import { addStyleSheet } from 'lib/dom';
 import { set as setLang } from 'lib/i18n';
 import Tooltip from 'common/components/Tooltip';
 import styles from './styles.less';
@@ -19,20 +25,39 @@ export type EmbedProps = {
 };
 
 const makeClassName = (str) => `gw2a-${str}-embed`;
+export const makeAttribute = (str: string) => `data-armory-${str}`;
+
+function fetchStyles () {
+  axios
+    // $FlowFixMe
+    .get(`${__webpack_public_path__}manifest.json`)
+    .then((response) => addStyleSheet(`${__webpack_public_path__}${response.data['gw2aEmbeds.css']}`));
+}
+
+function setOptions () {
+  const options: Options = {
+    lang: 'en',
+    showBadge: true,
+    // $FlowFixMe
+    ...document.GW2A_EMBED_OPTIONS,
+  };
+
+  return options;
+}
 
 function bootstrapEmbeds () {
   if (!document.body) {
     throw new Error('Document body not loaded!');
   }
 
-  const embedables = Array.from(document.body.querySelectorAll('[data-armory-embed]'));
+  const embedables = Array.from(document.body.querySelectorAll(`[${makeAttribute('embed')}]`));
   embedables.forEach((element) => {
-    const embedName = element.getAttribute('data-armory-embed');
+    const embedName = element.getAttribute(makeAttribute('embed'));
     if (!embedName) {
       return;
     }
 
-    const rawIds = element.getAttribute('data-armory-ids');
+    const rawIds = element.getAttribute(makeAttribute('ids'));
     const ids = (rawIds || '').split(',');
 
     // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -67,12 +92,17 @@ function bootstrapTooltip () {
 }
 
 export default function bootstrap () {
+<<<<<<< HEAD
   const options: Options = {
     lang: 'en',
     // $FlowFixMe
     ...document.GW2A_EMBED_OPTIONS,
   };
 
+=======
+  const options = setOptions();
+  fetchStyles();
+>>>>>>> 264d21e1a06d6a0a38bd0ce08113756730fa1dc6
   setLang(options.lang);
   bootstrapEmbeds();
   bootstrapTooltip();

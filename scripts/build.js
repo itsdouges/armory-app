@@ -31,8 +31,9 @@ function getAssets (multiStats) {
           size: gzipSize(fileContents),
         };
       })
-      .sort((a, b) => b.size - a.size)
-  ).reduce((arr, stats) => arr.concat(stats), []);
+  )
+  .reduce((arr, stats) => arr.concat(stats), [])
+  .sort((a, b) => a.size - b.size);
 }
 
 console.log('Creating an optimized production build...');

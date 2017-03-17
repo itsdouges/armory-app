@@ -4,9 +4,11 @@ import type { EmbedProps } from './bootstrap';
 
 import CustomEmbed from './components/Custom';
 
+import { makeAttribute } from './bootstrap';
+
 const readAttributes = (element, props) => props.reduce((obj, prop) => ({
   ...obj,
-  [prop]: element.getAttribute(`data-armory-${prop}`) || '',
+  [prop]: element.getAttribute(makeAttribute(prop)) || '',
 }), {});
 
 export default function (element: HTMLElement) {

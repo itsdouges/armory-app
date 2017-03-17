@@ -1,14 +1,10 @@
 // @flow
 
-import * as ls from 'lib/localStorage';
-
-ls.reset();
-
 // $FlowFixMe
-const load = require('promise?global!./bootstrap'); // eslint-disable-line import/no-webpack-loader-syntax
+const loadBootstrap = require('promise?global!./bootstrap'); // eslint-disable-line import/no-webpack-loader-syntax
 
 function init () {
-  load().then(({ default: bootstrap }) => bootstrap());
+  loadBootstrap().then(({ default: bootstrap }) => bootstrap());
 }
 
 if (document.readyState === 'loading') {
