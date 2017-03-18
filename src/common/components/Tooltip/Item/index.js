@@ -46,10 +46,12 @@ const ItemsTooltip = ({ data: {
   }
 
   const isTransmuted = !!skin.name;
+  const isEquip = true; // TODO: Fill in.
+  const isFromCharacter = false; // TODO: Fill in.
 
   return (
     <Background>
-      <SimpleTooltip data={T.translate('items.currentlyEquipped')} />
+      {isFromCharacter && <SimpleTooltip data={T.translate('items.currentlyEquipped')} />}
 
       <ItemHeader
         name={buildName(item, skin, upgrades)}
@@ -58,7 +60,7 @@ const ItemsTooltip = ({ data: {
       />
 
       <div>
-        {!!item.details.defense && (
+        {item.details && !!item.details.defense && (
           <div>
             {T.translate('items.defense')}:
             <span className={colours.green}> {item.details.defense}</span>
@@ -93,9 +95,9 @@ const ItemsTooltip = ({ data: {
           );
         })}
 
-        <span className={colours.green}>
+        {item.details && <span className={colours.green}>
           {markup(item.details.description, '\n')}
-        </span>
+        </span>}
 
         {get(item, 'details.bonuses', []).map((bonusName, bonusId) => (
           <div className={colours.blue}>
@@ -118,17 +120,21 @@ const ItemsTooltip = ({ data: {
           </span>
         )}
 
-        <div>
-          {isTransmuted ? T.translate('items.transmuted') : T.translate('items.skinLocked')}
-        </div>
+        {isEquip && (
+          <div>
+            {isTransmuted
+              ? T.translate('items.transmuted')
+              : T.translate('items.skinLocked')}
+          </div>
+        )}
 
         <div>{item.name}</div>
 
         <div>{item.rarity}</div>
 
-        <div>{item.details.weight_class}</div>
+        {item.details && <div>{item.details.weight_class}</div>}
 
-        <div>{startCase(item.details.type)} {startCase(item.type)}</div>
+        {item.details && <div>{startCase(item.details.type)} {startCase(item.type)}</div>}
 
         <div>{markup(item.description)}</div>
 

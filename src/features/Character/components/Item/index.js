@@ -1,8 +1,10 @@
 // @flow
 
-import styles from './styles.less';
-import TooltipTrigger from 'common/components/TooltipTrigger';
 import cx from 'classnames';
+
+import TooltipTrigger from 'common/components/TooltipTrigger';
+import empty from 'assets/images/empty.png';
+import styles from './styles.less';
 
 type Props = {
   type?: string,
@@ -60,7 +62,7 @@ const Item = ({
       <div className={cx(styles.root, styles[`${type}Icon`], { busy, small, [styles.inline]: inline }, className)}>
         <div
           className={styles.item}
-          style={{ backgroundImage: `url(${skin.icon || item.icon || ''})` }}
+          style={{ backgroundImage: `url(${skin.icon || item.icon || empty})` }}
         />
       </div>
     </TooltipTrigger>

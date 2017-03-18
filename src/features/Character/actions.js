@@ -47,7 +47,7 @@ function extractIds ({ specializations, equipment, equipment_pvp, skills }) {
     });
   });
 
-  equipment.forEach((item) => {
+  equipment && equipment.forEach((item) => {
     ids.skins.push(item.skin);
     ids.items.push(item.id);
 

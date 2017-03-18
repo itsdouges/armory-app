@@ -22,10 +22,10 @@ type Props = {
   bags?: Bags,
   items?: Items,
   fetchItems?: (any) => void,
-  // dispatch?: (any) => void,
+  dispatch?: (any) => void,
 };
 
-@connect(mapStateToProps/*, {
+@connect(mapStateToProps/* , {
   fetchItems: actions.fetchItems,
 }*/)
 export default class CharacterBags extends Component {
@@ -41,8 +41,8 @@ export default class CharacterBags extends Component {
     }
   }
 
-  fetchBagItems = (bags: Bags) => {
-    const itemIds = bags.reduce((ids, bag) => {
+  fetchBagItems (bags?: Bags) {
+    const itemIds = bags && bags.reduce((ids, bag) => {
       ids.push(bag.id);
       const inventoryIds = bag.inventory.map((inv) => inv && inv.id);
       return ids.concat(inventoryIds);
@@ -50,6 +50,21 @@ export default class CharacterBags extends Component {
 
     this.props.dispatch && this.props.dispatch(actions.fetchItems(itemIds));
     // this.props.fetchItems && this.props.fetchItems(itemIds);
+  }
+
+  renderItems (bags?: Bags) {
+    if (!bags) {
+      return null;
+    }
+
+    const { items } = this.props;
+
+    return bags.reduce((ids, bag) => {
+      const inventoryIds = bag.inventory.map((inv) => inv && inv.id);
+      return ids.concat(inventoryIds);
+    }, [])
+    // eslint-disable-next-line react/no-array-index-key
+    .map((id, index) => <Item inline key={index} item={items && items[id]} />);
   }
 
   render () {
@@ -65,12 +80,7 @@ export default class CharacterBags extends Component {
         </div>
 
         <div className={styles.items}>
-          {bags && bags
-          .reduce((ids, bag) => {
-            const inventoryIds = bag.inventory.map((inv) => inv && inv.id);
-            return ids.concat(inventoryIds);
-          }, [])
-          .map((id, index) => <Item inline key={index} item={items && items[id]} />)}
+          {this.renderItems(bags)}
         </div>
       </Container>
     );

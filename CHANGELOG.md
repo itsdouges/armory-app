@@ -16,6 +16,9 @@
 ### Removed
 - Redux middleware logging
 
+### Fixed
+- Exceptions occurring when character data was not returned
+
 ## [4.7.0] - 2017/03/17
 ### Added
 - Tracking to embeds pagee
