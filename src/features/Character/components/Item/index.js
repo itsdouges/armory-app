@@ -3,7 +3,6 @@
 import cx from 'classnames';
 
 import TooltipTrigger from 'common/components/TooltipTrigger';
-import empty from 'assets/images/empty.png';
 import styles from './styles.less';
 
 type Props = {
@@ -59,10 +58,10 @@ const Item = ({
         stats,
       }}
     >
-      <div className={cx(styles.root, styles[`${type}Icon`], { busy, small, [styles.inline]: inline }, className)}>
+      <div className={cx(styles.root, styles[`${type}Icon`], { [styles.busy]: busy, [styles.small]: small, [styles.inline]: inline }, className)}>
         <div
           className={styles.item}
-          style={{ backgroundImage: `url(${skin.icon || item.icon || empty})` }}
+          style={{ backgroundImage: `url(${skin.icon || item.icon || ''})` }}
         />
       </div>
     </TooltipTrigger>
