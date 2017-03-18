@@ -1,5 +1,7 @@
 // @flow
 
+import type { Children } from 'react';
+
 import { Component } from 'react';
 import { Link } from 'react-router';
 import T from 'i18n-react';

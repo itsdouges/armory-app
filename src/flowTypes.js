@@ -178,3 +178,13 @@ export type Gw2Map = {
   id: string,
   name: string,
 };
+
+export type Notification = {
+  id: string,
+  message: string,
+  type: 'info' | 'error',
+};
+
+export type Notifications = {
+  [key: string]: Notification,
+};

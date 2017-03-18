@@ -88,19 +88,14 @@ function parseCharacterUpgrades (character) {
 }
 
 function parseEquipment (character) {
-  const char = {
+  return {
     ...character,
-    equipment: character.equipment || [],
+    equipment: (character.equipment || []).reduce((obj, equip) => ({
+      ...obj,
+      [lowerFirst(equip.slot)]: equip,
+    }), {}),
     equipmentRaw: character.equipment || [],
   };
-
-  char.equipment = character.equipment.reduce((obj, equip) => {
-    // eslint-disable-next-line
-    obj[lowerFirst(equip.slot)] = equip;
-    return obj;
-  }, {});
-
-  return char;
 }
 
 function parseCharacter (character) {

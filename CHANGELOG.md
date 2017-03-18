@@ -8,6 +8,16 @@
 - Changes
 ```
 
+## [4.8.0] - 2017/03/19
+### Added
+- Basic dismissable notification system
+
+### Changed
+- GW2Api health check to use notification system
+
+### Fixed
+- Character reducer/actions from throwing when recieving bad data
+
 ## [4.7.0] - 2017/03/17
 ### Added
 - Tracking to embeds pagee

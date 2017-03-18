@@ -1,4 +1,4 @@
-.app {
+.root {
   min-height: 100%;
   display: flex;
   justify-content: space-between;
@@ -6,6 +6,10 @@
   align-items: center;
   text-align: left;
   overflow: hidden;
+
+  > :nth-child(2) {
+    flex-grow: 20;
+  }
 }
 
 .loading {
@@ -14,4 +18,10 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.notificationBox {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
