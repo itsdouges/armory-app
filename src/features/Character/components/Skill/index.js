@@ -8,10 +8,24 @@ import Icon from 'common/components/Icon';
 
 import styles from './styles.less';
 
-const Skill = ({ data, className }: { data?: {}, className?: string }) => (
-  <TooltipTrigger type="skill" data={data || 'No Skill Selected'}>
-    <Icon src={get(data, 'icon')} size="mediumSmall" className={cx(styles.skill, className)} />
-  </TooltipTrigger>
-);
+type Props = {
+  data?: {},
+  className?: string,
+};
+
+const Skill = ({ data, className }: Props) => {
+  const error = get(data, 'error');
+
+  return (
+    <TooltipTrigger type="skill" data={data || 'No Skill Selected'}>
+      <Icon
+        src={!error ? get(data, 'icon') : undefined}
+        name={error ? 'empty.png' : undefined}
+        size="mediumSmall"
+        className={cx(styles.skill, className)}
+      />
+    </TooltipTrigger>
+  );
+};
 
 export default Skill;

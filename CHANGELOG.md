@@ -8,9 +8,10 @@
 - Changes
 ```
 
-## [4.8.0] - 2017/03/19
+## [4.8.0] - unreleased
 ### Added
 - Basic dismissable notification system
+- Error handling for gw2 data
 
 ### Changed
 - GW2Api health check to use notification system

@@ -11,7 +11,7 @@ type Gw2Skill = {
   name: string,
   description: string,
   title: string,
-  facts: [],
+  facts: Array<any>,
 };
 
 type SkillProps = {
