@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.8.0] - unreleased
+## [4.9.0] - unreleased
 ### Added
 - Basic dismissable notification system
 - Error handling for gw2 data
@@ -18,6 +18,11 @@
 
 ### Fixed
 - Character reducer/actions from throwing when recieving bad data
+
+## [4.8.0] - 2017/03/19
+### Added
+- Unit test setup
+- Pre commit test hook
 
 ## [4.7.0] - 2017/03/17
 ### Added

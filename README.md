@@ -11,28 +11,25 @@ npm i // or yarn
 cp src/config/local.sample.js src/config/local.js // You need to create a local config yourself!
 ```
 
-### Website (DEV)
+### Testing
 
 ```
-npm run dev
+npm run tdd // UNIT TESTS + WATCHER
+npm test // FULL TEST (lint/flow/unit)
 ```
 
-### Website (PROD)
+### Website
 
 ```
-npm run start
+npm run dev // DEV BUILD
+npm run start // PROD BUILD
 ```
 
-### Embeds (DEV)
+### Embeds
 
 ```
-npm run dev:embeds
-```
-
-### Embeds (PROD)
-
-```
-npm run start:embeds
+npm run dev:embeds // DEV BUILD
+npm run start:embeds // PROD BUILD
 ```
 
 ### Technologies
@@ -42,11 +39,13 @@ npm run start:embeds
 - Flow (static type checking)
 - Webpack (asset bundler)
 - LESS (css preprocessor)
+- Mocha/enzyme/chai/sinon
 
 ## Notes for Local Development
 
 - If running locally make sure you add a `local.js` to the `src/env/` folder. Look at `local.sample.js` for help. This isn't checked in deliberately so we can play with local settings without affecting git history.
 - If needed you can get the api over at [armory-back](https://github.com/madou/armory-back). You will have to update your `config/local.js` to point to `localhost` if running the api locally.
+- We use `pre-commit` to run commands before checking in. This will run `npm test` which covers linting, flow errors, and tests.
 
 ## Pull Requests
 
