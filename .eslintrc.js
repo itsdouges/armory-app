@@ -6,6 +6,7 @@ module.exports = {
   ],
   plugins: [
     'flowtype',
+    'mocha',
   ],
   'rules': {
     'space-before-function-paren': ['error', 'always'],
@@ -47,6 +48,8 @@ module.exports = {
         'render',
       ],
     }],
+
+    'mocha/no-exclusive-tests': 'error',
   },
   settings: {
     'import/resolver': 'webpack',
@@ -56,5 +59,14 @@ module.exports = {
     GW2A_EMBED_OPTIONS: true,
     __DEVELOPMENT__: true,
     __webpack_public_path__: true,
+    before: true,
+    after: true,
+    beforeEach: true,
+    afterEach: true,
+    describe: true,
+    it: true,
+    context: true,
+    proxyquire: true,
+    expect: true,
   },
 };

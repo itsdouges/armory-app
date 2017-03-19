@@ -1,0 +1,4 @@
+--reporter spec
+--require test/setup
+--ui bdd
+--compilers js:babel-core/register
