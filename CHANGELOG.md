@@ -12,6 +12,7 @@
 ### Added
 - Basic dismissable notification system
 - Error handling for gw2 data
+- Error handling for gw2 items/skills/specializations
 
 ### Changed
 - GW2Api health check to use notification system
