@@ -8,7 +8,7 @@ import cx from 'classnames';
 
 import Container from 'common/components/Container';
 import Notification from '../Notification';
-import { dismissNotification } from '../../actions';
+import * as actions from '../../actions';
 import styles from './styles.less';
 
 function mapStoreToProps (store) {
@@ -24,7 +24,7 @@ type Props = {
 };
 
 @connect(mapStoreToProps, {
-  dismissNotification,
+  dismissNotification: actions.dismissNotification,
 })
 export default class NotificationBox extends Component {
   props: Props;

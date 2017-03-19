@@ -32,7 +32,11 @@ module.exports = {
 
     'react/require-default-props': 'off',
     'react/forbid-prop-types': 'warn',
-    'react/no-unused-prop-types': 'warn',
+
+    // Until this is fixed (child props in objects stop erroring)
+    // this is turned off.
+    'react/no-unused-prop-types': 'off',
+
     'react/jsx-filename-extension': 'off',
     'react/jsx-sort-props': 'off',
     'react/react-in-jsx-scope': 'off',

@@ -6,6 +6,7 @@ import get from 'lodash/get';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Icon from 'common/components/Icon';
 
+import EmptySkill from './Empty';
 import styles from './styles.less';
 
 type Props = {
@@ -18,12 +19,15 @@ const Skill = ({ data, className }: Props) => {
 
   return (
     <TooltipTrigger type="skill" data={data || 'No Skill Selected'}>
-      <Icon
-        src={!error ? get(data, 'icon') : undefined}
-        name={error ? 'empty.png' : undefined}
-        size="mediumSmall"
-        className={cx(styles.skill, className)}
-      />
+      {(error || !data)
+        ? <EmptySkill />
+        : (
+          <Icon
+            src={get(data, 'icon')}
+            size="mediumSmall"
+            className={cx(styles.skill, className)}
+          />
+        )}
     </TooltipTrigger>
   );
 };
