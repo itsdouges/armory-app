@@ -8,6 +8,11 @@
 - Changes
 ```
 
+## [4.8.0] - 2017/03/19
+### Added
+- Unit test setup
+- Pre commit test hook
+
 ## [4.7.0] - 2017/03/17
 ### Added
 - Tracking to embeds pagee
