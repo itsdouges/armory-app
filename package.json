@@ -7,7 +7,7 @@
     "test": "npm run lint && npm run flow && npm run unit",
     "flow": "flow",
     "flowtypes": "flow-typed install --overwrite",
-    "lint": "eslint .",
+    "lint": "eslint ./config && eslint ./scripts && eslint ./src && eslint ./test",
     "dev": "node ./scripts/start.js",
     "dev:embeds": "npm run dev -- --embeds",
     "build": "node ./scripts/build.js",
