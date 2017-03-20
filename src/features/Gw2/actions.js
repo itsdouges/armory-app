@@ -59,8 +59,8 @@ export function generateActions (resourceName, getResource, afterGet) {
         dispatch(actions[fetchingMethodName](false));
 
         return afterGet ? afterGet(dispatch, response) : response;
-      }, (response) => {
-        const action = response.statusCode === 404
+      }, ({ response }) => {
+        const action = response.status === 404
           ? actions[fetchErrorMethodName](missingIds, T.translate('messages.notFound'))
           : actions[fetchErrorMethodName](missingIds, T.translate('messages.gw2ApiDown'));
 

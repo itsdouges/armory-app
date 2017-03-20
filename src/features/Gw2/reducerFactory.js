@@ -36,7 +36,7 @@ export default function gw2ReducerFactory (resourceName, getResource, {
             ...action.payload.ids.reduce((obj, id) => ({
               ...obj,
               [id]: {
-                error: action.payload.message,
+                error: `ID:${id} | ${action.payload.message}`,
               },
             }), {}),
           };
