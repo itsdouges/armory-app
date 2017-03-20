@@ -1,8 +1,12 @@
 // @flow
 
-import styles from './styles.less';
-import TooltipTrigger from 'common/components/TooltipTrigger';
 import cx from 'classnames';
+
+import TooltipTrigger from 'common/components/TooltipTrigger';
+import Icon from 'common/components/Icon';
+import colours from 'common/styles/colours';
+
+import styles from './styles.less';
 
 type Props = {
   data?: {
@@ -14,9 +18,10 @@ type Props = {
 
 const Trait = ({ data, className, active }: Props) => (
   <TooltipTrigger type="trait" data={data}>
-    <div
+    <Icon
       className={cx(styles.root, className, { [styles.active]: active })}
-      style={{ backgroundImage: `url(${data ? (data.icon || '') : ''})` }}
+      src={data && data.icon}
+      style={{ backgroundColor: data && data.icon && colours._black }}
     />
   </TooltipTrigger>
 );
