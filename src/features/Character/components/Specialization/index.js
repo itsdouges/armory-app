@@ -11,11 +11,11 @@ import SpecializationIcon from '../SpecializationIcon';
 
 const getTrait = (id, traits, error) => (traits && traits[id]) || { error };
 const isActive = (id, { traits }) => traits.indexOf(id) >= 0;
-const layoutTraits = (ids, traits, error) => ids.map((id, index) =>
+const layoutTraits = (ids, traits, data, error) => ids.map((id, index) =>
   <Trait
     key={id || index}
     data={getTrait(id, traits, error)}
-    active={isActive(id, traits)}
+    active={isActive(id, data)}
   />
 );
 
@@ -62,7 +62,7 @@ const Specialization = ({ data, traits, specializations, size = 'large' }: Props
         />
 
         <div className={styles.majorTraitColumn}>
-          {layoutTraits(majorTraits.slice(0, 3), data, error)}
+          {layoutTraits(majorTraits.slice(0, 3), traits, data, error)}
         </div>
 
         <Trait
@@ -72,7 +72,7 @@ const Specialization = ({ data, traits, specializations, size = 'large' }: Props
         />
 
         <div className={styles.majorTraitColumn}>
-          {layoutTraits(majorTraits.slice(3, 6), data, error)}
+          {layoutTraits(majorTraits.slice(3, 6), traits, data, error)}
         </div>
 
         <Trait
@@ -82,7 +82,7 @@ const Specialization = ({ data, traits, specializations, size = 'large' }: Props
         />
 
         <div className={styles.majorTraitColumn}>
-          {layoutTraits(majorTraits.slice(6, 9), data, error)}
+          {layoutTraits(majorTraits.slice(6, 9), traits, data, error)}
         </div>
       </div>
     </div>
