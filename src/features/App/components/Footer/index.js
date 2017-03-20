@@ -34,7 +34,7 @@ const textLinks = [{
 }, {
   title: 'GW2 Reddit',
   url: 'https://www.reddit.com/r/guildwars2',
-  text: 'GW2 Reddit',
+  text: '/r/guildwars2',
 }];
 
 const Footer = () => (
@@ -49,7 +49,7 @@ const Footer = () => (
         of their respective owners.
       </div>
 
-      <ul className={styles.linkContainer}>
+      <ul className={styles.iconContainer}>
         {iconLinks.map((link) => (
           <li key={link.title}>
             <a target="_blank" rel="noopener noreferrer" title={link.title} href={link.url}>
@@ -61,7 +61,7 @@ const Footer = () => (
     </Container>
 
     <Container>
-      <ul className={styles.linkContainer}>
+      <ul className={styles.textContainer}>
         {textLinks.map((link) => (
           <li key={link.title}>
             <a target="_blank" rel="noopener noreferrer" title={link.title} href={link.url}>

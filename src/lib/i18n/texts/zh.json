@@ -179,6 +179,8 @@
   },
   "messages": {
     "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!",
-    "notFound": "Not Found (or the GW2 API is dead)!"
+    "notFound": "Not Found",
+    "notFoundLong": "Not Found (or the GW2 API is dead)!",
+    "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!"
   }
 }

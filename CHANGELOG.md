@@ -13,6 +13,7 @@
 - Basic dismissable notification system
 - Error handling for gw2 data
 - Error handling for gw2 items/skills/specializations
+- Armory badge back to character embed
 
 ### Changed
 - GW2Api health check to use notification system
