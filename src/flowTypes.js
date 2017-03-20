@@ -166,7 +166,7 @@ type Specialization = Gw2Data & {
   minor_traits: Array<number>,
   major_traits: Array<number>,
   name?: string,
-  image?: string,
+  background?: string,
 };
 
 export type Specializations = {

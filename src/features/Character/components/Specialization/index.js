@@ -20,7 +20,7 @@ const layoutTraits = (ids, traits, error) => ids.map((id, index) =>
 );
 
 const getStyle = (data, spec) => ({
-  backgroundImage: `url(${spec.background})`,
+  backgroundImage: `url(${spec.background || ''})`,
   backgroundColor: spec.background && colours._black,
 });
 

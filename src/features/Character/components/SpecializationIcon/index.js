@@ -8,7 +8,7 @@ type Props = {
   data: {
     error?: string,
     name?: string,
-    image?: string,
+    background?: string,
   },
   className?: string,
 };
@@ -17,7 +17,7 @@ const SpecializationIcon = ({ data, className }: Props) => (
   <TooltipTrigger data={data.error || data.name}>
     <div
       className={cx(styles.bigIcon, className)}
-      style={{ backgroundImage: `url(${data.image || ''})` }}
+      style={{ backgroundImage: `url(${data.background || ''})` }}
     >
       <div className={styles.bigIconTop} />
       <div className={styles.bigIconBottom} />
