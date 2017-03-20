@@ -12,9 +12,12 @@ export type IconProps = {
   src?: string,
   button?: boolean,
   children?: any,
+  style?: {
+    [string]: ?string,
+  },
 };
 
-const Icon = ({ name, size, className, src, button, children, ...props }: IconProps) => {
+const Icon = ({ name, size, className, src, button, children, style, ...props }: IconProps) => {
   let image;
 
   try {
@@ -28,6 +31,7 @@ const Icon = ({ name, size, className, src, button, children, ...props }: IconPr
       {...props}
       className={cx('container', size, className, button && 'button')}
       style={{
+        ...style,
         /* eslint prefer-template:0 */
         backgroundImage: (src || name) && 'url(' + (src || image) + ')',
       }}

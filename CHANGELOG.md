@@ -8,6 +8,20 @@
 - Changes
 ```
 
+## [4.9.0] - 2017/03/20
+### Added
+- Basic dismissable notification system
+- Error handling for gw2 data
+- Error handling for gw2 items/skills/specializations
+- Armory badge back to character embed
+
+### Changed
+- GW2Api health check to use notification system
+
+### Fixed
+- Character reducer/actions from throwing when recieving bad data
+- Content Card component showing `undefined` when gw2 api is dead
+
 ## [4.8.0] - 2017/03/19
 ### Added
 - Unit test setup

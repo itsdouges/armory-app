@@ -11,6 +11,7 @@ import cx from 'classnames';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 import ContentCard from 'common/components/ContentCard';
 
+import ArmoryBadge from 'common/components/ArmoryBadge';
 import { fetchCharacter, selectCharacter } from 'features/Character/actions';
 import { selector } from 'features/Character/characters.reducer';
 import styles from './styles.less';
@@ -79,13 +80,13 @@ export default class CharacterLite extends Component {
 
     return (
       <div className={cx(styles.root, className)}>
+        <ArmoryBadge className={styles.badge} />
+
         <div className={styles.cover}>
           <Portrait character={character} className={styles.litePortrait} />
         </div>
 
         <a
-          rel="noopener noreferrer"
-          target="_blank"
           href={`/${safeCharacter.alias}/c/${safeCharacter.name}`}
           className={styles.header}
         >

@@ -1,7 +1,6 @@
 @import '~common/styles/base.less';
 
 @traitColumnZ: @_zindex10;
-@background: @_black;
 
 .rootOverflow {
   overflow: auto;
@@ -13,7 +12,7 @@
   align-items: center;
   position: relative;
   overflow: auto;
-  background-color: @background;
+  background-color: @_black;
   .low;
 }
 
@@ -41,10 +40,6 @@
 .minorTraitColumn {
   z-index: @traitColumnZ;
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
-}
-
-.compact {
-
 }
 
 .small {

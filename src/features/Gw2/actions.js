@@ -1,4 +1,5 @@
 import upperFirst from 'lodash/upperFirst';
+import T from 'i18n-react';
 
 export const SHOW_TOOLTIP = 'SHOW_TOOLTIP';
 
@@ -9,11 +10,13 @@ export function generateActions (resourceName, getResource, afterGet) {
   const actionNames = {
     fetching: `FETCHING_${resourceName.toUpperCase()}`,
     result: `FETCH_${resourceName.toUpperCase()}_RESULT`,
+    error: `FETCH_${resourceName.toUpperCase()}_ERROR`,
   };
 
   const fetchMethodName = `fetch${upperFirst(resourceName)}`;
   const fetchingMethodName = `fetching${upperFirst(resourceName)}`;
   const fetchResultMethodName = `fetch${upperFirst(resourceName)}Result`;
+  const fetchErrorMethodName = `fetch${upperFirst(resourceName)}Error`;
 
   actions[fetchResultMethodName] = (data) => ({
     type: actionNames.result,
@@ -25,6 +28,14 @@ export function generateActions (resourceName, getResource, afterGet) {
     payload: fetching,
   });
 
+  actions[fetchErrorMethodName] = (ids, message) => ({
+    type: actionNames.error,
+    payload: {
+      ids,
+      message,
+    },
+  });
+
   actions[fetchMethodName] = (ids) => (dispatch, getStore) => {
     if (!ids) {
       return undefined;
@@ -33,7 +44,7 @@ export function generateActions (resourceName, getResource, afterGet) {
     const store = getStore();
 
     const missingIds = ids.filter((id) => id).reduce((acc, id) => (
-      store[resourceName].hasOwnProperty(id) ? acc : acc.concat([id])
+      store[resourceName][id] && !store[resourceName][id].error ? acc : acc.concat([id])
     ), []);
 
     if (!missingIds.length) {
@@ -48,6 +59,12 @@ export function generateActions (resourceName, getResource, afterGet) {
         dispatch(actions[fetchingMethodName](false));
 
         return afterGet ? afterGet(dispatch, response) : response;
+      }, ({ response }) => {
+        const action = response.status === 404
+          ? actions[fetchErrorMethodName](missingIds, T.translate('messages.notFoundLong'))
+          : actions[fetchErrorMethodName](missingIds, T.translate('messages.gw2ApiDown'));
+
+        dispatch(action);
       });
   };
 

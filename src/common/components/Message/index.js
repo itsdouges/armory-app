@@ -1,9 +1,7 @@
 // @flow
 
 import styles from './styles.less';
-import classNames from 'classnames/bind';
-
-const cx = classNames.bind(styles);
+import cx from 'classnames';
 
 type MessageProps = {
   type?: string,
@@ -21,7 +19,7 @@ const Message = ({ children, type, title, className, size }: MessageProps) => {
   return (
     <div
       title={title}
-      className={cx('container', className, type, size)}
+      className={cx(styles.root, className, styles[type], styles[size])}
     >
       {children}
     </div>

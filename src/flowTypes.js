@@ -129,36 +129,55 @@ export const defaultGuild: Guild = {
   users: [],
 };
 
-export type PvpSeasons = {};
+export type PvpSeasons = {
+};
 
-export type Worlds = {};
+export type Worlds = {
+};
 
-export type Maps = {};
+export type Maps = {
+};
 
-export type Items = {};
+export type Items = {
+};
 
-export type ItemStats = {};
+export type ItemStats = {
+};
 
-export type Skins = {};
+export type Skins = {
+};
 
-export type Amulets = {};
+export type Amulets = {
+};
 
-export type Skills = {};
+export type Skills = {
+};
 
-export type Professions = {};
+export type Professions = {
+};
 
-type Specialization = {
+type Gw2Data = {
+  error?: string,
+};
+
+type Specialization = Gw2Data & {
   name: string,
   background: string,
   minor_traits: Array<number>,
   major_traits: Array<number>,
+  name?: string,
+  background?: string,
 };
 
 export type Specializations = {
   [key: number]: Specialization,
 };
 
-export type Traits = {};
+export type Traits = {
+  [number]: {
+    icon?: string,
+  },
+};
 
 export type Gw2PvpGame = {
   map_id: string,
@@ -177,4 +196,14 @@ export type Gw2PvpGame = {
 export type Gw2Map = {
   id: string,
   name: string,
+};
+
+export type Notification = {
+  id: string,
+  message: string,
+  type: 'info' | 'error',
+};
+
+export type Notifications = {
+  [key: string]: Notification,
 };

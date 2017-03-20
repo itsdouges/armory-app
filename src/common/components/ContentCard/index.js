@@ -2,14 +2,12 @@
 
 import styles from './styles.less';
 import config from 'config';
-import classnames from 'classnames/bind';
+import cx from 'classnames/bind';
 import T from 'i18n-react';
 
 import Icon from 'common/components/Icon';
 import Placeholder from './placeholder';
 import colours from 'common/styles/colours';
-
-const cx = classnames.bind(styles);
 
 type CardData = {
   title: any,
@@ -52,9 +50,9 @@ function extractData (content, { type, forceUpdate }): CardData {
 
     case 'characters':
       return {
-        title: content.guild_tag ? `${content.name} [${content.guild_tag}]` : content.name,
+        title: content.guild_tag ? `${content.name || 'Api Error.'} [${content.guild_tag}]` : content.name || 'Api Error.',
         // eslint-disable-next-line
-        subTitle: `${content.level} ${content.race} ${content.eliteSpecialization || content.profession}`,
+        subTitle: content.level ? `${content.level} ${content.race} ${content.eliteSpecialization || content.profession}` : 'Api error.',
         imageClass: content.profession && content.profession.toLowerCase(),
         imageStyle: {},
       };
@@ -121,18 +119,18 @@ const ContentCard = ({
   } = extractData(content, { type, size, forceUpdate });
 
   return (
-    <div className={cx('root', className, size)}>
-      <div className={cx('image', imageClass)} style={imageStyle}>
+    <div className={cx(styles.root, className, styles[size])}>
+      <div className={cx(styles.image, imageClass)} style={imageStyle}>
         {children}
       </div>
 
       <div className={styles.textContainer}>
         {size === 'big'
-          ? <h2 className={cx('title')}>{title}</h2>
-          : <div className={cx('title')}>{title}</div>
+          ? <h2 className={styles.title}>{title}</h2>
+          : <div className={styles.title}>{title}</div>
 
         }
-        <div className={cx('subTitle')}>
+        <div className={styles.subTitle}>
           {extraSubtitle}
           {subTitle}
         </div>

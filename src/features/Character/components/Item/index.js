@@ -1,10 +1,10 @@
 // @flow
 
-import styles from './styles.less';
-import TooltipTrigger from 'common/components/TooltipTrigger';
-import classnames from 'classnames/bind';
+import cx from 'classnames';
 
-const cx = classnames.bind(styles);
+import TooltipTrigger from 'common/components/TooltipTrigger';
+import Icon from 'common/components/Icon';
+import styles from './styles.less';
 
 type Props = {
   type?: string,
@@ -44,25 +44,36 @@ const Item = ({
 }: Props) => {
   if (hide) return null;
 
+  const data = item && item.error
+    ? item
+    : {
+      name,
+      item,
+      skin,
+      infusions,
+      upgrades,
+      upgradeCounts,
+      stats,
+    };
+
   return (
     <TooltipTrigger
       type={tooltipType || 'items'}
-      data={{
-        name,
-        item,
-        skin,
-        infusions,
-        upgrades,
-        upgradeCounts,
-        stats,
-      }}
+      data={data}
     >
-      <div className={cx('root', `${type}Icon`, { busy, small }, className)}>
-        <div
+      <Icon
+        name={type ? `${type}-slot-icon.png` : 'empty-skill-back.png'}
+        className={cx(styles.root, className, {
+          [styles.busy]: busy,
+          [styles.small]: small,
+          [styles.emptyBg]: !type,
+        })}
+      >
+        <Icon
           className={styles.item}
-          style={{ backgroundImage: `url(${skin.icon || item.icon || ''})` }}
+          src={skin.icon || item.icon || ''}
         />
-      </div>
+      </Icon>
     </TooltipTrigger>
   );
 };

@@ -1,5 +1,7 @@
 // @flow
 
+import type { Children } from 'react';
+
 import { Component, cloneElement } from 'react';
 import { connect } from 'react-redux';
 import { showTooltip } from 'features/Gw2/actions';
@@ -7,13 +9,18 @@ import { showTooltip } from 'features/Gw2/actions';
 type Props = {
   data?: string | Object,
   showTooltip?: Function,
-  children?: React$Element<*>,
+  children?: Children,
   type?: string,
 };
 
 @connect(null, {
   showTooltip,
 })
+/**
+ * Make sure when using this in children that you pass all
+ * overflow props down to the DOM element, else this will
+ * not work.
+ */
 export default class TooltipTrigger extends Component {
   props: Props;
 

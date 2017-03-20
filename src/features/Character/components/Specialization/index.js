@@ -4,23 +4,27 @@ import type { Specializations, Traits } from 'flowTypes';
 
 import cx from 'classnames';
 
+import colours from 'common/styles/colours';
 import styles from './styles.less';
 import Trait from '../Trait';
-import BigTrait from '../BigTrait';
+import SpecializationIcon from '../SpecializationIcon';
 
-function getStyle (data, spec) {
-  return {
-    backgroundImage: `url(${spec.background})`,
-  };
-}
+const getTrait = (id, traits, error) => (traits && traits[id]) || { error };
+const isActive = (id, { traits }) => traits.indexOf(id) >= 0;
+const layoutTraits = (ids, traits, data, error) => ids.map((id, index) =>
+  <Trait
+    key={id || index}
+    data={getTrait(id, traits, error)}
+    active={isActive(id, data)}
+  />
+);
 
-function getTrait (traits, id) {
-  return (traits && traits[id]) || {};
-}
+const getStyle = (data, spec) => ({
+  backgroundImage: `url(${spec.background || ''})`,
+  backgroundColor: spec.background && colours._black,
+});
 
-function isActive (id, { traits }) {
-  return traits.indexOf(id) >= 0;
-}
+const emptyMajorTraits = Array(9).fill(undefined);
 
 type Props = {
   data: {
@@ -33,50 +37,52 @@ type Props = {
 };
 
 const Specialization = ({ data, traits, specializations, size = 'large' }: Props) => {
-  const spec = specializations[data.id] || { major_traits: [], minor_traits: [] };
-  const bgStyle = getStyle(data, spec);
+  const specialization = specializations[data.id] || {};
+  const minorTraits = specialization.minor_traits || {};
+  const majorTraits = specialization.major_traits || emptyMajorTraits;
+  const error = specialization.error && specialization.error;
 
   return (
     <div className={cx(styles.rootOverflow, styles[size])}>
       <div className={styles.root}>
         <div
           className={styles.background}
-          style={bgStyle}
+          style={getStyle(data, specialization)}
         />
 
-        <BigTrait className={styles.bigIcon} name={spec.name} image={spec.background} />
+        <SpecializationIcon
+          data={specialization}
+          className={styles.bigIcon}
+        />
 
         <Trait
           active
           className={styles.minorTraitColumn}
-          data={getTrait(traits, spec.minor_traits[0])}
+          data={getTrait(minorTraits[0], traits, error)}
         />
 
         <div className={styles.majorTraitColumn}>
-          {spec.major_traits.slice(0, 3).map((id) =>
-            <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+          {layoutTraits(majorTraits.slice(0, 3), traits, data, error)}
         </div>
 
         <Trait
           active
           className={styles.minorTraitColumn}
-          data={getTrait(traits, spec.minor_traits[1])}
+          data={getTrait(minorTraits[1], traits, error)}
         />
 
         <div className={styles.majorTraitColumn}>
-          {spec.major_traits.slice(3, 6).map((id) =>
-            <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+          {layoutTraits(majorTraits.slice(3, 6), traits, data, error)}
         </div>
 
         <Trait
           active
           className={styles.minorTraitColumn}
-          data={getTrait(traits, spec.minor_traits[2])}
+          data={getTrait(minorTraits[2], traits, error)}
         />
 
         <div className={styles.majorTraitColumn}>
-          {spec.major_traits.slice(6, 9).map((id) =>
-            <Trait key={id} data={getTrait(traits, id)} active={isActive(id, data)} />)}
+          {layoutTraits(majorTraits.slice(6, 9), traits, data, error)}
         </div>
       </div>
     </div>
