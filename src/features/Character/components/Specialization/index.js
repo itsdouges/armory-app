@@ -4,6 +4,7 @@ import type { Specializations, Traits } from 'flowTypes';
 
 import cx from 'classnames';
 
+import colours from 'common/styles/colours';
 import styles from './styles.less';
 import Trait from '../Trait';
 import SpecializationIcon from '../SpecializationIcon';
@@ -20,6 +21,7 @@ const layoutTraits = (ids, traits, error) => ids.map((id, index) =>
 
 const getStyle = (data, spec) => ({
   backgroundImage: `url(${spec.background})`,
+  backgroundColor: spec.background && colours._black,
 });
 
 const emptyMajorTraits = Array(9).fill(undefined);

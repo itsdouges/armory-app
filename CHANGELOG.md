@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.9.0] - unreleased
+## [4.9.0] - 2017/03/20
 ### Added
 - Basic dismissable notification system
 - Error handling for gw2 data
