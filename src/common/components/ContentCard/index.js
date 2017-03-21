@@ -120,7 +120,7 @@ const ContentCard = ({
 
   return (
     <div className={cx(styles.root, className, styles[size])}>
-      <div className={cx(styles.image, imageClass)} style={imageStyle}>
+      <div className={cx(styles.image, styles[imageClass])} style={imageStyle}>
         {children}
       </div>
 

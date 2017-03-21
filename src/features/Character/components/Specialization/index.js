@@ -10,7 +10,7 @@ import Trait from '../Trait';
 import SpecializationIcon from '../SpecializationIcon';
 
 const getTrait = (id, traits, error) => (traits && traits[id]) || { error };
-const isActive = (id, { traits }) => traits.indexOf(id) >= 0;
+const isActive = (id, { traits }) => (traits || []).indexOf(id) >= 0;
 const layoutTraits = (ids, traits, data, error) => ids.map((id, index) =>
   <Trait
     key={id || index}
@@ -29,7 +29,7 @@ const emptyMajorTraits = Array(9).fill(undefined);
 type Props = {
   data: {
     id: number,
-    traits: Array<number>,
+    traits?: Array<number>,
   },
   traits: Traits,
   specializations: Specializations,

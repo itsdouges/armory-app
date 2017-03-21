@@ -6,6 +6,6 @@ export default {
 
   features: {
     christmas: false,
-    ads: true,
+    ads: false,
   },
 };
