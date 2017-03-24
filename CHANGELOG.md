@@ -8,10 +8,9 @@
 - Changes
 ```
 
-## [4.9.1] - 2017/03/21
+## [4.9.1] - 2017/03/24
 ### Fixed
 - Style fixes
-- Character page hanging when recieving bad data
 - Specializations throwing an exception when recieving bad data
 
 ## [4.9.0] - 2017/03/20
