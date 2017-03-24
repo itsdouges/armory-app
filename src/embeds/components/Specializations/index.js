@@ -23,7 +23,7 @@ type Props = {
   fetchSpecializations?: (ids: Array<number>) => void,
   specs: Array<{
     id: number,
-    traits: Array<number>,
+    traits?: Array<number>,
   }>,
   className?: string,
 };

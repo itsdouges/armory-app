@@ -3,6 +3,7 @@ import lowerFirst from 'lodash/lowerFirst';
 import merge from 'lodash/merge';
 import { createSelector } from 'reselect';
 import T from 'i18n-react';
+import { defaultCharacter } from 'flowTypes';
 
 import {
   FETCH_CHARACTER_RESULT,
@@ -111,28 +112,33 @@ function extractEliteSpecialization (character, mode) {
     .reduce((acc, spec) => (spec && eliteSpecMap[spec.id]) || acc, character.profession);
 }
 
-export const selector = createSelector(
+const characterSelector = createSelector(
   (store) => store.characters.data[store.characters.selected],
+);
+
+const userCharactersSelector = createSelector(
   (store) => {
     const user = store.users.data[store.users.selected];
     return user && user.characters;
   },
+);
+
+export const selector = createSelector(
+  characterSelector,
+  userCharactersSelector,
   (store) => store.items,
   (store) => store.skins,
   (store) => store.specializations,
   (store) => store.traits,
-  (store) => store.items.fetching ||
-    store.skins.fetching ||
-    store.traits.fetching ||
-    store.specializations.fetching,
   (store) => store.characters.mode,
   (store) => store.skills,
   (store) => store.amulets,
   (store) => store.pets,
-  (store) => store.titles[get(store.characters.data, `[${store.characters.selected}].title`, '')],
+  (store) => store.titles[get(characterSelector(store), 'title', '')],
   // eslint-disable-next-line
-  (character, characters, items, skins, specializations, traits, fetchingGw2Data, mode, skills, amulets, pets, title) => ({
+  (character, characters, items, skins, specializations, traits, mode, skills, amulets, pets, title) => ({
     character: character && {
+      ...defaultCharacter,
       ...character,
       eliteSpecialization: extractEliteSpecialization(character, mode),
     },
@@ -141,7 +147,6 @@ export const selector = createSelector(
     skins,
     specializations,
     traits,
-    fetchingGw2Data,
     mode,
     skills,
     amulets,

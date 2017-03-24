@@ -115,10 +115,7 @@ export default class Character extends Component {
     });
   };
 
-  getItems (ids: number[] = []) {
-    return ids.map((id) => this.props.items[id]);
-  }
-
+  getItems = (ids: number[] = []) => ids.map((id) => this.props.items[id]);
   setPve = () => this.setMode('pve');
   setPvp = () => this.setMode('pvp');
   setWvw = () => this.setMode('wvw');
@@ -191,7 +188,6 @@ export default class Character extends Component {
 
     /* eslint no-underscore-dangle:0 */
     const attributes = calculateAttributes(character, { items, traits, skills });
-
     const ownCharacter = get(character, 'alias', false) === this.context._userAlias;
     const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
