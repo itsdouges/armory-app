@@ -112,20 +112,14 @@ function extractEliteSpecialization (character, mode) {
     .reduce((acc, spec) => (spec && eliteSpecMap[spec.id]) || acc, character.profession);
 }
 
-const characterSelector = createSelector(
-  (store) => store.characters.data[store.characters.selected],
-);
-
-const userCharactersSelector = createSelector(
-  (store) => {
-    const user = store.users.data[store.users.selected];
-    return user && user.characters;
-  },
-);
+const getCharacters = (store) => {
+  const user = store.users.data[store.users.selected];
+  return user && user.characters;
+};
 
 export const selector = createSelector(
-  characterSelector,
-  userCharactersSelector,
+  (store) => store.characters.data[store.characters.selected],
+  getCharacters,
   (store) => store.items,
   (store) => store.skins,
   (store) => store.specializations,
@@ -134,7 +128,7 @@ export const selector = createSelector(
   (store) => store.skills,
   (store) => store.amulets,
   (store) => store.pets,
-  (store) => store.titles[get(characterSelector(store), 'title', '')],
+  (store) => store.titles[get(getCharacters(store), 'title', '')],
   // eslint-disable-next-line
   (character, characters, items, skins, specializations, traits, mode, skills, amulets, pets, title) => ({
     character: character && {
