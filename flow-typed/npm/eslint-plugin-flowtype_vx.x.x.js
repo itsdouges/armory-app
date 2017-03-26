@@ -1,4 +1,4 @@
-// flow-typed signature: 452c14e0139025a0aa97c6c76a1945e6
+// flow-typed signature: 495bcca0d0fb4fdc05525e4f5bb383f0
 // flow-typed version: <<STUB>>/eslint-plugin-flowtype_v^2.4.0/flow_v0.38.0
 
 /**
@@ -50,6 +50,10 @@ declare module 'eslint-plugin-flowtype/dist/rules/noDupeKeys' {
   declare module.exports: any;
 }
 
+declare module 'eslint-plugin-flowtype/dist/rules/noPrimitiveConstructorTypes' {
+  declare module.exports: any;
+}
+
 declare module 'eslint-plugin-flowtype/dist/rules/noWeakTypes' {
   declare module.exports: any;
 }
@@ -67,6 +71,10 @@ declare module 'eslint-plugin-flowtype/dist/rules/requireReturnType' {
 }
 
 declare module 'eslint-plugin-flowtype/dist/rules/requireValidFileAnnotation' {
+  declare module.exports: any;
+}
+
+declare module 'eslint-plugin-flowtype/dist/rules/requireVariableType' {
   declare module.exports: any;
 }
 
@@ -138,6 +146,14 @@ declare module 'eslint-plugin-flowtype/dist/rules/validSyntax' {
   declare module.exports: any;
 }
 
+declare module 'eslint-plugin-flowtype/dist/utilities/checkFlowFileAnnotation' {
+  declare module.exports: any;
+}
+
+declare module 'eslint-plugin-flowtype/dist/utilities/fuzzyStringMatch' {
+  declare module.exports: any;
+}
+
 declare module 'eslint-plugin-flowtype/dist/utilities/getParameterName' {
   declare module.exports: any;
 }
@@ -196,6 +212,9 @@ declare module 'eslint-plugin-flowtype/dist/rules/genericSpacing.js' {
 declare module 'eslint-plugin-flowtype/dist/rules/noDupeKeys.js' {
   declare module.exports: $Exports<'eslint-plugin-flowtype/dist/rules/noDupeKeys'>;
 }
+declare module 'eslint-plugin-flowtype/dist/rules/noPrimitiveConstructorTypes.js' {
+  declare module.exports: $Exports<'eslint-plugin-flowtype/dist/rules/noPrimitiveConstructorTypes'>;
+}
 declare module 'eslint-plugin-flowtype/dist/rules/noWeakTypes.js' {
   declare module.exports: $Exports<'eslint-plugin-flowtype/dist/rules/noWeakTypes'>;
 }
@@ -210,6 +229,9 @@ declare module 'eslint-plugin-flowtype/dist/rules/requireReturnType.js' {
 }
 declare module 'eslint-plugin-flowtype/dist/rules/requireValidFileAnnotation.js' {
   declare module.exports: $Exports<'eslint-plugin-flowtype/dist/rules/requireValidFileAnnotation'>;
+}
+declare module 'eslint-plugin-flowtype/dist/rules/requireVariableType.js' {
+  declare module.exports: $Exports<'eslint-plugin-flowtype/dist/rules/requireVariableType'>;
 }
 declare module 'eslint-plugin-flowtype/dist/rules/semi.js' {
   declare module.exports: $Exports<'eslint-plugin-flowtype/dist/rules/semi'>;
@@ -261,6 +283,12 @@ declare module 'eslint-plugin-flowtype/dist/rules/useFlowType.js' {
 }
 declare module 'eslint-plugin-flowtype/dist/rules/validSyntax.js' {
   declare module.exports: $Exports<'eslint-plugin-flowtype/dist/rules/validSyntax'>;
+}
+declare module 'eslint-plugin-flowtype/dist/utilities/checkFlowFileAnnotation.js' {
+  declare module.exports: $Exports<'eslint-plugin-flowtype/dist/utilities/checkFlowFileAnnotation'>;
+}
+declare module 'eslint-plugin-flowtype/dist/utilities/fuzzyStringMatch.js' {
+  declare module.exports: $Exports<'eslint-plugin-flowtype/dist/utilities/fuzzyStringMatch'>;
 }
 declare module 'eslint-plugin-flowtype/dist/utilities/getParameterName.js' {
   declare module.exports: $Exports<'eslint-plugin-flowtype/dist/utilities/getParameterName'>;

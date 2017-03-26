@@ -1,4 +1,4 @@
-// flow-typed signature: c02993849e977724a7210856c1b11030
+// flow-typed signature: e550894f7369f71985460b0cd2686d21
 // flow-typed version: <<STUB>>/babel-core_v^6.11.4/flow_v0.38.0
 
 /**
@@ -30,11 +30,31 @@ declare module 'babel-core/lib/api/node' {
   declare module.exports: any;
 }
 
+declare module 'babel-core/lib/helpers/get-possible-plugin-names' {
+  declare module.exports: any;
+}
+
+declare module 'babel-core/lib/helpers/get-possible-preset-names' {
+  declare module.exports: any;
+}
+
 declare module 'babel-core/lib/helpers/merge' {
   declare module.exports: any;
 }
 
 declare module 'babel-core/lib/helpers/normalize-ast' {
+  declare module.exports: any;
+}
+
+declare module 'babel-core/lib/helpers/resolve-from-possible-names' {
+  declare module.exports: any;
+}
+
+declare module 'babel-core/lib/helpers/resolve-plugin' {
+  declare module.exports: any;
+}
+
+declare module 'babel-core/lib/helpers/resolve-preset' {
   declare module.exports: any;
 }
 
@@ -127,11 +147,26 @@ declare module 'babel-core/lib/api/browser.js' {
 declare module 'babel-core/lib/api/node.js' {
   declare module.exports: $Exports<'babel-core/lib/api/node'>;
 }
+declare module 'babel-core/lib/helpers/get-possible-plugin-names.js' {
+  declare module.exports: $Exports<'babel-core/lib/helpers/get-possible-plugin-names'>;
+}
+declare module 'babel-core/lib/helpers/get-possible-preset-names.js' {
+  declare module.exports: $Exports<'babel-core/lib/helpers/get-possible-preset-names'>;
+}
 declare module 'babel-core/lib/helpers/merge.js' {
   declare module.exports: $Exports<'babel-core/lib/helpers/merge'>;
 }
 declare module 'babel-core/lib/helpers/normalize-ast.js' {
   declare module.exports: $Exports<'babel-core/lib/helpers/normalize-ast'>;
+}
+declare module 'babel-core/lib/helpers/resolve-from-possible-names.js' {
+  declare module.exports: $Exports<'babel-core/lib/helpers/resolve-from-possible-names'>;
+}
+declare module 'babel-core/lib/helpers/resolve-plugin.js' {
+  declare module.exports: $Exports<'babel-core/lib/helpers/resolve-plugin'>;
+}
+declare module 'babel-core/lib/helpers/resolve-preset.js' {
+  declare module.exports: $Exports<'babel-core/lib/helpers/resolve-preset'>;
 }
 declare module 'babel-core/lib/helpers/resolve.js' {
   declare module.exports: $Exports<'babel-core/lib/helpers/resolve'>;

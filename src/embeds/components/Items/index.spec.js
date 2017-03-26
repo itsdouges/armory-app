@@ -1,5 +1,5 @@
 import { mount } from 'enzyme';
-import { createStubComponent, stubRedux, stubStyles } from 'test/utils';
+import { createStubComponent, stubRedux, stubStyles, describeConnect } from 'test/utils';
 
 const styles = stubStyles([
   'item',
@@ -13,13 +13,15 @@ const actions = {
   fetchItemStats: sandbox.spy(),
 };
 
-const ItemsEmbed = proxyquire('embeds/components/Items', {
+const stubs = {
   ...stubRedux,
   'features/Gw2/actions': actions,
   'features/Character/components/Item': Item,
   'lib/gw2/itemStats': applyAttributes,
   './styles.less': styles,
-});
+};
+
+const ItemsEmbed = proxyquire('embeds/components/Items', stubs);
 
 describe('<Items /> embed', () => {
   const props = {
@@ -81,6 +83,27 @@ describe('<Items /> embed', () => {
       expectedItems.forEach((jsx, index) => {
         expect(wrapper.children().at(index)).to.contain(jsx);
       });
+    });
+  });
+
+  describeConnect('embeds/components/Items', stubs, (mstp, mdtp) => {
+    const store = {
+      items: { cool: 'item' },
+      itemStats: { neat: 'stat' },
+      other: 'value',
+    };
+
+    it('should map state to props', () => {
+      const mappedProps = mstp(store);
+
+      expect(mappedProps).to.eql({
+        items: store.items,
+        itemStats: store.itemStats,
+      });
+    });
+
+    it('should map dispatch to props', () => {
+      expect(mdtp).to.eql(actions);
     });
   });
 });
