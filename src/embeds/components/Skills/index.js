@@ -21,7 +21,7 @@ type Props = {
   fetchSkills?: (ids: Array<number>) => void,
   ids: Array<number>,
   className?: string,
-  optionalText?: string,
+  optionalText: string,
 };
 
 @connect(mapStateToProps, {

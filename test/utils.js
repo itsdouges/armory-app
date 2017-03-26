@@ -2,7 +2,6 @@
 
 import React from 'react';
 
-// eslint-disable-next-line
 export const createStubComponent = (displayName: string) => {
   function stubComponent () {
     return <div />;
@@ -17,3 +16,9 @@ export const stubStyles = (classnames: Array<string>) => classnames.reduce((obj,
   ...obj,
   [name]: `${name}-style`,
 }), {});
+
+export const stubRedux = ({
+  'react-redux': {
+    connect: () => (c: any) => c,
+  },
+});

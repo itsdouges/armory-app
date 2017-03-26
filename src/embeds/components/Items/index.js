@@ -22,13 +22,12 @@ type Props = {
   items?: Items,
   itemStats?: ItemStats,
   fetchItems?: (ids: Array<number>) => void,
-  // XXX: Why flow doesn't accept number in ids?
-  fetchItemStats?: (ids: Array<mixed>) => void,
+  fetchItemStats?: (ids: Array<number>) => void,
   ids: Array<number>,
   className?: string,
   mode?: 'rune' | 'item',
   statIds: { [key: number]: number },
-  optionalText?: string,
+  optionalText: string,
 };
 
 @connect(mapStateToProps, {
@@ -44,8 +43,13 @@ export default class ItemsEmbed extends Component {
     statId?: number,
     items?: Items,
     itemStats?: ItemStats,
-    optionalText?: string,
+    optionalText: string,
+    index: number,
   ) {
+    if (id < 0) {
+      return <Item key={`${index}-${id}`} tooltipTextOverride={optionalText} />;
+    }
+
     const selectedStat = statId && itemStats && itemStats[statId];
     const item = items && items[id];
     if (!item) {
@@ -65,26 +69,22 @@ export default class ItemsEmbed extends Component {
       item.details.infix_upgrade_applied = true;
     }
 
-    if (id > -1) {
-      return (
-        <Item
-          key={id}
-          item={item}
-          name={mode === 'rune' ? 'Rune' : undefined}
-          tooltipType={mode === 'rune' ? 'amulets' : undefined}
-          className={styles.item}
-        />
-      );
-    }
-
-    return <Item tooltipTextOverride={optionalText} />;
+    return (
+      <Item
+        key={`${index}-${id}`}
+        item={item}
+        name={mode === 'rune' ? 'Rune' : undefined}
+        tooltipType={mode === 'rune' ? 'amulets' : undefined}
+        className={styles.item}
+      />
+    );
   }
 
   componentWillMount () {
     const { ids, statIds, fetchItems, fetchItemStats } = this.props;
 
     fetchItems && fetchItems(ids);
-    fetchItemStats && fetchItemStats(Object.values(statIds));
+    fetchItemStats && fetchItemStats(Object.values(statIds).map((id) => +id));
   }
 
   render () {
@@ -92,13 +92,14 @@ export default class ItemsEmbed extends Component {
 
     return (
       <div className={className}>
-        {ids.map((id) => ItemsEmbed.renderItem(
+        {ids.map((id, index) => ItemsEmbed.renderItem(
           id,
           mode,
           statIds[id],
           items,
           itemStats,
           optionalText,
+          index,
         ))}
       </div>
     );

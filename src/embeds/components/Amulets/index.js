@@ -20,7 +20,7 @@ type Props = {
   amulets?: Amulets,
   fetchAmulets?: (ids: Array<number>) => void,
   className?: string,
-  optionalText?: string,
+  optionalText: string,
 };
 
 @connect(mapStateToProps, {
