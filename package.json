@@ -13,7 +13,10 @@
     "build": "node ./scripts/build.js",
     "deploy": "node ./scripts/deploy.js",
     "unit": "mocha \"src/**/*.spec.js\"",
-    "tdd": "npm run unit -- -w"
+    "tdd": "npm run unit -- -w",
+    "coverage": "BABEL_ENV=test nyc npm run unit",
+    "codecov": "npm run coverage && nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "report": "nyc report"
   },
   "dependencies": {
     "airbnb-js-shims": "^1.0.1",
@@ -42,6 +45,7 @@
     "babel-core": "^6.11.4",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.4",
+    "babel-plugin-istanbul": "^4.1.1",
     "babel-plugin-syntax-trailing-function-commas": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -56,6 +60,7 @@
     "chai-as-promised": "^6.0.0",
     "chai-enzyme": "^0.6.1",
     "chalk": "^1.1.3",
+    "codecov": "^2.1.0",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.26.1",
     "detect-port": "^1.1.0",
@@ -85,6 +90,7 @@
     "less-loader": "^2.2.3",
     "less-vars-loader": "^1.1.0",
     "mocha": "^3.2.0",
+    "nyc": "^10.1.2",
     "opn": "^4.0.2",
     "postcss-loader": "^1.2.2",
     "pre-commit": "^1.2.2",
