@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node ./scripts/start.js --prod",
     "start:embeds": "npm start -- --embeds --local",
-    "test": "npm run lint && npm run flow && npm run unit",
+    "test": "npm run lint && npm run flow && npm run coverage",
     "flow": "flow",
     "flowtypes": "flow-typed install --overwrite",
     "lint": "eslint ./config ./scripts ./src ./test",
@@ -15,8 +15,7 @@
     "unit": "mocha \"src/**/*.spec.js\"",
     "tdd": "npm run unit -- -w",
     "coverage": "BABEL_ENV=test nyc npm run unit",
-    "codecov": "npm run coverage && nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "report": "nyc report"
+    "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "dependencies": {
     "airbnb-js-shims": "^1.0.1",
