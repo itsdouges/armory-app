@@ -60,11 +60,11 @@ export function generateActions (resourceName, getResource, afterGet) {
 
         return afterGet ? afterGet(dispatch, response) : response;
       }, ({ response }) => {
-        const action = response.status === 404
-          ? actions[fetchErrorMethodName](missingIds, T.translate('messages.notFoundLong'))
-          : actions[fetchErrorMethodName](missingIds, T.translate('messages.gw2ApiDown'));
+        const text = response.status === 404
+          ? T.translate('messages.notFoundLong')
+          : T.translate('messages.gw2ApiDown');
 
-        dispatch(action);
+        dispatch(actions[fetchErrorMethodName](missingIds, text));
       });
   };
 
