@@ -172,7 +172,8 @@
     "played": "Joué",
     "times": "fois",
     "ratio": "Ratio",
-    "rank": "Rang"
+    "rank": "Rang",
+    "optional": "Optional"
   },
   "leaderboards": {
     "name": "Leaderboards"

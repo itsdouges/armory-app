@@ -22,7 +22,9 @@ body {
   overflow: auto;
 }
 
-.embed {
+.gw2a-amulets-embed,
+.gw2a-items-embed,
+.gw2a-skills-embed {
   text-align: center;
 }
 
@@ -42,6 +44,7 @@ pre {
   margin: 2em;
   font-family: monospace, monospace;
   font-size: 0.8rem !important;
+  overflow: auto;
 }
 
 p,
@@ -136,20 +139,22 @@ document.GW2A_EMBED_OPTIONS = {
 
         <h2>Skills</h2>
         <div
-          class="embed"
           data-armory-embed="skills"
-          data-armory-ids="5507,5508,5510,5515,5516,5517,30662,5542"
+          data-armory-ids="5507,5508,5510,332211,-1,5515,5516,5517,30662,5542"
+          data-armory-optional-text="This can be replaced with any text!"
         >
         </div>
 
         <ul>
           <li>data-armory-embed="skills"</li>
           <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
+          <li>data-armory-optional-text="{STRING}" (if missing, "Optional" is used in its place)</li>
         </ul>
 
         <pre>&lt;div
   data-armory-embed="skills"
-  data-armory-ids="5507,5508,5510,5515,5516,5517,30662,5542"
+  data-armory-ids="5507,5508,5510,332211,-1,5515,5516,5517,30662,5542"
+  data-armory-optional-text="This can be replaced with any text!"
 &gt;
 &lt;/div&gt;
 
@@ -157,33 +162,31 @@ document.GW2A_EMBED_OPTIONS = {
 
         <h2>Items</h2>
         <div
-          class="embed"
           data-armory-embed="items"
-          data-armory-ids="7139,8633,46774,74847,993,109,24836,74412,39620,77482,79712,79444,80241"
+          data-armory-ids="7139,8633,46774,74847,993,332211,109,-1,24836,74412,39620,77482,79712,79444,80241"
           data-armory-77482-stat="656"
           data-armory-79444-stat="591"
           data-armory-79712-stat="1153"
           data-armory-80241-stat="588"
-        >
-        </div>
-
-        <div
-          class="embed"
-          data-armory-embed="items"
-          data-armory-ids="1339129"
+          data-armory-optional-text="Some other text can go here!"
         >
         </div>
 
         <ul>
           <li>data-armory-embed="items"</li>
           <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
-		  <li>data-armory-{ITEM_ID}-stat="{ITEMSTAT_ID}"</li>
+          <li>data-armory-{ITEM_ID}-stat="{ITEMSTAT_ID}"</li>
+          <li>data-armory-optional-text="{STRING}" (if missing, "Optional" is used in its place)</li>
         </ul>
 
         <pre>&lt;div
   data-armory-embed="items"
-  data-armory-ids="7139,8633,46774,74847,993,109,24836,74412,79712"
+  data-armory-ids="7139,8633,46774,74847,993,332211,109,-1,24836,74412,39620,77482,79712,79444,80241,80241"
+  data-armory-77482-stat="656"
+  data-armory-79444-stat="591"
   data-armory-79712-stat="1153"
+  data-armory-80241-stat="588"
+  data-armory-optional-text="Some other text can go here!"
 &gt;
 &lt;/div&gt;
 
@@ -191,20 +194,22 @@ document.GW2A_EMBED_OPTIONS = {
 
         <h2>Amulets</h2>
         <div
-          class="embed"
           data-armory-embed="amulets"
-          data-armory-ids="10,12,13,14"
+          data-armory-ids="10,12,332211,-1,13,14"
+          data-armory-optional-text="This is a blank space!"
         >
         </div>
 
         <ul>
           <li>data-armory-embed="amulets"</li>
           <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
+          <li>data-armory-optional-text="{STRING}" (if missing, "Optional" is used in its place)</li>
         </ul>
 
         <pre>&lt;div
   data-armory-embed="amulets"
-  data-armory-ids="10,12,13,14"
+  data-armory-ids="10,12,332211,-1,13,14"
+  data-armory-optional-text="This is a blank space!"
 &gt;
 &lt;/div&gt;
 
@@ -213,7 +218,7 @@ document.GW2A_EMBED_OPTIONS = {
         <h2>Specializations</h2>
         <div
           data-armory-embed="specializations"
-          data-armory-ids="1,2,3,39,11,16,18"
+          data-armory-ids="1,2,3,332211,39,11,16,18"
           data-armory-1-traits="700,1960,1950"
           data-armory-2-traits="820,858,1694"
           data-armory-3-traits="1761,1774,1749"
@@ -232,13 +237,14 @@ document.GW2A_EMBED_OPTIONS = {
 
         <pre>&lt;div
   data-armory-embed="specializations"
-  data-armory-ids="1,2,3,39,11,16"
+  data-armory-ids="1,2,3,332211,39,11,16,18"
   data-armory-1-traits="700,1960,1950"
   data-armory-2-traits="820,858,1694"
   data-armory-3-traits="1761,1774,1749"
   data-armory-39-traits="815,816,801"
   data-armory-16-traits="577,578,1686"
   data-armory-11-traits="1471,1482,1711"
+  data-armory-18-traits="2049,2011,1928"
 &gt;
 &lt;/div&gt;
 

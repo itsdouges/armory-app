@@ -9,6 +9,7 @@ import Base from '../Base';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import axios from 'axios';
+import T from 'i18n-react';
 
 import { addStyleSheet } from 'lib/dom';
 import { set as setLang } from 'lib/i18n';
@@ -56,6 +57,7 @@ function bootstrapEmbeds () {
       return;
     }
 
+    const optionalText = element.getAttribute(makeAttribute('optional-text')) || T.translate('words.optional');
     const rawIds = element.getAttribute(makeAttribute('ids'));
     const ids = (rawIds || '').split(',');
 
@@ -66,7 +68,10 @@ function bootstrapEmbeds () {
 
       ReactDOM.render(
         <Base>
-          <Component className={cx(styles.embed, makeClassName(embedName))} />
+          <Component
+            className={cx(styles.embed, makeClassName(embedName))}
+            optionalText={optionalText}
+          />
         </Base>,
         element
       );

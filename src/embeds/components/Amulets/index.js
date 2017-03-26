@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 import actions from 'features/Gw2/actions';
 import Item from 'features/Character/components/Item';
-
 import styles from './styles.less';
 
 function mapStateToProps (state) {
@@ -21,6 +20,7 @@ type Props = {
   amulets?: Amulets,
   fetchAmulets?: (ids: Array<number>) => void,
   className?: string,
+  optionalText?: string,
 };
 
 @connect(mapStateToProps, {
@@ -29,6 +29,21 @@ type Props = {
 export default class AmuletsEmbed extends Component {
   props: Props;
 
+  static renderAmulet (id: number, amulets?: Amulets, optionalText) {
+    if (id >= 0) {
+      return (
+        <Item
+          tooltipType="amulets"
+          className={styles.item}
+          key={id}
+          item={amulets && amulets[id]}
+        />
+      );
+    }
+
+    return <Item tooltipTextOverride={optionalText} />;
+  }
+
   componentWillMount () {
     const { ids, fetchAmulets } = this.props;
 
@@ -36,10 +51,10 @@ export default class AmuletsEmbed extends Component {
   }
 
   render () {
-    const { ids, amulets, className } = this.props;
+    const { ids, amulets, className, optionalText } = this.props;
     return (
       <div className={className}>
-        {ids.map((id) => <Item tooltipType="amulets" className={styles.item} key={id} item={amulets && amulets[id]} />)}
+        {ids.map((id) => AmuletsEmbed.renderAmulet(id, amulets, optionalText))}
       </div>
     );
   }

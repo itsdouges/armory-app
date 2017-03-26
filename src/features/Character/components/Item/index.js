@@ -25,6 +25,7 @@ type Props = {
   size?: 'micro' | 'small',
   tooltipType?: string,
   className?: string,
+  tooltipTextOverride?: string,
 };
 
 const Item = ({
@@ -41,6 +42,7 @@ const Item = ({
   small,
   tooltipType,
   className,
+  tooltipTextOverride,
 }: Props) => {
   if (hide) return null;
 
@@ -59,7 +61,7 @@ const Item = ({
   return (
     <TooltipTrigger
       type={tooltipType || 'items'}
-      data={data}
+      data={tooltipTextOverride || data}
     >
       <Icon
         name={type ? `${type}-slot-icon.png` : 'empty-skill-back.png'}
