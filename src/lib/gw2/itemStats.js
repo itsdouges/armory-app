@@ -86,7 +86,11 @@ function getCalcFunction (itemAttributes, selectedStat) {
 }
 
 export default function applyAttributes (item, selectedStat) {
-  const type = convertType(item.details.type || item.type);
+  if (!item || !selectedStat) {
+    return [];
+  }
+
+  const type = convertType((item.details && item.details.type) || item.type);
   if (!type || !item.rarity || !item.level) {
     return [];
   }
