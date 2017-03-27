@@ -2,6 +2,7 @@
 
 import cx from 'classnames';
 import get from 'lodash/get';
+import T from 'i18n-react';
 
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Icon from 'common/components/Icon';
@@ -17,9 +18,10 @@ type Props = {
 
 const Skill = ({ data, className, tooltipTextOverride }: Props) => {
   const error = get(data, 'error');
+  const tooltipData = tooltipTextOverride || data || T.translate('characters.noSkill');
 
   return (
-    <TooltipTrigger type="skill" data={tooltipTextOverride || data || 'No Skill Selected'}>
+    <TooltipTrigger type="skill" data={tooltipData}>
       {(error || !data)
         ? <EmptySkill />
         : (

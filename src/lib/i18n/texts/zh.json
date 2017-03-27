@@ -79,7 +79,8 @@
     "hidden": "隐藏角色",
     "done": "Done",
     "edit": "Edit",
-    "changePortrait": "Change your character portrait"
+    "changePortrait": "Change your character portrait",
+    "noSkill": "No Skill Selected"
   },
   "settings": {
     "name": "设置",

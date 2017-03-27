@@ -79,7 +79,8 @@
     "hidden": "Personaje oculto",
     "done": "Done",
     "edit": "Edit",
-    "changePortrait": "Change your character portrait"
+    "changePortrait": "Change your character portrait",
+    "noSkill": "No Skill Selected"
   },
   "settings": {
     "name": "Ajustes",

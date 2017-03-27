@@ -1,5 +1,5 @@
 import { mount } from 'enzyme';
-import { createStubComponent, stubRedux, stubStyles, describeConnect } from 'test/utils';
+import { stubComponent, stubRedux, stubStyles, describeConnect } from 'test/utils';
 
 const styles = stubStyles([
   'item',
@@ -7,7 +7,7 @@ const styles = stubStyles([
 
 const sandbox = sinon.sandbox.create();
 const applyAttributes = sandbox.stub();
-const Item = createStubComponent('Item');
+const Item = stubComponent('Item');
 const actions = {
   fetchItems: sandbox.spy(),
   fetchItemStats: sandbox.spy(),
