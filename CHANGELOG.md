@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.10.0] - 2017/03/27
+### Fixed
+- Applying stats to backitem not working
+
 ## [4.9.1] - 2017/03/24
 ### Fixed
 - Style fixes
