@@ -8,7 +8,11 @@
 - Changes
 ```
 
-## [4.11.0] - unreleased
+## [4.11.1] - 2017/03/28
+### Fixed
+- Deployment to prod for tagged commits
+
+## [4.11.0] - 2017/03/28
 ### Added
 - Blank item/skill/amulet for embeds (use id `-1`)
 - `data-armory-blank-text` attribute for use on item/skill/amulet embeds to replace the default "Optional" text tooltip
