@@ -26,6 +26,7 @@ type Props = {
   tooltipType?: string,
   className?: string,
   tooltipTextOverride?: string,
+  equipped?: boolean,
 };
 
 const Item = ({
@@ -43,6 +44,7 @@ const Item = ({
   tooltipType,
   className,
   tooltipTextOverride,
+  equipped,
 }: Props) => {
   if (hide) return null;
 
@@ -56,6 +58,7 @@ const Item = ({
       upgrades,
       upgradeCounts,
       stats,
+      equipped,
     };
 
   return (
