@@ -1,7 +1,6 @@
 // flow-typed signature: 0bb5177083bf69296bdda98e783b4462
 // flow-typed version: 3a256f81e9/chai_v3.5.x/flow_>=v0.24.0
 
-declare module "chai" {
 
     declare type ExpectChain<T> = {
         and: ExpectChain<T>,
@@ -195,4 +194,3 @@ declare module "chai" {
         showDiff: boolean,
         truncateThreshold: number
     };
-}

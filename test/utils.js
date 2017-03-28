@@ -29,13 +29,14 @@ export const stubI18n = (stub: any) => ({
   },
 });
 
-export function describeConnect (path: string, stubs: {}, expectations: () => void) {
+export function describeConnect (path: string, stubs: ?{}, expectations: (mstp: () => {}, mdtp: {}) => void) {
+  const noop = () => {};
   let mapStateToPropsExtracted;
   let mapDispatchToPropsExatracted;
 
   const extractor = (mapStateToProps, mapDispatchToProps) => () => {
-    mapStateToPropsExtracted = mapStateToProps;
-    mapDispatchToPropsExatracted = mapDispatchToProps;
+    mapStateToPropsExtracted = mapStateToProps || noop;
+    mapDispatchToPropsExatracted = mapDispatchToProps || {};
     return stubComponent(path);
   };
 
