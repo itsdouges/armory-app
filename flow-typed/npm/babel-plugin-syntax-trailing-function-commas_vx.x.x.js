@@ -1,4 +1,4 @@
-// flow-typed signature: a6be1455063379d63d81f8a8aca9f532
+// flow-typed signature: b2901dffe06db896a912d247f3bae2b9
 // flow-typed version: <<STUB>>/babel-plugin-syntax-trailing-function-commas_v^6.8.0/flow_v0.38.0
 
 /**
@@ -26,70 +26,7 @@ declare module 'babel-plugin-syntax-trailing-function-commas/lib/index' {
   declare module.exports: any;
 }
 
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/arrow-function/actual' {
-  declare module.exports: any;
-}
-
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/arrow-function/expected' {
-  declare module.exports: any;
-}
-
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/call/actual' {
-  declare module.exports: any;
-}
-
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/call/expected' {
-  declare module.exports: any;
-}
-
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/declaration/actual' {
-  declare module.exports: any;
-}
-
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/declaration/expected' {
-  declare module.exports: any;
-}
-
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/new-expression/actual' {
-  declare module.exports: any;
-}
-
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/new-expression/expected' {
-  declare module.exports: any;
-}
-
-declare module 'babel-plugin-syntax-trailing-function-commas/test/index' {
-  declare module.exports: any;
-}
-
 // Filename aliases
 declare module 'babel-plugin-syntax-trailing-function-commas/lib/index.js' {
   declare module.exports: $Exports<'babel-plugin-syntax-trailing-function-commas/lib/index'>;
-}
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/arrow-function/actual.js' {
-  declare module.exports: $Exports<'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/arrow-function/actual'>;
-}
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/arrow-function/expected.js' {
-  declare module.exports: $Exports<'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/arrow-function/expected'>;
-}
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/call/actual.js' {
-  declare module.exports: $Exports<'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/call/actual'>;
-}
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/call/expected.js' {
-  declare module.exports: $Exports<'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/call/expected'>;
-}
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/declaration/actual.js' {
-  declare module.exports: $Exports<'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/declaration/actual'>;
-}
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/declaration/expected.js' {
-  declare module.exports: $Exports<'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/declaration/expected'>;
-}
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/new-expression/actual.js' {
-  declare module.exports: $Exports<'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/new-expression/actual'>;
-}
-declare module 'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/new-expression/expected.js' {
-  declare module.exports: $Exports<'babel-plugin-syntax-trailing-function-commas/test/fixtures/trailing-function-commas/new-expression/expected'>;
-}
-declare module 'babel-plugin-syntax-trailing-function-commas/test/index.js' {
-  declare module.exports: $Exports<'babel-plugin-syntax-trailing-function-commas/test/index'>;
 }

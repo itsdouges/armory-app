@@ -1,9 +1,9 @@
 // @flow
 
-import type { EmbedProps } from './bootstrap';
-import Character from './components/Character';
+import type { EmbedProps } from 'embeds/bootstrap';
+import Character from 'embeds/components/Character';
 
-import { makeAttribute } from './bootstrap';
+import { makeAttribute } from 'embeds/bootstrap';
 
 export default function (element: HTMLElement) {
   const name = element.getAttribute(makeAttribute('name')) || '';

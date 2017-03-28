@@ -40,6 +40,7 @@ const ItemsTooltip = ({ data: {
   upgradeCounts,
   infusions,
   stats: { attributes = {} },
+  equipped,
 } }) => {
   if (Object.keys(item).length === 0) {
     return <Background><SimpleTooltip data={name} /></Background>;
@@ -49,7 +50,7 @@ const ItemsTooltip = ({ data: {
 
   return (
     <Background>
-      <SimpleTooltip data={T.translate('items.currentlyEquipped')} />
+      {equipped && <SimpleTooltip data={T.translate('items.currentlyEquipped')} />}
 
       <ItemHeader
         name={buildName(item, skin, upgrades)}

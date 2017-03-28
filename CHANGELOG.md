@@ -8,6 +8,14 @@
 - Changes
 ```
 
+## [4.11.0] - unreleased
+### Added
+- Blank item/skill/amulet for embeds (use id `-1`)
+- `data-armory-blank-text` attribute for use on item/skill/amulet embeds to replace the default "Optional" text tooltip
+
+### Changed
+- Item tooltip to only show "Currently Equipped" for characters
+
 ## [4.10.0] - 2017/03/27
 ### Fixed
 - Applying stats to backitem not working
