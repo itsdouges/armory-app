@@ -31,7 +31,7 @@ describe('<Items /> embed', () => {
     statIds: {
       4: 5,
     },
-    optionalText: 'optional_text',
+    blankText: 'optional_text',
     mode: 'item',
     items: {
       2: {
@@ -75,7 +75,7 @@ describe('<Items /> embed', () => {
           tooltipType={undefined}
           className={styles.item}
         />,
-        <Item tooltipTextOverride={props.optionalText} />,
+        <Item tooltipTextOverride={props.blankText} />,
       ];
 
       expect(wrapper.children()).to.have.length(expectedItems.length);

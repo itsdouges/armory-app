@@ -23,7 +23,7 @@ type Options = {
 
 export type EmbedProps = {
   className: string,
-  optionalText: string,
+  blankText: string,
 };
 
 const makeClassName = (str) => `gw2a-${str}-embed`;
@@ -58,7 +58,7 @@ function bootstrapEmbeds () {
       return;
     }
 
-    const optionalText = element.getAttribute(makeAttribute('blank-text')) || T.translate('words.optional');
+    const blankText = element.getAttribute(makeAttribute('blank-text')) || T.translate('words.optional');
     const rawIds = element.getAttribute(makeAttribute('ids'));
     const ids = (rawIds || '').split(',');
 
@@ -74,7 +74,7 @@ function bootstrapEmbeds () {
         <Base>
           <Component
             className={cx(styles.embed, makeClassName(embedName))}
-            optionalText={optionalText}
+            blankText={blankText}
           />
         </Base>,
         element

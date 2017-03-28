@@ -21,7 +21,7 @@ type Props = {
   fetchSkills?: (ids: Array<number>) => void,
   ids: Array<number>,
   className?: string,
-  optionalText: string,
+  blankText: string,
 };
 
 @connect(mapStateToProps, {
@@ -30,7 +30,7 @@ type Props = {
 export default class SkillsEmbed extends Component {
   props: Props;
 
-  static renderSkill (id, skills, optionalText) {
+  static renderSkill (id, skills, blankText) {
     if (id >= 0) {
       return (
         <Skill
@@ -41,7 +41,7 @@ export default class SkillsEmbed extends Component {
       );
     }
 
-    return <Skill tooltipTextOverride={optionalText} />;
+    return <Skill tooltipTextOverride={blankText} />;
   }
 
   componentWillMount () {
@@ -51,11 +51,11 @@ export default class SkillsEmbed extends Component {
   }
 
   render () {
-    const { ids, skills, className, optionalText } = this.props;
+    const { ids, skills, className, blankText } = this.props;
 
     return (
       <div className={className}>
-        {ids.map((id) => SkillsEmbed.renderSkill(id, skills, optionalText))}
+        {ids.map((id) => SkillsEmbed.renderSkill(id, skills, blankText))}
       </div>
     );
   }

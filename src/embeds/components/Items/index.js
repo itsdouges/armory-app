@@ -27,7 +27,7 @@ type Props = {
   className?: string,
   mode?: 'rune' | 'item',
   statIds: { [key: number]: number },
-  optionalText: string,
+  blankText: string,
 };
 
 @connect(mapStateToProps, {
@@ -43,11 +43,11 @@ export default class ItemsEmbed extends Component {
     statId?: number,
     items?: Items,
     itemStats?: ItemStats,
-    optionalText: string,
+    blankText: string,
     index: number,
   ) {
     if (id < 0) {
-      return <Item key={`${index}-${id}`} tooltipTextOverride={optionalText} />;
+      return <Item key={`${index}-${id}`} tooltipTextOverride={blankText} />;
     }
 
     const selectedStat = statId && itemStats && itemStats[statId];
@@ -88,7 +88,7 @@ export default class ItemsEmbed extends Component {
   }
 
   render () {
-    const { ids, statIds, items, itemStats, className, mode, optionalText } = this.props;
+    const { ids, statIds, items, itemStats, className, mode, blankText } = this.props;
 
     return (
       <div className={className}>
@@ -98,7 +98,7 @@ export default class ItemsEmbed extends Component {
           statIds[id],
           items,
           itemStats,
-          optionalText,
+          blankText,
           index,
         ))}
       </div>

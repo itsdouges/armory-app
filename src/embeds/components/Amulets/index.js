@@ -20,7 +20,7 @@ type Props = {
   amulets?: Amulets,
   fetchAmulets?: (ids: Array<number>) => void,
   className?: string,
-  optionalText: string,
+  blankText: string,
 };
 
 @connect(mapStateToProps, {
@@ -29,7 +29,7 @@ type Props = {
 export default class AmuletsEmbed extends Component {
   props: Props;
 
-  static renderAmulet (id: number, amulets?: Amulets, optionalText) {
+  static renderAmulet (id: number, amulets?: Amulets, blankText) {
     if (id >= 0) {
       return (
         <Item
@@ -41,7 +41,7 @@ export default class AmuletsEmbed extends Component {
       );
     }
 
-    return <Item tooltipTextOverride={optionalText} />;
+    return <Item tooltipTextOverride={blankText} />;
   }
 
   componentWillMount () {
@@ -51,10 +51,10 @@ export default class AmuletsEmbed extends Component {
   }
 
   render () {
-    const { ids, amulets, className, optionalText } = this.props;
+    const { ids, amulets, className, blankText } = this.props;
     return (
       <div className={className}>
-        {ids.map((id) => AmuletsEmbed.renderAmulet(id, amulets, optionalText))}
+        {ids.map((id) => AmuletsEmbed.renderAmulet(id, amulets, blankText))}
       </div>
     );
   }
