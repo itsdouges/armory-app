@@ -141,20 +141,20 @@ document.GW2A_EMBED_OPTIONS = {
         <div
           data-armory-embed="skills"
           data-armory-ids="5507,5508,5510,332211,-1,5515,5516,5517,30662,5542"
-          data-armory-optional-text="This can be replaced with any text!"
+          data-armory-blank-text="This can be replaced with any text!"
         >
         </div>
 
         <ul>
           <li>data-armory-embed="skills"</li>
-          <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
-          <li>data-armory-optional-text="{STRING}" (if missing, "Optional" is used in its place)</li>
+          <li>data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills</li>
+          <li>data-armory-blank-text="{STRING}" (if missing, "optional" is used in its place)</li>
         </ul>
 
         <pre>&lt;div
   data-armory-embed="skills"
   data-armory-ids="5507,5508,5510,332211,-1,5515,5516,5517,30662,5542"
-  data-armory-optional-text="This can be replaced with any text!"
+  data-armory-blank-text="This can be replaced with any text!"
 &gt;
 &lt;/div&gt;
 
@@ -163,7 +163,7 @@ document.GW2A_EMBED_OPTIONS = {
         <h2>Items</h2>
         <div
           data-armory-embed="items"
-          data-armory-optional-text="Some other text can go here!"
+          data-armory-blank-text="Some other text can go here!"
           data-armory-ids="7139,8633,46774,74847,993,332211,109,-1,24836,74412,39620,77482,79712,79444,80241,80434"
           data-armory-77482-stat="656"
           data-armory-79444-stat="591"
@@ -175,9 +175,9 @@ document.GW2A_EMBED_OPTIONS = {
 
         <ul>
           <li>data-armory-embed="items"</li>
-          <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
+          <li>data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank items</li>
           <li>data-armory-{ITEM_ID}-stat="{ITEMSTAT_ID}"</li>
-          <li>data-armory-optional-text="{STRING}" (if missing, "Optional" is used in its place)</li>
+          <li>data-armory-blank-text="{STRING}" (if missing, "optional" is used in its place)</li>
         </ul>
 
         <pre>&lt;div
@@ -187,7 +187,7 @@ document.GW2A_EMBED_OPTIONS = {
   data-armory-79444-stat="591"
   data-armory-79712-stat="1153"
   data-armory-80241-stat="588"
-  data-armory-optional-text="Some other text can go here!"
+  data-armory-blank-text="Some other text can go here!"
 &gt;
 &lt;/div&gt;
 
@@ -197,20 +197,20 @@ document.GW2A_EMBED_OPTIONS = {
         <div
           data-armory-embed="amulets"
           data-armory-ids="10,12,332211,-1,13,14"
-          data-armory-optional-text="This is a blank space!"
+          data-armory-blank-text="This is a blank space!"
         >
         </div>
 
         <ul>
           <li>data-armory-embed="amulets"</li>
-          <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
-          <li>data-armory-optional-text="{STRING}" (if missing, "Optional" is used in its place)</li>
+          <li>data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank amulets</li>
+          <li>data-armory-blank-text="{STRING}" (if missing, "optional" is used in its place)</li>
         </ul>
 
         <pre>&lt;div
   data-armory-embed="amulets"
   data-armory-ids="10,12,332211,-1,13,14"
-  data-armory-optional-text="This is a blank space!"
+  data-armory-blank-text="This is a blank space!"
 &gt;
 &lt;/div&gt;
 

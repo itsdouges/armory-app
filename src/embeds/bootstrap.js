@@ -58,7 +58,7 @@ function bootstrapEmbeds () {
       return;
     }
 
-    const optionalText = element.getAttribute(makeAttribute('optional-text')) || T.translate('words.optional');
+    const optionalText = element.getAttribute(makeAttribute('blank-text')) || T.translate('words.optional');
     const rawIds = element.getAttribute(makeAttribute('ids'));
     const ids = (rawIds || '').split(',');
 

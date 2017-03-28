@@ -10,8 +10,8 @@
 
 ## [4.11.0] - unreleased
 ### Added
-- Optional item/skill/amulet for embeds (use id `-1`)
-- `data-armory-optional-text` attribute for use on item/skill/amulet embeds to replace the default "Optional" text tooltip
+- Blank item/skill/amulet for embeds (use id `-1`)
+- `data-armory-blank-text` attribute for use on item/skill/amulet embeds to replace the default "Optional" text tooltip
 
 ## [4.10.0] - 2017/03/27
 ### Fixed
