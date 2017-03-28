@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.11.2] - 2017/03/29
+### Fixed
+- Deployment to prod script using `TRAVIS_BRANCH` environment variable
+
 ## [4.11.1] - 2017/03/28
 ### Fixed
 - Deployment to prod for tagged commits
