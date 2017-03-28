@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { shallow } from 'enzyme';
 
 export const stubComponent = (displayName: string) => {
-  const component = (props: {}) => <div {...props} />;
+  const component = () => <div />;
   component.displayName = displayName;
   return component;
 };

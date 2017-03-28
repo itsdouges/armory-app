@@ -62,8 +62,11 @@ function bootstrapEmbeds () {
     const rawIds = element.getAttribute(makeAttribute('ids'));
     const ids = (rawIds || '').split(',');
 
+    // NOTE: The following require is giving major headaches when using
+    // inline .spec.js files (as they're added to the webpack context).
+    // Watch out!
     // eslint-disable-next-line import/no-webpack-loader-syntax
-    const load = require(`promise?global!embeds/${embedName}`);
+    const load = require(`promise?global!embeds/creators/${embedName}`);
     load().then(({ default: createEmbed }) => {
       const Component = createEmbed(element, ids);
 
