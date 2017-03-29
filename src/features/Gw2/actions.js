@@ -1,5 +1,6 @@
 import upperFirst from 'lodash/upperFirst';
 import T from 'i18n-react';
+import proxyFunction from 'lib/proxy';
 
 export const SHOW_TOOLTIP = 'SHOW_TOOLTIP';
 
@@ -38,7 +39,7 @@ export function generateActions (resourceName, getResource, afterGet) {
     },
   });
 
-  actions[fetchMethodName] = (ids) => (dispatch, getStore) => {
+  actions[fetchMethodName] = proxyFunction((ids) => (dispatch, getStore) => {
     if (!ids) {
       return undefined;
     }
@@ -73,7 +74,7 @@ export function generateActions (resourceName, getResource, afterGet) {
 
         throw data;
       });
-  };
+  });
 
   return actionNames;
 }

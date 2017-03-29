@@ -8,6 +8,7 @@ const actionsFactory = proxyquire('features/Gw2/actions', {
   'i18n-react': {
     translate,
   },
+  'lib/proxy': (func) => func,
 }, true);
 
 const resourceName = 'amulets';
@@ -111,10 +112,6 @@ describe('gw2 action factory', () => {
         action(dispatch, getStore);
 
         expect(dispatch).to.have.been.calledWith(actions.fetchingAmulets(true));
-      });
-
-      xit('should batch up multiple calls and call implementation only once', () => {
-        // TODO: IMPLEMENT!
       });
 
       it('should ignore -1 ids', () => {
