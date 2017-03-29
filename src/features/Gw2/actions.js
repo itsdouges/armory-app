@@ -7,16 +7,18 @@ const actions = {};
 export default actions;
 
 export function generateActions (resourceName, getResource, afterGet) {
+  const resouceNameUpper = resourceName.toUpperCase();
   const actionNames = {
-    fetching: `FETCHING_${resourceName.toUpperCase()}`,
-    result: `FETCH_${resourceName.toUpperCase()}_RESULT`,
-    error: `FETCH_${resourceName.toUpperCase()}_ERROR`,
+    fetching: `FETCHING_${resouceNameUpper}`,
+    result: `FETCH_${resouceNameUpper}_RESULT`,
+    error: `FETCH_${resouceNameUpper}_ERROR`,
   };
 
-  const fetchMethodName = `fetch${upperFirst(resourceName)}`;
-  const fetchingMethodName = `fetching${upperFirst(resourceName)}`;
-  const fetchResultMethodName = `fetch${upperFirst(resourceName)}Result`;
-  const fetchErrorMethodName = `fetch${upperFirst(resourceName)}Error`;
+  const parsedResourceName = upperFirst(resourceName);
+  const fetchMethodName = `fetch${parsedResourceName}`;
+  const fetchingMethodName = `fetching${parsedResourceName}`;
+  const fetchResultMethodName = `fetch${parsedResourceName}Result`;
+  const fetchErrorMethodName = `fetch${parsedResourceName}Error`;
 
   actions[fetchResultMethodName] = (data) => ({
     type: actionNames.result,
@@ -43,9 +45,11 @@ export function generateActions (resourceName, getResource, afterGet) {
 
     const store = getStore();
 
-    const missingIds = ids.filter((id) => id && id !== -1).reduce((acc, id) => (
-      store[resourceName][id] && !store[resourceName][id].error ? acc : acc.concat([id])
-    ), []);
+    const missingIds = ids.filter((id) => {
+      const isValidId = id && id !== -1;
+      const isNotInStore = !store[resourceName][id] || store[resourceName][id].error;
+      return isValidId && isNotInStore;
+    });
 
     if (!missingIds.length) {
       return undefined;
@@ -59,12 +63,15 @@ export function generateActions (resourceName, getResource, afterGet) {
         dispatch(actions[fetchingMethodName](false));
 
         return afterGet ? afterGet(dispatch, response) : response;
-      }, ({ response }) => {
-        const text = response.status === 404
+      })
+      .catch((data) => {
+        const text = data.response.status === 404
           ? T.translate('messages.notFoundLong')
           : T.translate('messages.gw2ApiDown');
 
         dispatch(actions[fetchErrorMethodName](missingIds, text));
+
+        throw data;
       });
   };
 
