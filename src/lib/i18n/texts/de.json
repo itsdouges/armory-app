@@ -83,7 +83,8 @@
     "hidden": "Charakter versteckt",
     "done": "Fertig",
     "edit": "Bearbeiten",
-    "changePortrait": "Portrait wechseln"
+    "changePortrait": "Portrait wechseln",
+    "noSkill": "No Skill Selected"
   },
   "settings": {
     "name": "Einstellungen",
@@ -176,7 +177,8 @@
     "played": "Played",
     "times": "times",
     "ratio": "Ratio",
-    "rank": "Rank"
+    "rank": "Rank",
+    "optional": "Optional"
   },
   "leaderboards": {
     "name": "Leaderboards"

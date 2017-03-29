@@ -30,11 +30,6 @@ module.exports = {
     extensions: ['', '.js', '.json'],
   },
   module: {
-    preLoaders: [{
-      test: /\.js$/,
-      loader: 'eslint',
-      include: paths.appSrc,
-    }],
     loaders: [{
       test: /\.js$/,
       include: paths.appSrc,

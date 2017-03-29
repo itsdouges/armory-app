@@ -22,12 +22,12 @@ type Props = {
   items?: Items,
   itemStats?: ItemStats,
   fetchItems?: (ids: Array<number>) => void,
-  // XXX: Why flow doesn't accept number in ids?
-  fetchItemStats?: (ids: Array<mixed>) => void,
+  fetchItemStats?: (ids: Array<number>) => void,
   ids: Array<number>,
   className?: string,
   mode?: 'rune' | 'item',
   statIds: { [key: number]: number },
+  blankText: string,
 };
 
 @connect(mapStateToProps, {
@@ -37,16 +37,27 @@ type Props = {
 export default class ItemsEmbed extends Component {
   props: Props;
 
-  static renderItem (id: number, mode?: 'rune' | 'item', statId?: number, items?: Items, itemStats?: ItemStats) {
-    const item = items && items[id];
-    const selectedStat = statId && itemStats && itemStats[statId];
+  static renderItem (
+    id: number,
+    mode?: 'rune' | 'item',
+    statId?: number,
+    items?: Items,
+    itemStats?: ItemStats,
+    blankText: string,
+    index: number,
+  ) {
+    if (id < 0) {
+      return <Item key={`${index}-${id}`} tooltipTextOverride={blankText} />;
+    }
 
-    // no item to render, skip.
+    const selectedStat = statId && itemStats && itemStats[statId];
+    const item = items && items[id];
     if (!item) {
       return undefined;
     }
 
-    // Apply stat on item.
+    // TODO: Move this into a custom reducer.
+    // See: https://github.com/madou/armory-react/issues/243
     if (selectedStat && item.details && !item.details.infix_upgrade_applied) {
       const attributes = applyAttributes(item, selectedStat);
 
@@ -58,28 +69,38 @@ export default class ItemsEmbed extends Component {
       item.details.infix_upgrade_applied = true;
     }
 
-    return (<Item
-      key={id}
-      item={item}
-      name={mode === 'rune' ? 'Rune' : undefined}
-      tooltipType={mode === 'rune' ? 'amulets' : undefined}
-      className={styles.item}
-    />);
+    return (
+      <Item
+        key={`${index}-${id}`}
+        item={item}
+        name={mode === 'rune' ? 'Rune' : undefined}
+        tooltipType={mode === 'rune' ? 'amulets' : undefined}
+        className={styles.item}
+      />
+    );
   }
 
   componentWillMount () {
     const { ids, statIds, fetchItems, fetchItemStats } = this.props;
 
     fetchItems && fetchItems(ids);
-    fetchItemStats && fetchItemStats(Object.values(statIds));
+    fetchItemStats && fetchItemStats(Object.values(statIds).map((id) => +id));
   }
 
   render () {
-    const { ids, statIds, items, itemStats, className, mode } = this.props;
+    const { ids, statIds, items, itemStats, className, mode, blankText } = this.props;
 
     return (
       <div className={className}>
-        {ids.map((id) => ItemsEmbed.renderItem(id, mode, statIds[id], items, itemStats))}
+        {ids.map((id, index) => ItemsEmbed.renderItem(
+          id,
+          mode,
+          statIds[id],
+          items,
+          itemStats,
+          blankText,
+          index,
+        ))}
       </div>
     );
   }

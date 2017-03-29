@@ -236,6 +236,7 @@ export default class Character extends Component {
                     item={items[equip.id]}
                     skin={skins[equip.skin]}
                     stats={equip.stats}
+                    equipped
                   />
                 );
               })}
@@ -336,6 +337,7 @@ export default class Character extends Component {
                       item={items[equip.id]}
                       skin={skins[equip.skin]}
                       stats={equip.stats}
+                      equipped
                     />
                   );
                 })}

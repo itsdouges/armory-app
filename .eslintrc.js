@@ -72,5 +72,6 @@ module.exports = {
     context: true,
     proxyquire: true,
     expect: true,
+    sinon: true,
   },
 };

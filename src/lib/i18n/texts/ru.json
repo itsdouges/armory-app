@@ -79,7 +79,8 @@
     "hidden": "Персонаж скрыт",
     "done": "Done",
     "edit": "Edit",
-    "changePortrait": "Change your character portrait"
+    "changePortrait": "Change your character portrait",
+    "noSkill": "No Skill Selected"
   },
   "settings": {
     "name": "настройки",
@@ -172,7 +173,8 @@
     "played": "Played",
     "times": "times",
     "ratio": "Ratio",
-    "rank": "Rank"
+    "rank": "Rank",
+    "optional": "Optional"
   },
   "leaderboards": {
     "name": "Leaderboards"

@@ -1,10 +1,9 @@
 // @flow
 
-import type { EmbedProps } from './bootstrap';
+import type { EmbedProps } from 'embeds/bootstrap';
 
-import CustomEmbed from './components/Custom';
-
-import { makeAttribute } from './bootstrap';
+import CustomEmbed from 'embeds/components/Custom';
+import { makeAttribute } from 'embeds/bootstrap';
 
 const readAttributes = (element, props) => props.reduce((obj, prop) => ({
   ...obj,

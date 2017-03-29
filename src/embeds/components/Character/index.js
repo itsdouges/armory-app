@@ -109,6 +109,7 @@ export default class CharacterLite extends Component {
                 item={(items || [])[equip.id]}
                 skin={(skins || [])[equip.skin]}
                 stats={equip.stats}
+                equipped
               />
             );
           })}
@@ -128,6 +129,7 @@ export default class CharacterLite extends Component {
                 item={(items || [])[equip.id]}
                 skin={(skins || [])[equip.skin]}
                 stats={equip.stats}
+                equipped
               />
             );
           })}

@@ -43,7 +43,7 @@ export function generateActions (resourceName, getResource, afterGet) {
 
     const store = getStore();
 
-    const missingIds = ids.filter((id) => id).reduce((acc, id) => (
+    const missingIds = ids.filter((id) => id && id !== -1).reduce((acc, id) => (
       store[resourceName][id] && !store[resourceName][id].error ? acc : acc.concat([id])
     ), []);
 

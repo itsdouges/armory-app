@@ -1,8 +1,8 @@
 // @flow
 
-import type { EmbedProps } from './bootstrap';
+import type { EmbedProps } from 'embeds/bootstrap';
 
-import Items from './components/Items';
+import Items from 'embeds/components/Items';
 
 export default function (element: HTMLElement, ids: Array<number>) {
   const statIds = ids.map((id) => {

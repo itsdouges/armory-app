@@ -8,6 +8,26 @@
 - Changes
 ```
 
+## [4.11.2] - 2017/03/29
+### Fixed
+- Deployment to prod script using `TRAVIS_BRANCH` environment variable
+
+## [4.11.1] - 2017/03/28
+### Fixed
+- Deployment to prod for tagged commits
+
+## [4.11.0] - 2017/03/28
+### Added
+- Blank item/skill/amulet for embeds (use id `-1`)
+- `data-armory-blank-text` attribute for use on item/skill/amulet embeds to replace the default "Optional" text tooltip
+
+### Changed
+- Item tooltip to only show "Currently Equipped" for characters
+
+## [4.10.0] - 2017/03/27
+### Fixed
+- Applying stats to backitem not working
+
 ## [4.9.1] - 2017/03/24
 ### Fixed
 - Style fixes
