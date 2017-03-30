@@ -8,6 +8,15 @@ export const SHOW_TOOLTIP = 'SHOW_TOOLTIP';
 const actions = {};
 export default actions;
 
+const GW2API_REQUEST_LIMIT = 200;
+
+function flattenResponses (responses) {
+  return responses.reduce((obj, response) => ({
+    ...obj,
+    ...response,
+  }), {});
+}
+
 export function generateActions (resourceName, getResource, afterGet) {
   const resouceNameUpper = resourceName.toUpperCase();
   const actionNames = {
@@ -48,23 +57,27 @@ export function generateActions (resourceName, getResource, afterGet) {
 
     const store = getStore();
 
-    const missingIds = ids.filter((id) => {
+    const idsToFetch = ids.filter((id) => {
       const isValidId = id && +id !== -1;
       const isNotInStore = !store[resourceName][id] || store[resourceName][id].error;
       return isValidId && isNotInStore;
     });
 
-    if (missingIds.indexOf('-1') >= 0 || missingIds.indexOf(-1) >= 0) {
-      throw new Error('how did this happen');
-    }
-
-    if (!missingIds.length) {
+    if (!idsToFetch.length) {
       return undefined;
     }
 
     dispatch(actions[fetchingMethodName](true));
 
-    return getResource(missingIds)
+    const requests = [];
+    const idsToSlice = idsToFetch.concat([]);
+    while (idsToSlice.length) {
+      const slicedIds = idsToSlice.splice(0, GW2API_REQUEST_LIMIT);
+      requests.push(getResource(slicedIds));
+    }
+
+    return Promise.all(requests)
+      .then(flattenResponses)
       .then((response) => {
         dispatch(actions[fetchResultMethodName](response));
         dispatch(actions[fetchingMethodName](false));
@@ -76,7 +89,7 @@ export function generateActions (resourceName, getResource, afterGet) {
           ? T.translate('messages.notFoundLong')
           : T.translate('messages.gw2ApiDown');
 
-        dispatch(actions[fetchErrorMethodName](missingIds, text));
+        dispatch(actions[fetchErrorMethodName](idsToFetch, text));
 
         throw data;
       });

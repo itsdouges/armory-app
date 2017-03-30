@@ -1,3 +1,9 @@
+const generateActions = sinon.stub();
+
+const reducerFactory = proxyquire('features/Gw2/reducerFactory', {
+  './actions': { generateActions },
+});
+
 describe('gw2 reducer factory', () => {
   it('should generate reducer', () => {
 

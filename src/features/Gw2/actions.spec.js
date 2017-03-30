@@ -104,6 +104,18 @@ describe('gw2 action factory', () => {
       });
     });
 
+    context('when the amount of ids to fetch are above the request limit', () => {
+      it('should spread request over multiple requests', () => {
+        const ids = Array(600).fill(undefined).map((x, index) => index);
+        getFunc.withArgs(ids.slice(0, 200)).returns(Promise.resolve());
+        getFunc.withArgs(ids.slice(200, 400)).returns(Promise.resolve());
+        getFunc.withArgs(ids.slice(400, 600)).returns(Promise.resolve());
+        const action = actions.fetchAmulets(ids);
+
+        return action(dispatch, getStore);
+      });
+    });
+
     context('when there are ids missing', () => {
       it('should trigger a loading action when starting request', () => {
         const action = actions.fetchAmulets([5]);
