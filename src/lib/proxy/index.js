@@ -9,14 +9,20 @@ type debounceOptions = {
 };
 
 const proxyFunction = (wait: number, options: debounceOptions) => {
-  let args = [];
+  let arrArg = [];
 
   return (func: Function) => {
-    const debouncedFunc = debounce(func, wait, options);
+    const callThenResetArgs = () => {
+      const result = func(arrArg);
+      arrArg = [];
+      return result;
+    };
+
+    const debouncedFunc = debounce(callThenResetArgs, wait, options);
 
     return (arr: Array<*>) => {
-      args = args.concat(arr);
-      debouncedFunc(args);
+      arrArg = arrArg.concat(arr);
+      debouncedFunc(arrArg);
     };
   };
 };
