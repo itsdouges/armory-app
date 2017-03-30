@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.11.3] - unreleased
+### Changed
+- Gw2 actions to be proxied so they batch all similar actions together to minimize api calls
+
 ## [4.11.2] - 2017/03/29
 ### Fixed
 - Deployment to prod script using `TRAVIS_BRANCH` environment variable

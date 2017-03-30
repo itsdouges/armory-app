@@ -8,7 +8,7 @@ const actionsFactory = proxyquire('features/Gw2/actions', {
   'i18n-react': {
     translate,
   },
-  'lib/proxy': (func) => func,
+  'lib/proxy': () => (func) => func,
 }, true);
 
 const resourceName = 'amulets';
@@ -115,7 +115,7 @@ describe('gw2 action factory', () => {
       });
 
       it('should ignore -1 ids', () => {
-        const action = actions.fetchAmulets([5, 6, 7, -1]);
+        const action = actions.fetchAmulets([5, 6, 7, '-1', -1]);
         getFunc.withArgs([5, 6, 7]).returns(Promise.resolve());
 
         return action(dispatch, getStore);

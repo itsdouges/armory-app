@@ -140,7 +140,7 @@ document.GW2A_EMBED_OPTIONS = {
         <h2>Skills</h2>
         <div
           data-armory-embed="skills"
-          data-armory-ids="5507,5508,5510, 5515"
+          data-armory-ids="5507,5508,5510,5515"
         >
         </div>
 
@@ -281,13 +281,31 @@ document.GW2A_EMBED_OPTIONS = {
         <h2>Specializations</h2>
         <div
           data-armory-embed="specializations"
-          data-armory-ids="1,2,3,332211,39,11,16,18"
+          data-armory-ids="1,2"
           data-armory-1-traits="700,1960,1950"
           data-armory-2-traits="820,858,1694"
+        >
+        </div>
+
+        <div
+          data-armory-embed="specializations"
+          data-armory-ids="3,332211"
           data-armory-3-traits="1761,1774,1749"
-          data-armory-39-traits="815,816,801"
-          data-armory-16-traits="577,578,1686"
+        >
+        </div>
+
+        <div
+          data-armory-embed="specializations"
+          data-armory-ids="39,11"
+          data-armory-39-traits="815,801"
           data-armory-11-traits="1471,1482,1711"
+        >
+        </div>
+
+        <div
+          data-armory-embed="specializations"
+          data-armory-ids="16,18"
+          data-armory-16-traits="577,578,1686"
           data-armory-18-traits="2049,2011,1928"
         >
         </div>
@@ -295,7 +313,7 @@ document.GW2A_EMBED_OPTIONS = {
         <ul>
           <li>data-armory-embed="specializations"</li>
           <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
-          <li>data-armory-{SPECIALIZATION_ID}="{TRAIT_IDS_COMMA_SEPARATED}"</li>
+          <li>data-armory-{SPECIALIZATION_ID}="{TRAIT_IDS_COMMA_SEPARATED}" | Not mandatory, you can leave traits out if you want, either all three or individual ones.</li>
         </ul>
 
         <pre>&lt;div

@@ -26,14 +26,16 @@ describe('function proxy', () => {
   const forwardTime = () => clock.tick(debounceTime);
 
   it('should batch up calls', () => {
-    wrappedFunction([1, 2]);
-    wrappedFunction([3, 4]);
-    wrappedFunction([5, 6]);
+    const extraArgs = ['cool', 'neat', () => {}];
+
+    wrappedFunction([1, 2], ...extraArgs);
+    wrappedFunction([3, 4], ...extraArgs);
+    wrappedFunction([5, 6], ...extraArgs);
 
     forwardTime();
 
     expect(func).to.have.been.calledOnce;
-    expect(func).to.have.been.calledWith([1, 2, 3, 4, 5, 6]);
+    expect(func).to.have.been.calledWith([1, 2, 3, 4, 5, 6], ...extraArgs);
   });
 
   it('should reset saved after calling', () => {

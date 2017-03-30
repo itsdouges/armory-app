@@ -34,8 +34,8 @@ export default class SkillsEmbed extends Component {
     if (id >= 0) {
       return (
         <Skill
-          className={styles.skill}
           key={id}
+          className={styles.skill}
           data={skills && skills[id]}
         />
       );

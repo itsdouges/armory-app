@@ -12,17 +12,17 @@ const proxyFunction = (wait: number, options: debounceOptions) => {
   let arrArg = [];
 
   return (func: Function) => {
-    const callThenResetArgs = () => {
-      const result = func(arrArg);
+    const callThenResetArgs = (...args) => {
+      const result = func(...args);
       arrArg = [];
       return result;
     };
 
     const debouncedFunc = debounce(callThenResetArgs, wait, options);
 
-    return (arr: Array<*>) => {
+    return (arr: Array<*>, ...args: any) => {
       arrArg = arrArg.concat(arr);
-      debouncedFunc(arrArg);
+      debouncedFunc(arrArg, ...args);
     };
   };
 };

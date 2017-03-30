@@ -1,6 +1,8 @@
 import upperFirst from 'lodash/upperFirst';
 import T from 'i18n-react';
 
+import proxyFunc from 'lib/proxy';
+
 export const SHOW_TOOLTIP = 'SHOW_TOOLTIP';
 
 const actions = {};
@@ -16,6 +18,7 @@ export function generateActions (resourceName, getResource, afterGet) {
 
   const parsedResourceName = upperFirst(resourceName);
   const fetchMethodName = `fetch${parsedResourceName}`;
+  const fetchProxyMethodName = `__proxy__fetch${parsedResourceName}`;
   const fetchingMethodName = `fetching${parsedResourceName}`;
   const fetchResultMethodName = `fetch${parsedResourceName}Result`;
   const fetchErrorMethodName = `fetch${parsedResourceName}Error`;
@@ -38,7 +41,7 @@ export function generateActions (resourceName, getResource, afterGet) {
     },
   });
 
-  actions[fetchMethodName] = (ids) => (dispatch, getStore) => {
+  actions[fetchProxyMethodName] = proxyFunc(50)((ids, dispatch, getStore) => {
     if (!ids) {
       return undefined;
     }
@@ -46,10 +49,14 @@ export function generateActions (resourceName, getResource, afterGet) {
     const store = getStore();
 
     const missingIds = ids.filter((id) => {
-      const isValidId = id && id !== -1;
+      const isValidId = id && +id !== -1;
       const isNotInStore = !store[resourceName][id] || store[resourceName][id].error;
       return isValidId && isNotInStore;
     });
+
+    if (missingIds.indexOf('-1') >= 0 || missingIds.indexOf(-1) >= 0) {
+      throw new Error('how did this happen');
+    }
 
     if (!missingIds.length) {
       return undefined;
@@ -73,6 +80,15 @@ export function generateActions (resourceName, getResource, afterGet) {
 
         throw data;
       });
+  });
+
+  actions[fetchMethodName] = (ids) => (dispatch, getStore) => {
+    // Redux actions need to appear synchronous, so we have to
+    // immediately returning a function. Internally however we're
+    // proxying the implementation so all calls are collected
+    // and then only one is fired instead of many.
+    // This could use tweaking, but it works for now.
+    return actions[fetchProxyMethodName](ids, dispatch, getStore);
   };
 
   return actionNames;
