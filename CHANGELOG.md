@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.12.4] - 2017/03/31
+## [4.11.4] - 2017/03/31
 ### Fixed
 - Prod build from pointing public path to preview
 
