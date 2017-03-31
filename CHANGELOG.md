@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.11.3] - unreleased
+## [4.11.3] - 2017/03/31
 ### Changed
 - Gw2 actions to be proxied so they batch all similar actions together to minimize api calls
 - Splits gw2 api calls if they reach the `GW2API_REQUEST_LIMIT` threshold
