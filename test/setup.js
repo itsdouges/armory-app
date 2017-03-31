@@ -26,10 +26,10 @@ global.chai.use(require('chai-as-promised'));
 
 const proxyquire = require('proxyquire').noCallThru();
 
-global.proxyquire = (modulePath, stubs, ...args) => {
+global.proxyquire = (modulePath, stubs, disableDefaultAssignment, ...args) => {
   const module = proxyquire(modulePath, stubs, ...args);
 
-  if (module.default) {
+  if (!disableDefaultAssignment && module.default) {
     return module.default;
   }
 

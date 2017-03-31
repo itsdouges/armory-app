@@ -14,6 +14,7 @@ module.exports = {
     'default-case': 'off',
     'global-require': 'off',
     'camelcase': 'off',
+    'arrow-body-style': 'off',
     'arrow-parens': ['error', 'always'],
     'max-len': 'warn',
 
@@ -73,5 +74,6 @@ module.exports = {
     proxyquire: true,
     expect: true,
     sinon: true,
+    xit: true,
   },
 };
