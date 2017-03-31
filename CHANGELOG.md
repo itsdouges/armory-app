@@ -11,6 +11,7 @@
 ## [4.11.5] - 2017/04/01
 ### Changed
 - Public path to be calculated during runtime to prevent anymore funny business
+- Master branch to not deploy unless tagged
 
 ## [4.11.4] - 2017/03/31
 ### Fixed
