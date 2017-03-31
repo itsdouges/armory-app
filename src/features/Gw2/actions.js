@@ -82,6 +82,11 @@ export function generateActions (resourceName, getResource, afterGet) {
         dispatch(actions[fetchResultMethodName](response));
         dispatch(actions[fetchingMethodName](false));
 
+        const missingIds = idsToFetch.filter((id) => !response[id]);
+        if (missingIds.length) {
+          dispatch(actions[fetchErrorMethodName](missingIds, T.translate('messages.notFoundLong')));
+        }
+
         return afterGet ? afterGet(dispatch, response) : response;
       })
       .catch((data) => {

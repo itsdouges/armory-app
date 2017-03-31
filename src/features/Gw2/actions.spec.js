@@ -104,6 +104,21 @@ describe('gw2 action factory', () => {
       });
     });
 
+    context('when some data wasnt brought back in the response', () => {
+      it('should dispatch those ids as errors', () => {
+        const ids = [10, 11, 12];
+        const action = actions.fetchAmulets(ids);
+        getFunc.withArgs(ids).returns(Promise.resolve({}));
+        const message = 'uh oh not found';
+        translate.withArgs('messages.notFoundLong').returns(message);
+
+        return action(dispatch, getStore)
+          .then(() => {
+            expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, message));
+          });
+      });
+    });
+
     context('when the amount of ids to fetch are above the request limit', () => {
       it('should spread request over multiple requests', () => {
         const ids = Array(600).fill(undefined).map((x, index) => index);
