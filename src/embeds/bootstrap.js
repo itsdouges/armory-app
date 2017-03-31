@@ -30,9 +30,7 @@ const makeClassName = (str) => `gw2a-${str}-embed`;
 export const makeAttribute = (str: string) => `data-armory-${str}`;
 
 function fetchStyles () {
-  axios
-    // $FlowFixMe
-    .get(`${__webpack_public_path__}manifest.json`)
+  axios.get(`${__webpack_public_path__}manifest.json`)
     .then((response) => addStyleSheet(`${__webpack_public_path__}${response.data['gw2aEmbeds.css']}`));
 }
 

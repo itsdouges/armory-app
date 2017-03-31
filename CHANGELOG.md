@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.11.5] - 2017/04/01
+### Changed
+- Public path to be calculated during runtime to prevent anymore funny business
+
 ## [4.11.4] - 2017/03/31
 ### Fixed
 - Prod build from pointing public path to preview

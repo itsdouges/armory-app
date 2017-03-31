@@ -1,7 +1,3 @@
-const argv = require('yargs')
-  .boolean('local')
-  .argv;
-
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import webpack from 'webpack';
@@ -12,12 +8,6 @@ import ManifestPlugin from 'webpack-manifest-plugin';
 import paths from './paths';
 import config from '../src/config/default';
 
-// This is really just used for deployments. If the env variable TRAVIS_BRANCH
-// exists we assume we're deploying to preview. Else set it for prod domain.
-const publicPath = process.env.TRAVIS_BRANCH
-  ? 'https://preview.gw2armory.com/'
-  : 'https://gw2armory.com/';
-
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
@@ -26,7 +16,6 @@ module.exports = {
   output: {
     path: paths.appBuild,
     pathinfo: true,
-    publicPath: argv.local ? '/' : publicPath,
     filename: '[name].js',
     chunkFilename: '[name]-chunk-[chunkhash:8].js',
   },

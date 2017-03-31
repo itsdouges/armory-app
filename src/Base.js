@@ -17,6 +17,10 @@ const middlewares = [thunk];
 
 if (__DEVELOPMENT__) {
   middlewares.push(createLogger());
+} else {
+  __webpack_public_path__ = location.host === 'preview.gw2armory.com'
+    ? 'https://preview.gw2armory.com/'
+    : 'https://gw2armory.com/';
 }
 
 const store = createStore(
