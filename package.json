@@ -1,6 +1,6 @@
 {
   "name": "armory-react",
-  "version": "4.11.3",
+  "version": "4.11.4",
   "scripts": {
     "start": "node ./scripts/start.js --prod",
     "start:embeds": "npm start -- --embeds --local",
