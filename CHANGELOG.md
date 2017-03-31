@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.12.4] - 2017/03/31
+### Fixed
+- Prod build from pointing public path to preview
+
 ## [4.11.3] - 2017/03/31
 ### Changed
 - Gw2 actions to be proxied so they batch all similar actions together to minimize api calls

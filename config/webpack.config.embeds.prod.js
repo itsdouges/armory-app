@@ -12,9 +12,11 @@ import ManifestPlugin from 'webpack-manifest-plugin';
 import paths from './paths';
 import config from '../src/config/default';
 
-const publicPath = argv.env === 'PROD'
-  ? 'https://gw2armory.com/'
-  : 'https://preview.gw2armory.com/';
+// This is really just used for deployments. If the env variable TRAVIS_BRANCH
+// exists we assume we're deploying to preview. Else set it for prod domain.
+const publicPath = process.env.TRAVIS_BRANCH
+  ? 'https://preview.gw2armory.com/'
+  : 'https://gw2armory.com/';
 
 module.exports = {
   devtool: 'cheap-module-source-map',
