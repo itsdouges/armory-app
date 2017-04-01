@@ -1,4 +1,5 @@
 import upperFirst from 'lodash/upperFirst';
+import uniq from 'lodash/uniq';
 import T from 'i18n-react';
 
 import proxyFunc from 'lib/proxy';
@@ -57,11 +58,11 @@ export function generateActions (resourceName, getResource, afterGet) {
 
     const store = getStore();
 
-    const idsToFetch = ids.filter((id) => {
+    const idsToFetch = uniq(ids.filter((id) => {
       const isValidId = id && +id !== -1;
       const isNotInStore = !store[resourceName][id] || store[resourceName][id].error;
       return isValidId && isNotInStore;
-    });
+    }));
 
     if (!idsToFetch.length) {
       return undefined;

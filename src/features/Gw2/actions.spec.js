@@ -141,6 +141,17 @@ describe('gw2 action factory', () => {
         expect(dispatch).to.have.been.calledWith(actions.fetchingAmulets(true));
       });
 
+      it('should get rid of duplicates', () => {
+        const response = { yeah: true };
+        const action = actions.fetchAmulets([3, 3, 3, 3]);
+        getFunc.withArgs([3]).returns(Promise.resolve(response));
+
+        return action(dispatch, getStore)
+          .then((result) => {
+            expect(result).to.eql(response);
+          });
+      });
+
       it('should ignore -1 ids', () => {
         const action = actions.fetchAmulets([5, 6, 7, '-1', -1]);
         getFunc.withArgs([5, 6, 7]).returns(Promise.resolve());

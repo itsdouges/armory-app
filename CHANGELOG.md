@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.11.8] - 2017/04/01
+### Changed
+- Gw2 resource action to remove duplicate ids
+
 ## [4.11.7] - 2017/04/01
 ### Changed
 - No comment...
