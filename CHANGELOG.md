@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.11.7] - 2017/04/01
+### Changed
+- No comment...
+
 ## [4.11.6] - 2017/04/01
 ### Changed
 - Public path, again! Third times the charm!?
