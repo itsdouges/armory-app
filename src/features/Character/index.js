@@ -9,12 +9,10 @@ import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
 
 import Content from 'common/layouts/Content';
-
 import ContentCard from 'common/components/ContentCard';
+
 import Bags from './components/Bags';
-
 import Overview from './components/Overview';
-
 import styles from './styles.less';
 
 import type { Character as CharacterType, Pets, Gw2Title } from 'flowTypes';
@@ -33,17 +31,17 @@ type Props = {
   },
   pets: Pets,
   title: Gw2Title,
-  dispatchFetchCharacter: (name: string) => void,
-  dispatchFetchUserCharacters: (name: string) => void,
-  dispatchSelectCharacter: (name: string) => void,
-  dispatchSelectUser: (name: string) => void,
+  fetchCharacter: (name: string) => void,
+  fetchUserCharacters: (name: string) => void,
+  selectCharacter: (name: string) => void,
+  selectUser: (name: string) => void,
 };
 
 @connect(selector, {
-  dispatchSelectUser: selectUser,
-  dispatchFetchCharacter: fetchCharacter,
-  dispatchSelectCharacter: selectCharacter,
-  dispatchFetchUserCharacters: fetchUserCharacters,
+  selectUser,
+  fetchCharacter,
+  selectCharacter,
+  fetchUserCharacters,
 })
 export default class Character extends Component {
   props: Props;
@@ -60,23 +58,17 @@ export default class Character extends Component {
 
   loadCharacter () {
     const { character, alias } = this.props.routeParams;
-    const {
-      dispatchFetchCharacter,
-      dispatchFetchUserCharacters,
-      dispatchSelectCharacter,
-      dispatchSelectUser,
-    } = this.props;
 
-    dispatchFetchCharacter(character, {
+    this.props.fetchCharacter(character, {
       ignoreAuth: this.context._userAlias !== alias,
     });
 
-    dispatchFetchUserCharacters(alias, {
+    this.props.fetchUserCharacters(alias, {
       ignoreAuth: this.context._userAlias !== alias,
     });
 
-    dispatchSelectCharacter(character);
-    dispatchSelectUser(alias);
+    this.props.selectCharacter(character);
+    this.props.selectUser(alias);
   }
 
   render () {

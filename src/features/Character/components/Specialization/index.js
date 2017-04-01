@@ -24,7 +24,7 @@ const getStyle = (data, spec) => ({
   backgroundColor: spec.background && colours._black,
 });
 
-const emptyMajorTraits = Array(9).fill(undefined);
+const emptyMajorTraits = new Array(9);
 
 type Props = {
   data: {
