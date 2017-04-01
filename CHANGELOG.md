@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.11.6] - 2017/04/01
+### Changed
+- Public path, again! Third times the charm!?
+
 ## [4.11.5] - 2017/04/01
 ### Changed
 - Public path to be calculated during runtime to prevent anymore funny business
