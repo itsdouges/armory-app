@@ -11,7 +11,6 @@
   position: relative;
   composes: low;
   background-size: cover;
-  background-color: @_black;
   border: 1px solid @border;
 }
 
@@ -32,10 +31,16 @@
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 1px;
   background-size: cover;
+}
+
+.emptyBg {
+  background-size: 118% 118%;
+  background-position: 50% 50%;
+  opacity: 0.7;
 }
 
 .junk {
@@ -68,76 +73,4 @@
 
 .legendary {
   border-color: @legendary;
-}
-
-.headIcon {
-  background-image: url('assets/images/head-slot-icon.png');
-}
-
-.shoulderIcon {
-  background-image: url('assets/images/shoulder-slot-icon.png');
-}
-
-.chestIcon {
-  background-image: url('assets/images/chest-slot-icon.png');
-}
-
-.handIcon {
-  background-image: url('assets/images/hand-slot-icon.png');
-}
-
-.legIcon {
-  background-image: url('assets/images/leg-slot-icon.png');
-}
-
-.feetIcon {
-  background-image: url('assets/images/feet-slot-icon.png');
-}
-
-.swordIcon {
-  background-image: url('assets/images/sword-slot-icon.png');
-}
-
-.shieldIcon {
-  background-image: url('assets/images/shield-slot-icon.png');
-}
-
-.backIcon {
-  background-image: url('assets/images/back-slot-icon.png');
-}
-
-.beartrinketIcon {
-  background-image: url('assets/images/beartrinket-slot-icon.png');
-}
-
-.cubetrinketIcon {
-  background-image: url('assets/images/cubetrinket-slot-icon.png');
-}
-
-.amuletIcon {
-  background-image: url('assets/images/amulet-slot-icon.png');
-}
-
-.rightringIcon {
-  background-image: url('assets/images/rightring-slot-icon.png');
-}
-
-.leftringIcon {
-  background-image: url('assets/images/leftring-slot-icon.png');
-}
-
-.sickleIcon {
-  background-image: url('assets/images/sickle-slot-icon.png');
-}
-
-.axeIcon {
-  background-image: url('assets/images/axe-slot-icon.png');
-}
-
-.pickIcon {
-  background-image: url('assets/images/pick-slot-icon.png');
-}
-
-.itemIcon {
-  background-image: url('assets/images/empty.png');
 }

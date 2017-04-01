@@ -1,14 +1,8 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# dependencies
 node_modules
-
-# production
 dist
-
-# misc
 .DS_Store
 *.log
-
-# local env
 /src/config/local.js
+.nyc_output/
+coverage/
+*.lcov

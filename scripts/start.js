@@ -1,3 +1,5 @@
+/* eslint no-console:0 */
+
 require('babel-core/register');
 
 process.env.NODE_ENV = 'development';
@@ -24,7 +26,7 @@ let compiler;
 let handleCompile;
 const isSmokeTest = process.argv.some((arg) => arg.indexOf('--smoke-test') > -1);
 if (isSmokeTest) {
-  handleCompile = function (err, stats) {
+  handleCompile = (err, stats) => {
     if (err || stats.hasErrors() || stats.hasWarnings()) {
       process.exit(1);
     } else {

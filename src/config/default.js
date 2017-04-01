@@ -40,6 +40,10 @@ module.exports = {
     ],
   },
 
+  health: {
+    token: 'EE920D9D-F7CF-A146-A5F5-95455980577B0DC68745-969C-4ED9-8462-1299FE6FB078',
+  },
+
   cache: {
     short: [
       'index.html',

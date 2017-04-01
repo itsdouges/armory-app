@@ -3,7 +3,7 @@ const rl = require('readline');
 // Convention: "no" should be the conservative choice.
 // If you mistype the answer, we'll always take it as a "no".
 // You can control the behavior on <Enter> with `isYesDefault`.
-module.exports = function (question, isYesDefault) {
+module.exports = (question, isYesDefault) => {
   if (typeof isYesDefault !== 'boolean') {
     throw new Error('Provide explicit boolean isYesDefault as second argument.');
   }

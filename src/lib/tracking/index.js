@@ -3,6 +3,7 @@
 export function pageView () {
   if (!window.ga || window.location.hostname.indexOf('localhost') >= 0) {
     if (__DEVELOPMENT__) {
+      // eslint-disable-next-line
       console.log('localhost -> NO TRACK');
     }
 

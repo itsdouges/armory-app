@@ -40,18 +40,17 @@ const ItemsTooltip = ({ data: {
   upgradeCounts,
   infusions,
   stats: { attributes = {} },
+  equipped,
 } }) => {
   if (Object.keys(item).length === 0) {
     return <Background><SimpleTooltip data={name} /></Background>;
   }
 
   const isTransmuted = !!skin.name;
-  const isEquip = true; // TODO: Fill in.
-  const isFromCharacter = false; // TODO: Fill in.
 
   return (
     <Background>
-      {isFromCharacter && <SimpleTooltip data={T.translate('items.currentlyEquipped')} />}
+      {equipped && <SimpleTooltip data={T.translate('items.currentlyEquipped')} />}
 
       <ItemHeader
         name={buildName(item, skin, upgrades)}
@@ -120,7 +119,7 @@ const ItemsTooltip = ({ data: {
           </span>
         )}
 
-        {isEquip && (
+        {equipped && (
           <div>
             {isTransmuted
               ? T.translate('items.transmuted')

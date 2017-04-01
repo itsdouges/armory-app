@@ -145,6 +145,7 @@ const Fact = ({ data }: FactProps) => {
       break;
 
     default:
+      // eslint-disable-next-line
       console.error('Missing fact! Report this error to @itsmadou on twitter.', data);
       content = <span />;
       break;

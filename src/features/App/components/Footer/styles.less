@@ -6,14 +6,17 @@
 .root {
   width: 100%;
   color: @text;
-  text-align: center;
   font-size: 0.7em;
-  padding: 3em 2em;
+  padding: 2em 1em;
   background: @background;
 
   a {
     text-transform: uppercase;
     color: @_white;
+
+    &:hover {
+      color: @_red;
+    }
   }
 }
 
@@ -22,14 +25,19 @@
   align-items: center;
 }
 
-.linkContainer {
+.iconContainer,
+.textContainer {
   flex-shrink: 0;
-  margin: 1em;
+  margin: 1em 0;
 
   > * {
     display: block;
-    margin: 0.5em;
+    margin: 0.5em 1.5em 0.5em 0;
   }
+}
+
+.iconContainer {
+  margin: 1em;
 }
 
 .paypal {
@@ -38,7 +46,10 @@
 }
 
 .fromTablet({
-  .linkContainer > * {
-    display: inline-block;
+  .iconContainer,
+  .textContainer {
+    & > * {
+      display: inline-block;
+    }
   }
 });

@@ -10,7 +10,8 @@ import styles from './styles.less';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Gw2ApiHealth from './components/Gw2ApiHealth';
+import NotificationBox from './components/NotificationBox';
+import { determineApiHealth } from './actions';
 
 const selector = createSelector(
   (store) => store.user.alias,
@@ -32,19 +33,26 @@ type Props = {
     pathname: string,
   },
   checkingAuthentication: boolean,
+  determineApiHealth?: () => void,
 };
 
 function shouldForceSmallHeader ({ location }: Props) {
   return location.pathname !== '/';
 }
 
-@connect(selector)
+@connect(selector, {
+  determineApiHealth,
+})
 export default class App extends Component {
   props: Props;
 
   state = {
     smallHeader: shouldForceSmallHeader(this.props),
   };
+
+  componentWillMount () {
+    this.props.determineApiHealth && this.props.determineApiHealth();
+  }
 
   componentWillReceiveProps (nextProps: Props) {
     this.setState({
@@ -54,7 +62,7 @@ export default class App extends Component {
 
   render () {
     return (
-      <div className={styles.app}>
+      <div className={styles.root}>
         <Header
           compact={this.state.smallHeader}
           authenticated={this.props.userAuthenticated}
@@ -64,7 +72,7 @@ export default class App extends Component {
 
         {this.props.children}
 
-        <Gw2ApiHealth />
+        <NotificationBox className={styles.notificationBox} />
         <Footer />
       </div>
     );

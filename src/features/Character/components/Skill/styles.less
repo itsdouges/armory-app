@@ -1,7 +1,35 @@
 @import '~common/styles/base.less';
 
 @background: @_gray;
+@emptyLockZ: 2;
+@emptyFadeZ: 1;
 
 .skill {
   background-color: @background;
+}
+
+.empty {
+  position: relative;
+  background-size: 118% 118%;
+  background-position: 50% 50%;
+  opacity: 0.7;
+}
+
+.emptyLock,
+.emptyFade {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.emptyLock {
+  top: 5%;
+  z-index: @emptyLockZ;
+}
+
+.emptyFade {
+  z-index: @emptyFadeZ;
 }

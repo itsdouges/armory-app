@@ -1,4 +1,4 @@
-// flow-typed signature: e14c858d16604f9e53c231bff8025884
+// flow-typed signature: acb6fefc66d66e1e48eea1843ac4f2d5
 // flow-typed version: <<STUB>>/airbnb-js-shims_v^1.0.1/flow_v0.38.0
 
 /**
@@ -22,6 +22,22 @@ declare module 'airbnb-js-shims' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
+declare module 'airbnb-js-shims/target/es2015' {
+  declare module.exports: any;
+}
+
+declare module 'airbnb-js-shims/target/es2016' {
+  declare module.exports: any;
+}
+
+declare module 'airbnb-js-shims/target/es2017' {
+  declare module.exports: any;
+}
+
+declare module 'airbnb-js-shims/target/es5' {
+  declare module.exports: any;
+}
+
 declare module 'airbnb-js-shims/test/index' {
   declare module.exports: any;
 }
@@ -32,6 +48,18 @@ declare module 'airbnb-js-shims/index' {
 }
 declare module 'airbnb-js-shims/index.js' {
   declare module.exports: $Exports<'airbnb-js-shims'>;
+}
+declare module 'airbnb-js-shims/target/es2015.js' {
+  declare module.exports: $Exports<'airbnb-js-shims/target/es2015'>;
+}
+declare module 'airbnb-js-shims/target/es2016.js' {
+  declare module.exports: $Exports<'airbnb-js-shims/target/es2016'>;
+}
+declare module 'airbnb-js-shims/target/es2017.js' {
+  declare module.exports: $Exports<'airbnb-js-shims/target/es2017'>;
+}
+declare module 'airbnb-js-shims/target/es5.js' {
+  declare module.exports: $Exports<'airbnb-js-shims/target/es5'>;
 }
 declare module 'airbnb-js-shims/test/index.js' {
   declare module.exports: $Exports<'airbnb-js-shims/test/index'>;

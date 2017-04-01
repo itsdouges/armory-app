@@ -50,8 +50,12 @@ export default class Tooltip extends Component {
 
     let content;
 
-    if (typeof tooltip.data === 'string') {
-      content = <Background><SimpleTooltip data={tooltip.data} /></Background>;
+    if (typeof tooltip.data === 'string' || tooltip.data.error) {
+      const message = typeof tooltip.data === 'string'
+        ? tooltip.data
+        : tooltip.data.error;
+
+      content = <Background><SimpleTooltip data={message} /></Background>;
     } else {
       switch (tooltip.type) {
         case 'items':

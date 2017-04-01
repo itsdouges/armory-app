@@ -1,12 +1,21 @@
 #!/bin/bash
 
 if [ "$TRAVIS_BRANCH" == "master" ]; then
-  echo "Deploying to prod from master."
+  echo ""
+  echo "\n=> $TRAVIS_BRANCH not allowed to deploy"
+  echo ""
+elif [ "$TRAVIS_TAG" ]; then
+  echo ""
+  echo "\n=> Deploying $TRAVIS_TAG to gw2armory.com"
+  echo ""
+
   sh scripts/robottxt-gen.sh allow
   npm run deploy -- --env PROD;
-  exit 0;
-fi
+else
+  echo ""
+  echo "=> Deploying $TRAVIS_BRANCH to preview.gw2armory.com"
+  echo ""
 
-echo "Deploying to preview from $TRAVIS_BRANCH."
-sh scripts/robottxt-gen.sh disallow
-npm run deploy -- --env PREVIEW;
+  sh scripts/robottxt-gen.sh disallow
+  npm run deploy -- --env PREVIEW;
+fi

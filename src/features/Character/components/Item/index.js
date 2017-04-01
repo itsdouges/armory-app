@@ -3,6 +3,7 @@
 import cx from 'classnames';
 
 import TooltipTrigger from 'common/components/TooltipTrigger';
+import Icon from 'common/components/Icon';
 import styles from './styles.less';
 
 type Props = {
@@ -24,6 +25,8 @@ type Props = {
   size?: 'micro' | 'small',
   tooltipType?: string,
   className?: string,
+  tooltipTextOverride?: string,
+  equipped?: boolean,
   inline?: boolean,
 };
 
@@ -42,28 +45,43 @@ const Item = ({
   tooltipType,
   className,
   inline,
+  tooltipTextOverride,
+  equipped,
 }: Props) => {
   if (hide) return null;
+
+  const data = item && item.error
+    ? item
+    : {
+      name,
+      item,
+      skin,
+      infusions,
+      upgrades,
+      upgradeCounts,
+      stats,
+      equipped,
+    };
 
   return (
     <TooltipTrigger
       type={tooltipType || 'items'}
-      data={{
-        name,
-        item,
-        skin,
-        infusions,
-        upgrades,
-        upgradeCounts,
-        stats,
-      }}
+      data={tooltipTextOverride || data}
     >
-      <div className={cx(styles.root, styles[`${type}Icon`], { [styles.busy]: busy, [styles.small]: small, [styles.inline]: inline }, className)}>
-        <div
+      <Icon
+        name={type ? `${type}-slot-icon.png` : 'empty-skill-back.png'}
+        className={cx(styles.root, className, {
+          [styles.busy]: busy,
+          [styles.small]: small,
+          [styles.emptyBg]: !type,
+          [styles.inline]: inline,
+        })}
+      >
+        <Icon
           className={styles.item}
-          style={{ backgroundImage: `url(${skin.icon || item.icon || ''})` }}
+          src={skin.icon || item.icon || ''}
         />
-      </div>
+      </Icon>
     </TooltipTrigger>
   );
 };

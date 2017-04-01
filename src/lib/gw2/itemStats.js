@@ -1,5 +1,14 @@
 import { queryItemAttributes } from 'gw2itemstats';
 
+function convertType (apiType) {
+  switch (apiType) {
+    case 'Back':
+      return 'back item';
+    default:
+      return apiType;
+  }
+}
+
 function calcAttribute (base, modifier) {
   return base + modifier;
 }
@@ -77,7 +86,16 @@ function getCalcFunction (itemAttributes, selectedStat) {
 }
 
 export default function applyAttributes (item, selectedStat) {
-  const itemAttributes = queryItemAttributes(item.details.type.toLowerCase(),
+  if (!item || !selectedStat) {
+    return [];
+  }
+
+  const type = convertType((item.details && item.details.type) || item.type);
+  if (!type || !item.rarity || !item.level) {
+    return [];
+  }
+
+  const itemAttributes = queryItemAttributes(type.toLowerCase(),
     item.rarity.toLowerCase(),
     item.level);
   const calcModifier = getCalcFunction(itemAttributes, selectedStat);

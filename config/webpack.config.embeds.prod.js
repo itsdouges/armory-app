@@ -1,7 +1,3 @@
-const argv = require('yargs')
-  .boolean('local')
-  .argv;
-
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import webpack from 'webpack';
@@ -12,7 +8,11 @@ import ManifestPlugin from 'webpack-manifest-plugin';
 import paths from './paths';
 import config from '../src/config/default';
 
-const publicPath = process.env.TRAVIS_BRANCH === 'master'
+// As there is the potential for people to use the preview
+// embeds, we need to set the public path to the preview
+// environment if we're building the preview bundle.
+// TRAVIS_TAG will be defined if we're deploying to production.
+const publicPath = process.env.TRAVIS_TAG
   ? 'https://gw2armory.com/'
   : 'https://preview.gw2armory.com/';
 
@@ -24,7 +24,7 @@ module.exports = {
   output: {
     path: paths.appBuild,
     pathinfo: true,
-    publicPath: argv.local ? '/' : publicPath,
+    publicPath,
     filename: '[name].js',
     chunkFilename: '[name]-chunk-[chunkhash:8].js',
   },

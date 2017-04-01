@@ -1,12 +1,22 @@
+// @flow
+
+import T from 'i18n-react';
+
 import Head from 'common/components/Head';
+import Container from 'common/components/Container';
 import RandomCharacter from 'features/Home/components/RandomCharacter';
 
+import styles from './styles.less';
+
 const NotFound = () => (
-  <div>
+  <Container className={styles.root}>
     <Head title="Uh Oh!" />
-    <h2>{'Couldn\'t find it, man... How about a random character instead?'}</h2>
+    <h2>{T.translate('messages.notFound')}</h2>
+    <p>{T.translate('messages.resourceNotFound')}</p>
     <RandomCharacter />
-  </div>
+    <br />
+    <br />
+  </Container>
 );
 
 export default NotFound;

@@ -1,0 +1,55 @@
+// @flow
+
+import React from 'react';
+import _ from 'lodash';
+import { shallow } from 'enzyme';
+
+export const stubComponent = (displayName: string) => {
+  const component = () => <div />;
+  component.displayName = displayName;
+  return component;
+};
+
+export const stubStyles = (classnames: Array<string>) => classnames.reduce((obj, name) => ({
+  ...obj,
+  [name]: `${name}-style`,
+}), {});
+
+export const stubDecoratorWithArgs = () => _.identity;
+
+export const stubRedux = ({
+  'react-redux': {
+    connect: stubDecoratorWithArgs,
+  },
+});
+
+export const stubI18n = (stub: any) => ({
+  'i18n-react': {
+    translate: stub,
+  },
+});
+
+export function describeConnect (path: string, stubs: ?{}, expectations: (mstp: () => {}, mdtp: {}) => void) {
+  const noop = () => {};
+  let mapStateToPropsExtracted;
+  let mapDispatchToPropsExatracted;
+
+  const extractor = (mapStateToProps, mapDispatchToProps) => () => {
+    mapStateToPropsExtracted = mapStateToProps || noop;
+    mapDispatchToPropsExatracted = mapDispatchToProps || {};
+    return stubComponent(path);
+  };
+
+  const StubComponent = global.proxyquire(path, {
+    ...stubs,
+    'react-redux': {
+      connect: extractor,
+    },
+  });
+
+  shallow(<StubComponent />);
+
+  describe('mapStateToProps', () => {
+    expectations(mapStateToPropsExtracted, mapDispatchToPropsExatracted);
+  });
+}

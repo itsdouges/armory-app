@@ -1,23 +1,29 @@
-import { PropTypes } from 'react';
-import styles from './styles.less';
+// @flow
+
+import cx from 'classnames';
+
 import TooltipTrigger from 'common/components/TooltipTrigger';
-import classnames from 'classnames/bind';
+import Icon from 'common/components/Icon';
+import colours from 'common/styles/colours';
 
-const cx = classnames.bind(styles);
+import styles from './styles.less';
 
-const Trait = ({ data, className, active }) => (
+type Props = {
+  data?: {
+    icon?: string,
+  },
+  className?: string,
+  active?: boolean,
+};
+
+const Trait = ({ data, className, active }: Props) => (
   <TooltipTrigger type="trait" data={data}>
-    <div
-      className={cx('root', className, { active })}
-      style={{ backgroundImage: `url(${data.icon})` }}
+    <Icon
+      className={cx(styles.root, className, { [styles.active]: active })}
+      src={data && data.icon}
+      style={{ backgroundColor: data && data.icon && colours._black }}
     />
   </TooltipTrigger>
 );
-
-Trait.propTypes = {
-  active: PropTypes.bool,
-  data: PropTypes.object,
-  className: PropTypes.string,
-};
 
 export default Trait;

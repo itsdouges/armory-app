@@ -87,8 +87,6 @@ export default class CharacterLite extends Component {
         </div>
 
         <a
-          rel="noopener noreferrer"
-          target="_blank"
           href={`/${safeCharacter.alias}/c/${safeCharacter.name}`}
           className={styles.header}
         >
@@ -111,6 +109,7 @@ export default class CharacterLite extends Component {
                 item={(items || [])[equip.id]}
                 skin={(skins || [])[equip.skin]}
                 stats={equip.stats}
+                equipped
               />
             );
           })}
@@ -130,6 +129,7 @@ export default class CharacterLite extends Component {
                 item={(items || [])[equip.id]}
                 skin={(skins || [])[equip.skin]}
                 stats={equip.stats}
+                equipped
               />
             );
           })}

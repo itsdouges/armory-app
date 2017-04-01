@@ -9,6 +9,7 @@ import Base from '../Base';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import axios from 'axios';
+import T from 'i18n-react';
 
 import { addStyleSheet } from 'lib/dom';
 import { set as setLang } from 'lib/i18n';
@@ -22,15 +23,14 @@ type Options = {
 
 export type EmbedProps = {
   className: string,
+  blankText: string,
 };
 
 const makeClassName = (str) => `gw2a-${str}-embed`;
 export const makeAttribute = (str: string) => `data-armory-${str}`;
 
 function fetchStyles () {
-  axios
-    // $FlowFixMe
-    .get(`${__webpack_public_path__}manifest.json`)
+  axios.get(`${__webpack_public_path__}manifest.json`)
     .then((response) => addStyleSheet(`${__webpack_public_path__}${response.data['gw2aEmbeds.css']}`));
 }
 
@@ -56,17 +56,24 @@ function bootstrapEmbeds () {
       return;
     }
 
+    const blankText = element.getAttribute(makeAttribute('blank-text')) || T.translate('words.optional');
     const rawIds = element.getAttribute(makeAttribute('ids'));
     const ids = (rawIds || '').split(',');
 
+    // NOTE: The following require is giving major headaches when using
+    // inline .spec.js files (as they're added to the webpack context).
+    // Watch out!
     // eslint-disable-next-line import/no-webpack-loader-syntax
-    const load = require(`promise?global!embeds/${embedName}`);
+    const load = require(`promise?global!embeds/creators/${embedName}`);
     load().then(({ default: createEmbed }) => {
       const Component = createEmbed(element, ids);
 
       ReactDOM.render(
         <Base>
-          <Component className={cx(styles.embed, makeClassName(embedName))} />
+          <Component
+            className={cx(styles.embed, makeClassName(embedName))}
+            blankText={blankText}
+          />
         </Base>,
         element
       );

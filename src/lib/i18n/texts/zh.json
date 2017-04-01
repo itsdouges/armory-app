@@ -79,7 +79,8 @@
     "hidden": "隐藏角色",
     "done": "Done",
     "edit": "Edit",
-    "changePortrait": "Change your character portrait"
+    "changePortrait": "Change your character portrait",
+    "noSkill": "No Skill Selected"
   },
   "settings": {
     "name": "设置",
@@ -172,12 +173,16 @@
     "played": "Played",
     "times": "times",
     "ratio": "Ratio",
-    "rank": "Rank"
+    "rank": "Rank",
+    "optional": "Optional"
   },
   "leaderboards": {
     "name": "Leaderboards"
   },
   "messages": {
-    "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!"
+    "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!",
+    "notFound": "Not Found",
+    "notFoundLong": "Not Found (or the GW2 API is dead)!",
+    "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!"
   }
 }

@@ -8,16 +8,85 @@
 - Changes
 ```
 
-## [4.8.0] - unreleased
+## [4.12.0] - unreleased
 ### Added
-- Armory badge back to character embed
 - Redux devtools
+- Tabs to character page
+- Character bags tab
 
 ### Removed
 - Redux middleware logging
 
+## [4.11.8] - 2017/04/01
+### Changed
+- Gw2 resource action to remove duplicate ids
+
+## [4.11.7] - 2017/04/01
+### Changed
+- No comment...
+
+## [4.11.6] - 2017/04/01
+### Changed
+- Public path, again! Third times the charm!?
+
+## [4.11.5] - 2017/04/01
+### Changed
+- Public path to be calculated during runtime to prevent anymore funny business
+- Master branch to not deploy unless tagged
+
+## [4.11.4] - 2017/03/31
 ### Fixed
-- Exceptions occurring when character data was not returned
+- Prod build from pointing public path to preview
+
+## [4.11.3] - 2017/03/31
+### Changed
+- Gw2 actions to be proxied so they batch all similar actions together to minimize api calls
+- Splits gw2 api calls if they reach the `GW2API_REQUEST_LIMIT` threshold
+- Adds errors to store for gw2 resources not brought back from a successful gw2 api request
+
+## [4.11.2] - 2017/03/29
+### Fixed
+- Deployment to prod script using `TRAVIS_BRANCH` environment variable
+
+## [4.11.1] - 2017/03/28
+### Fixed
+- Deployment to prod for tagged commits
+
+## [4.11.0] - 2017/03/28
+### Added
+- Blank item/skill/amulet for embeds (use id `-1`)
+- `data-armory-blank-text` attribute for use on item/skill/amulet embeds to replace the default "Optional" text tooltip
+
+### Changed
+- Item tooltip to only show "Currently Equipped" for characters
+
+## [4.10.0] - 2017/03/27
+### Fixed
+- Applying stats to backitem not working
+
+## [4.9.1] - 2017/03/24
+### Fixed
+- Style fixes
+- Specializations throwing an exception when recieving bad data
+
+## [4.9.0] - 2017/03/20
+### Added
+- Basic dismissable notification system
+- Error handling for gw2 data
+- Error handling for gw2 items/skills/specializations
+- Armory badge back to character embed
+
+### Changed
+- GW2Api health check to use notification system
+
+### Fixed
+- Character reducer/actions from throwing when recieving bad data
+- Content Card component showing `undefined` when gw2 api is dead
+
+## [4.8.0] - 2017/03/19
+### Added
+- Unit test setup
+- Pre commit test hook
 
 ## [4.7.0] - 2017/03/17
 ### Added

@@ -6,6 +6,7 @@ module.exports = {
   ],
   plugins: [
     'flowtype',
+    'mocha',
   ],
   'rules': {
     'space-before-function-paren': ['error', 'always'],
@@ -13,8 +14,9 @@ module.exports = {
     'default-case': 'off',
     'global-require': 'off',
     'camelcase': 'off',
+    'arrow-body-style': 'off',
     'arrow-parens': ['error', 'always'],
-    'max-len': 'warn',
+    'max-len': ['warn', { code: 120, ignoreStrings: true, ignoreUrls: true }],
 
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-unused-expressions': 'off',
@@ -31,7 +33,11 @@ module.exports = {
 
     'react/require-default-props': 'off',
     'react/forbid-prop-types': 'warn',
-    'react/no-unused-prop-types': 'warn',
+
+    // Until this is fixed (child props in objects stop erroring)
+    // this is turned off.
+    'react/no-unused-prop-types': 'off',
+
     'react/jsx-filename-extension': 'off',
     'react/jsx-sort-props': 'off',
     'react/react-in-jsx-scope': 'off',
@@ -47,6 +53,8 @@ module.exports = {
         'render',
       ],
     }],
+
+    'mocha/no-exclusive-tests': 'error',
   },
   settings: {
     'import/resolver': 'webpack',
@@ -56,5 +64,16 @@ module.exports = {
     GW2A_EMBED_OPTIONS: true,
     __DEVELOPMENT__: true,
     __webpack_public_path__: true,
+    before: true,
+    after: true,
+    beforeEach: true,
+    afterEach: true,
+    describe: true,
+    it: true,
+    context: true,
+    proxyquire: true,
+    expect: true,
+    sinon: true,
+    xit: true,
   },
 };

@@ -21,13 +21,13 @@ function mapStateToProps (state) {
 type Props = {
   bags?: Bags,
   items?: Items,
-  fetchItems?: (any) => void,
+  fetchItems?: (any) => {},
   dispatch?: (any) => void,
 };
 
-@connect(mapStateToProps/* , {
+@connect(mapStateToProps, {
   fetchItems: actions.fetchItems,
-}*/)
+})
 export default class CharacterBags extends Component {
   props: Props;
 
@@ -48,8 +48,7 @@ export default class CharacterBags extends Component {
       return ids.concat(inventoryIds);
     }, []);
 
-    this.props.dispatch && this.props.dispatch(actions.fetchItems(itemIds));
-    // this.props.fetchItems && this.props.fetchItems(itemIds);
+    this.props.fetchItems && this.props.fetchItems(itemIds);
   }
 
   renderItems (bags?: Bags) {
