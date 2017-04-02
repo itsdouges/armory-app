@@ -50,6 +50,7 @@ const Item = ({
   tooltipTextOverride,
   equipped,
   count,
+  ...props
 }: Props) => {
   if (hide) return null;
 
@@ -81,6 +82,7 @@ const Item = ({
     <TooltipTrigger
       type={tooltipType || 'items'}
       data={tooltipTextOverride || tooltipData}
+      {...props}
     >
       <Icon
         name={type && `${type}-slot-icon.png`}

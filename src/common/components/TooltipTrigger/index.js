@@ -4,6 +4,7 @@ import type { Children } from 'react';
 
 import { Component, cloneElement } from 'react';
 import { connect } from 'react-redux';
+
 import { showTooltip } from 'features/Gw2/actions';
 
 type Props = {
@@ -11,6 +12,8 @@ type Props = {
   showTooltip?: Function,
   children?: Children,
   type?: string,
+  onMouseEnter?: () => void,
+  onMouseLeave?: () => void,
 };
 
 @connect(null, {
@@ -24,7 +27,7 @@ type Props = {
 export default class TooltipTrigger extends Component {
   props: Props;
 
-  showTooltip = () => {
+  show = (e: SyntheticEvent) => {
     if (!this.props.data) {
       return;
     }
@@ -34,10 +37,12 @@ export default class TooltipTrigger extends Component {
       type: this.props.type,
     };
 
+    this.props.onMouseEnter && this.props.onMouseEnter(e);
     this.props.showTooltip && this.props.showTooltip(true, data);
   };
 
-  hideTooltip = () => {
+  hide = (e: SyntheticEvent) => {
+    this.props.onMouseLeave && this.props.onMouseLeave(e);
     this.props.showTooltip && this.props.showTooltip(false);
   };
 
@@ -47,9 +52,9 @@ export default class TooltipTrigger extends Component {
     }
 
     return cloneElement(this.props.children, {
-      onMouseEnter: this.showTooltip,
-      onMouseLeave: this.hideTooltip,
-      onTouchEnd: this.showTooltip,
+      onTouchEnd: this.show,
+      onMouseEnter: this.show,
+      onMouseLeave: this.hide,
     });
   }
 }

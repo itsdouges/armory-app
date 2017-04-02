@@ -4,6 +4,7 @@ import type { Items, Bags } from 'flowTypes';
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import cx from 'classnames';
 
 import Container from 'common/components/Container';
 import Item from 'features/Character/components/Item';
@@ -18,6 +19,10 @@ function mapStateToProps (state) {
   };
 }
 
+type State = {
+  focusedBagIndex: number,
+};
+
 type Props = {
   bags?: Bags,
   items?: Items,
@@ -29,6 +34,9 @@ type Props = {
 })
 export default class CharacterBags extends Component {
   props: Props;
+  state: State = {
+    focusedBagIndex: -1,
+  };
 
   componentWillMount () {
     this.fetchItems(this.props.bags);
@@ -42,15 +50,25 @@ export default class CharacterBags extends Component {
 
   fetchItems (bags?: Bags) {
     const ids = (bags || []).reduce((arr, bag) => {
-      arr.push(bag.id);
-      const itemIds = bag.inventory.map((inv) => inv && inv.id);
-      return arr.concat(itemIds);
+      if (bag) {
+        arr.push(bag.id);
+        const itemIds = bag.inventory.map((inv) => inv && inv.id);
+        return arr.concat(itemIds);
+      }
+
+      return arr;
     }, []);
 
     this.props.fetchItems && this.props.fetchItems(ids);
   }
 
-  renderItems (bags?: Bags) {
+  focusBag (index?: number) {
+    this.setState({
+      focusedBagIndex: index,
+    });
+  }
+
+  renderItems (bags?: Bags, focusedBagIndex: number) {
     if (!bags) {
       return null;
     }
@@ -59,8 +77,13 @@ export default class CharacterBags extends Component {
 
     return bags.map((bag, bagIndex) => {
       return (
-        // eslint-disable-next-line react/no-array-index-key
-        <span key={bagIndex} className={styles.inventory}>
+        <span
+          // eslint-disable-next-line react/no-array-index-key
+          key={bagIndex}
+          className={cx(styles.inventory, {
+            [styles.blur]: focusedBagIndex >= 0 && focusedBagIndex !== bagIndex,
+          })}
+        >
           {bag && bag.inventory.map((item, itemIndex) => {
             const { id, count } = item || {};
           // eslint-disable-next-line react/no-array-index-key
@@ -73,18 +96,24 @@ export default class CharacterBags extends Component {
 
   render () {
     const { bags, items } = this.props;
+    const { focusedBagIndex } = this.state;
 
     return (
       <Container className={styles.root}>
-        <div className={styles.bags}>
-          {bags && bags.map((bag, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <Item key={index} item={items && items[bag.id]} />
-          ))}
+        <div className={styles.items}>
+          {this.renderItems(bags, focusedBagIndex)}
         </div>
 
-        <div className={styles.items}>
-          {this.renderItems(bags)}
+        <div className={styles.bags}>
+          {bags && bags.map((bag, index) => (
+            <Item
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              item={items && items[bag && bag.id]}
+              onMouseEnter={() => this.focusBag(index)}
+              onMouseLeave={() => this.focusBag(-1)}
+            />
+          ))}
         </div>
       </Container>
     );
