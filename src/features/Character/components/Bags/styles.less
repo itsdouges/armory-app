@@ -1,21 +1,39 @@
-@itemMargin: 2px;
+@margin: 2px;
 
 .root {
   display: flex;
 }
 
-.bags,
-.items {
-  margin: @itemMargin;
+.bags {
+  display: flex;
+  flex-direction: column;
 }
 
 .bags,
+.items {
+  margin-bottom: @margin * 2;
+}
+
 .inventory {
   > * {
-    margin: @itemMargin @itemMargin -2px + @itemMargin
+    margin-bottom: -2px; // Cancel inline-block
+    margin-left: @margin;
+    margin-right: @margin;
+    margin-top: @margin * 2;
   }
 }
 
+.bags {
+  > * {
+    margin-top: @margin * 2;
+  }
+}
+
+.bagsInner {
+  display: inline-block;
+  margin: 0 auto;
+}
+
 .blur {
-  opacity: 0.5;
+  opacity: 0.2;
 }

@@ -78,16 +78,20 @@ export default class CharacterBags extends Component {
     return bags.map((bag, bagIndex) => {
       return (
         <span
-          // eslint-disable-next-line react/no-array-index-key
-          key={bagIndex}
+          key={bagIndex} // eslint-disable-line react/no-array-index-key
           className={cx(styles.inventory, {
             [styles.blur]: focusedBagIndex >= 0 && focusedBagIndex !== bagIndex,
           })}
         >
           {bag && bag.inventory.map((item, itemIndex) => {
             const { id, count } = item || {};
-          // eslint-disable-next-line react/no-array-index-key
-            return <Item inline key={itemIndex} item={items && items[id]} count={count} />;
+            return (
+              <Item
+                key={itemIndex} // eslint-disable-line react/no-array-index-key
+                item={items && items[id]}
+                count={count}
+              />
+            );
           })}
         </span>
       );
@@ -112,6 +116,7 @@ export default class CharacterBags extends Component {
               item={items && items[bag && bag.id]}
               onMouseEnter={() => this.focusBag(index)}
               onMouseLeave={() => this.focusBag(-1)}
+              className={cx(focusedBagIndex >= 0 && focusedBagIndex !== index && styles.blur)}
             />
           ))}
         </div>
