@@ -3,6 +3,7 @@
 import cx from 'classnames';
 
 import TooltipTrigger from 'common/components/TooltipTrigger';
+import Gw2Icon from 'common/components/Gw2Icon';
 import Icon from 'common/components/Icon';
 import styles from './styles.less';
 
@@ -28,6 +29,7 @@ type Props = {
   tooltipTextOverride?: string,
   equipped?: boolean,
   inline?: boolean,
+  count?: number,
 };
 
 const Item = ({
@@ -47,6 +49,7 @@ const Item = ({
   inline,
   tooltipTextOverride,
   equipped,
+  count,
 }: Props) => {
   if (hide) return null;
 
@@ -68,6 +71,7 @@ const Item = ({
       upgradeCounts,
       stats,
       equipped,
+      count,
     };
   } else {
     tooltipData = name;
@@ -87,7 +91,8 @@ const Item = ({
           [styles.inline]: inline,
         })}
       >
-        <Icon
+        <Gw2Icon
+          count={count}
           className={styles.item}
           src={skin.icon || item.icon || ''}
         />

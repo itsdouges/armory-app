@@ -7,14 +7,18 @@ import styles from './styles.less';
 
 type Props = IconProps & {
   applyCount?: number,
+  count?: number,
 };
 
-const APPLY_COUNT_THRESHOLD = 1;
+const COUNT_THRESHOLD = 1;
 
-const Gw2Icon = ({ applyCount, ...props }: Props) => (
+const Gw2Icon = ({ applyCount, count, children, ...props }: Props) => (
   <Icon {...props}>
-    {applyCount && applyCount > APPLY_COUNT_THRESHOLD &&
+    {applyCount && applyCount > COUNT_THRESHOLD &&
       <sub className={styles.applyBadge}>{applyCount}</sub>}
+    {count && count > COUNT_THRESHOLD &&
+      <sub className={styles.countBadge}>{count}</sub>}
+    {children}
   </Icon>
 );
 

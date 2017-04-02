@@ -14,25 +14,31 @@ import Upgrade from '../Upgrade';
 import Infusion from '../Infusion';
 import Background from '../Background';
 
-function buildName (item, skin, upgrades) {
+const addCount = (str, count) => (count > 1 ? `${count} ${str}` : str);
+
+function buildName (item, skin, upgrades, count) {
+  let name;
+
   if (!skin.name) {
-    return item.name;
+    name = item.name;
+  } else {
+    const regex = /[\w'-]+/;
+    const prefix = regex.exec(item.name);
+    const prefixedName = `${prefix} ${skin.name}`;
+
+    const [upgradeOne] = upgrades;
+    if (upgradeOne && prefixedName.indexOf(upgradeOne.details.suffix)) {
+      name = `${prefixedName} ${upgradeOne.details.suffix}`;
+    }
+
+    name = prefixedName;
   }
 
-  const regex = /[\w'-]+/;
-  const prefix = regex.exec(item.name);
-  const prefixedName = `${prefix} ${skin.name}`;
-
-  const [upgradeOne] = upgrades;
-
-  if (upgradeOne && prefixedName.indexOf(upgradeOne.details.suffix)) {
-    return `${prefixedName} ${upgradeOne.details.suffix}`;
-  }
-
-  return prefixedName;
+  return addCount(name, count);
 }
 
 const ItemsTooltip = ({ data: {
+  count,
   item,
   skin,
   name,
@@ -53,7 +59,7 @@ const ItemsTooltip = ({ data: {
       {equipped && <SimpleTooltip data={T.translate('items.currentlyEquipped')} />}
 
       <ItemHeader
-        name={buildName(item, skin, upgrades)}
+        name={buildName(item, skin, upgrades, count)}
         icon={skin.icon || item.icon}
         rarity={item.rarity}
       />
