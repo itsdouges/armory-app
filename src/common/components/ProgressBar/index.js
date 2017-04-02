@@ -47,7 +47,7 @@ const ProgressBar = ({
 ProgressBar.defaultProps = {
   current: 0,
   max: 0,
-  backgroundColor: colours._darkestgray,
+  backgroundColor: colours._black,
   barColor: colours._purple,
 };
 

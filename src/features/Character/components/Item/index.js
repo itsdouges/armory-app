@@ -69,6 +69,8 @@ const Item = ({
       stats,
       equipped,
     };
+  } else {
+    tooltipData = name;
   }
 
   return (
@@ -77,7 +79,7 @@ const Item = ({
       data={tooltipTextOverride || tooltipData}
     >
       <Icon
-        name={type ? `${type}-slot-icon.png` : 'empty-skill-back.png'}
+        name={type && `${type}-slot-icon.png`}
         className={cx(styles.root, className, {
           [styles.busy]: busy,
           [styles.small]: small,
