@@ -7,7 +7,6 @@ import T from 'i18n-react';
 import config from 'config';
 import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
-import SocialButtons from 'common/components/SocialButtons';
 import Message from 'common/components/Message';
 import ProgressIcon from 'common/components/Icon/Progress';
 
@@ -132,7 +131,6 @@ export default class Search extends Component {
         {users}
         {guilds}
         {characters}
-        <SocialButtons />
       </div>
     );
   }

@@ -7,6 +7,11 @@
 .bags {
   display: flex;
   flex-direction: column;
+  margin-right: @margin * 2;
+}
+
+.items {
+  margin-left: @margin * 2;
 }
 
 .bags,
@@ -14,17 +19,17 @@
   margin-bottom: @margin * 2;
 }
 
-.inventory {
+.bags {
   > * {
-    margin-bottom: -2px; // Cancel inline-block
-    margin-left: @margin;
-    margin-right: @margin;
     margin-top: @margin * 2;
   }
 }
 
-.bags {
+.bag {
   > * {
+    margin-bottom: -2px; // Cancel inline-block
+    margin-left: @margin;
+    margin-right: @margin;
     margin-top: @margin * 2;
   }
 }

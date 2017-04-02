@@ -5,7 +5,6 @@ import type { TabInput as Tabs$TabInput } from 'common/components/Tabs';
 import ContentCard from 'common/components/ContentCard';
 import Tabs from 'common/components/Tabs';
 import Head from 'common/components/Head';
-import SocialButtons from 'common/components/SocialButtons';
 import Tooltip from 'common/components/Tooltip';
 import Container from 'common/components/Container';
 import DisplayAd from 'common/components/DisplayAd';
@@ -34,7 +33,6 @@ const Content = ({
 }: Props) => (
   <div className={styles.root}>
     <Head title={title} description={description} />
-    <SocialButtons />
 
     <DisplayAd className={styles.ad} />
 

@@ -17,6 +17,7 @@
 
 ### Removed
 - Redux middleware logging
+- Social sharing buttons because they're annoying AF
 
 ## [4.11.8] - 2017/04/01
 ### Changed

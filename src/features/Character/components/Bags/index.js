@@ -79,7 +79,7 @@ export default class CharacterBags extends Component {
       return (
         <span
           key={bagIndex} // eslint-disable-line react/no-array-index-key
-          className={cx(styles.inventory, {
+          className={cx(styles.bag, {
             [styles.blur]: focusedBagIndex >= 0 && focusedBagIndex !== bagIndex,
           })}
         >
