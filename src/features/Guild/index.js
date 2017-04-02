@@ -75,7 +75,6 @@ export default class Guild extends Component {
           {
             name: 'Members',
             to: `/g/${guildName}/users`,
-            flair: 'new',
             content: <Members guildName={guildName} />,
           },
           {

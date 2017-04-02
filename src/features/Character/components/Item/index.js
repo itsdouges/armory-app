@@ -50,9 +50,16 @@ const Item = ({
 }: Props) => {
   if (hide) return null;
 
-  const data = item && item.error
-    ? item
-    : {
+  // $FlowFixMe
+  const error = item && item.error;
+  const itemLoaded = !!Object.keys(item).length;
+
+  let tooltipData;
+
+  if (error) {
+    tooltipData = error;
+  } else if (itemLoaded) {
+    tooltipData = {
       name,
       item,
       skin,
@@ -62,18 +69,19 @@ const Item = ({
       stats,
       equipped,
     };
+  }
 
   return (
     <TooltipTrigger
       type={tooltipType || 'items'}
-      data={tooltipTextOverride || data}
+      data={tooltipTextOverride || tooltipData}
     >
       <Icon
         name={type ? `${type}-slot-icon.png` : 'empty-skill-back.png'}
         className={cx(styles.root, className, {
           [styles.busy]: busy,
           [styles.small]: small,
-          [styles.emptyBg]: !type,
+          [styles.emptyBg]: !type && !itemLoaded,
           [styles.inline]: inline,
         })}
       >

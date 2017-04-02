@@ -21,8 +21,7 @@ function mapStateToProps (state) {
 type Props = {
   bags?: Bags,
   items?: Items,
-  fetchItems?: (any) => {},
-  dispatch?: (any) => void,
+  fetchItems?: (ids: Array<number>) => {},
 };
 
 @connect(mapStateToProps, {
@@ -32,23 +31,23 @@ export default class CharacterBags extends Component {
   props: Props;
 
   componentWillMount () {
-    this.fetchBagItems(this.props.bags);
+    this.fetchItems(this.props.bags);
   }
 
   componentWillReceiveProps (nextProps: Props) {
     if (this.props.bags !== nextProps.bags) {
-      this.fetchBagItems(nextProps.bags);
+      this.fetchItems(nextProps.bags);
     }
   }
 
-  fetchBagItems (bags?: Bags) {
-    const itemIds = bags && bags.reduce((ids, bag) => {
-      ids.push(bag.id);
-      const inventoryIds = bag.inventory.map((inv) => inv && inv.id);
-      return ids.concat(inventoryIds);
+  fetchItems (bags?: Bags) {
+    const ids = (bags || []).reduce((arr, bag) => {
+      arr.push(bag.id);
+      const itemIds = bag.inventory.map((inv) => inv && inv.id);
+      return arr.concat(itemIds);
     }, []);
 
-    this.props.fetchItems && this.props.fetchItems(itemIds);
+    this.props.fetchItems && this.props.fetchItems(ids);
   }
 
   renderItems (bags?: Bags) {

@@ -5,6 +5,9 @@
       "text": "Guild Wars 2 Armory es la manera más fácil de encontrar, ver y compartir los usuarios, personajes y clanes con tus amigos en móvil y PC! Únete hoy y empieza a compartir!"
     }
   },
+  "embeds": {
+    "name": "Embeds"
+  },
   "login": {
     "name": "Entrar",
     "joinCta": "¿Todavía no tienes una cuenta? ¡Has clic aquí!",

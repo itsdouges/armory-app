@@ -7,8 +7,8 @@ import * as ls from 'lib/localStorage';
 
 ls.reset();
 
-import Router from './Router';
 import Base from './Base';
+import Router from './Router';
 
 ReactDOM.render(
   <Base>

@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 const reducerModules = require.context('./', true, /.\.reducer\.js$/);
 
 /**
- * Imports all [name].reducer.js found in features.
+ * Imports all [name].reducer.js found under src/features.
  *
  * Each [name]ed reducer requires at least one default state.
  *
@@ -58,8 +58,5 @@ const reducers = Object.keys(definitions).reduce((acc, key) => {
 
   return acc;
 }, {});
-
-/* eslint no-console:0 */
-if (__DEVELOPMENT__) console.log('IMPORTED REDUCERS: ', reducerModules.keys(), reducers);
 
 export default combineReducers(reducers);

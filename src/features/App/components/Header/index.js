@@ -13,7 +13,6 @@ const heroImage = config.features.christmas ? 'xmas-hero.jpg' : 'gw_bgrd.png';
 const headerBg = require(`assets/images/${heroImage}`);
 
 import buttonStyles from 'common/components/Button/styles.less';
-import Flair from 'common/components/Flair';
 import ResponsiveMenu from 'common/components/ResponsiveMenu';
 import Container from 'common/components/Container';
 import Icon from 'common/components/Icon';
@@ -41,7 +40,7 @@ type LinkDefs = {
 };
 
 const STATIC_LINKS = [{
-  name: <Flair type="new">{T.translate('leaderboards.name')}</Flair>,
+  name: T.translate('leaderboards.name'),
   to: '/leaderboards/pvp',
   external: false,
 }, {
@@ -49,7 +48,7 @@ const STATIC_LINKS = [{
   to: '/statistics',
   external: false,
 }, {
-  name: <Flair type="new">Embeds</Flair>,
+  name: T.translate('embeds.name'),
   to: '/embeds/example/index.html',
   external: true,
 }];

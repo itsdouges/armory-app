@@ -13,6 +13,7 @@
 - Redux devtools
 - Tabs to character page
 - Character bags tab
+- User access tooltip
 
 ### Removed
 - Redux middleware logging

@@ -25,6 +25,10 @@ export default class TooltipTrigger extends Component {
   props: Props;
 
   showTooltip = () => {
+    if (!this.props.data) {
+      return;
+    }
+
     const data = {
       data: this.props.data,
       type: this.props.type,

@@ -5,6 +5,9 @@
       "text": "Guild Wars 2 Armory 使您更容易在手机和电脑上与朋友寻找，查看，并共享用户，角色和行会！今天就加盟并开始分享吧！"
     }
   },
+  "embeds": {
+    "name": "Embeds"
+  },
   "login": {
     "name": "登录",
     "joinCta": "还没有账号？加入我们！",

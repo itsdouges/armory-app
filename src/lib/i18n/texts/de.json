@@ -5,6 +5,9 @@
       "text": "Guild Wars 2 Armory ist eine einfache Möglichkeit, Charaktere und Gilden auf dem Handy und PC zu finden und mit Freunden zu teilen! Jetzt anmelden und starten!"
     }
   },
+  "embeds": {
+    "name": "Embeds"
+  },
   "login": {
     "name": "Anmelden",
     "joinCta": "Du hast noch kein Konto? Jetzt registrieren!",

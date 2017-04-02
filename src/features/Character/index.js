@@ -11,8 +11,8 @@ import { fetchUserCharacters, selectUser } from 'features/User/actions';
 import Content from 'common/layouts/Content';
 import ContentCard from 'common/components/ContentCard';
 
-import Bags from './components/Bags';
 import Overview from './components/Overview';
+import Bags from './components/Bags';
 import styles from './styles.less';
 
 import type { Character as CharacterType, Pets, Gw2Title } from 'flowTypes';
@@ -129,6 +129,7 @@ export default class Character extends Component {
         }, {
           to: `/${alias}/c/${characterName}/bags`,
           name: 'Bags',
+          flair: 'new',
           content: (
             <Bags />
           ),

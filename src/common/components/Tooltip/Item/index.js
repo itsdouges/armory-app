@@ -139,7 +139,7 @@ const ItemsTooltip = ({ data: {
 
         {!!item.level && <div>{T.translate('items.requiredLevel')}: {item.level}</div>}
 
-        <div>{item.boundStatus}</div>
+        <div>{startCase(item.boundStatus)}</div>
 
         {item.rarity !== 'Legendary' &&
           <Gold copper={item.copper} silver={item.silver} gold={item.gold} />}
