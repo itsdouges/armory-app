@@ -57,11 +57,17 @@ export default class CharacterBags extends Component {
 
     const { items } = this.props;
 
-    return bags.reduce((arr, bag) => arr.concat(bag.inventory), [])
-    .map((item, index) => {
-      const { id, count } = item || {};
-    // eslint-disable-next-line react/no-array-index-key
-      return <Item inline key={index} item={items && items[id]} count={count} />;
+    return bags.map((bag, bagIndex) => {
+      return (
+        // eslint-disable-next-line react/no-array-index-key
+        <span key={bagIndex} className={styles.inventory}>
+          {bag && bag.inventory.map((item, itemIndex) => {
+            const { id, count } = item || {};
+          // eslint-disable-next-line react/no-array-index-key
+            return <Item inline key={itemIndex} item={items && items[id]} count={count} />;
+          })}
+        </span>
+      );
     });
   }
 
