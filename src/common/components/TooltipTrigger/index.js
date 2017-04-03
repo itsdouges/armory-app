@@ -3,8 +3,8 @@
 import type { Children } from 'react';
 
 import { Component, cloneElement } from 'react';
-import debounce from 'lodash/debounce';
 import { connect } from 'react-redux';
+import debounce from 'lodash/debounce';
 
 import { showTooltip } from 'features/Gw2/actions';
 
@@ -17,7 +17,7 @@ type Props = {
   onMouseLeave?: (SyntheticEvent) => void,
 };
 
-const HIDE_TOOLTIP_TIMEOUT = 300;
+const HIDE_TOOLTIP_TIMEOUT = 150;
 let canHide;
 
 @connect(null, {
@@ -61,11 +61,12 @@ export default class TooltipTrigger extends Component {
   }, HIDE_TOOLTIP_TIMEOUT);
 
   render () {
-    if (!this.props.children) {
+    const { children } = this.props;
+    if (!children) {
       return null;
     }
 
-    return cloneElement(this.props.children, {
+    return cloneElement(children, {
       onTouchEnd: this.show,
       onMouseEnter: this.show,
       onMouseLeave: this.hide,

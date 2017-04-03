@@ -21,6 +21,7 @@ function mapStateToProps (state) {
 
 type State = {
   focusedBagIndex: number,
+  stickFocusBag: number,
 };
 
 type Props = {
@@ -37,9 +38,11 @@ export default class CharacterBags extends Component {
   funcs: Array<{
     enter: () => void,
     leave: () => void,
+    click: () => void,
   }>;
   state: State = {
     focusedBagIndex: -1,
+    stickFocusBag: -1,
   };
 
   componentWillMount () {
@@ -57,7 +60,8 @@ export default class CharacterBags extends Component {
   createFuncs = (bags?: Bags) => {
     this.funcs = (bags || []).map((bag, index) => ({
       enter: () => this.focusBag(index),
-      leave: () => this.focusBag(-1),
+      leave: () => this.resetFocus(),
+      click: () => this.clickBag(index),
     }));
   };
 
@@ -79,6 +83,18 @@ export default class CharacterBags extends Component {
     this.setState({
       focusedBagIndex: index,
     });
+  }
+
+  clickBag (index?: number) {
+    this.setState((prevState) => ({
+      stickFocusBag: prevState.stickFocusBag === index ? -1 : index,
+    }));
+  }
+
+  resetFocus () {
+    this.setState((prevState) => ({
+      focusedBagIndex: prevState.stickFocusBag >= 0 ? prevState.stickFocusBag : -1,
+    }));
   }
 
   renderItems (bags?: Bags, focusedBagIndex: number) {
@@ -113,7 +129,7 @@ export default class CharacterBags extends Component {
 
   render () {
     const { bags, items } = this.props;
-    const { focusedBagIndex } = this.state;
+    const { focusedBagIndex, stickFocusBag } = this.state;
 
     return (
       <Container className={styles.root}>
@@ -127,9 +143,13 @@ export default class CharacterBags extends Component {
               // eslint-disable-next-line react/no-array-index-key
               key={index}
               item={items && items[bag && bag.id]}
+              onClick={this.funcs[index].click}
               onMouseEnter={this.funcs[index].enter}
               onMouseLeave={this.funcs[index].leave}
-              className={cx(focusedBagIndex >= 0 && focusedBagIndex !== index && styles.blur)}
+              className={cx(styles.bagItem, {
+                [styles.blur]: focusedBagIndex >= 0 && focusedBagIndex !== index,
+                [styles.selected]: stickFocusBag === index,
+              })}
             />
           ))}
         </div>

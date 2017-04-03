@@ -3,6 +3,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
+import { Link } from 'react-router';
 
 import { selector } from './characters.reducer';
 import { fetchCharacter, selectCharacter } from './actions';
@@ -18,7 +19,7 @@ import styles from './styles.less';
 import type { Character as CharacterType, Pets, Gw2Title } from 'flowTypes';
 
 function buildDescription (character = {}) {
-  // eslint-disable-next-line
+  // eslint-disable-next-line max-len
   return `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
 }
 
@@ -63,10 +64,6 @@ export default class Character extends Component {
       ignoreAuth: this.context._userAlias !== alias,
     });
 
-    this.props.fetchUserCharacters(alias, {
-      ignoreAuth: this.context._userAlias !== alias,
-    });
-
     this.props.selectCharacter(character);
     this.props.selectUser(alias);
   }
@@ -76,13 +73,15 @@ export default class Character extends Component {
       routeParams: { alias, character: characterName },
       routeParams,
       character,
-      mode,
-      pets,
       title,
     } = this.props;
 
-    const characterPetIds = get(character, `skills[${mode}].pets.terrestrial`, undefined);
     const characterTitle = get(title, 'name');
+    const guild = character && {
+      name: character.guild_name,
+      tag: character.guild_tag,
+      id: character.guild,
+    };
 
     return (
       <Content
@@ -91,9 +90,17 @@ export default class Character extends Component {
         content={character}
         description={buildDescription(character)}
         extraSubtitle={characterTitle && <span><i>{characterTitle}</i> | </span>}
-        extraContent={characterPetIds &&
-          characterPetIds.map((id) =>
-            <ContentCard className={styles.subContent} key={id} content={pets[id]} type="pet" />
+        contentCardClassName={styles.contentCard}
+        extraContent={(
+          <div>
+            <Link to={`/${(character && character.alias) || ''}`}>
+              <ContentCard type="users" content={character} className={styles.linkItem} />
+            </Link>
+
+            <Link to={`/g/${(guild && guild.name) || ''}`}>
+              <ContentCard type="guilds" content={guild} className={styles.linkItem} />
+            </Link>
+          </div>
         )}
         tabs={[{
           to: `/${alias}/c/${characterName}`,

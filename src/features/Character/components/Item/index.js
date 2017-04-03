@@ -31,6 +31,7 @@ type Props = {
   equipped?: boolean,
   inline?: boolean,
   count?: number,
+  onClick?: (SyntheticEvent) => void,
 };
 
 const Item = ({
@@ -51,6 +52,7 @@ const Item = ({
   tooltipTextOverride,
   equipped,
   count,
+  onClick,
   ...props
 }: Props) => {
   if (hide) return null;
@@ -93,6 +95,7 @@ const Item = ({
           [styles.emptyBg]: !type && !itemLoaded,
           [styles.inline]: inline,
         })}
+        onClick={onClick}
       >
         <Gw2Icon
           count={count}

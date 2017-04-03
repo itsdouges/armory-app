@@ -13,7 +13,6 @@ import type {
 
 import { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
 import cx from 'classnames';
@@ -25,8 +24,6 @@ import calculateAttributes from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
 import Checkbox from 'common/components/Checkbox';
-import ContentCardList from 'common/components/ContentCardList';
-import ContentCard from 'common/components/ContentCard';
 import ImageUpload from 'common/components/ImageUpload';
 import Button from 'common/components/Button';
 
@@ -125,8 +122,6 @@ export default class CharacterOverview extends Component {
   render () {
     const {
       name: characterName,
-      userAlias: alias,
-      characters,
       character,
       mode,
       skills,
@@ -150,12 +145,6 @@ export default class CharacterOverview extends Component {
     const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
     const crafting = get(character, 'crafting', [{}, {}, {}]);
     const showPublic = get(character, 'authorization.showPublic');
-    const guild = character && {
-      name: character.guild_name,
-      tag: character.guild_tag,
-      id: character.guild,
-    };
-
     const showPvpEquipment = mode === 'pvp';
 
     return (
@@ -290,18 +279,6 @@ export default class CharacterOverview extends Component {
               />)}
           </div>
         </div>
-
-        <div className={styles.links}>
-          <Link to={`/${(character && character.alias) || ''}`}>
-            <ContentCard type="users" content={character} className={styles.linkItem} />
-          </Link>
-
-          <Link to={`/g/${(guild && guild.name) || ''}`}>
-            <ContentCard type="guilds" content={guild} className={styles.linkItem} />
-          </Link>
-        </div>
-
-        <ContentCardList noBorder alias={alias} items={characters} />
       </div>
     );
   }

@@ -2,6 +2,8 @@
 
 import type { TabInput as Tabs$TabInput } from 'common/components/Tabs';
 
+import cx from 'classnames';
+
 import ContentCard from 'common/components/ContentCard';
 import Tabs from 'common/components/Tabs';
 import Head from 'common/components/Head';
@@ -19,6 +21,7 @@ type Props = {
   description?: string,
   cardExtra?: any,
   pinnedTab?: any,
+  contentCardClassName?: string,
 };
 
 const Content = ({
@@ -29,6 +32,7 @@ const Content = ({
   description,
   cardExtra,
   pinnedTab,
+  contentCardClassName,
   ...props
 }: Props) => (
   <div className={styles.root}>
@@ -38,7 +42,7 @@ const Content = ({
 
     <div className={styles.heroBg}>
 
-      <Container className={styles.inner}>
+      <Container className={cx(styles.inner, contentCardClassName)}>
         <ContentCard {...props} size="big">{cardExtra}</ContentCard>
         {extraContent}
       </Container>
