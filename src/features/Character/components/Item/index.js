@@ -1,6 +1,7 @@
 // @flow
 
 import cx from 'classnames';
+import pure from 'recompose/pure';
 
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Gw2Icon from 'common/components/Gw2Icon';
@@ -103,4 +104,4 @@ const Item = ({
   );
 };
 
-export default Item;
+export default pure(Item);

@@ -34,19 +34,32 @@ type Props = {
 })
 export default class CharacterBags extends Component {
   props: Props;
+  funcs: Array<{
+    enter: () => void,
+    leave: () => void,
+  }>;
   state: State = {
     focusedBagIndex: -1,
   };
 
   componentWillMount () {
     this.fetchItems(this.props.bags);
+    this.createFuncs(this.props.bags);
   }
 
   componentWillReceiveProps (nextProps: Props) {
     if (this.props.bags !== nextProps.bags) {
       this.fetchItems(nextProps.bags);
+      this.createFuncs(nextProps.bags);
     }
   }
+
+  createFuncs = (bags?: Bags) => {
+    this.funcs = (bags || []).map((bag, index) => ({
+      enter: () => this.focusBag(index),
+      leave: () => this.focusBag(-1),
+    }));
+  };
 
   fetchItems (bags?: Bags) {
     const ids = (bags || []).reduce((arr, bag) => {
@@ -114,8 +127,8 @@ export default class CharacterBags extends Component {
               // eslint-disable-next-line react/no-array-index-key
               key={index}
               item={items && items[bag && bag.id]}
-              onMouseEnter={() => this.focusBag(index)}
-              onMouseLeave={() => this.focusBag(-1)}
+              onMouseEnter={this.funcs[index].enter}
+              onMouseLeave={this.funcs[index].leave}
               className={cx(focusedBagIndex >= 0 && focusedBagIndex !== index && styles.blur)}
             />
           ))}
