@@ -3,6 +3,7 @@
 import type { Children } from 'react';
 
 import { Component, cloneElement } from 'react';
+import debounce from 'lodash/debounce';
 import { connect } from 'react-redux';
 
 import { showTooltip } from 'features/Gw2/actions';
@@ -12,9 +13,12 @@ type Props = {
   showTooltip?: Function,
   children?: Children,
   type?: string,
-  onMouseEnter?: () => void,
-  onMouseLeave?: () => void,
+  onMouseEnter?: (SyntheticEvent) => void,
+  onMouseLeave?: (SyntheticEvent) => void,
 };
+
+const HIDE_TOOLTIP_TIMEOUT = 300;
+let canHide;
 
 @connect(null, {
   showTooltip,
@@ -26,25 +30,35 @@ type Props = {
  */
 export default class TooltipTrigger extends Component {
   props: Props;
+  canHide: boolean;
 
   show = (e: SyntheticEvent) => {
     if (!this.props.data) {
       return;
     }
 
-    const data = {
+    this.props.onMouseEnter && this.props.onMouseEnter(e);
+
+    this.props.showTooltip && this.props.showTooltip(true, {
       data: this.props.data,
       type: this.props.type,
-    };
+    });
 
-    this.props.onMouseEnter && this.props.onMouseEnter(e);
-    this.props.showTooltip && this.props.showTooltip(true, data);
+    canHide = false;
+    this.debouncedHide.cancel();
   };
 
   hide = (e: SyntheticEvent) => {
-    this.props.onMouseLeave && this.props.onMouseLeave(e);
-    this.props.showTooltip && this.props.showTooltip(false);
+    canHide = true;
+    this.debouncedHide(e);
   };
+
+  debouncedHide = debounce((e: SyntheticEvent) => {
+    if (canHide) {
+      this.props.onMouseLeave && this.props.onMouseLeave(e);
+      this.props.showTooltip && this.props.showTooltip(false);
+    }
+  }, HIDE_TOOLTIP_TIMEOUT);
 
   render () {
     if (!this.props.children) {
