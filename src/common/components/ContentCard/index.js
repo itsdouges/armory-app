@@ -86,7 +86,7 @@ function extractData (content, { type, forceUpdate }): CardData {
 export type ContentType = 'characters' | 'users' | 'guilds' | 'pet';
 type CardSize = 'small' | 'big';
 
-type ContentCardProps = {
+export type Props = {
   content?: Object,
   className?: string,
   type?: ContentType,
@@ -106,7 +106,7 @@ const ContentCard = ({
   forceUpdate,
   children,
   rightComponent,
-}: ContentCardProps) => {
+}: Props) => {
   if (!content) {
     return <Placeholder size={size} className={className} rightComponent={rightComponent} />;
   }

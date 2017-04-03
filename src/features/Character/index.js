@@ -90,7 +90,6 @@ export default class Character extends Component {
         content={character}
         description={buildDescription(character)}
         extraSubtitle={characterTitle && <span><i>{characterTitle}</i> | </span>}
-        contentCardClassName={styles.contentCard}
         extraContent={(
           <div>
             <Link to={`/${(character && character.alias) || ''}`}>

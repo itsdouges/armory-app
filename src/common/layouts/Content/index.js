@@ -21,7 +21,6 @@ type Props = {
   description?: string,
   cardExtra?: any,
   pinnedTab?: any,
-  contentCardClassName?: string,
 };
 
 const Content = ({
@@ -32,7 +31,6 @@ const Content = ({
   description,
   cardExtra,
   pinnedTab,
-  contentCardClassName,
   ...props
 }: Props) => (
   <div className={styles.root}>
@@ -42,7 +40,7 @@ const Content = ({
 
     <div className={styles.heroBg}>
 
-      <Container className={cx(styles.inner, contentCardClassName)}>
+      <Container className={cx(styles.inner)}>
         <ContentCard {...props} size="big">{cardExtra}</ContentCard>
         {extraContent}
       </Container>

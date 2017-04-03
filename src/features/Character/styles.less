@@ -3,7 +3,6 @@
 @leftColumnWidth: @itemSize + 4px;
 @rightColumnWidth: (@itemSize * 3) + (4px * 3);
 @portraitWidth: 770px;
-
 @brushDecorationZ: @_zindexBehind;
 
 .root {
@@ -16,12 +15,6 @@
   max-width: @portraitWidth;
   margin: 0 auto;
   position: relative;
-}
-
-.contentCard {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .fade {
@@ -149,10 +142,22 @@
   text-align: center;
 }
 
-div.linkItem {
+.linkItem.linkItem {
   display: inline-flex;
   text-align: left;
 }
+
+.fromTablet({
+  .linkItem.linkItem {
+    display: flex;
+  }
+});
+
+.fromPc({
+  .linkItem.linkItem {
+    display: inline-flex;
+  }
+});
 
 .craftingContainer {
   margin: 0 0.125rem;

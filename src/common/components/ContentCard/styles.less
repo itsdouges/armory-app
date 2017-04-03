@@ -2,8 +2,7 @@
 
 @padding: 0.5rem;
 
-.root,
-.placeholderRoot {
+.root {
   display: flex;
   align-items: center;
   padding: @padding * 1.5;
@@ -153,15 +152,14 @@
 }
 
 .fromTablet({
-  .root,
-  .placeholderRoot {
+  .root {
     &.big {
       flex-direction: row;
       text-align: left;
 
-        .textContainer {
-          align-items: flex-start;
-        }
+      .textContainer {
+        align-items: flex-start;
+      }
     }
   }
 });
