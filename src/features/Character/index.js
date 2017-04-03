@@ -108,7 +108,7 @@ export default class Character extends Component {
           content: (
             <Overview
               name={characterName}
-              modee="pve"
+              mode="pve"
               userAlias={alias}
             />
           ),
@@ -118,7 +118,7 @@ export default class Character extends Component {
           content: (
             <Overview
               name={characterName}
-              modee="pvp"
+              mode="pvp"
               userAlias={alias}
             />
           ),
@@ -128,7 +128,7 @@ export default class Character extends Component {
           content: (
             <Overview
               name={characterName}
-              modee="wvw"
+              mode="wvw"
               userAlias={alias}
             />
           ),

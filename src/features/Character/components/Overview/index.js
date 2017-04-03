@@ -19,7 +19,7 @@ import cx from 'classnames';
 import T from 'i18n-react';
 
 import { selector } from '../../characters.reducer';
-import { selectCharacterMode, updateCharacter } from '../../actions';
+import { updateCharacter } from '../../actions';
 import calculateAttributes from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
@@ -47,8 +47,7 @@ type UpdateOptions = {
 type Props = {
   name: string,
   userAlias: string,
-  modee: CharacterModes,
-  mode?: CharacterModes,
+  mode: CharacterModes,
   character?: CharacterType,
   characters?: CharactersList,
   items?: Items,
@@ -57,13 +56,11 @@ type Props = {
   traits?: Traits,
   skills?: Gw2Skills,
   amulets?: Amulets,
-  dispatchUpdateCharacter?: (name: string, options: UpdateOptions) => void,
-  dispatchSelectCharacterMode?: (mode: CharacterModes) => void,
+  updateCharacter?: (name: string, options: UpdateOptions) => void,
 };
 
 @connect(selector, {
-  dispatchSelectCharacterMode: selectCharacterMode,
-  dispatchUpdateCharacter: updateCharacter,
+  updateCharacter,
 })
 export default class CharacterOverview extends Component {
   props: Props;
@@ -77,26 +74,11 @@ export default class CharacterOverview extends Component {
     updateImage: false,
   };
 
-  componentWillMount () {
-    this.setMode(this.props.modee);
-  }
-
-  componentWillReceiveProps (nextProps: Props) {
-    if (this.props.modee !== nextProps.modee) {
-      this.setMode(nextProps.modee);
-    }
-  }
-
   onUploadComplete = () => {
     this.setState({
       updateImage: true,
     });
   };
-
-  setMode (mode: CharacterModes) {
-    const { dispatchSelectCharacterMode } = this.props;
-    dispatchSelectCharacterMode && dispatchSelectCharacterMode(mode);
-  }
 
   getItems (ids: Array<number> = []) {
     return ids.map((id) => this.props.items && this.props.items[id]);
@@ -112,9 +94,8 @@ export default class CharacterOverview extends Component {
 
   hide = (e: EventHandler) => {
     const { name } = this.props;
-    const { dispatchUpdateCharacter } = this.props;
 
-    dispatchUpdateCharacter && dispatchUpdateCharacter(name, {
+    this.props.updateCharacter && this.props.updateCharacter(name, {
       showPublic: e.target.checked,
     });
   }
@@ -134,14 +115,12 @@ export default class CharacterOverview extends Component {
 
     const { editMode } = this.state;
 
-    /* eslint no-underscore-dangle:0 */
     const attributes = calculateAttributes(character, { items, traits, skills });
-
     const ownCharacter = get(character, 'alias', false) === this.context._userAlias;
     const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
-    const characterSpecializations = get(character, `specializations[${mode || 'pve'}]`, [{}, {}, {}]);
-    const characterSkills = get(character, `skills[${mode || 'pve'}]`, {});
+    const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]);
+    const characterSkills = get(character, `skills[${mode}]`, {});
     const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
     const crafting = get(character, 'crafting', [{}, {}, {}]);
     const showPublic = get(character, 'authorization.showPublic');

@@ -118,17 +118,17 @@ const getCharacters = (store) => {
 };
 
 export const selector = createSelector(
-  (store) => store.characters.data[store.characters.selected],
+  (state) => state.characters.data[state.characters.selected],
   getCharacters,
-  (store) => store.items,
-  (store) => store.skins,
-  (store) => store.specializations,
-  (store) => store.traits,
-  (store) => store.characters.mode,
-  (store) => store.skills,
-  (store) => store.amulets,
-  (store) => store.pets,
-  (store) => store.titles[get(getCharacters(store), 'title', '')],
+  (state) => state.items,
+  (state) => state.skins,
+  (state) => state.specializations,
+  (state) => state.traits,
+  (state, props) => props.mode,
+  (state) => state.skills,
+  (state) => state.amulets,
+  (state) => state.pets,
+  (state) => state.titles[get(getCharacters(state), 'title', '')],
   // eslint-disable-next-line
   (character, characters, items, skins, specializations, traits, mode, skills, amulets, pets, title) => ({
     character: character && {
