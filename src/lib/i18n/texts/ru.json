@@ -83,7 +83,9 @@
     "done": "Done",
     "edit": "Edit",
     "changePortrait": "Change your character portrait",
-    "noSkill": "No Skill Selected"
+    "noSkill": "No Skill Selected",
+    "embedCta": "Embed",
+    "embedTooltip": "Copy and paste this markup onto your website."
   },
   "settings": {
     "name": "настройки",
