@@ -68,6 +68,9 @@ export default class Character extends Component {
     this.props.selectUser(alias);
   }
 
+  // TODO:
+  // 1. Set mode and select correct elite spec!
+
   render () {
     const {
       routeParams: { alias, character: characterName },
@@ -91,7 +94,7 @@ export default class Character extends Component {
         description={buildDescription(character)}
         extraSubtitle={characterTitle && <span><i>{characterTitle}</i> | </span>}
         extraContent={(
-          <div>
+          <div className={styles.links}>
             <Link to={`/${(character && character.alias) || ''}`}>
               <ContentCard type="users" content={character} className={styles.linkItem} />
             </Link>

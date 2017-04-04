@@ -84,8 +84,8 @@
   "characters": {
     "name": "Characters",
     "embedCta": "This is a character chosen at random. You can get an embed just like this on your website! Click the embed icon on any character page.",
-    "shown": "Character Shown",
-    "hidden": "Character Hidden",
+    "shown": "Can be seen by everyone",
+    "hidden": "Can only be seen by you",
     "done": "Done",
     "edit": "Edit",
     "changePortrait": "Change your character portrait",

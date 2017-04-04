@@ -18,6 +18,10 @@
 ### Removed
 - Redux middleware logging
 - Social sharing buttons because they're annoying AF
+- Characters list from character page
+
+### Fixed
+- Specializations container from showing when there are none to show (finally...)
 
 ## [4.11.8] - 2017/04/01
 ### Changed

@@ -9,6 +9,7 @@ import type {
   Skills as Gw2Skills,
   Amulets,
   CharactersList,
+  Pets,
 } from 'flowTypes';
 
 import { Component, PropTypes } from 'react';
@@ -26,6 +27,7 @@ import { leftItems, rightItems } from 'lib/gw2/equipment';
 import Checkbox from 'common/components/Checkbox';
 import ImageUpload from 'common/components/ImageUpload';
 import Button from 'common/components/Button';
+import ContentCard from 'common/components/ContentCard';
 
 import PvpEquipment from '../PvpEquipment';
 import Specialization from '../Specialization';
@@ -52,6 +54,7 @@ type Props = {
   characters?: CharactersList,
   items?: Items,
   skins?: Skins,
+  pets?: Pets,
   specializations?: Specializations,
   traits?: Traits,
   skills?: Gw2Skills,
@@ -111,6 +114,7 @@ export default class CharacterOverview extends Component {
       traits,
       specializations,
       amulets,
+      pets,
     } = this.props;
 
     const { editMode } = this.state;
@@ -119,16 +123,26 @@ export default class CharacterOverview extends Component {
     const ownCharacter = get(character, 'alias', false) === this.context._userAlias;
     const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
-    const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]);
+    const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]).filter((s) => !!s);
     const characterSkills = get(character, `skills[${mode}]`, {});
     const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
     const crafting = get(character, 'crafting', [{}, {}, {}]);
     const showPublic = get(character, 'authorization.showPublic');
     const showPvpEquipment = mode === 'pvp';
+    const characterPetIds = get(character, `skills[${mode}].pets.terrestrial`, undefined);
 
     return (
-      <div>
+      <div className={styles.overviewRoot}>
         <div className={styles.inner}>
+          {characterPetIds && characterPetIds.map((id) =>
+            <ContentCard
+              className={styles.subContent}
+              key={id}
+              content={pets && pets[id]}
+              type="pet"
+            />
+          )}
+
           <div className={styles.columns}>
             <div className={cx(styles.leftColumn, showPvpEquipment && styles.fade)}>
               {leftItems.map((item) => {
@@ -247,17 +261,17 @@ export default class CharacterOverview extends Component {
           className={styles.skills}
         />
 
-        <div className={styles.specializationContainer}>
+        {characterSpecializations.length && <div className={styles.specializationContainer}>
           <div className={styles.brushStrokeContainer}>
             {characterSpecializations.map((data, index) =>
-              data && <Specialization
+              <Specialization
                 key={(data.id) || index}
                 data={data}
                 specializations={specializations || {}}
                 traits={traits || {}}
               />)}
           </div>
-        </div>
+        </div>}
       </div>
     );
   }

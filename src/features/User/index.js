@@ -123,7 +123,7 @@ export default class User extends Component {
             <Icon size="mini" className={styles.access} name={`${user.access}.png`} />
           </TooltipTrigger>
         )}
-        rightComponent={
+        extraContent={
           <ul className={styles.rating}>
             <li>
               <Link to="/leaderboards/pvp/eu">

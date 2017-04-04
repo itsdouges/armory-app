@@ -11,6 +11,10 @@
   margin-bottom: 5em;
 }
 
+.overviewRoot {
+  margin-top: 0.5em;
+}
+
 .inner {
   max-width: @portraitWidth;
   margin: 0 auto;
@@ -75,6 +79,10 @@
 .leftColumn {
   > div {
     margin: 0.125rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }
 
@@ -99,7 +107,7 @@
   align-items: center;
   margin-top: 0.5rem;
   padding-bottom: 0.25rem;
-  font-size: 0.8em;
+  font-size: 0.9em;
 
   > * {
     width: 33.3333%;
@@ -138,8 +146,7 @@
 }
 
 .links {
-  margin: 2rem auto;
-  text-align: center;
+  flex-shrink: 0.3;
 }
 
 .linkItem.linkItem {
