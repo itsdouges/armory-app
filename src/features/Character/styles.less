@@ -4,6 +4,7 @@
 @rightColumnWidth: (@itemSize * 3) + (4px * 3);
 @portraitWidth: 770px;
 @brushDecorationZ: @_zindexBehind;
+@itemMargin: 0.125rem;
 
 .root {
   flex-grow: 1;
@@ -12,7 +13,7 @@
 }
 
 .overviewRoot {
-  margin-top: 0.5em;
+  margin-top: @itemMargin;
 }
 
 .inner {
@@ -45,10 +46,11 @@
   z-index: @portraitButtonsZ;
   text-align: right;
   width: inherit;
+  font-size: 1.2em;
 }
 
 .portrait {
-  margin-top: 0.125rem;
+  margin-top: @itemMargin;
 }
 
 .modeIcon {
@@ -78,17 +80,13 @@
 
 .leftColumn {
   > div {
-    margin: 0.125rem;
-
-    &:first-child {
-      margin-top: 0;
-    }
+    margin: @itemMargin;
   }
 }
 
 .leftColumn,
 .rightColumn {
-  margin: 0 0.125rem;
+  margin: 0 @itemMargin;
   flex-shrink: 0;
 }
 
@@ -97,7 +95,7 @@
   margin: 0.25rem 0;
 
   > * {
-    margin: 0.125rem;
+    margin: @itemMargin;
   }
 }
 
@@ -125,6 +123,10 @@
   }
 }
 
+.portrait {
+  margin-top: @itemMargin;
+}
+
 .brushStrokeContainer:before,
 .brushStrokeContainer:after {
   z-index: @brushDecorationZ;
@@ -149,25 +151,8 @@
   flex-shrink: 0.3;
 }
 
-.linkItem.linkItem {
-  display: inline-flex;
-  text-align: left;
-}
-
-.fromTablet({
-  .linkItem.linkItem {
-    display: flex;
-  }
-});
-
-.fromPc({
-  .linkItem.linkItem {
-    display: inline-flex;
-  }
-});
-
 .craftingContainer {
-  margin: 0 0.125rem;
+  margin: 0 @itemMargin;
 }
 
 .subContent {
@@ -192,7 +177,7 @@
 
   > div {
     > * {
-      margin: 0.125rem;
+      margin: @itemMargin;
     }
   }
 }
@@ -223,5 +208,21 @@
     > * {
       width: 50%;
     }
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+  }
+});
+
+.fromPc({
+  .links {
+    max-width: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
   }
 });

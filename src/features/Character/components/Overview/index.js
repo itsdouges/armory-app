@@ -174,6 +174,7 @@ export default class CharacterOverview extends Component {
               <Portrait
                 character={character}
                 forceUpdate={this.state.updateImage}
+                className={styles.portrait}
               >
                 <Embed name={characterName} className={styles.embedContainer} />
               </Portrait>
