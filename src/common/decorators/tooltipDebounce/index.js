@@ -3,8 +3,8 @@
 import debounce from 'lodash/debounce';
 
 export type InjectedProps = {
-  show: (callback: Function) => void,
-  hide: (callback: Function) => void,
+  show?: (callback: Function) => void,
+  hide?: (callback: Function) => void,
 };
 
 const tooltipDebounce = (wait: number = 150) => <TProps: {}>(WrappedComponent: any) => {
