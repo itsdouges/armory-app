@@ -18,20 +18,19 @@ type Props = {
   onMouseLeave?: (SyntheticEvent) => void,
 } & InjectedProps;
 
+/**
+ * Ensure the props passed down from <TooltipTrigger /> make their
+ * way to the actual dom elements! Else this won't work ;-).
+ */
 @connect(null, {
   showTooltip,
 })
-/**
- * Make sure when using this in children that you pass all
- * overflow props down to the DOM element, else this will
- * not work.
- */
 @tooltipDebounce()
 export default class TooltipTrigger extends Component {
   props: Props;
 
   show = (e: SyntheticEvent) => {
-    const { data, show, onMouseEnter, showTooltip: displayTooltip } = this.props;
+    const { data, type, show, onMouseEnter, showTooltip: displayTooltip } = this.props;
     if (!data) {
       return;
     }
@@ -39,8 +38,8 @@ export default class TooltipTrigger extends Component {
     show(() => {
       onMouseEnter && onMouseEnter(e);
       displayTooltip && displayTooltip(true, {
-        data: this.props.data,
-        type: this.props.type,
+        data,
+        type,
       });
     });
   };

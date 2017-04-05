@@ -15,6 +15,7 @@ export const stubStyles = (classnames: Array<string>) => classnames.reduce((obj,
   [name]: `${name}-style`,
 }), {});
 
+export const stubDecorator = _.identity;
 export const stubDecoratorWithArgs = () => _.identity;
 
 export const stubRedux = ({
@@ -30,12 +31,11 @@ export const stubI18n = (stub: any) => ({
 });
 
 export function describeConnect (path: string, stubs: ?{}, expectations: (mstp: () => {}, mdtp: {}) => void) {
-  const noop = () => {};
   let mapStateToPropsExtracted;
   let mapDispatchToPropsExatracted;
 
   const extractor = (mapStateToProps, mapDispatchToProps) => () => {
-    mapStateToPropsExtracted = mapStateToProps || noop;
+    mapStateToPropsExtracted = mapStateToProps || _.noop;
     mapDispatchToPropsExatracted = mapDispatchToProps || {};
     return stubComponent(path);
   };
