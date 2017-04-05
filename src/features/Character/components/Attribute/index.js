@@ -1,11 +1,9 @@
 import { PropTypes } from 'react';
 import styles from './styles.less';
 import TooltipTrigger from 'common/components/TooltipTrigger';
-import classnames from 'classnames/bind';
+import cx from 'classnames';
 import Icon from 'common/components/Icon';
 import T from 'i18n-react';
-
-const cx = classnames.bind(styles);
 
 const attributeNameMapping = {
   power: T.translate('itemAttributes.power'),
@@ -56,7 +54,7 @@ function parseValue (name, value) {
 const Attribute = ({ value, name }) => (
   <TooltipTrigger data={attributeNameMapping[name]}>
     <div className={styles.root}>
-      <Icon className={cx('icon', name)} size="micro" />
+      <Icon className={cx(styles.icon, styles[name])} size="micro" />
       <span>{parseValue(name, value)}</span>
     </div>
   </TooltipTrigger>

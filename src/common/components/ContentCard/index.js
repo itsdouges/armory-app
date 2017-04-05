@@ -2,7 +2,7 @@
 
 import styles from './styles.less';
 import config from 'config';
-import cx from 'classnames/bind';
+import cx from 'classnames';
 import T from 'i18n-react';
 
 import Icon from 'common/components/Icon';

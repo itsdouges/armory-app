@@ -1,9 +1,7 @@
 // @flow
 
 import styles from './styles.less';
-import classnames from 'classnames/bind';
-
-const cx = classnames.bind(styles);
+import cx from 'classnames';
 
 type Props = {
   children?: any,
@@ -11,7 +9,7 @@ type Props = {
 };
 
 const Redacted = ({ children, redact }: Props) => (
-  <span className={cx({ redact })}>
+  <span className={cx({ [styles.redact]: redact })}>
     {children}
   </span>
 );

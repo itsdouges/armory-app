@@ -1,9 +1,7 @@
 // @flow
 
 import styles from './styles.less';
-import classnames from 'classnames/bind';
-
-const cx = classnames.bind(styles);
+import cx from 'classnames';
 
 import ProgressIcon from 'common/components/Icon/Progress';
 
@@ -18,8 +16,8 @@ type ButtonProps = {
 
 const Button = (props: ButtonProps) => (
   <button
-    className={cx('button', props.className, props.type, {
-      disabled: props.busy || props.disabled,
+    className={cx(styles.button, props.className, styles[props.type], {
+      [styles.disabled]: props.busy || props.disabled,
     })}
     disabled={props.busy || props.disabled}
     onClick={props.onClick}
