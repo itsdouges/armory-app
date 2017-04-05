@@ -153,6 +153,17 @@ export const overviewSelector = createSelector(
   })
 );
 
+export const minimalSelector = createSelector(
+  getCharacter,
+  (state) => state.items,
+  (state) => state.skins,
+  (character, items, skins) => ({
+    character: mergeEliteSpec(character),
+    items,
+    skins,
+  })
+);
+
 export const defaultState = {
   data: {},
   selected: '',
