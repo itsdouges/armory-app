@@ -112,43 +112,44 @@ function extractEliteSpecialization (character, mode) {
     .reduce((acc, spec) => (spec && eliteSpecMap[spec.id]) || acc, character.profession);
 }
 
-const getCharacters = (state) => {
-  const user = state.users.data[state.users.selected];
-  return user && user.characters;
-};
-
 const getCharacter = (state) => state.characters.data[state.characters.selected];
 
-export const selector = createSelector(
+const mergeEliteSpec = (character, mode = 'pve') => (character && {
+  ...defaultCharacter,
+  ...character,
+  // This is set because we still need to use profession for icons.
+  eliteSpecialization: extractEliteSpecialization(character, mode),
+});
+
+export const topSelector = createSelector(
   getCharacter,
-  getCharacters,
+  (state) => state.characters.mode,
+  (state) => state.titles[get(getCharacter(state), 'title', '')],
+  (character, mode, title) => ({
+    character: mergeEliteSpec(character, mode),
+    mode,
+    title,
+  })
+);
+
+export const overviewSelector = createSelector(
+  getCharacter,
   (state) => state.items,
   (state) => state.skins,
   (state) => state.specializations,
   (state) => state.traits,
-  (state, props) => props.mode,
   (state) => state.skills,
   (state) => state.amulets,
   (state) => state.pets,
-  (state) => state.titles[get(getCharacter(state), 'title', '')],
-  // eslint-disable-next-line
-  (character, characters, items, skins, specializations, traits, mode, skills, amulets, pets, title) => ({
-    character: character && {
-      ...defaultCharacter,
-      ...character,
-      // This is set because we still need to use profession for icons.
-      eliteSpecialization: extractEliteSpecialization(character, mode),
-    },
-    characters,
+  (character, items, skins, specializations, traits, skills, amulets, pets) => ({
+    character: mergeEliteSpec(character),
     items,
     skins,
     specializations,
     traits,
-    mode,
     skills,
     amulets,
     pets,
-    title,
   })
 );
 

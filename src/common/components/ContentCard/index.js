@@ -73,10 +73,8 @@ function extractData (content, { type, size, forceUpdate }): CardData {
     case 'pet':
       return {
         title: content.name,
+        imageUrl: content.icon,
         subTitle: '',
-        imageStyle: {
-          backgroundImage: `url(${content.icon})`,
-        },
         imageName: '',
       };
 

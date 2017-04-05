@@ -8,7 +8,6 @@ import type {
   Traits,
   Skills as Gw2Skills,
   Amulets,
-  CharactersList,
   Pets,
 } from 'flowTypes';
 
@@ -19,8 +18,8 @@ import get from 'lodash/get';
 import cx from 'classnames';
 import T from 'i18n-react';
 
-import { selector } from '../../characters.reducer';
-import { updateCharacter } from '../../actions';
+import { overviewSelector } from '../../characters.reducer';
+import { updateCharacter, selectCharacterMode } from '../../actions';
 import calculateAttributes from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
@@ -51,7 +50,6 @@ type Props = {
   userAlias: string,
   mode: CharacterModes,
   character?: CharacterType,
-  characters?: CharactersList,
   items?: Items,
   skins?: Skins,
   pets?: Pets,
@@ -60,10 +58,12 @@ type Props = {
   skills?: Gw2Skills,
   amulets?: Amulets,
   updateCharacter?: (name: string, options: UpdateOptions) => void,
+  selectCharacterMode?: (CharacterModes) => void,
 };
 
-@connect(selector, {
+@connect(overviewSelector, {
   updateCharacter,
+  selectCharacterMode,
 })
 export default class CharacterOverview extends Component {
   props: Props;
@@ -76,6 +76,16 @@ export default class CharacterOverview extends Component {
     editMode: false,
     updateImage: false,
   };
+
+  componentWillMount () {
+    this.props.selectCharacterMode && this.props.selectCharacterMode(this.props.mode);
+  }
+
+  componentWillReceiveProps (nextProps: Props) {
+    if (nextProps.mode !== this.props.mode) {
+      this.props.selectCharacterMode && this.props.selectCharacterMode(nextProps.mode);
+    }
+  }
 
   onUploadComplete = () => {
     this.setState({

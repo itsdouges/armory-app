@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import get from 'lodash/get';
 import { Link } from 'react-router';
 
-import { selector } from './characters.reducer';
+import { topSelector } from './characters.reducer';
 import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
 
@@ -16,7 +16,7 @@ import Overview from './components/Overview';
 import Bags from './components/Bags';
 import styles from './styles.less';
 
-import type { Character as CharacterType, Pets, Gw2Title } from 'flowTypes';
+import type { Character as CharacterType, Gw2Title } from 'flowTypes';
 
 function buildDescription (character = {}) {
   // eslint-disable-next-line max-len
@@ -30,7 +30,6 @@ type Props = {
     character: string,
     alias: string,
   },
-  pets: Pets,
   title: Gw2Title,
   fetchCharacter: (name: string) => void,
   fetchUserCharacters: (name: string) => void,
@@ -38,7 +37,7 @@ type Props = {
   selectUser: (name: string) => void,
 };
 
-@connect(selector, {
+@connect(topSelector, {
   selectUser,
   fetchCharacter,
   selectCharacter,
@@ -67,9 +66,6 @@ export default class Character extends Component {
     this.props.selectCharacter(character);
     this.props.selectUser(alias);
   }
-
-  // TODO:
-  // 1. Set mode and select correct elite spec!
 
   render () {
     const {
@@ -139,9 +135,7 @@ export default class Character extends Component {
           to: `/${alias}/c/${characterName}/bags`,
           name: 'Bags',
           flair: 'new',
-          content: (
-            <Bags />
-          ),
+          content: <Bags />,
         }]}
       />
     );
