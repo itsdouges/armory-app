@@ -112,13 +112,15 @@ function extractEliteSpecialization (character, mode) {
     .reduce((acc, spec) => (spec && eliteSpecMap[spec.id]) || acc, character.profession);
 }
 
-const getCharacters = (store) => {
-  const user = store.users.data[store.users.selected];
+const getCharacters = (state) => {
+  const user = state.users.data[state.users.selected];
   return user && user.characters;
 };
 
+const getCharacter = (state) => state.characters.data[state.characters.selected];
+
 export const selector = createSelector(
-  (state) => state.characters.data[state.characters.selected],
+  getCharacter,
   getCharacters,
   (state) => state.items,
   (state) => state.skins,
@@ -128,12 +130,13 @@ export const selector = createSelector(
   (state) => state.skills,
   (state) => state.amulets,
   (state) => state.pets,
-  (state) => state.titles[get(getCharacters(state), 'title', '')],
+  (state) => state.titles[get(getCharacter(state), 'title', '')],
   // eslint-disable-next-line
   (character, characters, items, skins, specializations, traits, mode, skills, amulets, pets, title) => ({
     character: character && {
       ...defaultCharacter,
       ...character,
+      // This is set because we still need to use profession for icons.
       eliteSpecialization: extractEliteSpecialization(character, mode),
     },
     characters,
