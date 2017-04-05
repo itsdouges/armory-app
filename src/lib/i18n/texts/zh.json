@@ -49,6 +49,7 @@
     "name": "用户",
     "recentMatches": "近期比赛",
     "claimCta": "Claim user",
+    "noApiKey": "Api key not set.",
     "pvpStats": {
       "name": "PVP统计",
       "unranked": "未排序",

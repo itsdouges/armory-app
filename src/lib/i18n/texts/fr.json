@@ -49,6 +49,7 @@
     "name": "Utilisateurs",
     "recentMatches": "Matches Récents",
     "claimCta": "Claim user",
+    "noApiKey": "Api key not set.",
     "pvpStats": {
       "name": "Stats PvP",
       "unranked": "Non Classé",
