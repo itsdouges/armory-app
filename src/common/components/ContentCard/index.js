@@ -42,7 +42,6 @@ function extractData (content, { type, size, forceUpdate }): CardData {
         subTitle: content.accountName || T.translate('users.noApiKey'),
         imageStyle: {
           backgroundColor: colours._gray,
-          // backgroundImage: `url(${url})`,
           borderRadius: '50%',
         },
         imageUrl: url,
@@ -54,7 +53,6 @@ function extractData (content, { type, size, forceUpdate }): CardData {
       const imageSuffix = size === 'small' ? `-${size}` : '';
       return {
         title: content.guild_tag ? `${content.name || 'Api Error.'} [${content.guild_tag}]` : content.name || 'Api Error.',
-        // eslint-disable-next-line
         subTitle: content.level ? `${content.level} ${content.race} ${content.eliteSpecialization || content.profession}` : 'Api error.',
         imageName: `${content.profession && content.profession.toLowerCase()}-icon${imageSuffix}.png`,
         imageStyle: {},
@@ -66,7 +64,6 @@ function extractData (content, { type, size, forceUpdate }): CardData {
         title: content.name || T.translate('guilds.noGuild'),
         subTitle: (content.tag && `[${content.tag}]`) || T.translate('guilds.guild'),
         imageStyle: {
-          // backgroundImage: `url(https://guilds.gw2w2w.com/guilds/${content.name && content.name.replace(/\s+/g, '-')}/256.svg)`,
           borderRadius: '50%',
         },
         imageName: '',
