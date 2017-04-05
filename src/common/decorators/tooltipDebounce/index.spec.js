@@ -1,5 +1,3 @@
-// @flow
-
 import { shallow } from 'enzyme';
 
 import { stubComponent } from 'test/utils';

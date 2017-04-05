@@ -1,5 +1,3 @@
-// @flow
-
 import _ from 'lodash';
 import { shallow } from 'enzyme';
 
