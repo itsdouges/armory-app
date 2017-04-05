@@ -1,12 +1,13 @@
 // @flow
 
 import type { Children } from 'react';
+import type { InjectedProps } from 'common/decorators/tooltipDebounce';
 
 import { Component, cloneElement } from 'react';
 import { connect } from 'react-redux';
-import debounce from 'lodash/debounce';
 
 import { showTooltip } from 'features/Gw2/actions';
+import tooltipDebounce from 'common/decorators/tooltipDebounce';
 
 type Props = {
   data?: string | Object,
@@ -15,10 +16,7 @@ type Props = {
   type?: string,
   onMouseEnter?: (SyntheticEvent) => void,
   onMouseLeave?: (SyntheticEvent) => void,
-};
-
-const HIDE_TOOLTIP_TIMEOUT = 150;
-let canHide;
+} & InjectedProps;
 
 @connect(null, {
   showTooltip,
@@ -28,36 +26,33 @@ let canHide;
  * overflow props down to the DOM element, else this will
  * not work.
  */
+@tooltipDebounce()
 export default class TooltipTrigger extends Component {
   props: Props;
 
   show = (e: SyntheticEvent) => {
-    if (!this.props.data) {
+    const { data, show, onMouseEnter, showTooltip: displayTooltip } = this.props;
+    if (!data) {
       return;
     }
 
-    this.props.onMouseEnter && this.props.onMouseEnter(e);
-
-    this.props.showTooltip && this.props.showTooltip(true, {
-      data: this.props.data,
-      type: this.props.type,
+    show(() => {
+      onMouseEnter && onMouseEnter(e);
+      displayTooltip && displayTooltip(true, {
+        data: this.props.data,
+        type: this.props.type,
+      });
     });
-
-    canHide = false;
-    this.debouncedHide.cancel();
   };
 
   hide = (e: SyntheticEvent) => {
-    canHide = true;
-    this.debouncedHide(e);
-  };
+    const { hide, onMouseLeave, showTooltip: displayTooltip } = this.props;
 
-  debouncedHide = debounce((e: SyntheticEvent) => {
-    if (canHide) {
-      this.props.onMouseLeave && this.props.onMouseLeave(e);
-      this.props.showTooltip && this.props.showTooltip(false);
-    }
-  }, HIDE_TOOLTIP_TIMEOUT);
+    hide(() => {
+      onMouseLeave && onMouseLeave(e);
+      displayTooltip && displayTooltip(false);
+    });
+  };
 
   render () {
     const { children } = this.props;
