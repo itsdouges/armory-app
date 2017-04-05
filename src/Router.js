@@ -17,7 +17,6 @@ import Character from 'features/Character';
 import NotFound from 'features/NotFound';
 import Statistics from 'features/Statistics';
 import Leaderboards from 'features/Leaderboards';
-// import EmbedExamples from 'features/EmbedExamples';
 import { authEnabled, authOnly } from 'features/Auth';
 
 function onRouteUpdate () {
@@ -42,7 +41,6 @@ const Routes = () => (
       <Redirect from="/:alias(/:subRoute)/" to="/:alias(/:subRoute)" />
       <Redirect from="/:alias/characters/:character" to="/:alias/c/:character" />
 
-      {/* <Route path="/embeds" component={EmbedExamples} /> */}
       <Route path="/statistics" component={Statistics} />
       <Route path="/login" component={Login} />
       <Route path="/join" component={Join} />

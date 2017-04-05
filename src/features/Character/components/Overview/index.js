@@ -37,7 +37,7 @@ import Item from '../Item';
 import Skills from '../Skills';
 import Embed from '../Embed';
 
-import styles from '../../styles.less';
+import styles from './styles.less';
 
 type CharacterModes = 'pve' | 'pvp' | 'wvw';
 

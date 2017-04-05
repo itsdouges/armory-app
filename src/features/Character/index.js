@@ -92,11 +92,11 @@ export default class Character extends Component {
         extraContent={(
           <div className={styles.links}>
             <Link to={`/${(character && character.alias) || ''}`}>
-              <ContentCard type="users" content={character} className={styles.linkItem} />
+              <ContentCard type="users" content={character} />
             </Link>
 
             <Link to={`/g/${(guild && guild.name) || ''}`}>
-              <ContentCard type="guilds" content={guild} className={styles.linkItem} />
+              <ContentCard type="guilds" content={guild} />
             </Link>
           </div>
         )}

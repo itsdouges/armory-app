@@ -30,7 +30,6 @@ let canHide;
  */
 export default class TooltipTrigger extends Component {
   props: Props;
-  canHide: boolean;
 
   show = (e: SyntheticEvent) => {
     if (!this.props.data) {

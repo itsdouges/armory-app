@@ -9,7 +9,8 @@
     "flow-typed",
     "scripts",
     "test",
-    "config"
+    "config",
+    "src/flowTypes.js"
   ],
   "require": [
     "babel-register"
