@@ -8,9 +8,10 @@ import ProgressBar from 'common/components/ProgressBar';
 import Icon from 'common/components/Icon';
 import colours from 'common/styles/colours';
 
-function getTotal (discipline) {
-  return discipline === 'Chef' || discipline === 'Jeweler' ? 400 : 500;
-}
+const craftingUpTo400 = ['Chef', 'Jeweler', 'Scribe'];
+const getTotal = (discipline) => {
+  return craftingUpTo400.indexOf(discipline) >= 0 ? 400 : 500;
+};
 
 type Props = {
   craft: {

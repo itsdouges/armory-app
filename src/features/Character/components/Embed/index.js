@@ -50,12 +50,14 @@ export default class Embed extends Component {
 
     return (
       <div className={cx(styles.root, className)}>
-        <button
-          onClick={this.show}
-          className={styles.embedText}
-        >
-          {T.translate('characters.embedCta')}
-        </button>
+        {!shown && (
+          <button
+            onClick={this.show}
+            className={styles.embedText}
+          >
+            {T.translate('characters.embedCta')}
+          </button>
+        )}
 
         {shown && (
           <div className={styles.input}>

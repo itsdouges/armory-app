@@ -14,11 +14,16 @@
 - Tabs to character page
 - Character bags tab
 - User access tooltip
+- Scribe handling to crafting bar
 
 ### Removed
 - Redux middleware logging
 - Social sharing buttons because they're annoying AF
 - Characters list from character page
+- Character mode from character portrait
+
+### Changed
+- Character embed position to the top
 
 ### Fixed
 - Specializations container from showing when there are none to show (finally...)

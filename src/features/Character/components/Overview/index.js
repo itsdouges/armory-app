@@ -189,9 +189,7 @@ export default class CharacterOverview extends Component {
                     type={editMode ? 'primary' : 'minimal'}
                     onClick={this.toggleEditMode}
                   >
-                    {editMode
-                      ? T.translate('characters.done')
-                      : T.translate('characters.edit')}
+                    {T.translate(editMode ? 'characters.done' : 'characters.edit')}
                   </Button>
 
                   {editMode && [
@@ -199,11 +197,7 @@ export default class CharacterOverview extends Component {
                       checked={!!showPublic}
                       key="hide-checkbox"
                       onChange={this.hide}
-                      label={
-                        showPublic
-                          ? T.translate('characters.shown')
-                          : T.translate('characters.hidden')
-                      }
+                      label={T.translate(showPublic ? 'characters.shown' : 'characters.hidden')}
                     />,
                   ]}
                 </div>
