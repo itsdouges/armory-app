@@ -11,9 +11,8 @@ type Props = {
 
 const EmptySkill = ({ className, ...props }: Props) => (
   <Icon
-    name="empty-skill-back.png"
     size="mediumSmall"
-    className={cx(styles.empty, className)}
+    className={cx(styles.skill, styles.empty, className)}
     {...props}
   >
     <Icon

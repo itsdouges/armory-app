@@ -59,7 +59,7 @@ const Item = ({
 
   // $FlowFixMe
   const error = item && item.error;
-  const itemLoaded = !!Object.keys(item).length;
+  const itemLoaded = !error && !!Object.keys(item).length;
 
   let tooltipData;
 

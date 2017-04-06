@@ -11,7 +11,7 @@
   position: relative;
   composes: low;
   background-size: cover;
-  border: 1px solid @border;
+  .itemBackground();
 }
 
 .inline {
@@ -43,7 +43,7 @@
 }
 
 .emptyBg {
-  background-color: @_lightgray;
+  background-image: radial-gradient(circle, @_darkgray, @_darkergray);
 }
 
 .junk {
