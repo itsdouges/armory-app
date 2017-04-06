@@ -19,6 +19,7 @@ import ContentCardList from 'common/components/ContentCardList';
 import styles from './styles.less';
 import PvpGame from './components/PvpGame';
 import Overview from './components/Overview';
+import Achievements from './components/Achievements';
 
 import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
 
@@ -201,6 +202,11 @@ export default class User extends Component {
                 <PvpGame game={game} key={game ? game.id : index} maps={maps} />)}
             </div>
           ),
+        }, {
+          to: `/${alias}/achievements`,
+          flair: 'new',
+          name: T.translate('users.achievements'),
+          content: <Achievements />,
         }]}
       />
     );

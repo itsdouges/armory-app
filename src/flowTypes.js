@@ -156,6 +156,12 @@ export type Skills = {
 export type Professions = {
 };
 
+export type AchievementGroups = {
+};
+
+export type AchievementCategories = {
+};
+
 type Gw2Data = {
   error?: string,
 };

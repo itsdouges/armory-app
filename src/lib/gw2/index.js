@@ -43,6 +43,18 @@ export const readAchievements = (ids: Array<number>) =>
   })
   .then(({ data }) => reduceById(data));
 
+export const readAchievementGroups = () =>
+  get(`${config.gw2.endpoint}v2/achievements/groups?ids=all`, {
+    ignoreAuth: true,
+  })
+  .then(({ data }) => reduceById(data));
+
+export const readAchievementCategories = () =>
+  get(`${config.gw2.endpoint}v2/achievements/categories?ids=all`, {
+    ignoreAuth: true,
+  })
+  .then(({ data }) => reduceById(data));
+
 export const readPets = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/pets?ids=${ids.join(',')}`, {
     ignoreAuth: true,
