@@ -154,7 +154,7 @@ export const overviewSelector = createSelector(
 );
 
 export const minimalSelector = createSelector(
-  getCharacter,
+  (state, props) => state.characters.data[props.name],
   (state) => state.items,
   (state) => state.skins,
   (character, items, skins) => ({
