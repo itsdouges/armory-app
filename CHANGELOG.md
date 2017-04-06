@@ -15,6 +15,8 @@
 - Character bags tab
 - User access tooltip
 - Scribe handling to crafting bar
+- Display once notifications
+- Optional icon to notifications
 
 ### Removed
 - Redux middleware logging

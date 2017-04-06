@@ -5,19 +5,30 @@
   align-items: center;
   justify-content: flex-end;
   text-transform: uppercase;
-  background-color: @_red;
-  color: fade(@_white, 90%);
+  padding: 0.5em 1em;
   .high;
-  padding: 0.5em 0;
+}
+
+.error {
+  color: fade(@_white, 90%);
+  background-color: @_red;
+}
+
+.info {
+  color: fade(@_black, 90%);
+  background-color: @fine;
 }
 
 .message {
-  margin-left: 1em;
   flex-grow: 1;
 }
 
-.button {
-  margin-left: 1em;
+.leftIcon {
+  margin-right: 0.5em;
   flex-grow: 0;
-  margin-bottom: -3px;
+}
+
+.button {
+  text-transform: uppercase;
+  flex-grow: 0;
 }

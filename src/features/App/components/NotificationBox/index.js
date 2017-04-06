@@ -42,9 +42,8 @@ export default class NotificationBox extends Component {
           {Object.values(notifications).map((msg: NotificationType) =>
             <li key={msg.id}>
               <Notification
+                {...msg}
                 className={styles.notification}
-                message={msg.message}
-                type={msg.type}
                 dismiss={() => dismissNotification && dismissNotification(msg.id)}
               />
             </li>
