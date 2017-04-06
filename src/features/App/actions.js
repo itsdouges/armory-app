@@ -16,11 +16,19 @@ export const dismissNotification = (id: string) => ({
 
 type MessageType = 'info' | 'error';
 
-export const submitNotification = (id: string, type: MessageType, message: string) => ({
+type MessageOptions = {
+  type: MessageType,
+  showOnce?: boolean,
+  iconName?: string,
+};
+
+export type SubmitNotification = (id: string, message: string, options?: MessageOptions) => void;
+
+export const submitNotification = (id: string, message: string, options: MessageOptions = { type: 'info', showOnce: false }) => ({
   type: SUBMIT_NOTIFICATION,
   payload: {
+    ...options,
     id,
-    type,
     message,
   },
 });
@@ -28,6 +36,8 @@ export const submitNotification = (id: string, type: MessageType, message: strin
 export const determineApiHealth = () => (dispatch: Dispatch) => {
   axios.get(`${config.gw2.endpoint}v2/characters?access_token=${config.health.token}`, { ignoreAuth: true })
     .then(null, () => {
-      dispatch(submitNotification(API_HEALTH_ID, 'error', T.translate('messages.gw2ApiDown')));
+      dispatch(submitNotification(API_HEALTH_ID, T.translate('messages.gw2ApiDown'), {
+        type: 'error',
+      }));
     });
 };

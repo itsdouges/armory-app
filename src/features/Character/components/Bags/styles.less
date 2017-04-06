@@ -1,0 +1,58 @@
+@margin: 2px;
+
+.root {
+  display: flex;
+}
+
+.bags {
+  display: flex;
+  flex-direction: column;
+  margin-right: @margin * 2;
+}
+
+.items {
+  margin-left: @margin * 2;
+}
+
+.bags,
+.items {
+  margin-bottom: @margin * 2;
+}
+
+.bags {
+  > * {
+    margin-top: @margin * 2;
+  }
+}
+
+.bag {
+  > * {
+    margin-bottom: -2px; // Cancel inline-block
+    margin-left: @margin;
+    margin-right: @margin;
+    margin-top: @margin * 2;
+  }
+}
+
+.bagsInner {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.blur {
+  opacity: 0.2;
+}
+
+.bagItem {
+  cursor: pointer;
+}
+
+.bagItem:hover {
+  &:not(.selected) {
+    opacity: 0.75;
+  }
+}
+
+.selected {
+  opacity: 1;
+}

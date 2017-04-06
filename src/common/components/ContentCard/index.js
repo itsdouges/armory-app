@@ -2,7 +2,7 @@
 
 import styles from './styles.less';
 import config from 'config';
-import cx from 'classnames/bind';
+import cx from 'classnames';
 import T from 'i18n-react';
 
 import Icon from 'common/components/Icon';
@@ -12,11 +12,12 @@ import colours from 'common/styles/colours';
 type CardData = {
   title: any,
   subTitle: string,
-  imageStyle?: Object,
-  imageClass?: string,
+  imageStyle?: { [string]: ?string },
+  imageUrl?: string,
+  imageName?: string,
 };
 
-function extractData (content, { type, forceUpdate }): CardData {
+function extractData (content, { type, size, forceUpdate }): CardData {
   switch (type) {
     case 'users': {
       const alias = content.alias || content.name;
@@ -27,7 +28,7 @@ function extractData (content, { type, forceUpdate }): CardData {
         return {
           title: content.name,
           subTitle: content.rank,
-          imageClass: styles.anonymous,
+          imageName: 'svg/account-circle.svg',
         };
       }
 
@@ -38,44 +39,43 @@ function extractData (content, { type, forceUpdate }): CardData {
             {alias}
           </span>
         ),
-        subTitle: content.accountName || 'No api key added...',
+        subTitle: content.accountName || T.translate('users.noApiKey'),
         imageStyle: {
           backgroundColor: colours._gray,
-          backgroundImage: `url(${url})`,
           borderRadius: '50%',
         },
-        imageClass: '',
+        imageUrl: url,
+        imageName: '',
       };
     }
 
-    case 'characters':
+    case 'characters': {
+      const imageSuffix = size === 'small' ? `-${size}` : '';
       return {
         title: content.guild_tag ? `${content.name || 'Api Error.'} [${content.guild_tag}]` : content.name || 'Api Error.',
-        // eslint-disable-next-line
         subTitle: content.level ? `${content.level} ${content.race} ${content.eliteSpecialization || content.profession}` : 'Api error.',
-        imageClass: content.profession && content.profession.toLowerCase(),
+        imageName: `${content.profession && content.profession.toLowerCase()}-icon${imageSuffix}.png`,
         imageStyle: {},
       };
+    }
 
     case 'guilds':
       return {
         title: content.name || T.translate('guilds.noGuild'),
         subTitle: (content.tag && `[${content.tag}]`) || T.translate('guilds.guild'),
         imageStyle: {
-          backgroundImage: `url(https://guilds.gw2w2w.com/guilds/${content.name && content.name.replace(/\s+/g, '-')}/256.svg)`,
           borderRadius: '50%',
         },
-        imageClass: '',
+        imageName: '',
+        imageUrl: `https://guilds.gw2w2w.com/guilds/${content.name && content.name.replace(/\s+/g, '-')}/256.svg`,
       };
 
     case 'pet':
       return {
         title: content.name,
+        imageUrl: content.icon,
         subTitle: '',
-        imageStyle: {
-          backgroundImage: `url(${content.icon})`,
-        },
-        imageClass: '',
+        imageName: '',
       };
 
     default:
@@ -86,7 +86,7 @@ function extractData (content, { type, forceUpdate }): CardData {
 export type ContentType = 'characters' | 'users' | 'guilds' | 'pet';
 type CardSize = 'small' | 'big';
 
-type ContentCardProps = {
+export type Props = {
   content?: Object,
   className?: string,
   type?: ContentType,
@@ -94,7 +94,6 @@ type ContentCardProps = {
   extraSubtitle?: any,
   forceUpdate?: boolean,
   children?: any,
-  rightComponent?: any,
 };
 
 const ContentCard = ({
@@ -105,24 +104,24 @@ const ContentCard = ({
   extraSubtitle,
   forceUpdate,
   children,
-  rightComponent,
-}: ContentCardProps) => {
+}: Props) => {
   if (!content) {
-    return <Placeholder size={size} className={className} rightComponent={rightComponent} />;
+    return <Placeholder size={size} className={className} />;
   }
 
   const {
     title,
     subTitle,
-    imageClass,
+    imageName,
     imageStyle,
+    imageUrl,
   } = extractData(content, { type, size, forceUpdate });
 
   return (
     <div className={cx(styles.root, className, styles[size])}>
-      <div className={cx(styles.image, styles[imageClass])} style={imageStyle}>
+      <Icon className={cx(styles.image)} src={imageUrl} name={imageName} style={imageStyle}>
         {children}
-      </div>
+      </Icon>
 
       <div className={styles.textContainer}>
         {size === 'big'
@@ -135,8 +134,6 @@ const ContentCard = ({
           {subTitle}
         </div>
       </div>
-
-      {rightComponent}
     </div>
   );
 };

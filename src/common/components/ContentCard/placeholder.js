@@ -1,25 +1,17 @@
 // @flow
 
+import type { Props } from './';
+
+import cx from 'classnames';
 import styles from './styles.less';
-import classnames from 'classnames/bind';
 
-const cx = classnames.bind(styles);
-
-type PlaceholderProps = {
-  className?: string,
-  size?: 'small' | 'big',
-  rightComponent?: any,
-};
-
-const Placeholder = ({ className, rightComponent, size = 'small' }: PlaceholderProps) => (
-  <div className={cx('placeholderRoot', className, size)}>
-    <div className={cx('image', 'placeholder')} />
+const Placeholder = ({ className, size = 'small' }: Props) => (
+  <div className={cx(styles.root, className, styles[size])}>
+    <div className={cx(styles.image, styles.placeholder)} />
     <div className={styles.textContainer}>
-      <div className={cx('title', 'placeholder')}>Loading...</div>
-      <div className={cx('subTitle', 'placeholder')}>Hampsters are working...</div>
+      <div className={cx(styles.title, styles.placeholder)}>Loading...</div>
+      <div className={cx(styles.subTitle, styles.placeholder)}>Quaagan are working...</div>
     </div>
-
-    {rightComponent}
   </div>
 );
 

@@ -8,7 +8,9 @@ import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 import T from 'i18n-react';
 import { Link } from 'react-router';
+import startCase from 'lodash/startCase';
 
+import TooltipTrigger from 'common/components/TooltipTrigger';
 import Button from 'common/components/Button';
 import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
@@ -117,9 +119,11 @@ export default class User extends Component {
     return (
       <Content
         cardExtra={user && user.access && (
-          <Icon size="mini" className={styles.access} name={`${user.access}.png`} />
+          <TooltipTrigger data={startCase(user.access)}>
+            <Icon size="mini" className={styles.access} name={`${user.access}.png`} />
+          </TooltipTrigger>
         )}
-        rightComponent={
+        extraContent={
           <ul className={styles.rating}>
             <li>
               <Link to="/leaderboards/pvp/eu">

@@ -1,6 +1,9 @@
-import { PropTypes, Component } from 'react';
+// @flow
+
+import { Component } from 'react';
 import cx from 'classnames';
 
+import T from 'i18n-react';
 import SvgIcon from 'common/components/Icon/Svg';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Textbox from 'common/components/Textbox';
@@ -12,17 +15,22 @@ const buildEmbedScript = (name) => (`
 <script async type="text/javascript" src="${window.location.origin}/gw2aEmbeds.js"></script>
 `);
 
-export default class Embed extends Component {
-  static propTypes = {
-    name: PropTypes.string,
-    className: PropTypes.string,
-  };
+type Props = {
+  name: string,
+  className?: string,
+};
 
-  state = {
+type State = {
+  shown: boolean,
+};
+
+export default class Embed extends Component {
+  props: Props;
+  state: State = {
     shown: false,
   };
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps: Props) {
     if (nextProps.name !== this.props.name) {
       this.setState({
         shown: false,
@@ -42,23 +50,27 @@ export default class Embed extends Component {
 
     return (
       <div className={cx(styles.root, className)}>
-        <button
-          onClick={this.show}
-          className={styles.embedText}
-        >
-          Embed
-        </button>
+        {!shown && (
+          <button
+            onClick={this.show}
+            className={styles.embedText}
+          >
+            {T.translate('characters.embedCta')}
+          </button>
+        )}
 
         {shown && (
           <div className={styles.input}>
             <Textbox
+              id="character-embed"
               value={buildEmbedScript(name)}
               readOnly
               autoSelect
               singleClickSelect
+              label={T.translate('characters.embedTooltip')}
               containerClassName={styles.textboxContainer}
               iconRight={(
-                <TooltipTrigger data="Copy and paste this markup onto your website.">
+                <TooltipTrigger data={T.translate('characters.embedTooltip')}>
                   <SvgIcon name="help-black" />
                 </TooltipTrigger>
               )}

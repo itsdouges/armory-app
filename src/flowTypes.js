@@ -160,6 +160,12 @@ type Gw2Data = {
   error?: string,
 };
 
+export type CharactersList = Array<*>;
+
+export type Pets = {};
+
+export type Bags = Array<any>;
+
 type Specialization = Gw2Data & {
   name: string,
   background: string,
@@ -198,6 +204,9 @@ export type Gw2Map = {
   name: string,
 };
 
+export type Gw2Title = {};
+
+export type Gw2Titles = Array<Gw2Title>;
 export type Notification = {
   id: string,
   message: string,

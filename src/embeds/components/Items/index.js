@@ -53,7 +53,7 @@ export default class ItemsEmbed extends Component {
     const selectedStat = statId && itemStats && itemStats[statId];
     const item = items && items[id];
     if (!item) {
-      return undefined;
+      return null;
     }
 
     // TODO: Move this into a custom reducer.

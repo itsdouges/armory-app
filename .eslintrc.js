@@ -16,7 +16,7 @@ module.exports = {
     'camelcase': 'off',
     'arrow-body-style': 'off',
     'arrow-parens': ['error', 'always'],
-    'max-len': 'warn',
+    'max-len': ['warn', { code: 120, ignoreStrings: true, ignoreUrls: true }],
 
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-unused-expressions': 'off',

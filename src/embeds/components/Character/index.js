@@ -13,7 +13,7 @@ import ContentCard from 'common/components/ContentCard';
 
 import ArmoryBadge from 'common/components/ArmoryBadge';
 import { fetchCharacter, selectCharacter } from 'features/Character/actions';
-import { selector } from 'features/Character/characters.reducer';
+import { minimalSelector } from 'features/Character/characters.reducer';
 import styles from './styles.less';
 import Item from 'features/Character/components/Item';
 import Portrait from 'features/Character/components/Portrait';
@@ -28,7 +28,7 @@ type Props = {
   className?: string,
 };
 
-@connect(selector, {
+@connect(minimalSelector, {
   fetchCharacter,
   selectCharacter,
 })

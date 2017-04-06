@@ -3,17 +3,23 @@
 .root {
   flex-grow: 1;
   width: 100%;
-  margin-bottom: 1em;
-}
-
-.heroBg {
 }
 
 .inner {
   margin: 0 auto;
   padding: 0.5em 0;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 }
+
+.fromTablet({
+  .inner {
+    flex-direction: row;
+  }
+});
 
 .ad {
   margin-top: 1em;

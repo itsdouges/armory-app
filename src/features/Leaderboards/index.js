@@ -24,13 +24,11 @@ const Leaderboards = () => (
         name: 'PvP (NA)',
         content: <PvpLeaderboard region="na" />,
         description: config.descriptions.pvpLeaderboard,
-        flair: 'new',
       }, {
         to: '/leaderboards/pvp/eu',
         name: 'PvP (EU)',
         content: <PvpLeaderboard region="eu" />,
         description: config.descriptions.pvpLeaderboard,
-        flair: 'new',
       }]}
     />
 

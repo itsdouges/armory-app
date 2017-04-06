@@ -112,40 +112,55 @@ function extractEliteSpecialization (character, mode) {
     .reduce((acc, spec) => (spec && eliteSpecMap[spec.id]) || acc, character.profession);
 }
 
-const getCharacters = (store) => {
-  const user = store.users.data[store.users.selected];
-  return user && user.characters;
-};
+const getCharacter = (state) => state.characters.data[state.characters.selected];
 
-export const selector = createSelector(
-  (store) => store.characters.data[store.characters.selected],
-  getCharacters,
-  (store) => store.items,
-  (store) => store.skins,
-  (store) => store.specializations,
-  (store) => store.traits,
-  (store) => store.characters.mode,
-  (store) => store.skills,
-  (store) => store.amulets,
-  (store) => store.pets,
-  (store) => store.titles[get(getCharacters(store), 'title', '')],
-  // eslint-disable-next-line
-  (character, characters, items, skins, specializations, traits, mode, skills, amulets, pets, title) => ({
-    character: character && {
-      ...defaultCharacter,
-      ...character,
-      eliteSpecialization: extractEliteSpecialization(character, mode),
-    },
-    characters,
+const mergeEliteSpec = (character, mode = 'pve') => (character && {
+  ...defaultCharacter,
+  ...character,
+  // This is set because we still need to use profession for icons.
+  eliteSpecialization: extractEliteSpecialization(character, mode),
+});
+
+export const topSelector = createSelector(
+  getCharacter,
+  (state) => state.characters.mode,
+  (state) => state.titles[get(getCharacter(state), 'title', '')],
+  (character, mode, title) => ({
+    character: mergeEliteSpec(character, mode),
+    mode,
+    title,
+  })
+);
+
+export const overviewSelector = createSelector(
+  getCharacter,
+  (state) => state.items,
+  (state) => state.skins,
+  (state) => state.specializations,
+  (state) => state.traits,
+  (state) => state.skills,
+  (state) => state.amulets,
+  (state) => state.pets,
+  (character, items, skins, specializations, traits, skills, amulets, pets) => ({
+    character: mergeEliteSpec(character),
     items,
     skins,
     specializations,
     traits,
-    mode,
     skills,
     amulets,
     pets,
-    title,
+  })
+);
+
+export const minimalSelector = createSelector(
+  (state, props) => state.characters.data[props.name],
+  (state) => state.items,
+  (state) => state.skins,
+  (character, items, skins) => ({
+    character: mergeEliteSpec(character),
+    items,
+    skins,
   })
 );
 

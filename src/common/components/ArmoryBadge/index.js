@@ -4,7 +4,7 @@ import cx from 'classnames';
 import styles from './styles.less';
 
 type Props = {
-  className: string,
+  className?: string,
 };
 
 const ArmoryBadge = ({ className }: Props) => (

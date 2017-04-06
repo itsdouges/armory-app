@@ -14,25 +14,31 @@ import Upgrade from '../Upgrade';
 import Infusion from '../Infusion';
 import Background from '../Background';
 
-function buildName (item, skin, upgrades) {
+const addCount = (str, count) => (count > 1 ? `${count} ${str}` : str);
+
+function buildName (item, skin, upgrades, count) {
+  let name;
+
   if (!skin.name) {
-    return item.name;
+    name = item.name;
+  } else {
+    const regex = /[\w'-]+/;
+    const prefix = regex.exec(item.name);
+    const prefixedName = `${prefix} ${skin.name}`;
+
+    const [upgradeOne] = upgrades;
+    if (upgradeOne && prefixedName.indexOf(upgradeOne.details.suffix)) {
+      name = `${prefixedName} ${upgradeOne.details.suffix}`;
+    }
+
+    name = prefixedName;
   }
 
-  const regex = /[\w'-]+/;
-  const prefix = regex.exec(item.name);
-  const prefixedName = `${prefix} ${skin.name}`;
-
-  const [upgradeOne] = upgrades;
-
-  if (upgradeOne && prefixedName.indexOf(upgradeOne.details.suffix)) {
-    return `${prefixedName} ${upgradeOne.details.suffix}`;
-  }
-
-  return prefixedName;
+  return addCount(name, count);
 }
 
 const ItemsTooltip = ({ data: {
+  count,
   item,
   skin,
   name,
@@ -53,13 +59,13 @@ const ItemsTooltip = ({ data: {
       {equipped && <SimpleTooltip data={T.translate('items.currentlyEquipped')} />}
 
       <ItemHeader
-        name={buildName(item, skin, upgrades)}
+        name={buildName(item, skin, upgrades, count)}
         icon={skin.icon || item.icon}
         rarity={item.rarity}
       />
 
       <div>
-        {!!item.details.defense && (
+        {item.details && !!item.details.defense && (
           <div>
             {T.translate('items.defense')}:
             <span className={colours.green}> {item.details.defense}</span>
@@ -94,9 +100,9 @@ const ItemsTooltip = ({ data: {
           );
         })}
 
-        <span className={colours.green}>
+        {item.details && <span className={colours.green}>
           {markup(item.details.description, '\n')}
-        </span>
+        </span>}
 
         {get(item, 'details.bonuses', []).map((bonusName, bonusId) => (
           <div className={colours.blue}>
@@ -119,23 +125,27 @@ const ItemsTooltip = ({ data: {
           </span>
         )}
 
-        <div>
-          {isTransmuted ? T.translate('items.transmuted') : T.translate('items.skinLocked')}
-        </div>
+        {equipped && (
+          <div>
+            {isTransmuted
+              ? T.translate('items.transmuted')
+              : T.translate('items.skinLocked')}
+          </div>
+        )}
 
         <div>{item.name}</div>
 
         <div>{item.rarity}</div>
 
-        <div>{item.details.weight_class}</div>
+        {item.details && <div>{item.details.weight_class}</div>}
 
-        <div>{startCase(item.details.type)} {startCase(item.type)}</div>
+        {item.details && <div>{startCase(item.details.type)} {startCase(item.type)}</div>}
 
         <div>{markup(item.description)}</div>
 
         {!!item.level && <div>{T.translate('items.requiredLevel')}: {item.level}</div>}
 
-        <div>{item.boundStatus}</div>
+        <div>{startCase(item.boundStatus)}</div>
 
         {item.rarity !== 'Legendary' &&
           <Gold copper={item.copper} silver={item.silver} gold={item.gold} />}

@@ -2,12 +2,26 @@
 
 @padding: 4px;
 
-.applyBadge {
+.badge {
   position: absolute;
   padding: 0;
   margin: 0;
+  color: @_gw2text;
+  text-shadow: 0 0 5px @_black;
+  bottom: inherit;
+  font-size: 0.75rem;
+  z-index: @itemCountZ;
+  pointer-events: none;
+}
+
+.applyBadge {
+  composes: badge;
   right: @padding;
   bottom: @padding;
-  color: @_white;
-  text-shadow: 0 0 5px @_black;
+}
+
+.countBadge {
+  composes: badge;
+  right: @padding;
+  top: @padding;
 }

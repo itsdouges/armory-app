@@ -65,6 +65,7 @@ function createLogView (log) {
       break;
 
     default:
+      // eslint-disable-next-line
       console.log('Log not handled', log);
       break;
   }

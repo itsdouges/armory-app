@@ -1,5 +1,7 @@
 // @flow
 
+import type { SubmitNotification } from './app.reducer';
+
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
@@ -8,10 +10,11 @@ import 'normalize.css';
 import '../../styles.less';
 import styles from './styles.less';
 
+import notifications from './notifications';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import NotificationBox from './components/NotificationBox';
-import { determineApiHealth } from './actions';
+import { determineApiHealth, submitNotification } from './actions';
 
 const selector = createSelector(
   (store) => store.user.alias,
@@ -34,6 +37,7 @@ type Props = {
   },
   checkingAuthentication: boolean,
   determineApiHealth?: () => void,
+  submitNotification?: SubmitNotification,
 };
 
 function shouldForceSmallHeader ({ location }: Props) {
@@ -42,6 +46,7 @@ function shouldForceSmallHeader ({ location }: Props) {
 
 @connect(selector, {
   determineApiHealth,
+  submitNotification,
 })
 export default class App extends Component {
   props: Props;
@@ -52,6 +57,14 @@ export default class App extends Component {
 
   componentWillMount () {
     this.props.determineApiHealth && this.props.determineApiHealth();
+
+    notifications.forEach((notification) => {
+      this.props.submitNotification && this.props.submitNotification(
+        notification.id,
+        notification.message,
+        notification.options,
+      );
+    });
   }
 
   componentWillReceiveProps (nextProps: Props) {

@@ -5,6 +5,9 @@
       "text": "Guild Wars 2 Armory это простой способ найходить, просматривать и делиться пользователями, персонажами и гильдиями с друзьями на своём мобильном и ПК! Присоединяйся и начинай делиться своими достижениями сегодня!"
     }
   },
+  "embeds": {
+    "name": "Embeds"
+  },
   "login": {
     "name": "Войти в систему",
     "joinCta": "Не зарегистрированы? Присоединяйтесь к нам!",
@@ -46,6 +49,7 @@
     "name": "Пользователи",
     "recentMatches": "Последние матчи",
     "claimCta": "Claim user",
+    "noApiKey": "Api key not set.",
     "pvpStats": {
       "name": "Pvp Статистика",
       "unranked": "Unranked",
@@ -80,7 +84,9 @@
     "done": "Done",
     "edit": "Edit",
     "changePortrait": "Change your character portrait",
-    "noSkill": "No Skill Selected"
+    "noSkill": "No Skill Selected",
+    "embedCta": "Embed",
+    "embedTooltip": "Copy and paste this markup onto your website."
   },
   "settings": {
     "name": "настройки",
@@ -174,7 +180,8 @@
     "times": "times",
     "ratio": "Ratio",
     "rank": "Rank",
-    "optional": "Optional"
+    "optional": "Optional",
+    "dismiss": "Dismiss"
   },
   "leaderboards": {
     "name": "Leaderboards"
@@ -183,6 +190,7 @@
     "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!",
     "notFound": "Not Found",
     "notFoundLong": "Not Found (or the GW2 API is dead)!",
-    "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!"
+    "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!",
+    "newBags": "Bags now available on character pages! User achievements coming soon."
   }
 }

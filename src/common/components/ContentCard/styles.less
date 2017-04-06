@@ -2,12 +2,10 @@
 
 @padding: 0.5rem;
 
-.root,
-.placeholderRoot {
+.root {
   display: flex;
   align-items: center;
   padding: @padding * 1.5;
-  flex-shrink: 0;
 
   &.big {
     flex-direction: column;
@@ -42,7 +40,7 @@
 
 .title {
   margin: 0;
-  font-size: 1.7em;
+  font-size: 1.5em;
   font-weight: bold;
   word-break: break-word;
   .primaryFont();
@@ -153,15 +151,14 @@
 }
 
 .fromTablet({
-  .root,
-  .placeholderRoot {
+  .root {
     &.big {
       flex-direction: row;
       text-align: left;
 
-        .textContainer {
-          align-items: flex-start;
-        }
+      .textContainer {
+        align-items: flex-start;
+      }
     }
   }
 });

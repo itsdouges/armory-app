@@ -54,6 +54,7 @@
     "name": "Users",
     "recentMatches": "Recent Matches",
     "claimCta": "Claim user",
+    "noApiKey": "Api key not set.",
     "pvpStats": {
       "name": "Pvp Stats",
       "unranked": "Unranked",
@@ -84,12 +85,14 @@
   "characters": {
     "name": "Characters",
     "embedCta": "This is a character chosen at random. You can get an embed just like this on your website! Click the embed icon on any character page.",
-    "shown": "Character Shown",
-    "hidden": "Character Hidden",
+    "shown": "Can be seen by everyone",
+    "hidden": "Can only be seen by you",
     "done": "Done",
     "edit": "Edit",
     "changePortrait": "Change your character portrait",
-    "noSkill": "No Skill Selected"
+    "noSkill": "No Skill Selected",
+    "embedCta": "Embed",
+    "embedTooltip": "Copy and paste this markup onto your website."
   },
   "settings": {
     "name": "Settings",
@@ -183,7 +186,8 @@
     "times": "times",
     "ratio": "Ratio",
     "rank": "Rank",
-    "optional": "Optional"
+    "optional": "Optional",
+    "dismiss": "Dismiss"
   },
   "leaderboards": {
     "name": "Leaderboards"
@@ -192,6 +196,7 @@
     "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!",
     "notFound": "Not Found",
     "notFoundLong": "Not Found (or the GW2 API is dead)!",
-    "resourceNotFound": "Sorry, that doesn't exist. Here's a random character instead!"
+    "resourceNotFound": "Sorry, that doesn't exist. Here's a random character instead!",
+    "newBags": "Bags now available on character pages! User achievements coming soon."
   }
 }

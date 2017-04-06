@@ -1,3 +1,5 @@
+/* eslint no-console:0 */
+
 require('babel-core/register');
 const argv = require('yargs').argv;
 const s3 = require('s3');

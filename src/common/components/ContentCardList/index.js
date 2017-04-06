@@ -6,7 +6,7 @@ import ContentCard from 'common/components/ContentCard';
 import Card from 'common/components/Card';
 import { Link } from 'react-router';
 import styles from './styles.less';
-import cx from 'classnames/bind';
+import cx from 'classnames';
 
 function buildUrl (item, aliasOverride, resource) {
   switch (resource) {

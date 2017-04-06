@@ -1,209 +1,25 @@
 @import '~common/styles/base.less';
 
-@leftColumnWidth: @itemSize + 4px;
-@rightColumnWidth: (@itemSize * 3) + (4px * 3);
-@portraitWidth: 770px;
-
-@brushDecorationZ: @_zindexBehind;
-
-.root {
-  flex-grow: 1;
-  width: 100%;
-  margin-bottom: 5em;
-}
-
-.inner {
-  max-width: @portraitWidth;
-  margin: 0 auto;
-  position: relative;
-}
-
-.fade {
-  opacity: 0.5;
-}
-
-.editContainer {
-  text-align: center;
-  margin-bottom: 0.5em;
-}
-
-.modeContainer {
-  position: absolute;
-  top: 0.5em;
-  right: 0.5em;
-  z-index: @portraitButtonsZ;
-}
-
-.embedContainer {
-  position: absolute;
-  right: 0.5em;
-  bottom: 0.5em;
-  left: 0.5em;
-  z-index: @portraitButtonsZ;
-  text-align: right;
-  width: inherit;
-}
-
-.portrait {
-  margin-top: 0.125rem;
-}
-
-.modeIcon {
-  display: block;
-  opacity: 0.5;
-  cursor: pointer;
-
-  &:hover,
-  &.active {
-    opacity: 1;
-  }
-}
-
-.columns {
-  display: flex;
-  flex-direction: column;
-}
-
-.leftColumn,
-.rightItemColumn {
-  display: flex;
-  flex-shrink: 0;
-  flex-wrap: wrap;
-  justify-content: center;
-  .transition(opacity);
-}
-
-.leftColumn {
-  > div {
-    margin: 0.125rem;
-  }
-}
-
-.leftColumn,
-.rightColumn {
-  margin: 0 0.125rem;
-  flex-shrink: 0;
-}
-
-.rightItemColumn {
-  flex-direction: row;
-  margin: 0.25rem 0;
-
-  > * {
-    margin: 0.125rem;
-  }
-}
-
-.attributes {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 0.5rem;
-  padding-bottom: 0.25rem;
-  font-size: 0.8em;
-
-  > * {
-    width: 33.3333%;
-  }
-}
-
-.brushStrokeContainer {
-  position: relative;
-  max-width: 650px;
-  margin: 0 auto;
-  overflow: visible;
-
-  > div {
-    margin: 2.5em 0;
-  }
-}
-
-.brushStrokeContainer:before,
-.brushStrokeContainer:after {
-  z-index: @brushDecorationZ;
-  content: "";
-  position: absolute;
-  width: 125px;
-  height: 337px;
-  bottom: -2px;
-  background-image: url('assets/images/brush-stroke-1.png');
-}
-
-.brushStrokeContainer:before {
-  left: -125px;
-}
-
-.brushStrokeContainer:after {
-  transform: scaleX(-1);
-  right: -125px;
-}
-
 .links {
-  margin: 2rem auto;
-  text-align: center;
-}
-
-div.linkItem {
-  display: inline-flex;
-  text-align: left;
-}
-
-.craftingContainer {
-  margin: 0 0.125rem;
-}
-
-.subContent {
-  padding: 0;
-  display: inline-flex;
-}
-
-.skills {
-  margin: 2.5em;
-
-  :first-child {
-    margin-right: 0.5em;
-  }
-
-  :last-child {
-    margin-left: 0.5em;
-  }
-}
-
-.pvpEquipment {
-  margin-top: 2.5em;
-
-  > div {
-    > * {
-      margin: 0.125rem;
-    }
-  }
+  flex-shrink: 0.3;
+  align-self: flex-start;
 }
 
 .fromTablet({
-  .columns {
-    flex-direction: row;
-  }
-
-  .leftColumn,
-  .rightItemColumn {
-    justify-content: flex-start;
-  }
-
-  .leftColumn {
-    width: @leftColumnWidth;
+  .links {
+    display: flex;
     flex-direction: column;
+    max-width: 300px;
+    align-self: inherit;
   }
+});
 
-  .rightColumn {
-    width: @rightColumnWidth;
-  }
-
-  .attributes {
-    margin-top: 0em;
-    padding-bottom: 0;
-
-    > * {
-      width: 50%;
-    }
+.fromPc({
+  .links {
+    max-width: 500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
   }
 });

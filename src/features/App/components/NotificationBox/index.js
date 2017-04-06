@@ -5,6 +5,7 @@ import type { Notifications, Notification as NotificationType } from 'flowTypes'
 import { connect } from 'react-redux';
 import { Component } from 'react';
 import cx from 'classnames';
+import map from 'lodash/map';
 
 import Container from 'common/components/Container';
 import Notification from '../Notification';
@@ -38,13 +39,11 @@ export default class NotificationBox extends Component {
     return (
       <Container className={cx(styles.root, className)}>
         <ol>
-          {/* $FlowFixMe */}
-          {Object.values(notifications).map((msg: NotificationType) =>
+          {map(notifications, (msg: NotificationType) =>
             <li key={msg.id}>
               <Notification
+                {...msg}
                 className={styles.notification}
-                message={msg.message}
-                type={msg.type}
                 dismiss={() => dismissNotification && dismissNotification(msg.id)}
               />
             </li>

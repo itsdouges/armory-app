@@ -1,9 +1,7 @@
 // @flow
 
 import styles from './styles.less';
-import classnames from 'classnames/bind';
-
-const cx = classnames.bind(styles);
+import cx from 'classnames';
 
 export type IconProps = {
   name?: string,
@@ -29,7 +27,7 @@ const Icon = ({ name, size, className, src, button, children, style, ...props }:
   return (
     <div
       {...props}
-      className={cx('container', size, className, button && 'button')}
+      className={cx(styles.container, styles[size], className, button && styles.button)}
       style={{
         ...style,
         /* eslint prefer-template:0 */

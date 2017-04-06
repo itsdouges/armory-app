@@ -3,6 +3,7 @@
 import type { Specializations, Traits } from 'flowTypes';
 
 import cx from 'classnames';
+import fill from 'lodash/fill';
 
 import colours from 'common/styles/colours';
 import styles from './styles.less';
@@ -24,7 +25,7 @@ const getStyle = (data, spec) => ({
   backgroundColor: spec.background && colours._black,
 });
 
-const emptyMajorTraits = Array(9).fill(undefined);
+const emptyTraits = fill(new Array(9), undefined);
 
 type Props = {
   data: {
@@ -38,8 +39,8 @@ type Props = {
 
 const Specialization = ({ data, traits, specializations, size = 'large' }: Props) => {
   const specialization = specializations[data.id] || {};
-  const minorTraits = specialization.minor_traits || {};
-  const majorTraits = specialization.major_traits || emptyMajorTraits;
+  const minorTraits = specialization.minor_traits || emptyTraits;
+  const majorTraits = specialization.major_traits || emptyTraits;
   const error = specialization.error && specialization.error;
 
   return (

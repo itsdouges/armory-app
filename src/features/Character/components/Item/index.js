@@ -1,8 +1,10 @@
 // @flow
 
 import cx from 'classnames';
+import pure from 'recompose/pure';
 
 import TooltipTrigger from 'common/components/TooltipTrigger';
+import Gw2Icon from 'common/components/Gw2Icon';
 import Icon from 'common/components/Icon';
 import styles from './styles.less';
 
@@ -27,6 +29,9 @@ type Props = {
   className?: string,
   tooltipTextOverride?: string,
   equipped?: boolean,
+  inline?: boolean,
+  count?: number,
+  onClick?: (SyntheticEvent) => void,
 };
 
 const Item = ({
@@ -43,14 +48,25 @@ const Item = ({
   small,
   tooltipType,
   className,
+  inline,
   tooltipTextOverride,
   equipped,
+  count,
+  onClick,
+  ...props
 }: Props) => {
   if (hide) return null;
 
-  const data = item && item.error
-    ? item
-    : {
+  // $FlowFixMe
+  const error = item && item.error;
+  const itemLoaded = !error && !!Object.keys(item).length;
+
+  let tooltipData;
+
+  if (error) {
+    tooltipData = error;
+  } else if (itemLoaded) {
+    tooltipData = {
       name,
       item,
       skin,
@@ -59,22 +75,30 @@ const Item = ({
       upgradeCounts,
       stats,
       equipped,
+      count,
     };
+  } else {
+    tooltipData = name;
+  }
 
   return (
     <TooltipTrigger
       type={tooltipType || 'items'}
-      data={tooltipTextOverride || data}
+      data={tooltipTextOverride || tooltipData}
+      {...props}
     >
       <Icon
-        name={type ? `${type}-slot-icon.png` : 'empty-skill-back.png'}
+        name={type && `${type}-slot-icon.png`}
         className={cx(styles.root, className, {
           [styles.busy]: busy,
           [styles.small]: small,
-          [styles.emptyBg]: !type,
+          [styles.emptyBg]: !type && !itemLoaded,
+          [styles.inline]: inline,
         })}
+        onClick={onClick}
       >
-        <Icon
+        <Gw2Icon
+          count={count}
           className={styles.item}
           src={skin.icon || item.icon || ''}
         />
@@ -83,4 +107,4 @@ const Item = ({
   );
 };
 
-export default Item;
+export default pure(Item);

@@ -54,6 +54,10 @@ npm run start:embeds // PROD BUILD
 
 Deployments are triggered to `preview.gw2armory.com` via any branch commit, and to `gw2armory.com` via any tagged commit to `master` branch. Note that `master` doesn't reflect what is in production - look for the most recent tagged commit for that.
 
+### Redux Dev Tools
+
+Enabled in dev mode only, [go install the extension](http://extension.remotedev.io/) and then open it while running the armory locally.
+
 ## Pull Requests
 
 Feel like contributing? Look at the [issues](https://github.com/madou/armory-react/issues) tab (or below in quick issues), or contact me on [twitter](https://twitter.com/itsmadou) for help to find something you'd like to work on. Make a pull request against `master` when you're ready to share your code!

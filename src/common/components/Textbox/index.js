@@ -1,7 +1,7 @@
 // @flow
 
 import styles from './styles.less';
-import cx from 'classnames/bind';
+import cx from 'classnames';
 import SvgIcon from 'common/components/Icon/Svg';
 import ProgressIcon from 'common/components/Icon/Progress';
 

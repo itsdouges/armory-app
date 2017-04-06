@@ -16,6 +16,8 @@ export function set (key: string, value: string) {
     // being full? We could clear everything and
     // start over - but perhaps that's not right
     // to consumers using the embeds.
+
+    // eslint-disable-next-line
     console.error('Local storage is full!');
   }
 }

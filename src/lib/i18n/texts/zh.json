@@ -5,6 +5,9 @@
       "text": "Guild Wars 2 Armory 使您更容易在手机和电脑上与朋友寻找，查看，并共享用户，角色和行会！今天就加盟并开始分享吧！"
     }
   },
+  "embeds": {
+    "name": "Embeds"
+  },
   "login": {
     "name": "登录",
     "joinCta": "还没有账号？加入我们！",
@@ -46,6 +49,7 @@
     "name": "用户",
     "recentMatches": "近期比赛",
     "claimCta": "Claim user",
+    "noApiKey": "Api key not set.",
     "pvpStats": {
       "name": "PVP统计",
       "unranked": "未排序",
@@ -80,7 +84,9 @@
     "done": "Done",
     "edit": "Edit",
     "changePortrait": "Change your character portrait",
-    "noSkill": "No Skill Selected"
+    "noSkill": "No Skill Selected",
+    "embedCta": "Embed",
+    "embedTooltip": "Copy and paste this markup onto your website."
   },
   "settings": {
     "name": "设置",
@@ -174,7 +180,8 @@
     "times": "times",
     "ratio": "Ratio",
     "rank": "Rank",
-    "optional": "Optional"
+    "optional": "Optional",
+    "dismiss": "Dismiss"
   },
   "leaderboards": {
     "name": "Leaderboards"
@@ -183,6 +190,7 @@
     "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!",
     "notFound": "Not Found",
     "notFoundLong": "Not Found (or the GW2 API is dead)!",
-    "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!"
+    "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!",
+    "newBags": "Bags now available on character pages! User achievements coming soon."
   }
 }
