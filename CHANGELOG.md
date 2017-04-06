@@ -8,7 +8,7 @@
 - Changes
 ```
 
-## [4.12.0] - unreleased
+## [4.12.0] - 2017/04/06
 ### Added
 - Redux devtools
 - Tabs to character page
