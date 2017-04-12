@@ -2,7 +2,7 @@ import upperFirst from 'lodash/upperFirst';
 import uniq from 'lodash/uniq';
 import T from 'i18n-react';
 
-import proxyFunc from 'lib/proxy';
+import proxyFunc from 'function-batch';
 
 export const SHOW_TOOLTIP = 'SHOW_TOOLTIP';
 

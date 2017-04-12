@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.12.1] - unreleased
+### Changed
+- `function-batch` to be an external dependency
+
 ## [4.12.0] - 2017/04/06
 ### Added
 - Redux devtools
