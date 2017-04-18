@@ -22,8 +22,8 @@ type Options = {
 };
 
 export type EmbedProps = {
-  className: string,
-  blankText: string,
+  className?: string,
+  blankText?: string,
 };
 
 const makeClassName = (str) => `gw2a-${str}-embed`;
