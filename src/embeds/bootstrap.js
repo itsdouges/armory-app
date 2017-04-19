@@ -2,8 +2,6 @@
 
 import * as ls from 'lib/localStorage';
 
-ls.reset();
-
 // Base is deliberately at the top.
 import Base from '../Base';
 import ReactDOM from 'react-dom';
@@ -30,7 +28,7 @@ const makeClassName = (str) => `gw2a-${str}-embed`;
 export const makeAttribute = (str: string) => `data-armory-${str}`;
 
 function fetchStyles () {
-  axios.get(`${__webpack_public_path__}manifest.json`)
+  return axios.get(`${__webpack_public_path__}manifest.json`)
     .then((response) => addStyleSheet(`${__webpack_public_path__}${response.data['gw2aEmbeds.css']}`));
 }
 
@@ -50,22 +48,22 @@ function bootstrapEmbeds () {
   }
 
   const embedables = Array.from(document.body.querySelectorAll(`[${makeAttribute('embed')}]`));
-  embedables.forEach((element) => {
+  return embedables.map((element) => {
     const embedName = element.getAttribute(makeAttribute('embed'));
     if (!embedName) {
-      return;
+      return undefined;
     }
-
-    const blankText = element.getAttribute(makeAttribute('blank-text')) || T.translate('words.optional');
-    const rawIds = element.getAttribute(makeAttribute('ids'));
-    const ids = (rawIds || '').split(',');
 
     // NOTE: The following require is giving major headaches when using
     // inline .spec.js files (as they're added to the webpack context).
     // Watch out!
     // eslint-disable-next-line import/no-webpack-loader-syntax
-    const load = require(`promise?global!embeds/creators/${embedName}`);
-    load().then(({ default: createEmbed }) => {
+    const loadEmbed = require(`promise?global!embeds/creators/${embedName}`);
+    return loadEmbed().then(({ default: createEmbed }) => {
+      const rawIds = element.getAttribute(makeAttribute('ids'));
+      const blankText = element.getAttribute(makeAttribute('blank-text')) || T.translate('words.optional');
+      const ids = (rawIds || '').split(',');
+
       const Component = createEmbed(element, ids);
 
       ReactDOM.render(
@@ -100,8 +98,12 @@ function bootstrapTooltip () {
 export default function bootstrap () {
   const options = setOptions();
 
+  ls.reset();
   setLang(options.lang);
-  fetchStyles();
-  bootstrapEmbeds();
-  bootstrapTooltip();
+
+  return Promise.all([
+    fetchStyles(),
+    bootstrapEmbeds(),
+    bootstrapTooltip(),
+  ]);
 }
