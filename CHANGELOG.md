@@ -8,9 +8,12 @@
 - Changes
 ```
 
-## [Unreleased] - []
+## [Unreleased][]
 ### Added
 - Ability to set embed size
+
+### Changed
+- Babel config to use `babel-preset-env`
 
 ## [4.13.0] - 2017/04/20
 ### Added
