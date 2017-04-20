@@ -22,6 +22,7 @@ type Options = {
 export type EmbedProps = {
   className?: string,
   blankText?: string,
+  size?: number,
 };
 
 const makeClassName = (str) => `gw2a-${str}-embed`;
@@ -63,15 +64,19 @@ function bootstrapEmbeds () {
       const rawIds = element.getAttribute(makeAttribute('ids'));
       const blankText = element.getAttribute(makeAttribute('blank-text')) || T.translate('words.optional');
       const ids = (rawIds || '').split(',');
+      const size: number = parseInt(element.getAttribute(makeAttribute('size')), 10);
 
       const Component = createEmbed(element, ids);
 
+      const props: EmbedProps = {
+        className: cx(styles.embed, makeClassName(embedName)),
+        blankText,
+        size: size || undefined,
+      };
+
       ReactDOM.render(
         <Base>
-          <Component
-            className={cx(styles.embed, makeClassName(embedName))}
-            blankText={blankText}
-          />
+          <Component {...props} />
         </Base>,
         element
       );

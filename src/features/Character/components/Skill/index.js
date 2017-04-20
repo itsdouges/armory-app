@@ -14,21 +14,23 @@ type Props = {
   data?: {},
   className?: string,
   tooltipTextOverride?: string,
+  size?: number,
 };
 
-const Skill = ({ data, className, tooltipTextOverride }: Props) => {
+const Skill = ({ data, className, tooltipTextOverride, size }: Props) => {
   const error = get(data, 'error');
   const tooltipData = tooltipTextOverride || data || T.translate('characters.noSkill');
 
   return (
     <TooltipTrigger type="skill" data={tooltipData}>
       {(error || !data)
-        ? <EmptySkill />
+        ? <EmptySkill size={size} />
         : (
           <Icon
             src={get(data, 'icon')}
             size="mediumSmall"
             className={cx(styles.skill, className)}
+            sizePx={size}
           />
         )}
     </TooltipTrigger>

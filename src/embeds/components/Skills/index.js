@@ -1,6 +1,7 @@
 // @flow
 
 import type { Skills } from 'flowTypes';
+import type { EmbedProps } from 'embeds/bootstrap';
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
@@ -16,12 +17,10 @@ function mapStateToProps (state) {
   };
 }
 
-type Props = {
+type Props = EmbedProps & {
   skills?: Skills,
   fetchSkills?: (ids: Array<number>) => void,
   ids: Array<number>,
-  className?: string,
-  blankText: string,
 };
 
 @connect(mapStateToProps, {
@@ -30,18 +29,19 @@ type Props = {
 export default class SkillsEmbed extends Component {
   props: Props;
 
-  static renderSkill (id, skills, blankText) {
+  static renderSkill (id, skills, blankText, size) {
     if (id >= 0) {
       return (
         <Skill
           key={id}
           className={styles.skill}
           data={skills && skills[id]}
+          size={size}
         />
       );
     }
 
-    return <Skill tooltipTextOverride={blankText} />;
+    return <Skill tooltipTextOverride={blankText} size={size} />;
   }
 
   componentWillMount () {
@@ -51,11 +51,11 @@ export default class SkillsEmbed extends Component {
   }
 
   render () {
-    const { ids, skills, className, blankText } = this.props;
+    const { ids, skills, className, blankText, size } = this.props;
 
     return (
       <div className={className}>
-        {ids.map((id) => SkillsEmbed.renderSkill(id, skills, blankText))}
+        {ids.map((id) => SkillsEmbed.renderSkill(id, skills, blankText, size))}
       </div>
     );
   }

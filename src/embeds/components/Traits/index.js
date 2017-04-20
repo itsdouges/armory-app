@@ -28,18 +28,19 @@ type Props = EmbedProps & {
 export default class TraitsEmbed extends Component {
   props: Props;
 
-  static renderTrait (id, traits, blankText) {
+  static renderTrait (id, traits, blankText, size) {
     if (id >= 0) {
       return (
         <Trait
           active
           key={id}
           data={traits && traits[id]}
+          size={size}
         />
       );
     }
 
-    return <Trait active tooltipTextOverride={blankText} />;
+    return <Trait active tooltipTextOverride={blankText} size={size} />;
   }
 
   componentWillMount () {
@@ -49,11 +50,11 @@ export default class TraitsEmbed extends Component {
   }
 
   render () {
-    const { ids, traits, className, blankText } = this.props;
+    const { ids, traits, className, blankText, size } = this.props;
 
     return (
       <div className={className}>
-        {ids.map((id) => TraitsEmbed.renderTrait(id, traits, blankText))}
+        {ids.map((id) => TraitsEmbed.renderTrait(id, traits, blankText, size))}
       </div>
     );
   }

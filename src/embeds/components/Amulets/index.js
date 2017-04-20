@@ -1,6 +1,7 @@
 // @flow
 
 import type { Amulets } from 'flowTypes';
+import type { EmbedProps } from 'embeds/bootstrap';
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
@@ -15,12 +16,10 @@ function mapStateToProps (state) {
   };
 }
 
-type Props = {
+type Props = EmbedProps & {
   ids: Array<number>,
   amulets?: Amulets,
   fetchAmulets?: (ids: Array<number>) => void,
-  className?: string,
-  blankText: string,
 };
 
 @connect(mapStateToProps, {
@@ -29,7 +28,7 @@ type Props = {
 export default class AmuletsEmbed extends Component {
   props: Props;
 
-  static renderAmulet (id: number, amulets?: Amulets, blankText) {
+  static renderAmulet (id: number, amulets?: Amulets, blankText, size) {
     if (id >= 0) {
       return (
         <Item
@@ -37,11 +36,12 @@ export default class AmuletsEmbed extends Component {
           className={styles.item}
           key={id}
           item={amulets && amulets[id]}
+          size={size}
         />
       );
     }
 
-    return <Item tooltipTextOverride={blankText} />;
+    return <Item tooltipTextOverride={blankText} size={size} />;
   }
 
   componentWillMount () {
@@ -51,10 +51,10 @@ export default class AmuletsEmbed extends Component {
   }
 
   render () {
-    const { ids, amulets, className, blankText } = this.props;
+    const { ids, amulets, className, blankText, size } = this.props;
     return (
       <div className={className}>
-        {ids.map((id) => AmuletsEmbed.renderAmulet(id, amulets, blankText))}
+        {ids.map((id) => AmuletsEmbed.renderAmulet(id, amulets, blankText, size))}
       </div>
     );
   }

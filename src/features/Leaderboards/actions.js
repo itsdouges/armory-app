@@ -1,3 +1,5 @@
+// @flow
+
 import { get } from 'axios';
 import config from 'config';
 
@@ -12,7 +14,7 @@ const fetchPvpLeaderboardSuccess = (data, region) => ({
 });
 
 export function fetchPvpLeaderboard (region: 'na' | 'eu' | 'gw2a') {
-  return (dispatch) => get(`${config.api.endpoint}leaderboards/pvp/${region}`, {
+  return (dispatch: Dispatch) => get(`${config.api.endpoint}leaderboards/pvp/${region}`, {
     ignoreAuth: true,
   }).then(({ data }) => dispatch(fetchPvpLeaderboardSuccess(data, region)));
 }

@@ -5,6 +5,7 @@
 .*/node_modules/npm/test/.*
 config/
 scripts/
+<PROJECT_ROOT>/node_modules/function-batch/index.js.flow
 
 [include]
 

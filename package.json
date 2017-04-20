@@ -1,6 +1,10 @@
 {
   "name": "armory-react",
   "version": "4.13.0",
+  "private": true,
+  "pre-commit": [
+    "test"
+  ],
   "scripts": {
     "start": "node ./scripts/start.js --prod",
     "start:embeds": "npm start -- --embeds --local",
@@ -20,10 +24,10 @@
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "airbnb-js-shims": "^1.0.1",
     "axios": "^0.15.3",
+    "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
-    "function-batch": "^0.1.5",
+    "function-batch": "^1.0.0",
     "gw2e-item-attributes": "^1.2.0",
     "gw2itemstats": "^0.0.2",
     "i18n-react": "^0.3.0-ts1",
@@ -49,14 +53,12 @@
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-istanbul": "^4.1.1",
-    "babel-plugin-syntax-trailing-function-commas": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-plugin-transform-react-constant-elements": "^6.9.1",
     "babel-plugin-transform-runtime": "^6.12.0",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-es2016": "^6.11.3",
+    "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.11.1",
     "babel-runtime": "^6.11.6",
     "chai": "^3.5.0",
@@ -114,8 +116,5 @@
     "webpack-manifest-plugin": "^1.1.0",
     "webpack-md5-hash": "^0.0.5",
     "yargs": "^6.6.0"
-  },
-  "pre-commit": [
-    "test"
-  ]
+  }
 }
