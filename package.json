@@ -1,6 +1,10 @@
 {
   "name": "armory-react",
   "version": "4.13.0",
+  "private": true,
+  "pre-commit": [
+    "test"
+  ],
   "scripts": {
     "start": "node ./scripts/start.js --prod",
     "start:embeds": "npm start -- --embeds --local",
@@ -112,8 +116,5 @@
     "webpack-manifest-plugin": "^1.1.0",
     "webpack-md5-hash": "^0.0.5",
     "yargs": "^6.6.0"
-  },
-  "pre-commit": [
-    "test"
-  ]
+  }
 }
