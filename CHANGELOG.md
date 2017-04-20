@@ -8,11 +8,15 @@
 - Changes
 ```
 
+## [Unreleased] - []
+### Added
+- Ability to set embed size
+
 ## [4.13.0] - 2017/04/20
 ### Added
 - Traits embed
 
-## [4.12.1] - unreleased
+## [4.12.1] - 2017/04/18
 ### Changed
 - `function-batch` to be an external dependency
 

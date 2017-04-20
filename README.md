@@ -1,4 +1,4 @@
-# Guild Wars 2 Armory 
+# Guild Wars 2 Armory
 
 [![Build Status](https://travis-ci.org/madou/armory-react.svg?branch=master)](https://travis-ci.org/madou/armory-react) [![Dependencies](https://david-dm.org/madou/armory-react.svg)](https://david-dm.org/madou/armory-react) [![Dev Dependencies](https://david-dm.org/madou/armory-react/dev-status.svg)](https://david-dm.org/madou/armory-react?type=dev) [![Join the chat at https://gitter.im/gw2armory/Lobby](https://badges.gitter.im/gw2armory/Lobby.svg)](https://gitter.im/gw2armory/Lobby) [![Code Triagers Badge](https://www.codetriage.com/madou/armory-react/badges/users.svg)](https://www.codetriage.com/madou/armory-react) [![codecov](https://codecov.io/gh/madou/armory-react/branch/master/graph/badge.svg)](https://codecov.io/gh/madou/armory-react)
 
@@ -6,7 +6,7 @@
 
 ## Quick Start
 
-```
+```bash
 git clone https://github.com/madou/armory-react.git
 cd armory-react
 yarn // or npm install
@@ -15,21 +15,21 @@ cp src/config/local.sample.js src/config/local.js // You need to create a local 
 
 ### Testing
 
-```
+```bash
 npm run tdd // UNIT TESTS + WATCHER
 npm test // FULL TEST (lint/flow/coverage+unit)
 ```
 
 ### Website
 
-```
+```bash
 npm run dev // DEV BUILD
 npm run start // PROD BUILD
 ```
 
 ### Embeds
 
-```
+```bash
 npm run dev:embeds // DEV BUILD
 npm run start:embeds // PROD BUILD
 ```

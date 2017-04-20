@@ -1,6 +1,7 @@
 // @flow
 
 import type { Items, ItemStats } from 'flowTypes';
+import type { EmbedProps } from 'embeds/bootstrap';
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
@@ -18,16 +19,14 @@ function mapStateToProps (state) {
   };
 }
 
-type Props = {
+type Props = EmbedProps & {
   items?: Items,
   itemStats?: ItemStats,
   fetchItems?: (ids: Array<number>) => void,
   fetchItemStats?: (ids: Array<number>) => void,
   ids: Array<number>,
-  className?: string,
   mode?: 'rune' | 'item',
   statIds: { [key: number]: number },
-  blankText: string,
 };
 
 @connect(mapStateToProps, {
@@ -45,9 +44,10 @@ export default class ItemsEmbed extends Component {
     itemStats?: ItemStats,
     blankText: string,
     index: number,
+    size,
   ) {
     if (id < 0) {
-      return <Item key={`${index}-${id}`} tooltipTextOverride={blankText} />;
+      return <Item key={`${index}-${id}`} tooltipTextOverride={blankText} size={size} />;
     }
 
     const selectedStat = statId && itemStats && itemStats[statId];
@@ -76,6 +76,7 @@ export default class ItemsEmbed extends Component {
         name={mode === 'rune' ? 'Rune' : undefined}
         tooltipType={mode === 'rune' ? 'amulets' : undefined}
         className={styles.item}
+        size={size}
       />
     );
   }
@@ -88,7 +89,7 @@ export default class ItemsEmbed extends Component {
   }
 
   render () {
-    const { ids, statIds, items, itemStats, className, mode, blankText } = this.props;
+    const { ids, statIds, items, itemStats, className, mode, blankText, size } = this.props;
 
     return (
       <div className={className}>
@@ -100,6 +101,7 @@ export default class ItemsEmbed extends Component {
           itemStats,
           blankText,
           index,
+          size,
         ))}
       </div>
     );
