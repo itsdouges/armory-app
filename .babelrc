@@ -17,6 +17,11 @@
   "env": {
     "test": {
       "plugins": ["istanbul"]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-constant-elements"
+      ]
     }
   }
 }

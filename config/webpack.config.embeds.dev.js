@@ -34,7 +34,6 @@ module.exports = {
       test: /\.js$/,
       include: paths.appSrc,
       loader: 'babel',
-      query: require('./babel.dev'),
     }, {
       test: /\.(css|less)$/,
       include: [paths.appSrc, paths.appNodeModules],
@@ -52,9 +51,6 @@ module.exports = {
         name: '[name].[ext]',
       },
     }],
-  },
-  eslint: {
-    useEslintrc: true,
   },
   postcss () {
     return [autoprefixer];
