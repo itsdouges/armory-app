@@ -38,6 +38,7 @@ describe('<Items /> embed', () => {
         details: {},
       },
     },
+    size: 2,
   };
 
   let wrapper;
@@ -74,8 +75,9 @@ describe('<Items /> embed', () => {
           name={undefined}
           tooltipType={undefined}
           className={styles.item}
+          size={props.size}
         />,
-        <Item tooltipTextOverride={props.blankText} />,
+        <Item tooltipTextOverride={props.blankText} size={props.size} />,
       ];
 
       expect(wrapper.children()).to.have.length(expectedItems.length);

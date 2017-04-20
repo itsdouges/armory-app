@@ -19,7 +19,7 @@ function mapStateToProps (state) {
   };
 }
 
-type Props = EmbedProps & {
+type Props = {
   items?: Items,
   itemStats?: ItemStats,
   fetchItems?: (ids: Array<number>) => void,
@@ -27,7 +27,9 @@ type Props = EmbedProps & {
   ids: Array<number>,
   mode?: 'rune' | 'item',
   statIds: { [key: number]: number },
-};
+  // Why doesn't flow work with intersection types well ;-( !!
+  blankText?: string,
+} & EmbedProps;
 
 @connect(mapStateToProps, {
   fetchItems: actions.fetchItems,
