@@ -8,6 +8,10 @@
 - Changes
 ```
 
+## [4.13.0] - 2017/04/20
+### Added
+- Traits embed
+
 ## [4.12.1] - unreleased
 ### Changed
 - `function-batch` to be an external dependency
