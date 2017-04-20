@@ -1,29 +1,28 @@
-# Change Log
+# Changelog
 
-## Log structure
+All notable changes to this project will be documented in this file.
 
-```
-## [Unreleased|major.minor.patch][] - yyyy/mm/dd
-### Added|Changed|Fixed|Removed
-- Changes
-```
+The format is based on [Keep a Changelog](http://keepachangelog.com/)
+and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.14.0][] - 2017-04-20
 ### Added
 - Ability to set embed size
 
 ### Changed
 - Babel config to use `babel-preset-env`
 
-## [4.13.0][] - 2017/04/20
+## [4.13.0][] - 2017-04-20
 ### Added
 - Traits embed
 
-## [4.12.1][] - 2017/04/18
+## [4.12.1][] - 2017-04-18
 ### Changed
 - `function-batch` to be an external dependency
 
-## [4.12.0][] - 2017/04/06
+## [4.12.0][] - 2017-04-06
 ### Added
 - Redux devtools
 - Tabs to character page
@@ -629,3 +628,6 @@ At a later date a embed generator page will be made to help with the creation of
 ## [2.0.0][] - 2016/09/22
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
+
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.14.0...HEAD
+[4.14.0]: https://github.com/madou/armory-react/tree/v4.14.0
