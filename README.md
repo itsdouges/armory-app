@@ -54,6 +54,14 @@ npm run start:embeds // PROD BUILD
 
 Deployments are triggered to `preview.gw2armory.com` via any branch commit, and to `gw2armory.com` via any tagged commit to `master` branch. Note that `master` doesn't reflect what is in production - look for the most recent tagged commit for that.
 
+We use `np`.
+
+```bash
+np major|minor|patch
+```
+
+This will increment the version, update CHANGELOG.md (anything under Unreleased will be moved to a version), and push to git.
+
 ### Redux Dev Tools
 
 Enabled in dev mode only, [go install the extension](http://extension.remotedev.io/) and then open it while running the armory locally.
