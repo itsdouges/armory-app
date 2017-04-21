@@ -16,10 +16,10 @@ export default class RandomGuilds extends Component {
   };
 
   componentDidMount () {
-    axios.get(`${config.api.endpoint}random/guilds/8`, {
+    axios.get(`${config.api.endpoint}of-the-day/guilds`, {
       ignoreAuth: true,
     })
-      .then(({ data }) => this.setState({ guilds: data }));
+    .then(({ data }) => this.setState({ guilds: data }));
   }
 
   render () {

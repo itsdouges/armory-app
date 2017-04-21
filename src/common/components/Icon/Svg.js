@@ -1,12 +1,13 @@
-import Icon from './';
-import { PropTypes } from 'react';
+// @flow
 
-const SvgIcon = (props) => (
+import Icon from './';
+
+type Props = {
+  name: string,
+};
+
+const SvgIcon = (props: Props) => (
   <Icon {...props} name={`svg/${props.name}.svg`} />
 );
-
-SvgIcon.propTypes = {
-  name: PropTypes.string,
-};
 
 export default SvgIcon;

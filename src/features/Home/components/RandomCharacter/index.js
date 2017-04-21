@@ -12,17 +12,16 @@ import Tooltip from 'common/components/Tooltip';
 
 import styles from './styles.less';
 
-/* eslint max-len:0 */
 export default class RandomCharacter extends Component {
   state = {
     name: '',
   };
 
   componentDidMount () {
-    axios.get(`${config.api.endpoint}random/characters/1`, {
+    axios.get(`${config.api.endpoint}of-the-day/characters`, {
       ignoreAuth: true,
     })
-      .then(({ data }) => this.setState({ name: data[0] }));
+    .then(({ data }) => this.setState({ name: data[0] }));
   }
 
   render () {
