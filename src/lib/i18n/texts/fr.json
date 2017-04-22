@@ -180,7 +180,8 @@
     "ratio": "Ratio",
     "rank": "Rang",
     "optional": "Optional",
-    "dismiss": "Dismiss"
+    "dismiss": "Dismiss",
+    "embed": "Embed"
   },
   "leaderboards": {
     "name": "Leaderboards"

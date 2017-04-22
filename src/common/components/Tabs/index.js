@@ -35,7 +35,7 @@ const Tabs = ({ tabs, titleSuffix, tabLayout, pinnedTab }: TabsProps) => {
     <div className={styles.root}>
       {ignoreTitle || <Head title={`${name} | ${titleSuffix}`} description={description} />}
 
-      <div className={styles.tabsBg}>
+      <nav className={styles.tabsBg}>
         <Container className={styles.tabsContainer}>
           <ul>
             {tabs.map((tab, index) => (
@@ -54,9 +54,9 @@ const Tabs = ({ tabs, titleSuffix, tabLayout, pinnedTab }: TabsProps) => {
             )}
           </ul>
         </Container>
-      </div>
+      </nav>
 
-      {Layout ? <Layout>{content}</Layout> : content}
+      <section>{Layout ? <Layout>{content}</Layout> : content}</section>
     </div>
   );
 };

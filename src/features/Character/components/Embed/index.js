@@ -55,7 +55,7 @@ export default class Embed extends Component {
             onClick={this.show}
             className={styles.embedText}
           >
-            {T.translate('characters.embedCta')}
+            {T.translate('words.embed')}
           </button>
         )}
 
