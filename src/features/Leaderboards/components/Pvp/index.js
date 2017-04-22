@@ -15,7 +15,7 @@ import { fetchPvpLeaderboard } from '../../actions';
 import styles from './styles.less';
 
 const STANDINGS_PER_PAGE = 50;
-const STUB_STANDINGS = { rows: times(STANDINGS_PER_PAGE, () => undefined) };
+const STUB_STANDINGS = { rows: times(STANDINGS_PER_PAGE, () => undefined), count: 9999 };
 
 function buildContent (standing, rank) {
   const winsText = T.translate('users.pvpStats.wins');
@@ -87,9 +87,10 @@ export default class PvpLeaderboard extends Component {
           key={region}
           rows={pvpLeaderboard.rows}
           limit={STANDINGS_PER_PAGE}
-          count={pvpLeaderboard.count || 250}
+          count={pvpLeaderboard.count}
           action={(limit, offset) => fetchLeaderboard(region, limit, offset)}
           progressComponent={<Progress className={styles.progress} />}
+          containerElement="ol"
         >
           {this.renderStanding}
         </Paginator>

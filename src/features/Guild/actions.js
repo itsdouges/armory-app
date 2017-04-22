@@ -3,6 +3,7 @@
 import axios from 'axios';
 import config from 'config';
 import { browserHistory } from 'react-router';
+import { paginatedThunk } from 'lib/redux';
 
 export const FETCHING_GUILD = 'FETCHING_GUILD';
 export const SELECT_GUILD = 'SELECT_GUILD';
@@ -40,7 +41,7 @@ const fetchGuildMembersResult = (name: string, data) => ({
   type: FETCH_GUILD_MEMBERS,
   payload: {
     name,
-    data: data.map((member) => ({ ...member, gw2Only: true })),
+    data,
   },
 });
 
@@ -50,11 +51,19 @@ export const fetchGuildLogs = (name: string) => (dispatch: Dispatch) => axios
     dispatch(fetchGuildLogsResult(name, response.data));
   });
 
-export const fetchGuildMembers = (name: string) => (dispatch: Dispatch) =>
-  axios.get(`${config.api.endpoint}guilds/${name}/members`)
+export function fetchGuildMembers (name: string, limit: number, offset: number) {
+  return paginatedThunk((dispatch: Dispatch) => {
+    return axios.get(`${config.api.endpoint}guilds/${name}/members`, {
+      params: {
+        limit,
+        offset,
+      },
+    })
     .then((response) => {
       dispatch(fetchGuildMembersResult(name, response.data));
     });
+  }, `guilds[${name}].members`, limit, offset);
+}
 
 export const fetchGuild = (name: string) => (dispatch: Dispatch) => {
   dispatch(fetchingGuild(true));

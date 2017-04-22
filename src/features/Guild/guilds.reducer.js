@@ -60,7 +60,9 @@ export default function reducer (state, action) {
     }
 
     case FETCH_GUILD_MEMBERS: {
-      const previous = state.data[action.payload.name];
+      const previous = state.data[action.payload.name] || {
+        members: {},
+      };
 
       return {
         ...state,
@@ -68,7 +70,11 @@ export default function reducer (state, action) {
           ...state.data,
           [action.payload.name]: {
             ...previous,
-            members: action.payload.data,
+            members: {
+              ...previous.members,
+              ...action.payload.data,
+              rows: ((previous.members || {}).rows || []).concat(action.payload.data.rows),
+            },
           },
         },
       };

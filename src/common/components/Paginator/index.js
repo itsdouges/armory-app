@@ -32,6 +32,7 @@ export default class Paginator extends Component {
   static defaultProps = {
     containerElement: 'ul',
     children: noop,
+    count: 9999,
   };
 
   state: State = {

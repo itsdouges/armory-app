@@ -4,14 +4,18 @@ declare var __DEVELOPMENT__: boolean;
 declare var __webpack_public_path__: string;
 declare function proxyquire (path: string, stubs?: {}): any;
 
-type Leaderboard = {
-  rows: Array<*>,
-  offset: number,
-  count: number,
-  limit: number,
-};
+import type { Paginated, PvpStanding, User } from 'flowTypes';
+
+type Leaderboard = Paginated<PvpStanding>;
+type Members = Paginated<User>;
 
 declare type ReduxState = {
+  guilds: {
+    [name: string]: {
+      members: Members,
+    },
+  },
+
   leaderboards: {
     pvp: {
       na: Leaderboard,
