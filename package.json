@@ -45,7 +45,8 @@
     "recompose": "^0.22.0",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
-    "reselect": "^2.5.3"
+    "reselect": "^2.5.3",
+    "withinviewport": "^2.0.0"
   },
   "devDependencies": {
     "app-module-path": "^2.2.0",

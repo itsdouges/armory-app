@@ -13,8 +13,12 @@ const fetchPvpLeaderboardSuccess = (data, region) => ({
   type: FETCH_PVP_LEADERBOARD,
 });
 
-export function fetchPvpLeaderboard (region: 'na' | 'eu' | 'gw2a') {
+export function fetchPvpLeaderboard (region: 'na' | 'eu' | 'gw2a', limit: number, offset: number) {
   return (dispatch: Dispatch) => get(`${config.api.endpoint}leaderboards/pvp/${region}`, {
     ignoreAuth: true,
+    params: {
+      limit,
+      offset,
+    },
   }).then(({ data }) => dispatch(fetchPvpLeaderboardSuccess(data, region)));
 }

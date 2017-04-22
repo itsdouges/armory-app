@@ -185,6 +185,13 @@ export type Traits = {
   },
 };
 
+export type Paginated<T> = {
+  rows: Array<T>,
+  count: number,
+  limit: number,
+  skip: number,
+};
+
 export type Gw2PvpGame = {
   map_id: string,
   scores: {
