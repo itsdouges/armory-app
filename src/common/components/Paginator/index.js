@@ -3,6 +3,7 @@
 import type { Children } from 'react';
 
 import { Component } from 'react';
+import throttle from 'lodash/throttle';
 import withinViewport from 'withinviewport';
 import { addEvent } from 'lib/dom';
 import noop from 'lodash/noop';
@@ -44,7 +45,11 @@ export default class Paginator extends Component {
   }
 
   componentDidMount () {
-    this._remove = addEvent('scroll', this.paginate);
+    this._remove = addEvent('scroll', throttle(this.paginate, 50));
+  }
+
+  componentWillUnmount () {
+    this._remove();
   }
 
   paginate = () => {
