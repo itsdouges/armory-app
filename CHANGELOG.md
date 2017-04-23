@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Pagination to guild members
+- Pagination to guild characters
+- Pagination to user characters
+- Pagination to leaderboards
+- Guild leader to guild page
+
+### Fixed
+- English embed cta to mention text instead of icon
 
 ## [4.14.0][] - 2017-04-20
 ### Added

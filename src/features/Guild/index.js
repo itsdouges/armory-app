@@ -3,14 +3,16 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import T from 'i18n-react';
+import { Link } from 'react-router';
 
 import type { Guild as GuildType } from 'flowTypes';
 
 import SvgIcon from 'common/components/Icon/Svg';
 import Content from 'common/layouts/Content';
-import ContentCardList from 'common/components/ContentCardList';
+import ContentCard from 'common/components/ContentCard';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 
+import Characters from './components/Characters';
 import Members from './components/Members';
 import Logs from './components/Logs';
 import Overview from './components/Overview';
@@ -56,44 +58,40 @@ export default class Guild extends Component {
     return (
       <Content
         title={`${guildName} [${(guild && guild.tag) || '...'}]`}
-        cardExtra={(
+        cardExtra={
           <TooltipTrigger data={claimedData.message}>
             <SvgIcon size="mini" className={styles.claimCta} name={claimedData.logo} />
           </TooltipTrigger>
-        )}
+        }
+        extraContent={
+          <aside>
+            <Link to={`/${(guild && guild.leader && guild.leader.alias) || ''}`}>
+              <ContentCard type="users" content={guild && guild.leader} />
+            </Link>
+          </aside>
+        }
         content={guild}
         type="guilds"
-        tabs={[
-          {
-            name: 'Overview',
-            to: `/g/${guildName}`,
-            ignoreTitle: true,
-            content: (
-              <Overview data={guild} />
-            ),
-          },
-          {
-            name: 'Members',
-            to: `/g/${guildName}/users`,
-            content: <Members name={guildName} />,
-          },
-          {
-            name: 'Characters',
-            to: `/g/${guildName}/characters`,
-            content: (
-              <ContentCardList
-                noBorder
-                type="grid"
-                items={guild && guild.characters}
-              />
-            ),
-          },
-          {
-            name: 'Logs',
-            to: `/g/${guildName}/logs`,
-            content: <Logs guildName={guildName} />,
-          },
-        ]}
+        tabs={[{
+          name: 'Overview',
+          to: `/g/${guildName}`,
+          ignoreTitle: true,
+          content: (
+            <Overview data={guild} />
+          ),
+        }, {
+          name: 'Members',
+          to: `/g/${guildName}/users`,
+          content: <Members name={guildName} />,
+        }, {
+          name: 'Characters',
+          to: `/g/${guildName}/characters`,
+          content: <Characters name={guildName} />,
+        }, {
+          name: 'Logs',
+          to: `/g/${guildName}/logs`,
+          content: <Logs guildName={guildName} />,
+        }]}
       />
     );
   }

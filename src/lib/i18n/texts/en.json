@@ -84,7 +84,7 @@
   },
   "characters": {
     "name": "Characters",
-    "embedCta": "This is a character chosen at random. You can get an embed just like this on your website! Click the embed icon on any character page.",
+    "embedCta": "This is a character chosen at random. You can get an embed just like this on your website! Click the embed text on any character page.",
     "shown": "Can be seen by everyone",
     "hidden": "Can only be seen by you",
     "done": "Done",

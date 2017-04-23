@@ -119,6 +119,10 @@ export type Guild = {
   favor?: number,
   level?: number,
   members?: Array<User>,
+  leader?: {
+    accountName: string,
+    alias: string,
+  },
 };
 
 export const defaultGuild: Guild = {

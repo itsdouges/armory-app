@@ -19,7 +19,7 @@ const MEMBERS_PER_PAGE = 50;
   fetchMembers: fetchGuildMembers,
 })
 // eslint-disable-next-line
-export default class GuildMembers extends Component {
+export default class GuildCharacters extends Component {
   props: {
     guild?: GuildType,
     fetchMembers: (string, number, number) => Promise<>,
@@ -36,7 +36,7 @@ export default class GuildMembers extends Component {
 
     return (
       <Paginator
-        key="members"
+        key="characters"
         rows={users.rows}
         limit={MEMBERS_PER_PAGE}
         count={users.count}

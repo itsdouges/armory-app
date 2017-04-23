@@ -94,6 +94,7 @@ export type Props = {
   extraSubtitle?: any,
   forceUpdate?: boolean,
   children?: any,
+  inline?: boolean,
 };
 
 const ContentCard = ({

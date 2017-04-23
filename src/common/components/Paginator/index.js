@@ -14,9 +14,10 @@ type Props<T> = {
   rows: Array<T>,
   action: (limit: number, offset: number) => Promise<>,
   children: (item: T, index: number) => Children,
-  containerElement: string,
-  className?: string,
+  containerElement: any,
+  className: string,
   progressComponent: Children,
+  containerProps: { [string]: string },
 };
 
 type State = {
@@ -30,9 +31,11 @@ export default class Paginator extends Component {
   _remove: () => void;
 
   static defaultProps = {
-    containerElement: 'ul',
     children: noop,
     count: 9999,
+    className: '',
+    containerElement: 'ul',
+    containerProps: {},
   };
 
   state: State = {
@@ -80,17 +83,18 @@ export default class Paginator extends Component {
   render () {
     const {
       className,
-      containerElement: Container,
       children,
       rows,
       progressComponent,
+      containerElement: Container,
+      containerProps,
     } = this.props;
 
     const { finished } = this.state;
 
     return (
       <div className={className}>
-        <Container>
+        <Container {...containerProps}>
           {(rows || []).map(children)}
         </Container>
 
