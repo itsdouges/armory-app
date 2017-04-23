@@ -1,16 +1,18 @@
 // @flow
 
-import ContentCard from './';
-import { Link } from 'react-router';
+import LinkContentCard from './Link';
 
 type Props = {
-  content: Object,
+  content?: Object,
 };
 
-const GuildContentCard = ({ content, ...props }: Props) => (
-  <Link to={`/${content.name}`}>
-    <ContentCard type="users" content={content} {...props} />
-  </Link>
+const UserContentCard = ({ content, ...props }: Props) => (
+  <LinkContentCard
+    to={`/${content ? content.name : ''}`}
+    type="users"
+    content={content}
+    {...props}
+  />
 );
 
-export default GuildContentCard;
+export default UserContentCard;

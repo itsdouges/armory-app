@@ -5,20 +5,19 @@ import type { Guild as GuildType } from 'flowTypes';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
+import times from 'lodash/times';
 
 import UserContentCard from 'common/components/ContentCard/User';
-import Progress from 'common/components/Icon/Progress';
-import Paginator from 'common/components/Paginator';
+import PaginatorGrid from 'common/layouts/PaginatorGrid';
 import { selector } from 'features/Guild/guilds.reducer';
 import { fetchGuildMembers } from 'features/Guild/actions';
-import Grid from 'common/layouts/Grid';
 
 const MEMBERS_PER_PAGE = 50;
+const STUB_MEMBERS = { rows: times(MEMBERS_PER_PAGE, () => undefined), count: 9999 };
 
 @connect(selector, {
   fetchMembers: fetchGuildMembers,
 })
-// eslint-disable-next-line
 export default class GuildMembers extends Component {
   props: {
     guild?: GuildType,
@@ -32,25 +31,18 @@ export default class GuildMembers extends Component {
 
   render () {
     const { guild = {}, fetchMembers, name } = this.props;
-    const users = get(guild, 'members', {});
+    const users = get(guild, 'members', STUB_MEMBERS);
 
     return (
-      <Paginator
+      <PaginatorGrid
         key="members"
         rows={users.rows}
         limit={MEMBERS_PER_PAGE}
         count={users.count}
         action={(limit, offset) => fetchMembers(name, limit, offset)}
-        progressComponent={<Progress style={{ display: 'block', margin: '2em auto' }} />}
-        containerElement={Grid}
-        containerProps={{
-          containerElement: 'ul',
-          type: 'col5',
-          fullWidth: true,
-        }}
       >
         {(content) => <UserContentCard content={content} />}
-      </Paginator>
+      </PaginatorGrid>
     );
   }
 }

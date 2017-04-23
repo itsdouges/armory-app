@@ -8,16 +8,16 @@ import withinViewport from 'withinviewport';
 import { addEvent } from 'lib/dom';
 import noop from 'lodash/noop';
 
-type Props<T> = {
+export type Props<T> = {
   limit: number,
   count: number,
   rows: Array<T>,
-  action: (limit: number, offset: number) => Promise<>,
-  children: (item: T, index: number) => Children,
-  containerElement: any,
-  className: string,
-  progressComponent: Children,
-  containerProps: { [string]: string },
+  action: (limit: number, offset: number) => Promise<*>,
+  children?: (item: T, index: number) => Children,
+  progressComponent?: Children,
+  containerElement?: string,
+  className?: string,
+  containerClassName?: string,
 };
 
 type State = {
@@ -34,6 +34,7 @@ export default class Paginator extends Component {
     children: noop,
     count: 9999,
     className: '',
+    containerClassName: '',
     containerElement: 'ul',
     containerProps: {},
   };
@@ -86,16 +87,16 @@ export default class Paginator extends Component {
       children,
       rows,
       progressComponent,
-      containerElement: Container,
-      containerProps,
+      containerElement: Container = 'ul',
+      containerClassName,
     } = this.props;
 
     const { finished } = this.state;
 
     return (
       <div className={className}>
-        <Container {...containerProps}>
-          {(rows || []).map(children)}
+        <Container className={containerClassName || ''}>
+          {(rows || []).map(children || noop)}
         </Container>
 
         {!finished && (

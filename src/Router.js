@@ -35,6 +35,7 @@ const Routes = () => (
       <Redirect from="/leaderboards" to="/leaderboards/pvp" />
       <Redirect from="/me/*" to="/settings" />
       <Redirect from="/g/:guildName/" to="/g/:guildName" />
+      <Redirect from="/g/:guildName/users" to="/g/:guildName/members" />
       <Redirect from="/g/:guildName(/:subRoute)/" to="/g/:guildName(/:subRoute)" />
       <Redirect from="/:alias/" to="/:alias" />
       <Redirect from="/:alias/c" to="/:alias/characters" />

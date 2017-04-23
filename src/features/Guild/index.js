@@ -81,7 +81,7 @@ export default class Guild extends Component {
           ),
         }, {
           name: 'Members',
-          to: `/g/${guildName}/users`,
+          to: `/g/${guildName}/members`,
           content: <Members name={guildName} />,
         }, {
           name: 'Characters',
