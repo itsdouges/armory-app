@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
-## [4.14.0][] - 2017-04-24
+## [4.14.1][] - 2017-04-24
 ### Fixed
 - Specializations inner container from having `margin: 0 auto` nested away
 

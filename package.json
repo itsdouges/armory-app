@@ -20,8 +20,8 @@
     "tdd": "npm run unit -- -w",
     "coverage": "BABEL_ENV=test nyc npm run unit",
     "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "preversion": "npm test && npm run changelog",
-    "changelog": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
+    "preversion": "npm test",
+    "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
