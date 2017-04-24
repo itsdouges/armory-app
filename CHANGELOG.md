@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Specializations inner container from having `margin: 0 auto` nested away
 
 ## [4.14.0][] - 2017-04-20
 ### Added
