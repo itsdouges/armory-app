@@ -46,7 +46,7 @@ export default class Paginator extends Component {
 
   componentWillMount () {
     const { limit } = this.props;
-    this.props.action(limit, 0);
+    this.props.action(limit, 0).then(this.paginate);
   }
 
   componentDidMount () {

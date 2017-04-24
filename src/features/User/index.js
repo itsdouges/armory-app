@@ -1,5 +1,7 @@
 // @flow
 
+import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
+
 import { Component, PropTypes } from 'react';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
@@ -8,20 +10,22 @@ import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 import T from 'i18n-react';
 import { Link } from 'react-router';
+import times from 'lodash/times';
 import startCase from 'lodash/startCase';
 
+import PaginatorGrid from 'common/layouts/PaginatorGrid';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Button from 'common/components/Button';
 import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
-import ContentCardList from 'common/components/ContentCardList';
+import GuildContentCard from 'common/components/ContentCard/Guild';
 
 import styles from './styles.less';
 import PvpGame from './components/PvpGame';
 import Overview from './components/Overview';
 import Characters from './components/Characters';
 
-import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
+const STUB_GUILDS = times(4, () => undefined);
 
 import {
   fetchUser,
@@ -177,13 +181,15 @@ export default class User extends Component {
           to: `/${alias}/guilds`,
           name: T.translate('guilds.name'),
           content: (
-            <ContentCardList
-              noBorder
-              type="grid"
-              alias={alias}
-              resource="guilds"
-              items={guilds}
-            />
+            <PaginatorGrid
+              key="guilds"
+              rows={guilds || STUB_GUILDS}
+              limit={0}
+              count={0}
+              action={() => Promise.resolve()}
+            >
+              {(content) => <GuildContentCard content={content} />}
+            </PaginatorGrid>
           ),
         }, {
           to: `/${alias}/matches`,
