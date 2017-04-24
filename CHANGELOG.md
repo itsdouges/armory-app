@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Travis ci node version to `7.9.0`
 
 ## [4.14.1][] - 2017-04-24
 ### Fixed
