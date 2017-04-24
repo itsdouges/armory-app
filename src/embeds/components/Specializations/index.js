@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 import actions from 'features/Gw2/actions';
 import Specialization from 'features/Character/components/Specialization';
 
-import styles from './styles.less';
-
 function mapStateToProps (state) {
   return {
     specializations: state.specializations,
@@ -49,7 +47,6 @@ export default class SkillsEmbed extends Component {
           <Specialization
             data={spec}
             key={spec.id}
-            className={styles.skill}
             specializations={specializations}
             traits={traits}
           />

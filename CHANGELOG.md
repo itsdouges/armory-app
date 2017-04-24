@@ -16,6 +16,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 - English embed cta to mention text instead of icon
 
+## [4.14.2][] - 2017-04-24
+### Changed
+- Travis ci node version to `7.9.0`
+
+## [4.14.1][] - 2017-04-24
+### Fixed
+- Specializations inner container from having `margin: 0 auto` nested away
+
 ## [4.14.0][] - 2017-04-20
 ### Added
 - Ability to set embed size
@@ -638,5 +646,7 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.14.0...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.14.2...HEAD
+[4.14.2]: https://github.com/madou/armory-react/compare/v4.14.0...v4.14.2
+[4.14.0]: https://github.com/madou/armory-react/compare/v4.14.0...v4.14.0
 [4.14.0]: https://github.com/madou/armory-react/tree/v4.14.0
