@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.14.0][] - 2017-04-24
 ### Fixed
 - Specializations inner container from having `margin: 0 auto` nested away
 
@@ -632,4 +634,5 @@ At a later date a embed generator page will be made to help with the creation of
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
 [Unreleased]: https://github.com/madou/armory-react/compare/v4.14.0...HEAD
+[4.14.0]: https://github.com/madou/armory-react/compare/v4.14.0...v4.14.0
 [4.14.0]: https://github.com/madou/armory-react/tree/v4.14.0
