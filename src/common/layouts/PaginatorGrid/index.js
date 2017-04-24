@@ -11,7 +11,7 @@ const PaginatorGrid = ({ children, ...props }: Props<*>) => (
   <Paginator
     {...props}
     progressComponent={<Progress style={{ display: 'block', margin: '2em auto' }} />}
-    containerClassName={cx(styles.root, styles.col5)}
+    containerClassName={cx(styles.root, styles.col5, styles.fullWidth)}
   >
     {children}
   </Paginator>
