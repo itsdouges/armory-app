@@ -42,7 +42,7 @@ export default class UserCharacters extends Component {
         count={characters.count}
         action={(limit, offset) => fetchCharacters(alias, limit, offset)}
       >
-        {(content) => <CharacterContentCard content={content} />}
+        {(content) => <CharacterContentCard aliasOverride={alias} content={content} />}
       </PaginatorGrid>
     );
   }

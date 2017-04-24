@@ -10,8 +10,8 @@ type Props = {
 const str = (s) => s || '';
 
 const makeUrl = (content, aliasOverride) => {
-  const alias = aliasOverride || (content && (content.alias || content.CharacterAlias));
-  return `${str(alias)}/c/${str(content && content.name)}`;
+  const alias = aliasOverride || (content && (content.alias || content.userAlias));
+  return `/${str(alias)}/c/${str(content && content.name)}`;
 };
 
 const CharacterContentCard = ({ content, aliasOverride, ...props }: Props) => (
