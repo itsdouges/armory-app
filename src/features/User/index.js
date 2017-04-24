@@ -19,6 +19,7 @@ import ContentCardList from 'common/components/ContentCardList';
 import styles from './styles.less';
 import PvpGame from './components/PvpGame';
 import Overview from './components/Overview';
+import Characters from './components/Characters';
 
 import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
 
@@ -171,14 +172,7 @@ export default class User extends Component {
         }, {
           to: `/${alias}/characters`,
           name: 'Characters',
-          content: (
-            <ContentCardList
-              noBorder
-              type="grid"
-              alias={alias}
-              items={user && user.characters}
-            />
-          ),
+          content: <Characters alias={alias} />,
         }, {
           to: `/${alias}/guilds`,
           name: T.translate('guilds.name'),

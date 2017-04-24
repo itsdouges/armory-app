@@ -1,28 +1,30 @@
 // @flow
 
-import type { Guild as GuildType } from 'flowTypes';
-
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import get from 'lodash/get';
 import times from 'lodash/times';
 
 import CharacterContentCard from 'common/components/ContentCard/Character';
 import PaginatorGrid from 'common/layouts/PaginatorGrid';
-import { selector } from 'features/Guild/guilds.reducer';
-import { fetchGuildCharacters } from 'features/Guild/actions';
+import { fetchUserCharacters } from 'features/User/actions';
 
 const CHARACTERS_PER_PAGE = 50;
 const STUB_CHARACTERS = { rows: times(CHARACTERS_PER_PAGE, () => undefined), count: 9999 };
 
-@connect(selector, {
-  fetchCharacters: fetchGuildCharacters,
+function mapStateToProps (state) {
+  return {
+    characters: (state.users.data[state.users.selected] || {}).characters,
+  };
+}
+
+@connect(mapStateToProps, {
+  fetchCharacters: fetchUserCharacters,
 })
-export default class GuildCharacters extends Component {
+export default class UserCharacters extends Component {
   props: {
-    guild?: GuildType,
+    characters?: Object,
     fetchCharacters: (string, number, number) => Promise<>,
-    name: string,
+    alias: string,
   };
 
   static defaultProps = {
@@ -30,16 +32,15 @@ export default class GuildCharacters extends Component {
   };
 
   render () {
-    const { guild = {}, fetchCharacters, name } = this.props;
-    const users = get(guild, 'characters', STUB_CHARACTERS);
+    const { characters = STUB_CHARACTERS, fetchCharacters, alias } = this.props;
 
     return (
       <PaginatorGrid
         key="characters"
-        rows={users.rows}
+        rows={characters.rows}
         limit={CHARACTERS_PER_PAGE}
-        count={users.count}
-        action={(limit, offset) => fetchCharacters(name, limit, offset)}
+        count={characters.count}
+        action={(limit, offset) => fetchCharacters(alias, limit, offset)}
       >
         {(content) => <CharacterContentCard content={content} />}
       </PaginatorGrid>

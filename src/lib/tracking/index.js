@@ -17,7 +17,7 @@ export function pageView () {
 }
 
 export function conversion () {
-  window.google_trackConversion({
+  window.google_trackConversion && window.google_trackConversion({
     google_conversion_id: 864486098,
     google_conversion_language: 'en',
     google_conversion_format: '3',

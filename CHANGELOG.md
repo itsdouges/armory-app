@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - English embed cta to mention text instead of icon
+- Site not working with adblock
 
 ## [4.14.2][] - 2017-04-24
 ### Changed

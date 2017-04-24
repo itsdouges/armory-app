@@ -10,6 +10,7 @@ export const SELECT_GUILD = 'SELECT_GUILD';
 export const FETCH_GUILD_RESULT = 'FETCH_GUILD_RESULT';
 export const FETCH_GUILD_LOGS = 'FETCH_GUILD_LOGS';
 export const FETCH_GUILD_MEMBERS = 'FETCH_GUILD_MEMBERS';
+export const FETCH_GUILD_CHARACTERS = 'FETCH_GUILD_CHARACTERS';
 
 const fetchingGuild = (fetching: boolean) => ({
   type: FETCHING_GUILD,
@@ -45,6 +46,14 @@ const fetchGuildMembersResult = (name: string, data) => ({
   },
 });
 
+const fetchGuildCharactersResult = (name: string, data) => ({
+  type: FETCH_GUILD_CHARACTERS,
+  payload: {
+    name,
+    data,
+  },
+});
+
 export const fetchGuildLogs = (name: string) => (dispatch: Dispatch) => axios
   .get(`${config.api.endpoint}guilds/${name}/logs`)
   .then((response) => {
@@ -63,6 +72,20 @@ export function fetchGuildMembers (name: string, limit: number, offset: number) 
       dispatch(fetchGuildMembersResult(name, response.data));
     });
   }, `guilds[${name}].members`, limit, offset);
+}
+
+export function fetchGuildCharacters (name: string, limit: number, offset: number) {
+  return paginatedThunk((dispatch: Dispatch) => {
+    return axios.get(`${config.api.endpoint}guilds/${name}/characters`, {
+      params: {
+        limit,
+        offset,
+      },
+    })
+    .then((response) => {
+      dispatch(fetchGuildCharactersResult(name, response.data));
+    });
+  }, `guilds[${name}].characters`, limit, offset);
 }
 
 export const fetchGuild = (name: string) => (dispatch: Dispatch) => {
