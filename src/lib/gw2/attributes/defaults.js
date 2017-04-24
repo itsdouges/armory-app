@@ -1,6 +1,5 @@
 const defaults = {
   power: 0,
-  necromancer: 0,
   toughness: 0,
   armor: 0,
   vitality: 0,
@@ -16,7 +15,6 @@ const defaults = {
   concentration: 0,
   boonDuration: 0,
   agonyResistance: 0,
-  magic: 0,
 };
 
 export default defaults;

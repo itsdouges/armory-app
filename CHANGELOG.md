@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - English embed cta to mention text instead of icon
 - Site not working with adblock
 
+### Removed
+- Magic find and profession attributes
+
 ## [4.14.2][] - 2017-04-24
 ### Changed
 - Travis ci node version to `7.9.0`
