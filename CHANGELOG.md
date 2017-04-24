@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Pagination to user characters
 - Pagination to leaderboards
 - Guild leader to guild page
+- Placeholder logs for guilds
 
 ### Fixed
 - English embed cta to mention text instead of icon
