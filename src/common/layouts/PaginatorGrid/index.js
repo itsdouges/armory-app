@@ -10,21 +10,17 @@ import Grid from 'common/layouts/Grid';
 
 import styles from './styles.less';
 
-function renderContainer (children) {
-  return (
-    <Grid type="col5" fullWidth containerElement="ul">
-      {children}
-    </Grid>
-  );
-}
+const renderContainer = (children) => (
+  <Grid type="col5" fullWidth containerElement="ul">
+    {children}
+  </Grid>
+);
 
-function renderButton (onClick) {
-  return (
-    <Button type="cta" onClick={onClick} className={styles.loadMore}>
-      {T.translate('words.loadMore')}
-    </Button>
-  );
-}
+const renderButton = (onClick) => (
+  <Button type="cta" onClick={onClick} className={styles.loadMore}>
+    {T.translate('words.loadMore')}
+  </Button>
+);
 
 const PaginatorGrid = ({ children, ...props }: BaseProps<*>) => (
   <Paginator

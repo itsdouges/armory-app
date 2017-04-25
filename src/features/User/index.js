@@ -65,6 +65,7 @@ function getActiveStanding ({ pvpStandings = [] } = {}, pvpSeasons) {
 }
 
 const addHash = (str) => (str ? `#${str}` : '-');
+const makeKey = (content, index) => (content ? content.name : index);
 
 @connect(selector, {
   dispatchFetchUser: fetchUser,
@@ -188,7 +189,7 @@ export default class User extends Component {
               count={0}
               action={() => Promise.resolve()}
             >
-              {(content) => <GuildContentCard content={content} />}
+              {(content, index) => <GuildContentCard key={makeKey(content, index)} content={content} />}
             </PaginatorGrid>
           ),
         }, {

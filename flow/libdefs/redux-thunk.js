@@ -1,3 +1,3 @@
 // @flow
 
-declare type ReduxThunk = (dispatch: Dispatch, getState: () => {}) => {};
+declare type ReduxThunk = (dispatch: Dispatch, getState: () => ReduxState) => {};

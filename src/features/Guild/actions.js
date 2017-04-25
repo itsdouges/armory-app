@@ -71,7 +71,7 @@ export function fetchGuildMembers (name: string, limit: number, offset: number) 
     .then((response) => {
       dispatch(fetchGuildMembersResult(name, response.data));
     });
-  }, `guilds[${name}].members`, limit, offset);
+  }, `guilds.data[${name}].members`, limit, offset);
 }
 
 export function fetchGuildCharacters (name: string, limit: number, offset: number) {
@@ -85,7 +85,7 @@ export function fetchGuildCharacters (name: string, limit: number, offset: numbe
     .then((response) => {
       dispatch(fetchGuildCharactersResult(name, response.data));
     });
-  }, `guilds[${name}].characters`, limit, offset);
+  }, `guilds.data[${name}].characters`, limit, offset);
 }
 
 export const fetchGuild = (name: string) => (dispatch: Dispatch) => {

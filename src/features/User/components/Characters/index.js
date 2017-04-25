@@ -11,6 +11,8 @@ import { fetchUserCharacters } from 'features/User/actions';
 const CHARACTERS_PER_PAGE = 50;
 const STUB_CHARACTERS = { rows: times(CHARACTERS_PER_PAGE, () => undefined), count: 9999 };
 
+const makeKey = (content, index) => (content ? content.name : index);
+
 function mapStateToProps (state) {
   return {
     characters: (state.users.data[state.users.selected] || {}).characters,
@@ -42,7 +44,7 @@ export default class UserCharacters extends Component {
         count={characters.count}
         action={(limit, offset) => fetchCharacters(alias, limit, offset)}
       >
-        {(content) => <CharacterContentCard aliasOverride={alias} content={content} />}
+        {(content, index) => <CharacterContentCard key={makeKey(content, index)} aliasOverride={alias} content={content} />}
       </PaginatorGrid>
     );
   }

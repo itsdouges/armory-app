@@ -15,6 +15,8 @@ import { fetchGuildCharacters } from 'features/Guild/actions';
 const CHARACTERS_PER_PAGE = 50;
 const STUB_CHARACTERS = { rows: times(CHARACTERS_PER_PAGE, () => undefined), count: 9999 };
 
+const makeKey = (content, index) => (content ? content.name : index);
+
 @connect(selector, {
   fetchCharacters: fetchGuildCharacters,
 })
@@ -41,7 +43,7 @@ export default class GuildCharacters extends Component {
         count={users.count}
         action={(limit, offset) => fetchCharacters(name, limit, offset)}
       >
-        {(content) => <CharacterContentCard content={content} />}
+        {(content, index) => <CharacterContentCard key={makeKey(content, index)} content={content} />}
       </PaginatorGrid>
     );
   }

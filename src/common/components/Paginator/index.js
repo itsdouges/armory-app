@@ -38,7 +38,7 @@ const renderDefaultButton = (onClick) => <button onClick={onClick}>Load More</bu
 export default class Paginator extends Component {
   props: Props<*>;
   _container: HTMLElement;
-  _remove: () => void;
+  _remove: ?() => void;
 
   static defaultProps = {
     children: noop,
@@ -53,12 +53,26 @@ export default class Paginator extends Component {
   };
 
   componentWillMount () {
-    const { limit } = this.props;
-    this.props.action(limit, 0);
+    this.props.action(this.props.limit, 0);
+    this.checkIfFinished(this.props);
+  }
+
+  componentWillReceiveProps (nextProps: Props<*>) {
+    this.checkIfFinished(nextProps);
   }
 
   componentWillUnmount () {
-    this._remove();
+    this._remove && this._remove();
+  }
+
+  checkIfFinished (props: Props<*>) {
+    if (props.rows.length >= props.count) {
+      this.setState({
+        finished: true,
+      });
+
+      this._remove && this._remove();
+    }
   }
 
   initialize = () => {
@@ -66,7 +80,7 @@ export default class Paginator extends Component {
       infiniteScroll: true,
     });
 
-    this._remove = addEvent('scroll', throttle(this.paginate, 50));
+    this._remove = addEvent('scroll', throttle(() => this.paginate(false), 50));
     this.paginate(true);
   };
 
@@ -84,12 +98,6 @@ export default class Paginator extends Component {
         action(limit, rows.length).then(() => this.setState({
           loading: false,
         }));
-      } else {
-        this.setState({
-          finished: true,
-        });
-
-        this._remove();
       }
     }
   };
@@ -111,7 +119,7 @@ export default class Paginator extends Component {
       <div className={className}>
         {renderContainer(childComponents)}
 
-        {infiniteScroll || renderButton(this.initialize)}
+        {!finished && !infiniteScroll && renderButton(this.initialize)}
 
         {!finished && infiniteScroll && (
           <div ref={(c) => (this._container = c)}>

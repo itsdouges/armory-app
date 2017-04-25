@@ -15,6 +15,8 @@ import { fetchGuildMembers } from 'features/Guild/actions';
 const MEMBERS_PER_PAGE = 50;
 const STUB_MEMBERS = { rows: times(MEMBERS_PER_PAGE, () => undefined), count: 9999 };
 
+const makeKey = (content, index) => (content ? content.accountName : index);
+
 @connect(selector, {
   fetchMembers: fetchGuildMembers,
 })
@@ -41,7 +43,7 @@ export default class GuildMembers extends Component {
         count={users.count}
         action={(limit, offset) => fetchMembers(name, limit, offset)}
       >
-        {(content) => <UserContentCard content={content} />}
+        {(content, index) => <UserContentCard key={makeKey(content, index)} content={content} />}
       </PaginatorGrid>
     );
   }
