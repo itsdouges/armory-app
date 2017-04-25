@@ -13,8 +13,9 @@ import ContentCard from 'common/components/ContentCard';
 import Paginator from 'common/components/Paginator';
 import { fetchPvpLeaderboard } from '../../actions';
 import styles from './styles.less';
+import { renderButton } from 'common/layouts/PaginatorGrid';
 
-const STANDINGS_PER_PAGE = 50;
+const STANDINGS_PER_PAGE = 30;
 const STUB_STANDINGS = { rows: times(STANDINGS_PER_PAGE, () => undefined), count: 9999 };
 
 function buildContent (standing, rank) {
@@ -90,7 +91,8 @@ export default class PvpLeaderboard extends Component {
           count={pvpLeaderboard.count}
           action={(limit, offset) => fetchLeaderboard(region, limit, offset)}
           progressComponent={<Progress className={styles.progress} />}
-          containerElement="ol"
+          renderContainer={(children) => <ol>{children}</ol>}
+          renderButton={renderButton}
         >
           {this.renderStanding}
         </Paginator>

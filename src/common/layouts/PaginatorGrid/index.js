@@ -16,7 +16,7 @@ const renderContainer = (children) => (
   </Grid>
 );
 
-const renderButton = (onClick) => (
+export const renderButton = (onClick: Function) => (
   <Button type="cta" onClick={onClick} className={styles.loadMore}>
     {T.translate('words.loadMore')}
   </Button>
