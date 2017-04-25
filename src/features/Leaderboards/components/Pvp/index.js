@@ -91,7 +91,7 @@ export default class PvpLeaderboard extends Component {
           count={pvpLeaderboard.count}
           action={(limit, offset) => fetchLeaderboard(region, limit, offset)}
           progressComponent={<Progress className={styles.progress} />}
-          renderContainer={(children) => <ol>{children}</ol>}
+          renderContainer={({ children }) => <ol>{children}</ol>}
           renderButton={renderButton}
         >
           {this.renderStanding}
