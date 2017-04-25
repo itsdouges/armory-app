@@ -185,7 +185,8 @@
     "rank": "Rank",
     "optional": "Optional",
     "dismiss": "Dismiss",
-    "embed": "Embed"
+    "embed": "Embed",
+    "loadMore": "Load More"
   },
   "leaderboards": {
     "name": "Leaderboards"
