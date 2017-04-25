@@ -1,6 +1,7 @@
 // @flow
 
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import times from 'lodash/times';
 
@@ -29,22 +30,36 @@ export default class UserCharacters extends Component {
     alias: string,
   };
 
+  static contextTypes = {
+    _userAlias: PropTypes.string,
+  };
+
   static defaultProps = {
     fetchCharacters: () => Promise.resolve(),
   };
 
+  fetchCharacters = (limit: number, offset: number) => {
+    const { alias, fetchCharacters } = this.props;
+    return fetchCharacters(alias, limit, offset, { ignoreAuth: this.context._userAlias !== alias });
+  };
+
+  renderCard = (content: Object, index: number) => {
+    const { alias } = this.props;
+    return <CharacterContentCard key={makeKey(content, index)} aliasOverride={alias} content={content} />;
+  };
+
   render () {
-    const { characters = STUB_CHARACTERS, fetchCharacters, alias } = this.props;
+    const { characters = STUB_CHARACTERS } = this.props;
 
     return (
       <PaginatorGrid
         key="characters"
         rows={characters.rows}
         limit={CHARACTERS_PER_PAGE}
-        count={characters.count}
-        action={(limit, offset) => fetchCharacters(alias, limit, offset, { ignoreAuth: this.context._userAlias !== alias })}
+        count={-1}
+        action={this.fetchCharacters}
       >
-        {(content, index) => <CharacterContentCard key={makeKey(content, index)} aliasOverride={alias} content={content} />}
+        {this.renderCard}
       </PaginatorGrid>
     );
   }

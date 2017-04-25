@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import startCase from 'lodash/startCase';
 import includes from 'lodash/includes';
 import get from 'lodash/get';

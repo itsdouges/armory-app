@@ -1,6 +1,7 @@
 // @flow
 
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 import { Link } from 'react-router';
@@ -45,6 +46,10 @@ type Props = {
 })
 export default class Character extends Component {
   props: Props;
+
+  static contextTypes = {
+    _userAlias: PropTypes.string,
+  };
 
   componentWillMount () {
     this.loadCharacter();

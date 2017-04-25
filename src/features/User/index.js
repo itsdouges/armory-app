@@ -2,7 +2,8 @@
 
 import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
 
-import { Component, PropTypes } from 'react';
+import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import get from 'lodash/get';

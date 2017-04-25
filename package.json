@@ -36,6 +36,7 @@
     "lz-string": "^1.4.4",
     "moment": "^2.15.2",
     "normalize.css": "^4.2.0",
+    "prop-types": "^15.5.8",
     "react": "^15.3.0",
     "react-dom": "^15.4.2",
     "react-helmet": "^4.0.0",
