@@ -14,6 +14,7 @@ export type BaseProps<T> = {
   rows: Array<T>,
   action: (limit: number, offset: number) => Promise<*>,
   children?: (item: T, index: number) => Children,
+  initialOffset?: number,
 };
 
 export type ButtonProps = {
@@ -45,6 +46,7 @@ const renderDefaultButton = (props: ButtonProps) => <button onClick={props.onCli
 
 export default class Paginator extends Component {
   props: Props<*>;
+  _loading: boolean;
   _container: HTMLElement;
   _remove: ?() => void;
 
@@ -52,6 +54,7 @@ export default class Paginator extends Component {
     children: noop,
     count: 9999,
     className: '',
+    initialOffset: 0,
   };
 
   state: State = {
@@ -61,7 +64,7 @@ export default class Paginator extends Component {
   };
 
   componentWillMount () {
-    this.props.action(this.props.limit, 0);
+    this.props.action(this.props.limit, this.props.initialOffset);
     this.checkIfFinished(this.props);
   }
 
@@ -80,6 +83,7 @@ export default class Paginator extends Component {
       });
 
       this._remove && this._remove();
+      delete this._remove;
     }
   }
 
@@ -93,19 +97,17 @@ export default class Paginator extends Component {
   };
 
   paginate = (force: boolean) => {
-    const { loading, finished } = this.state;
+    const { finished } = this.state;
 
-    if (!finished && !loading && (force || withinViewport(this._container))) {
+    if (!finished && !this._loading && (force || withinViewport(this._container))) {
       const { action, limit, count, rows } = this.props;
 
       if (rows.length < count) {
-        this.setState({
-          loading: true,
-        });
+        this._loading = true;
 
-        action(limit, rows.length).then(() => this.setState({
-          loading: false,
-        }));
+        action(limit, rows.length).then(() => {
+          this._loading = false;
+        });
       }
     }
   };
