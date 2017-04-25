@@ -18,7 +18,7 @@ const Home = () => (
     <div className={styles.introBackground}>
       <Container className={styles.atfContainer}>
         <Introduction className={styles.introContainer} />
-        <RandomCharacter />
+        <RandomCharacter type="ofTheDay" />
       </Container>
     </div>
 

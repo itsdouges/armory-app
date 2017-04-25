@@ -1,17 +1,37 @@
 // @flow
 
-import type { Props } from 'common/components/Paginator';
+import type { BaseProps } from 'common/components/Paginator';
 
-import cx from 'classnames';
-import styles from 'common/layouts/Grid/styles.less';
+import T from 'i18n-react';
 import Paginator from 'common/components/Paginator';
+import Button from 'common/components/Button';
 import Progress from 'common/components/Icon/Progress';
+import Grid from 'common/layouts/Grid';
 
-const PaginatorGrid = ({ children, ...props }: Props<*>) => (
+import styles from './styles.less';
+
+function renderContainer (children) {
+  return (
+    <Grid type="col5" fullWidth containerElement="ul">
+      {children}
+    </Grid>
+  );
+}
+
+function renderButton (onClick) {
+  return (
+    <Button type="cta" onClick={onClick} className={styles.loadMore}>
+      {T.translate('words.loadMore')}
+    </Button>
+  );
+}
+
+const PaginatorGrid = ({ children, ...props }: BaseProps<*>) => (
   <Paginator
     {...props}
-    progressComponent={<Progress style={{ display: 'block', margin: '2em auto' }} />}
-    containerClassName={cx(styles.root, styles.col5, styles.fullWidth)}
+    renderContainer={renderContainer}
+    renderButton={renderButton}
+    progressComponent={<Progress className={styles.progress} />}
   >
     {children}
   </Paginator>

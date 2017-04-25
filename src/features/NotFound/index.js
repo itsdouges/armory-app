@@ -13,7 +13,7 @@ const NotFound = () => (
     <Head title="Uh Oh!" />
     <h2>{T.translate('messages.notFound')}</h2>
     <p>{T.translate('messages.resourceNotFound')}</p>
-    <RandomCharacter />
+    <RandomCharacter type="random" />
     <br />
     <br />
   </Container>

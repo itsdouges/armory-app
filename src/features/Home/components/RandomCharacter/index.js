@@ -12,13 +12,22 @@ import Tooltip from 'common/components/Tooltip';
 
 import styles from './styles.less';
 
+
 export default class RandomCharacter extends Component {
+  props: {
+    type: 'ofTheDay' | 'random',
+  };
+
   state = {
     name: '',
   };
 
   componentDidMount () {
-    axios.get(`${config.api.endpoint}of-the-day/characters`, {
+    const resource = this.props.type === 'ofTheDay'
+      ? 'of-the-day/characters'
+      : 'random/characters/1';
+
+    axios.get(`${config.api.endpoint}${resource}`, {
       ignoreAuth: true,
     })
     .then(({ data }) => this.setState({ name: data[0] }));

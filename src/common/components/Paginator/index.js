@@ -8,22 +8,32 @@ import withinViewport from 'withinviewport';
 import { addEvent } from 'lib/dom';
 import noop from 'lodash/noop';
 
-export type Props<T> = {
+export type BaseProps<T> = {
   limit: number,
   count: number,
   rows: Array<T>,
   action: (limit: number, offset: number) => Promise<*>,
   children?: (item: T, index: number) => Children,
-  progressComponent?: Children,
-  containerElement?: string,
-  className?: string,
-  containerClassName?: string,
 };
+
+export type ExtraProps<T> = BaseProps<T> & {
+  className?: string,
+  progressComponent?: Children,
+  infiniteScroll?: boolean,
+  renderContainer?: (children: Children) => Children,
+  renderButton?: (onClick: Function) => Children,
+};
+
+type Props<T> = BaseProps<T> & ExtraProps<T>;
 
 type State = {
   loading: boolean,
   finished: boolean,
+  infiniteScroll: boolean,
 };
+
+const renderDefaultContainer = (children) => <ul>{children}</ul>;
+const renderDefaultButton = (onClick) => <button onClick={onClick}>Load More</button>;
 
 export default class Paginator extends Component {
   props: Props<*>;
@@ -34,33 +44,36 @@ export default class Paginator extends Component {
     children: noop,
     count: 9999,
     className: '',
-    containerClassName: '',
-    containerElement: 'ul',
-    containerProps: {},
   };
 
   state: State = {
     loading: false,
     finished: false,
+    infiniteScroll: this.props.infiniteScroll || false,
   };
 
   componentWillMount () {
     const { limit } = this.props;
-    this.props.action(limit, 0).then(this.paginate);
-  }
-
-  componentDidMount () {
-    this._remove = addEvent('scroll', throttle(this.paginate, 50));
+    this.props.action(limit, 0);
   }
 
   componentWillUnmount () {
     this._remove();
   }
 
-  paginate = () => {
+  initialize = () => {
+    this.setState({
+      infiniteScroll: true,
+    });
+
+    this._remove = addEvent('scroll', throttle(this.paginate, 50));
+    this.paginate(true);
+  };
+
+  paginate = (force: boolean) => {
     const { loading, finished } = this.state;
 
-    if (!finished && !loading && withinViewport(this._container)) {
+    if (!finished && !loading && (force || withinViewport(this._container))) {
       const { action, limit, count, rows } = this.props;
 
       if (rows.length < count) {
@@ -87,19 +100,20 @@ export default class Paginator extends Component {
       children,
       rows,
       progressComponent,
-      containerElement: Container = 'ul',
-      containerClassName,
+      renderContainer = renderDefaultContainer,
+      renderButton = renderDefaultButton,
     } = this.props;
 
-    const { finished } = this.state;
+    const { finished, infiniteScroll } = this.state;
+    const childComponents = (rows || []).map(children || noop);
 
     return (
       <div className={className}>
-        <Container className={containerClassName || ''}>
-          {(rows || []).map(children || noop)}
-        </Container>
+        {renderContainer(childComponents)}
 
-        {!finished && (
+        {infiniteScroll || renderButton(this.initialize)}
+
+        {!finished && infiniteScroll && (
           <div ref={(c) => (this._container = c)}>
             {progressComponent}
           </div>
