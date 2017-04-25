@@ -16,12 +16,20 @@ export type BaseProps<T> = {
   children?: (item: T, index: number) => Children,
 };
 
+export type ButtonProps = {
+  onClick: Function,
+};
+
+export type ContainerProps = {
+  children: Children,
+};
+
 export type ExtraProps<T> = BaseProps<T> & {
   className?: string,
   progressComponent?: Children,
   infiniteScroll?: boolean,
-  renderContainer?: (children: Children) => Children,
-  renderButton?: (onClick: Function) => Children,
+  renderContainer?: (props: ContainerProps) => Children,
+  renderButton?: (props: ButtonProps) => Children,
 };
 
 type Props<T> = BaseProps<T> & ExtraProps<T>;
@@ -32,8 +40,8 @@ type State = {
   infiniteScroll: boolean,
 };
 
-const renderDefaultContainer = (children) => <ul>{children}</ul>;
-const renderDefaultButton = (onClick) => <button onClick={onClick}>Load More</button>;
+const renderDefaultContainer = (props: ContainerProps) => <ul>{props.children}</ul>;
+const renderDefaultButton = (props: ButtonProps) => <button onClick={props.onClick}>Load More</button>;
 
 export default class Paginator extends Component {
   props: Props<*>;
@@ -117,9 +125,9 @@ export default class Paginator extends Component {
 
     return (
       <div className={className}>
-        {renderContainer(childComponents)}
+        {renderContainer({ children: childComponents })}
 
-        {!finished && !infiniteScroll && renderButton(this.initialize)}
+        {!finished && !infiniteScroll && renderButton({ onClick: this.initialize })}
 
         {!finished && infiniteScroll && (
           <div ref={(c) => (this._container = c)}>

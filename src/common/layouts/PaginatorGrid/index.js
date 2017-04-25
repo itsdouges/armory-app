@@ -1,6 +1,6 @@
 // @flow
 
-import type { BaseProps } from 'common/components/Paginator';
+import type { BaseProps, ButtonProps, ContainerProps } from 'common/components/Paginator';
 
 import T from 'i18n-react';
 import Paginator from 'common/components/Paginator';
@@ -10,14 +10,14 @@ import Grid from 'common/layouts/Grid';
 
 import styles from './styles.less';
 
-const renderContainer = (children) => (
+const renderContainer = (props: ContainerProps) => (
   <Grid type="col5" fullWidth containerElement="ul">
-    {children}
+    {props.children}
   </Grid>
 );
 
-export const renderButton = (onClick: Function) => (
-  <Button type="cta" onClick={onClick} className={styles.loadMore}>
+export const renderButton = (props: ButtonProps) => (
+  <Button type="cta" onClick={props.onClick} className={styles.loadMore}>
     {T.translate('words.loadMore')}
   </Button>
 );
