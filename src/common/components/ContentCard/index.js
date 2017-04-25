@@ -6,7 +6,7 @@ import cx from 'classnames';
 import T from 'i18n-react';
 
 import Icon from 'common/components/Icon';
-import Placeholder from './placeholder';
+import Placeholder from './Placeholder';
 import colours from 'common/styles/colours';
 
 type CardData = {
@@ -94,6 +94,7 @@ export type Props = {
   extraSubtitle?: any,
   forceUpdate?: boolean,
   children?: any,
+  inline?: boolean,
 };
 
 const ContentCard = ({

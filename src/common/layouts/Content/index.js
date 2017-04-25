@@ -38,13 +38,12 @@ const Content = ({
 
     <DisplayAd className={styles.ad} />
 
-    <div className={styles.heroBg}>
-
+    <header className={styles.heroBg}>
       <Container className={cx(styles.inner)}>
         <ContentCard {...props} size="big">{cardExtra}</ContentCard>
         {extraContent}
       </Container>
-    </div>
+    </header>
 
     {tabs && <Tabs titleSuffix={title} tabs={tabs} pinnedTab={pinnedTab} />}
 

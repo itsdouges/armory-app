@@ -119,6 +119,10 @@ export type Guild = {
   favor?: number,
   level?: number,
   members?: Array<User>,
+  leader?: {
+    accountName: string,
+    alias: string,
+  },
 };
 
 export const defaultGuild: Guild = {
@@ -183,6 +187,13 @@ export type Traits = {
   [number]: {
     icon?: string,
   },
+};
+
+export type Paginated<T> = {
+  rows: Array<T>,
+  count: number,
+  limit: number,
+  skip: number,
 };
 
 export type Gw2PvpGame = {

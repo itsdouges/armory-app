@@ -15,7 +15,7 @@ const PvpSeason = ({ standing, season, small }) => {
   const redact = !division.name;
 
   return (
-    <div className={cx(styles.root, { [styles.small]: small })}>
+    <div className={cx({ [styles.small]: small })}>
       <div className={styles.header}>
         <img
           alt="Division"

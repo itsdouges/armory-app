@@ -5,7 +5,7 @@ import T from 'i18n-react';
 import Container from 'common/components/Container';
 import Redacted from 'common/components/Redacted';
 import SummaryProgress from 'common/layouts/SummaryProgress';
-import Card from 'common/layouts/CardWithTitle';
+import CardWithTitle from 'common/layouts/CardWithTitle';
 import Grid from 'common/layouts/Grid';
 
 import styles from './styles.less';
@@ -21,15 +21,15 @@ const motdPlaceholder = 'Today we\'re going to go for an adventure...';
 
 function parseNewLines (string = '') {
   return string
-    ? string.split('\n').map((tx) => <span key={tx}>{tx}<br /></span>)
+    ? string.split('\n').map((tx, index) => <span key={tx || index}>{tx}<br /></span>)
     : motdPlaceholder;
 }
 
 const Overview = ({ data = defaultGuild }: Props) => (
   <Container>
-    <Card size="large" title={T.translate('guilds.motd')} className={styles.motd}>
+    <CardWithTitle size="large" title={T.translate('guilds.motd')} className={styles.motd}>
       <Redacted redact={!data.motd}>{parseNewLines(data.motd)}</Redacted>
-    </Card>
+    </CardWithTitle>
 
     <Grid>
       <SummaryProgress title="Level" max={69} current={data.level || 0} />

@@ -17,8 +17,13 @@ type Props = {
   compact?: boolean,
 };
 
-/* eslint max-len:0 */
-const Portrait = ({ character = defaultCharacter, forceUpdate, children, className, compact }: Props) => (
+const Portrait = ({
+  character = defaultCharacter,
+  forceUpdate,
+  children,
+  className,
+  compact,
+}: Props) => (
   <div
     className={cx(
       styles.root,

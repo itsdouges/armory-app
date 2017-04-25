@@ -3,6 +3,8 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import startCase from 'lodash/startCase';
+import times from 'lodash/times';
+import cx from 'classnames';
 
 import { humanize } from 'lib/date';
 import Card from 'common/components/Card';
@@ -20,7 +22,22 @@ const createStashLog = (log) => (log.coins === 0
   ? `ItemId:${log.item_id} x ${log.count} was ${pluralize(log.operation)}`
   : `${log.coins} coins were ${pluralize(log.operation)}`);
 
+const LOGS_PER_PAGE = 20;
+const STUB_LOGS = { rows: times(LOGS_PER_PAGE, () => undefined), count: 9999 };
+
 function createLogView (log) {
+  if (!log) {
+    return (
+      <span className={styles.placeholder}>
+        <span className={styles.placeholder}>
+          Logs are loading as fast as they can...
+        </span>
+
+        <time className={cx(styles.logTime, styles.placeholder)}>1 second ago</time>
+      </span>
+    );
+  }
+
   let content;
 
   switch (log.type) {
@@ -72,7 +89,7 @@ function createLogView (log) {
 
   return (
     <span>
-      {content} <span className={styles.logTime}>{humanize(log.time)}</span>
+      {content} <time className={styles.logTime}>{humanize(log.time)}</time>
     </span>
   );
 }
@@ -94,11 +111,12 @@ export default class GuildLogs extends Component {
 
   render () {
     const { guild } = this.props;
+    const logs = guild && guild.logs ? { rows: guild.logs } : STUB_LOGS;
 
     return (
       <Container className={styles.root}>
-        {guild && guild.logs && guild.logs.map((log) => (
-          <Card key={log.id} size="medium" className={styles.log}>
+        {logs.rows.map((log, index) => (
+          <Card key={log ? log.id : index} size="small" className={styles.log}>
             {createLogView(log)}
           </Card>
         ))}

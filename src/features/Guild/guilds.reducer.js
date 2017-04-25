@@ -4,6 +4,7 @@ import {
   FETCH_GUILD_RESULT,
   FETCH_GUILD_LOGS,
   FETCH_GUILD_MEMBERS,
+  FETCH_GUILD_CHARACTERS,
 } from './actions';
 
 import { createSelector } from 'reselect';
@@ -59,8 +60,10 @@ export default function reducer (state, action) {
       };
     }
 
-    case FETCH_GUILD_MEMBERS: {
-      const previous = state.data[action.payload.name];
+    case FETCH_GUILD_CHARACTERS: {
+      const previous = state.data[action.payload.name] || {
+        characters: {},
+      };
 
       return {
         ...state,
@@ -68,7 +71,32 @@ export default function reducer (state, action) {
           ...state.data,
           [action.payload.name]: {
             ...previous,
-            members: action.payload.data,
+            characters: {
+              ...previous.characters,
+              ...action.payload.data,
+              rows: ((previous.characters || {}).rows || []).concat(action.payload.data.rows),
+            },
+          },
+        },
+      };
+    }
+
+    case FETCH_GUILD_MEMBERS: {
+      const previous = state.data[action.payload.name] || {
+        members: {},
+      };
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.payload.name]: {
+            ...previous,
+            members: {
+              ...previous.members,
+              ...action.payload.data,
+              rows: ((previous.members || {}).rows || []).concat(action.payload.data.rows),
+            },
           },
         },
       };

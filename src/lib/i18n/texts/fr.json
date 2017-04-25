@@ -85,7 +85,6 @@
     "edit": "Edit",
     "changePortrait": "Change your character portrait",
     "noSkill": "No Skill Selected",
-    "embedCta": "Embed",
     "embedTooltip": "Copy and paste this markup onto your website."
   },
   "settings": {
@@ -181,7 +180,9 @@
     "ratio": "Ratio",
     "rank": "Rang",
     "optional": "Optional",
-    "dismiss": "Dismiss"
+    "dismiss": "Dismiss",
+    "embed": "Embed",
+    "loadMore": "Load More"
   },
   "leaderboards": {
     "name": "Leaderboards"

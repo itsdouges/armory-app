@@ -22,6 +22,7 @@ export function setApiToken (token: string): Function {
 // Set current language.
 axios.interceptors.request.use((config) => {
   config.params = {
+    ...config.params,
     lang: lang.get(),
   };
 

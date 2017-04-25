@@ -36,7 +36,8 @@
     "lz-string": "^1.4.4",
     "moment": "^2.15.2",
     "normalize.css": "^4.2.0",
-    "react": "^15.4.2",
+    "prop-types": "^15.5.8",
+    "react": "^15.3.0",
     "react-dom": "^15.4.2",
     "react-helmet": "^4.0.0",
     "react-redux": "^5.0.2",
@@ -45,7 +46,8 @@
     "recompose": "^0.22.0",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
-    "reselect": "^2.5.3"
+    "reselect": "^2.5.3",
+    "withinviewport": "^2.0.0"
   },
   "devDependencies": {
     "app-module-path": "^2.2.0",

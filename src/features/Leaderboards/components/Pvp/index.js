@@ -1,18 +1,22 @@
 // @flow
 
-import type { PvpStanding } from 'flowTypes';
+import type { PvpStanding, Paginated } from 'flowTypes';
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import T from 'i18n-react';
+import times from 'lodash/times';
 
+import Progress from 'common/components/Icon/Progress';
 import ContentCard from 'common/components/ContentCard';
+import Paginator from 'common/components/Paginator';
 import { fetchPvpLeaderboard } from '../../actions';
 import styles from './styles.less';
+import { renderButton } from 'common/layouts/PaginatorGrid';
 
-// $FlowFixMe
-const STUB_STANDINGS = [undefined, undefined, undefined, undefined, undefined];
+const STANDINGS_PER_PAGE = 30;
+const STUB_STANDINGS = { rows: times(STANDINGS_PER_PAGE, () => undefined), count: 9999 };
 
 function buildContent (standing, rank) {
   const winsText = T.translate('users.pvpStats.wins');
@@ -48,8 +52,8 @@ function mapStateToProps (state, props) {
 }
 
 type Props = {
-  fetchPvpLeaderboard?: () => void,
-  leaderboard?: Array<PvpStanding>,
+  fetchPvpLeaderboard: () => Promise<>,
+  leaderboard?: Paginated<PvpStanding>,
   region: 'gw2a' | 'na' | 'eu',
 };
 
@@ -59,37 +63,39 @@ type Props = {
 export default class PvpLeaderboard extends Component {
   props: Props;
 
-  componentWillMount () {
-    this.readLadder(this.props.region);
-  }
+  static defaultProps = {
+    fetchPvpLeaderboard: () => Promise.resolve(),
+  };
 
-  componentWillUpdate (nextProps: Props) {
-    if (nextProps.region !== this.props.region) {
-      this.readLadder(nextProps.region);
-    }
-  }
-
-  readLadder (region: string) {
-    const { fetchPvpLeaderboard: fetchLeaderboard } = this.props;
-    fetchLeaderboard && fetchLeaderboard(region);
+  renderStanding = (standing?: PvpStanding, index: number) => {
+    return (
+      <li
+        key={standing ? standing.accountName : index}
+        className={styles.standing}
+      >
+        <Link to={`/${standing ? standing.alias : ''}`}>{createInner(standing, index + 1)}</Link>
+      </li>
+    );
   }
 
   render () {
-    const { leaderboard } = this.props;
-    const pvpLeaderboard = leaderboard && leaderboard.length ? leaderboard : STUB_STANDINGS;
+    const { leaderboard, fetchPvpLeaderboard: fetchLeaderboard, region } = this.props;
+    const pvpLeaderboard = (leaderboard && leaderboard.rows) ? leaderboard : STUB_STANDINGS;
 
     return (
       <div className={styles.root}>
-        <ol>
-          {pvpLeaderboard.map((standing, index) => (
-            <li
-              key={standing ? standing.accountName : index}
-              className={styles.standing}
-            >
-              <Link to={`/${standing ? standing.alias : ''}`}>{createInner(standing, index + 1)}</Link>
-            </li>
-          ))}
-        </ol>
+        <Paginator
+          key={region}
+          rows={pvpLeaderboard.rows}
+          limit={STANDINGS_PER_PAGE}
+          count={pvpLeaderboard.count}
+          action={(limit, offset) => fetchLeaderboard(region, limit, offset)}
+          progressComponent={<Progress className={styles.progress} />}
+          renderContainer={({ children }) => <ol>{children}</ol>}
+          renderButton={renderButton}
+        >
+          {this.renderStanding}
+        </Paginator>
       </div>
     );
   }

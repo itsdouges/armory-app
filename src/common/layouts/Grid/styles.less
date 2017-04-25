@@ -2,20 +2,58 @@
 
 .root {
   margin: 0 auto;
-  margin-top: 1em;
+  display: flex;
   flex-wrap: wrap;
-}
 
-.fromTablet({
-  .root {
-    display: flex;
+  > * {
+    width: 100%;
+  }
+
+  .fromTablet({
     max-width: 1000px;
     margin: 0 auto;
-    margin-top: 1em;
     align-items: flex-start;
+  });
+}
 
-    > div {
+.fullWidth {
+  max-width: none;
+}
+
+.col2 {
+  .fromTablet({
+    > * {
       width: 50%;
     }
+  });
+}
+
+.col5 {
+  .NumberOfSliderItems(@items) {
+    width: (100 / @items) * 1%;
   }
-});
+
+  .fromMobile({
+    > * {
+      .NumberOfSliderItems(2);
+    }
+  });
+
+  .fromTablet({
+    > * {
+      .NumberOfSliderItems(3);
+    }
+  });
+
+  .fromPc({
+    > * {
+      .NumberOfSliderItems(4);
+    }
+  });
+
+  .fromLargePc({
+    > * {
+      .NumberOfSliderItems(5);
+    }
+  });
+}

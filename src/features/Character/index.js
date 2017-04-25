@@ -1,6 +1,7 @@
 // @flow
 
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 import { Link } from 'react-router';
@@ -46,6 +47,10 @@ type Props = {
 export default class Character extends Component {
   props: Props;
 
+  static contextTypes = {
+    _userAlias: PropTypes.string,
+  };
+
   componentWillMount () {
     this.loadCharacter();
   }
@@ -90,7 +95,7 @@ export default class Character extends Component {
         description={buildDescription(character)}
         extraSubtitle={characterTitle && <span><i>{characterTitle}</i> | </span>}
         extraContent={(
-          <div className={styles.links}>
+          <aside className={styles.links}>
             <Link to={`/${(character && character.alias) || ''}`}>
               <ContentCard type="users" content={character} />
             </Link>
@@ -98,7 +103,7 @@ export default class Character extends Component {
             <Link to={`/g/${(guild && guild.name) || ''}`}>
               <ContentCard type="guilds" content={guild} />
             </Link>
-          </div>
+          </aside>
         )}
         tabs={[{
           to: `/${alias}/c/${characterName}`,

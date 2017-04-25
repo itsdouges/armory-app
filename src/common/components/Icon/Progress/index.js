@@ -9,11 +9,12 @@ type ProgressIconProps = {
   className?: string,
 };
 
-const ProgressIcon = ({ size, className }: ProgressIconProps) => (
+const ProgressIcon = ({ size, className, ...props }: ProgressIconProps) => (
   <svg
     className={cx(styles.spinner, sizes[size], className)}
     viewBox="0 0 66 66"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <circle
       className={styles.path}

@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Pagination to guild members
+- Pagination to guild characters
+- Pagination to user characters
+- Pagination to leaderboards
+- Guild leader to guild page
+- Placeholder logs for guilds
+
+### Fixed
+- English embed cta to mention text instead of icon
+- Site not working with adblock
+
+### Removed
+- Magic find and profession attributes
 
 ## [4.14.2][] - 2017-04-24
 ### Changed
