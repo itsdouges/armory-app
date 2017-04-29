@@ -58,13 +58,16 @@ export default class Paginator extends Component {
   };
 
   state: State = {
-    loading: false,
+    loading: true,
     finished: false,
     infiniteScroll: this.props.infiniteScroll || false,
   };
 
   componentWillMount () {
-    this.props.action(this.props.limit, this.props.initialOffset);
+    this.props.action(this.props.limit, this.props.initialOffset).then(() => this.setState({
+      loading: false,
+    }));
+
     this.checkIfFinished(this.props);
   }
 
@@ -122,14 +125,14 @@ export default class Paginator extends Component {
       renderButton = renderDefaultButton,
     } = this.props;
 
-    const { finished, infiniteScroll } = this.state;
+    const { finished, infiniteScroll, loading } = this.state;
     const childComponents = (rows || []).map(children || noop);
 
     return (
       <div className={className}>
         {renderContainer({ children: childComponents })}
 
-        {!finished && !infiniteScroll && renderButton({ onClick: this.initialize })}
+        {!finished && !infiniteScroll && !loading && renderButton({ onClick: this.initialize })}
 
         {!finished && infiniteScroll && (
           <div ref={(c) => (this._container = c)}>

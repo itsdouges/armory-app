@@ -105,6 +105,14 @@ type Log = {
   upgrade_id: number,
 };
 
+export type Token = {
+  accountName: string,
+  primary: boolean,
+  permissions: string,
+  valid: boolean,
+  token: string,
+};
+
 export type Guild = {
   tag: string,
   name: string,

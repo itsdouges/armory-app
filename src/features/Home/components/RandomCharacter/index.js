@@ -8,7 +8,6 @@ import config from 'config';
 import CharacterEmbed from 'embeds/components/Character';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import SvgIcon from 'common/components/Icon/Svg';
-import Tooltip from 'common/components/Tooltip';
 
 import styles from './styles.less';
 
@@ -45,8 +44,6 @@ export default class RandomCharacter extends Component {
         >
           <SvgIcon className={styles.helpIcon} name="help" />
         </TooltipTrigger>
-
-        <Tooltip />
       </div>
     );
   }

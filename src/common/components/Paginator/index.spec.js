@@ -26,7 +26,10 @@ const create = (prps) =>
   shallow(<Paginator {..._.merge({}, props, prps)} />);
 
 describe('<Paginator />', () => {
-  beforeEach(() => sandbox.reset());
+  beforeEach(() => {
+    sandbox.reset();
+    props.action.returns(Promise.resolve());
+  });
 
   const assertFinished = (wrapper) => {
     expect(wrapper.find('button')).to.not.exist;
@@ -81,20 +84,24 @@ describe('<Paginator />', () => {
       });
 
       context('when not infinite scroll', () => {
-        it('should show button', () => {
+        it('should show button', async () => {
           const wrapper = create({
             infiniteScroll: false,
           });
 
+          await props.action;
+
           expect(wrapper.find('button')).to.contain('Load More');
         });
 
-        it('should show custom button', () => {
+        it('should show custom button', async () => {
           const wrapper = create({
             infiniteScroll: false,
             // eslint-disable-next-line
             renderButton: (props) => <button {...props}>YOLO</button>,
           });
+
+          await props.action;
 
           expect(wrapper.find('button')).to.contain('YOLO');
         });
@@ -121,10 +128,10 @@ describe('<Paginator />', () => {
   });
 
   context('when component unmounts', () => {
-    it('should cleanup', () => {
-      props.action.returns(Promise.reject());
+    it('should cleanup', async () => {
       addEvent.withArgs('scroll').returns(removeEvent);
       const wrapper = create();
+      await props.action;
       wrapper.find('button').simulate('click');
 
       wrapper.unmount();
@@ -148,10 +155,11 @@ describe('<Paginator />', () => {
   context('when the load more button is clicked for the first time', () => {
     let wrapper;
 
-    beforeEach(() => {
-      props.action.returns(Promise.reject());
+    beforeEach(async () => {
+      props.action.returns(Promise.resolve());
       addEvent.withArgs('scroll').returns(removeEvent);
       wrapper = create();
+      await props.action;
       wrapper.find('button').simulate('click');
     });
 
@@ -178,10 +186,12 @@ describe('<Paginator />', () => {
 
   describe('loading next page', () => {
     context('when paginator is already loading', () => {
-      it('should do nothing', () => {
-        props.action.returns(Promise.reject());
+      it('should do nothing', async () => {
         addEvent.withArgs('scroll').returns(removeEvent);
         const wrapper = create();
+
+        await props.action;
+
         wrapper.find('button').simulate('click');
         const [, loadNextPage] = addEvent.firstCall.args;
         sandbox.reset();
@@ -192,7 +202,7 @@ describe('<Paginator />', () => {
         expect(props.action).to.not.have.been.called;
       });
 
-      it('should reset after successfully loading', (done) => {
+      it('should reset after successfully loading', async () => {
         let resolve;
         const promise = new Promise((reslve) => {
           resolve = reslve;
@@ -201,6 +211,9 @@ describe('<Paginator />', () => {
         props.action.withArgs(props.limit, props.rows.length).returns(promise);
         addEvent.withArgs('scroll').returns(removeEvent);
         const wrapper = create();
+
+        await props.action;
+
         wrapper.find('button').simulate('click');
         const [, loadNextPage] = addEvent.firstCall.args;
 
@@ -208,15 +221,13 @@ describe('<Paginator />', () => {
         resolve();
         props.action.reset();
 
+        await promise;
 
-        setTimeout(() => {
-          props.action.withArgs(props.limit, props.rows.length).returns(promise);
-          withinViewport.returns(true);
-          loadNextPage();
+        props.action.withArgs(props.limit, props.rows.length).returns(promise);
+        withinViewport.returns(true);
+        loadNextPage();
 
-          expect(props.action).to.have.been.calledWith(props.limit, props.rows.length);
-          done();
-        }, 1);
+        expect(props.action).to.have.been.calledWith(props.limit, props.rows.length);
       });
     });
   });
