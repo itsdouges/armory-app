@@ -12,6 +12,7 @@ import filter from 'lodash/filter';
 import T from 'i18n-react';
 import { Link } from 'react-router';
 import startCase from 'lodash/startCase';
+import cx from 'classnames';
 
 import { makeStubItems } from 'lib/paginator';
 import PaginatorGrid from 'common/layouts/PaginatorGrid';
@@ -123,11 +124,15 @@ export default class User extends Component {
 
     const statSummary = (wins || losses || byes) ? `${wins}-${losses}-${byes || 0}` : '-';
 
+    const icon = safeUser.valid === false ? 'svg/error-outline.svg' : `${safeUser.access}.png`;
+    const tooltip = safeUser.valid === false ? T.translate('users.invalidToken') : startCase(safeUser.access);
+
     return (
       <Content
-        cardExtra={user && user.access && (
-          <TooltipTrigger data={startCase(user.access)}>
-            <Icon size="mini" className={styles.access} name={`${user.access}.png`} />
+        className={cx({ [styles.invalid]: !safeUser.valid })}
+        cardExtra={safeUser.access && (
+          <TooltipTrigger data={tooltip}>
+            <Icon size="mini" className={styles.access} name={icon} />
           </TooltipTrigger>
         )}
         extraContent={

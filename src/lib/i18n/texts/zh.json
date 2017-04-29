@@ -52,7 +52,7 @@
     "noApiKey": "Api key not set.",
     "makePrimary": "Make primary api key.",
     "primaryToken": "This is your primary api key, your user information will be sourced from this.",
-    "invalidToken": "Could not retrieve your data from GW2, the api key was probably deleted from your ArenaNet account page.",
+    "invalidToken": "Could not retrieve data from GW2, the api key was probably deleted from the ArenaNet account page.",
     "pvpStats": {
       "name": "PVP统计",
       "unranked": "未排序",
