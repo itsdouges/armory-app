@@ -103,7 +103,7 @@ export default class User extends Component {
     const { user, routeParams: { alias }, pvpSeasons, maps, worlds } = this.props;
 
     const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
-    const guilds = get(user, 'guilds', []);
+    const guilds = get(user, 'guilds', STUB_GUILDS.rows);
 
     const safeUser = user || {};
     const stubUser = get(user, 'stub');
@@ -190,7 +190,7 @@ export default class User extends Component {
           content: (
             <PaginatorGrid
               key="guilds"
-              rows={guilds || STUB_GUILDS.rows}
+              rows={guilds}
               limit={0}
               count={0}
               action={() => Promise.resolve()}
