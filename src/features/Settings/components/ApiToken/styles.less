@@ -1,3 +1,5 @@
+@import '~common/styles/base.less';
+
 .root {
   display: flex;
   align-items: center;
@@ -15,10 +17,17 @@
 }
 
 .accountName {
-  font-weight: bold;
   margin-bottom: 0.25em;
 }
 
 .permissions {
   font-size: 0.8em;
+}
+
+.invalid {
+  color: @_red;
+}
+
+.strikethrough {
+  text-decoration: line-through;
 }

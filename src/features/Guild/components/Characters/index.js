@@ -5,15 +5,15 @@ import type { Guild as GuildType } from 'flowTypes';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
-import times from 'lodash/times';
 
 import CharacterContentCard from 'common/components/ContentCard/Character';
 import PaginatorGrid from 'common/layouts/PaginatorGrid';
 import { selector } from 'features/Guild/guilds.reducer';
 import { fetchGuildCharacters } from 'features/Guild/actions';
+import { makeStubItems } from 'lib/paginator';
 
 const CHARACTERS_PER_PAGE = 50;
-const STUB_CHARACTERS = { rows: times(CHARACTERS_PER_PAGE, () => undefined), count: 9999 };
+const STUB_CHARACTERS = makeStubItems(16);
 
 const makeKey = (content, index) => (content ? content.name : index);
 

@@ -3,14 +3,14 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import times from 'lodash/times';
 
+import { makeStubItems } from 'lib/paginator';
 import CharacterContentCard from 'common/components/ContentCard/Character';
 import PaginatorGrid from 'common/layouts/PaginatorGrid';
 import { fetchUserCharacters } from 'features/User/actions';
 
 const CHARACTERS_PER_PAGE = 50;
-const STUB_CHARACTERS = { rows: times(CHARACTERS_PER_PAGE, () => undefined), count: 9999 };
+const STUB_CHARACTERS = makeStubItems(8);
 
 const makeKey = (content, index) => (content ? content.name : index);
 

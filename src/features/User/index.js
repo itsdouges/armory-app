@@ -11,9 +11,10 @@ import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 import T from 'i18n-react';
 import { Link } from 'react-router';
-import times from 'lodash/times';
 import startCase from 'lodash/startCase';
+import cx from 'classnames';
 
+import { makeStubItems } from 'lib/paginator';
 import PaginatorGrid from 'common/layouts/PaginatorGrid';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Button from 'common/components/Button';
@@ -26,7 +27,7 @@ import PvpGame from './components/PvpGame';
 import Overview from './components/Overview';
 import Characters from './components/Characters';
 
-const STUB_GUILDS = times(4, () => undefined);
+const STUB_GUILDS = makeStubItems(4);
 
 import {
   fetchUser,
@@ -123,11 +124,15 @@ export default class User extends Component {
 
     const statSummary = (wins || losses || byes) ? `${wins}-${losses}-${byes || 0}` : '-';
 
+    const icon = safeUser.valid === false ? 'svg/error-outline.svg' : `${safeUser.access}.png`;
+    const tooltip = safeUser.valid === false ? T.translate('users.invalidToken') : startCase(safeUser.access);
+
     return (
       <Content
-        cardExtra={user && user.access && (
-          <TooltipTrigger data={startCase(user.access)}>
-            <Icon size="mini" className={styles.access} name={`${user.access}.png`} />
+        className={cx({ [styles.invalid]: safeUser.valid === false })}
+        cardExtra={safeUser.access && (
+          <TooltipTrigger data={tooltip}>
+            <Icon size="mini" className={styles.access} name={icon} />
           </TooltipTrigger>
         )}
         extraContent={
@@ -185,7 +190,7 @@ export default class User extends Component {
           content: (
             <PaginatorGrid
               key="guilds"
-              rows={guilds || STUB_GUILDS}
+              rows={guilds || STUB_GUILDS.rows}
               limit={0}
               count={0}
               action={() => Promise.resolve()}

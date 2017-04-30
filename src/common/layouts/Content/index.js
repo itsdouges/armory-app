@@ -7,7 +7,6 @@ import cx from 'classnames';
 import ContentCard from 'common/components/ContentCard';
 import Tabs from 'common/components/Tabs';
 import Head from 'common/components/Head';
-import Tooltip from 'common/components/Tooltip';
 import Container from 'common/components/Container';
 import DisplayAd from 'common/components/DisplayAd';
 
@@ -50,7 +49,6 @@ const Content = ({
     {children}
 
     <DisplayAd className={styles.ad} />
-    <Tooltip />
   </div>
 );
 

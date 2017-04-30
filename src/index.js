@@ -9,6 +9,7 @@ ls.reset();
 
 import Base from './Base';
 import Router from './Router';
+import bootstrapTooltip from 'lib/tooltip';
 
 ReactDOM.render(
   <Base>
@@ -16,3 +17,5 @@ ReactDOM.render(
   </Base>,
   document.getElementById('root')
 );
+
+bootstrapTooltip();

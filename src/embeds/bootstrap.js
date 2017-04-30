@@ -4,6 +4,7 @@ import * as ls from 'lib/localStorage';
 
 // Base is deliberately at the top.
 import Base from '../Base';
+import bootstrapTooltip from 'lib/tooltip';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';
 import axios from 'axios';
@@ -11,7 +12,6 @@ import T from 'i18n-react';
 
 import { addStyleSheet } from 'lib/dom';
 import { set as setLang } from 'lib/i18n';
-import Tooltip from 'common/components/Tooltip';
 import styles from './styles.less';
 
 type Options = {
@@ -84,22 +84,6 @@ function bootstrapEmbeds () {
   });
 }
 
-function bootstrapTooltip () {
-  const tooltipContainer = document.createElement('div');
-  if (!document.body) {
-    throw new Error('Document body not loaded!');
-  }
-
-  document.body.appendChild(tooltipContainer);
-
-  ReactDOM.render(
-    <Base>
-      <Tooltip showBadge className={cx(styles.embed, makeClassName('tooltip'))} />
-    </Base>,
-    tooltipContainer
-  );
-}
-
 export default function bootstrap () {
   const options = setOptions();
 
@@ -109,6 +93,9 @@ export default function bootstrap () {
   return Promise.all([
     fetchStyles(),
     bootstrapEmbeds(),
-    bootstrapTooltip(),
+    bootstrapTooltip({
+      showBadge: true,
+      className: cx(styles.embed, makeClassName('tooltip')),
+    }),
   ]);
 }

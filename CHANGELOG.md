@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Paginator helper to create stub rows
+- Invalid user token information to settings page
+- Invalid user token information to user page
+
+### Changed
+- Tooltip to have its own root node
+
+### Fixed
+- Paginator component from not setting loading initially as expected
+- Some css selectors being forced to a particular element
 
 ## [4.15.0][] - 2017-04-26
 ### Added

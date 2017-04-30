@@ -10,9 +10,9 @@ type CardProps = {
 };
 
 const Card = ({ size, className, children, ...props }: CardProps) => (
-  <div {...props} className={cx(styles.root, styles[size], className)}>
+  <section {...props} className={cx(styles.root, styles[size], className)}>
     {children}
-  </div>
+  </section>
 );
 
 export default Card;

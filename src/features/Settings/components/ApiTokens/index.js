@@ -1,5 +1,7 @@
 // @flow
 
+import type { Token } from 'flowTypes';
+
 import { Component } from 'react';
 import qs from 'lib/qs';
 import T from 'i18n-react';
@@ -11,11 +13,6 @@ import Textbox from 'common/components/Textbox';
 import Button from 'common/components/Button';
 import ApiToken from '../ApiToken';
 import Message from 'common/components/Message';
-
-type Token = {
-  token: string,
-  primary: boolean,
-};
 
 type Props = {
   tokens: Array<Token>,

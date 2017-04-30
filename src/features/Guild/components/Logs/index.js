@@ -3,7 +3,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import startCase from 'lodash/startCase';
-import times from 'lodash/times';
 import cx from 'classnames';
 
 import { humanize } from 'lib/date';
@@ -14,6 +13,7 @@ import Progress from 'common/components/Icon/Progress';
 import styles from './styles.less';
 import { fetchGuildLogs } from '../../actions';
 import { selector } from '../../guilds.reducer';
+import { makeStubItems } from 'lib/paginator';
 
 import type { Guild as GuildType } from 'flowTypes';
 
@@ -23,7 +23,7 @@ const createStashLog = (log) => (log.coins === 0
   : `${log.coins} coins were ${pluralize(log.operation)}`);
 
 const LOGS_PER_PAGE = 20;
-const STUB_LOGS = { rows: times(LOGS_PER_PAGE, () => undefined), count: 9999 };
+const STUB_LOGS = makeStubItems(LOGS_PER_PAGE);
 
 function createLogView (log) {
   if (!log) {

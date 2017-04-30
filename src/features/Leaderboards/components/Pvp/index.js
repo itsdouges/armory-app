@@ -6,8 +6,8 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import T from 'i18n-react';
-import times from 'lodash/times';
 
+import { makeStubItems } from 'lib/paginator';
 import Progress from 'common/components/Icon/Progress';
 import ContentCard from 'common/components/ContentCard';
 import Paginator from 'common/components/Paginator';
@@ -16,7 +16,7 @@ import styles from './styles.less';
 import { renderButton } from 'common/layouts/PaginatorGrid';
 
 const STANDINGS_PER_PAGE = 30;
-const STUB_STANDINGS = { rows: times(STANDINGS_PER_PAGE, () => undefined), count: 9999 };
+const STUB_STANDINGS = makeStubItems(STANDINGS_PER_PAGE);
 
 function buildContent (standing, rank) {
   const winsText = T.translate('users.pvpStats.wins');

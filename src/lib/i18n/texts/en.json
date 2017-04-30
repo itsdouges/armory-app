@@ -48,13 +48,16 @@
     "results": "Search results for",
     "minlength": "Search term should be 3 or more characters :-)",
     "nonefound": "Nothing was found... Thought you'd find something?",
-    "joincta": "Join and add your gw2 api token(s) first!"
+    "joincta": "Join and add your gw2 api key(s) first!"
   },
   "users": {
     "name": "Users",
     "recentMatches": "Recent Matches",
-    "claimCta": "Claim user",
+    "claimCta": "Claim",
     "noApiKey": "Api key not set.",
+    "makePrimary": "Make primary api key.",
+    "primaryToken": "This is your primary api key, your user information will be sourced from this.",
+    "invalidToken": "Could not retrieve data from GW2, the api key was probably deleted from the ArenaNet account page.",
     "pvpStats": {
       "name": "Pvp Stats",
       "unranked": "Unranked",
