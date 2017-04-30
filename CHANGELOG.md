@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.16.0][] - 2017-04-30
 ### Added
 - Paginator helper to create stub rows
 - Invalid user token information to settings page
@@ -664,7 +666,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.15.0...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.0...HEAD
+[4.16.0]: https://github.com/madou/armory-react/compare/v4.15.0...v4.16.0
 [4.15.0]: https://github.com/madou/armory-react/compare/v4.14.2...v4.15.0
 [4.14.2]: https://github.com/madou/armory-react/compare/v4.14.0...v4.14.2
 [4.14.0]: https://github.com/madou/armory-react/compare/v4.14.0...v4.14.0
