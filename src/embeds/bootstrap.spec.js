@@ -2,7 +2,6 @@ import { shallow } from 'enzyme';
 import { stubComponent, stubStyles } from 'test/utils';
 
 const Base = stubComponent('Base');
-const Tooltip = stubComponent('Tooltip');
 const Embed = stubComponent('Embed');
 
 const styles = stubStyles([
@@ -10,6 +9,7 @@ const styles = stubStyles([
 ]);
 
 const sandbox = sinon.sandbox.create();
+const bootstrapTooltip = sinon.spy();
 const resetLs = sandbox.spy();
 const axiosGet = sandbox.stub();
 const render = sandbox.spy();
@@ -41,7 +41,7 @@ const bootstrap = proxyquire('embeds/bootstrap', {
   'lib/i18n': {
     set: setLang,
   },
-  'common/components/Tooltip': Tooltip,
+  'lib/tooltip': bootstrapTooltip,
   [`promise?global!embeds/creators/${embedName}`]: () => Promise.resolve({ default: createEmbed }),
 });
 
@@ -72,19 +72,15 @@ describe('embed bootstrapper', () => {
   });
 
   describe('tooltip', () => {
-    let jsx;
-
     beforeEach(() => {
       bootstrap();
-      ([jsx] = render.firstCall.args);
     });
 
     it('should render tooltip', () => {
-      const wrapper = shallow(jsx);
-
-      expect(wrapper).to.contain(
-        <Tooltip showBadge className="embed-style gw2a-tooltip-embed" />
-      );
+      expect(bootstrapTooltip).to.have.been.calledWith({
+        showBadge: true,
+        className: 'embed-style gw2a-tooltip-embed',
+      });
     });
   });
 
@@ -136,7 +132,7 @@ describe('embed bootstrapper', () => {
 
       await bootstrap();
 
-      const [jsx, container] = render.secondCall.args;
+      const [jsx, container] = render.firstCall.args;
       const wrapper = shallow(jsx);
 
       expect(wrapper.find(Embed).props()).to.include({
@@ -155,7 +151,7 @@ describe('embed bootstrapper', () => {
 
         await bootstrap();
 
-        const [jsx, container] = render.secondCall.args;
+        const [jsx, container] = render.firstCall.args;
         const wrapper = shallow(jsx);
 
         expect(wrapper.find(Embed).props()).to.include({

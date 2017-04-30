@@ -129,7 +129,7 @@ export default class User extends Component {
 
     return (
       <Content
-        className={cx({ [styles.invalid]: !safeUser.valid })}
+        className={cx({ [styles.invalid]: safeUser.valid === false })}
         cardExtra={safeUser.access && (
           <TooltipTrigger data={tooltip}>
             <Icon size="mini" className={styles.access} name={icon} />

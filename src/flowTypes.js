@@ -82,7 +82,7 @@ export const defaultUser: User = {
   alias: '',
   wins: null,
   losses: null,
-  valid: false,
+  valid: true,
 };
 
 // See: https://wiki.guildwars2.com/wiki/API:2/guild/:id/log
