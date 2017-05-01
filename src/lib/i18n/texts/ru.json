@@ -184,7 +184,7 @@
     "rank": "Ранг",
     "optional": "Необязательный",
     "dismiss": "Распустить",
-    "embed": "Встроить",
+    "embed": "HTML-код",
     "loadMore": "Загрузить ещё"
   },
   "leaderboards": {
