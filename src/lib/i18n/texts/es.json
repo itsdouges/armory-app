@@ -2,37 +2,37 @@
   "home": {
     "whatIs": {
       "title": "Qué es",
-      "text": "Guild Wars 2 Armory es la manera más fácil de encontrar, ver y compartir los usuarios, personajes y clanes con tus amigos en móvil y PC! Únete hoy y empieza a compartir!"
+      "text": "¡Guild Wars 2 Armory es la manera más sencilla de encontrar, ver y compartir usuarios, personajes y clanes con amigos en móvil y PC! ¡Únete hoy y empieza a compartir!"
     }
   },
   "embeds": {
-    "name": "Embeds"
+    "name": "Insertar"
   },
   "login": {
     "name": "Entrar",
-    "joinCta": "¿Todavía no tienes una cuenta? ¡Has clic aquí!",
-    "forgotMyPasswordCta": "Olvidé mi contraseña",
+    "joinCta": "¿Todavía no tienes cuenta? ¡Haz clic aquí!",
+    "forgotMyPasswordCta": "Olvidé la contraseña",
     "buttons": {
       "login": "Entrar"
     }
   },
   "forgotPassword": {
-    "name": "Olvidé mi Contraseña",
+    "name": "Olvidé la Contraseña",
     "nextCta": "Siguiente",
-    "changeCta": "Cambio",
-    "checkEmail": "Consulta tu correo electrónico para tu clave de reinicio!",
-    "success": "Tu contraseña ha sido cambiada. Identifícate!"
+    "changeCta": "Cambiar",
+    "checkEmail": "¡Consulta el correo electrónico para reiniciar tu contraseña!",
+    "success": "Tu contraseña ha sido cambiada. ¡Inicia sesión!"
   },
   "join": {
     "name": "Regístrate",
-    "loginCta": "¿Ya tienes una cuenta? Has clic aquí!",
+    "loginCta": "¿Ya tienes cuenta? ¡Haz clic aquí!",
     "buttons": {
-      "join": "Registro"
+      "join": "Registrar"
     }
   },
   "images": {
-    "tooBig": "La imagen debe ser inferior a 1 MB, elije otra.",
-    "wrongType": "La imagen debe ser JPEG o PNG, elije otra."
+    "tooBig": "La imagen debe ser inferior a 1 MB, elige otra.",
+    "wrongType": "La imagen debe ser JPEG o PNG, elige otra."
   },
   "stats": {
     "name": "Estadísticas",
@@ -41,65 +41,65 @@
   "search": {
     "textbox": "Búsqueda de usuarios, personajes y clanes",
     "results": "Resultados de la búsqueda",
-    "minlength": "El término de búsqueda debe ser de 3 o más caracteres :-)",
-    "nonefound": "No se encontró nada ... Pensaste que ibas a encontrar algo?",
-    "joincta": "Registra tus tokens de api gw2 primero!"
+    "minlength": "La búsqueda debe tener un mínimo de 3 caracteres :-)",
+    "nonefound": "No se encontró nada ... ¿Pensabas que ibas a encontrar algo?",
+    "joincta": "¡Entra y añade tus claves de la API de gw2!"
   },
   "users": {
     "name": "Usuarios",
-    "recentMatches": "Juegos Recientes",
-    "claimCta": "Claim",
-    "noApiKey": "Api key not set.",
-    "makePrimary": "Make primary api key.",
-    "primaryToken": "This is your primary api key, your user information will be sourced from this.",
-    "invalidToken": "Could not retrieve data from GW2, the api key was probably deleted from the ArenaNet account page.",
+    "recentMatches": "Partidas recientes",
+    "claimCta": "Reclamar",
+    "noApiKey": "Clave de la API no configurada",
+    "makePrimary": "Hacer clave principal de la API.",
+    "primaryToken": "Esta es tu clave principal de la API, de donde se obtendrá tu información de usuario.",
+    "invalidToken": "No se pudieron recuperar los datos de GW2, la clave de la API seguramente fue eliminada de la cuenta de usuario.",
     "pvpStats": {
-      "name": "Estadísticas Pvp",
-      "unranked": "Unranked",
-      "ranked": "Ranked",
+      "name": "Estadísticas PvP",
+      "unranked": "Libres",
+      "ranked": "Clasificatorias",
       "wins": "Victorias",
-      "byes": "Byes",
+      "byes": "Enemigo desconectado",
       "losses": "Derrotas",
       "desertions": "Deserciones",
-      "forfeits": "Abandonados",
-      "finished": "Played",
-      "ranking": "Rank",
-      "rating": "Rating"
+      "forfeits": "Aliado desconectado",
+      "finished": "Jugadas",
+      "ranking": "Rango",
+      "rating": "Grado"
     },
     "pvp": {
-      "favouriteClass": "Favourite Class",
-      "winLossAbbreviation": "W/L"
+      "favouriteClass": "Profesión favorita",
+      "winLossAbbreviation": "V/D"
     }
   },
   "guilds": {
     "name": "Clanes",
-    "guild": "Guild",
-    "noGuild": "No Guild",
-    "claimed": "This guild has been claimed!",
-    "unclaimed": "This guild hasn't been claimed yet, if you're the guild leader add an api key with the guilds permission!",
-    "motd": "Message of the day"
+    "guild": "Clan",
+    "noGuild": "Sin clan",
+    "claimed": "¡Se ha reclamado este clan!",
+    "unclaimed": "Este clan todavía no se ha reclamado, si eres el líder añade una clave de la api con los permisos de clan!",
+    "motd": "Mensaje del día"
   },
   "characters": {
     "name": "Personajes",
-    "embedCta": "Se trata de un personaje elegido al azar. Puedes obtener el código para añadir en tu sitio web! Haz clic en el ícono para añadir en cualquier página.",
-    "shown": "Muestra al personaje",
-    "hidden": "Personaje oculto",
-    "done": "Done",
-    "edit": "Edit",
-    "changePortrait": "Change your character portrait",
-    "noSkill": "No Skill Selected",
-    "embedTooltip": "Copy and paste this markup onto your website."
+    "embedCta": "¡Este es un personaje al azar. ¡Puedes conseguir el código para insertarlo en tu página! Haz clic en el texto de inserción de cualquier página de personaje.",
+    "shown": "Mostrar a todo el mundo",
+    "hidden": "Personaje privado",
+    "done": "Hecho",
+    "edit": "Editar",
+    "changePortrait": "Cambiar el retrato del personaje",
+    "noSkill": "Habilidad no seleccionada",
+    "embedTooltip": "Copia y pega este markup a tu página."
   },
   "settings": {
     "name": "Ajustes",
     "avatar": {
-      "cta": "Haz clic para cambiar tu avatar",
-      "label": "Cambia tu avatar",
+      "cta": "Haz clic para cambiar el avatar",
+      "label": "Cambiar el avatar",
       "finished": "Te ves bien ;-)"
     },
     "apiKeys": {
-      "name": "Claves Api",
-      "noKeysCta": "No tienes claves de la API .. continúa para generarlas ..! Asegúrate de seleccionar personajes, construcción y permisos pvp :-).",
+      "name": "Claves de la API",
+      "noKeysCta": "No tienes claves de la API .. ¡Ve a crear una ...! Asegúrate de seleccionar los permisos de personajes, perfiles y PvP :-).",
       "inputs": {
         "add": "Añadir clave"
       },
@@ -108,7 +108,7 @@
       }
     },
     "changePassword": {
-      "name": "Cambia tu contraseña",
+      "name": "Cambiar la contraseña",
       "inputs": {
         "current": "Contraseña actual",
         "password": "Contraseña",
@@ -116,85 +116,85 @@
       }
     },
     "buttons": {
-      "logout": "Cerrar sesión"
+      "logout": "Salir"
     }
   },
   "misc": {
-    "opensInNewWindow": "se abre en una ventana nueva"
+    "opensInNewWindow": "Abrir en una ventana nueva"
   },
   "items": {
     "transmuted": "Transmutado",
-    "skinLocked": "Skin Locked",
-    "requiredLevel": "Nivel Requerido",
-    "weaponStrength": "Fuerza del Arma",
-    "defense": "defense",
-    "currentlyEquipped": "Actualmente Equipado",
-    "accountBound": "Account bound",
-    "soulBound": "Soulbound"
+    "skinLocked": "Deseño bloqueado",
+    "requiredLevel": "Nivel necesario",
+    "weaponStrength": "Fuerza del arma",
+    "defense": "Defensa",
+    "currentlyEquipped": "Actualmente equipado",
+    "accountBound": "Vinculado a cuenta",
+    "soulBound": "Ligado"
   },
   "itemAttributes": {
-    "power": "Power",
-    "precision": "Precision",
-    "toughness": "Toughness",
-    "vitality": "Vitality",
-    "boonDuration": "Boon Duration",
-    "conditionDamage": "Condition Damage",
-    "conditionDuration": "Condition Duration",
-    "ferocity": "Ferocity",
-    "healingPower": "Healing Power",
-    "healing": "Healing",
-    "armor": "Armor",
-    "critChance": "Critical Chance",
-    "critDamage": "Critical Damage",
-    "health": "Health",
-    "expertise": "Expertise",
-    "concentration": "Concentration",
-    "agonyResistance": "Agony Resistance",
-    "magic": "Magic Find",
-    "elementalist": "Attunement Recharge Rate",
-    "guardian": "Virtue Recharge Rate",
-    "warrior": "Burst Recharge",
-    "engineer": "Tool Belt Recharge Rate",
-    "ranger": "Pet Attribute Bonus",
-    "thief": "Steal Recharge Rate",
-    "mesmer": "Shatter Skill Recharge Rate",
-    "necromancer": "Life Force Pool",
-    "revanent": "Revenant"
+    "power": "Potencia",
+    "precision": "Precisión",
+    "toughness": "Dureza",
+    "vitality": "Vitalidad",
+    "boonDuration": "Duración de bendición",
+    "conditionDamage": "Daño de condición",
+    "conditionDuration": "Duración de condición",
+    "ferocity": "Ferocidad",
+    "healingPower": "Poder de curación",
+    "healing": "Curación",
+    "armor": "Armadura",
+    "critChance": "Probabilidad de daño crítico",
+    "critDamage": "Daño crítico",
+    "health": "Salud",
+    "expertise": "Pericia",
+    "concentration": "Concentración",
+    "agonyResistance": "Resistencia a la agonía",
+    "magic": "Hallazgo mágico",
+    "elementalist": "Tasa de recarga de la sintonía",
+    "guardian": "Tasa de recarga de la virtud",
+    "warrior": "Recarga de estallido",
+    "engineer": "Tasa de recarga del cinturón de herramientas",
+    "ranger": "Bono a atributos de mascota",
+    "thief": "Tasa de recarga de robo",
+    "mesmer": "Índice de recarga de la habilidad de destrozo",
+    "necromancer": "Reserva de fuerza vital",
+    "revanent": "Retornado"
   },
   "accSummary": {
-    "raidBossKills": "Raid Bosses",
-    "fractalLvl": "Fractal Level",
-    "dailyAp": "Daily Ap"
+    "raidBossKills": "Jefes de incursión",
+    "fractalLvl": "Nivel de fractal",
+    "dailyAp": "Logros diarios"
   },
   "classes": {
-    "druid": "Druid",
-    "daredevil": "Daredevil",
+    "druid": "Druida",
+    "daredevil": "Temerario",
     "berserker": "Berserker",
-    "dragonhunter": "Dragonhunter",
-    "reaper": "Reaper",
-    "chronomancer": "Chronomancer",
-    "scrapper": "Scrapper",
-    "tempest": "Tempest",
-    "herald": "Herald"
+    "dragonhunter": "Cazadragones",
+    "reaper": "Segador",
+    "chronomancer": "Cronomante",
+    "scrapper": "Chatarrero",
+    "tempest": "Tempestad",
+    "herald": "Heraldo"
   },
   "words": {
-    "played": "Played",
-    "times": "times",
+    "played": "Jugado",
+    "times": "Veces",
     "ratio": "Ratio",
-    "rank": "Rank",
-    "optional": "Optional",
-    "dismiss": "Dismiss",
-    "embed": "Embed",
-    "loadMore": "Load More"
+    "rank": "Rango",
+    "optional": "Opcional",
+    "dismiss": "Descartar",
+    "embed": "Insertar",
+    "loadMore": "Cargar más"
   },
   "leaderboards": {
-    "name": "Leaderboards"
+    "name": "Tabla de clasificación"
   },
   "messages": {
-    "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!",
-    "notFound": "Not Found",
-    "notFoundLong": "Not Found (or the GW2 API is dead)!",
-    "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!",
-    "newBags": "Bags now available on character pages! User achievements coming soon."
+    "gw2ApiDown": "¡La API oficial de GW2 está teniendo problemas, tu sesión se puede ver afectada!",
+    "notFound": "No se ha encontrado",
+    "notFoundLong": "No se ha  encontrado (or la API de API está caída)!",
+    "resourceNotFound": "¡Lo siento, aquí no hay nada. ¡Aún así aquí tienes un personaje aleatorio!",
+    "newBags": "¡Sacos ahora disponibles en las páginas de usuario! Próximamente logros de usuario."
   }
 }
