@@ -56,7 +56,7 @@
     "pvpStats": {
       "name": "PvP Статистика",
       "unranked": "Обычная игра",
-      "ranked": "Первое место",
+      "ranked": "Ранговая игра",
       "wins": "Победы",
       "byes": "Фора",
       "losses": "Поражения",
@@ -67,8 +67,8 @@
       "rating": "Рейтинг"
     },
     "pvp": {
-      "favouriteClass": "Любимый класс",
-      "winLossAbbreviation": "П/П"
+      "favouriteClass": "Любимая профессия",
+      "winLossAbbreviation": "коэффициент"
     }
   },
   "guilds": {
@@ -111,7 +111,7 @@
       "name": "Изменить пароль",
       "inputs": {
         "current": "Текущий пароль",
-        "password": "Пароль",
+        "password": "Новый пароль",
         "confirm": "Подтвердите Пароль"
       }
     },
@@ -183,7 +183,7 @@
     "ratio": "У/С",
     "rank": "Ранг",
     "optional": "Необязательный",
-    "dismiss": "Распустить",
+    "dismiss": "Закрыть",
     "embed": "HTML-код",
     "loadMore": "Загрузить ещё"
   },
