@@ -5,7 +5,10 @@ import { Link } from 'react-router';
 import T from 'i18n-react';
 import cx from 'classnames';
 
-import StickyHeader from 'common/components/StickyHeader';
+// $FlowFixMe
+import '!!style!css!react-sticky-header/styles.css'; //eslint-disable-line
+import StickyHeader from 'react-sticky-header';
+
 import armoryLogo from 'assets/images/gw_logo.png';
 import config from 'config';
 
@@ -144,7 +147,7 @@ export default class Header extends Component {
     return (
       <StickyHeader
         header={header}
-        backgroundSrc={headerBg}
+        backgroundImage={headerBg}
         headerOnly={compact}
         onSticky={this.onSticky}
         backgroundColor="#869395"

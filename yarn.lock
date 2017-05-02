@@ -4901,7 +4901,14 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^0.2.2"
 
-react@^15.3.0:
+react-sticky-header@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/react-sticky-header/-/react-sticky-header-0.1.3.tgz#c6606970f330fc0f53f66a564272216b0a74c6b3"
+  dependencies:
+    classnames "^2.2.5"
+    react "^15.5.4"
+
+react@^15.3.0, react@^15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react/-/react-15.5.4.tgz#fa83eb01506ab237cdc1c8c3b1cea8de012bf047"
   dependencies:
