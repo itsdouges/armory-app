@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.16.3][] - 2017-05-02
 ### Changed
 - Russian translations
 
@@ -677,7 +679,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.2...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.3...HEAD
+[4.16.3]: https://github.com/madou/armory-react/compare/v4.16.2...v4.16.3
 [4.16.2]: https://github.com/madou/armory-react/compare/v4.16.1...v4.16.2
 [4.16.1]: https://github.com/madou/armory-react/compare/v4.16.0...v4.16.1
 [4.16.0]: https://github.com/madou/armory-react/compare/v4.15.0...v4.16.0
