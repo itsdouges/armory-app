@@ -12,9 +12,19 @@ export type InjectedProps = {
   checkingAuthentication: boolean,
 };
 
-const authData = (ComposedComponent: Children) =>
-  connect(selector)(
+const authData = (ComposedComponent: Children) => {
+  // eslint-disable-next-line no-param-reassign
+  ComposedComponent.defaultProps = {
+    ...ComposedComponent.defaultProps,
+    token: '',
+    alias: '',
+    authenticated: false,
+    checkingAuthentication: false,
+  };
+
+  return connect(selector)(
     (props) => <ComposedComponent {...props} />
   );
+};
 
 export default authData;

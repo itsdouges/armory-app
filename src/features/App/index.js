@@ -4,9 +4,8 @@ import type { SubmitNotification } from './app.reducer';
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
-
 import 'normalize.css';
+
 import '../../styles.less';
 import styles from './styles.less';
 
@@ -15,17 +14,6 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import NotificationBox from './components/NotificationBox';
 import { determineApiHealth, submitNotification } from './actions';
-
-const selector = createSelector(
-  (store) => store.user.alias,
-  (store) => store.user.loggedIn,
-  (store) => store.user.checkingAuthentication,
-  (userAlias, userAuthenticated, checkingAuthentication) => ({
-    userAlias,
-    userAuthenticated,
-    checkingAuthentication,
-  })
-);
 
 type Props = {
   children?: any,
@@ -44,7 +32,7 @@ function shouldForceSmallHeader ({ location }: Props) {
   return location.pathname !== '/';
 }
 
-@connect(selector, {
+@connect(null, {
   determineApiHealth,
   submitNotification,
 })
@@ -76,12 +64,7 @@ export default class App extends Component {
   render () {
     return (
       <div className={styles.root}>
-        <Header
-          compact={this.state.smallHeader}
-          authenticated={this.props.userAuthenticated}
-          checkingAuthentication={this.props.checkingAuthentication}
-          alias={this.props.userAlias}
-        />
+        <Header compact={this.state.smallHeader} />
 
         {this.props.children}
 
