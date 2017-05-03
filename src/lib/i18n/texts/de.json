@@ -50,7 +50,7 @@
     "recentMatches": "Aktuelle Spiele",
     "claimCta": "Beanspruchen",
     "noApiKey": "Kein API-Schlüssel gesetzt.",
-    "makePrimary": "Setze diesen als primären API-Schlüssel",
+    "makePrimary": "Setze diesen als primären API-Schlüssel.",
     "primaryToken": "Alle Benutzerinformationen ziehen diesen API-Schlüssel heran.",
     "invalidToken": "GW2-Daten konnten nicht abgerufen werden. Der API-Schlüssel wurde vermutlich auf der ArenaNet-Accountseite gelöscht.",
     "pvpStats": {
