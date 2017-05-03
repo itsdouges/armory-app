@@ -6,7 +6,7 @@
     }
   },
   "embeds": {
-    "name": "Embeds"
+    "name": "Einbetten"
   },
   "login": {
     "name": "Anmelden",
@@ -42,46 +42,42 @@
     "textbox": "Suche nach Benutzern, Charakteren und Gilden",
     "results": "Suchergebnisse für",
     "minlength": "Dein Suchbegriff sollte mehr als 3 Zeichen beinhalten :-)",
-    "nonefound": "Keine Treffer ... Dachtest du, du würdest etwas finden?",
-    "joincta": "Jetzt Mitglied werden und deinen GW2 API-Token einfügen, um gefunden zu werden!"
+    "nonefound": "Keine Treffer... Dachtest du, du würdest etwas finden?",
+    "joincta": "Jetzt Mitglied werden und deinen GW2 API-Schlüssel einfügen, um gefunden zu werden!"
   },
   "users": {
     "name": "Benutzer",
     "recentMatches": "Aktuelle Spiele",
-    "claimCta": "Claim",
-    "noApiKey": "Api key not set.",
-    "makePrimary": "Make primary api key.",
-    "primaryToken": "This is your primary api key, your user information will be sourced from this.",
-    "invalidToken": "Could not retrieve data from GW2, the api key was probably deleted from the ArenaNet account page.",
+    "claimCta": "Beanspruchen",
+    "noApiKey": "Kein API-Schlüssel gesetzt.",
+    "makePrimary": "Setze diesen als primären API-Schlüssel.",
+    "primaryToken": "Alle Benutzerinformationen ziehen diesen API-Schlüssel heran.",
+    "invalidToken": "GW2-Daten konnten nicht abgerufen werden. Der API-Schlüssel wurde vermutlich auf der ArenaNet-Accountseite gelöscht.",
     "pvpStats": {
       "name": "PvP Statistiken",
       "unranked": "Nicht gewertet",
       "ranked": "Gewertet",
       "wins": "Siege",
-      "byes": "Byes",
       "losses": "Verluste",
-      "desertions": "Desertationen",
-      "forfeits": "einbüßt",
-      "byes": "Siege (Überzahl)",
-      "losses": "Niederlagen",
       "desertions": "Verlassen",
-      "forfeits": "Niederlagen (Unterzahl)",
-      "finished": "Played",
-      "ranking": "Rank",
-      "rating": "Rating"
+      "forfeits": "Einbüßt",
+      "byes": "Siege Überzahl",
+      "finished": "Gespielt",
+      "ranking": "Rang",
+      "rating": "Wertung"
     },
     "pvp": {
-      "favouriteClass": "Favourite Class",
-      "winLossAbbreviation": "W/L"
+      "favouriteClass": "Lieblingsklasse",
+      "winLossAbbreviation": "S/N"
     }
   },
   "guilds": {
     "name": "Gilden",
     "guild": "Gilde",
     "noGuild": "Keine Gilde",
-    "claimed": "This guild has been claimed!",
-    "unclaimed": "This guild hasn't been claimed yet, if you're the guild leader add an api key with the guilds permission!",
-    "motd": "Message of the day"
+    "claimed": "Diese Gilde wurde beansprucht!",
+    "unclaimed": "Diese Gilde wurde noch nicht beansprucht, solltest du ihr Gildenanführer sein, füge einen API-Schlüssel mit der Gildenberechtigung hinzu!",
+    "motd": "Nachricht des Tages"
   },
   "characters": {
     "name": "Charaktere",
@@ -91,8 +87,8 @@
     "done": "Fertig",
     "edit": "Bearbeiten",
     "changePortrait": "Portrait wechseln",
-    "noSkill": "No Skill Selected",
-    "embedTooltip": "Copy and paste this markup onto your website."
+    "noSkill": "Keine Fertigkeit ausgewälht",
+    "embedTooltip": "Zum Einbetten in deine Website, kopiere dieses Markup und füge es in deiner Webseite ein."
   },
   "settings": {
     "name": "Einstellungen",
@@ -102,10 +98,10 @@
       "finished": "Sieht besser aus ;-)"
     },
     "apiKeys": {
-      "name": "API-Token",
-      "noKeysCta": "Oh, du hast noch keine API-Token hinterlegt.. Jetzt einen erstellen! Wähle am besten alle Berechtigungen aus, um die Seite in vollem Umfang nutzen zu können.",
+      "name": "API-Schlüssel",
+      "noKeysCta": "Oh, du hast noch keine API-Schlüssel hinterlegt.. Jetzt einen erstellen! Wähle am besten alle Berechtigungen aus, um die Seite in vollem Umfang nutzen zu können.",
       "inputs": {
-        "add": "API-Token hinzufügen"
+        "add": "API-Schlüssel hinzufügen"
       },
       "buttons": {
         "add": "Hinzufügen"
@@ -155,19 +151,19 @@
     "concentration": "Konzentration",
     "agonyResistance": "Qual-Widerstand",
     "magic": "Magisches Gespür",
-    "elementalist": "Klassenspezifisches Attribut",
-    "guardian": "Klassenspezifisches Attribut",
-    "warrior": "Klassenspezifisches Attribut",
-    "engineer": "Klassenspezifisches Attribut",
-    "ranger": "Klassenspezifisches Attribut",
-    "thief": "Klassenspezifisches Attribut",
-    "mesmer": "Klassenspezifisches Attribut",
-    "necromancer": "Klassenspezifisches Attribut",
-    "revanent": "Klassenspezifisches Attribut"
+    "elementalist": "Elementarmagier",
+    "guardian": "Wächter",
+    "warrior": "Krieger",
+    "engineer": "Ingenieur",
+    "ranger": "Waldläufer",
+    "thief": "Dieb",
+    "mesmer": "Mesmer",
+    "necromancer": "Nekromant",
+    "revanent": "Widergänger"
   },
   "accSummary": {
-    "raidBossKills": "Raid Bosse",
-    "fractalLvl": "Fraktal Level",
+    "raidBossKills": "Raid-Bosse",
+    "fractalLvl": "Fraktallevel",
     "dailyAp": "Tägliche Erfolge"
   },
   "classes": {
@@ -182,23 +178,23 @@
     "herald": "Herold"
   },
   "words": {
-    "played": "Played",
-    "times": "times",
-    "ratio": "Ratio",
-    "rank": "Rank",
+    "played": "Gespielt",
+    "times": "Mal",
+    "ratio": "Verhältnis",
+    "rank": "Rang",
     "optional": "Optional",
-    "dismiss": "Dismiss",
-    "embed": "Embed",
-    "loadMore": "Load More"
+    "dismiss": "Verwerfen",
+    "embed": "Einbetten",
+    "loadMore": "Mehr laden"
   },
   "leaderboards": {
-    "name": "Leaderboards"
+    "name": "Rangliste"
   },
   "messages": {
-    "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!",
-    "notFound": "Not Found",
-    "notFoundLong": "Not Found (or the GW2 API is dead)!",
-    "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!",
-    "newBags": "Bags now available on character pages! User achievements coming soon."
+    "gw2ApiDown": "Es gibt derzeit Probleme mit der offiziellen GW2-API, die auch deine Sitzung beeinflussen könnten!",
+    "notFound": "Nicht gefunden",
+    "notFoundLong": "Nicht gefunden (oder die GW2-API funktioniert derzeit nicht einwandfrei)!",
+    "resourceNotFound": "Entschuldigung, wir konnten nicht finden, was du suchst. Stattdessen ist hier ein zufälliger Character!",
+    "newBags": "Auf den Charakterseiten sind jetzt auch Taschen verfügbar! Erfolge werden in naher Zukunft auch implementiert."
   }
 }
