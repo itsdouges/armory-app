@@ -42,7 +42,7 @@
     "textbox": "Suche nach Benutzern, Charakteren und Gilden",
     "results": "Suchergebnisse für",
     "minlength": "Dein Suchbegriff sollte mehr als 3 Zeichen beinhalten :-)",
-    "nonefound": "Keine Treffer ... Dachtest du, du würdest etwas finden?",
+    "nonefound": "Keine Treffer... Dachtest du, du würdest etwas finden?",
     "joincta": "Jetzt Mitglied werden und deinen GW2 API-Schlüssel einfügen, um gefunden zu werden!"
   },
   "users": {
@@ -151,15 +151,15 @@
     "concentration": "Konzentration",
     "agonyResistance": "Qual-Widerstand",
     "magic": "Magisches Gespür",
-    "elementalist": "Klassenspezifisches Attribut",
-    "guardian": "Klassenspezifisches Attribut",
-    "warrior": "Klassenspezifisches Attribut",
-    "engineer": "Klassenspezifisches Attribut",
-    "ranger": "Klassenspezifisches Attribut",
-    "thief": "Klassenspezifisches Attribut",
-    "mesmer": "Klassenspezifisches Attribut",
-    "necromancer": "Klassenspezifisches Attribut",
-    "revanent": "Klassenspezifisches Attribut"
+    "elementalist": "Elementarmagier",
+    "guardian": "Wächter",
+    "warrior": "Krieger",
+    "engineer": "Ingenieur",
+    "ranger": "Waldläufer",
+    "thief": "Dieb",
+    "mesmer": "Mesmer",
+    "necromancer": "Nekromant",
+    "revanent": "Widergänger"
   },
   "accSummary": {
     "raidBossKills": "Raid-Bosse",
@@ -179,7 +179,7 @@
   },
   "words": {
     "played": "Gespielt",
-    "times": "mal",
+    "times": "Mal",
     "ratio": "Verhältnis",
     "rank": "Rang",
     "optional": "Optional",
