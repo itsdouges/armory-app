@@ -1,7 +1,6 @@
 // @flow
 
 import { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 import { Link } from 'react-router';
@@ -47,10 +46,6 @@ type Props = {
 export default class Character extends Component {
   props: Props;
 
-  static contextTypes = {
-    _userAlias: PropTypes.string,
-  };
-
   componentWillMount () {
     this.loadCharacter();
   }
@@ -64,9 +59,7 @@ export default class Character extends Component {
   loadCharacter () {
     const { character, alias } = this.props.routeParams;
 
-    this.props.fetchCharacter(character, {
-      ignoreAuth: this.context._userAlias !== alias,
-    });
+    this.props.fetchCharacter(character);
 
     this.props.selectCharacter(character);
     this.props.selectUser(alias);

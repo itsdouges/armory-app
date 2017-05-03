@@ -73,15 +73,14 @@ function extractIds ({ specializations, equipment, equipment_pvp, skills }) {
   return ids;
 }
 
-export function fetchCharacter (character: string, { redirect404 = true, ignoreAuth, basicLoad }: {
+export function fetchCharacter (character: string, { redirect404 = true, basicLoad }: {
   redirect404: boolean,
-  ignoreAuth: boolean,
   basicLoad: boolean,
 } = {}): ReduxThunk {
   return (dispatch) => {
     dispatch(fetchingCharacter(true));
 
-    return axios.get(`${config.api.endpoint}characters/${character}`, { ignoreAuth })
+    return axios.get(`${config.api.endpoint}characters/${character}`)
       .then(({ data }) => {
         dispatch(fetchCharacterResultSuccess(character, data));
         dispatch(fetchingCharacter(false));

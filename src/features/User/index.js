@@ -3,7 +3,6 @@
 import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
 
 import { Component } from 'react';
-import PropTypes from 'prop-types';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
@@ -76,10 +75,6 @@ const makeKey = (content, index) => (content ? content.name : index);
 export default class User extends Component {
   props: Props;
 
-  static contextTypes = {
-    _userAlias: PropTypes.string,
-  };
-
   componentWillMount () {
     this.loadUser(this.props.routeParams.alias);
   }
@@ -95,7 +90,7 @@ export default class User extends Component {
   loadUser (alias: string) {
     const { dispatchFetchUser, dispatchSelectUser } = this.props;
 
-    dispatchFetchUser(alias, { ignoreAuth: this.context._userAlias !== alias });
+    dispatchFetchUser(alias);
     dispatchSelectUser(alias);
   }
 
@@ -169,7 +164,7 @@ export default class User extends Component {
         title={alias}
         content={user}
         pinnedTab={stubUser && (
-          <Link to={this.context._userAlias ? `settings?claiming=${alias}` : `join?claiming=${alias}`}>
+          <Link to={false ? `settings?claiming=${alias}` : `join?claiming=${alias}`}>
             <Button type="cta">{T.translate('users.claimCta')}</Button>
           </Link>
         )}

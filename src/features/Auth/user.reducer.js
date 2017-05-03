@@ -1,3 +1,4 @@
+import { createSelector } from 'reselect';
 import {
   CLEAR_USER_DATA,
   AUTHENTICATE_USER,
@@ -10,6 +11,19 @@ import * as ls from 'lib/localStorage';
 export const defaultState = {
   checkingAuthentication: true,
 };
+
+export const selector = createSelector(
+  (store) => store.user.token,
+  (store) => store.user.loggedIn,
+  (store) => store.user.checkingAuthentication,
+  (store) => store.user.alias,
+  (token, authenticated, checkingAuthentication, alias) => ({
+    token,
+    authenticated,
+    alias,
+    checkingAuthentication,
+  })
+);
 
 export default (state, action) => {
   switch (action.type) {

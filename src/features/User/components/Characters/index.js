@@ -1,7 +1,6 @@
 // @flow
 
 import { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { makeStubItems } from 'lib/paginator';
@@ -30,17 +29,13 @@ export default class UserCharacters extends Component {
     alias: string,
   };
 
-  static contextTypes = {
-    _userAlias: PropTypes.string,
-  };
-
   static defaultProps = {
     fetchCharacters: () => Promise.resolve(),
   };
 
   fetchCharacters = (limit: number, offset: number) => {
     const { alias, fetchCharacters } = this.props;
-    return fetchCharacters(alias, limit, offset, { ignoreAuth: this.context._userAlias !== alias });
+    return fetchCharacters(alias, limit, offset);
   };
 
   renderCard = (content: Object, index: number) => {

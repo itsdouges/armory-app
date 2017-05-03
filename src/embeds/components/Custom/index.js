@@ -110,7 +110,6 @@ export default class CustomEmbed extends Component {
 
     dispatchFetchUser(userName, {
       redirect404: false,
-      ignoreAuth: true,
     });
   };
 
@@ -122,7 +121,6 @@ export default class CustomEmbed extends Component {
 
     dispatchFetchCharacter(characterName, {
       redirect404: false,
-      ignoreAuth: true,
     });
   };
 

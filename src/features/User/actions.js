@@ -49,14 +49,11 @@ const fetchingUserCharacters = (fetching) => ({
   payload: fetching,
 });
 
-export const fetchUserCharacters = (alias: string, limit: number, offset: number, { ignoreAuth }: {
-  ignoreAuth: boolean,
-} = {}): ReduxThunk =>
+export const fetchUserCharacters = (alias: string, limit: number, offset: number): ReduxThunk =>
   paginatedThunk((dispatch: Dispatch) => {
     dispatch(fetchingUserCharacters(true));
 
     return axios.get(`${config.api.endpoint}users/${alias}/characters`, {
-      ignoreAuth,
       params: {
         limit,
         offset,
@@ -140,12 +137,11 @@ export const fetchPvpStandings = (alias: string): ReduxThunk => (dispatch) =>
 
 export const fetchUser = (
   alias: string,
-  { ignoreAuth }: { ignoreAuth: boolean } = {},
 ): ReduxThunk =>
   (dispatch) => {
     dispatch(fetchingUser(true));
 
-    return axios.get(`${config.api.endpoint}users/${alias}`, { ignoreAuth })
+    return axios.get(`${config.api.endpoint}users/${alias}`)
       .then(({ data }) => {
         dispatch(fetchUserResult(data));
         dispatch(fetchPvpStandings(alias));

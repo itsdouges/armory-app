@@ -26,9 +26,7 @@ export default class RandomCharacter extends Component {
       ? 'of-the-day/characters'
       : 'random/characters/1';
 
-    axios.get(`${config.api.endpoint}${resource}`, {
-      ignoreAuth: true,
-    })
+    axios.get(`${config.api.endpoint}${resource}`)
     .then(({ data }) => this.setState({ name: data[0] }));
   }
 

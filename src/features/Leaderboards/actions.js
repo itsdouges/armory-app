@@ -17,7 +17,6 @@ const fetchPvpLeaderboardSuccess = (data, region) => ({
 export function fetchPvpLeaderboard (region: 'na' | 'eu' | 'gw2a', limit: number, offset: number) {
   return paginatedThunk((dispatch: Dispatch) => {
     return get(`${config.api.endpoint}leaderboards/pvp/${region}`, {
-      ignoreAuth: true,
       params: {
         limit,
         offset,

@@ -11,7 +11,7 @@ import type {
   Pets,
 } from 'flowTypes';
 
-import { Component, PropTypes } from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
@@ -67,10 +67,6 @@ type Props = {
 })
 export default class CharacterOverview extends Component {
   props: Props;
-
-  static contextTypes = {
-    _userAlias: PropTypes.string,
-  };
 
   state = {
     editMode: false,
@@ -130,7 +126,7 @@ export default class CharacterOverview extends Component {
     const { editMode } = this.state;
 
     const attributes = calculateAttributes(character, { items, traits, skills });
-    const ownCharacter = get(character, 'alias', false) === this.context._userAlias;
+    const ownCharacter = false;
     const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
     const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]).filter((s) => !!s);
