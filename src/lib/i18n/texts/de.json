@@ -195,7 +195,7 @@
     "name": "Rangliste"
   },
   "messages": {
-    "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!",
+    "gw2ApiDown": "Es gibt derzeit Probleme mit der offiziellen GW2-API, die auch deine Sitzung beeinflussen könnten!",
     "notFound": "Nicht gefunden",
     "notFoundLong": "Nicht gefunden (oder die GW2-API funktioniert derzeit nicht einwandfrei)!",
     "resourceNotFound": "Entschuldigung, wir konnten nicht finden, was du suchst. Stattdessen ist hier ein zufälliger Character!",
