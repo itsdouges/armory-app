@@ -11,7 +11,7 @@ import cx from 'classnames';
 import '!!style!css!react-sticky-header/styles.css'; //eslint-disable-line
 import StickyHeader from 'react-sticky-header';
 
-import authData from 'features/Auth/data';
+import authenticatedData from 'features/Auth/data';
 import colours from 'common/styles/colours';
 import armoryLogo from 'assets/images/gw_logo.png';
 import config from 'config';
@@ -75,13 +75,15 @@ const LOADING_INDICATOR = [{
   to: '',
 }];
 
-const buildLinks = ({ checkingAuthentication, authenticated, alias }): Array<LinkDefs> => {
+const buildLinks = ({ checkingAuthentication, alias }): Array<LinkDefs> => {
   let linksForContext;
 
-  if (checkingAuthentication) {
+  // If the user is logging in for the first time, we want a loading indicator.
+  if (!alias && checkingAuthentication) {
     linksForContext = LOADING_INDICATOR;
   } else {
-    linksForContext = authenticated
+    // If an alias exists, the user has been authenticated before.
+    linksForContext = alias
       ? [
         ...AUTHENTICATED_STATIC_LINKS,
         ...[{
@@ -97,7 +99,8 @@ const buildLinks = ({ checkingAuthentication, authenticated, alias }): Array<Lin
   ];
 };
 
-export default authData(class Header extends Component {
+export default authenticatedData(
+class Header extends Component {
   props: Props;
 
   state: State = {

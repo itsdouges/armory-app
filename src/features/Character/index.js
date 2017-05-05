@@ -1,9 +1,13 @@
 // @flow
 
+import type { Character as CharacterType, Gw2Title } from 'flowTypes';
+
+
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 import { Link } from 'react-router';
+import T from 'i18n-react';
 
 import { topSelector } from './characters.reducer';
 import { fetchCharacter, selectCharacter } from './actions';
@@ -16,12 +20,8 @@ import Overview from './components/Overview';
 import Bags from './components/Bags';
 import styles from './styles.less';
 
-import type { Character as CharacterType, Gw2Title } from 'flowTypes';
-
-function buildDescription (character = {}) {
-  // eslint-disable-next-line max-len
-  return `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
-}
+const buildDescription = (character = {}) =>
+  `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
 
 type Props = {
   character?: CharacterType,
@@ -60,7 +60,6 @@ export default class Character extends Component {
     const { character, alias } = this.props.routeParams;
 
     this.props.fetchCharacter(character);
-
     this.props.selectCharacter(character);
     this.props.selectUser(alias);
   }
@@ -131,7 +130,7 @@ export default class Character extends Component {
           ),
         }, {
           to: `/${alias}/c/${characterName}/bags`,
-          name: 'Bags',
+          name: T.translate('characters.bags'),
           flair: 'new',
           content: <Bags />,
         }]}

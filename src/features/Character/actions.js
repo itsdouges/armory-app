@@ -119,11 +119,11 @@ function updateCharacterAuth (name, authorization) {
 
 export function updateCharacter (
   name: string,
-  { showPublic }: { showPublic: boolean },
+  options: {| showPublic: boolean |},
 ): ReduxThunk {
   return (dispatch) => {
-    dispatch(updateCharacterAuth(name, { showPublic }));
-    return axios.put(`${config.api.endpoint}characters/${name}`, { showPublic });
+    dispatch(updateCharacterAuth(name, options));
+    return axios.put(`${config.api.endpoint}characters/${name}`, options);
   };
 }
 

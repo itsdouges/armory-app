@@ -2,7 +2,7 @@
 
 import type { Children } from 'react';
 
-import { selector } from './user.reducer';
+import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 
 export type InjectedProps = {
@@ -12,7 +12,20 @@ export type InjectedProps = {
   checkingAuthentication: boolean,
 };
 
-const authData = (ComposedComponent: Children) => {
+export const selector = createSelector(
+  (store) => store.user.token,
+  (store) => store.user.loggedIn,
+  (store) => store.user.checkingAuthentication,
+  (store) => store.user.alias,
+  (token, authenticated, checkingAuthentication, alias) => ({
+    token,
+    authenticated,
+    alias,
+    checkingAuthentication,
+  })
+);
+
+const authenticatedData = (ComposedComponent: Children) => {
   // eslint-disable-next-line no-param-reassign
   ComposedComponent.defaultProps = {
     ...ComposedComponent.defaultProps,
@@ -27,4 +40,4 @@ const authData = (ComposedComponent: Children) => {
   );
 };
 
-export default authData;
+export default authenticatedData;

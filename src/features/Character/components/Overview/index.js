@@ -11,6 +11,8 @@ import type {
   Pets,
 } from 'flowTypes';
 
+import type { InjectedProps } from 'features/Auth/data';
+
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import includes from 'lodash/includes';
@@ -18,8 +20,9 @@ import get from 'lodash/get';
 import cx from 'classnames';
 import T from 'i18n-react';
 
-import { overviewSelector } from '../../characters.reducer';
-import { updateCharacter, selectCharacterMode } from '../../actions';
+import authenticatedData from 'features/Auth/data';
+import { overviewSelector } from 'features/Character/characters.reducer';
+import { updateCharacter, selectCharacterMode } from 'features/Character/actions';
 import calculateAttributes from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
@@ -45,7 +48,7 @@ type UpdateOptions = {
   showPublic: boolean,
 };
 
-type Props = {
+type Props = InjectedProps & {
   name: string,
   userAlias: string,
   mode: CharacterModes,
@@ -61,11 +64,12 @@ type Props = {
   selectCharacterMode?: (CharacterModes) => void,
 };
 
-@connect(overviewSelector, {
+export default authenticatedData(
+connect(overviewSelector, {
   updateCharacter,
   selectCharacterMode,
-})
-export default class CharacterOverview extends Component {
+})(
+class CharacterOverview extends Component {
   props: Props;
 
   state = {
@@ -111,6 +115,7 @@ export default class CharacterOverview extends Component {
 
   render () {
     const {
+      alias,
       name: characterName,
       character,
       mode,
@@ -121,12 +126,13 @@ export default class CharacterOverview extends Component {
       specializations,
       amulets,
       pets,
+      userAlias,
     } = this.props;
 
     const { editMode } = this.state;
 
     const attributes = calculateAttributes(character, { items, traits, skills });
-    const ownCharacter = false;
+    const ownCharacter = alias === userAlias;
     const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
     const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]).filter((s) => !!s);
@@ -276,4 +282,4 @@ export default class CharacterOverview extends Component {
       </div>
     );
   }
-}
+}));
