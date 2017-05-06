@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.16.7][] - 2017-05-06
 ### Changed
 - Auth system to not suck as much
 
@@ -693,7 +695,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.6...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.7...HEAD
+[4.16.7]: https://github.com/madou/armory-react/compare/v4.16.6...v4.16.7
 [4.16.6]: https://github.com/madou/armory-react/compare/v4.16.5...v4.16.6
 [4.16.5]: https://github.com/madou/armory-react/compare/v4.16.4...v4.16.5
 [4.16.4]: https://github.com/madou/armory-react/compare/v4.16.3...v4.16.4
