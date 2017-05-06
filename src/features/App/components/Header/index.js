@@ -1,5 +1,7 @@
 // @flow
 
+import type { InjectedProps } from 'features/Auth/data';
+
 import { Component } from 'react';
 import { Link } from 'react-router';
 import T from 'i18n-react';
@@ -9,6 +11,8 @@ import cx from 'classnames';
 import '!!style!css!react-sticky-header/styles.css'; //eslint-disable-line
 import StickyHeader from 'react-sticky-header';
 
+import authenticatedData from 'features/Auth/data';
+import colours from 'common/styles/colours';
 import armoryLogo from 'assets/images/gw_logo.png';
 import config from 'config';
 
@@ -25,10 +29,7 @@ import SearchBar from 'common/components/SearchBar';
 import styles from './styles.less';
 import LangPicker from '../LangPicker';
 
-type Props = {
-  authenticated: boolean,
-  alias: string,
-  checkingAuthentication: boolean,
+type Props = InjectedProps & {
   compact: boolean,
 };
 
@@ -74,13 +75,15 @@ const LOADING_INDICATOR = [{
   to: '',
 }];
 
-const buildLinks = ({ checkingAuthentication, authenticated, alias }): Array<LinkDefs> => {
+const buildLinks = ({ checkingAuthentication, alias }): Array<LinkDefs> => {
   let linksForContext;
 
-  if (checkingAuthentication) {
+  // If the user is logging in for the first time, we want a loading indicator.
+  if (!alias && checkingAuthentication) {
     linksForContext = LOADING_INDICATOR;
   } else {
-    linksForContext = authenticated
+    // If an alias exists, the user has been authenticated before.
+    linksForContext = alias
       ? [
         ...AUTHENTICATED_STATIC_LINKS,
         ...[{
@@ -96,7 +99,8 @@ const buildLinks = ({ checkingAuthentication, authenticated, alias }): Array<Lin
   ];
 };
 
-export default class Header extends Component {
+export default authenticatedData(
+class Header extends Component {
   props: Props;
 
   state: State = {
@@ -150,7 +154,7 @@ export default class Header extends Component {
         backgroundImage={headerBg}
         headerOnly={compact}
         onSticky={this.onSticky}
-        backgroundColor="#869395"
+        backgroundColor={colours.headerGray}
       >
         <div className={styles.bigSearchContainer} style={{ display: compact ? 'none' : '' }}>
           <Container>
@@ -166,4 +170,4 @@ export default class Header extends Component {
       </StickyHeader>
     );
   }
-}
+});

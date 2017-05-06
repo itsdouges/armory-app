@@ -20,21 +20,21 @@ import ContentCard from 'common/components/ContentCard';
 import Button from 'common/components/Button';
 import { conversion as trackConversion } from 'lib/tracking';
 
-import { validatePasswords } from 'features/Join/actions';
-import { clearUserData } from 'features/Auth/actions';
-import {
-  validateGw2Token,
-  addGw2Token,
-  fetchGw2Tokens,
-  selectPrimaryGw2Token,
-  removeGw2Token,
-  changePassword,
-} from './actions';
+import * as joinActions from 'features/Join/actions';
+import * as authActions from 'features/Auth/actions';
+import * as actions from './actions';
 
 type Props = {
   router: {},
-  dispatch: () => void,
   user: AuthenticatedUser,
+  validateGw2Token: (string) => void,
+  addGw2Token: (string) => void,
+  fetchGw2Tokens: () => void,
+  selectPrimaryGw2Token: (string) => void,
+  removeGw2Token: (string) => void,
+  changePassword: (string, string) => void,
+  validatePasswords: (string, string) => void,
+  clearUserData: () => void,
 };
 
 type State = {
@@ -42,7 +42,16 @@ type State = {
   updateImage: boolean,
 };
 
-@connect(selector)
+@connect(selector, {
+  validateGw2Token: actions.validateGw2Token,
+  addGw2Token: actions.addGw2Token,
+  fetchGw2Tokens: actions.fetchGw2Tokens,
+  selectPrimaryGw2Token: actions.selectPrimaryGw2Token,
+  removeGw2Token: actions.removeGw2Token,
+  changePassword: actions.changePassword,
+  clearUserData: authActions.clearUserData,
+  validatePasswords: joinActions.validatePasswords,
+})
 class Settings extends Component {
   props: Props;
 
@@ -52,12 +61,12 @@ class Settings extends Component {
   };
 
   componentWillMount () {
-    this.props.dispatch(fetchGw2Tokens());
+    this.props.fetchGw2Tokens();
     trackConversion();
   }
 
   setPrimaryToken = (token: string) => {
-    this.props.dispatch(selectPrimaryGw2Token(token));
+    this.props.selectPrimaryGw2Token(token);
   };
 
   validateToken = debounce((token) => {
@@ -65,29 +74,29 @@ class Settings extends Component {
       return;
     }
 
-    this.props.dispatch(validateGw2Token(token));
+    this.props.validateGw2Token(token);
   });
 
   addToken = (token: string) => {
-    this.props.dispatch(addGw2Token(token));
+    this.props.addGw2Token(token);
   };
 
   removeToken = (token: string) => {
-    this.props.dispatch(removeGw2Token(token));
+    this.props.removeGw2Token(token);
   };
 
   signOut = (e: SyntheticEvent) => {
     e.preventDefault();
     browserHistory.replace('/');
-    this.props.dispatch(clearUserData());
+    this.props.clearUserData();
   };
 
   validatePasswords = (newPassword: string, newPasswordConfirm: string) => {
-    this.props.dispatch(validatePasswords(newPassword, newPasswordConfirm));
+    this.props.validatePasswords(newPassword, newPasswordConfirm);
   };
 
   changePassword = (currentPassword: string, newPassword: string) => {
-    this.props.dispatch(changePassword(currentPassword, newPassword));
+    this.props.changePassword(currentPassword, newPassword);
   };
 
   finishedUploading = () => {

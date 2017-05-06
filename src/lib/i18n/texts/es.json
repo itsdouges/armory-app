@@ -88,7 +88,8 @@
     "edit": "Editar",
     "changePortrait": "Cambiar el retrato del personaje",
     "noSkill": "Habilidad no seleccionada",
-    "embedTooltip": "Copia y pega este markup a tu página."
+    "embedTooltip": "Copia y pega este markup a tu página.",
+    "bags": "Bags"
   },
   "settings": {
     "name": "Ajustes",

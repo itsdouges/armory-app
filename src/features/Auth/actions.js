@@ -1,16 +1,11 @@
 import { get } from 'axios';
 import config from 'config';
-import { setApiToken } from 'lib/http';
 
 export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
 export const CLEAR_USER_DATA = 'CLEAR_USER_DATA';
 export const CHECKING_AUTHENTICATION = 'CHECKING_AUTHENTICATION';
 
-let clearApiToken;
-
 export function clearUserData () {
-  if (clearApiToken) clearApiToken();
-
   return {
     type: CLEAR_USER_DATA,
   };
@@ -31,8 +26,6 @@ export function checkingAuthentication (checking) {
 }
 
 export function authenticateUser (token) {
-  clearApiToken = setApiToken(token);
-
   return (dispatch) => {
     dispatch(checkingAuthentication(true));
 
@@ -42,11 +35,18 @@ export function authenticateUser (token) {
       },
     })
     .then(({ data }) => {
-      dispatch(userAuthenticated(data));
+      dispatch(userAuthenticated({
+        ...data,
+        token,
+      }));
+
       dispatch(checkingAuthentication(false));
-    }, () => {
+    }, ({ response }) => {
+      if (response.status >= 400 && response.status < 500) {
+        dispatch(clearUserData());
+      }
+
       dispatch(checkingAuthentication(false));
-      clearApiToken();
     });
   };
 }

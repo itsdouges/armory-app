@@ -88,7 +88,8 @@
     "edit": "Edit",
     "changePortrait": "Change your character portrait",
     "noSkill": "No Skill Selected",
-    "embedTooltip": "Copy and paste this markup onto your website."
+    "embedTooltip": "Copy and paste this markup onto your website.",
+    "bags": "Bags"
   },
   "settings": {
     "name": "Paramètres",
