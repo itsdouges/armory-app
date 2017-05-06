@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Auth system to not suck as much
 
+## [4.16.6][] - 2017-05-04
+### Changed
+- Chinese translations
+
 ## [4.16.5][] - 2017-05-03
 ### Changed
 - German translations
@@ -689,7 +693,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.5...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.6...HEAD
+[4.16.6]: https://github.com/madou/armory-react/compare/v4.16.5...v4.16.6
 [4.16.5]: https://github.com/madou/armory-react/compare/v4.16.4...v4.16.5
 [4.16.4]: https://github.com/madou/armory-react/compare/v4.16.3...v4.16.4
 [4.16.3]: https://github.com/madou/armory-react/compare/v4.16.2...v4.16.3
