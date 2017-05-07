@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.16.10][] - 2017-05-08
 ### Fixed
 - Claim cta not linking to settings page if user was logged in
 
@@ -705,7 +707,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.9...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.10...HEAD
+[4.16.10]: https://github.com/madou/armory-react/compare/v4.16.9...v4.16.10
 [4.16.9]: https://github.com/madou/armory-react/compare/v4.16.8...v4.16.9
 [4.16.8]: https://github.com/madou/armory-react/compare/v4.16.7...v4.16.8
 [4.16.7]: https://github.com/madou/armory-react/compare/v4.16.6...v4.16.7
