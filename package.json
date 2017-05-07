@@ -1,6 +1,10 @@
 {
   "name": "armory-react",
-  "version": "4.12.0",
+  "version": "4.16.9",
+  "private": true,
+  "pre-commit": [
+    "test"
+  ],
   "scripts": {
     "start": "node ./scripts/start.js --prod",
     "start:embeds": "npm start -- --embeds --local",
@@ -17,12 +21,14 @@
     "coverage": "BABEL_ENV=test nyc npm run unit",
     "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "preversion": "npm test",
+    "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
   },
   "dependencies": {
-    "airbnb-js-shims": "^1.0.1",
     "axios": "^0.15.3",
+    "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
+    "function-batch": "^1.0.0",
     "gw2e-item-attributes": "^1.2.0",
     "gw2itemstats": "^0.0.2",
     "i18n-react": "^0.3.0-ts1",
@@ -30,16 +36,21 @@
     "lz-string": "^1.4.4",
     "moment": "^2.15.2",
     "normalize.css": "^4.2.0",
-    "react": "^15.4.2",
+    "prop-types": "^15.5.8",
+    "react": "^15.3.0",
+    "react-debounce-decorator": "^0.1.3",
     "react-dom": "^15.4.2",
     "react-helmet": "^4.0.0",
     "react-redux": "^5.0.2",
     "react-router": "^3.0.2",
+    "react-scroll-paginator": "^0.1.2",
     "react-share": "^1.9.3",
+    "react-sticky-header": "^0.1.6",
     "recompose": "^0.22.0",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
-    "reselect": "^2.5.3"
+    "reselect": "^2.5.3",
+    "withinviewport": "^2.0.0"
   },
   "devDependencies": {
     "app-module-path": "^2.2.0",
@@ -48,20 +59,19 @@
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-istanbul": "^4.1.1",
-    "babel-plugin-syntax-trailing-function-commas": "^6.8.0",
     "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-plugin-transform-react-constant-elements": "^6.9.1",
     "babel-plugin-transform-runtime": "^6.12.0",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-es2016": "^6.11.3",
+    "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.11.1",
     "babel-runtime": "^6.11.6",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "chai-enzyme": "^0.6.1",
     "chalk": "^1.1.3",
+    "changelog-verify": "^1.0.4",
     "codecov": "^2.1.0",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.26.1",
@@ -108,13 +118,11 @@
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
+    "version-changelog": "^2.0.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.16.2",
     "webpack-manifest-plugin": "^1.1.0",
     "webpack-md5-hash": "^0.0.5",
     "yargs": "^6.6.0"
-  },
-  "pre-commit": [
-    "test"
-  ]
+  }
 }

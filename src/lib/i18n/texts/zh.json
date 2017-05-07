@@ -6,7 +6,7 @@
     }
   },
   "embeds": {
-    "name": "Embeds"
+    "name": "嵌入"
   },
   "login": {
     "name": "登录",
@@ -48,9 +48,12 @@
   "users": {
     "name": "用户",
     "recentMatches": "近期比赛",
-    "claimCta": "Claim user",
-    "noApiKey": "Api key not set.",
     "achievements": "Achievements",
+    "claimCta": "索取",
+    "noApiKey": "哦，你没有API密钥。。请前往生成一个。。!",
+    "makePrimary": "生成主要API密钥。",
+    "primaryToken": "这是你的主要API密钥，你的用户资料会来自这里。",
+    "invalidToken": "没有成功从 Guild Wars 2 取到资料，API密钥可能从 ArenaNet 的账目页被删除了。",
     "pvpStats": {
       "name": "PVP统计",
       "unranked": "未排序",
@@ -58,36 +61,35 @@
       "wins": "胜",
       "byes": "轮空",
       "losses": "损失",
-      "desertions": "开小差",
+      "desertions": "离弃",
       "forfeits": "弃权",
-      "finished": "Played",
-      "ranking": "Rank",
-      "rating": "Rating"
+      "finished": "结束",
+      "ranking": "排名",
+      "rating": "排名点数"
     },
     "pvp": {
-      "favouriteClass": "Favourite Class",
-      "winLossAbbreviation": "W/L"
+      "favouriteClass": "最喜欢的职业",
+      "winLossAbbreviation": "胜/败"
     }
   },
   "guilds": {
     "name": "公会",
-    "guild": "Guild",
-    "noGuild": "No Guild",
-    "claimed": "This guild has been claimed!",
-    "unclaimed": "This guild hasn't been claimed yet, if you're the guild leader add an api key with the guilds permission!",
-    "motd": "Message of the day"
+    "guild": "公会",
+    "noGuild": "无公会",
+    "claimed": "这公会被索取!",
+    "unclaimed": "这公会还没有被索取，如果你是公会的领导者，请获得公会的认同生成API密钥!",
+    "motd": "当天信息"
   },
   "characters": {
     "name": "角色",
     "embedCta": "这是随机选择的字符。你可以将它嵌入在您的网站！请点击任何角色页面上的嵌入图标。",
     "shown": "所示的字符",
     "hidden": "隐藏角色",
-    "done": "Done",
-    "edit": "Edit",
-    "changePortrait": "Change your character portrait",
-    "noSkill": "No Skill Selected",
-    "embedCta": "Embed",
-    "embedTooltip": "Copy and paste this markup onto your website."
+    "done": "完成",
+    "edit": "修改",
+    "changePortrait": "更改角色的图像",
+    "noSkill": "没有技能被选择",
+    "embedTooltip": "复制这标记然后粘贴在你的网页上。"
   },
   "settings": {
     "name": "设置",
@@ -126,72 +128,74 @@
     "skinLocked": "锁定肌肤",
     "requiredLevel": "需要等级",
     "weaponStrength": "武器力量",
-    "defense": "defense",
+    "defense": "防卫力",
     "currentlyEquipped": "目前装备",
-    "accountBound": "Account bound",
-    "soulBound": "Soulbound"
+    "accountBound": "账户绑定",
+    "soulBound": "角色绑定"
   },
   "itemAttributes": {
-    "power": "Power",
-    "precision": "Precision",
-    "toughness": "Toughness",
-    "vitality": "Vitality",
-    "boonDuration": "Boon Duration",
-    "conditionDamage": "Condition Damage",
-    "conditionDuration": "Condition Duration",
-    "ferocity": "Ferocity",
-    "healingPower": "Healing Power",
-    "armor": "Armor",
-    "critChance": "Critical Chance",
-    "critDamage": "Critical Damage",
-    "health": "Health",
-    "healing": "Healing",
-    "expertise": "Expertise",
-    "concentration": "Concentration",
-    "agonyResistance": "Agony Resistance",
-    "magic": "Magic Find",
-    "elementalist": "Attunement Recharge Rate",
-    "guardian": "Virtue Recharge Rate",
-    "warrior": "Burst Recharge",
-    "engineer": "Tool Belt Recharge Rate",
-    "ranger": "Pet Attribute Bonus",
-    "thief": "Steal Recharge Rate",
-    "mesmer": "Shatter Skill Recharge Rate",
-    "necromancer": "Life Force Pool",
-    "revanent": "Revenant"
+    "power": "力量",
+    "precision": "精准",
+    "toughness": "耐性",
+    "vitality": "体力",
+    "boonDuration": "增益持续",
+    "conditionDamage": "症状伤害",
+    "conditionDuration": "症状持续",
+    "ferocity": "暴击效果",
+    "healingPower": "治疗效果",
+    "armor": "护甲",
+    "critChance": "暴击率",
+    "critDamage": "暴击伤害",
+    "health": "血量",
+    "healing": "治疗量",
+    "expertise": "延迟症状持续",
+    "concentration": "延迟增益持续",
+    "agonyResistance": "痛苦抗性",
+    "magic": "掉宝率",
+    "elementalist": "调和冷却率",
+    "guardian": "美德冷却率",
+    "warrior": "爆发冷却率",
+    "engineer": "工具腰带冷却率",
+    "ranger": "宠物数值加成",
+    "thief": "偷窃冷却率",
+    "mesmer": "幻象自爆冷却率",
+    "necromancer": "生命之力量",
+    "revanent": "能量回复率"
   },
   "accSummary": {
-    "raidBossKills": "Raid Bosses",
-    "fractalLvl": "Fractal Level",
-    "dailyAp": "Daily Ap"
+    "raidBossKills": "团本 BOSS 杀次数",
+    "fractalLvl": "个人迷雾碎层等级",
+    "dailyAp": "日常成就点数"
   },
   "classes": {
-    "druid": "Druid",
-    "daredevil": "Daredevil",
-    "berserker": "Berserker",
-    "dragonhunter": "Dragonhunter",
-    "reaper": "Reaper",
-    "chronomancer": "Chronomancer",
-    "scrapper": "Scrapper",
-    "tempest": "Tempest",
-    "herald": "Herald"
+    "druid": "德鲁伊",
+    "daredevil": "独行侠",
+    "berserker": "狂战士",
+    "dragonhunter": "猎龙者",
+    "reaper": "死灵",
+    "chronomancer": "时空术士",
+    "scrapper": "机械师",
+    "tempest": "风暴使",
+    "herald": "龙魂使"
   },
   "words": {
-    "played": "Played",
-    "times": "times",
-    "ratio": "Ratio",
-    "rank": "Rank",
-    "optional": "Optional",
-    "dismiss": "Dismiss"
+    "played": "打过",
+    "times": "次数",
+    "ratio": "对比率",
+    "rank": "排名",
+    "optional": "可选择的",
+    "dismiss": "搁置",
+    "embed": "嵌入",
+    "loadMore": "加载更多"
   },
   "leaderboards": {
-    "name": "Leaderboards"
+    "name": "选手积分榜"
   },
   "messages": {
-    "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!",
-    "notFound": "Not Found",
-    "notFoundLong": "Not Found (or the GW2 API is dead)!",
-    "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!",
-    "newBags": "Bags now available on character pages! User achievements coming soon."
+    "gw2ApiDown": "Guild Wars 2 官方API现在遇到问题。你的连接可能会受到影响!",
+    "notFound": "找不到",
+    "notFoundLong": "找不到(或者Guild Wars 2 的API过期了)!",
+    "resourceNotFound": "抱歉，这里没有东西。来一个随机的角色吧!",
+    "newBags": "现在可以在各角色页面上看到容器!账户成就就快来了!"
   }
 }

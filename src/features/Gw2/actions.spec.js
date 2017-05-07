@@ -8,7 +8,7 @@ const actionsFactory = proxyquire('features/Gw2/actions', {
   'i18n-react': {
     translate,
   },
-  'lib/proxy': () => (func) => func,
+  'function-batch': (func) => func,
 }, true);
 
 const resourceName = 'amulets';

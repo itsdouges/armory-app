@@ -2,7 +2,7 @@ import upperFirst from 'lodash/upperFirst';
 import uniq from 'lodash/uniq';
 import T from 'i18n-react';
 
-import proxyFunc from 'lib/proxy';
+import batchFunction from 'function-batch';
 
 export const SHOW_TOOLTIP = 'SHOW_TOOLTIP';
 
@@ -51,7 +51,7 @@ export function generateActions (resourceName, getResource, afterGet) {
     },
   });
 
-  actions[fetchProxyMethodName] = proxyFunc(50)((ids, dispatch, getStore) => {
+  actions[fetchProxyMethodName] = batchFunction((ids, dispatch, getStore) => {
     if (!ids) {
       return undefined;
     }
@@ -99,7 +99,7 @@ export function generateActions (resourceName, getResource, afterGet) {
 
         throw data;
       });
-  });
+  }, 50);
 
   actions[fetchMethodName] = (ids) => (dispatch, getStore) => {
     // Redux actions need to appear synchronous, so we have to

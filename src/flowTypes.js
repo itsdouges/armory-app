@@ -53,6 +53,7 @@ export type User = {
   alias: string,
   wins: ?number,
   losses: ?number,
+  valid: boolean,
 };
 
 export type AuthenticatedUser = User & {
@@ -81,6 +82,7 @@ export const defaultUser: User = {
   alias: '',
   wins: null,
   losses: null,
+  valid: true,
 };
 
 // See: https://wiki.guildwars2.com/wiki/API:2/guild/:id/log
@@ -105,6 +107,14 @@ type Log = {
   upgrade_id: number,
 };
 
+export type Token = {
+  accountName: string,
+  primary: boolean,
+  permissions: string,
+  valid: boolean,
+  token: string,
+};
+
 export type Guild = {
   tag: string,
   name: string,
@@ -119,6 +129,10 @@ export type Guild = {
   favor?: number,
   level?: number,
   members?: Array<User>,
+  leader?: {
+    accountName: string,
+    alias: string,
+  },
 };
 
 export const defaultGuild: Guild = {
@@ -189,6 +203,13 @@ export type Traits = {
   [number]: {
     icon?: string,
   },
+};
+
+export type Paginated<T> = {
+  rows: Array<T>,
+  count: number,
+  limit: number,
+  skip: number,
 };
 
 export type Gw2PvpGame = {

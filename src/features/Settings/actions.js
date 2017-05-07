@@ -145,10 +145,10 @@ export function fetchGw2Tokens () {
     dispatch(fetchingGw2Tokens(true));
 
     return get(`${config.api.endpoint}users/me/gw2-tokens`)
-      .then((response) => {
-        dispatch(fetchGw2TokensSuccess(response.data));
-        dispatch(fetchingGw2Tokens(false));
-      });
+    .then((response) => {
+      dispatch(fetchGw2TokensSuccess(response.data));
+      dispatch(fetchingGw2Tokens(false));
+    });
   };
 }
 
@@ -177,6 +177,7 @@ function selectPrimaryToken (token) {
 export function selectPrimaryGw2Token (token) {
   return (dispatch) => {
     dispatch(selectPrimaryToken(token));
+
     return put(`${config.api.endpoint}users/me/gw2-tokens/${token}/set-primary`);
   };
 }

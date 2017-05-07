@@ -48,14 +48,17 @@
     "results": "Search results for",
     "minlength": "Search term should be 3 or more characters :-)",
     "nonefound": "Nothing was found... Thought you'd find something?",
-    "joincta": "Join and add your gw2 api token(s) first!"
+    "joincta": "Join and add your gw2 api key(s) first!"
   },
   "users": {
     "name": "Users",
     "recentMatches": "Recent Matches",
-    "claimCta": "Claim user",
+    "claimCta": "Claim",
     "noApiKey": "Api key not set.",
     "achievements": "Achievements",
+    "makePrimary": "Make primary api key.",
+    "primaryToken": "This is your primary api key, your user information will be sourced from this.",
+    "invalidToken": "Could not retrieve data from GW2, the api key was probably deleted from the ArenaNet account page.",
     "pvpStats": {
       "name": "Pvp Stats",
       "unranked": "Unranked",
@@ -85,15 +88,15 @@
   },
   "characters": {
     "name": "Characters",
-    "embedCta": "This is a character chosen at random. You can get an embed just like this on your website! Click the embed icon on any character page.",
+    "embedCta": "This is a character chosen at random. You can get an embed just like this on your website! Click the embed text on any character page.",
     "shown": "Can be seen by everyone",
     "hidden": "Can only be seen by you",
     "done": "Done",
     "edit": "Edit",
     "changePortrait": "Change your character portrait",
     "noSkill": "No Skill Selected",
-    "embedCta": "Embed",
-    "embedTooltip": "Copy and paste this markup onto your website."
+    "embedTooltip": "Copy and paste this markup onto your website.",
+    "bags": "Bags"
   },
   "settings": {
     "name": "Settings",
@@ -188,7 +191,9 @@
     "ratio": "Ratio",
     "rank": "Rank",
     "optional": "Optional",
-    "dismiss": "Dismiss"
+    "dismiss": "Dismiss",
+    "embed": "Embed",
+    "loadMore": "Load More"
   },
   "leaderboards": {
     "name": "Leaderboards"

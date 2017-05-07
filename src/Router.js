@@ -17,7 +17,8 @@ import Character from 'features/Character';
 import NotFound from 'features/NotFound';
 import Statistics from 'features/Statistics';
 import Leaderboards from 'features/Leaderboards';
-import { authEnabled, authOnly } from 'features/Auth';
+import authenticatedApp from 'features/Auth/app';
+import authenticatedRoute from 'features/Auth/route';
 
 function onRouteUpdate () {
   window.scrollTo(0, 0);
@@ -26,7 +27,7 @@ function onRouteUpdate () {
 
 const Routes = () => (
   <Router onUpdate={onRouteUpdate} history={browserHistory}>
-    <Route path="/" component={authEnabled()(App)}>
+    <Route path="/" component={authenticatedApp(App)}>
       <IndexRoute component={Home} />
 
       <Redirect from="/in" to="/login" />
@@ -35,6 +36,7 @@ const Routes = () => (
       <Redirect from="/leaderboards" to="/leaderboards/pvp" />
       <Redirect from="/me/*" to="/settings" />
       <Redirect from="/g/:guildName/" to="/g/:guildName" />
+      <Redirect from="/g/:guildName/users" to="/g/:guildName/members" />
       <Redirect from="/g/:guildName(/:subRoute)/" to="/g/:guildName(/:subRoute)" />
       <Redirect from="/:alias/" to="/:alias" />
       <Redirect from="/:alias/c" to="/:alias/characters" />
@@ -45,7 +47,7 @@ const Routes = () => (
       <Route path="/login" component={Login} />
       <Route path="/join" component={Join} />
       <Route path="/search(/:term)" component={Search} />
-      <Route path="/settings" component={authOnly()(Settings)} />
+      <Route path="/settings" component={authenticatedRoute(Settings)} />
       <Route path="/forgot-my-password" component={ForgotMyPassword} />
       <Route path="/leaderboards/:type(/:region)" component={Leaderboards} />
       <Route path="/404" component={NotFound} />

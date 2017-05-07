@@ -61,6 +61,7 @@ module.exports = {
   },
   globals: {
     ReduxThunk: true,
+    ReduxState: true,
     GW2A_EMBED_OPTIONS: true,
     __DEVELOPMENT__: true,
     __webpack_public_path__: true,
@@ -75,5 +76,6 @@ module.exports = {
     expect: true,
     sinon: true,
     xit: true,
+    GetState: true,
   },
 };

@@ -105,11 +105,11 @@ const PvpGame = ({ game = defaultGame, maps }: Props) => {
           </TooltipTrigger>
 
           <TooltipTrigger data={game.ended}>
-            <div>
+            <time>
               <Redacted redact={redacted}>
                 {T.translate('users.pvpStats.finished')} {humanize(game.ended) || 'Never'}
               </Redacted>
-            </div>
+            </time>
           </TooltipTrigger>
         </div>
       </div>

@@ -10,29 +10,35 @@ export type IconProps = {
   src?: string,
   button?: boolean,
   children?: any,
+  sizePx?: number,
   style?: {
     [string]: ?string,
   },
 };
 
-const Icon = ({ name, size, className, src, button, children, style, ...props }: IconProps) => {
-  let image;
+const buildStyle = ({ style, src, name, imageSrc, sizePx }) => {
+  return {
+    ...style,
+    width: `${sizePx || ''}px`,
+    height: `${sizePx || ''}px`,
+    backgroundImage: (src || name) && `url(${src || imageSrc})`,
+  };
+};
+
+const Icon = ({ name, size, className, src, button, children, style, sizePx, ...props }: IconProps) => {
+  let imageSrc;
 
   try {
-    image = require(`assets/images/${name}`);
+    imageSrc = require(`assets/images/${name}`);
   } catch (ex) {
-    image = '';
+    imageSrc = '';
   }
 
   return (
     <div
       {...props}
       className={cx(styles.container, styles[size], className, button && styles.button)}
-      style={{
-        ...style,
-        /* eslint prefer-template:0 */
-        backgroundImage: (src || name) && 'url(' + (src || image) + ')',
-      }}
+      style={buildStyle({ style, src, name, imageSrc, sizePx })}
     >
       {children}
     </div>

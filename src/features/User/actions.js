@@ -3,6 +3,7 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
+import { paginatedThunk } from 'lib/redux';
 import { readPvpSeasonIds } from 'lib/gw2';
 import config from 'config';
 import actions from 'features/Gw2/actions';
@@ -48,18 +49,21 @@ const fetchingUserCharacters = (fetching) => ({
   payload: fetching,
 });
 
-export const fetchUserCharacters = (alias: string, { ignoreAuth }: {
-  ignoreAuth: boolean,
-} = {}): ReduxThunk =>
-  (dispatch) => {
+export const fetchUserCharacters = (alias: string, limit: number, offset: number): ReduxThunk =>
+  paginatedThunk((dispatch: Dispatch) => {
     dispatch(fetchingUserCharacters(true));
 
-    return axios.get(`${config.api.endpoint}users/${alias}/characters`, { ignoreAuth })
-      .then((response) => {
-        dispatch(fetchUserCharactersResult(alias, response.data));
-        dispatch(fetchingUserCharacters(false));
-      });
-  };
+    return axios.get(`${config.api.endpoint}users/${alias}/characters`, {
+      params: {
+        limit,
+        offset,
+      },
+    })
+    .then((response) => {
+      dispatch(fetchUserCharactersResult(alias, response.data));
+      dispatch(fetchingUserCharacters(false));
+    });
+  }, `users.data[${alias}].characters`, limit, offset);
 
 const MAX_IDS = 200;
 export const fetchUserAchievements = (alias: string): ReduxThunk => (dispatch) =>
@@ -133,12 +137,11 @@ export const fetchPvpStandings = (alias: string): ReduxThunk => (dispatch) =>
 
 export const fetchUser = (
   alias: string,
-  { ignoreAuth }: { ignoreAuth: boolean } = {},
 ): ReduxThunk =>
   (dispatch) => {
     dispatch(fetchingUser(true));
 
-    return axios.get(`${config.api.endpoint}users/${alias}`, { ignoreAuth })
+    return axios.get(`${config.api.endpoint}users/${alias}`)
       .then(({ data }) => {
         dispatch(fetchUserResult(data));
         dispatch(fetchPvpStandings(alias));

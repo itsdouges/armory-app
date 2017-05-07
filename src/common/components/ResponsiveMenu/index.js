@@ -67,17 +67,19 @@ export default class ResponsiveMenu extends Component {
           <SvgIcon name={moreVertIconName} />
         </button>
 
-        <ul className={styles.listRoot} {...props}>
-          {children && children.map((item, index) => (
-            <li
-              className={cx(styles.item, itemClassName)}
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
+        <nav>
+          <ul className={styles.listRoot} {...props}>
+            {children && children.map((item, index) => (
+              <li
+                className={cx(styles.item, itemClassName)}
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     );
   }

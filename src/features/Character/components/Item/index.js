@@ -32,6 +32,7 @@ type Props = {
   inline?: boolean,
   count?: number,
   onClick?: (SyntheticEvent) => void,
+  size?: number,
 };
 
 const Item = ({
@@ -53,6 +54,7 @@ const Item = ({
   equipped,
   count,
   onClick,
+  size,
   ...props
 }: Props) => {
   if (hide) return null;
@@ -96,6 +98,7 @@ const Item = ({
           [styles.inline]: inline,
         })}
         onClick={onClick}
+        sizePx={size}
       >
         <Gw2Icon
           count={count}

@@ -22,7 +22,7 @@ const selector = createSelector(
   })
 );
 
-type Props = {
+export type Props = {
   tooltip?: {
     show: boolean,
     type: string,

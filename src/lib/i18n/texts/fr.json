@@ -48,9 +48,12 @@
   "users": {
     "name": "Utilisateurs",
     "recentMatches": "Matches Récents",
-    "claimCta": "Claim user",
+    "claimCta": "Claim",
     "noApiKey": "Api key not set.",
     "achievements": "Achievements",
+    "makePrimary": "Make primary api key.",
+    "primaryToken": "This is your primary api key, your user information will be sourced from this.",
+    "invalidToken": "Could not retrieve data from GW2, the api key was probably deleted from the ArenaNet account page.",
     "pvpStats": {
       "name": "Stats PvP",
       "unranked": "Non Classé",
@@ -86,8 +89,8 @@
     "edit": "Edit",
     "changePortrait": "Change your character portrait",
     "noSkill": "No Skill Selected",
-    "embedCta": "Embed",
-    "embedTooltip": "Copy and paste this markup onto your website."
+    "embedTooltip": "Copy and paste this markup onto your website.",
+    "bags": "Bags"
   },
   "settings": {
     "name": "Paramètres",
@@ -182,7 +185,9 @@
     "ratio": "Ratio",
     "rank": "Rang",
     "optional": "Optional",
-    "dismiss": "Dismiss"
+    "dismiss": "Dismiss",
+    "embed": "Embed",
+    "loadMore": "Load More"
   },
   "leaderboards": {
     "name": "Leaderboards"

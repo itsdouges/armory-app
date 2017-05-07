@@ -1,6 +1,6 @@
 // @flow
 
-import 'airbnb-js-shims';
+import 'babel-polyfill';
 import 'lib/i18n';
 import 'assets/fonts/menomonia.css';
 import 'assets/fonts/opensans.css';

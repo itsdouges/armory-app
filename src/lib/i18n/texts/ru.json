@@ -1,12 +1,12 @@
 {
   "home": {
     "whatIs": {
-      "title": "Что",
-      "text": "Guild Wars 2 Armory это простой способ найходить, просматривать и делиться пользователями, персонажами и гильдиями с друзьями на своём мобильном и ПК! Присоединяйся и начинай делиться своими достижениями сегодня!"
+      "title": "Что такое",
+      "text": "Guild Wars 2 Armory - это простой способ находить, просматривать и делиться пользователями, персонажами и гильдиями с друзьями на своём мобильном и ПК! Присоединяйся и начинай делиться своими достижениями уже сегодня!"
     }
   },
   "embeds": {
-    "name": "Embeds"
+    "name": "Встроить"
   },
   "login": {
     "name": "Войти в систему",
@@ -19,8 +19,8 @@
   "forgotPassword": {
     "name": "Забыл свой пароль",
     "nextCta": "Далее",
-    "changeCta": "+ Изменить",
-    "checkEmail": "Токен для восстановления папроля отправлен на Вашу электронную почту!",
+    "changeCta": "Изменить",
+    "checkEmail": "Токен для восстановления пароля отправлен на Вашу электронную почту!",
     "success": "Пароль был успешно обновлён. Вы можете снова войти в систему!"
   },
   "join": {
@@ -42,63 +42,66 @@
     "textbox": "Поиск пользователей, персонажей и гильдий",
     "results": "Результаты поиска",
     "minlength": "Поисковый запрос должен содержать 3 или более символов :-)",
-    "nonefound": "Ничего не найдено ...",
-    "joincta": "Присоединяйтесь и добавляте свои gw2 токены!"
+    "nonefound": "Ничего не найдено...",
+    "joincta": "Присоединяйтесь и добавляте свои GW2 токены!"
   },
   "users": {
     "name": "Пользователи",
     "recentMatches": "Последние матчи",
-    "claimCta": "Claim user",
-    "noApiKey": "Api key not set.",
     "achievements": "Achievements",
+    "claimCta": "Заявить права",
+    "noApiKey": "API ключ не установлен.",
+    "makePrimary": "Сделайте основной API ключ.",
+    "primaryToken": "Это основной API ключ, информация о Вашем аккаунте будет взята из него.",
+    "invalidToken": "Невозможно получить данные! Возможно, API ключ был удалён со страницы аккаунта ArenaNet.",
     "pvpStats": {
-      "name": "Pvp Статистика",
-      "unranked": "Unranked",
-      "ranked": "Первое место",
+      "name": "PvP Статистика",
+      "unranked": "Обычная игра",
+      "ranked": "Ранговая игра",
       "wins": "Победы",
-      "byes": "Byes",
+      "byes": "Фора",
       "losses": "Поражения",
       "desertions": "Дезертирства",
       "forfeits": "Штрафы",
-      "finished": "Played",
-      "ranking": "Rank",
-      "rating": "Rating"
+      "finished": "Сыграно",
+      "ranking": "Ранг",
+      "rating": "Рейтинг"
     },
     "pvp": {
-      "favouriteClass": "Favourite Class",
-      "winLossAbbreviation": "W/L"
+      "favouriteClass": "Любимая профессия",
+      "winLossAbbreviation": "коэффициент"
     }
   },
   "guilds": {
-    "name": "гильдий",
-    "guild": "Guild",
-    "noGuild": "No Guild",
-    "claimed": "This guild has been claimed!",
-    "unclaimed": "This guild hasn't been claimed yet, if you're the guild leader add an api key with the guilds permission!",
-    "motd": "Message of the day"
+    "name": "Гильдии",
+    "guild": "Гильдия",
+    "noGuild": "Нет гильдии",
+    "claimed": "Заявлены права на эту гильдию!",
+    "unclaimed": "На эту гильдию ещё никто не заявил своих прав, если Вы глава гильдии - добавьте API ключ с гильдейскими разрешениями!",
+    "motd": "Сообщение дня"
   },
   "characters": {
     "name": "Персонажи",
     "embedCta": "Этот персонаж выбирается случайным образом. Вы точно также можете добавить персонажа на свой сайт! Нажмите на иконку для вставки на любой странице с персонажем.",
     "shown": "Персонаж показан",
     "hidden": "Персонаж скрыт",
-    "done": "Done",
-    "edit": "Edit",
-    "changePortrait": "Change your character portrait",
-    "noSkill": "No Skill Selected",
-    "embedCta": "Embed",
-    "embedTooltip": "Copy and paste this markup onto your website."
+    "done": "Готово",
+    "edit": "Изменить",
+    "changePortrait": "Изменить портрет персонажа",
+    "noSkill": "Умения не выбраны",
+    "embedTooltip": "Скопируйте и вставьте эту ссылку на свой сайт.",
+    "bags": "Bags"
   },
   "settings": {
-    "name": "настройки",
+    "name": "Настройки",
     "avatar": {
       "cta": "Нажмите, чтобы изменить свой аватар",
       "label": "Измените свой аватар",
       "finished": "Хорошо выглядишь ;-)"
     },
     "apiKeys": {
-      "name": "Api Ключи",
-      "noKeysCta": "Если у Вас нет ни одного API ключа, Вы можете сгенирировать его на сайте gw2! Убедитесь, что вы выбирали characters, builds и pvp разрешения :-).",
+      "name": "API Ключи",
+      "noKeysCta": "Если у Вас нет ни одного API ключа, Вы можете сгенерировать его на сайте GW2! Убедитесь, что вы выбрали разрешения Characters, Builds и PvP при генерации ключа.",
       "inputs": {
         "add": "Добавить ключ"
       },
@@ -110,7 +113,7 @@
       "name": "Изменить пароль",
       "inputs": {
         "current": "Текущий пароль",
-        "password": "пароль",
+        "password": "Новый пароль",
         "confirm": "Подтвердите Пароль"
       }
     },
@@ -122,76 +125,78 @@
     "opensInNewWindow": "Открывается в новом окне"
   },
   "items": {
-    "transmuted": "трансмутированые",
-    "skinLocked": "Кожа Закрытая",
+    "transmuted": "Трансмутирована",
+    "skinLocked": "Облик закрыт",
     "requiredLevel": "Требуемый уровень",
-    "weaponStrength": "оружие Прочность",
-    "defense": "defense",
-    "currentlyEquipped": "В настоящее время Укомплектованная",
-    "accountBound": "Account bound",
-    "soulBound": "Soulbound"
+    "weaponStrength": "Сила оружия",
+    "defense": "Защита",
+    "currentlyEquipped": "В настоящее время экипирована",
+    "accountBound": "Привязана к аккаунту",
+    "soulBound": "Привязана к персонажу"
   },
   "itemAttributes": {
-    "power": "Power",
-    "precision": "Precision",
-    "toughness": "Toughness",
-    "vitality": "Vitality",
-    "boonDuration": "Boon Duration",
-    "conditionDamage": "Condition Damage",
-    "conditionDuration": "Condition Duration",
-    "ferocity": "Ferocity",
-    "healingPower": "Healing Power",
-    "armor": "Armor",
-    "critChance": "Critical Chance",
-    "critDamage": "Critical Damage",
-    "health": "Health",
-    "healing": "Healing",
-    "expertise": "Expertise",
-    "concentration": "Concentration",
-    "agonyResistance": "Agony Resistance",
-    "magic": "Magic Find",
-    "elementalist": "Attunement Recharge Rate",
-    "guardian": "Virtue Recharge Rate",
-    "warrior": "Burst Recharge",
-    "engineer": "Tool Belt Recharge Rate",
-    "ranger": "Pet Attribute Bonus",
-    "thief": "Steal Recharge Rate",
-    "mesmer": "Shatter Skill Recharge Rate",
-    "necromancer": "Life Force Pool",
-    "revanent": "Revenant"
+    "power": "Сила",
+    "precision": "Точность",
+    "toughness": "Прочность",
+    "vitality": "Живучесть",
+    "boonDuration": "Длительность благ",
+    "conditionDamage": "Урон от состояний",
+    "conditionDuration": "Длительность состояний",
+    "ferocity": "Свирепость",
+    "healingPower": "Сила исцеления",
+    "armor": "Броня",
+    "critChance": "Шанс критического удара",
+    "critDamage": "Критический урон",
+    "health": "Здоровье",
+    "healing": "Исцеление",
+    "expertise": "Сноровка",
+    "concentration": "Концентрация",
+    "agonyResistance": "Сопротивление агонии",
+    "magic": "Поиск редких вещей",
+    "elementalist": "Скорость перезарядки настроек",
+    "guardian": "Скорость перезарядки добродетелей",
+    "warrior": "Перезарядка вспышек ярости",
+    "engineer": "Скорость перезарядки пояса с инструментами",
+    "ranger": "Бонус к атрибутам питомца",
+    "thief": "Скорость перезарядки кражи",
+    "mesmer": "Скорость перезарядки умений-осколков",
+    "necromancer": "Запас жизненной силы",
+    "revanent": "Ревенант"
   },
   "accSummary": {
-    "raidBossKills": "Raid Bosses",
-    "fractalLvl": "Fractal Level",
-    "dailyAp": "Daily Ap"
+    "raidBossKills": "Рейд боссы",
+    "fractalLvl": "Уровень Фракталов",
+    "dailyAp": "Ежедневные AP"
   },
   "classes": {
-    "druid": "Druid",
-    "daredevil": "Daredevil",
-    "berserker": "Berserker",
-    "dragonhunter": "Dragonhunter",
-    "reaper": "Reaper",
-    "chronomancer": "Chronomancer",
-    "scrapper": "Scrapper",
-    "tempest": "Tempest",
-    "herald": "Herald"
+    "druid": "Друид",
+    "daredevil": "Сорвиголова",
+    "berserker": "Берсерк",
+    "dragonhunter": "Драконоборец",
+    "reaper": "Жнец",
+    "chronomancer": "Хрономант",
+    "scrapper": "Сборщик",
+    "tempest": "Буря",
+    "herald": "Вестник"
   },
   "words": {
-    "played": "Played",
-    "times": "times",
-    "ratio": "Ratio",
-    "rank": "Rank",
-    "optional": "Optional",
-    "dismiss": "Dismiss"
+    "played": "Сыграно",
+    "times": "раз",
+    "ratio": "У/С",
+    "rank": "Ранг",
+    "optional": "Необязательный",
+    "dismiss": "Закрыть",
+    "embed": "HTML-код",
+    "loadMore": "Загрузить ещё"
   },
   "leaderboards": {
-    "name": "Leaderboards"
+    "name": "Таблицы лидеров"
   },
   "messages": {
-    "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!",
-    "notFound": "Not Found",
-    "notFoundLong": "Not Found (or the GW2 API is dead)!",
-    "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!",
-    "newBags": "Bags now available on character pages! User achievements coming soon."
+    "gw2ApiDown": "На официальном GW2 API сейчас неполадки, это может сказаться на вашей сессии!",
+    "notFound": "Не найдено",
+    "notFoundLong": "Не найдено (или GW2 API не работает)!",
+    "resourceNotFound": "Извините, здесь ничего нет! Вот случайный персонаж!",
+    "newBags": "Просмотр сумок инвентаря теперь доступен на странице персонажа! Скоро будут доступны Достижения!"
   }
 }

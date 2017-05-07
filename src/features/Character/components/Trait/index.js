@@ -14,14 +14,17 @@ type Props = {
   },
   className?: string,
   active?: boolean,
+  tooltipTextOverride?: string,
+  size?: number,
 };
 
-const Trait = ({ data, className, active }: Props) => (
-  <TooltipTrigger type="trait" data={data}>
+const Trait = ({ data, className, active, tooltipTextOverride, size }: Props) => (
+  <TooltipTrigger type="trait" data={tooltipTextOverride || data}>
     <Icon
       className={cx(styles.root, className, { [styles.active]: active })}
       src={data && data.icon}
       style={{ backgroundColor: data && data.icon && colours._black }}
+      sizePx={size}
     />
   </TooltipTrigger>
 );

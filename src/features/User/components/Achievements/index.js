@@ -15,17 +15,17 @@ const mapStateToProps = (state) => ({
 });
 
 type Props = {
-  fetchAchievementGroups?: () => void,
-  fetchAchievementCategories?: () => void,
+  fetchAchievementGroups: () => void,
+  fetchAchievementCategories: () => void,
   achievementGroups: AchievementGroups,
   achievementCategories: AchievementCategories,
 };
 
-@connect(mapStateToProps, {
+export default connect(mapStateToProps, {
   fetchAchievementGroups: actions.fetchAchievementGroups,
   fetchAchievementCategories: actions.fetchAchievementCategories,
-})
-export default class UserAchievements extends Component {
+})(
+class UserAchievements extends Component {
   props: Props;
 
   componentWillMount () {
@@ -41,3 +41,4 @@ export default class UserAchievements extends Component {
     );
   }
 }
+);

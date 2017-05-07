@@ -8,14 +8,22 @@ export const defaultState = {
 
 export default (state, action) => {
   switch (action.type) {
-    case FETCH_PVP_LEADERBOARD:
+    case FETCH_PVP_LEADERBOARD: {
+      const leaderboard = state.pvp[action.payload.region] || {};
+      const newLeaderboard = {
+        ...leaderboard,
+        ...action.payload.data,
+        rows: (leaderboard.rows || []).concat(action.payload.data.rows),
+      };
+
       return {
         ...state,
         pvp: {
           ...state.pvp,
-          [action.payload.region]: action.payload.data,
+          [action.payload.region]: newLeaderboard,
         },
       };
+    }
 
     default:
       return undefined;

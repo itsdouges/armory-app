@@ -7,7 +7,6 @@ import cx from 'classnames';
 import ContentCard from 'common/components/ContentCard';
 import Tabs from 'common/components/Tabs';
 import Head from 'common/components/Head';
-import Tooltip from 'common/components/Tooltip';
 import Container from 'common/components/Container';
 import DisplayAd from 'common/components/DisplayAd';
 
@@ -38,20 +37,18 @@ const Content = ({
 
     <DisplayAd className={styles.ad} />
 
-    <div className={styles.heroBg}>
-
+    <header className={styles.heroBg}>
       <Container className={cx(styles.inner)}>
         <ContentCard {...props} size="big">{cardExtra}</ContentCard>
         {extraContent}
       </Container>
-    </div>
+    </header>
 
     {tabs && <Tabs titleSuffix={title} tabs={tabs} pinnedTab={pinnedTab} />}
 
     {children}
 
     <DisplayAd className={styles.ad} />
-    <Tooltip />
   </div>
 );
 

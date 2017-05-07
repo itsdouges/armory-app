@@ -53,7 +53,7 @@ const EmbedExamples = () => (
 
     <h2>{T.translate('embeds.characterOriginal')}</h2>
 
-    <RandomCharacter />
+    <RandomCharacter type="random" />
 
     <Tooltip />
   </Container>

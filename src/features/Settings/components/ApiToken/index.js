@@ -1,19 +1,40 @@
-import { PropTypes } from 'react';
-import styles from './styles.less';
+// @flow
+
+import type { Token } from 'flowTypes';
+
+import T from 'i18n-react';
+import cx from 'classnames';
+
 import SvgIcon from 'common/components/Icon/Svg';
+import TooltipTrigger from 'common/components/TooltipTrigger';
+import styles from './styles.less';
 
-const ApiToken = ({ token: { accountName, primary, permissions }, remove, setPrimary }) => (
+type Props = {
+  remove: Function,
+  setPrimary: Function,
+  token: Token,
+};
+
+const ApiToken = ({ token: { accountName, primary, permissions, valid }, remove, setPrimary }: Props) => (
   <div className={styles.root}>
-    <button onClick={setPrimary}>
-      <SvgIcon button name={primary ? 'cb-checked' : 'cb-clear'} />
-    </button>
+    <TooltipTrigger data={T.translate(primary ? 'users.primaryToken' : 'users.makePrimary')}>
+      <button onClick={setPrimary}>
+        <SvgIcon button name={primary ? 'cb-checked' : 'cb-clear'} />
+      </button>
+    </TooltipTrigger>
 
-    <div className={styles.information}>
-      <div className={styles.accountName}>{`${accountName}${primary ? ' (primary)' : ''}`}</div>
+    <div className={cx(styles.information, { [styles.invalid]: !valid })}>
+      <span className={cx({ [styles.strikethrough]: !valid })}>
+        <div className={styles.accountName}>
+          {accountName}
+        </div>
 
-      <div className={styles.permissions}>
-        {permissions.split(',').join(' | ')}
-      </div>
+        <div className={styles.permissions}>
+          {permissions.split(',').join(' | ')}
+        </div>
+      </span>
+
+      {!valid && <sub>{T.translate('users.invalidToken')}</sub>}
     </div>
 
     <button onClick={remove}>
@@ -21,11 +42,5 @@ const ApiToken = ({ token: { accountName, primary, permissions }, remove, setPri
     </button>
   </div>
 );
-
-ApiToken.propTypes = {
-  token: PropTypes.object,
-  remove: PropTypes.func,
-  setPrimary: PropTypes.func,
-};
 
 export default ApiToken;

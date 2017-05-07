@@ -22,6 +22,7 @@ body {
   overflow: auto;
 }
 
+.gw2a-traits-embed,
 .gw2a-amulets-embed,
 .gw2a-items-embed,
 .gw2a-skills-embed {
@@ -147,6 +148,7 @@ document.GW2A_EMBED_OPTIONS = {
         <div
           data-armory-embed="skills"
           data-armory-ids="5508,332211,5510,-1"
+          data-armory-size="40"
           data-armory-blank-text="This can be replaced with any text!"
         >
         </div>
@@ -160,7 +162,8 @@ document.GW2A_EMBED_OPTIONS = {
         <ul>
           <li>data-armory-embed="skills"</li>
           <li>data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills</li>
-          <li>data-armory-blank-text="{STRING}" (if missing, "optional" is used in its place)</li>
+          <li>data-armory-size="{NUMBER}" (optional)</li>
+          <li>data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)</li>
         </ul>
 
         <pre>&lt;div
@@ -172,6 +175,7 @@ document.GW2A_EMBED_OPTIONS = {
 &lt;div
   data-armory-embed="skills"
   data-armory-ids="5508,5510,332211,-1,5515"
+  data-armory-size="40"
   data-armory-blank-text="This can be replaced with any text!"
 &gt;
 &lt;/div&gt;
@@ -194,6 +198,7 @@ document.GW2A_EMBED_OPTIONS = {
         <div
           data-armory-embed="items"
           data-armory-blank-text="Some other text can go here!"
+          data-armory-size="60"
           data-armory-ids="24836,-1,74412,46774,39620"
         >
         </div>
@@ -212,8 +217,9 @@ document.GW2A_EMBED_OPTIONS = {
         <ul>
           <li>data-armory-embed="items"</li>
           <li>data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank items</li>
-          <li>data-armory-{ITEM_ID}-stat="{ITEMSTAT_ID}"</li>
-          <li>data-armory-blank-text="{STRING}" (if missing, "optional" is used in its place)</li>
+          <li>data-armory-{ITEM_ID}-stat="{ITEMSTAT_ID}" (optional)</li>
+          <li>data-armory-size="{NUMBER}" (optional)</li>
+          <li>data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)</li>
         </ul>
 
         <pre>&lt;div
@@ -225,6 +231,7 @@ document.GW2A_EMBED_OPTIONS = {
 &lt;div
   data-armory-embed="items"
   data-armory-blank-text="Some other text can go here!"
+  data-armory-size="60"
   data-armory-ids="24836,-1,74412,39620"
 &gt;
 &lt;/div&gt;
@@ -253,6 +260,7 @@ document.GW2A_EMBED_OPTIONS = {
         <div
           data-armory-embed="amulets"
           data-armory-ids="332211,-1"
+          data-armory-size="30"
           data-armory-blank-text="This is a blank space!"
         >
         </div>
@@ -266,13 +274,78 @@ document.GW2A_EMBED_OPTIONS = {
         <ul>
           <li>data-armory-embed="amulets"</li>
           <li>data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank amulets</li>
+          <li>data-armory-size="{NUMBER}" (optional)</li>
           <li>data-armory-blank-text="{STRING}" (if missing, "optional" is used in its place)</li>
         </ul>
 
         <pre>&lt;div
   data-armory-embed="amulets"
   data-armory-ids="10,12,332211,-1,13,14"
+  data-armory-size="30"
   data-armory-blank-text="This is a blank space!"
+&gt;
+&lt;/div&gt;
+
+&lt;script async src="https://gw2armory.com/gw2aEmbeds.js"&gt;&lt;/script&gt;</pre>
+
+        <h2>Traits</h2>
+
+        <div
+          data-armory-embed="traits"
+          data-armory-ids="700,1960,1950"
+        >
+        </div>
+
+        <div
+          data-armory-embed="traits"
+          data-armory-ids="820,-1,1694"
+          data-armory-blank-text="This could be anything you want!"
+        >
+        </div>
+
+        <div
+          data-armory-embed="traits"
+          data-armory-size="30"
+          data-armory-ids="1471,22331122,1711"
+        >
+        </div>
+
+        <div
+          data-armory-embed="traits"
+          data-armory-ids="577,578,1686"
+        >
+        </div>
+
+        <ul>
+          <li>data-armory-embed="traits"</li>
+          <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
+          <li>data-armory-size="{NUMBER}" (optional)</li>
+          <li>data-armory-blank-text="{STRING}" (if missing, "optional" is used in its place)</li>
+        </ul>
+
+        <pre>&lt;div
+  data-armory-embed="traits"
+  data-armory-ids="700,1960,1950"
+&gt;
+&lt;/div&gt;
+
+&lt;div
+  data-armory-embed="traits"
+  data-armory-ids="820,-1,1694"
+  data-armory-size="30"
+  data-armory-blank-text="This could be anything you want!"
+&gt;
+&lt;/div&gt;
+
+&lt;div
+  data-armory-embed="traits"
+  data-armory-ids="1471,22331122,1711"
+&gt;
+&lt;/div&gt;
+
+&lt;div
+  data-armory-embed="traits"
+  data-armory-ids="577,578,1686"
 &gt;
 &lt;/div&gt;
 

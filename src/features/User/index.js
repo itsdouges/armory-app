@@ -1,6 +1,8 @@
 // @flow
 
-import { Component, PropTypes } from 'react';
+import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
+
+import { Component } from 'react';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
@@ -9,19 +11,23 @@ import filter from 'lodash/filter';
 import T from 'i18n-react';
 import { Link } from 'react-router';
 import startCase from 'lodash/startCase';
+import cx from 'classnames';
 
+import { makeStubItems } from 'lib/paginator';
+import PaginatorGrid from 'common/layouts/PaginatorGrid';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Button from 'common/components/Button';
 import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';
-import ContentCardList from 'common/components/ContentCardList';
+import GuildContentCard from 'common/components/ContentCard/Guild';
 
 import styles from './styles.less';
 import PvpGame from './components/PvpGame';
 import Overview from './components/Overview';
 import Achievements from './components/Achievements';
+import Characters from './components/Characters';
 
-import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
+const STUB_GUILDS = makeStubItems(4);
 
 import {
   fetchUser,
@@ -61,6 +67,7 @@ function getActiveStanding ({ pvpStandings = [] } = {}, pvpSeasons) {
 }
 
 const addHash = (str) => (str ? `#${str}` : '-');
+const makeKey = (content, index) => (content ? content.name : index);
 
 @connect(selector, {
   dispatchFetchUser: fetchUser,
@@ -68,10 +75,6 @@ const addHash = (str) => (str ? `#${str}` : '-');
 })
 export default class User extends Component {
   props: Props;
-
-  static contextTypes = {
-    _userAlias: PropTypes.string,
-  };
 
   componentWillMount () {
     this.loadUser(this.props.routeParams.alias);
@@ -88,7 +91,7 @@ export default class User extends Component {
   loadUser (alias: string) {
     const { dispatchFetchUser, dispatchSelectUser } = this.props;
 
-    dispatchFetchUser(alias, { ignoreAuth: this.context._userAlias !== alias });
+    dispatchFetchUser(alias);
     dispatchSelectUser(alias);
   }
 
@@ -96,7 +99,7 @@ export default class User extends Component {
     const { user, routeParams: { alias }, pvpSeasons, maps, worlds } = this.props;
 
     const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
-    const guilds = get(user, 'guilds', []);
+    const guilds = get(user, 'guilds', STUB_GUILDS.rows);
 
     const safeUser = user || {};
     const stubUser = get(user, 'stub');
@@ -117,11 +120,15 @@ export default class User extends Component {
 
     const statSummary = (wins || losses || byes) ? `${wins}-${losses}-${byes || 0}` : '-';
 
+    const icon = safeUser.valid === false ? 'svg/error-outline.svg' : `${safeUser.access}.png`;
+    const tooltip = safeUser.valid === false ? T.translate('users.invalidToken') : startCase(safeUser.access);
+
     return (
       <Content
-        cardExtra={user && user.access && (
-          <TooltipTrigger data={startCase(user.access)}>
-            <Icon size="mini" className={styles.access} name={`${user.access}.png`} />
+        className={cx({ [styles.invalid]: safeUser.valid === false })}
+        cardExtra={safeUser.access && (
+          <TooltipTrigger data={tooltip}>
+            <Icon size="mini" className={styles.access} name={icon} />
           </TooltipTrigger>
         )}
         extraContent={
@@ -158,7 +165,7 @@ export default class User extends Component {
         title={alias}
         content={user}
         pinnedTab={stubUser && (
-          <Link to={this.context._userAlias ? `settings?claiming=${alias}` : `join?claiming=${alias}`}>
+          <Link to={false ? `settings?claiming=${alias}` : `join?claiming=${alias}`}>
             <Button type="cta">{T.translate('users.claimCta')}</Button>
           </Link>
         )}
@@ -172,25 +179,20 @@ export default class User extends Component {
         }, {
           to: `/${alias}/characters`,
           name: 'Characters',
-          content: (
-            <ContentCardList
-              noBorder
-              type="grid"
-              alias={alias}
-              items={user && user.characters}
-            />
-          ),
+          content: <Characters alias={alias} />,
         }, {
           to: `/${alias}/guilds`,
           name: T.translate('guilds.name'),
           content: (
-            <ContentCardList
-              noBorder
-              type="grid"
-              alias={alias}
-              resource="guilds"
-              items={guilds}
-            />
+            <PaginatorGrid
+              key="guilds"
+              rows={guilds}
+              limit={0}
+              count={0}
+              action={() => Promise.resolve()}
+            >
+              {(content, index) => <GuildContentCard key={makeKey(content, index)} content={content} />}
+            </PaginatorGrid>
           ),
         }, {
           to: `/${alias}/matches`,
