@@ -7,7 +7,7 @@ const sandbox = sinon.sandbox.create();
 const showTooltip = sandbox.spy();
 
 const stubs = {
-  'common/decorators/tooltipDebounce': stubDecoratorWithArgs,
+  'react-debounce-decorator': stubDecoratorWithArgs,
   'features/Gw2/actions': { showTooltip },
 };
 

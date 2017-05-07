@@ -1,13 +1,13 @@
 // @flow
 
 import type { Children } from 'react';
-import type { InjectedProps } from 'common/decorators/tooltipDebounce';
+import type { InjectedProps } from 'react-debounce-decorator';
 
 import { Component, cloneElement } from 'react';
 import { connect } from 'react-redux';
 
 import { showTooltip } from 'features/Gw2/actions';
-import tooltipDebounce from 'common/decorators/tooltipDebounce';
+import tooltipDebounce from 'react-debounce-decorator';
 
 type Props = {
   data?: string | Object,
@@ -22,11 +22,11 @@ type Props = {
  * Ensure the props passed down from <TooltipTrigger /> make their
  * way to the actual dom elements! Else this won't work ;-).
  */
-@connect(null, {
+export default connect(null, {
   showTooltip,
-})
-@tooltipDebounce()
-export default class TooltipTrigger extends Component {
+})(
+tooltipDebounce()(
+class TooltipTrigger extends Component {
   props: Props;
 
   show = (e: SyntheticEvent) => {
@@ -65,4 +65,4 @@ export default class TooltipTrigger extends Component {
       onMouseLeave: this.hide,
     });
   }
-}
+}));
