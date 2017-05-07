@@ -1,7 +1,7 @@
 // @flow
 
 import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
-import type { InjectedData } from 'features/Auth/data';
+import type { InjectedProps } from 'features/Auth/data';
 
 import { Component } from 'react';
 import { createSelector } from 'reselect';
@@ -48,7 +48,7 @@ export const selector = createSelector(
   })
 );
 
-type Props = InjectedData & {
+type Props = InjectedProps & {
   user?: UserType,
   dispatchFetchUser: () => void,
   dispatchSelectUser: () => void,
