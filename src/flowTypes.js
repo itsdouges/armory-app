@@ -176,6 +176,8 @@ export type AchievementGroups = {
 export type AchievementCategories = {
 };
 
+export type Achievements = {};
+
 type Gw2Data = {
   error?: string,
 };

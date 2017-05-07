@@ -177,6 +177,11 @@ export default class User extends Component {
             <Overview user={user} pvpSeasons={pvpSeasons} worlds={worlds} />
           ),
         }, {
+          to: `/${alias}/achievements`,
+          flair: 'new',
+          name: T.translate('users.achievements'),
+          content: <Achievements />,
+        }, {
           to: `/${alias}/characters`,
           name: 'Characters',
           content: <Characters alias={alias} />,
@@ -204,11 +209,6 @@ export default class User extends Component {
                 <PvpGame game={game} key={game ? game.id : index} maps={maps} />)}
             </div>
           ),
-        }, {
-          to: `/${alias}/achievements`,
-          flair: 'new',
-          name: T.translate('users.achievements'),
-          content: <Achievements />,
         }]}
       />
     );

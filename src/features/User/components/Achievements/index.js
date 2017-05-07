@@ -1,6 +1,6 @@
 // @flow
 
-import type { AchievementGroups, AchievementCategories } from 'flowTypes';
+import type { AchievementGroups, AchievementCategories, Achievements } from 'flowTypes';
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
@@ -19,6 +19,7 @@ type Props = {
   fetchAchievementCategories: () => void,
   achievementGroups: AchievementGroups,
   achievementCategories: AchievementCategories,
+  achievements: Achievements,
 };
 
 export default connect(mapStateToProps, {
