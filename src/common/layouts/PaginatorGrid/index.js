@@ -1,9 +1,9 @@
 // @flow
 
-import type { BaseProps, ButtonProps, ContainerProps } from 'common/components/Paginator';
+import type { BaseProps, ButtonProps, ContainerProps } from 'react-scroll-paginator';
 
 import T from 'i18n-react';
-import Paginator from 'common/components/Paginator';
+import Paginator from 'react-scroll-paginator';
 import Button from 'common/components/Button';
 import Progress from 'common/components/Icon/Progress';
 import Grid from 'common/layouts/Grid';

@@ -10,7 +10,7 @@ import T from 'i18n-react';
 import { makeStubItems } from 'lib/paginator';
 import Progress from 'common/components/Icon/Progress';
 import ContentCard from 'common/components/ContentCard';
-import Paginator from 'common/components/Paginator';
+import Paginator from 'react-scroll-paginator';
 import { fetchPvpLeaderboard } from '../../actions';
 import styles from './styles.less';
 import { renderButton } from 'common/layouts/PaginatorGrid';
