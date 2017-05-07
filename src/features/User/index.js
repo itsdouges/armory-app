@@ -1,6 +1,7 @@
 // @flow
 
 import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
+import type { InjectedData } from 'features/Auth/data';
 
 import { Component } from 'react';
 import { createSelector } from 'reselect';
@@ -13,6 +14,7 @@ import { Link } from 'react-router';
 import startCase from 'lodash/startCase';
 import cx from 'classnames';
 
+import authenticatedData from 'features/Auth/data';
 import { makeStubItems } from 'lib/paginator';
 import PaginatorGrid from 'common/layouts/PaginatorGrid';
 import TooltipTrigger from 'common/components/TooltipTrigger';
@@ -46,7 +48,7 @@ export const selector = createSelector(
   })
 );
 
-type Props = {
+type Props = InjectedData & {
   user?: UserType,
   dispatchFetchUser: () => void,
   dispatchSelectUser: () => void,
@@ -68,11 +70,12 @@ function getActiveStanding ({ pvpStandings = [] } = {}, pvpSeasons) {
 const addHash = (str) => (str ? `#${str}` : '-');
 const makeKey = (content, index) => (content ? content.name : index);
 
-@connect(selector, {
+export default connect(selector, {
   dispatchFetchUser: fetchUser,
   dispatchSelectUser: selectUser,
-})
-export default class User extends Component {
+})(
+authenticatedData(
+class User extends Component {
   props: Props;
 
   componentWillMount () {
@@ -95,7 +98,7 @@ export default class User extends Component {
   }
 
   render () {
-    const { user, routeParams: { alias }, pvpSeasons, maps, worlds } = this.props;
+    const { user, routeParams: { alias }, pvpSeasons, maps, worlds, alias: authenticated } = this.props;
 
     const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
     const guilds = get(user, 'guilds', STUB_GUILDS.rows);
@@ -164,7 +167,7 @@ export default class User extends Component {
         title={alias}
         content={user}
         pinnedTab={stubUser && (
-          <Link to={false ? `settings?claiming=${alias}` : `join?claiming=${alias}`}>
+          <Link to={authenticated ? `settings?claiming=${alias}` : `join?claiming=${alias}`}>
             <Button type="cta">{T.translate('users.claimCta')}</Button>
           </Link>
         )}
@@ -208,3 +211,4 @@ export default class User extends Component {
     );
   }
 }
+));

@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Claim cta not linking to settings page if user was logged in
 
 ## [4.16.9][] - 2017-05-07
 ### Changed
