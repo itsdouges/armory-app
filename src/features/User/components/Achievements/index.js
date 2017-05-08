@@ -66,6 +66,7 @@ class UserAchievements extends Component {
   render () {
     const { groups, achievements, categories } = this.props;
     const { selectedCategory } = this.state;
+    const category = categories[selectedCategory];
 
     const orderedGroups = map(groups, (value) => (value.id ? value : null))
       .filter(Boolean)
@@ -90,7 +91,7 @@ class UserAchievements extends Component {
         <ol className={styles.achievements}>
           {categories[selectedCategory].achievements.map((id) =>
             <li key={id}>
-              <Achievement {...achievements[id]} />
+              <Achievement icon={category.icon} achievement={achievements[id]} />
             </li>)}
         </ol>
       </Container>
