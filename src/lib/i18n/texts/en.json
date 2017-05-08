@@ -44,6 +44,7 @@
     "refreshNote": "Armory statistics are refreshed every thirty minutes."
   },
   "search": {
+    "name": "Search",
     "textbox": "Search users, characters, and guilds",
     "results": "Search results for",
     "minlength": "Search term should be 3 or more characters :-)",
