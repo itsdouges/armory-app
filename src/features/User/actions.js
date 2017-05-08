@@ -65,20 +65,11 @@ export const fetchUserCharacters = (alias: string, limit: number, offset: number
     });
   }, `users.data[${alias}].characters`, limit, offset);
 
-const MAX_IDS = 200;
 export const fetchUserAchievements = (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/achievements`)
     .then(({ data }) => {
       const ids = data.map((achievement) => achievement.id);
-
-      let currentMax = MAX_IDS;
-      let slicedIds = ids.slice(0, MAX_IDS);
-
-      while (slicedIds.length) {
-        dispatch(actions.fetchAchievements(slicedIds));
-        slicedIds = ids.slice(currentMax, MAX_IDS);
-        currentMax += MAX_IDS;
-      }
+      dispatch(actions.fetchAchievements(ids));
 
       return dispatch(fetchUserAchievementsResult(alias, data));
     });
