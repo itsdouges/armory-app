@@ -39,6 +39,7 @@ type Props = {
 
 type State = {
   selectedCategory: number,
+  selectedGroup: ?string,
 };
 
 export default connect(selector, {
@@ -50,6 +51,7 @@ class UserAchievements extends Component {
   props: Props;
   state: State = {
     selectedCategory: 1,
+    selectedGroup: null,
   };
 
   componentWillMount () {
@@ -63,14 +65,23 @@ class UserAchievements extends Component {
     this.props.fetchAchievements(categories[id].achievements);
   }
 
+  selectGroup (id) {
+    console.log('selecting:', id);
+    this.setState({
+      selectedGroup: id,
+    });
+  }
+
   render () {
     const { groups, achievements, categories } = this.props;
-    const { selectedCategory } = this.state;
+    const { selectedCategory, selectedGroup } = this.state;
     const category = categories[selectedCategory];
 
     const orderedGroups = map(groups, (value) => (value.id ? value : null))
       .filter(Boolean)
       .sort(({ order: a }, { order: b }) => (a - b));
+
+    console.log(selectedGroup);
 
     return (
       <Container className={styles.root}>
@@ -83,7 +94,12 @@ class UserAchievements extends Component {
           <ol>
             {orderedGroups.map((group) =>
               <li key={group.id}>
-                <Group categoryData={categories} {...group} />
+                <Group
+                  categoryData={categories}
+                  onClick={() => this.selectGroup(group.id)}
+                  selected={selectedGroup === group.id}
+                  {...group}
+                />
               </li>)}
           </ol>
         </div>
@@ -91,7 +107,7 @@ class UserAchievements extends Component {
         <ol className={styles.achievements}>
           {categories[selectedCategory].achievements.map((id) =>
             <li key={id}>
-              <Achievement icon={category.icon} achievement={achievements[id]} />
+              <Achievement icon={category.icon} achievement={achievements[id]} current={0} />
             </li>)}
         </ol>
       </Container>

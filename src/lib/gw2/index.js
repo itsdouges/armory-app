@@ -3,15 +3,9 @@
 import axios from 'axios';
 import config from 'config';
 import { mapItemsToObject } from './parse';
+import { reduceById } from 'lib/reduce';
 
 const get = axios.get;
-
-function reduceById (payload) {
-  return payload.reduce((acc, item) => ({
-    ...acc,
-    [item.id]: item,
-  }), {});
-}
 
 export const readProfessions = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/professions?ids=${ids.join(',')}`, {

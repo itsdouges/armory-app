@@ -1,0 +1,46 @@
+@import '~common/styles/base.less';
+
+@achievementMargin: 5px;
+
+.root {
+  display: flex;
+  padding: @achievementMargin;
+}
+
+.iconContainer {
+  position: relative;
+  padding: 1em;
+}
+
+.points {
+  font-size: 2em;
+  .primaryFont();
+  margin-right: @achievementMargin;
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-shadow: none;
+}
+
+.achievementPointsContainer {
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: @achievementMargin;
+}
+
+.name {
+  font-size: 16px;
+  .primaryFont();
+  margin-bottom: @achievementMargin;
+}

@@ -1,9 +1,7 @@
+@import '~common/styles/base.less';
+
 .root {
   display: flex;
-}
-
-.category {
-  display: none;
 }
 
 .groups {
@@ -12,4 +10,10 @@
 
 .achievements {
   width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+
+  > * {
+    width: 33%;
+  }
 }

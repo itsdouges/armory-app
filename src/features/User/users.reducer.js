@@ -10,6 +10,8 @@ import {
   SELECT_USER,
 } from './actions';
 
+import { reduceById } from 'lib/reduce';
+
 function fetchingUserResult (state, action) {
   const newState = {
     ...state,
@@ -35,6 +37,7 @@ function fetchAchievementsResult (state, action) {
   newState.data[action.payload.alias] = {
     ...oldUser,
     ...action.payload,
+    achievementsMap: reduceById(action.payload.achievements),
   };
 
   return newState;
