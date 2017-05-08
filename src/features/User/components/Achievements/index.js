@@ -30,8 +30,8 @@ class UserAchievements extends Component {
   props: Props;
 
   componentWillMount () {
-    this.props.fetchAchievementGroups && this.props.fetchAchievementGroups('4E6A6CE7-B131-40BB-81A3-235CDBACDAA9');
-    this.props.fetchAchievementCategories && this.props.fetchAchievementCategories(1);
+    this.props.fetchAchievementGroups('4E6A6CE7-B131-40BB-81A3-235CDBACDAA9');
+    this.props.fetchAchievementCategories(1);
   }
 
   render () {
