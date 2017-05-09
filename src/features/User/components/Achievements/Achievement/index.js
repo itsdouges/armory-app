@@ -41,7 +41,7 @@ const Achievement = ({ achievement, icon, current }: Props) => {
           <Icon size="medium" src={icon} />
           {!completed && <ProgressBar
             backgroundColor="transparent"
-            barColor="rgba(0, 0, 0, 0.5)"
+            barColor="rgba(0, 0, 0, 0.25)"
             max={tier.count}
             current={current}
             className={styles.progress}
