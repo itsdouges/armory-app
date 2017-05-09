@@ -51,13 +51,15 @@ export default connect(selector, {
 class UserAchievements extends Component {
   props: Props;
   state: State = {
-    selectedCategory: 1,
-    selectedGroup: null,
+    selectedCategory: 97, // Daily category
+    selectedGroup: '18DB115A-8637-4290-A636-821362A3C4A8', // Daily group
   };
 
   componentWillMount () {
     this.props.fetchAchievementGroups('4E6A6CE7-B131-40BB-81A3-235CDBACDAA9');
     this.props.fetchAchievementCategories(1);
+
+    // TODO: Fetch first page of achievements.
   }
 
   selectCategory = (id) => {
@@ -89,6 +91,7 @@ class UserAchievements extends Component {
       <Container className={styles.root}>
         <div className={styles.groups}>
           <Textbox
+            containerClassName={styles.textbox}
             id="achievements-filter"
             label={`${T.translate('search.name')}...`}
           />
@@ -110,7 +113,7 @@ class UserAchievements extends Component {
 
         <ol className={styles.achievements}>
           {categories[selectedCategory].achievements.map((id) =>
-            <li key={id}>
+            <li key={id} className={styles.achievement}>
               <Achievement
                 icon={category.icon}
                 achievement={achievements[id]}

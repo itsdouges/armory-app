@@ -2,18 +2,33 @@
 
 .root {
   display: flex;
+  font-weight: 100;
 }
 
 .groups {
   width: 25%;
+  background-color: @tabsBg;
 }
 
 .achievements {
   width: 75%;
   display: flex;
   flex-wrap: wrap;
+}
 
-  > * {
-    width: 33%;
-  }
+.textbox {
+  margin: 0;
+  padding: 0.5em;
+}
+
+.achievement {
+  width: 100%;
+
+  .fromTablet({
+    width: 50%;
+  });
+
+  .fromPc({
+    width: 33.333%;
+  });
 }

@@ -40,6 +40,7 @@ const AchievementGroup = ({
       {categories.map((id) =>
         <li key={id}>
           <Category
+            subCategory
             name={categoryData[id].name}
             icon={<Icon src={categoryData[id].icon} />}
             selected={selectedCategory === id}

@@ -118,7 +118,7 @@ export default class Search extends Component {
 
     return (
       <div className={styles.root}>
-        <Head title="Search" />
+        <Head title={T.translate('search.name')} />
 
         <Message size="big" className={styles.message}>
           <span><T.span text={{ key: 'search.results' }} /> <strong><i>{term}</i></strong>...</span>

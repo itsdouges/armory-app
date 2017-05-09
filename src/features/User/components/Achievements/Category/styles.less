@@ -1,1 +1,41 @@
 @import '~common/styles/base.less';
+
+@subCategoryPadding: (@xsmall * 1px) / 2;
+
+.root {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid @tabsBorder;
+  width: 100%;
+  padding: 0.25em;
+
+  &.subCategory {
+    padding: 0 @subCategoryPadding;
+    background-color: darken(@tabHover, 50%);
+
+    .name {
+      margin-left: @subCategoryPadding / 2;
+    }
+
+    .icon {
+      opacity: 0.5;
+    }
+  }
+}
+
+.name {
+  text-align: left;
+}
+
+.selected,
+.root:hover {
+  background-color: @tabHover;
+
+  &.subCategory {
+    background-color: darken(@tabHover, 50%);
+
+    .icon {
+      opacity: 1;
+    }
+  }
+}
