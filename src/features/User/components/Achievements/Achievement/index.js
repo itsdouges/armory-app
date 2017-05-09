@@ -43,6 +43,7 @@ const Achievement = ({ achievement, icon, current }: Props) => {
             max={tier.count}
             current={current}
             className={styles.progress}
+            labelClassName={styles.progressLabel}
             vertical
           />
         </div>

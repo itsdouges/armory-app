@@ -1,19 +1,39 @@
 @import '~common/styles/base.less';
 
+@achievementMargin: 0.25em;
+
 .root {
   display: flex;
   font-weight: 100;
+  align-items: flex-start;
 }
 
 .groups {
   width: 25%;
   background-color: @tabsBg;
+
+  .fromTablet({
+    width: 30%;
+  });
+
+  .fromPc({
+    width: 25%;
+  });
 }
 
 .achievements {
+  padding: @achievementMargin;
   width: 75%;
   display: flex;
   flex-wrap: wrap;
+
+  .fromTablet({
+    width: 70%;
+  });
+
+  .fromPc({
+    width: 75%;
+  });
 }
 
 .textbox {
@@ -22,13 +42,14 @@
 }
 
 .achievement {
-  width: 100%;
+  width: calc(100% ~"-" (@achievementMargin * 2));
+  margin: @achievementMargin;
 
   .fromTablet({
-    width: 50%;
+    width: calc(50% ~"-" @achievementMargin * 2);
   });
 
   .fromPc({
-    width: 33.333%;
+    width: calc(33.33333% ~"-" (@achievementMargin * 2));
   });
 }

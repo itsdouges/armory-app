@@ -26,6 +26,7 @@ type ProgressBarProps = {
   label?: string,
   vertical?: boolean,
   className?: string,
+  labelClassName?: string,
 };
 
 const ProgressBar = ({
@@ -38,13 +39,17 @@ const ProgressBar = ({
   label,
   className,
   vertical,
+  labelClassName,
 }: ProgressBarProps) => (
   <div className={cx(styles.root, small && styles.small, className)} style={{ backgroundColor }}>
     <span className={styles.icon}>{icon}</span>
     <span className={styles.bar} style={calcBarStyles(current, max, barColor, vertical)} />
-    {small || <span className={styles.label}>
-      {label || `${current}/${max}`}
-    </span>}
+
+    {small || (
+      <span className={cx(styles.label, labelClassName)}>
+        {label || `${current}/${max}`}
+      </span>
+    )}
   </div>
 );
 
