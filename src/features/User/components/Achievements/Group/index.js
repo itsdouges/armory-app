@@ -2,7 +2,9 @@
 
 import type { AchievementCategories } from 'flowTypes';
 
+import cx from 'classnames';
 import SvgIcon from 'common/components/Icon/Svg';
+import Icon from 'common/components/Icon';
 
 import Category from '../Category';
 import styles from './styles.less';
@@ -13,19 +15,36 @@ type Props = {
   categoryData: AchievementCategories,
   selected: boolean,
   onClick: () => void,
+  onCategoryClick: (id: number) => void,
+  selectedCategory: number,
 };
 
-const AchievementGroup = ({ name, categories, categoryData, selected, onClick }: Props) => (
-  <div className={{ [styles.selected]: selected }}>
+const AchievementGroup = ({
+  name,
+  categories,
+  categoryData,
+  selected,
+  onClick,
+  onCategoryClick,
+  selectedCategory,
+}: Props) => (
+  <div className={cx({ [styles.selected]: selected })}>
     <Category
+      selected={selected}
+      onClick={onClick}
       name={name}
-      icon={<SvgIcon name="arrow-down" className={styles.icon} onClick={onClick} />}
+      icon={<SvgIcon name="arrow-down" className={styles.icon} />}
     />
 
-    <ol>
+    <ol className={styles.categories}>
       {categories.map((id) =>
         <li key={id}>
-          <Category {...categoryData[id]} className={styles.category} />
+          <Category
+            name={categoryData[id].name}
+            icon={<Icon src={categoryData[id].icon} />}
+            selected={selectedCategory === id}
+            onClick={() => onCategoryClick(id)}
+          />
         </li>)}
     </ol>
   </div>

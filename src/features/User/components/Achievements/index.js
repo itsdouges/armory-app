@@ -59,18 +59,21 @@ class UserAchievements extends Component {
     this.props.fetchAchievementCategories(1);
   }
 
-  selectCategory (id) {
+  selectCategory = (id) => {
     const { categories } = this.props;
 
     this.props.fetchAchievements(categories[id].achievements);
-  }
 
-  selectGroup (id) {
-    console.log('selecting:', id);
     this.setState({
-      selectedGroup: id,
+      selectedCategory: id,
     });
-  }
+  };
+
+  selectGroup = (id) => {
+    this.setState((prevState) => ({
+      selectedGroup: prevState.selectedGroup === id ? null : id,
+    }));
+  };
 
   render () {
     const { groups, achievements, categories } = this.props;
@@ -80,8 +83,6 @@ class UserAchievements extends Component {
     const orderedGroups = map(groups, (value) => (value.id ? value : null))
       .filter(Boolean)
       .sort(({ order: a }, { order: b }) => (a - b));
-
-    console.log(selectedGroup);
 
     return (
       <Container className={styles.root}>
@@ -97,7 +98,9 @@ class UserAchievements extends Component {
                 <Group
                   categoryData={categories}
                   onClick={() => this.selectGroup(group.id)}
+                  onCategoryClick={this.selectCategory}
                   selected={selectedGroup === group.id}
+                  selectedCategory={selectedCategory}
                   {...group}
                 />
               </li>)}

@@ -8,7 +8,7 @@ import Card from 'common/components/Card';
 import styles from './styles.less';
 
 type Props = {
-  achievement: {
+  achievement?: {
     name: string,
     description: string,
     tiers: Array<{
@@ -20,12 +20,17 @@ type Props = {
   current: number,
 };
 
-const calculateTier = (tiers, current) => {
-  return tiers.filter((tier) => tier.count >= current)[0];
+const calculateTier = (achievement, current) => {
+  if (!achievement) {
+    return {};
+  }
+
+  return achievement.tiers.filter((tier) => tier.count >= current)[0];
 };
 
 const Achievement = ({ achievement, icon, current }: Props) => {
-  const tier = calculateTier(achievement.tiers, current);
+  const tier = calculateTier(achievement, current);
+  const name = achievement ? achievement.name : '';
 
   return (
     <TooltipTrigger data={achievement} type="achievement">
@@ -43,7 +48,7 @@ const Achievement = ({ achievement, icon, current }: Props) => {
         </div>
 
         <div className={styles.content}>
-          <div className={styles.name}>{achievement.name}</div>
+          <div className={styles.name}>{name}</div>
 
           <div className={styles.pointsContainer}>
             <span className={styles.points}>{tier.points} </span>
