@@ -1,6 +1,6 @@
 @import '~common/styles/base.less';
 
-@subCategoryPadding: (@xsmall * 1px) / 2;
+@subCategoryPadding: (@xsmall * 1px) / 1.5;
 
 .root {
   display: flex;
@@ -10,15 +10,26 @@
   padding: 0.25em;
 
   &.subCategory {
-    padding: 0 @subCategoryPadding;
+    padding-left: @subCategoryPadding;
+    padding-right: @subCategoryPadding;
     background-color: darken(@tabHover, 50%);
 
     .name {
       margin-left: @subCategoryPadding / 2;
+      display: none;
+
+      .fromTablet({
+        display: unset;
+      });
     }
 
     .icon {
       opacity: 0.5;
+      margin: 0 auto;
+
+      .fromTablet({
+        margin: unset;
+      });
     }
   }
 }
@@ -32,7 +43,7 @@
   background-color: @tabHover;
 
   &.subCategory {
-    background-color: darken(@tabHover, 50%);
+    background-color: @tabHover;
 
     .icon {
       opacity: 1;
