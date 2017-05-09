@@ -1,6 +1,6 @@
 // @flow
 
-import type { AchievementGroups, AchievementCategories, Achievements } from 'flowTypes';
+import type { AchievementGroups, AchievementCategories, Achievements, UserAchievementsMap } from 'flowTypes';
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
@@ -16,7 +16,7 @@ import Textbox from 'common/components/Textbox';
 import styles from './styles.less';
 
 export const selector = createSelector(
-  (state) => (state.users.data[state.users.selected] || []).achievements,
+  (state) => (state.users.data[state.users.selected] || {}).achievementsMap || {},
   (state) => state.achievements,
   (state) => state.achievementGroups,
   (state) => state.achievementCategories,
@@ -35,6 +35,7 @@ type Props = {
   groups: AchievementGroups,
   categories: AchievementCategories,
   achievements: Achievements,
+  userAchievements: UserAchievementsMap,
 };
 
 type State = {
@@ -76,7 +77,7 @@ class UserAchievements extends Component {
   };
 
   render () {
-    const { groups, achievements, categories } = this.props;
+    const { groups, achievements, categories, userAchievements } = this.props;
     const { selectedCategory, selectedGroup } = this.state;
     const category = categories[selectedCategory];
 
@@ -110,7 +111,11 @@ class UserAchievements extends Component {
         <ol className={styles.achievements}>
           {categories[selectedCategory].achievements.map((id) =>
             <li key={id}>
-              <Achievement icon={category.icon} achievement={achievements[id]} current={0} />
+              <Achievement
+                icon={category.icon}
+                achievement={achievements[id]}
+                {...userAchievements[id]}
+              />
             </li>)}
         </ol>
       </Container>

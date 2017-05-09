@@ -12,7 +12,7 @@ function calcBarStyles (current, max, barColor, vertical) {
   return {
     width: '100%',
     backgroundColor: barColor,
-    ...prefix('transform', vertical ? `translateY(${percent + 101}%)` : `translateX(${percent - 100}%)`),
+    ...prefix('transform', vertical ? `translateY(${101 - percent}%)` : `translateX(${percent - 100}%)`),
   };
 }
 

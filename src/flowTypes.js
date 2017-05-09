@@ -245,3 +245,5 @@ export type Notification = {
 export type Notifications = {
   [key: string]: Notification,
 };
+
+export type UserAchievementsMap = {};
