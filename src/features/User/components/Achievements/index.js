@@ -51,8 +51,8 @@ export default connect(selector, {
 class UserAchievements extends Component {
   props: Props;
   state: State = {
-    selectedCategory: 97, // Daily category
-    selectedGroup: '18DB115A-8637-4290-A636-821362A3C4A8', // Daily group
+    selectedCategory: 1, // 97, // Daily category
+    selectedGroup: null, //'18DB115A-8637-4290-A636-821362A3C4A8', // Daily group
   };
 
   componentWillMount () {

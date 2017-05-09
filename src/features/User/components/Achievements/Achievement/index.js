@@ -4,6 +4,7 @@ import Icon from 'common/components/Icon';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import ProgressBar from 'common/components/ProgressBar';
 import Card from 'common/components/Card';
+import T from 'i18n-react';
 
 import styles from './styles.less';
 
@@ -31,13 +32,14 @@ const calculateTier = (achievement, current) => {
 const Achievement = ({ achievement, icon, current }: Props) => {
   const tier = calculateTier(achievement, current);
   const name = achievement ? achievement.name : '';
+  const completed = current === tier.count;
 
   return (
     <TooltipTrigger data={achievement} type="achievement">
       <Card className={styles.root}>
         <div className={styles.iconContainer}>
           <Icon size="medium" src={icon} />
-          <ProgressBar
+          {!completed && <ProgressBar
             backgroundColor="transparent"
             barColor="rgba(0, 0, 0, 0.5)"
             max={tier.count}
@@ -45,7 +47,7 @@ const Achievement = ({ achievement, icon, current }: Props) => {
             className={styles.progress}
             labelClassName={styles.progressLabel}
             vertical
-          />
+          />}
         </div>
 
         <div className={styles.content}>
@@ -54,6 +56,7 @@ const Achievement = ({ achievement, icon, current }: Props) => {
           <div className={styles.pointsContainer}>
             <span className={styles.points}>{tier.points} </span>
             <Icon name="arenanet-points.png" />
+            {completed && <span className={styles.completed}>{T.translate('words.completed')}</span>}
           </div>
         </div>
       </Card>

@@ -194,7 +194,8 @@
     "optional": "Optional",
     "dismiss": "Dismiss",
     "embed": "Embed",
-    "loadMore": "Load More"
+    "loadMore": "Load More",
+    "completed": "Completed"
   },
   "leaderboards": {
     "name": "Leaderboards"

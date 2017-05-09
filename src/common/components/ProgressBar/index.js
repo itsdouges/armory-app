@@ -41,7 +41,14 @@ const ProgressBar = ({
   vertical,
   labelClassName,
 }: ProgressBarProps) => (
-  <div className={cx(styles.root, small && styles.small, className)} style={{ backgroundColor }}>
+  <div
+    className={cx(styles.root, className, {
+      [styles.small]: small,
+      [styles.vertical]: vertical,
+      [styles.horizontal]: !vertical,
+    })}
+    style={{ backgroundColor }}
+  >
     <span className={styles.icon}>{icon}</span>
     <span className={styles.bar} style={calcBarStyles(current, max, barColor, vertical)} />
 
