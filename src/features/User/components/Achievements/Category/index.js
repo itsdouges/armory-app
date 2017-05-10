@@ -12,9 +12,10 @@ type Props = {
   onClick?: () => void,
   selected?: boolean,
   subCategory?: boolean,
+  rightComponent?: Children,
 };
 
-const AchievementCategory = ({ name, icon, className, onClick, selected, subCategory }: Props) => (
+const AchievementCategory = ({ name, icon, className, onClick, selected, subCategory, rightComponent }: Props) => (
   <button
     className={cx(styles.root, className, {
       [styles.selected]: selected,
@@ -24,6 +25,7 @@ const AchievementCategory = ({ name, icon, className, onClick, selected, subCate
   >
     <span className={styles.icon}>{icon}</span>
     <span className={styles.name}>{name}</span>
+    {rightComponent && <span className={styles.rightComponent}>{rightComponent}</span>}
   </button>
 );
 

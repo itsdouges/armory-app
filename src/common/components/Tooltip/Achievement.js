@@ -8,7 +8,14 @@ const ItemsTooltip = ({ data }: any) => {
     <Background>
       <div className={styles.title}>{data.name}</div>
 
-      {data.description}
+      {data.requirement}
+
+      {data.description && (
+        <span>
+          <br /><br />
+          {data.description}
+        </span>
+      )}
     </Background>
   );
 };

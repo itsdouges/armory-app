@@ -4,19 +4,6 @@ import T from 'i18n-react';
 import colours from 'common/styles/colours.less';
 import camelCase from 'lodash/camelCase';
 
-function parseVendorValue (item) {
-  const inItem = {
-    ...item,
-  };
-
-  inItem.vendor_value = inItem.vendor_value || 0;
-  inItem.gold = Math.floor(inItem.vendor_value / 1000);
-  inItem.silver = Math.floor(inItem.vendor_value / 100);
-  inItem.copper = inItem.vendor_value % 100;
-
-  return inItem;
-}
-
 function parseFlags (item) {
   const inItem = {
     ...item,
@@ -94,8 +81,7 @@ function parseAvailableWeaponSlots (item) {
 }
 
 export function parseItem (item: Object) {
-  let inItem = parseVendorValue(item);
-  inItem = parseFlags(inItem);
+  let inItem = parseFlags(item);
   inItem = parseInfixDescription(inItem);
   inItem = parseAvailableWeaponSlots(inItem);
 
