@@ -1,21 +1,24 @@
 @import '~common/styles/base.less';
 
-@achievementMargin: 5px;
+@achievementMargin: 10px;
+@progressPadding: 5px;
+@zIndex-tierLevel: 10;
+@fontSize: 0.9em;
 
 .root {
   display: flex;
-  padding: @achievementMargin;
+  padding: 0;
 }
 
 .iconContainer {
   position: relative;
-  padding: 1em;
+  padding: @achievementMargin * 1.25;
 }
 
 .points {
   font-size: 2em;
   .primaryFont();
-  margin-right: @achievementMargin;
+  margin-right: @achievementMargin / 2;
 }
 
 .progress {
@@ -34,7 +37,8 @@
 
 .progressLabel {
   align-items: flex-end;
-  padding-bottom: 3px;
+  padding-bottom: @progressPadding;
+  font-size: @fontSize;
 }
 
 .pointsContainer {
@@ -46,11 +50,21 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-left: @achievementMargin;
+  margin: @achievementMargin;
 }
 
 .name {
   font-size: 16px;
   .primaryFont();
-  margin-bottom: @achievementMargin;
+  margin-bottom: @achievementMargin / 2;
+}
+
+.tierStatus {
+  position: absolute;
+  top: @progressPadding * 1.5;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: @zIndex-tierLevel;
+  font-size: @fontSize;
 }

@@ -38,6 +38,12 @@ const Achievement = ({ achievement, icon, current }: Props) => {
     <TooltipTrigger data={achievement} type="achievement">
       <Card className={styles.root}>
         <div className={styles.iconContainer}>
+          {!completed && (
+              <span className={styles.tierStatus}>
+                {achievement.tiers.indexOf(tier)}/{achievement.tiers.length}
+              </span>
+          )}
+
           <Icon size="medium" src={icon} />
           {!completed && <ProgressBar
             backgroundColor="transparent"
