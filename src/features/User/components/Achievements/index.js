@@ -10,9 +10,11 @@ import T from 'i18n-react';
 
 import actions from 'features/Gw2/actions';
 import Container from 'common/components/Container';
+import Textbox from 'common/components/Textbox';
+import colourMap from 'assets/categoryColourMap.json';
+
 import Group from './Group';
 import Achievement from './Achievement';
-import Textbox from 'common/components/Textbox';
 import styles from './styles.less';
 
 export const selector = createSelector(
@@ -118,6 +120,7 @@ class UserAchievements extends Component {
               <Achievement
                 icon={category.icon}
                 achievement={achievements[id]}
+                colour={colourMap[selectedCategory]}
                 {...userAchievements[id]}
               />
             </li>)}

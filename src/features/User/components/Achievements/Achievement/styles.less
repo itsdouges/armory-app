@@ -3,6 +3,7 @@
 @achievementMargin: 10px;
 @progressPadding: 5px;
 @zIndex-tierLevel: 10;
+@zIndex-IconComplete: 20;
 @fontSize: 0.9em;
 
 .root {
@@ -37,9 +38,15 @@
   box-shadow: none;
 }
 
+.icon {
+  opacity: 0.5;
+}
+
 .completed {
-  font-size: 0.8em;
-  font-weight: 400;
+  .icon {
+    z-index: @zIndex-IconComplete;
+    opacity: 1;
+  }
 }
 
 .progressLabel {
@@ -94,6 +101,7 @@
 }
 
 .bits {
+  position: relative;
   cursor: pointer;
   padding: @progressPadding;
   max-height: 35px;
@@ -103,4 +111,28 @@
 
 .expanded {
   max-height: unset;
+
+  .expandIcon {
+    transform: rotate(180deg);
+  }
+
+  .bitsWash {
+    opacity: 0;
+  }
+}
+
+.expandIcon {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.bitsWash {
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
 }

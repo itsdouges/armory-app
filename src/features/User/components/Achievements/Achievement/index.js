@@ -7,7 +7,6 @@ import Icon from 'common/components/Icon';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import ProgressBar from 'common/components/ProgressBar';
 import Card from 'common/components/Card';
-import colours from 'common/styles/colours';
 import Money from 'common/components/Tooltip/Gold';
 import Gw2Item from 'common/components/Gw2Item';
 import Gw2Title from 'common/components/Gw2Title';
@@ -36,6 +35,11 @@ type Props = {
   },
   icon: string,
   current: number,
+  colour?: {
+    r: string,
+    g: string,
+    b: string,
+  },
 };
 
 const calculateTier = (achievement, current) => {
@@ -117,6 +121,8 @@ const makeBits = (achievement, userBits = []) => {
   );
 };
 
+const extractColour = (c, opacity) => c && `rgba(${c.r}, ${c.g}, ${c.b}, ${opacity})`;
+
 export default class Achievement extends Component {
   props: Props;
 
@@ -137,7 +143,7 @@ export default class Achievement extends Component {
   };
 
   render () {
-    const { achievement, icon, current, bits } = this.props;
+    const { achievement, icon, current, bits, colour } = this.props;
     const { bitsExpanded } = this.state;
 
     const tier = calculateTier(achievement, current);
@@ -145,15 +151,15 @@ export default class Achievement extends Component {
     const completed = current === tier.count;
 
     return (
-      <Card className={styles.root}>
+      <Card className={cx(styles.root, cx({ [styles.completed]: completed }))}>
         <TooltipTrigger data={achievement && { ...achievement, current, userBits: bits }} type="achievement">
           <div className={styles.achievementContainer}>
-            <div className={styles.iconContainer}>
-              <Icon size="medium" src={icon} />
+            <div className={styles.iconContainer} style={{ backgroundColor: extractColour(colour, 0.1) }}>
+              <Icon size="medium" src={icon} className={styles.icon} />
 
               <ProgressBar
                 backgroundColor="transparent"
-                barColor={colours.achievementBar}
+                barColor={extractColour(colour, 0.3)}
                 max={tier.count || 0}
                 current={current || 0}
                 className={styles.progress}
@@ -169,7 +175,7 @@ export default class Achievement extends Component {
           </div>
         </TooltipTrigger>
 
-        <div className={styles.rewards}>
+        <div className={styles.rewards} style={{ backgroundColor: extractColour(colour, 0.6) }}>
           {!!tier.points && (
             <TooltipTrigger data={T.translate('achievements.pointsThisTier')}>
               <div className={styles.pointsContainer}>
@@ -189,6 +195,8 @@ export default class Achievement extends Component {
               [styles.expanded]: bitsExpanded,
             })}
           >
+            <SvgIcon name="expand" className={styles.expandIcon} />
+            <span className={styles.bitsWash} />
             {makeBits(achievement, bits)}
           </button>
         )}

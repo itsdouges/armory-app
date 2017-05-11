@@ -10,8 +10,11 @@ axios.get('https://api.guildwars2.com/v2/achievements/categories?ids=all')
     return Promise.all(
       categories.map((category) => pixelAverage(category.icon)
         .then((averages) => {
-          const average = `rgba(${f(averages.red)}, ${f(averages.green)}, ${f(averages.blue)}, 1)`;
-          categoryMap[category.id] = average;
+          categoryMap[category.id] = {
+            r: f(averages.red),
+            g: f(averages.green),
+            b: f(averages.blue),
+          };
         })
     ));
   })
