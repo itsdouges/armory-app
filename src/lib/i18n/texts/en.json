@@ -195,7 +195,12 @@
     "dismiss": "Dismiss",
     "embed": "Embed",
     "loadMore": "Load More",
-    "completed": "Completed"
+    "completed": "Completed",
+    "masteryPoint": "Mastery Point",
+    "coins": "Coins",
+    "title": "Title",
+    "of": "of",
+    "objectives": "Objectives"
   },
   "leaderboards": {
     "name": "Leaderboards"
@@ -206,5 +211,8 @@
     "notFoundLong": "Not Found (or the GW2 API is dead)!",
     "resourceNotFound": "Sorry, that doesn't exist. Here's a random character instead!",
     "newBags": "Bags now available on character pages! User achievements coming soon."
+  },
+  "achievements": {
+    "pointsThisTier": "Points this tier"
   }
 }

@@ -19,8 +19,8 @@ export type IconProps = {
 const buildStyle = ({ style, src, name, imageSrc, sizePx }) => {
   return {
     ...style,
-    width: `${sizePx || ''}px`,
-    height: `${sizePx || ''}px`,
+    width: sizePx && `${sizePx}px`,
+    height: sizePx && `${sizePx}px`,
     backgroundImage: (src || name) && `url(${src || imageSrc})`,
   };
 };

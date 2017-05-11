@@ -9,6 +9,7 @@ import Card from 'common/components/Card';
 import colours from 'common/styles/colours';
 import Money from 'common/components/Tooltip/Gold';
 import Gw2Item from 'common/components/Gw2Item';
+import Gw2Title from 'common/components/Gw2Title';
 
 import styles from './styles.less';
 
@@ -53,19 +54,24 @@ const makeRewards = (achievement) => {
     switch (reward.type) {
       case 'Mastery':
         return (
-          <TooltipTrigger key={reward.id} data={reward.region}>
+          <TooltipTrigger key={reward.id} data={`${reward.region} ${T.translate('words.masteryPoint')}`}>
             <Icon name={`mastery-point-${reward.region.toLowerCase()}.png`} />
           </TooltipTrigger>
         );
 
       case 'Coins':
-        return <Money key="coins" coins={reward.count} />;
+        return (
+          <TooltipTrigger key="coins" data={`${reward.count} ${T.translate('words.coins')}`}>
+            <Money coins={reward.count} />
+          </TooltipTrigger>
+        );
 
       case 'Item':
         return <Gw2Item key={`item-${reward.id}`} id={reward.id} size="32" />;
 
-      // Title not currently supported.
       case 'Title':
+        return <Gw2Title key={`item-${reward.id}`} id={reward.id} />;
+
       default:
         return '';
     }
@@ -99,22 +105,16 @@ const makeBits = (achievement, userBits = []) => {
 
 const Achievement = ({ achievement, icon, current, bits }: Props) => {
   const tier = calculateTier(achievement, current);
-  const tiers = achievement ? achievement.tiers : [];
   const name = achievement ? achievement.name : '';
   const completed = current === tier.count;
 
   return (
     <Card className={styles.root}>
-      <TooltipTrigger data={achievement} type="achievement">
-        <div className={styles.iconContainer}>
-          {tiers && !completed && (
-            <span className={styles.tierStatus}>
-              Tier {tiers.indexOf(tier)} of {tiers.length}
-            </span>
-          )}
+      <TooltipTrigger data={{ ...achievement, current, userBits: bits }} type="achievement">
+        <div className={styles.achievementContainer}>
+          <div className={styles.iconContainer}>
+            <Icon size="medium" src={icon} />
 
-          <Icon size="medium" src={icon} />
-          {!completed && (
             <ProgressBar
               backgroundColor="transparent"
               barColor={colours.achievementBar}
@@ -122,22 +122,30 @@ const Achievement = ({ achievement, icon, current, bits }: Props) => {
               current={current || 0}
               className={styles.progress}
               labelClassName={styles.progressLabel}
+              label={completed ? T.translate('words.completed') : ''}
               vertical
             />
-          )}
+          </div>
+
+          <div className={styles.content}>
+            <div className={styles.name}>{name}</div>
+          </div>
         </div>
       </TooltipTrigger>
-      <div className={styles.content}>
-        <div className={styles.name}>{name}</div>
 
-        <div className={styles.pointsContainer}>
-          <span className={styles.points}>{tier.points} </span>
-          <Icon name="arenanet-points.png" />
-          {completed && <span className={styles.completed}>{T.translate('words.completed')}</span>}
-        </div>
+      <div className={styles.rewards}>
+        {!!tier.points && (
+          <TooltipTrigger data={T.translate('achievements.pointsThisTier')}>
+            <div className={styles.pointsContainer}>
+              <span className={styles.points}>{tier.points} </span>
+              <Icon sizePx={32} name="arenanet-points.png" />
+            </div>
+          </TooltipTrigger>
+        )}
+
+        {makeRewards(achievement)}
       </div>
 
-      {makeRewards(achievement)}
       {makeBits(achievement, bits)}
     </Card>
   );

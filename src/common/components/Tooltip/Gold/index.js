@@ -26,11 +26,11 @@ function calc (coins) {
   };
 }
 
-const Gold = (props: Props) => {
-  const { gold, silver, copper } = calc(props.coins);
+const Gold = ({ coins, ...props }: Props) => {
+  const { gold, silver, copper } = calc(coins);
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} {...props}>
       {!!gold && (
       <span className={`${styles.money} ${colours.gold}`}>
         {gold} <Icon name="gold.png" size="micro" />
