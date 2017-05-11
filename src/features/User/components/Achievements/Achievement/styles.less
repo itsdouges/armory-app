@@ -2,8 +2,6 @@
 
 @achievementMargin: 10px;
 @progressPadding: 5px;
-@zIndex-tierLevel: 10;
-@zIndex-IconComplete: 20;
 @fontSize: 0.9em;
 
 .root {
@@ -64,14 +62,17 @@
 
 .content {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  margin: @achievementMargin;
+  width: 100%;
 }
 
 .name {
-  font-size: 16px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
   .primaryFont();
+  margin: @achievementMargin;
+  flex-grow: 1;
 }
 
 .tierStatus {
@@ -94,6 +95,7 @@
   align-items: center;
   background-color: @cardDarkBackground;
   color: @_white;
+  width: 100%;
 
   > * {
     margin-right: @progressPadding;
@@ -132,7 +134,7 @@
 }
 
 .bitsWash {
-  z-index: 99;
+  z-index: @zIndex-achievementBitsWash;
   position: absolute;
   top: 0;
   left: 0;

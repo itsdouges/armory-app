@@ -8,10 +8,12 @@ import map from 'lodash/map';
 import { createSelector } from 'reselect';
 import T from 'i18n-react';
 
+import extractColour from 'lib/colour';
 import actions from 'features/Gw2/actions';
 import Container from 'common/components/Container';
 import Textbox from 'common/components/Textbox';
 import colourMap from 'assets/categoryColourMap.json';
+import Card from 'common/components/Card';
 
 import Group from './Group';
 import Achievement from './Achievement';
@@ -86,6 +88,7 @@ class UserAchievements extends Component {
     const { selectedCategory, selectedGroup } = this.state;
     const category = categories[selectedCategory] || { achievements: [], icon: '' };
 
+    const colour = colourMap[selectedCategory];
     const orderedGroups = map(groups, (value) => (value.id ? value : null))
       .filter(Boolean)
       .sort(({ order: a }, { order: b }) => (a - b));
@@ -114,17 +117,23 @@ class UserAchievements extends Component {
           </ol>
         </div>
 
-        <ol className={styles.achievements}>
-          {category.achievements.map((id) =>
-            <li key={id} className={styles.achievement}>
-              <Achievement
-                icon={category.icon}
-                achievement={achievements[id]}
-                colour={colourMap[selectedCategory]}
-                {...userAchievements[id]}
-              />
-            </li>)}
-        </ol>
+        <div className={styles.achievementsContainer}>
+          <Card className={styles.categoryStrap} style={{ backgroundColor: extractColour(colour, 0.6) }}>
+            <h3 className={styles.categoryName}>{category.name || '...'}</h3>
+          </Card>
+
+          <ol className={styles.achievements}>
+            {category.achievements.map((id) =>
+              <li key={id} className={styles.achievement}>
+                <Achievement
+                  icon={category.icon}
+                  achievement={achievements[id]}
+                  colour={colour}
+                  {...userAchievements[id]}
+                />
+              </li>)}
+          </ol>
+        </div>
       </Container>
     );
   }

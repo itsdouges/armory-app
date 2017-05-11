@@ -12,6 +12,7 @@ import Gw2Item from 'common/components/Gw2Item';
 import Gw2Title from 'common/components/Gw2Title';
 import SvgIcon from 'common/components/Icon/Svg';
 
+import extractColour from 'lib/colour';
 import styles from './styles.less';
 
 type Tier = {
@@ -121,8 +122,6 @@ const makeBits = (achievement, userBits = []) => {
   );
 };
 
-const extractColour = (c, opacity) => c && `rgba(${c.r}, ${c.g}, ${c.b}, ${opacity})`;
-
 export default class Achievement extends Component {
   props: Props;
 
@@ -152,8 +151,8 @@ export default class Achievement extends Component {
 
     return (
       <Card className={cx(styles.root, cx({ [styles.completed]: completed }))}>
-        <TooltipTrigger data={achievement && { ...achievement, current, userBits: bits }} type="achievement">
-          <div className={styles.achievementContainer}>
+        <div className={styles.achievementContainer}>
+          <TooltipTrigger data={achievement && { ...achievement, current, userBits: bits }} type="achievement">
             <div className={styles.iconContainer} style={{ backgroundColor: extractColour(colour, 0.1) }}>
               <Icon size="medium" src={icon} className={styles.icon} />
 
@@ -168,24 +167,24 @@ export default class Achievement extends Component {
                 vertical
               />
             </div>
+          </TooltipTrigger>
 
-            <div className={styles.content}>
-              <div className={styles.name}>{name}</div>
+          <div className={styles.content}>
+            <div className={styles.name}>{name}</div>
+
+            <div className={styles.rewards} style={{ backgroundColor: extractColour(colour, 0.6) }}>
+              {!!tier.points && (
+                <TooltipTrigger data={T.translate('achievements.pointsThisTier')}>
+                  <div className={styles.pointsContainer}>
+                    <span className={styles.points}>{tier.points} </span>
+                    <Icon sizePx={32} name="arenanet-points.png" />
+                  </div>
+                </TooltipTrigger>
+              )}
+
+              {makeRewards(achievement)}
             </div>
           </div>
-        </TooltipTrigger>
-
-        <div className={styles.rewards} style={{ backgroundColor: extractColour(colour, 0.6) }}>
-          {!!tier.points && (
-            <TooltipTrigger data={T.translate('achievements.pointsThisTier')}>
-              <div className={styles.pointsContainer}>
-                <span className={styles.points}>{tier.points} </span>
-                <Icon sizePx={32} name="arenanet-points.png" />
-              </div>
-            </TooltipTrigger>
-          )}
-
-          {makeRewards(achievement)}
         </div>
 
         {achievement && achievement.bits && (

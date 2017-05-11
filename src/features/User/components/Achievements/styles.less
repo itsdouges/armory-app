@@ -1,6 +1,6 @@
 @import '~common/styles/base.less';
 
-@achievementMargin: 0.25em;
+@achievementMargin: 0.25rem;
 
 .root {
   display: flex;
@@ -22,11 +22,20 @@
   });
 }
 
-.achievements {
+.categoryStrap {
   padding: @achievementMargin;
+  margin: @achievementMargin * 2;
+  margin-bottom: 0;
+  width: auto;
+}
+
+.categoryName {
+  padding: 0.5em;
+  margin: 0;
+}
+
+.achievementsContainer {
   width: 75%;
-  display: flex;
-  flex-wrap: wrap;
 
   .fromTablet({
     width: 70%;
@@ -35,6 +44,12 @@
   .fromPc({
     width: 75%;
   });
+}
+
+.achievements {
+  padding: @achievementMargin;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .textbox {
