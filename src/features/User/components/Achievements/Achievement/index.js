@@ -8,19 +8,29 @@ import ProgressBar from 'common/components/ProgressBar';
 import Card from 'common/components/Card';
 import colours from 'common/styles/colours';
 import Money from 'common/components/Tooltip/Gold';
+import Gw2Item from 'common/components/Gw2Item';
 
 import styles from './styles.less';
 
+type Tier = {
+  points: number,
+  count: number,
+};
+
 type Props = {
+  bits?: Array<number>,
   achievement?: {
     name: string,
     description: string,
     rewards: Array<*>,
-    bits?: Array<number>,
-    tiers: Array<{
-      points: number,
+    bits: Array<{
+      type: string,
       count: number,
+      text: string,
+      id: number,
     }>,
+    // $FlowFixMe
+    tiers: Array<Tier>,
   },
   icon: string,
   current: number,
@@ -42,17 +52,20 @@ const makeRewards = (achievement) => {
   return achievement.rewards.map((reward) => {
     switch (reward.type) {
       case 'Mastery':
-        return <Icon key={reward.id} name={`mastery-point-${reward.region.toLowerCase()}.png`} />;
+        return (
+          <TooltipTrigger key={reward.id} data={reward.region}>
+            <Icon name={`mastery-point-${reward.region.toLowerCase()}.png`} />
+          </TooltipTrigger>
+        );
 
       case 'Coins':
-        return <Money coins={reward.count} />;
+        return <Money key="coins" coins={reward.count} />;
 
       case 'Item':
-        return 'item';
+        return <Gw2Item key={`item-${reward.id}`} id={reward.id} size="32" />;
 
+      // Title not currently supported.
       case 'Title':
-        return 'title';
-
       default:
         return '';
     }
@@ -69,17 +82,15 @@ const makeBits = (achievement, userBits = []) => {
 
     switch (bit.type) {
       case 'Text':
-        return `text${completed}`;
+        return bit.text;
 
       case 'Item':
-        return `item${completed}`;
+        return <Gw2Item id={bit.id} className={!completed && styles.incomplete} size="32" />;
 
+      // Minipet not currently supported.
+      // Skin not currently supported.
       case 'Minipet':
-        return `pet${completed}`;
-
       case 'Skin':
-        return `skin${completed}`;
-
       default:
         return '';
     }
@@ -93,12 +104,12 @@ const Achievement = ({ achievement, icon, current, bits }: Props) => {
   const completed = current === tier.count;
 
   return (
-    <TooltipTrigger data={achievement} type="achievement">
-      <Card className={styles.root}>
+    <Card className={styles.root}>
+      <TooltipTrigger data={achievement} type="achievement">
         <div className={styles.iconContainer}>
-          {!completed && (
+          {tiers && !completed && (
             <span className={styles.tierStatus}>
-              {tiers.indexOf(tier)}/{tiers.length}
+              Tier {tiers.indexOf(tier)} of {tiers.length}
             </span>
           )}
 
@@ -107,29 +118,28 @@ const Achievement = ({ achievement, icon, current, bits }: Props) => {
             <ProgressBar
               backgroundColor="transparent"
               barColor={colours.achievementBar}
-              max={tier.count}
-              current={current}
+              max={tier.count || 0}
+              current={current || 0}
               className={styles.progress}
               labelClassName={styles.progressLabel}
               vertical
             />
           )}
         </div>
+      </TooltipTrigger>
+      <div className={styles.content}>
+        <div className={styles.name}>{name}</div>
 
-        <div className={styles.content}>
-          <div className={styles.name}>{name}</div>
-
-          <div className={styles.pointsContainer}>
-            <span className={styles.points}>{tier.points} </span>
-            <Icon name="arenanet-points.png" />
-            {completed && <span className={styles.completed}>{T.translate('words.completed')}</span>}
-          </div>
+        <div className={styles.pointsContainer}>
+          <span className={styles.points}>{tier.points} </span>
+          <Icon name="arenanet-points.png" />
+          {completed && <span className={styles.completed}>{T.translate('words.completed')}</span>}
         </div>
+      </div>
 
-        {makeRewards(achievement)}
-        {makeBits(achievement, bits)}
-      </Card>
-    </TooltipTrigger>
+      {makeRewards(achievement)}
+      {makeBits(achievement, bits)}
+    </Card>
   );
 };
 

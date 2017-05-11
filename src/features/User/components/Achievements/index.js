@@ -29,9 +29,9 @@ export const selector = createSelector(
 );
 
 type Props = {
-  fetchAchievementGroups: () => void,
-  fetchAchievementCategories: () => void,
-  fetchAchievements: (Array<number>) => void,
+  fetchAchievementGroups: () => Promise<*>,
+  fetchAchievementCategories: () => Promise<*>,
+  fetchAchievements: (Array<number>) => Promise<*>,
   groups: AchievementGroups,
   categories: AchievementCategories,
   achievements: Achievements,
@@ -51,15 +51,16 @@ export default connect(selector, {
 class UserAchievements extends Component {
   props: Props;
   state: State = {
-    selectedCategory: 1, // 97, // Daily category
-    selectedGroup: null, //'18DB115A-8637-4290-A636-821362A3C4A8', // Daily group
+    selectedCategory: 97, // Daily category
+    selectedGroup: '18DB115A-8637-4290-A636-821362A3C4A8', // Daily group
   };
 
   componentWillMount () {
-    this.props.fetchAchievementGroups('4E6A6CE7-B131-40BB-81A3-235CDBACDAA9');
-    this.props.fetchAchievementCategories(1);
+    const { selectedCategory } = this.state;
 
-    // TODO: Fetch first page of achievements.
+    this.props.fetchAchievementGroups('4E6A6CE7-B131-40BB-81A3-235CDBACDAA9');
+    this.props.fetchAchievementCategories(1)
+      .then((categoryMap) => this.props.fetchAchievements(categoryMap[selectedCategory].achievements));
   }
 
   selectCategory = (id) => {
@@ -81,7 +82,7 @@ class UserAchievements extends Component {
   render () {
     const { groups, achievements, categories, userAchievements } = this.props;
     const { selectedCategory, selectedGroup } = this.state;
-    const category = categories[selectedCategory];
+    const category = categories[selectedCategory] || { achievements: [], icon: '' };
 
     const orderedGroups = map(groups, (value) => (value.id ? value : null))
       .filter(Boolean)
@@ -112,7 +113,7 @@ class UserAchievements extends Component {
         </div>
 
         <ol className={styles.achievements}>
-          {categories[selectedCategory].achievements.map((id) =>
+          {category.achievements.map((id) =>
             <li key={id} className={styles.achievement}>
               <Achievement
                 icon={category.icon}

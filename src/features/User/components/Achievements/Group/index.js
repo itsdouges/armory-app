@@ -37,16 +37,20 @@ const AchievementGroup = ({
     />
 
     <ol className={styles.categories}>
-      {categories.map((id) =>
-        <li key={id}>
-          <Category
-            subCategory
-            name={categoryData[id].name}
-            icon={<Icon src={categoryData[id].icon} />}
-            selected={selectedCategory === id}
-            onClick={() => onCategoryClick(id)}
-          />
-        </li>)}
+      {categories.map((id) => {
+        const category = categoryData[id] || {};
+        return (
+          <li key={id}>
+            <Category
+              subCategory
+              name={category.name}
+              icon={<Icon src={category.icon} />}
+              selected={selectedCategory === id}
+              onClick={() => onCategoryClick(id)}
+            />
+          </li>
+        );
+      })}
     </ol>
   </div>
 );
