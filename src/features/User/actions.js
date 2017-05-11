@@ -67,12 +67,7 @@ export const fetchUserCharacters = (alias: string, limit: number, offset: number
 
 export const fetchUserAchievements = (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/achievements`)
-    .then(({ data }) => {
-      const ids = data.map((achievement) => achievement.id);
-      dispatch(actions.fetchAchievements(ids));
-
-      return dispatch(fetchUserAchievementsResult(alias, data));
-    });
+    .then(({ data }) => dispatch(fetchUserAchievementsResult(alias, data)));
 
 export const fetchPvpStatsSuccess = (alias: string, data: {}) => ({
   type: FETCH_PVP_STATS_RESULT,

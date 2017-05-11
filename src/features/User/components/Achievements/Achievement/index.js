@@ -112,7 +112,7 @@ const makeBits = (achievement, userBits = []) => {
         }
 
         return (
-          <li key={`${bit.type}-${bit.id || bit.text}`}>
+          <li className={styles.bit} key={`${bit.type}-${bit.id || bit.text}`}>
             <SvgIcon sizePx={16} name={completed ? 'done' : 'clear'} /> {content}
           </li>
         );

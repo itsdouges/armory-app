@@ -18,6 +18,4 @@ axios.get('https://api.guildwars2.com/v2/achievements/categories?ids=all')
         })
     ));
   })
-  .then(() => {
-    console.log(JSON.stringify(categoryMap));
-  });
+  .then(() => console.log(JSON.stringify(categoryMap)));
