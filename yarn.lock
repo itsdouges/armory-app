@@ -2569,9 +2569,9 @@ fstream@^1.0.0, fstream@^1.0.10, fstream@^1.0.2:
     mkdirp ">=0.5 0"
     rimraf "2"
 
-function-batch@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/function-batch/-/function-batch-1.1.1.tgz#39e0f66388401fa96bb4cc639fb2cb1e2dd6c851"
+function-batch@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/function-batch/-/function-batch-1.1.2.tgz#8c5a213faff928f3936efcd702bbe3d24db562c0"
   dependencies:
     lodash "^4.0.8"
 

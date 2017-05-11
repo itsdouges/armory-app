@@ -30,7 +30,6 @@ type Props = {
       text: string,
       id: number,
     }>,
-    // $FlowFixMe
     tiers: Array<Tier>,
   },
   icon: string,
