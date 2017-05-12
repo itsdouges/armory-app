@@ -3,6 +3,7 @@
 @achievementMargin: 10px;
 @progressPadding: 5px;
 @fontSize: 0.9em;
+@hoverColour: @_lightgray;
 
 .root {
   padding: 0;
@@ -10,10 +11,6 @@
 
 .achievementContainer {
   display: flex;
-
-  &:hover {
-    background-color: @_lightgray;
-  }
 }
 
 .iconContainer {
@@ -70,9 +67,13 @@
   font-size: 14px;
   display: flex;
   align-items: center;
+  padding: @achievementMargin;
   .primaryFont();
-  margin: @achievementMargin;
   flex-grow: 1;
+
+  &:hover {
+    background-color: @hoverColour;
+  }
 }
 
 .tierStatus {
@@ -91,14 +92,15 @@
 
 .rewards {
   display: flex;
-  height: @xsmall * 1px;
   align-items: center;
-  background-color: @cardDarkBackground;
-  color: @_white;
-  width: 100%;
+  flex-wrap: wrap;
 
   > * {
     margin-right: @progressPadding;
+  }
+
+  &:hover {
+    background-color: @hoverColour;
   }
 }
 
@@ -109,6 +111,10 @@
   max-height: 30px;
   width: 100%;
   text-align: left;
+
+  &:hover {
+    background-color: @hoverColour;
+  }
 }
 
 .bit {

@@ -148,6 +148,7 @@ export default class Achievement extends Component {
     const tier = calculateTier(achievement, current);
     const name = achievement ? achievement.name : '';
     const completed = current === tier.count;
+    const hasRewards = !!tier.points || (!!achievement && !!achievement.rewards);
 
     return (
       <Card className={cx(styles.root, cx({ [styles.completed]: completed }))}>
@@ -159,8 +160,8 @@ export default class Achievement extends Component {
               <ProgressBar
                 backgroundColor="transparent"
                 barColor={extractColour(colour, 0.3)}
-                max={tier.count || 0}
-                current={current || 0}
+                max={tier.count}
+                current={current}
                 className={styles.progress}
                 labelClassName={styles.progressLabel}
                 label={completed ? T.translate('words.completed') : ''}
@@ -172,18 +173,20 @@ export default class Achievement extends Component {
           <div className={styles.content}>
             <div className={styles.name}>{name}</div>
 
-            <div className={styles.rewards} style={{ backgroundColor: extractColour(colour, 0.6) }}>
-              {!!tier.points && (
-                <TooltipTrigger data={T.translate('achievements.pointsThisTier')}>
-                  <div className={styles.pointsContainer}>
-                    <span className={styles.points}>{tier.points} </span>
-                    <Icon sizePx={32} name="arenanet-points.png" />
-                  </div>
-                </TooltipTrigger>
-              )}
+            {hasRewards && (
+              <div className={styles.rewards}>
+                {!!tier.points && (
+                  <TooltipTrigger data={T.translate('achievements.pointsThisTier')}>
+                    <div className={styles.pointsContainer}>
+                      <span className={styles.points}>{tier.points} </span>
+                      <Icon sizePx={32} name="arenanet-points.png" />
+                    </div>
+                  </TooltipTrigger>
+                )}
 
-              {makeRewards(achievement)}
-            </div>
+                {makeRewards(achievement)}
+              </div>
+            )}
           </div>
         </div>
 
