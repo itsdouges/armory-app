@@ -106,6 +106,7 @@ class UserAchievements extends Component {
             {orderedGroups.map((group) =>
               <li key={group.id}>
                 <Group
+                  userAchievements={userAchievements}
                   categoryData={categories}
                   onClick={() => this.selectGroup(group.id)}
                   onCategoryClick={this.selectCategory}

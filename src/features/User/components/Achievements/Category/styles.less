@@ -8,10 +8,10 @@
   border-bottom: 1px solid @tabsBorder;
   width: 100%;
   padding: 0.25em;
+  padding-right: @subCategoryPadding;
 
   &.subCategory {
     padding-left: @subCategoryPadding;
-    padding-right: @subCategoryPadding;
     background-color: darken(@tabHover, 50%);
 
     .name {
@@ -19,7 +19,8 @@
       display: none;
 
       .fromTablet({
-        display: unset;
+        display: flex;
+        justify-content: space-between;
       });
     }
 
@@ -32,6 +33,10 @@
       });
     }
   }
+}
+
+.rightComponent {
+  margin-left: auto;
 }
 
 .name {

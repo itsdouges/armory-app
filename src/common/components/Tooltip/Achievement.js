@@ -2,6 +2,7 @@
 
 import T from 'i18n-react';
 import Icon from 'common/components/Icon';
+import { markup } from 'lib/gw2/parse';
 
 import Background from './Background';
 import styles from './Skill/styles.less';
@@ -34,12 +35,12 @@ const AchievementTooltip = ({ data }: any) => {
     <Background>
       <div className={styles.title}>{data.name}</div>
 
-      {data.requirement}
+      {markup(data.requirement)}
 
       {data.description && (
         <span>
           <br /><br />
-          {data.description}
+          {markup(data.description)}
         </span>
       )}
 
