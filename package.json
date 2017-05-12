@@ -29,6 +29,7 @@
     "axios": "^0.15.3",
     "babel-polyfill": "^6.23.0",
     "classnames": "^2.2.5",
+    "fastclick": "^1.0.6",
     "function-batch": "^1.1.2",
     "gw2e-item-attributes": "^1.2.0",
     "gw2itemstats": "^0.0.2",
