@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Specializations to be responsive
+
+### Added
+- Patreon link to footer
+- Pateron notification
+
+### Removed
+- Paypal link from footer
 
 ## [4.16.10][] - 2017-05-08
 ### Fixed
