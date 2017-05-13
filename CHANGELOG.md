@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.16.11][] - 2017-05-14
 ### Changed
 - Specializations to be responsive
 
@@ -716,7 +718,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.10...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.11...HEAD
+[4.16.11]: https://github.com/madou/armory-react/compare/v4.16.10...v4.16.11
 [4.16.10]: https://github.com/madou/armory-react/compare/v4.16.9...v4.16.10
 [4.16.9]: https://github.com/madou/armory-react/compare/v4.16.8...v4.16.9
 [4.16.8]: https://github.com/madou/armory-react/compare/v4.16.7...v4.16.8
