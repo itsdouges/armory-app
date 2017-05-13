@@ -3,7 +3,6 @@
 import styles from './styles.less';
 import Container from 'common/components/Container';
 import SvgIcon from 'common/components/Icon/Svg';
-import Icon from 'common/components/Icon';
 
 const iconLinks = [{
   title: 'Check out the code on Github!',
@@ -14,9 +13,9 @@ const iconLinks = [{
   url: 'https://www.reddit.com/r/gw2armory',
   icon: <SvgIcon name="reddit" />,
 }, {
-  title: 'Donations keep the site running!',
-  url: 'https://paypal.me/gw2armory',
-  icon: <Icon name="paypal.png" size="" className={styles.paypal} />,
+  title: 'Become a pateron today!',
+  url: 'https://www.patreon.com/gw2armory',
+  icon: <SvgIcon name="patreon" />,
 }];
 
 const textLinks = [{
