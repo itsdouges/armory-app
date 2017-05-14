@@ -203,5 +203,8 @@
     "notFoundLong": "Not Found (or the GW2 API is dead)!",
     "resourceNotFound": "Sorry, that doesn't exist. Here's a random character instead!",
     "newBags": "Bags now available on character pages! User achievements coming soon."
+  },
+  "patreon": {
+    "cta": "Guild Wars 2 Armory needs your help, become a patreon today!"
   }
 }

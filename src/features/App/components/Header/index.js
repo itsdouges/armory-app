@@ -10,6 +10,7 @@ import cx from 'classnames';
 // $FlowFixMe
 import '!!style!css!react-sticky-header/styles.css'; //eslint-disable-line
 import StickyHeader from 'react-sticky-header';
+import SvgIcon from 'common/components/Icon/Svg';
 
 import authenticatedData from 'features/Auth/data';
 import colours from 'common/styles/colours';
@@ -165,6 +166,10 @@ class Header extends Component {
             />
 
             <SearchBar className={styles.searchBar} />
+
+            <a className={styles.patreonCta} href="https://www.patreon.com/gw2armory">
+              <SvgIcon name="patreon" size="micro" className={styles.patreonIcon} /> {T.translate('patreon.cta')}
+            </a>
           </Container>
         </div>
       </StickyHeader>
