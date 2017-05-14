@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Patreon message to front page
+
+### Changed
+- Put svgs through `svgo` to reduce file size
 
 ## [4.16.11][] - 2017-05-14
 ### Changed
@@ -13,7 +18,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - Patreon link to footer
-- Pateron notification
 
 ### Removed
 - Paypal link from footer
