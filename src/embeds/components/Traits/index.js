@@ -40,7 +40,7 @@ export default class TraitsEmbed extends Component {
       );
     }
 
-    return <Trait active tooltipTextOverride={blankText} size={size} />;
+    return <Trait active tooltipTextOverride={blankText} size={size} key={blankText} />;
   }
 
   componentWillMount () {
