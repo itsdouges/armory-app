@@ -63,7 +63,10 @@ class UserAchievements extends Component {
 
     this.props.fetchAchievementGroups('4E6A6CE7-B131-40BB-81A3-235CDBACDAA9');
     this.props.fetchAchievementCategories(1)
-      .then((categoryMap) => this.props.fetchAchievements(categoryMap[selectedCategory].achievements));
+      .then((categoryMap) => {
+        const category = categoryMap[selectedCategory];
+        category && this.props.fetchAchievements(category.achievements);
+      });
   }
 
   selectCategory = (id) => {
