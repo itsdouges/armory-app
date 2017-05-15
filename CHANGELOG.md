@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.21.0][] - 2017-05-16
 ### Added
 - User achievements
 
@@ -744,7 +746,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.20.0...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.21.0...HEAD
+[4.21.0]: https://github.com/madou/armory-react/compare/v4.20.0...v4.21.0
 [4.20.0]: https://github.com/madou/armory-react/compare/v4.19.0...v4.20.0
 [4.19.0]: https://github.com/madou/armory-react/compare/v4.18.0...v4.19.0
 [4.18.0]: https://github.com/madou/armory-react/compare/v4.17.0...v4.18.0
