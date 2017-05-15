@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.18.0][] - 2017-05-15
 ### Removed
 - Redundant props from spec component
 
@@ -729,7 +731,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.17.0...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.18.0...HEAD
+[4.18.0]: https://github.com/madou/armory-react/compare/v4.17.0...v4.18.0
 [4.17.0]: https://github.com/madou/armory-react/compare/v4.16.11...v4.17.0
 [4.16.11]: https://github.com/madou/armory-react/compare/v4.16.10...v4.16.11
 [4.16.10]: https://github.com/madou/armory-react/compare/v4.16.9...v4.16.10
