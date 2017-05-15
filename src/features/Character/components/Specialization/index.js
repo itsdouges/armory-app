@@ -34,17 +34,16 @@ type Props = {
   },
   traits: Traits,
   specializations: Specializations,
-  size?: 'compact' | 'small' | 'large',
 };
 
-const Specialization = ({ data, traits, specializations, size = 'large' }: Props) => {
+const Specialization = ({ data, traits, specializations }: Props) => {
   const specialization = specializations[data.id] || {};
   const minorTraits = specialization.minor_traits || emptyTraits;
   const majorTraits = specialization.major_traits || emptyTraits;
   const error = specialization.error && specialization.error;
 
   return (
-    <div className={cx(styles.rootOverflow, styles[size])}>
+    <div className={cx(styles.rootOverflow)}>
       <div className={styles.root}>
         <div
           className={styles.background}
