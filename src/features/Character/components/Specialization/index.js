@@ -43,18 +43,18 @@ const Specialization = ({ data, traits, specializations }: Props) => {
   const error = specialization.error && specialization.error;
 
   return (
-    <div className={cx(styles.rootOverflow)}>
-      <div className={styles.root}>
-        <div
-          className={styles.background}
-          style={getStyle(data, specialization)}
-        />
+    <div className={styles.root}>
+      <div
+        className={styles.background}
+        style={getStyle(data, specialization)}
+      />
 
-        <SpecializationIcon
-          data={specialization}
-          className={styles.bigIcon}
-        />
+      <SpecializationIcon
+        data={specialization}
+        className={styles.bigIcon}
+      />
 
+      <div className={styles.traits}>
         <Trait
           active
           className={styles.minorTraitColumn}

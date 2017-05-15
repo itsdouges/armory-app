@@ -2,23 +2,25 @@
 
 @traitColumnZ: @_zindex10;
 
-.rootOverflow {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
 .root {
   display: flex;
   align-items: center;
   position: relative;
-  overflow: auto;
   background-color: @_black;
   height: 140px;
   max-width: 650px;
   .low;
+}
 
-  .fromMobile({
-    padding-left: 4.4em;
+.traits {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-grow: 1;
+  max-width: 425px;
+
+  .fromLargeMobile({
+    padding-left: 1%;
   });
 }
 
@@ -30,6 +32,15 @@
   right: 0;
   bottom: 0;
   opacity: 0.4;
+  background-position-x: -118px;
+
+  .fromMobile({
+    background-position-x: -45px;
+  });
+
+  .fromLargeMobile({
+    background-position-x: 0;
+  });
 }
 
 .majorTraitColumn {
@@ -48,27 +59,15 @@
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
 }
 
-.rootOverflow {
-  width: 100%;
-}
-
-.minorTraitColumn {
-  margin: 3%;
-
-  .fromLargeMobile({
-    margin: 5%;
-  });
-}
-
 .bigIcon {
-  margin-left: -60px;
+  margin-left: -50px;
   flex-shrink: 0;
 
   .fromMobile({
-    margin-left: -25px;
+    margin-left: 23px;
   });
 
-  .fromTablet({
-    margin-left: 0;
+  .fromLargeMobile({
+    margin-left: 68px;
   });
 }
