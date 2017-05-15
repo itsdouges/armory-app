@@ -21,6 +21,7 @@ type Tier = {
 };
 
 type Props = {
+  done?: boolean,
   bits?: Array<number>,
   achievement?: {
     name: string,
@@ -148,12 +149,10 @@ export default class Achievement extends Component {
   };
 
   render () {
-    const { achievement, icon, current, bits, colour } = this.props;
+    const { achievement, icon, current, bits, colour, done: completed } = this.props;
     const { bitsExpanded } = this.state;
-
     const tier = calculateTier(achievement, current);
     const name = achievement ? achievement.name : '';
-    const completed = current === tier.count;
     const hasRewards = !!tier.points || (!!achievement && !!achievement.rewards);
 
     return (

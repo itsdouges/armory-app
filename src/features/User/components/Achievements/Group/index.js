@@ -51,6 +51,9 @@ const AchievementGroup = ({
         {categories.map((id) => {
           const category = categoryData[id] || {};
           const achievementCount = categories && category.achievements && category.achievements.length;
+          if (achievementCount === 0) {
+            return null;
+          }
 
           return (
             <li key={id}>
