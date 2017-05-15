@@ -41,7 +41,7 @@ export default class SkillsEmbed extends Component {
       );
     }
 
-    return <Skill tooltipTextOverride={blankText} size={size} />;
+    return <Skill tooltipTextOverride={blankText} size={size} key={blankText} />;
   }
 
   componentWillMount () {

@@ -41,7 +41,7 @@ export default class AmuletsEmbed extends Component {
       );
     }
 
-    return <Item tooltipTextOverride={blankText} size={size} />;
+    return <Item tooltipTextOverride={blankText} size={size} key={blankText} />;
   }
 
   componentWillMount () {
