@@ -111,6 +111,7 @@
     "promise-loader": "^1.0.0",
     "proxyquire": "^1.7.11",
     "react-addons-test-utils": "^15.4.2",
+    "redux-freeze": "^0.1.5",
     "redux-logger": "^2.6.1",
     "rimraf": "^2.5.4",
     "s3": "^4.4.0",

@@ -11,8 +11,19 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const middleware = [
+  thunk,
+];
+
+if (__DEVELOPMENT__) {
+  // TODO: https://github.com/madou/armory-react/issues/243
+  // middleware.push(require('redux-freeze'));
+}
+
 const store = createStore(rootReducer, composeEnhancers(
-  applyMiddleware(thunk)
+  applyMiddleware(
+    ...middleware,
+  ),
 ));
 
 type BaseProps = {
