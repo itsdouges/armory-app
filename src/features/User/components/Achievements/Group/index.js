@@ -50,16 +50,14 @@ const AchievementGroup = ({
       <ol className={styles.categories}>
         {categories.map((id) => {
           const category = categoryData[id] || {};
-          if (!category.achievements || !category.achievements.length) {
-            return null;
-          }
+          const achievementCount = categories && category.achievements && category.achievements.length;
 
           return (
             <li key={id}>
               <Category
                 subCategory
                 name={category.name}
-                rightComponent={categories && category.achievements.length}
+                rightComponent={achievementCount}
                 icon={<Icon src={category.icon} />}
                 selected={selectedCategory === id}
                 onClick={() => onCategoryClick(id)}

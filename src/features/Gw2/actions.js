@@ -33,9 +33,12 @@ export function generateActions (resourceName, getResource, afterGet) {
   const fetchResultMethodName = `fetch${parsedResourceName}Result`;
   const fetchErrorMethodName = `fetch${parsedResourceName}Error`;
 
-  actions[fetchResultMethodName] = (data) => ({
+  actions[fetchResultMethodName] = (data, noCache = []) => ({
     type: actionNames.result,
-    payload: data,
+    payload: {
+      data,
+      noCache,
+    },
   });
 
   actions[fetchingMethodName] = (fetching) => ({
@@ -51,7 +54,7 @@ export function generateActions (resourceName, getResource, afterGet) {
     },
   });
 
-  actions[fetchProxyMethodName] = batchFunction((ids, dispatch, getStore) => {
+  actions[fetchProxyMethodName] = batchFunction((ids, noCache, dispatch, getStore) => {
     if (!ids) {
       return undefined;
     }
@@ -80,7 +83,7 @@ export function generateActions (resourceName, getResource, afterGet) {
     return Promise.all(requests)
       .then(flattenResponses)
       .then((response) => {
-        dispatch(actions[fetchResultMethodName](response));
+        dispatch(actions[fetchResultMethodName](response, noCache));
         dispatch(actions[fetchingMethodName](false));
 
         const missingIds = idsToFetch.filter((id) => !response[id]);
@@ -103,13 +106,13 @@ export function generateActions (resourceName, getResource, afterGet) {
       });
   }, 50);
 
-  actions[fetchMethodName] = (ids) => (dispatch, getStore) => {
+  actions[fetchMethodName] = (ids, noCache = []) => (dispatch, getStore) => {
     // Redux actions need to appear synchronous, so we have to
     // immediately returning a function. Internally however we're
     // proxying the implementation so all calls are collected
     // and then only one is fired instead of many.
     // This could use tweaking, but it works for now.
-    return actions[fetchProxyMethodName](ids, dispatch, getStore);
+    return actions[fetchProxyMethodName](ids, noCache, dispatch, getStore);
   };
 
   return actionNames;

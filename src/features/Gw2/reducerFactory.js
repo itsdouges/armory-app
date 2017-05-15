@@ -23,11 +23,19 @@ export default function gw2ReducerFactory (resourceName, getResource, {
         case result: {
           const newState = {
             ...state,
-            ...action.payload,
+            ...action.payload.data,
           };
 
           if (config.cache.saveToLs) {
-            ls.set(LS_KEY, JSON.stringify(newState));
+            const saveState = {
+              ...newState,
+            };
+
+            action.payload.noCache.forEach((id) => {
+              delete saveState[id];
+            });
+
+            ls.set(LS_KEY, JSON.stringify(saveState));
           }
 
           return newState;

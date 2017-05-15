@@ -39,7 +39,10 @@ describe('gw2 action factory', () => {
 
       expect(action).to.eql({
         type: 'FETCH_AMULETS_RESULT',
-        payload,
+        payload: {
+          data: payload,
+          noCache: [],
+        },
       });
     });
 
