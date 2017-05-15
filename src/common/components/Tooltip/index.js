@@ -13,6 +13,7 @@ import ItemTooltip from './Item';
 import SkillTooltip from './Skill';
 import SimpleTooltip from './Simple';
 import Background from './Background';
+import AchievementTooltip from './Achievement';
 import styles from './styles.less';
 
 const selector = createSelector(
@@ -70,6 +71,9 @@ export default class Tooltip extends Component {
         case 'skill':
           content = <SkillTooltip data={tooltip.data} />;
           break;
+
+        case 'achievement':
+          content = <AchievementTooltip data={tooltip.data} />;
       }
     }
 

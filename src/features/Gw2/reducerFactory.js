@@ -1,3 +1,4 @@
+import config from 'config';
 import * as ls from 'lib/localStorage';
 import { generateActions } from './actions';
 
@@ -25,7 +26,9 @@ export default function gw2ReducerFactory (resourceName, getResource, {
             ...action.payload,
           };
 
-          ls.set(LS_KEY, JSON.stringify(newState));
+          if (config.cache.saveToLs) {
+            ls.set(LS_KEY, JSON.stringify(newState));
+          }
 
           return newState;
         }

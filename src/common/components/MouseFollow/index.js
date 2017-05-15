@@ -44,8 +44,8 @@ function calculatePin ({ tooltip, mouse }: Object) {
 export default class MouseFollow extends Component {
   _tooltip: Element;
   removeEvent: Function;
+  finished: boolean;
   props: { children?: any };
-
   state = {
     style: {
       position: 'fixed',
@@ -77,6 +77,8 @@ export default class MouseFollow extends Component {
   }
 
   componentWillUnmount () {
+    this.finished = true;
+
     if (isSmallScreen()) {
       return;
     }
@@ -89,6 +91,10 @@ export default class MouseFollow extends Component {
     const tooltip = this._tooltip;
 
     window.requestAnimationFrame(() => {
+      if (this.finished) {
+        return;
+      }
+
       const pin = calculatePin({ tooltip, mouse: event });
       const style = calculateStyle({
         tooltip,

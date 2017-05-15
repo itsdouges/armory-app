@@ -1,0 +1,19 @@
+@import '~common/styles/base.less';
+
+.categories {
+  display: none;
+}
+
+.icon {
+  transform: rotate(-90deg);
+}
+
+.selected {
+  .icon {
+    transform: unset;
+  }
+
+  .categories {
+    display: inherit;
+  }
+}

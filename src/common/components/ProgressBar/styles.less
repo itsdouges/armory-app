@@ -7,6 +7,9 @@
 @border: @_white;
 @textShadow: @_black;
 
+@barThickness: 5px;
+@barBorderThickness: 4px;
+
 .root {
   text-align: left;
   position: relative;
@@ -34,11 +37,24 @@
   content: "";
   box-sizing: border-box;
   display: block;
-  width: 5px;
-  border-right: 4px solid @border;
-  height: 100%;
-  background: linear-gradient(to right, transparent, @barTip);
-  float: right;
+}
+
+.horizontal {
+  .bar:after {
+    width: @barThickness;
+    border-right: @barBorderThickness solid @border;
+    height: 100%;
+    background: linear-gradient(to right, transparent, @barTip);
+    float: right;
+  }
+}
+
+.vertical {
+  .bar:after {
+    border-top: @barBorderThickness solid @border;
+    height: @barThickness;
+    background: linear-gradient(to top, transparent, @barTip);
+  }
 }
 
 .label {

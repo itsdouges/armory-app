@@ -4,29 +4,49 @@ import colours from 'common/styles/colours.less';
 import styles from './styles.less';
 import Icon from 'common/components/Icon';
 
-type GoldProps = {
-  copper: number,
-  silver: number,
-  gold: number,
+type Props = {
+  coins: number,
 };
 
-const Gold = ({ copper, silver, gold }: GoldProps) => (
-  <div className={styles.root}>
-    {!!gold && (
-    <span className={`${styles.money} ${colours.gold}`}>
-      {gold} <Icon name="gold.png" size="micro" />
-    </span>)}
+function calc (coins) {
+  let remainder = coins;
 
-    {!!silver && (
-    <span className={`${styles.money} ${colours.silver}`}>
-      {silver} <Icon name="silver.png" size="micro" />
-    </span>)}
+  const gold = Math.floor(remainder / 10000);
+  remainder %= 10000;
 
-    {!!copper && (
-    <span className={`${styles.money} ${colours.copper}`}>
-      {copper} <Icon name="copper.png" size="micro" />
-    </span>)}
-  </div>
-);
+  const silver = Math.floor(remainder / 100);
+  remainder %= 100;
+
+  const copper = remainder;
+
+  return {
+    gold,
+    silver,
+    copper,
+  };
+}
+
+const Gold = ({ coins, ...props }: Props) => {
+  const { gold, silver, copper } = calc(coins);
+
+  return (
+    <div className={styles.root} {...props}>
+      {!!gold && (
+      <span className={`${styles.money} ${colours.gold}`}>
+        {gold} <Icon name="gold.png" size="micro" />
+      </span>)}
+
+      {!!silver && (
+      <span className={`${styles.money} ${colours.silver}`}>
+        {silver} <Icon name="silver.png" size="micro" />
+      </span>)}
+
+      {!!copper && (
+      <span className={`${styles.money} ${colours.copper}`}>
+        {copper} <Icon name="copper.png" size="micro" />
+      </span>)}
+    </div>
+  );
+};
 
 export default Gold;

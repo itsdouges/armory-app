@@ -2,16 +2,11 @@
 
 import axios from 'axios';
 import config from 'config';
+import uniq from 'lodash/uniq';
+import { reduceById } from 'lib/reduce';
 import { mapItemsToObject } from './parse';
 
 const get = axios.get;
-
-function reduceById (payload) {
-  return payload.reduce((acc, item) => ({
-    ...acc,
-    [item.id]: item,
-  }), {});
-}
 
 export const readProfessions = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/professions?ids=${ids.join(',')}`, {
@@ -42,6 +37,23 @@ export const readAchievements = (ids: Array<number>) =>
     ignoreAuth: true,
   })
   .then(({ data }) => reduceById(data));
+
+export const readAchievementGroups = () =>
+  get(`${config.gw2.endpoint}v2/achievements/groups?ids=all`, {
+    ignoreAuth: true,
+  })
+  .then(({ data }) => reduceById(data));
+
+export const readAchievementCategories = () =>
+  get(`${config.gw2.endpoint}v2/achievements/categories?ids=all`, {
+    ignoreAuth: true,
+  })
+  .then(({ data }) => reduceById(data.map((category) => ({
+    ...category,
+    // Remove duplicate achievement ids, current bug.
+    // See: https://github.com/arenanet/api-cdi/issues/517
+    achievements: uniq(category.achievements),
+  }))));
 
 export const readPets = (ids: Array<number>) =>
   get(`${config.gw2.endpoint}v2/pets?ids=${ids.join(',')}`, {

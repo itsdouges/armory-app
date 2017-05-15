@@ -10,6 +10,7 @@ ls.reset();
 import Base from './Base';
 import Router from './Router';
 import bootstrapTooltip from 'lib/tooltip';
+import attachFastClick from 'fastclick';
 
 ReactDOM.render(
   <Base>
@@ -18,4 +19,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+attachFastClick.attach(document.body);
 bootstrapTooltip();

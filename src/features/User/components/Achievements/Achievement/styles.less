@@ -1,0 +1,155 @@
+@import '~common/styles/base.less';
+
+@achievementMargin: 10px;
+@progressPadding: 5px;
+@fontSize: 0.9em;
+@hoverColour: @_lightgray;
+
+.root {
+  padding: 0;
+}
+
+.achievementContainer {
+  display: flex;
+}
+
+.iconContainer {
+  position: relative;
+  padding: @achievementMargin * 1.25;
+  background-color: @_lightgray;
+}
+
+.points {
+  .primaryFont();
+  margin-left: @achievementMargin / 2;
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  box-shadow: none;
+}
+
+.icon {
+  opacity: 0.5;
+}
+
+.completed {
+  .icon {
+    z-index: @zIndex-IconComplete;
+    opacity: 1;
+  }
+}
+
+.progressLabel {
+  align-items: flex-end;
+  padding-bottom: @progressPadding;
+  font-size: @fontSize;
+  text-shadow: none;
+  color: @_black;
+}
+
+.pointsContainer {
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.name {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  padding: @achievementMargin;
+  .primaryFont();
+  flex-grow: 1;
+
+  &:hover {
+    background-color: @hoverColour;
+  }
+}
+
+.tierStatus {
+  position: absolute;
+  top: @progressPadding * 1.5;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: @zIndex-tierLevel;
+  font-size: @fontSize;
+}
+
+.incomplete {
+  opacity: 0.4;
+}
+
+.rewards {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  > * {
+    margin-right: @progressPadding;
+  }
+
+  &:hover {
+    background-color: @hoverColour;
+  }
+}
+
+.bits {
+  position: relative;
+  cursor: pointer;
+  max-height: 30px;
+  width: 100%;
+  text-align: left;
+
+  &:hover {
+    background-color: @hoverColour;
+  }
+}
+
+.bit {
+  display: flex;
+  margin: 10px 7px;
+}
+
+.progressIcon {
+  margin-right: 4px;
+}
+
+.expanded {
+  max-height: unset;
+
+  .expandIcon {
+    transform: rotate(180deg);
+  }
+
+  .bitsWash {
+    opacity: 0;
+  }
+}
+
+.expandIcon {
+  position: absolute;
+  top: 1px;
+  right: 3px;
+}
+
+.bitsWash {
+  z-index: @zIndex-achievementBitsWash;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+}

@@ -170,6 +170,14 @@ export type Skills = {
 export type Professions = {
 };
 
+export type AchievementGroups = {
+};
+
+export type AchievementCategories = {
+};
+
+export type Achievements = {};
+
 type Gw2Data = {
   error?: string,
 };
@@ -237,3 +245,5 @@ export type Notification = {
 export type Notifications = {
   [key: string]: Notification,
 };
+
+export type UserAchievementsMap = {};

@@ -50,6 +50,7 @@
     "recentMatches": "Matches Récents",
     "claimCta": "Claim",
     "noApiKey": "Api key not set.",
+    "achievements": "Achievements",
     "makePrimary": "Make primary api key.",
     "primaryToken": "This is your primary api key, your user information will be sourced from this.",
     "invalidToken": "Could not retrieve data from GW2, the api key was probably deleted from the ArenaNet account page.",
@@ -197,6 +198,9 @@
     "notFoundLong": "Not Found (or the GW2 API is dead)!",
     "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!",
     "newBags": "Bags now available on character pages! User achievements coming soon."
+  },
+  "achievements": {
+    "pointsThisTier": "Points this tier"
   },
   "patreon": {
     "cta": "L'Armurerie Guild Wars 2 a besoin de votre aide, devenez aujourd'hui une patrice!"

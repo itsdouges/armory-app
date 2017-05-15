@@ -45,6 +45,8 @@ module.exports = {
   },
 
   cache: {
+    saveToLs: true,
+
     short: [
       'index.html',
       'robots.txt',

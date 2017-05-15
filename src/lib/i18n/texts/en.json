@@ -44,6 +44,7 @@
     "refreshNote": "Armory statistics are refreshed every thirty minutes."
   },
   "search": {
+    "name": "Search",
     "textbox": "Search users, characters, and guilds",
     "results": "Search results for",
     "minlength": "Search term should be 3 or more characters :-)",
@@ -55,6 +56,7 @@
     "recentMatches": "Recent Matches",
     "claimCta": "Claim",
     "noApiKey": "Api key not set.",
+    "achievements": "Achievements",
     "makePrimary": "Make primary api key.",
     "primaryToken": "This is your primary api key, your user information will be sourced from this.",
     "invalidToken": "Could not retrieve data from GW2, the api key was probably deleted from the ArenaNet account page.",
@@ -192,7 +194,13 @@
     "optional": "Optional",
     "dismiss": "Dismiss",
     "embed": "Embed",
-    "loadMore": "Load More"
+    "loadMore": "Load More",
+    "completed": "Completed",
+    "masteryPoint": "Mastery Point",
+    "coins": "Coins",
+    "title": "Title",
+    "of": "of",
+    "objectives": "Objectives"
   },
   "leaderboards": {
     "name": "Leaderboards"
@@ -203,6 +211,9 @@
     "notFoundLong": "Not Found (or the GW2 API is dead)!",
     "resourceNotFound": "Sorry, that doesn't exist. Here's a random character instead!",
     "newBags": "Bags now available on character pages! User achievements coming soon."
+  },
+  "achievements": {
+    "pointsThisTier": "Points this tier"
   },
   "patreon": {
     "cta": "Guild Wars 2 Armory needs your help, become a patreon today!"

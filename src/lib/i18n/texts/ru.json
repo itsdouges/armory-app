@@ -48,6 +48,7 @@
   "users": {
     "name": "Пользователи",
     "recentMatches": "Последние матчи",
+    "achievements": "Achievements",
     "claimCta": "Заявить права",
     "noApiKey": "API ключ не установлен.",
     "makePrimary": "Сделайте основной API ключ.",
@@ -198,7 +199,10 @@
     "resourceNotFound": "Извините, здесь ничего нет! Вот случайный персонаж!",
     "newBags": "Просмотр сумок инвентаря теперь доступен на странице персонажа! Скоро будут доступны Достижения!"
   },
+  "achievements": {
+    "pointsThisTier": "Points this tier"
+  },
   "patreon": {
-    "cta": "Guild Wars 2 Armory necesita tu ayuda, ¡hazte una patrona hoy!"
+    "cta": "Guild Wars 2 Armory нуждается в вашей помощи, станьте настоящим патроном!"
   }
 }

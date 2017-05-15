@@ -6,13 +6,13 @@ import styles from './styles.less';
 import { prefix } from 'lib/css';
 import colours from 'common/styles/colours';
 
-function calcBarStyles (current, max, barColor) {
+function calcBarStyles (current, max, barColor, vertical) {
   const percent = max ? Math.ceil((current / max || 0) * 100) : 0;
 
   return {
     width: '100%',
     backgroundColor: barColor,
-    ...prefix('transform', `translateX(${percent - 100}%)`),
+    ...prefix('transform', vertical ? `translateY(${101 - percent}%)` : `translateX(${percent - 100}%)`),
   };
 }
 
@@ -24,6 +24,9 @@ type ProgressBarProps = {
   icon?: any,
   small?: boolean,
   label?: string,
+  vertical?: boolean,
+  className?: string,
+  labelClassName?: string,
 };
 
 const ProgressBar = ({
@@ -34,13 +37,26 @@ const ProgressBar = ({
   icon,
   small,
   label,
+  className,
+  vertical,
+  labelClassName,
 }: ProgressBarProps) => (
-  <div className={cx(styles.root, small && styles.small)} style={{ backgroundColor }}>
+  <div
+    className={cx(styles.root, className, {
+      [styles.small]: small,
+      [styles.vertical]: vertical,
+      [styles.horizontal]: !vertical,
+    })}
+    style={{ backgroundColor }}
+  >
     <span className={styles.icon}>{icon}</span>
-    <span className={styles.bar} style={calcBarStyles(current, max, barColor)} />
-    {small || <span className={styles.label}>
-      {label || `${current}/${max}`}
-    </span>}
+    <span className={styles.bar} style={calcBarStyles(current, max, barColor, vertical)} />
+
+    {small || (
+      <span className={cx(styles.label, labelClassName)}>
+        {label || `${current}/${max}`}
+      </span>
+    )}
   </div>
 );
 

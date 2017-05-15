@@ -26,6 +26,7 @@ import GuildContentCard from 'common/components/ContentCard/Guild';
 import styles from './styles.less';
 import PvpGame from './components/PvpGame';
 import Overview from './components/Overview';
+import Achievements from './components/Achievements';
 import Characters from './components/Characters';
 
 const STUB_GUILDS = makeStubItems(4);
@@ -178,6 +179,11 @@ class User extends Component {
           content: (
             <Overview user={user} pvpSeasons={pvpSeasons} worlds={worlds} />
           ),
+        }, {
+          to: `/${alias}/achievements`,
+          flair: 'new',
+          name: T.translate('users.achievements'),
+          content: <Achievements />,
         }, {
           to: `/${alias}/characters`,
           name: 'Characters',

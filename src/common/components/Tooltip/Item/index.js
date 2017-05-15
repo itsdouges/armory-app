@@ -148,7 +148,7 @@ const ItemsTooltip = ({ data: {
         <div>{startCase(item.boundStatus)}</div>
 
         {item.rarity !== 'Legendary' &&
-          <Gold copper={item.copper} silver={item.silver} gold={item.gold} />}
+          <Gold coins={item.vendor_value} />}
       </div>
     </Background>
   );

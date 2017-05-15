@@ -47,6 +47,7 @@
   },
   "users": {
     "name": "Usuarios",
+    "achievements": "Achievements",
     "recentMatches": "Partidas recientes",
     "claimCta": "Reclamar",
     "noApiKey": "Clave de la API no configurada",
@@ -197,6 +198,9 @@
     "notFoundLong": "No se ha  encontrado (or la API de API está caída)!",
     "resourceNotFound": "¡Lo siento, aquí no hay nada. ¡Aún así aquí tienes un personaje aleatorio!",
     "newBags": "¡Sacos ahora disponibles en las páginas de usuario! Próximamente logros de usuario."
+  },
+  "achievements": {
+    "pointsThisTier": "Points this tier"
   },
   "patreon": {
     "cta": "Guild Wars 2 Armory necesita tu ayuda, ¡hazte una patrona hoy!"

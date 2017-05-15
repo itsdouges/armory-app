@@ -1,0 +1,60 @@
+@import '~common/styles/base.less';
+
+@subCategoryPadding: (@xsmall * 1px) / 1.5;
+
+.root {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid @tabsBorder;
+  width: 100%;
+  padding: 0.25em;
+  padding-right: @subCategoryPadding;
+
+  &.subCategory {
+    padding-left: @subCategoryPadding;
+    background-color: darken(@tabHover, 50%);
+
+    .name {
+      margin-left: @subCategoryPadding / 2;
+      display: none;
+
+      .fromTablet({
+        display: flex;
+      });
+    }
+
+    .icon {
+      opacity: 0.5;
+      margin: 0 auto;
+
+      .fromTablet({
+        margin: unset;
+      });
+    }
+  }
+}
+
+.rightComponent {
+  margin-left: auto;
+}
+
+.name {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected,
+.root:hover {
+  background-color: @tabHover;
+
+  &.subCategory {
+    background-color: @tabHover;
+
+    .icon {
+      opacity: 1;
+    }
+  }
+}

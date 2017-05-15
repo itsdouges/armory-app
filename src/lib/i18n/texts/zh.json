@@ -48,6 +48,7 @@
   "users": {
     "name": "用户",
     "recentMatches": "近期比赛",
+    "achievements": "Achievements",
     "claimCta": "索取",
     "noApiKey": "哦，你没有API密钥。。请前往生成一个。。!",
     "makePrimary": "生成主要API密钥。",
@@ -196,6 +197,9 @@
     "notFoundLong": "找不到(或者Guild Wars 2 的API过期了)!",
     "resourceNotFound": "抱歉，这里没有东西。来一个随机的角色吧!",
     "newBags": "现在可以在各角色页面上看到容器!账户成就就快来了!"
+  },
+  "achievements": {
+    "pointsThisTier": "Points this tier"
   },
   "patreon": {
     "cta": "激战2军械库需要你的帮助，今天成为一个patreon"
