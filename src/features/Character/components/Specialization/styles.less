@@ -13,7 +13,13 @@
   position: relative;
   overflow: auto;
   background-color: @_black;
+  height: 140px;
+  max-width: 650px;
   .low;
+
+  .fromMobile({
+    padding-left: 4.4em;
+  });
 }
 
 .background {
@@ -42,38 +48,27 @@
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
 }
 
-.small {
-  .rootOverflow {
-    width: inherit;
-  }
-
-  .root {
-    height: 140px;
-    width: 363px;
-    padding-left: 12px;
-  }
-
-  .background {
-    background-position: 10% 100%;
-  }
+.rootOverflow {
+  width: 100%;
 }
 
-.large {
-  .rootOverflow {
-    width: 100%;
-  }
+.minorTraitColumn {
+  margin: 3%;
 
-  .root {
-    height: 140px;
-    width: 650px;
-    padding-left: 4.4em;
-  }
+  .fromLargeMobile({
+    margin: 5%;
+  });
+}
 
-  .minorTraitColumn {
-    margin: 30px;
-  }
+.bigIcon {
+  margin-left: -60px;
+  flex-shrink: 0;
 
-  .bigIcon {
+  .fromMobile({
+    margin-left: -25px;
+  });
+
+  .fromTablet({
     margin-left: 0;
-  }
+  });
 }

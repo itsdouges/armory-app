@@ -214,5 +214,8 @@
   },
   "achievements": {
     "pointsThisTier": "Points this tier"
+  },
+  "patreon": {
+    "cta": "Guild Wars 2 Armory needs your help, become a patreon today!"
   }
 }

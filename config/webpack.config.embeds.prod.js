@@ -24,7 +24,7 @@ module.exports = {
   output: {
     path: paths.appBuild,
     pathinfo: true,
-    publicPath,
+    publicPath: process.env.LOCAL ? '/' : publicPath,
     filename: '[name].js',
     chunkFilename: '[name]-chunk-[chunkhash:8].js',
   },

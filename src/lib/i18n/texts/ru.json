@@ -198,5 +198,8 @@
     "notFoundLong": "Не найдено (или GW2 API не работает)!",
     "resourceNotFound": "Извините, здесь ничего нет! Вот случайный персонаж!",
     "newBags": "Просмотр сумок инвентаря теперь доступен на странице персонажа! Скоро будут доступны Достижения!"
+  },
+  "patreon": {
+    "cta": "Guild Wars 2 Armory necesita tu ayuda, ¡hazte una patrona hoy!"
   }
 }

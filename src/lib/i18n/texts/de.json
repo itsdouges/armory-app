@@ -198,5 +198,8 @@
     "notFoundLong": "Nicht gefunden (oder die GW2-API funktioniert derzeit nicht einwandfrei)!",
     "resourceNotFound": "Entschuldigung, wir konnten nicht finden, was du suchst. Stattdessen ist hier ein zufälliger Character!",
     "newBags": "Auf den Charakterseiten sind jetzt auch Taschen verfügbar! Erfolge werden in naher Zukunft auch implementiert."
+  },
+  "patreon": {
+    "cta": "Guild Wars 2 Armory нуждается в вашей помощи, станьте настоящим патроном!"
   }
 }

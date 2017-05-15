@@ -9,6 +9,30 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - User achievements
 
+## [4.18.0][] - 2017-05-15
+### Removed
+- Redundant props from spec component
+
+### Added
+- Support for running local prod build embeds
+
+## [4.17.0][] - 2017-05-15
+### Added
+- Patreon message to front page
+
+### Changed
+- Put svgs through `svgo` to reduce file size
+
+## [4.16.11][] - 2017-05-14
+### Changed
+- Specializations to be responsive
+
+### Added
+- Patreon link to footer
+
+### Removed
+- Paypal link from footer
+
 ## [4.16.10][] - 2017-05-08
 ### Fixed
 - Claim cta not linking to settings page if user was logged in
@@ -709,7 +733,10 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.16.10...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.18.0...HEAD
+[4.18.0]: https://github.com/madou/armory-react/compare/v4.17.0...v4.18.0
+[4.17.0]: https://github.com/madou/armory-react/compare/v4.16.11...v4.17.0
+[4.16.11]: https://github.com/madou/armory-react/compare/v4.16.10...v4.16.11
 [4.16.10]: https://github.com/madou/armory-react/compare/v4.16.9...v4.16.10
 [4.16.9]: https://github.com/madou/armory-react/compare/v4.16.8...v4.16.9
 [4.16.8]: https://github.com/madou/armory-react/compare/v4.16.7...v4.16.8
