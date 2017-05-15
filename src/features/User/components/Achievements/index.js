@@ -54,19 +54,19 @@ export default connect(selector, {
 class UserAchievements extends Component {
   props: Props;
   state: State = {
-    selectedCategory: 97, // 69, // Daily category
-    selectedGroup: '18DB115A-8637-4290-A636-821362A3C4A8', // '56A82BB9-6B07-4AB0-89EE-E4A6D68F5C47', // Daily group
+    selectedCategory: 97, // Daily category
+    selectedGroup: '18DB115A-8637-4290-A636-821362A3C4A8', // Daily group
   };
 
   componentWillMount () {
     const { selectedCategory } = this.state;
 
     this.props.fetchAchievementGroups('4E6A6CE7-B131-40BB-81A3-235CDBACDAA9');
-    this.props.fetchAchievementCategories(1)
-      .then((categoryMap) => {
-        const category = categoryMap && categoryMap[selectedCategory];
-        category && this.props.fetchAchievements(category.achievements);
-      });
+    this.props.fetchAchievementCategories(97, [97])
+    .then((categoryMap) => {
+      const category = categoryMap && categoryMap[selectedCategory];
+      category && this.props.fetchAchievements(category.achievements);
+    });
   }
 
   selectCategory = (id) => {

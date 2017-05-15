@@ -38,14 +38,14 @@ export const readAchievements = (ids: Array<number>) =>
   })
   .then(({ data }) => reduceById(data));
 
-export const readAchievementGroups = () =>
-  get(`${config.gw2.endpoint}v2/achievements/groups?ids=all`, {
+export const readAchievementGroups = (ids: Array<number> | 'all') =>
+  get(`${config.gw2.endpoint}v2/achievements/groups?ids=${ids === 'all' ? ids : ids.join(',')}`, {
     ignoreAuth: true,
   })
   .then(({ data }) => reduceById(data));
 
-export const readAchievementCategories = () =>
-  get(`${config.gw2.endpoint}v2/achievements/categories?ids=all`, {
+export const readAchievementCategories = (ids: Array<number> | 'all') =>
+  get(`${config.gw2.endpoint}v2/achievements/categories?ids=${ids === 'all' ? ids : ids.join(',')}`, {
     ignoreAuth: true,
   })
   .then(({ data }) => reduceById(data.map((category) => ({
