@@ -8,7 +8,7 @@ import Background from './Background';
 import styles from './Skill/styles.less';
 
 const extractTier = (achievement, current) => {
-  if (!achievement || !achievement.tiers) {
+  if (!achievement || !achievement.tiers || !current) {
     return {};
   }
 
@@ -18,13 +18,14 @@ const extractTier = (achievement, current) => {
 const AchievementTooltip = ({ data }: any) => {
   const tiers = data ? data.tiers : [];
   const tier = extractTier(data, data.current);
+  const currentTierIndex = tiers.indexOf(tier);
 
   const currentPoints = tiers && tiers.reduce((total, current, index) => {
     if (!tier) {
       return 0;
     }
 
-    if (tiers.indexOf(tier) <= index) {
+    if (currentTierIndex > -1 && currentTierIndex <= index) {
       return total + current.points;
     }
 
@@ -39,22 +40,22 @@ const AchievementTooltip = ({ data }: any) => {
 
       {data.description && (
         <span>
-          <br /><br />
+          <br />
           {markup(data.description)}
         </span>
       )}
 
       {data.bits && (
         <span>
-          <br /><br />
+          <br />
           {T.translate('words.objectives')}: {data.userBits ? data.userBits.length : 0}/{data.bits.length}
         </span>
       )}
 
       {tiers && (
         <span>
-          <br /><br />
-          Tier {tiers.indexOf(tier) + 1} of {tiers.length}
+          <br />
+          Tier {currentTierIndex === -1 ? 1 : currentTierIndex + 1} of {tiers.length}
         </span>
       )}
 
