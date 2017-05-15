@@ -126,6 +126,7 @@ const Fact = ({ data }: FactProps) => {
       break;
 
     case 'Time':
+    case 'Duration':
       content = (
         <div className={styles.center}>
           <Icon src={data.icon} size="mini" />
