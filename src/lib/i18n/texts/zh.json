@@ -198,6 +198,9 @@
     "resourceNotFound": "抱歉，这里没有东西。来一个随机的角色吧!",
     "newBags": "现在可以在各角色页面上看到容器!账户成就就快来了!"
   },
+  "achievements": {
+    "pointsThisTier": "Points this tier"
+  },
   "patreon": {
     "cta": "激战2军械库需要你的帮助，今天成为一个patreon"
   }

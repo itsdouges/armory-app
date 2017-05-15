@@ -199,6 +199,9 @@
     "resourceNotFound": "¡Lo siento, aquí no hay nada. ¡Aún así aquí tienes un personaje aleatorio!",
     "newBags": "¡Sacos ahora disponibles en las páginas de usuario! Próximamente logros de usuario."
   },
+  "achievements": {
+    "pointsThisTier": "Points this tier"
+  },
   "patreon": {
     "cta": "Guild Wars 2 Armory necesita tu ayuda, ¡hazte una patrona hoy!"
   }

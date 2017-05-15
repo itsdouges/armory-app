@@ -199,6 +199,9 @@
     "resourceNotFound": "Entschuldigung, wir konnten nicht finden, was du suchst. Stattdessen ist hier ein zufälliger Character!",
     "newBags": "Auf den Charakterseiten sind jetzt auch Taschen verfügbar! Erfolge werden in naher Zukunft auch implementiert."
   },
+  "achievements": {
+    "pointsThisTier": "Points this tier"
+  },
   "patreon": {
     "cta": "Guild Wars 2 Armory нуждается в вашей помощи, станьте настоящим патроном!"
   }

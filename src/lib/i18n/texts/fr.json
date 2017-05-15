@@ -199,6 +199,9 @@
     "resourceNotFound": "Sorry, there's nothing here. Here's a random character instead!",
     "newBags": "Bags now available on character pages! User achievements coming soon."
   },
+  "achievements": {
+    "pointsThisTier": "Points this tier"
+  },
   "patreon": {
     "cta": "L'Armurerie Guild Wars 2 a besoin de votre aide, devenez aujourd'hui une patrice!"
   }
