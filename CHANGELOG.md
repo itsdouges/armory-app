@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Removed
+- Redundant props from spec component
+
+### Added
+- Support for running local prod build embeds
 
 ## [4.17.0][] - 2017-05-15
 ### Added
