@@ -2,13 +2,11 @@
 
 import type { Specializations, Traits } from 'flowTypes';
 
-import cx from 'classnames';
-import fill from 'lodash/fill';
-
 import colours from 'common/styles/colours';
 import styles from './styles.less';
 import Trait from '../Trait';
 import SpecializationIcon from '../SpecializationIcon';
+import { makeStubItems } from 'lib/paginator';
 
 const getTrait = (id, traits, error) => (traits && traits[id]) || { error };
 const isActive = (id, { traits }) => (traits || []).indexOf(id) >= 0;
@@ -25,7 +23,7 @@ const getStyle = (data, spec) => ({
   backgroundColor: spec.background && colours._black,
 });
 
-const emptyTraits = fill(new Array(9), undefined);
+const emptyTraits = makeStubItems(9).rows;
 
 type Props = {
   data: {
@@ -43,18 +41,18 @@ const Specialization = ({ data, traits, specializations }: Props) => {
   const error = specialization.error && specialization.error;
 
   return (
-    <div className={cx(styles.rootOverflow)}>
-      <div className={styles.root}>
-        <div
-          className={styles.background}
-          style={getStyle(data, specialization)}
-        />
+    <div className={styles.root}>
+      <div
+        className={styles.background}
+        style={getStyle(data, specialization)}
+      />
 
-        <SpecializationIcon
-          data={specialization}
-          className={styles.bigIcon}
-        />
+      <SpecializationIcon
+        data={specialization}
+        className={styles.bigIcon}
+      />
 
+      <div className={styles.traits}>
         <Trait
           active
           className={styles.minorTraitColumn}
