@@ -16,7 +16,8 @@ const middleware = [
 ];
 
 if (__DEVELOPMENT__) {
-  middleware.push(require('redux-freeze'));
+  // TODO: https://github.com/madou/armory-react/issues/243
+  // middleware.push(require('redux-freeze'));
 }
 
 const store = createStore(rootReducer, composeEnhancers(
