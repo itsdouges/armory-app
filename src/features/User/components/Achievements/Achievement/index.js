@@ -114,7 +114,13 @@ const makeBits = (achievement, userBits = []) => {
 
         return (
           <li className={styles.bit} key={`${bit.type}-${bit.id || bit.text}`}>
-            <SvgIcon sizePx={16} name={completed ? 'done' : 'clear'} /> {content}
+            <SvgIcon
+              className={styles.progressIcon}
+              size="micro"
+              name={completed ? 'done' : 'clear'}
+            />
+
+            {content}
           </li>
         );
       })}

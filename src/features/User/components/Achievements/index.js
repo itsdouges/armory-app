@@ -8,12 +8,11 @@ import map from 'lodash/map';
 import { createSelector } from 'reselect';
 import T from 'i18n-react';
 
-import extractColour from 'lib/colour';
+import Icon from 'common/components/Icon';
 import actions from 'features/Gw2/actions';
 import Container from 'common/components/Container';
 import Textbox from 'common/components/Textbox';
 import colourMap from 'assets/categoryColourMap.json';
-import Card from 'common/components/Card';
 
 import Group from './Group';
 import Achievement from './Achievement';
@@ -119,9 +118,10 @@ class UserAchievements extends Component {
         </div>
 
         <div className={styles.achievementsContainer}>
-          <Card className={styles.categoryStrap} style={{ backgroundColor: extractColour(colour, 0.6) }}>
+          <div className={styles.categoryStrap}>
+            <Icon size="small" src={category.icon} />
             <h3 className={styles.categoryName}>{category.name || '...'}</h3>
-          </Card>
+          </div>
 
           <ol className={styles.achievements}>
             {category.achievements.map((id) =>
