@@ -55,7 +55,7 @@ export function reset () {
   // Increment RESET_N when you need local storage to be
   // reset before the application bootstraps. Do this
   // cautiously, and varely rarely.
-  const lsKey = 'RESET_1';
+  const lsKey = 'RESET_2';
   if (!get(lsKey)) {
     localStorage.clear();
     set(lsKey, 'true');
