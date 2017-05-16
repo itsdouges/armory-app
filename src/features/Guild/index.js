@@ -48,6 +48,7 @@ export default class Guild extends Component {
 
   render () {
     const { guild, routeParams: { guildName } } = this.props;
+    const showGuildLeader = !guild || guild.leader !== null;
 
     const claimed = guild && guild.claimed;
     const claimedData = {
@@ -65,9 +66,9 @@ export default class Guild extends Component {
         }
         extraContent={
           <aside>
-            <Link to={`/${(guild && guild.leader && guild.leader.alias) || ''}`}>
+            {showGuildLeader && <Link to={`/${(guild && guild.leader && guild.leader.alias) || ''}`}>
               <ContentCard type="users" content={guild && guild.leader} />
-            </Link>
+            </Link>}
           </aside>
         }
         content={guild}
