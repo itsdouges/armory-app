@@ -9,6 +9,7 @@ import ProgressBar from 'common/components/ProgressBar';
 import Card from 'common/components/Card';
 import Money from 'common/components/Tooltip/Gold';
 import Gw2Item from 'common/components/Gw2Item';
+import Gw2Skin from 'common/components/Gw2Skin';
 import Gw2Title from 'common/components/Gw2Title';
 import SvgIcon from 'common/components/Icon/Svg';
 
@@ -21,6 +22,7 @@ type Tier = {
 };
 
 type Props = {
+  done?: boolean,
   bits?: Array<number>,
   achievement?: {
     name: string,
@@ -84,14 +86,18 @@ const makeRewards = (achievement) => {
   });
 };
 
-const makeBits = (achievement, userBits = []) => {
+const makeBits = (achievement, expanded, userBits = []) => {
   if (!achievement || !achievement.bits) {
     return [];
   }
 
+  const bits = expanded
+    ? achievement.bits
+    : achievement.bits.slice(0, 1);
+
   return (
     <ol>
-      {achievement.bits.map((bit, index) => {
+      {bits.map((bit, index) => {
         const completed = userBits.includes(index);
         let content;
 
@@ -104,10 +110,11 @@ const makeBits = (achievement, userBits = []) => {
             content = <Gw2Item id={bit.id} className={!completed && styles.incomplete} size="32" />;
             break;
 
-          // Minipet not currently supported.
-          // Skin not currently supported.
-          case 'Minipet':
           case 'Skin':
+            content = <Gw2Skin id={bit.id} className={!completed && styles.incomplete} size="32" />;
+            break;
+
+          case 'Minipet':
           default:
             return null;
         }
@@ -148,12 +155,10 @@ export default class Achievement extends Component {
   };
 
   render () {
-    const { achievement, icon, current, bits, colour } = this.props;
+    const { achievement, icon, current, bits, colour, done: completed } = this.props;
     const { bitsExpanded } = this.state;
-
     const tier = calculateTier(achievement, current);
-    const name = achievement ? achievement.name : '';
-    const completed = current === tier.count;
+    const name = achievement ? achievement.name : <span className={styles.loading}>Loading Achievement...</span>;
     const hasRewards = !!tier.points || (!!achievement && !!achievement.rewards);
 
     return (
@@ -205,7 +210,7 @@ export default class Achievement extends Component {
           >
             <SvgIcon name="expand" className={styles.expandIcon} />
             <span className={styles.bitsWash} />
-            {makeBits(achievement, bits)}
+            {makeBits(achievement, bitsExpanded, bits)}
           </button>
         )}
       </Card>

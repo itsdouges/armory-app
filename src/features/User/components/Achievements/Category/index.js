@@ -25,7 +25,7 @@ const AchievementCategory = ({ name, icon, className, onClick, selected, subCate
   >
     <span className={styles.icon}>{icon}</span>
     <span className={styles.name}>
-      <span>{name || 'Loading...'}</span>
+      <span>{name || <span className={styles.loading}>Loading Category...</span>}</span>
       {rightComponent && <span className={styles.rightComponent}>{rightComponent}</span>}
     </span>
   </button>

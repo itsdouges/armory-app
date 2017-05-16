@@ -33,7 +33,7 @@ class Gw2Title extends Component {
   render () {
     return (
       <TooltipTrigger data={`${T.translate('words.title')}: ${this.props.title.name}`}>
-        <Icon name="title-crown.png" sizePx={32} />
+        <Icon name="title-crown.png" size="xsmall" />
       </TooltipTrigger>
     );
   }
