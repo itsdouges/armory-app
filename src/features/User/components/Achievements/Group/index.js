@@ -90,7 +90,7 @@ const AchievementGroup = ({
           const categoryTally = !!achievementCount && `${categoryCompletedMap[id] || 0}/${achievementCount}`;
 
           return (
-            <li key={id}>
+            <li key={id} style={{ order: category.order }}>
               <Category
                 subCategory
                 name={category.name}
