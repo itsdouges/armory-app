@@ -4,9 +4,8 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import TooltipTrigger from 'common/components/TooltipTrigger';
 import actions from 'features/Gw2/actions';
-import Icon from 'common/components/Icon';
+import Item from 'features/Character/components/Item';
 
 const defaultSkin = {};
 
@@ -32,11 +31,7 @@ class Gw2Skin extends Component {
   }
 
   render () {
-    return (
-      <TooltipTrigger data={this.props.skin} type="skins">
-        <Icon src={this.props.skin.icon} size="xsmall" />
-      </TooltipTrigger>
-    );
+    return <Item {...this.props} />;
   }
 }
 );

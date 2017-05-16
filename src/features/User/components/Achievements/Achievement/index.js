@@ -9,6 +9,7 @@ import ProgressBar from 'common/components/ProgressBar';
 import Card from 'common/components/Card';
 import Money from 'common/components/Tooltip/Gold';
 import Gw2Item from 'common/components/Gw2Item';
+import Gw2Skin from 'common/components/Gw2Skin';
 import Gw2Title from 'common/components/Gw2Title';
 import SvgIcon from 'common/components/Icon/Svg';
 
@@ -85,14 +86,18 @@ const makeRewards = (achievement) => {
   });
 };
 
-const makeBits = (achievement, userBits = []) => {
+const makeBits = (achievement, expanded, userBits = []) => {
   if (!achievement || !achievement.bits) {
     return [];
   }
 
+  const bits = expanded
+    ? achievement.bits
+    : achievement.bits.slice(0, 1);
+
   return (
     <ol>
-      {achievement.bits.map((bit, index) => {
+      {bits.map((bit, index) => {
         const completed = userBits.includes(index);
         let content;
 
@@ -106,6 +111,9 @@ const makeBits = (achievement, userBits = []) => {
             break;
 
           case 'Skin':
+            content = <Gw2Skin id={bit.id} className={!completed && styles.incomplete} size="32" />;
+            break;
+
           case 'Minipet':
           default:
             return null;
@@ -202,7 +210,7 @@ export default class Achievement extends Component {
           >
             <SvgIcon name="expand" className={styles.expandIcon} />
             <span className={styles.bitsWash} />
-            {makeBits(achievement, bits)}
+            {makeBits(achievement, bitsExpanded, bits)}
           </button>
         )}
       </Card>
