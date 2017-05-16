@@ -152,7 +152,7 @@ export default class Achievement extends Component {
     const { achievement, icon, current, bits, colour, done: completed } = this.props;
     const { bitsExpanded } = this.state;
     const tier = calculateTier(achievement, current);
-    const name = achievement ? achievement.name : '';
+    const name = achievement ? achievement.name : <span className={styles.loading}>Loading Achievement...</span>;
     const hasRewards = !!tier.points || (!!achievement && !!achievement.rewards);
 
     return (

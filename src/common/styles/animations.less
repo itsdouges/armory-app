@@ -5,27 +5,27 @@
 
 @keyframes loading {
   from {
-    background: @placeholderColorLight;
-    color: @placeholderColorLight;
+    opacity: 0.1;
   }
 
   to {
-    background: @placeholderColor;
-    color: @placeholderColor;
+    opacity: 0.5;
   }
 }
 
 @keyframes busy {
   from {
-    opacity: 0.5;
+    opacity: 0.2;
   }
 
   to {
-    opacity: 0.8;
+    opacity: 0.5;
   }
 }
 
 .loadingAnimation() {
+  background: @placeholderColor;
+  color: @placeholderColor;
   animation-name: loading;
   animation-duration: 2s;
   animation-iteration-count: infinite;

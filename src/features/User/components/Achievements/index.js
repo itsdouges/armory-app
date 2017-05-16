@@ -20,7 +20,7 @@ import Group from './Group';
 import Achievement from './Achievement';
 import styles from './styles.less';
 
-const emptyAchievements = makeStubItems(12).rows;
+const emptyAchievements = makeStubItems(24).rows;
 
 export const selector = createSelector(
   (state) => (state.users.data[state.users.selected] || {}).achievementsMap || {},
@@ -139,7 +139,9 @@ class UserAchievements extends Component {
         <div className={styles.achievementsContainer}>
           <div className={styles.categoryStrap}>
             <Icon size="small" src={category.icon} />
-            <h3 className={styles.categoryName}>{category.name || '...'}</h3>
+            <h3 className={styles.categoryName}>
+              {category.name || <span className={styles.loading}>Loading Category...</span>}
+            </h3>
           </div>
 
           <ol className={styles.achievements}>
