@@ -105,10 +105,8 @@ const makeBits = (achievement, userBits = []) => {
             content = <Gw2Item id={bit.id} className={!completed && styles.incomplete} size="32" />;
             break;
 
-          // Minipet not currently supported.
-          // Skin not currently supported.
-          case 'Minipet':
           case 'Skin':
+          case 'Minipet':
           default:
             return null;
         }

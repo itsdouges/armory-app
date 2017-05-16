@@ -5,24 +5,25 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
 import TooltipTrigger from 'common/components/TooltipTrigger';
-import Icon from 'common/components/Icon';
 import actions from 'features/Gw2/actions';
-import T from 'i18n-react';
+import Icon from 'common/components/Icon';
 
-const selector = createSelector(
-  (state, props) => state.titles[props.id] || { name: '...' },
-  (title) => ({
-    title,
+const defaultSkin = {};
+
+export const selector = createSelector(
+  (state, props) => state.skins[props.id] || defaultSkin,
+  (skin) => ({
+    skin,
   })
 );
 
 export default connect(selector, {
-  fetch: actions.fetchTitles,
+  fetch: actions.fetchSkins,
 })(
-class Gw2Title extends Component {
+class Gw2Skin extends Component {
   props: {
     id: number,
-    title: { name: string },
+    skin: Object,
     fetch: ([number]) => void,
   };
 
@@ -32,8 +33,8 @@ class Gw2Title extends Component {
 
   render () {
     return (
-      <TooltipTrigger data={`${T.translate('words.title')}: ${this.props.title.name}`}>
-        <Icon name="title-crown.png" size="xsmall" />
+      <TooltipTrigger data={this.props.skin} type="skins">
+        <Icon src={this.props.skin.icon} size="xsmall" />
       </TooltipTrigger>
     );
   }
