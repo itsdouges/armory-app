@@ -21,6 +21,36 @@ type Props = {
   userAchievements: { [number]: any },
 };
 
+function extractTotals (categories, categoryData, userAchievements) {
+  const totals = {};
+  let totalCompleted = 0;
+
+  const totalAchievements = categories.reduce((total, id) => {
+    const category = categoryData[id];
+    if (!category) {
+      return total;
+    }
+
+    totals[category.id] = category.achievements.reduce((completed, achievementId) => {
+      const achievement = userAchievements[achievementId];
+      if (achievement && achievement.done) {
+        totalCompleted += 1;
+        return completed + 1;
+      }
+
+      return completed;
+    }, 0);
+
+    return total + category.achievements.length;
+  }, 0);
+
+  return {
+    totalCompleted,
+    totalAchievements,
+    categoryCompletedMap: totals,
+  };
+}
+
 const AchievementGroup = ({
   name,
   categories,
@@ -29,13 +59,15 @@ const AchievementGroup = ({
   onClick,
   onCategoryClick,
   selectedCategory,
+  userAchievements,
 }: Props) => {
-  const totalAchievementsInGroup = categories.reduce((total, id) => {
-    const category = categoryData[id] || {};
-    return category && category.achievements
-      ? total + category.achievements.length
-      : total;
-  }, 0);
+  const {
+    totalCompleted,
+    totalAchievements,
+    categoryCompletedMap,
+  } = extractTotals(categories, categoryData, userAchievements);
+
+  const groupTally = !!totalAchievements && `${totalCompleted}/${totalAchievements}`;
 
   return (
     <div className={cx({ [styles.selected]: selected })}>
@@ -43,7 +75,7 @@ const AchievementGroup = ({
         selected={selected}
         onClick={onClick}
         name={name}
-        rightComponent={totalAchievementsInGroup}
+        rightComponent={groupTally}
         icon={<SvgIcon name="arrow-down" className={styles.icon} />}
       />
 
@@ -55,12 +87,14 @@ const AchievementGroup = ({
             return null;
           }
 
+          const categoryTally = !!achievementCount && `${categoryCompletedMap[id] || 0}/${achievementCount}`;
+
           return (
             <li key={id}>
               <Category
                 subCategory
                 name={category.name}
-                rightComponent={achievementCount}
+                rightComponent={categoryTally}
                 icon={<Icon src={category.icon} />}
                 selected={selectedCategory === id}
                 onClick={() => onCategoryClick(id)}
