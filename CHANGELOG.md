@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Achievement completed counts
+- Skins to achievement bits (tooltips coming soon)
+- Loading bars to achievements
+
+### Fixed
+- Now hide guild leader if guild doesn't have one claimed
+- Used done flag for calculating completed achievements
+- Sort categories by order property
+- Daily achievements from being cached too long
+- Achievement bits not being hidden in firefox
 
 ## [4.22.0][] - 2017-05-16
 ### Changed
