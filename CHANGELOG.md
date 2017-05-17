@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+## Added
+- Yandex verification
 
 ## [4.23.1][] - 2017-05-16
 ### Changed
