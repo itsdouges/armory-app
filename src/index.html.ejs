@@ -9,6 +9,7 @@
     <meta content="<%= htmlWebpackPlugin.options.description %>" property="og:description" data-react-helmet="true" />
     <meta content="<%= htmlWebpackPlugin.options.description %>" name="description" data-react-helmet="true" />
     <meta content="https://gw2armory.com<%= require('./assets/images/logo.png') %>" property="og:image" data-react-helmet="true" />
+    <link rel="manifest" href="<%= require('!!file?name=[name]--[hash:8].json!./manifest.json') %>">
 
     <title><%= htmlWebpackPlugin.options.title %></title>
 

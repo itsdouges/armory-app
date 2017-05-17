@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][]
 ## Added
 - Yandex verification
+- Manifest.json
 
 ## [4.23.1][] - 2017-05-16
 ### Changed

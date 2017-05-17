@@ -1,0 +1,14 @@
+{
+  "name": "Guild Wars 2 Armory",
+  "short_name": "GW2Armory",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f7f9fa",
+  "lang": "en-US",
+  ​​"orientation": "portrait-primary",
+  "theme_color": "#d63227",
+  "related_applications": [{
+    "platform": "web"
+  }],
+  "description": "Guild Wars 2 Armory is an easy way to find, view, and share users, characters, and guilds with your friends on your mobile and pc! Join today and start sharing!"
+}
