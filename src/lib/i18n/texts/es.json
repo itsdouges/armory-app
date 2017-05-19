@@ -204,5 +204,8 @@
   },
   "patreon": {
     "cta": "Guild Wars 2 Armory necesita tu ayuda, ¡hazte una patrona hoy!"
+  },
+  "notifications": {
+    "didYouKnow1": "¿Sabías? Los datos del clan autenticado están disponibles: ¡pídale a su líder del gremio que se registre y pueda acceder a su mensaje del día y los registros! Más datos próximamente."
   }
 }

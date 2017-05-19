@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Guild logs to show items
 - Guild logs to show upgrades
 
+### Fixed
+- Invalid user icon regression
+
 ## [4.24.0][] - 2017-05-17
 ### Added
 - Yandex verification
