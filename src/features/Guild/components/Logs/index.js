@@ -4,11 +4,15 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import startCase from 'lodash/startCase';
 import cx from 'classnames';
+import { Link } from 'react-router';
 
 import { humanize } from 'lib/date';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
 import Progress from 'common/components/Icon/Progress';
+import Gw2Item from 'common/components/Gw2Item';
+import GuildUpgrade from 'common/components/Gw2GuildUpgrade';
+import Money from 'common/components/Tooltip/Gold';
 
 import styles from './styles.less';
 import { fetchGuildLogs } from '../../actions';
@@ -17,13 +21,21 @@ import { makeStubItems } from 'lib/paginator';
 
 import type { Guild as GuildType } from 'flowTypes';
 
-const pluralize = (operation) => (operation === 'deposit' ? 'deposited' : 'withdrawn');
-const createStashLog = (log) => (log.coins === 0
-  ? `ItemId:${log.item_id} x ${log.count} was ${pluralize(log.operation)}`
-  : `${log.coins} coins were ${pluralize(log.operation)}`);
-
 const LOGS_PER_PAGE = 20;
 const STUB_LOGS = makeStubItems(LOGS_PER_PAGE);
+
+const makeUserLink = (accountName, key) => (
+  <Link key={key || accountName} to={`/${accountName}`}>
+    {accountName}
+  </Link>
+);
+
+const makeItem = (id) => <Gw2Item key={id} id={id} />;
+
+const pluralize = (operation) => (operation === 'deposit' ? 'deposited' : 'withdrawn');
+const createStashLog = (log) => (log.coins === 0
+  ? [`${log.count} x `, makeItem(log.item_id), ` was ${pluralize(log.operation)}`]
+  : [<Money key="money" coins={log.coins} />, ` were ${pluralize(log.operation)}`]);
 
 function createLogView (log) {
   if (!log) {
@@ -42,11 +54,11 @@ function createLogView (log) {
 
   switch (log.type) {
     case 'invite_declined':
-      content = `${log.user} declined to join the guild`;
+      content = [makeUserLink(log.user), ' declined to join the guild'];
       break;
 
     case 'upgrade':
-      content = `UpgradeId:${log.upgrade_id} was ${log.action}`;
+      content = ['Upgrade ', <GuildUpgrade key="u" id={log.upgrade_id} />, ` was ${log.action}`];
       break;
 
     case 'motd':
@@ -54,27 +66,27 @@ function createLogView (log) {
       break;
 
     case 'stash':
-      content = `${createStashLog(log)} by ${log.user}`;
+      content = [createStashLog(log), ' by ', makeUserLink(log.user)];
       break;
 
     case 'treasury':
-      content = `ItemId:${log.item_id} x ${log.count} was deposited into the treasury by ${log.user}`;
+      content = [`${log.count} x `, makeItem(log.item_id), ' was deposited into the treasury by ', makeUserLink(log.user)];
       break;
 
     case 'rank_change':
-      content = `Rank for ${log.user} was changed by ${log.changed_by} from ${log.old_rank} to ${log.new_rank}`;
+      content = [makeUserLink(log.user, 'a'), '\'s rank was changed from ', <strong key="old">{log.old_rank}</strong>, ' to ', <strong key="new">{log.new_rank}</strong>, ' by ', makeUserLink(log.changed_by)];
       break;
 
     case 'joined':
-      content = `${log.user} joined the guild`;
+      content = [makeUserLink(log.user), ' joined the guild!'];
       break;
 
     case 'invited':
-      content = `${log.user} was invited by ${log.invited_by}`;
+      content = [makeUserLink(log.user, 'a'), ' was invited by ', makeUserLink(log.invited_by)];
       break;
 
     case 'kick':
-      content = `${log.user} was kicked by ${log.kicked_by}`;
+      content = [makeUserLink(log.user, 'a'), ' was kicked by ', makeUserLink(log.kicked_by)];
       break;
 
     case 'influence':
