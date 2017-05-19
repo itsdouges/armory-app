@@ -1,6 +1,6 @@
 # Guild Wars 2 Armory
 
-[![Build Status](https://travis-ci.org/madou/armory-react.svg?branch=master)](https://travis-ci.org/madou/armory-react) [![Dependencies](https://david-dm.org/madou/armory-react.svg)](https://david-dm.org/madou/armory-react) [![Dev Dependencies](https://david-dm.org/madou/armory-react/dev-status.svg)](https://david-dm.org/madou/armory-react?type=dev) [![Join the chat at https://gitter.im/gw2armory/Lobby](https://badges.gitter.im/gw2armory/Lobby.svg)](https://gitter.im/gw2armory/Lobby) [![Code Triagers Badge](https://www.codetriage.com/madou/armory-react/badges/users.svg)](https://www.codetriage.com/madou/armory-react) [![codecov](https://codecov.io/gh/madou/armory-react/branch/master/graph/badge.svg)](https://codecov.io/gh/madou/armory-react)
+[![Build Status](https://travis-ci.org/madou/armory-react.svg?branch=master)](https://travis-ci.org/madou/armory-react) [![Dependencies](https://david-dm.org/madou/armory-react.svg)](https://david-dm.org/madou/armory-react) [![Dev Dependencies](https://david-dm.org/madou/armory-react/dev-status.svg)](https://david-dm.org/madou/armory-react?type=dev) [![Join the chat at https://gitter.im/gw2armory/Lobby](https://badges.gitter.im/gw2armory/Lobby.svg)](https://gitter.im/gw2armory/Lobby) [![codecov](https://codecov.io/gh/madou/armory-react/branch/master/graph/badge.svg)](https://codecov.io/gh/madou/armory-react)
 
 > Guild Wars 2 Armory is an easy way to find, view, and share users, characters, and guilds with your friends on your mobile and PC! Join today and start sharing!
 
@@ -9,8 +9,8 @@
 ```bash
 git clone https://github.com/madou/armory-react.git
 cd armory-react
-yarn // or npm install
-cp src/config/local.sample.js src/config/local.js // You need to create a local config yourself!
+npm install
+cp src/config/local.sample.js src/config/local.js // local.js isn't checked in so you'll have to make one yourself.
 ```
 
 ### Testing
@@ -36,13 +36,7 @@ npm run start:embeds // PROD BUILD
 
 ### Technologies
 
-- React (view engine)
-- Redux (data container)
-- Flow (static type checking)
-- Webpack (asset bundler)
-- LESS (css preprocessor)
-- Mocha/enzyme/chai/sinon (testing)
-- nyc/Coveralls (code coverage)
+React, Redux, Flow, Webpack, LESS, Mocha/enzyme/chai/sinon, nyc/Coveralls
 
 ## Notes for Local Development
 
@@ -54,13 +48,13 @@ npm run start:embeds // PROD BUILD
 
 Deployments are triggered to `preview.gw2armory.com` via any branch commit, and to `gw2armory.com` via any tagged commit to `master` branch. Note that `master` doesn't reflect what is in production - look for the most recent tagged commit for that.
 
-We use `np`.
+Standard npm version is used for deployments.
 
 ```bash
-np major|minor|patch
+npm version major|minor|patch
 ```
 
-This will increment the version, update CHANGELOG.md (anything under Unreleased will be moved to a version), and push to git.
+This will increment the version, update CHANGELOG.md (anything under Unreleased will be moved to a version), and push commits/tags to git.
 
 ### Redux Dev Tools
 
