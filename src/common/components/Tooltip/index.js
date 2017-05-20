@@ -14,6 +14,7 @@ import SkillTooltip from './Skill';
 import SimpleTooltip from './Simple';
 import Background from './Background';
 import AchievementTooltip from './Achievement';
+import GuildUpgradeTooltip from './GuildUpgradeTooltip';
 import styles from './styles.less';
 
 const selector = createSelector(
@@ -74,6 +75,10 @@ export default class Tooltip extends Component {
 
         case 'achievement':
           content = <AchievementTooltip data={tooltip.data} />;
+          break;
+
+        case 'guildUpgrade':
+          content = <GuildUpgradeTooltip data={tooltip.data} />;
       }
     }
 

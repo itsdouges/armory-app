@@ -4,8 +4,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  text-transform: uppercase;
-  padding: 0.5em 1em;
   .high;
 }
 
@@ -16,11 +14,13 @@
 
 .info {
   color: fade(@_black, 90%);
-  background-color: @fine;
+  background-color: @_white;
 }
 
 .message {
   flex-grow: 1;
+  padding: 1.5em;
+  line-height: 18px;
 }
 
 .leftIcon {
@@ -31,4 +31,5 @@
 .button {
   text-transform: uppercase;
   flex-grow: 0;
+  padding: 1.5em;
 }

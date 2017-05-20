@@ -204,5 +204,8 @@
   },
   "patreon": {
     "cta": "L'Armurerie Guild Wars 2 a besoin de votre aide, devenez aujourd'hui une patrice!"
+  },
+  "notifications": {
+    "didYouKnow1": "Le saviez-vous? Les données de guilde authentifiées sont disponibles - demandez à votre chef de guilde de vous inscrire et vous pouvez accéder à votre message du jour et des journaux! Plus de données sont disponibles prochainement."
   }
 }

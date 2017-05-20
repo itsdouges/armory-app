@@ -6,9 +6,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Guild logs to have links to users
+- Guild logs to show items
+- Guild logs to show upgrades
+
+### Fixed
+- Invalid user icon regression
 
 ## [4.24.0][] - 2017-05-17
-## Added
+### Added
 - Yandex verification
 - Manifest.json
 

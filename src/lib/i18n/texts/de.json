@@ -204,5 +204,8 @@
   },
   "patreon": {
     "cta": "Guild Wars 2 Armory braucht deine Hilfe, werde heute ein Patreon!"
+  },
+  "notifications": {
+    "didYouKnow1": "Wusstest du schon? Authentifizierte Gildendaten stehen zur Verfügung - erhalten Sie Ihren Gildenführer, um sich anzumelden und Sie können auf Ihre Nachricht des Tages zugreifen und sich anmelden! Weitere Daten in Kürze"
   }
 }
