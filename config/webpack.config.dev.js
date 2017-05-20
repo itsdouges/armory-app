@@ -5,6 +5,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 import paths from './paths';
 import config from '../src/config/default';
+import manup from 'manup';
+import manifest from '../src/manifest.json';
 
 module.exports = {
   devtool: 'eval',
@@ -60,6 +62,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       ...config,
+      pwaMeta: manup(manifest),
       inject: true,
       template: paths.appHtml,
       chunks: ['app'],

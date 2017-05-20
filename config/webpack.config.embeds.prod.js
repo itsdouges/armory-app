@@ -102,6 +102,8 @@ module.exports = {
     new ExtractTextPlugin('assets/[name].[contenthash:8].css', {
       allChunks: true,
     }),
-    new ManifestPlugin(),
+    new ManifestPlugin({
+      fileName: 'asset-manifest.json',
+    }),
   ],
 };

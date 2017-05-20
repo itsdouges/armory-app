@@ -61,7 +61,7 @@ describe('embed bootstrapper', () => {
 
   beforeEach(() => {
     delete document.GW2A_EMBED_OPTIONS;
-    axiosGet.withArgs(`${publicPath}manifest.json`).returns(Promise.resolve({ data: manifest }));
+    axiosGet.withArgs(`${publicPath}asset-manifest.json`).returns(Promise.resolve({ data: manifest }));
   });
 
   afterEach(() => sandbox.reset());
