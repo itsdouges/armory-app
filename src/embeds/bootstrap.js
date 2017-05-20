@@ -71,7 +71,7 @@ function bootstrapEmbeds () {
       const props: EmbedProps = {
         className: cx(styles.embed, makeClassName(embedName)),
         blankText,
-        size: size || undefined,
+        size,
       };
 
       ReactDOM.render(

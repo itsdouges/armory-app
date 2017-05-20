@@ -118,8 +118,8 @@ class User extends Component {
 
     const { byes, ...rankedStats } = get(user, 'pvpStats.ladders.ranked', {});
 
-    const wins = rankedStats.wins || safeUser.wins;
-    const losses = rankedStats.losses || safeUser.losses;
+    const wins = rankedStats.wins || safeUser.wins || '0';
+    const losses = rankedStats.losses || safeUser.losses || '0';
 
     const statSummary = (wins || losses || byes) ? `${wins}-${losses}-${byes || 0}` : '-';
 
