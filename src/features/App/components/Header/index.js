@@ -8,7 +8,7 @@ import T from 'i18n-react';
 import cx from 'classnames';
 
 // $FlowFixMe
-import '!!style!css!react-sticky-header/styles.css'; //eslint-disable-line
+import '!!style-loader!css-loader!react-sticky-header/styles.css'; //eslint-disable-line
 import StickyHeader from 'react-sticky-header';
 import SvgIcon from 'common/components/Icon/Svg';
 

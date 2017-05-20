@@ -26,38 +26,45 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
-    root: path.resolve('./src'),
-    extensions: ['', '.js', '.json'],
+    modules: [
+      path.resolve('./src'),
+      'node_modules',
+    ],
+    extensions: ['.js', '.json'],
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       include: paths.appSrc,
-      loader: 'babel',
+      loader: 'babel-loader',
     }, {
       test: /\.(css|less)$/,
       include: [paths.appSrc, paths.appNodeModules],
-      // eslint-disable-next-line
-      loader: 'style!css?localIdentName=[path][name]--[local]--[hash:base64:5]&modules&importLoaders=1!postcss!less',
-    }, {
-      test: /\.json$/,
-      include: [paths.appSrc, paths.appNodeModules],
-      loader: 'json',
+      use: [
+        'style-loader',
+        'css-loader?localIdentName=[path][name]--[local]--[hash:base64:5]&modules&importLoaders=1',
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: () => [
+              autoprefixer(),
+            ],
+          },
+        },
+        'less-loader',
+      ],
     }, {
       test: /\.(ico|jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
       include: [paths.appSrc, paths.appNodeModules],
-      loader: 'file',
+      loader: 'file-loader',
       query: {
         name: '[name]--[hash:8].[ext]',
       },
     }, {
       test: /\.(mp4|webm)$/,
       include: [paths.appSrc, paths.appNodeModules],
-      loader: 'url?limit=10000',
+      loader: 'url-loader?limit=10000',
     }],
-  },
-  postcss () {
-    return [autoprefixer];
   },
   plugins: [
     new HtmlWebpackPlugin({

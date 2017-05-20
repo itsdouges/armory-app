@@ -16,8 +16,8 @@
 
     <title><%= htmlWebpackPlugin.options.title %></title>
 
-    <link rel="manifest" href="<%= require('!!file?name=[name]--[hash:8].json!./manifest.json') %>">
-    <link rel="search" type="application/opensearchdescription+xml" title="<%= htmlWebpackPlugin.options.title %> search" href="<%= require('file?name=[name]--[hash:8].xml!./opensearch.xml') %>" />
+    <link rel="manifest" href="<%= require('!!file-loader?name=[name]--[hash:8].json!./manifest.json') %>">
+    <link rel="search" type="application/opensearchdescription+xml" title="<%= htmlWebpackPlugin.options.title %> search" href="<%= require('file-loader?name=[name]--[hash:8].xml!./opensearch.xml') %>" />
     <link rel="shortcut icon" href="<%= require('./assets/images/favicons/favicon.ico') %>" />
     <link rel="icon" type="image/png" href="<%= require('./assets/images/favicons/favicon-16.png') %>" sizes="16x16" />
     <link rel="icon" type="image/png" href="<%= require('./assets/images/favicons/favicon-32.png') %>" sizes="32x32" />
