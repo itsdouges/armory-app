@@ -1,8 +1,9 @@
 const argv = require('yargs')
   .boolean('embeds')
+  .boolean('production')
   .argv;
 
-const production = process.env.NODE_ENV === 'production';
+const production = argv.production;
 const embeds = argv.embeds;
 const configPath = embeds ? './config/webpack.config.embeds.js' : './config/webpack.config.app.js';
 

@@ -1,7 +1,7 @@
-import config from './webpackConfigFactory';
+import createConfig from './webpackConfigFactory';
 import paths from './paths';
 
-const development = config({
+const common = {
   name: 'app',
   entry: paths.appSrc,
   htmlWebpackPlugin: {
@@ -9,8 +9,13 @@ const development = config({
     template: paths.appHtml,
     inject: true,
   },
-});
+};
 
 module.exports = {
-  development,
+  development: createConfig(common),
+
+  production: createConfig({
+    ...common,
+    production: true,
+  }),
 };

@@ -6,7 +6,7 @@
     "test"
   ],
   "scripts": {
-    "start": "node ./scripts/start.js --prod",
+    "start": "node ./scripts/start.js --production",
     "start:embeds": "LOCAL=true npm start -- --embeds --local",
     "test": "npm run lint && npm run flow && npm run coverage",
     "flow": "flow",
@@ -90,7 +90,7 @@
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-mocha": "^4.9.0",
     "eslint-plugin-react": "^6.9.0",
-    "extract-text-webpack-plugin": "^2.1.0",
+    "extract-text-webpack-plugin": "2.0.0-rc.3",
     "file-loader": "^0.11.1",
     "filesize": "^3.5.10",
     "flow-bin": "^0.46.0",
