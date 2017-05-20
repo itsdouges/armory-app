@@ -14,8 +14,8 @@ const webpack = require('webpack');
 const paths = require('../config/paths');
 
 const config = [
-  require('../config/webpack.config.embeds.prod'),
-  require('../config/webpack.config.prod'),
+  require('../config/webpack.config.embeds').production,
+  require('../config/webpack.config.app').production,
 ];
 
 // Remove all content but keep the directory so that

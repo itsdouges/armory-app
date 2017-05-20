@@ -1,15 +1,9 @@
 const argv = require('yargs')
-  .boolean('prod')
   .boolean('embeds')
   .argv;
 
-let file;
+const production = process.env.NODE_ENV === 'production';
+const embeds = argv.embeds;
+const configPath = embeds ? './config/webpack.config.embeds.js' : './config/webpack.config.app.js';
 
-if (argv.embeds) {
-  file = argv.prod ? './config/webpack.config.embeds.prod.js' : './config/webpack.config.embeds.dev.js';
-  module.exports = require(file);
-} else {
-  file = argv.prod ? './config/webpack.config.prod.js' : './config/webpack.config.dev.js';
-  module.exports = require(file);
-}
-
+module.exports = require(configPath)[production ? 'production' : 'development'];
