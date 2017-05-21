@@ -42,7 +42,7 @@ const bootstrap = proxyquire('embeds/bootstrap', {
     set: setLang,
   },
   'lib/tooltip': bootstrapTooltip,
-  [`promise?global!embeds/creators/${embedName}`]: () => Promise.resolve({ default: createEmbed }),
+  [`embeds/creators/${embedName}`]: { default: createEmbed },
 });
 
 describe('embed bootstrapper', () => {

@@ -16,7 +16,10 @@
   ],
   "env": {
     "test": {
-      "plugins": ["istanbul"]
+      "plugins": [
+        "istanbul",
+        "dynamic-import-node"
+      ]
     },
     "production": {
       "plugins": [
