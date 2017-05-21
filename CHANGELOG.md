@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.26.2][] - 2017-05-21
 ### Added
 - Manifest meta generation back
 
@@ -799,7 +801,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.26.1...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.26.2...HEAD
+[4.26.2]: https://github.com/madou/armory-react/compare/v4.26.1...v4.26.2
 [4.26.1]: https://github.com/madou/armory-react/compare/v4.26.0...v4.26.1
 [4.26.0]: https://github.com/madou/armory-react/compare/v4.25.0...v4.26.0
 [4.25.0]: https://github.com/madou/armory-react/compare/v4.24.0...v4.25.0
