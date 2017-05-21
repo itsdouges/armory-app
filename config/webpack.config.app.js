@@ -17,5 +17,6 @@ module.exports = {
   production: createConfig({
     ...common,
     production: true,
+    serviceWorker: true,
   }),
 };
