@@ -8,9 +8,6 @@
   "orientation": "portrait-primary",
   "theme_color": "#d63227",
   "description": "Guild Wars 2 Armory is an easy way to find, view, and share users, characters, and guilds with your friends on your mobile and pc! Join today and start sharing!",
-  "related_applications": [{
-    "platform": "web"
-  }],
   "icons": [{
     "src": "./assets/images/favicons/favicon-32.png",
     "sizes": "32x32",
