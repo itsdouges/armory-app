@@ -129,18 +129,10 @@ module.exports = ({ entry, name, htmlWebpackPlugin, publicPath = '/', production
           use: cssRulesUse,
         },
         {
-          test: /\.(eot|ttf|woff|woff2)$/,
+          test: [/\.gif$/, /\.jpe?g$/, /\.png$/, /\.ico$/, /\.svg$/, /\.eot$/, /\.ttf$/, /\.woff$/, /\.woff2$/],
           include: [paths.appSrc, paths.appNodeModules],
           loader: 'file-loader',
           options: {
-            name: production ? 'assets/[name].[hash:8].[ext]' : 'assets/[name].[ext]',
-          },
-        },
-        {
-          test: [/\.gif$/, /\.jpe?g$/, /\.png$/, /\.ico$/, /\.svg$/],
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
             name: production ? 'assets/[name].[hash:8].[ext]' : 'assets/[name].[ext]',
           },
         },
