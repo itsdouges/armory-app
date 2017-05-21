@@ -40,7 +40,7 @@ const Footer = () => (
   <footer className={styles.root}>
     <Container className={styles.container}>
       <div>
-        © 2015-2017 gw2armory.com © 2010–2017 ArenaNet, LLC. All
+        © 2015-present gw2armory.com © 2010–present ArenaNet, LLC. All
         rights reserved. Guild Wars, Guild Wars 2, Guild Wars 2:
         Heart of Thorns, ArenaNet, NCSOFT, the Interlocking NC Logo,
         and all associated logos and designs are trademarks or registered

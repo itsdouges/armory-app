@@ -1,11 +1,8 @@
 // @flow
 
-// $FlowFixMe
-const loadBootstrap = require('promise?global!./bootstrap'); // eslint-disable-line import/no-webpack-loader-syntax
-
-function init () {
-  loadBootstrap().then(({ default: bootstrap }) => bootstrap());
-}
+const init = () => {
+  import('./bootstrap').then((module) => module.default());
+};
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);

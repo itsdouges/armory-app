@@ -29,8 +29,13 @@ const makeClassName = (str) => `gw2a-${str}-embed`;
 export const makeAttribute = (str: string) => `data-armory-${str}`;
 
 function fetchStyles () {
-  return axios.get(`${__webpack_public_path__}manifest.json`)
-    .then((response) => addStyleSheet(`${__webpack_public_path__}${response.data['gw2aEmbeds.css']}`));
+  return axios.get(`${__webpack_public_path__}asset-manifest.json`)
+    .then((response) => {
+      const styleSheetPath = response.data['gw2aEmbeds.css'];
+      if (styleSheetPath) {
+        addStyleSheet(`${__webpack_public_path__}${styleSheetPath}`);
+      }
+    });
 }
 
 function setOptions () {
@@ -55,12 +60,7 @@ function bootstrapEmbeds () {
       return undefined;
     }
 
-    // NOTE: The following require is giving major headaches when using
-    // inline .spec.js files (as they're added to the webpack context).
-    // Watch out!
-    // eslint-disable-next-line import/no-webpack-loader-syntax
-    const loadEmbed = require(`promise?global!embeds/creators/${embedName}`);
-    return loadEmbed().then(({ default: createEmbed }) => {
+    return import(`embeds/creators/${embedName}`).then(({ default: createEmbed }) => {
       const rawIds = element.getAttribute(makeAttribute('ids'));
       const blankText = element.getAttribute(makeAttribute('blank-text')) || T.translate('words.optional');
       const ids = (rawIds || '').split(',');
@@ -71,7 +71,7 @@ function bootstrapEmbeds () {
       const props: EmbedProps = {
         className: cx(styles.embed, makeClassName(embedName)),
         blankText,
-        size: size || undefined,
+        size,
       };
 
       ReactDOM.render(

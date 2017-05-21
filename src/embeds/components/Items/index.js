@@ -27,8 +27,6 @@ type Props = {
   ids: Array<number>,
   mode?: 'rune' | 'item',
   statIds: { [key: number]: number },
-  // Why doesn't flow work with intersection types well ;-( !!
-  blankText?: string,
 } & EmbedProps;
 
 @connect(mapStateToProps, {
@@ -39,13 +37,13 @@ export default class ItemsEmbed extends Component {
   props: Props;
 
   static renderItem (
-    id: number,
-    mode?: 'rune' | 'item',
-    statId?: number,
-    items?: Items,
-    itemStats?: ItemStats,
-    blankText: string,
-    index: number,
+    id,
+    mode,
+    statId,
+    items,
+    itemStats,
+    blankText,
+    index,
     size,
   ) {
     if (id < 0) {

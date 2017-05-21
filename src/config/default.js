@@ -52,7 +52,8 @@ module.exports = {
       'robots.txt',
       'sitemap.xml',
       'gw2aEmbeds.js',
-      'manifest.json',
+      'asset-manifest.json',
+      'service-worker.js',
     ],
   },
 };
