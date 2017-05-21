@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Webpack to v2
+- Webpack configuration into a factory
+
+### Added
+- PWA support
 
 ## [4.25.0][] - 2017-05-20
 ### Changed
