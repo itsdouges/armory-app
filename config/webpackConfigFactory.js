@@ -224,7 +224,7 @@ module.exports = ({ entry, name, htmlWebpackPlugin, publicPath = '/', production
     ].filter(Boolean),
 
     performance: {
-      hints: production,
+      hints: production ? 'warning' : false,
     },
   };
 };
