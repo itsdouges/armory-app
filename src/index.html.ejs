@@ -10,6 +10,10 @@
     <meta content="<%= htmlWebpackPlugin.options.description %>" name="description" data-react-helmet="true" />
     <meta content="https://gw2armory.com<%= require('./assets/images/logo.png') %>" property="og:image" data-react-helmet="true" />
 
+    <% for(var i = 0; i < htmlWebpackPlugin.options.pwaMeta.length; i++) {%>
+      <<%= htmlWebpackPlugin.options.pwaMeta[i][0] %> content="<%= htmlWebpackPlugin.options.pwaMeta[i][1].content %>" name="<%= htmlWebpackPlugin.options.pwaMeta[i][1].name %>" />
+    <% } %>
+
     <title><%= htmlWebpackPlugin.options.title %></title>
 
     <link rel="manifest" href="<%= require('!!file-loader?name=[name]--[hash:8].json!web-app-manifest-loader!./manifest.json') %>">
