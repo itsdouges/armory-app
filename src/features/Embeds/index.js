@@ -24,7 +24,7 @@ const Embeds = () => (
     <h2>Options</h2>
     <Card size="medium">
       Add options in the head of your webpage.
-      ensure it is set immediately and not after the page has loaded
+      Ensure it is set immediately and not after the page has loaded
       (do not use inside document.onReady or equivalent).
 
       <p>lang</p>
@@ -39,20 +39,20 @@ const Embeds = () => (
 
       <pre>
         {`document.GW2A_EMBED_OPTIONS = {
-    lang: 'en',
-  };`}
+  lang: 'en',
+};`}
       </pre>
     </Card>
 
-    <h2>Styling Embeds</h2>
+    <h2>Styling</h2>
     <Card size="medium">
       To style any embed simply target the embed with the embed name, e.g:
 
       <pre>{`.gw2a-character-embed
-  .gw2a-items-embed
-  .gw2a-skills-embed
-  .gw2a-tooltip-embed
-  .gw2a-specializations-embed`}</pre>
+.gw2a-items-embed
+.gw2a-skills-embed
+.gw2a-tooltip-embed
+.gw2a-specializations-embed`}</pre>
     </Card>
 
     {embeds.map(({ title, html }) => (
