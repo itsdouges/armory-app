@@ -20,49 +20,51 @@ function embedIframe (ref, html) {
 }
 
 const Embeds = () => (
-  <Card size="medium" className={styles.root}>
-    <h2>Embed Options</h2>
-
-    <p>
+  <div className={styles.root}>
+    <h2>Options</h2>
+    <Card size="medium">
       Add options in the head of your webpage.
       ensure it is set immediately and not after the page has loaded
       (do not use inside document.onReady or equivalent).
-    </p>
 
-    <p>lang</p>
-    <ul>
-      <li>en (ENGLISH)</li>
-      <li>fr (FRENCH)</li>
-      <li>de (GERMAN)</li>
-      <li>es (SPANISH)</li>
-      <li>zh (CHINESE)</li>
-      <li>ru (RUSSIAN [limited support])</li>
-    </ul>
+      <p>lang</p>
+      <ul>
+        <li>en (ENGLISH)</li>
+        <li>fr (FRENCH)</li>
+        <li>de (GERMAN)</li>
+        <li>es (SPANISH)</li>
+        <li>zh (CHINESE)</li>
+        <li>ru (RUSSIAN [limited support])</li>
+      </ul>
 
-    <pre>
-      {`document.GW2A_EMBED_OPTIONS = {
-  lang: 'en',
-};`}
-    </pre>
+      <pre>
+        {`document.GW2A_EMBED_OPTIONS = {
+    lang: 'en',
+  };`}
+      </pre>
+    </Card>
 
     <h2>Styling Embeds</h2>
+    <Card size="medium">
+      To style any embed simply target the embed with the embed name, e.g:
 
-    <p>To style any embed simply target the embed with the embed name, e.g:</p>
-
-    <pre>{`.gw2a-character-embed
-.gw2a-items-embed
-.gw2a-skills-embed
-.gw2a-tooltip-embed
-.gw2a-specializations-embed`}</pre>
+      <pre>{`.gw2a-character-embed
+  .gw2a-items-embed
+  .gw2a-skills-embed
+  .gw2a-tooltip-embed
+  .gw2a-specializations-embed`}</pre>
+    </Card>
 
     {embeds.map(({ title, html }) => (
       <div key={title}>
         <h2>{title}</h2>
-        <pre>{html}</pre>
-        <div ref={(ref) => embedIframe(ref, html)} />
+        <Card size="medium">
+          <div ref={(ref) => embedIframe(ref, html)} />
+          <pre>{html}</pre>
+        </Card>
       </div>
     ))}
-  </Card>
+  </div>
 );
 
 export default Embeds;
