@@ -60,6 +60,10 @@ function bootstrapEmbeds () {
       return undefined;
     }
 
+    // Remove the attribute so if the embed script is added to the document again, it doesn't pick
+    // already bootstrapped embeds.
+    element.removeAttribute(makeAttribute('embed'));
+
     return import(`embeds/creators/${embedName}`).then(({ default: createEmbed }) => {
       const rawIds = element.getAttribute(makeAttribute('ids'));
       const blankText = element.getAttribute(makeAttribute('blank-text')) || T.translate('words.optional');
