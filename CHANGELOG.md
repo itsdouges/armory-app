@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Embeds example page to be in the app
+
+### Fixed
+- Internationalisation from not working ever since implementing the ls reset
 
 ## [4.26.3][] - 2017-05-21
 ### Removed

@@ -1,7 +1,5 @@
 // @flow
 
-import * as ls from 'lib/localStorage';
-
 // Base is deliberately at the top.
 import Base from '../Base';
 import bootstrapTooltip from 'lib/tooltip';
@@ -91,7 +89,6 @@ function bootstrapEmbeds () {
 export default function bootstrap () {
   const options = setOptions();
 
-  ls.reset();
   setLang(options.lang);
 
   return Promise.all([
