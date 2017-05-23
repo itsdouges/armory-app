@@ -204,7 +204,7 @@ module.exports = ({ entry, name, htmlWebpackPlugin, publicPath = '/', production
         dontCacheBustUrlsMatching: /\.\w{8}\./,
         navigateFallback: 'index.html',
         // Ignore any source map files and the asset manifest.
-        staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/],
+        staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/, /gw2aEmbeds\.js$/],
       }),
 
       // Moment.js is an extremely popular library that bundles large locale files

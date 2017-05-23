@@ -1,7 +1,5 @@
 // @flow
 
-import * as ls from 'lib/localStorage';
-
 // Base is deliberately at the top.
 import Base from '../Base';
 import bootstrapTooltip from 'lib/tooltip';
@@ -60,6 +58,10 @@ function bootstrapEmbeds () {
       return undefined;
     }
 
+    // Remove the attribute so if the embed script is added to the document again, it doesn't pick
+    // already bootstrapped embeds.
+    element.removeAttribute(makeAttribute('embed'));
+
     return import(`embeds/creators/${embedName}`).then(({ default: createEmbed }) => {
       const rawIds = element.getAttribute(makeAttribute('ids'));
       const blankText = element.getAttribute(makeAttribute('blank-text')) || T.translate('words.optional');
@@ -87,7 +89,6 @@ function bootstrapEmbeds () {
 export default function bootstrap () {
   const options = setOptions();
 
-  ls.reset();
   setLang(options.lang);
 
   return Promise.all([

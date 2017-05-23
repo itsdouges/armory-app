@@ -12,6 +12,7 @@ import User from 'features/User';
 import ForgotMyPassword from 'features/ForgotMyPassword';
 import Guild from 'features/Guild';
 import Settings from 'features/Settings';
+import Embeds from 'features/Embeds';
 import Search from 'features/Search';
 import Character from 'features/Character';
 import NotFound from 'features/NotFound';
@@ -42,7 +43,9 @@ const Routes = () => (
       <Redirect from="/:alias/c" to="/:alias/characters" />
       <Redirect from="/:alias(/:subRoute)/" to="/:alias(/:subRoute)" />
       <Redirect from="/:alias/characters/:character" to="/:alias/c/:character" />
+      <Redirect from="/embeds/example/index.html" to="/embeds" />
 
+      <Route path="/embeds" component={Embeds} />
       <Route path="/statistics" component={Statistics} />
       <Route path="/login" component={Login} />
       <Route path="/join" component={Join} />

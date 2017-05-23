@@ -47,15 +47,12 @@ type LinkDefs = {
 const STATIC_LINKS = [{
   name: T.translate('leaderboards.name'),
   to: '/leaderboards/pvp',
-  external: false,
 }, {
   name: T.translate('stats.name'),
   to: '/statistics',
-  external: false,
 }, {
   name: T.translate('embeds.name'),
-  to: '/embeds/example/index.html',
-  external: true,
+  to: '/embeds',
 }];
 
 const UNAUTHENTICATED_STATIC_LINKS = [{
@@ -140,11 +137,7 @@ class Header extends Component {
           className={styles.linkContainer}
           itemClassName={cx(styles.link, { [styles.christmas]: config.features.christmas })}
         >
-          {links.map(({ to, name, external }) => (
-            external
-              ? <a href={to} key={to}>{name}</a>
-              : <Link to={to} key={to}>{name}</Link>
-          ))}
+          {links.map(({ to, name }) => <Link to={to} key={to}>{name}</Link>)}
         </ResponsiveMenu>
       </Container>
     );

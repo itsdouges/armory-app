@@ -66,11 +66,6 @@ describe('embed bootstrapper', () => {
 
   afterEach(() => sandbox.reset());
 
-  it('should clear ls on initial load', () => {
-    bootstrap();
-    expect(resetLs).to.have.been.called;
-  });
-
   describe('tooltip', () => {
     beforeEach(() => {
       bootstrap();
