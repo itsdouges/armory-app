@@ -10,10 +10,7 @@ import embeds from './text';
 import styles from './styles.less';
 
 const makeHtml = (html) => ({
-  __html: `
-${html}
-<script async src="http://localhost:3001/gw2aEmbeds.js"></script>
-  `,
+  __html: html,
 });
 
 function embedIframe () {
@@ -59,22 +56,22 @@ export default class Embeds extends Component {
         <Card size="medium" className={styles.card}>
           To style any embed simply target the embed with the embed name, e.g:
 
-          <pre>{`.gw2a-character-embed
-.gw2a-items-embed
-.gw2a-skills-embed
-.gw2a-tooltip-embed
-.gw2a-amulets-embed
-.gw2a-traits-embed
-.gw2a-specializations-embed`}</pre>
+          <pre>{embeds.map(({ title }) => `gw2a-${title.toLowerCase()}-embed`).join('\n')}</pre>
         </Card>
 
-        {embeds.map(({ title, html }) => (
+        {embeds.map(({ title, html, options }) => (
           <div key={title}>
             <h2>{title}</h2>
             <Card size="medium" className={styles.card}>
               <div dangerouslySetInnerHTML={makeHtml(html)} />
               <pre>{`${html}
+
 <script async src="https://gw2armory.com/gw2aEmbeds.js"></script>`}</pre>
+
+              <ul className={styles.options}>
+                <li>{`data-armory-embed="${title.toLowerCase()}"`}</li>
+                {options.map((option) => <li key={option}>{option}</li>)}
+              </ul>
             </Card>
           </div>
         ))}

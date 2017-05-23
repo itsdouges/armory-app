@@ -1,11 +1,24 @@
+@import '~common/styles/base.less';
+
+@padding: 1em;
+
 .root {
-  padding: 4em 0;
+  padding: 2em 0;
 
   pre {
     font-family: monospace, monospace;
     font-size: 0.8rem !important;
     overflow: auto;
+    color: @_white;
+    background-color: @_black;
+    padding: @padding;
+    margin: 0;
+    margin-top: @padding;
   }
+}
+
+.card {
+  padding: @padding;
 }
 
 .iframe {
@@ -20,4 +33,12 @@
 :global(.gw2a-items-embed),
 :global(.gw2a-skills-embed) {
   text-align: center;
+}
+
+.options {
+  padding: @padding @padding * 2;
+
+  li {
+    list-style: square;
+  }
 }

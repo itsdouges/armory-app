@@ -2,6 +2,9 @@
 
 export default [{
   title: 'Character',
+  options: [
+    'data-armory-name="{CHARACTER_NAME}"',
+  ],
   html: `
 <div
   data-armory-embed="character"
@@ -11,6 +14,11 @@ export default [{
   `,
 }, {
   title: 'Skills',
+  options: [
+    'data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills',
+    'data-armory-size="{NUMBER}" (optional)',
+    'data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)',
+  ],
   html: `
 <div
   data-armory-embed="skills"
@@ -34,6 +42,12 @@ export default [{
   `,
 }, {
   title: 'Items',
+  options: [
+    'data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills',
+    'data-armory-{ITEM_ID}-stat="{ITEMSTAT_ID}" (optional)',
+    'data-armory-size="{NUMBER}" (optional)',
+    'data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)',
+  ],
   html: `
 <div
   data-armory-embed="items"
@@ -62,6 +76,11 @@ export default [{
   `,
 }, {
   title: 'Amulets',
+  options: [
+    'data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills',
+    'data-armory-size="{NUMBER}" (optional)',
+    'data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)',
+  ],
   html: `
 <div
   data-armory-embed="amulets"
@@ -86,6 +105,11 @@ export default [{
   `,
 }, {
   title: 'Traits',
+  options: [
+    'data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills',
+    'data-armory-size="{NUMBER}" (optional)',
+    'data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)',
+  ],
   html: `
 <div
   data-armory-embed="traits"
@@ -115,6 +139,10 @@ export default [{
   `,
 }, {
   title: 'Specializations',
+  options: [
+    'data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills',
+    'data-armory-{SPECIALIZATION_ID}="{TRAIT_IDS_COMMA_SEPARATED}" | Not mandatory, you can leave traits out if you want, either all three or individual ones.',
+  ],
   html: `
 <div
   data-armory-embed="specializations"
