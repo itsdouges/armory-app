@@ -187,7 +187,13 @@
     "optional": "Optional",
     "dismiss": "Verwerfen",
     "embed": "Einbetten",
-    "loadMore": "Mehr laden"
+    "loadMore": "Mehr laden",
+    "completed": "Completed",
+    "masteryPoint": "Mastery Point",
+    "coins": "Coins",
+    "title": "Title",
+    "of": "of",
+    "objectives": "Objectives"
   },
   "leaderboards": {
     "name": "Rangliste"

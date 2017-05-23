@@ -187,7 +187,13 @@
     "optional": "Opcional",
     "dismiss": "Descartar",
     "embed": "Insertar",
-    "loadMore": "Cargar más"
+    "loadMore": "Cargar más",
+    "completed": "Completed",
+    "masteryPoint": "Mastery Point",
+    "coins": "Coins",
+    "title": "Title",
+    "of": "of",
+    "objectives": "Objectives"
   },
   "leaderboards": {
     "name": "Tabla de clasificación"

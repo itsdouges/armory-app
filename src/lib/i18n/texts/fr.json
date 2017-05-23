@@ -187,7 +187,13 @@
     "optional": "Optional",
     "dismiss": "Dismiss",
     "embed": "Embed",
-    "loadMore": "Load More"
+    "loadMore": "Load More",
+    "completed": "Completed",
+    "masteryPoint": "Mastery Point",
+    "coins": "Coins",
+    "title": "Title",
+    "of": "of",
+    "objectives": "Objectives"
   },
   "leaderboards": {
     "name": "Leaderboards"

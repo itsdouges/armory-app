@@ -187,7 +187,13 @@
     "optional": "Необязательный",
     "dismiss": "Закрыть",
     "embed": "HTML-код",
-    "loadMore": "Загрузить ещё"
+    "loadMore": "Загрузить ещё",
+    "completed": "Completed",
+    "masteryPoint": "Mastery Point",
+    "coins": "Coins",
+    "title": "Title",
+    "of": "of",
+    "objectives": "Objectives"
   },
   "leaderboards": {
     "name": "Таблицы лидеров"

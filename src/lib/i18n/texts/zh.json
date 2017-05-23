@@ -186,7 +186,13 @@
     "optional": "可选择的",
     "dismiss": "搁置",
     "embed": "嵌入",
-    "loadMore": "加载更多"
+    "loadMore": "加载更多",
+    "completed": "Completed",
+    "masteryPoint": "Mastery Point",
+    "coins": "Coins",
+    "title": "Title",
+    "of": "of",
+    "objectives": "Objectives"
   },
   "leaderboards": {
     "name": "选手积分榜"
