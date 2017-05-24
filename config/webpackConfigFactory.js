@@ -7,6 +7,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import NameAllModulesPlugin from 'name-all-modules-plugin';
 import assert from 'assert';
 import ServiceWorkerPreCachePlugin from 'sw-precache-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import _ from 'lodash';
 
 import paths from './paths';
@@ -248,6 +249,10 @@ module.exports = ({
       longTermCache && new NameAllModulesPlugin(),
       // >> End longterm caching strategy.
 
+      // >> Perf plugins
+      production && new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+      }),
     ].filter(Boolean),
 
     performance: {

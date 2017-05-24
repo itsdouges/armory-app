@@ -130,6 +130,7 @@
     "version-changelog": "^2.0.1",
     "web-app-manifest-loader": "^0.1.1",
     "webpack": "^2.6.0",
+    "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-server": "^2.4.5",
     "webpack-manifest-plugin": "^1.1.0",
     "webpack-md5-hash": "^0.0.5",
