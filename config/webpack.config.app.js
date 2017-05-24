@@ -4,6 +4,7 @@ import paths from './paths';
 const common = {
   name: 'app',
   entryPath: paths.appSrc,
+  longTermCache: true,
   htmlWebpackPlugin: {
     filename: 'index.html',
     template: paths.appHtml,
@@ -12,8 +13,9 @@ const common = {
   entry: {
     vendor: [
       'react',
-      'lodash',
-      'moment',
+      'react-dom',
+      'redux',
+      'prop-types',
     ],
   },
 };

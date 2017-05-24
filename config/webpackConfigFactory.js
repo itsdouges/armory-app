@@ -14,7 +14,17 @@ import config from '../src/config/default';
 import manup from 'manup';
 import manifest from '../src/manifest.json';
 
-module.exports = ({ entryPath, name, htmlWebpackPlugin, publicPath = '/', production, filename, serviceWorker, ...extra }) => {
+module.exports = ({
+  entryPath,
+  name,
+  htmlWebpackPlugin,
+  production,
+  filename,
+  serviceWorker,
+  longTermCache,
+  publicPath = '/',
+  ...extra
+}) => {
   assert(entryPath, 'entryPath should be defined in webpack factory');
   assert(name, 'name should be defined in webpack factory');
 
@@ -154,7 +164,7 @@ module.exports = ({ entryPath, name, htmlWebpackPlugin, publicPath = '/', produc
         ...config,
         ...htmlWebpackPlugin,
         pwaMeta: manup(manifest),
-        chunks: [name],
+        // chunks: [name],
         minify: production && {
           removeComments: true,
           collapseWhitespace: true,
@@ -216,23 +226,28 @@ module.exports = ({ entryPath, name, htmlWebpackPlugin, publicPath = '/', produc
       // You can remove this if you don't use Moment.js:
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
-      // Longterm caching strategy.
       // See: https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31
-      new webpack.NamedModulesPlugin(),
-      new webpack.NamedChunksPlugin((chunk) => {
-        if (chunk.name) {
-          return chunk.name;
-        }
-        return chunk.modules.map((m) => path.relative(m.context, m.request)).join('_');
+      // >> Start longterm caching strategy.
+      longTermCache && new webpack.NamedModulesPlugin(),
+
+      longTermCache && new webpack.NamedChunksPlugin((chunk) => {
+        return chunk.name
+          ? chunk.name
+          : chunk.modules.map((m) => path.relative(m.context, m.request)).join('_');
       }),
-      new webpack.optimize.CommonsChunkPlugin({
+
+      longTermCache && new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
         minChunks: Infinity,
       }),
-      new webpack.optimize.CommonsChunkPlugin({
+
+      longTermCache && new webpack.optimize.CommonsChunkPlugin({
         name: 'runtime',
       }),
-      new NameAllModulesPlugin(),
+
+      longTermCache && new NameAllModulesPlugin(),
+      // >> End longterm caching strategy.
+
     ].filter(Boolean),
 
     performance: {
