@@ -159,7 +159,6 @@ export default class Achievement extends Component {
     const { bitsExpanded } = this.state;
     const tier = calculateTier(achievement, current);
     const name = achievement ? achievement.name : <span className={styles.loading}>Loading Achievement...</span>;
-    const hasRewards = !!tier.points || (!!achievement && !!achievement.rewards);
 
     return (
       <Card className={cx(styles.root, cx({ [styles.completed]: completed }))}>
@@ -184,20 +183,18 @@ export default class Achievement extends Component {
           <div className={styles.content}>
             <div className={styles.name}>{name}</div>
 
-            {hasRewards && (
-              <div className={styles.rewards}>
-                {!!tier.points && (
-                  <TooltipTrigger data={T.translate('achievements.pointsThisTier')}>
-                    <div className={styles.pointsContainer}>
-                      <span className={styles.points}>{tier.points} </span>
-                      <Icon sizePx={32} name="arenanet-points.png" />
-                    </div>
-                  </TooltipTrigger>
-                )}
+            <div className={styles.rewards}>
+              {!!tier.points && (
+                <TooltipTrigger data={T.translate('achievements.pointsThisTier')}>
+                  <div className={styles.pointsContainer}>
+                    <span className={styles.points}>{tier.points} </span>
+                    <Icon sizePx={32} name="arenanet-points.png" />
+                  </div>
+                </TooltipTrigger>
+              )}
 
-                {makeRewards(achievement)}
-              </div>
-            )}
+              {makeRewards(achievement)}
+            </div>
           </div>
         </div>
 
