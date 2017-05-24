@@ -4,16 +4,18 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ManifestPlugin from 'webpack-manifest-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import NameAllModulesPlugin from 'name-all-modules-plugin';
 import assert from 'assert';
 import ServiceWorkerPreCachePlugin from 'sw-precache-webpack-plugin';
+import _ from 'lodash';
 
 import paths from './paths';
 import config from '../src/config/default';
 import manup from 'manup';
 import manifest from '../src/manifest.json';
 
-module.exports = ({ entry, name, htmlWebpackPlugin, publicPath = '/', production, filename, serviceWorker }) => {
-  assert(entry, 'entry should be defined in webpack factory');
+module.exports = ({ entryPath, name, htmlWebpackPlugin, publicPath = '/', production, filename, serviceWorker, ...extra }) => {
+  assert(entryPath, 'entryPath should be defined in webpack factory');
   assert(name, 'name should be defined in webpack factory');
 
   const cssRulesUse = production
@@ -79,7 +81,7 @@ module.exports = ({ entry, name, htmlWebpackPlugin, publicPath = '/', production
       'less-loader',
     ];
 
-  return {
+  return _.merge({}, {
     bail: production,
 
     context: __dirname,
@@ -88,11 +90,11 @@ module.exports = ({ entry, name, htmlWebpackPlugin, publicPath = '/', production
 
     entry: {
       [name]: production
-        ? path.join(entry, 'index')
+        ? path.join(entryPath, 'index')
         : [
           require.resolve('webpack-dev-server/client'),
           require.resolve('webpack/hot/dev-server'),
-          path.join(entry, 'index'),
+          path.join(entryPath, 'index'),
         ],
     },
 
@@ -100,7 +102,7 @@ module.exports = ({ entry, name, htmlWebpackPlugin, publicPath = '/', production
       // Next line is not used in dev but WebpackDevServer crashes without it:
       path: paths.appBuild,
       pathinfo: true,
-      filename: filename || (production ? '[name].[hash:8].js' : '[name].js'),
+      filename: filename || (production ? '[name].[chunkhash:8].js' : '[name].js'),
       chunkFilename: production ? '[name]-chunk.[chunkhash:8].js' : '[name]-chunk.js',
       publicPath,
     },
@@ -213,10 +215,29 @@ module.exports = ({ entry, name, htmlWebpackPlugin, publicPath = '/', production
       // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
       // You can remove this if you don't use Moment.js:
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
+      // Longterm caching strategy.
+      // See: https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31
+      new webpack.NamedModulesPlugin(),
+      new webpack.NamedChunksPlugin((chunk) => {
+        if (chunk.name) {
+          return chunk.name;
+        }
+        return chunk.modules.map((m) => path.relative(m.context, m.request)).join('_');
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: Infinity,
+      }),
+      new webpack.optimize.CommonsChunkPlugin({
+        name: 'runtime',
+      }),
+      new NameAllModulesPlugin(),
     ].filter(Boolean),
 
     performance: {
       hints: production ? 'warning' : false,
     },
-  };
+
+  }, extra);
 };

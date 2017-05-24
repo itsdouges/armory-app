@@ -1,5 +1,7 @@
 // @flow
 
+import 'babel-polyfill';
+
 const init = () => {
   import('./bootstrap').then((module) => module.default());
 };
