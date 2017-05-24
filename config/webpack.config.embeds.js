@@ -3,7 +3,7 @@ import paths from './paths';
 
 const common = {
   name: 'gw2aEmbeds',
-  entry: paths.embedSrc,
+  entryPath: paths.embedSrc,
   htmlWebpackPlugin: {
     filename: 'embeds/example/index.html',
     inject: false,

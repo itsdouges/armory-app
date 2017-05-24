@@ -1,5 +1,6 @@
 // @flow
 
+import 'babel-polyfill';
 import 'normalize.css';
 import ReactDOM from 'react-dom';
 

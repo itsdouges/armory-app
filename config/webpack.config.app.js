@@ -3,11 +3,20 @@ import paths from './paths';
 
 const common = {
   name: 'app',
-  entry: paths.appSrc,
+  entryPath: paths.appSrc,
+  longTermCache: true,
   htmlWebpackPlugin: {
     filename: 'index.html',
     template: paths.appHtml,
     inject: true,
+  },
+  entry: {
+    vendor: [
+      'react',
+      'react-dom',
+      'redux',
+      'prop-types',
+    ],
   },
 };
 
