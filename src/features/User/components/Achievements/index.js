@@ -8,6 +8,7 @@ import map from 'lodash/map';
 import reduce from 'lodash/reduce';
 import { createSelector } from 'reselect';
 import T from 'i18n-react';
+import { Route, Switch } from 'react-router-dom';
 
 import { makeStubItems } from 'lib/paginator';
 import Icon from 'common/components/Icon';
@@ -124,6 +125,7 @@ class UserAchievements extends Component {
             {orderedGroups.map((group) =>
               <li key={group.id}>
                 <Group
+                  baseUrl={this.props.match.url}
                   userAchievements={userAchievements}
                   categoryData={categories}
                   onClick={() => this.selectGroup(group.id)}

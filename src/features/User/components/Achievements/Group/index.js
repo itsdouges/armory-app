@@ -52,6 +52,7 @@ function extractTotals (categories, categoryData, userAchievements) {
 }
 
 const AchievementGroup = ({
+  basePath,
   name,
   categories,
   categoryData,
@@ -72,6 +73,7 @@ const AchievementGroup = ({
   return (
     <div className={cx({ [styles.selected]: selected })}>
       <Category
+        basePath={basePath}
         selected={selected}
         onClick={onClick}
         name={name}

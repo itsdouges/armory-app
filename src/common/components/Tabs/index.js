@@ -1,8 +1,10 @@
 // @flow
 
-import Container from 'common/components/Container';
+import { cloneElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import Head from 'common/components/Head';
+import Container from 'common/components/Container';
 
 import styles from './styles.less';
 import Tab from './Tab';
@@ -52,12 +54,16 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath }: Tab
             exact
             key={tab.path}
             path={`${basePath}${tab.path}`}
-            render={() => (
-              <span>
-                {tab.ignoreTitle || <Head title={`${tab.name} | ${titleSuffix}`} description={tab.description} />}
-                {Layout ? <Layout>{tab.content}</Layout> : tab.content}
-              </span>
-            )}
+            render={(props) => {
+              const content = cloneElement(tab.content, props);
+
+              return (
+                <span>
+                  {tab.ignoreTitle || <Head title={`${tab.name} | ${titleSuffix}`} description={tab.description} />}
+                  {Layout ? <Layout>{content}</Layout> : content}
+                </span>
+              );
+            }}
           />
         ))}
       </Switch>
