@@ -6,6 +6,7 @@ module.exports = {
   titleSuffix: ' | Guild Wars 2 Armory',
   imagesEndpoint: '//images.gw2armory.com/',
   refreshDelay: 1000 * 60 * 5,
+  webUrl: 'https://gw2armory.com',
 
   gw2: {
     endpoint: 'https://api.guildwars2.com/',

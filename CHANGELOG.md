@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Ups dependencies
 
+### Fixed
+- Character embed link
+
 ## [4.26.6][] - 2017-05-24
 ### Changed
 - Achievement placeholder text to be in correct position
