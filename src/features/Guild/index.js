@@ -24,11 +24,11 @@ import {
 } from './actions';
 import { selector } from './guilds.reducer';
 
-@connect(selector, {
+export default connect(selector, {
   dispatchSelectGuild: selectGuild,
   dispatchFetchGuild: fetchGuild,
-})
-export default class Guild extends Component {
+})(
+class Guild extends Component {
   props: {
     guild?: GuildType,
     routeParams: {
@@ -58,6 +58,7 @@ export default class Guild extends Component {
 
     return (
       <Content
+        basePath={this.props.match.url}
         title={`${guildName} [${(guild && guild.tag) || '...'}]`}
         cardExtra={
           <TooltipTrigger data={claimedData.message}>
@@ -77,25 +78,23 @@ export default class Guild extends Component {
         type="guilds"
         tabs={[{
           name: 'Overview',
-          to: `/g/${guildName}`,
+          path: '',
           ignoreTitle: true,
-          content: (
-            <Overview data={guild} />
-          ),
+          content: <Overview data={guild} />,
         }, {
           name: 'Members',
-          to: `/g/${guildName}/members`,
+          path: '/members',
           content: <Members name={guildName} />,
         }, {
           name: 'Characters',
-          to: `/g/${guildName}/characters`,
+          path: '/characters',
           content: <Characters name={guildName} />,
         }, {
           name: 'Logs',
-          to: `/g/${guildName}/logs`,
+          path: '/logs',
           content: <Logs guildName={guildName} />,
         }]}
       />
     );
   }
-}
+});

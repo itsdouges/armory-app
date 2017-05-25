@@ -83,6 +83,7 @@ export default class Character extends Component {
         title={`${character} | ${alias}`}
         type="characters"
         content={character}
+        basePath={this.props.match.url}
         description={buildDescription(character)}
         extraSubtitle={characterTitle && <span><i>{characterTitle}</i> | </span>}
         extraContent={(
@@ -97,7 +98,7 @@ export default class Character extends Component {
           </aside>
         )}
         tabs={[{
-          to: `/${alias}/c/${characterName}`,
+          path: '',
           name: 'PvE',
           ignoreTitle: true,
           content: (
@@ -108,7 +109,7 @@ export default class Character extends Component {
             />
           ),
         }, {
-          to: `/${alias}/c/${characterName}/pvp`,
+          path: '/pvp',
           name: 'PvP',
           content: (
             <Overview
@@ -118,7 +119,7 @@ export default class Character extends Component {
             />
           ),
         }, {
-          to: `/${alias}/c/${characterName}/wvw`,
+          path: '/wvw',
           name: 'WvW',
           content: (
             <Overview
@@ -128,7 +129,7 @@ export default class Character extends Component {
             />
           ),
         }, {
-          to: `/${alias}/c/${characterName}/bags`,
+          path: '/bags',
           name: T.translate('characters.bags'),
           flair: 'new',
           content: <Bags />,

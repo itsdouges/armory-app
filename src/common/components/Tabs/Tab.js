@@ -1,7 +1,6 @@
 // @flow
 
-import { Link } from 'react-router-dom';
-import cx from 'classnames';
+import { NavLink } from 'react-router-dom';
 
 import Flair from 'common/components/Flair';
 import styles from './styles.less';
@@ -18,14 +17,17 @@ const Tab = ({
   path,
   onClick,
   flair,
+  ...props
 }: Tab$Props) => (
-  <Link
+  <NavLink
+    {...props}
     to={path}
     onClick={onClick}
-    className={cx(styles.tab, { [styles.selected]: false })}
+    activeClassName={styles.selected}
+    className={styles.tab}
   >
     {flair ? <Flair type={flair}>{name}</Flair> : name}
-  </Link>
+  </NavLink>
 );
 
 export default Tab;

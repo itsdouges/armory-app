@@ -31,7 +31,8 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath }: Tab
           {tabs.map((tab) => (
             <li key={tab.path}>
               <Tab
-                path={encodeURI(`${basePath}${tab.path}`)}
+                exact={!tab.path}
+                path={`${basePath}${tab.path}`}
                 name={tab.name}
               />
             </li>
@@ -50,7 +51,7 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath }: Tab
           <Route
             exact
             key={tab.path}
-            path={encodeURI(`${basePath}${tab.path}`)}
+            path={`${basePath}${tab.path}`}
             render={() => (
               <span>
                 {tab.ignoreTitle || <Head title={`${tab.name} | ${titleSuffix}`} description={tab.description} />}

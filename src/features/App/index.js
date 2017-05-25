@@ -82,6 +82,7 @@ export default class App extends Component {
         <Header compact={this.state.smallHeader} />
 
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route exact path="/embeds" component={Embeds} />
           <Route exact path="/statistics" component={Statistics} />
           <Route exact path="/login" component={Login} />
@@ -89,13 +90,11 @@ export default class App extends Component {
           <Route exact path="/search/:term" component={Search} />
           <Route exact path="/settings" component={authenticatedRoute(Settings)} />
           <Route exact path="/forgot-my-password" component={ForgotMyPassword} />
-          <Route exact path="/leaderboards/:type" component={Leaderboards} />
-          <Route exact path="/leaderboards/:type/:region" component={Leaderboards} />
           <Route exact path="/404" component={NotFound} />
+          <Route path="/leaderboards/pvp" component={Leaderboards} />
           <Route path="/g/:guildName" component={Guild} />
-          <Route path="/:alias" component={User} />
           <Route path="/:alias/c/:character" component={Character} />
-          <Route exact path="/" component={Home} />
+          <Route path="/:alias" component={User} />
         </Switch>
 
         <NotificationBox className={styles.notificationBox} />
