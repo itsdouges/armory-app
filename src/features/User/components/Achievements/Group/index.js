@@ -75,14 +75,13 @@ const AchievementGroup = ({
 
   return (
     <div className={cx({ [styles.selected]: selected })}>
-      <button onClick={onClick} className={styles.categoryButton}>
-        <Category
-          selected={selected}
-          name={name}
-          rightComponent={groupTally}
-          icon={<SvgIcon name="arrow-down" className={styles.icon} />}
-        />
-      </button>
+      <Category
+        onClick={onClick}
+        selected={selected}
+        name={name}
+        rightComponent={groupTally}
+        icon={<SvgIcon name="arrow-down" className={styles.icon} />}
+      />
 
       <ol className={styles.categories}>
         {categories.map((id) => {
@@ -97,15 +96,13 @@ const AchievementGroup = ({
 
           return (
             <li key={id} style={{ order: category.order }}>
-              <NavLink to={`${basePath}${categoryPath}`}>
-                <Category
-                  subCategory
-                  name={category.name}
-                  rightComponent={categoryTally}
-                  icon={<Icon src={category.icon} />}
-                  selected={selectedCategory === id}
-                />
-              </NavLink>
+              <Category
+                to={`${basePath}${categoryPath}`}
+                subCategory
+                name={category.name}
+                rightComponent={categoryTally}
+                icon={<Icon src={category.icon} />}
+              />
             </li>
           );
         })}
