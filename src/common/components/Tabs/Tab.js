@@ -8,25 +8,21 @@ import styles from './styles.less';
 
 export type Tab$Props = {
   name: string,
-  selected?: boolean,
-  index?: number,
-  to?: string,
+  path: string,
   onClick?: Function,
   flair?: 'new',
 };
 
 const Tab = ({
-  selected,
   name,
-  index,
+  path,
   onClick,
-  to,
   flair,
 }: Tab$Props) => (
   <Link
-    to={`${to || ''}`}
-    onClick={() => onClick && onClick(index)}
-    className={cx(styles.tab, { [styles.selected]: selected })}
+    to={path}
+    onClick={onClick}
+    className={cx(styles.tab, { [styles.selected]: false })}
   >
     {flair ? <Flair type={flair}>{name}</Flair> : name}
   </Link>

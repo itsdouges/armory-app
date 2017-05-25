@@ -92,9 +92,9 @@ export default class App extends Component {
           <Route exact path="/leaderboards/:type" component={Leaderboards} />
           <Route exact path="/leaderboards/:type/:region" component={Leaderboards} />
           <Route exact path="/404" component={NotFound} />
-          <Route exact path="/g/:guildName" component={Guild} />
-          <Route exact path="/:alias" component={User} />
-          <Route exact path="/:alias/c/:character" component={Character} />
+          <Route path="/g/:guildName" component={Guild} />
+          <Route path="/:alias" component={User} />
+          <Route path="/:alias/c/:character" component={Character} />
           <Route exact path="/" component={Home} />
         </Switch>
 

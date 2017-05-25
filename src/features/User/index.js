@@ -134,6 +134,7 @@ class User extends Component {
             <Icon size="mini" className={styles.access} name={icon} />
           </TooltipTrigger>
         )}
+        basePath={this.props.match.url}
         extraContent={
           <ul className={styles.rating}>
             <li>
@@ -173,23 +174,23 @@ class User extends Component {
           </Link>
         )}
         tabs={[{
-          to: `/${alias}`,
+          path: '',
           name: 'Overview',
           ignoreTitle: true,
           content: (
             <Overview user={user} pvpSeasons={pvpSeasons} worlds={worlds} />
           ),
         }, {
-          to: `/${alias}/achievements`,
+          path: '/achievements',
           flair: 'new',
           name: T.translate('users.achievements'),
           content: <Achievements />,
         }, {
-          to: `/${alias}/characters`,
+          path: '/characters',
           name: 'Characters',
           content: <Characters alias={alias} />,
         }, {
-          to: `/${alias}/guilds`,
+          path: '/guilds',
           name: T.translate('guilds.name'),
           content: (
             <PaginatorGrid
@@ -203,7 +204,7 @@ class User extends Component {
             </PaginatorGrid>
           ),
         }, {
-          to: `/${alias}/matches`,
+          path: '/matches',
           name: T.translate('users.recentMatches'),
           content: (
             <div className={styles.gamesContainer}>
