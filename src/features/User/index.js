@@ -10,7 +10,7 @@ import get from 'lodash/get';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 import T from 'i18n-react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import startCase from 'lodash/startCase';
 import cx from 'classnames';
 
@@ -80,15 +80,15 @@ class User extends Component {
   props: Props;
 
   componentWillMount () {
-    this.loadUser(this.props.routeParams.alias);
+    this.loadUser(this.props.match.params.alias);
   }
 
   componentWillReceiveProps (nextProps: Props) {
-    if (this.props.routeParams.alias === nextProps.routeParams.alias) {
+    if (this.props.match.params.alias === nextProps.match.params.alias) {
       return;
     }
 
-    this.loadUser(nextProps.routeParams.alias);
+    this.loadUser(nextProps.match.params.alias);
   }
 
   loadUser (alias: string) {
@@ -99,7 +99,7 @@ class User extends Component {
   }
 
   render () {
-    const { user, routeParams: { alias }, pvpSeasons, maps, worlds, alias: authenticated } = this.props;
+    const { user, match: { params: { alias } }, pvpSeasons, maps, worlds, alias: authenticated } = this.props;
 
     const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
     const guilds = get(user, 'guilds', STUB_GUILDS.rows);

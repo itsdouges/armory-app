@@ -1,5 +1,3 @@
-import { PropTypes } from 'react';
-
 import Summary from 'common/layouts/Summary';
 import ProgressBar from 'common/components/ProgressBar';
 import T from 'i18n-react';
@@ -20,10 +18,6 @@ const Fractal = ({ level }) => {
       }
     />
   );
-};
-
-Fractal.propTypes = {
-  level: PropTypes.number,
 };
 
 export default Fractal;

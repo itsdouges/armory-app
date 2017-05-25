@@ -1,4 +1,3 @@
-import { PropTypes } from 'react';
 import cx from 'classnames';
 
 import get from 'lodash/get';
@@ -37,12 +36,6 @@ const PvpSeason = ({ standing, season, small }) => {
   );
 };
 
-PvpSeason.propTypes = {
-  standing: PropTypes.object,
-  season: PropTypes.object,
-  small: PropTypes.bool,
-};
-
 const PvpLeague = ({ standings, seasons }) => {
   const sortedSeasons = sortBy(seasons, (season) => new Date(season.end));
 
@@ -52,11 +45,6 @@ const PvpLeague = ({ standings, seasons }) => {
   return (
     <PvpSeason season={currentSeason} standing={standing} />
   );
-};
-
-PvpLeague.propTypes = {
-  standings: PropTypes.array,
-  seasons: PropTypes.array,
 };
 
 export default PvpLeague;

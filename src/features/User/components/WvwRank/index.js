@@ -1,4 +1,3 @@
-import { PropTypes } from 'react';
 import reduce from 'lodash/reduce';
 import get from 'lodash/get';
 import T from 'i18n-react';
@@ -132,12 +131,6 @@ const WvwRank = ({ rank, worldId, worlds }) => {
       subTitle={<span><Redacted redact={redact}>{rankName}</Redacted> for {worldName}</span>}
     />
   );
-};
-
-WvwRank.propTypes = {
-  rank: PropTypes.number,
-  worldId: PropTypes.number,
-  worlds: PropTypes.object,
 };
 
 export default WvwRank;

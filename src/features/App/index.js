@@ -2,13 +2,28 @@
 
 import type { SubmitNotification } from './app.reducer';
 
+import 'normalize.css';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import 'normalize.css';
+import { Route, Switch } from 'react-router-dom';
 
 import '../../styles.less';
 import styles from './styles.less';
 
+import Home from 'features/Home';
+import Login from 'features/Login';
+import Join from 'features/Join';
+import User from 'features/User';
+import ForgotMyPassword from 'features/ForgotMyPassword';
+import Guild from 'features/Guild';
+import Settings from 'features/Settings';
+import Embeds from 'features/Embeds';
+import Search from 'features/Search';
+import Character from 'features/Character';
+import NotFound from 'features/NotFound';
+import Statistics from 'features/Statistics';
+import Leaderboards from 'features/Leaderboards';
+import authenticatedRoute from 'features/Auth/route';
 import notifications from './notifications';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -66,7 +81,22 @@ export default class App extends Component {
       <div className={styles.root}>
         <Header compact={this.state.smallHeader} />
 
-        {this.props.children}
+        <Switch>
+          <Route exact path="/embeds" component={Embeds} />
+          <Route exact path="/statistics" component={Statistics} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/join" component={Join} />
+          <Route exact path="/search/:term" component={Search} />
+          <Route exact path="/settings" component={authenticatedRoute(Settings)} />
+          <Route exact path="/forgot-my-password" component={ForgotMyPassword} />
+          <Route exact path="/leaderboards/:type" component={Leaderboards} />
+          <Route exact path="/leaderboards/:type/:region" component={Leaderboards} />
+          <Route exact path="/404" component={NotFound} />
+          <Route exact path="/g/:guildName" component={Guild} />
+          <Route exact path="/:alias" component={User} />
+          <Route exact path="/:alias/c/:character" component={Character} />
+          <Route exact path="/" component={Home} />
+        </Switch>
 
         <NotificationBox className={styles.notificationBox} />
         <Footer />

@@ -1,5 +1,5 @@
-import { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { put } from 'axios';
 import T from 'i18n-react';
 
@@ -14,10 +14,6 @@ import config from 'config';
 import styles from '../../styles.less';
 
 export default class Finish extends Component {
-  static propTypes = {
-    initialToken: PropTypes.string,
-  };
-
   state = {
     token: this.props.initialToken || '',
     message: this.props.initialToken ? '' : T.translate('forgotPassword.checkEmail'),

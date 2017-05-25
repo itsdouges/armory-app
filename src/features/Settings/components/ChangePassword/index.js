@@ -1,4 +1,4 @@
-import { Component, PropTypes } from 'react';
+import { Component } from 'react';
 import T from 'i18n-react';
 
 import styles from './styles.less';
@@ -9,15 +9,6 @@ import Button from 'common/components/Button';
 import PasswordForm from 'common/components/PasswordForm';
 
 export default class ChangePassword extends Component {
-  static propTypes = {
-    change: PropTypes.func,
-    valid: PropTypes.bool,
-    validate: PropTypes.func,
-    error: PropTypes.string,
-    busy: PropTypes.bool,
-    message: PropTypes.string,
-  };
-
   state = {
     currentPassword: '',
     password: '',

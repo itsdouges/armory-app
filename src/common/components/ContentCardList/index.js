@@ -4,7 +4,7 @@ import type { ContentType } from 'common/components/ContentCard';
 
 import ContentCard from 'common/components/ContentCard';
 import Card from 'common/components/Card';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import styles from './styles.less';
 import cx from 'classnames';
 

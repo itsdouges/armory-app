@@ -1,4 +1,3 @@
-import { PropTypes } from 'react';
 import T from 'i18n-react';
 
 import styles from './styles.less';
@@ -73,11 +72,6 @@ PvpStats.defaultProps = {
     byes: 0,
     desertions: 0,
   },
-};
-
-PvpStats.propTypes = {
-  title: PropTypes.string,
-  stats: PropTypes.object,
 };
 
 export default PvpStats;

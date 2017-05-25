@@ -1,5 +1,3 @@
-import { PropTypes } from 'react';
-
 import ProgressBar from 'common/components/ProgressBar';
 import Summary from 'common/layouts/Summary';
 import T from 'i18n-react';
@@ -47,13 +45,6 @@ const RaidSummary = ({ userAchievements, className, simple }) => {
       }
     />
   );
-};
-
-RaidSummary.propTypes = {
-  className: PropTypes.string,
-  achievements: PropTypes.object,
-  userAchievements: PropTypes.array,
-  simple: PropTypes.bool,
 };
 
 export default RaidSummary;

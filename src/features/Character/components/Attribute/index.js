@@ -1,4 +1,3 @@
-import { PropTypes } from 'react';
 import styles from './styles.less';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import cx from 'classnames';
@@ -59,10 +58,5 @@ const Attribute = ({ value, name }) => (
     </div>
   </TooltipTrigger>
 );
-
-Attribute.propTypes = {
-  value: PropTypes.any,
-  name: PropTypes.string,
-};
 
 export default Attribute;

@@ -1,4 +1,3 @@
-import { PropTypes } from 'react';
 import reduce from 'lodash/reduce';
 import maxBy from 'lodash/maxBy';
 import upperFirst from 'lodash/upperFirst';
@@ -42,10 +41,6 @@ const FavouriePvpClass = ({ professions }) => {
       }
     />
   );
-};
-
-FavouriePvpClass.propTypes = {
-  professions: PropTypes.object,
 };
 
 export default FavouriePvpClass;

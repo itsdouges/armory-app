@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import config from 'config';
-import { browserHistory } from 'react-router';
+import { history } from 'Router';
 import get from 'lodash/get';
 import forEach from 'lodash/forEach';
 
@@ -103,7 +103,7 @@ export function fetchCharacter (character: string, { redirect404 = true, basicLo
           dispatch(actions.fetchAmulets(amulets));
           dispatch(actions.fetchSpecializations(specializations));
         }
-      }, () => redirect404 && browserHistory.replace('/404'));
+      }, () => redirect404 && history.replace('/404'));
   };
 }
 

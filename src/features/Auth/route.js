@@ -4,7 +4,7 @@ import type { Children } from 'react';
 import type { InjectedProps } from './data';
 
 import { Component } from 'react';
-import { browserHistory } from 'react-router';
+import { history } from 'Router';
 import authData from './data';
 import ProgressIcon from 'common/components/Icon/Progress';
 
@@ -21,7 +21,7 @@ const authenticatedRoute = (ComposedComponent: Children) => authData(class AuthO
 
   redirectIfNeeded () {
     if (!this.props.checkingAuthentication && !this.props.authenticated) {
-      browserHistory.replace('/login');
+      history.replace('/login');
     }
   }
 

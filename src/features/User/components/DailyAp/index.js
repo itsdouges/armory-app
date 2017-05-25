@@ -1,5 +1,3 @@
-import { PropTypes } from 'react';
-
 import Summary from 'common/layouts/Summary';
 import ProgressBar from 'common/components/ProgressBar';
 import T from 'i18n-react';
@@ -20,11 +18,6 @@ const DailyAp = ({ dailyAp, monthlyAp }) => {
       }
     />
   );
-};
-
-DailyAp.propTypes = {
-  dailyAp: PropTypes.number,
-  monthlyAp: PropTypes.number,
 };
 
 export default DailyAp;

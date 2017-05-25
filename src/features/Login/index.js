@@ -1,5 +1,5 @@
-import { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import T from 'i18n-react';
 
@@ -22,13 +22,6 @@ function mapStateToProps (state) {
 }
 
 class Login extends Component {
-  static propTypes = {
-    router: PropTypes.object,
-    dispatch: PropTypes.func,
-    busy: PropTypes.bool,
-    error: PropTypes.string,
-  };
-
   state = {
     email: '',
     password: '',

@@ -3,7 +3,7 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import T from 'i18n-react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import type { Guild as GuildType } from 'flowTypes';
 
@@ -39,7 +39,7 @@ export default class Guild extends Component {
   };
 
   componentWillMount () {
-    const { guildName } = this.props.routeParams;
+    const { guildName } = this.props.match.params;
     const { dispatchSelectGuild, dispatchFetchGuild } = this.props;
 
     dispatchSelectGuild(guildName);
@@ -47,7 +47,7 @@ export default class Guild extends Component {
   }
 
   render () {
-    const { guild, routeParams: { guildName } } = this.props;
+    const { guild, match: { params: { guildName } } } = this.props;
 
     const showGuildLeader = !guild || guild.leader !== null;
     const claimed = guild && guild.claimed;

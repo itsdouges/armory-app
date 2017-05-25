@@ -1,4 +1,4 @@
-import { Component, PropTypes } from 'react';
+import { Component } from 'react';
 import { post } from 'axios';
 import T from 'i18n-react';
 
@@ -10,10 +10,6 @@ import config from 'config';
 import styles from '../../styles.less';
 
 export default class Start extends Component {
-  static propTypes = {
-    next: PropTypes.func,
-  };
-
   state = {
     email: '',
     error: '',

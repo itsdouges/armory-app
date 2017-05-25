@@ -1,6 +1,6 @@
 import axios from 'axios';
 import config from 'config';
-import { browserHistory } from 'react-router';
+import { history } from 'Router';
 
 export const FETCHING_TOKEN = 'FETCHING_TOKEN';
 export const FETCH_TOKEN_RESULT = 'FETCH_TOKEN_RESULT';
@@ -46,7 +46,7 @@ export function fetchToken (email, password) {
 
         dispatch(fetchTokenSuccess(combinedToken));
         dispatch(fetchingToken(false));
-        browserHistory.push('/me');
+        history.push('/settings');
       }, ({ response }) => {
         dispatch(fetchTokenError(response.data.error_description));
         dispatch(fetchingToken(false));

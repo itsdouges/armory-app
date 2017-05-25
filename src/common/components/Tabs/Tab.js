@@ -1,6 +1,6 @@
 // @flow
 
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import cx from 'classnames';
 
 import Flair from 'common/components/Flair';

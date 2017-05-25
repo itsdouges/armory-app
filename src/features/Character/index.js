@@ -6,7 +6,7 @@ import type { Character as CharacterType, Gw2Title } from 'flowTypes';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import T from 'i18n-react';
 
 import { topSelector } from './characters.reducer';
@@ -51,13 +51,13 @@ export default class Character extends Component {
   }
 
   componentDidUpdate (prevProps: Props) {
-    if (prevProps.routeParams.character !== this.props.routeParams.character) {
+    if (prevProps.match.params.character !== this.props.match.params.character) {
       this.loadCharacter();
     }
   }
 
   loadCharacter () {
-    const { character, alias } = this.props.routeParams;
+    const { character, alias } = this.props.match.params;
 
     this.props.fetchCharacter(character);
     this.props.selectCharacter(character);
@@ -66,8 +66,7 @@ export default class Character extends Component {
 
   render () {
     const {
-      routeParams: { alias, character: characterName },
-      routeParams,
+      match: { params: { alias, character: characterName } },
       character,
       title,
     } = this.props;
@@ -81,7 +80,7 @@ export default class Character extends Component {
 
     return (
       <Content
-        title={`${routeParams.character} | ${alias}`}
+        title={`${character} | ${alias}`}
         type="characters"
         content={character}
         description={buildDescription(character)}

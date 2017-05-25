@@ -5,7 +5,7 @@ import type { AuthenticatedUser } from 'flowTypes';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
-import { browserHistory } from 'react-router';
+import { history } from 'Router';
 import T from 'i18n-react';
 
 import styles from './styles.less';
@@ -87,7 +87,7 @@ class Settings extends Component {
 
   signOut = (e: SyntheticEvent) => {
     e.preventDefault();
-    browserHistory.replace('/');
+    history.replace('/');
     this.props.clearUserData();
   };
 

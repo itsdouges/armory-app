@@ -1,4 +1,3 @@
-import { PropTypes } from 'react';
 import get from 'lodash/get';
 import startCase from 'lodash/startCase';
 
@@ -22,11 +21,6 @@ const World = ({ id, worlds }) => {
 
 World.defaultProps = {
   worlds: {},
-};
-
-World.propTypes = {
-  id: PropTypes.number,
-  worlds: PropTypes.object,
 };
 
 export default World;

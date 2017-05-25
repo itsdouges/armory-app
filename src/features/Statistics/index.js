@@ -1,6 +1,6 @@
 // @flow
 
-import { PropTypes, Component } from 'react';
+import { Component } from 'react';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import T from 'i18n-react';
@@ -71,11 +71,6 @@ function mapRawStats (stats) {
 
 @connect(selector)
 class Statistics extends Component {
-  static propTypes = {
-    dispatch: PropTypes.func,
-    armoryStats: PropTypes.object,
-  };
-
   componentWillMount () {
     this.props.dispatch(fetchStatistics());
   }
