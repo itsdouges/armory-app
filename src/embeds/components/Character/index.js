@@ -8,6 +8,7 @@ import includes from 'lodash/includes';
 import get from 'lodash/get';
 import cx from 'classnames';
 
+import config from 'config';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 import ContentCard from 'common/components/ContentCard';
 
@@ -86,7 +87,7 @@ export default class CharacterLite extends Component {
         </div>
 
         <a
-          href={`/${safeCharacter.alias}/c/${safeCharacter.name}`}
+          href={`${config.webUrl}/${safeCharacter.alias}/c/${safeCharacter.name}`}
           className={styles.header}
         >
           <ContentCard content={character} />
