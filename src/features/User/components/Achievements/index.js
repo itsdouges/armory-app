@@ -91,9 +91,9 @@ class UserAchievements extends Component {
 
     this.props.fetchAchievements(categories[id].achievements);
 
-    this.setState({
-      selectedCategory: id,
-    });
+    // this.setState({
+    //   selectedCategory: id,
+    // });
   };
 
   selectGroup = (id) => {
@@ -105,7 +105,7 @@ class UserAchievements extends Component {
   render () {
     const { groups, achievements, categories, userAchievements } = this.props;
     const { selectedCategory, selectedGroup } = this.state;
-    const category = categories[selectedCategory] || { achievements: emptyAchievements, icon: '' };
+    // const category = categories[this.props.match.params.category] || { achievements: emptyAchievements, icon: '' };
 
     const colour = colourMap[selectedCategory];
     const orderedGroups = map(groups, (value) => (value.id ? value : null))
@@ -125,7 +125,7 @@ class UserAchievements extends Component {
             {orderedGroups.map((group) =>
               <li key={group.id}>
                 <Group
-                  baseUrl={this.props.match.url}
+                  basePath={this.props.match.url}
                   userAchievements={userAchievements}
                   categoryData={categories}
                   onClick={() => this.selectGroup(group.id)}
@@ -138,26 +138,48 @@ class UserAchievements extends Component {
           </ol>
         </div>
 
-        <div className={styles.achievementsContainer}>
-          <div className={styles.categoryStrap}>
-            <Icon size="small" src={category.icon} />
-            <h3 className={styles.categoryName}>
-              {category.name || <span className={styles.loading}>Loading Category...</span>}
-            </h3>
-          </div>
+        <Switch>
+          {orderedGroups.map((group) => {
+            if (!group) {
+              return null;
+            }
 
-          <ol className={styles.achievements}>
-            {category.achievements.map((id, index) =>
-              <li key={id || index} className={styles.achievement}>
-                <Achievement
-                  icon={category.icon}
-                  achievement={achievements[id]}
-                  colour={colour}
-                  {...userAchievements[id]}
-                />
-              </li>)}
-          </ol>
-        </div>
+            return group.categories.map((categoryId) => (
+              <Route
+                exact
+                key={`${this.props.match.url}/${categoryId}`}
+                path={`${this.props.match.url}/${categoryId}`}
+                render={() => {
+                  const category = categories[categoryId] || { achievements: emptyAchievements, icon: '' };
+
+                  return (
+                    <div className={styles.achievementsContainer}>
+                      <div className={styles.categoryStrap}>
+                        <Icon size="small" src={category.icon} />
+                        <h3 className={styles.categoryName}>
+                          {category.name || <span className={styles.loading}>Loading Category...</span>}
+                        </h3>
+                      </div>
+
+                      <ol className={styles.achievements}>
+                        {category.achievements.map((id, index) => (
+                          <li key={id || index} className={styles.achievement}>
+                            <Achievement
+                              icon={category.icon}
+                              achievement={achievements[id]}
+                              colour={colour}
+                              {...userAchievements[id]}
+                            />
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  );
+                }}
+              />
+            ));
+          }).reduce((arr, group) => arr.concat(group), [])}
+        </Switch>
       </Container>
     );
   }

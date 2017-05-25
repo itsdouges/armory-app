@@ -2,27 +2,22 @@
 
 import type { Children } from 'react';
 
-import { NavLink } from 'react-router-dom';
 import cx from 'classnames';
-
 import styles from './styles.less';
 
 type Props = {
-  basePath: string,
   name: string,
   className?: string,
   icon?: Children,
-  onClick?: () => void,
+  selected?: boolean,
   subCategory?: boolean,
   rightComponent?: Children,
 };
 
-const AchievementCategory = ({ basePath, name, icon, className, onClick, subCategory, rightComponent }: Props) => (
-  <NavLink
-    to={`${basePath}/asdasd`}
-    onClick={onClick}
-    activeClassName={styles.selected}
+const AchievementCategory = ({ name, icon, className, selected, subCategory, rightComponent }: Props) => (
+  <div
     className={cx(styles.root, className, {
+      [styles.selected]: selected,
       [styles.subCategory]: subCategory,
     })}
   >
@@ -31,7 +26,7 @@ const AchievementCategory = ({ basePath, name, icon, className, onClick, subCate
       <span>{name || <span className={styles.loading}>Loading Category...</span>}</span>
       {rightComponent && <span className={styles.rightComponent}>{rightComponent}</span>}
     </span>
-  </NavLink>
+  </div>
 );
 
 export default AchievementCategory;

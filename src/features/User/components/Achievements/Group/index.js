@@ -3,6 +3,8 @@
 import type { AchievementCategories } from 'flowTypes';
 
 import cx from 'classnames';
+import { NavLink } from 'react-router-dom';
+
 import SvgIcon from 'common/components/Icon/Svg';
 import Icon from 'common/components/Icon';
 
@@ -72,14 +74,14 @@ const AchievementGroup = ({
 
   return (
     <div className={cx({ [styles.selected]: selected })}>
-      <Category
-        basePath={basePath}
-        selected={selected}
-        onClick={onClick}
-        name={name}
-        rightComponent={groupTally}
-        icon={<SvgIcon name="arrow-down" className={styles.icon} />}
-      />
+      <button onClick={onClick} className={styles.categoryButton}>
+        <Category
+          selected={selected}
+          name={name}
+          rightComponent={groupTally}
+          icon={<SvgIcon name="arrow-down" className={styles.icon} />}
+        />
+      </button>
 
       <ol className={styles.categories}>
         {categories.map((id) => {
@@ -93,14 +95,15 @@ const AchievementGroup = ({
 
           return (
             <li key={id} style={{ order: category.order }}>
-              <Category
-                subCategory
-                name={category.name}
-                rightComponent={categoryTally}
-                icon={<Icon src={category.icon} />}
-                selected={selectedCategory === id}
-                onClick={() => onCategoryClick(id)}
-              />
+              <NavLink to={`${basePath}/${id}`} onClick={() => onCategoryClick(id)}>
+                <Category
+                  subCategory
+                  name={category.name}
+                  rightComponent={categoryTally}
+                  icon={<Icon src={category.icon} />}
+                  // selected={selectedCategory === id}
+                />
+              </NavLink>
             </li>
           );
         })}

@@ -51,7 +51,7 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath }: Tab
       <Switch>
         {tabs.map((tab) => (
           <Route
-            exact
+            exact={!tab.path}
             key={tab.path}
             path={`${basePath}${tab.path}`}
             render={(props) => {
