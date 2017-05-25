@@ -1,7 +1,7 @@
 // @flow
 
 import axios from 'axios';
-import { history } from 'Router';
+import history from 'history';
 
 import { paginatedThunk } from 'lib/redux';
 import { readPvpSeasonIds } from 'lib/gw2';

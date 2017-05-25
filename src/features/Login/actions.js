@@ -1,6 +1,6 @@
 import axios from 'axios';
 import config from 'config';
-import { history } from 'Router';
+import history from 'history';
 
 export const FETCHING_TOKEN = 'FETCHING_TOKEN';
 export const FETCH_TOKEN_RESULT = 'FETCH_TOKEN_RESULT';

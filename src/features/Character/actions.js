@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import config from 'config';
-import { history } from 'Router';
+import history from 'history';
 import get from 'lodash/get';
 import forEach from 'lodash/forEach';
 

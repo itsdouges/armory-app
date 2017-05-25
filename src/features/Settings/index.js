@@ -5,7 +5,7 @@ import type { AuthenticatedUser } from 'flowTypes';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
-import { history } from 'Router';
+import history from 'history';
 import T from 'i18n-react';
 
 import styles from './styles.less';

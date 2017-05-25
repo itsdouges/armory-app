@@ -3,7 +3,7 @@
 import cx from 'classnames';
 import T from 'i18n-react';
 
-import { history } from 'Router';
+import history from 'history';
 import styles from './styles.less';
 import Textbox from 'common/components/Textbox';
 import SvgIcon from 'common/components/Icon/Svg';

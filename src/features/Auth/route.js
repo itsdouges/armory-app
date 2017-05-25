@@ -4,7 +4,7 @@ import type { Children } from 'react';
 import type { InjectedProps } from './data';
 
 import { Component } from 'react';
-import { history } from 'Router';
+import history from 'history';
 import authData from './data';
 import ProgressIcon from 'common/components/Icon/Progress';
 

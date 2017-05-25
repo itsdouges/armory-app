@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import config from 'config';
-import { history } from 'Router';
+import history from 'history';
 import { paginatedThunk } from 'lib/redux';
 
 export const FETCHING_GUILD = 'FETCHING_GUILD';

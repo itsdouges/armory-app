@@ -1,6 +1,6 @@
 // @flow
 
-import createHistory from 'history/createBrowserHistory'
+import history from './history';
 import { Router, Route, Switch } from 'react-router-dom';
 
 import { pageView } from 'lib/tracking';
@@ -12,8 +12,6 @@ function onRouteUpdate () {
   window.scrollTo(0, 0);
   pageView();
 }
-
-export const history = createHistory();
 
 const Routes = () => (
   <Router history={history} onUpdate={onRouteUpdate}>
