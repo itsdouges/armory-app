@@ -138,48 +138,36 @@ class UserAchievements extends Component {
           </ol>
         </div>
 
-        <Switch>
-          {orderedGroups.map((group) => {
-            if (!group) {
-              return null;
-            }
+        <Route
+          path={`${this.props.match.url}/:categoryId`}
+          render={({ match }) => {
+            const category = categories[match.params.categoryId] || { achievements: emptyAchievements, icon: '' };
 
-            return group.categories.map((categoryId) => (
-              <Route
-                exact
-                key={`${this.props.match.url}/${categoryId}`}
-                path={`${this.props.match.url}/${categoryId}`}
-                render={() => {
-                  const category = categories[categoryId] || { achievements: emptyAchievements, icon: '' };
+            return (
+              <div className={styles.achievementsContainer}>
+                <div className={styles.categoryStrap}>
+                  <Icon size="small" src={category.icon} />
+                  <h3 className={styles.categoryName}>
+                    {category.name || <span className={styles.loading}>Loading Category...</span>}
+                  </h3>
+                </div>
 
-                  return (
-                    <div className={styles.achievementsContainer}>
-                      <div className={styles.categoryStrap}>
-                        <Icon size="small" src={category.icon} />
-                        <h3 className={styles.categoryName}>
-                          {category.name || <span className={styles.loading}>Loading Category...</span>}
-                        </h3>
-                      </div>
-
-                      <ol className={styles.achievements}>
-                        {category.achievements.map((id, index) => (
-                          <li key={id || index} className={styles.achievement}>
-                            <Achievement
-                              icon={category.icon}
-                              achievement={achievements[id]}
-                              colour={colour}
-                              {...userAchievements[id]}
-                            />
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
-                  );
-                }}
-              />
-            ));
-          }).reduce((arr, group) => arr.concat(group), [])}
-        </Switch>
+                <ol className={styles.achievements}>
+                  {category.achievements.map((id, index) => (
+                    <li key={id || index} className={styles.achievement}>
+                      <Achievement
+                        icon={category.icon}
+                        achievement={achievements[id]}
+                        colour={colour}
+                        {...userAchievements[id]}
+                      />
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            );
+          }}
+        />
       </Container>
     );
   }
