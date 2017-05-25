@@ -11,6 +11,8 @@ import Icon from 'common/components/Icon';
 import Category from '../Category';
 import styles from './styles.less';
 
+import { DEFAULT_CATEGORY_ID } from '../CategoryPage';
+
 type Props = {
   name: string,
   categories: Array<number>,
@@ -60,7 +62,6 @@ const AchievementGroup = ({
   categoryData,
   selected,
   onClick,
-  onCategoryClick,
   selectedCategory,
   userAchievements,
 }: Props) => {
@@ -92,16 +93,17 @@ const AchievementGroup = ({
           }
 
           const categoryTally = !!achievementCount && `${categoryCompletedMap[id] || 0}/${achievementCount}`;
+          const categoryPath = DEFAULT_CATEGORY_ID === id ? '' : `/${id}`;
 
           return (
             <li key={id} style={{ order: category.order }}>
-              <NavLink to={`${basePath}/${id}`} onClick={() => onCategoryClick(id)}>
+              <NavLink to={`${basePath}${categoryPath}`}>
                 <Category
                   subCategory
                   name={category.name}
                   rightComponent={categoryTally}
                   icon={<Icon src={category.icon} />}
-                  // selected={selectedCategory === id}
+                  selected={selectedCategory === id}
                 />
               </NavLink>
             </li>
