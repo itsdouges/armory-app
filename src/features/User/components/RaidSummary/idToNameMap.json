@@ -1,13 +1,13 @@
 {
-  "2654": "Vg", // Vale Guardian
-  "2667": "Gors", // Gorseval
-  "2659": "Sab",  // Sabetha
-  "2826": "Cm", // Cave Monster
-  "3017": "Xr", // Xera
-  "3014": "Kc", // Keep Construct
-  "2836": "Mt", // Matthias
-  "3321": "Mrst", // Mursaat Overseer
-  "3347": "Smg", // Samarog
-  "3349": "Crn", // Cairn the Indomitable
-  "3364": "Dmn" // Demon
+  "2654": "Vg",
+  "2667": "Gors",
+  "2659": "Sab",
+  "2826": "Cm",
+  "3017": "Xr",
+  "3014": "Kc",
+  "2836": "Mt",
+  "3321": "Mrst",
+  "3347": "Smg",
+  "3349": "Crn",
+  "3364": "Dmn"
 }
