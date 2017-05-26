@@ -131,4 +131,5 @@ class Statistics extends Component {
       </Container>
     );
   }
-});
+}
+);
