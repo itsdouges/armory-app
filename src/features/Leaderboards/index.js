@@ -8,7 +8,13 @@ import styles from './styles.less';
 import PvpLeaderboard from './components/Pvp';
 import DisplayAd from 'common/components/DisplayAd';
 
-const Leaderboards = ({ match }) => (
+type Props = {
+  match: {
+    url: string,
+  },
+};
+
+const Leaderboards = ({ match }: Props) => (
   <div className={styles.root}>
     <DisplayAd className={styles.ad} />
 

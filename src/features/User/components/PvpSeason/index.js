@@ -1,3 +1,5 @@
+// @flow
+
 import cx from 'classnames';
 
 import get from 'lodash/get';
@@ -8,7 +10,13 @@ import last from 'lodash/last';
 import styles from './styles.less';
 import Redacted from 'common/components/Redacted';
 
-const PvpSeason = ({ standing, season, small }) => {
+type Props = {
+  standing: Object,
+  season: Object,
+  small?: boolean,
+};
+
+const PvpSeason = ({ standing, season, small }: Props) => {
   const divisionId = get(standing, 'current.division');
   const division = get(season, `divisions[${divisionId}]`, {});
   const redact = !division.name;
@@ -36,7 +44,12 @@ const PvpSeason = ({ standing, season, small }) => {
   );
 };
 
-const PvpLeague = ({ standings, seasons }) => {
+type PvpLeagueProps = {
+  standings: Array<Object>,
+  seasons: Array<Object>,
+}
+
+const PvpLeague = ({ standings, seasons }: PvpLeagueProps) => {
   const sortedSeasons = sortBy(seasons, (season) => new Date(season.end));
 
   const currentSeason = last(sortedSeasons) || {};

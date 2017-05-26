@@ -39,6 +39,9 @@ type Props = {
   categories: AchievementCategories,
   achievements: Achievements,
   userAchievements: UserAchievementsMap,
+  match: {
+    url: string,
+  },
 };
 
 type State = {

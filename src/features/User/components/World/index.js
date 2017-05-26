@@ -1,10 +1,17 @@
+// @flow
+
 import get from 'lodash/get';
 import startCase from 'lodash/startCase';
 
 import Summary from 'common/layouts/Summary';
 import Redacted from 'common/components/Redacted';
 
-const World = ({ id, worlds }) => {
+type Props = {
+  id: number,
+  worlds: Object,
+};
+
+const World = ({ id, worlds }: Props) => {
   const world = worlds[id];
   const name = get(world, 'name', '????');
   const population = startCase(get(world, 'population', '????'));

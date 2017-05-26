@@ -1,5 +1,7 @@
 // @flow
 
+import type { AchievementCategories, Achievements, UserAchievementsMap } from 'flowTypes';
+
 import { Component } from 'react';
 import { makeStubItems } from 'lib/paginator';
 import Icon from 'common/components/Icon';
@@ -11,20 +13,26 @@ import styles from './styles.less';
 const emptyAchievements = makeStubItems(24).rows;
 export const DEFAULT_CATEGORY_ID = 97; // Basic category
 
-type Props = {};
+type Props = {
+  fetchAchievements: (Array<number>) => Promise<*>,
+  categories: AchievementCategories,
+  achievements: Achievements,
+  userAchievements: UserAchievementsMap,
+  match?: {
+    params: {
+      categoryId: string,
+    },
+  },
+};
 
 export default class CategoryPage extends Component {
   props: Props;
-
-  getCategoryId (props = this.props) {
-    return props.match ? props.match.params.categoryId : DEFAULT_CATEGORY_ID;
-  }
 
   componentWillMount () {
     this.fetchData();
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps: Props) {
     const currentCategory = this.props.categories[this.getCategoryId()];
     const nextCategory = nextProps.categories[this.getCategoryId(nextProps)];
 
@@ -33,7 +41,11 @@ export default class CategoryPage extends Component {
     }
   }
 
-  fetchData (props = this.props) {
+  getCategoryId (props: Props = this.props): number {
+    return props.match ? +props.match.params.categoryId : DEFAULT_CATEGORY_ID;
+  }
+
+  fetchData (props: Props = this.props) {
     const { categories } = props;
     const categoryId = this.getCategoryId(props);
 

@@ -31,8 +31,11 @@ export default connect(selector, {
 class Guild extends Component {
   props: {
     guild?: GuildType,
-    routeParams: {
-      guildName: string,
+    match: {
+      url: string,
+      params: {
+        guildName: string,
+      },
     },
     dispatchSelectGuild: (name: string) => void,
     dispatchFetchGuild: (name: string) => void,

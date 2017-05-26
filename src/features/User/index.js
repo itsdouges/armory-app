@@ -49,18 +49,6 @@ export const selector = createSelector(
   })
 );
 
-type Props = InjectedProps & {
-  user?: UserType,
-  dispatchFetchUser: () => void,
-  dispatchSelectUser: () => void,
-  routeParams: {
-    alias: string,
-  },
-  worlds: Worlds,
-  pvpSeasons: PvpSeasons,
-  maps: Maps,
-};
-
 function getActiveStanding ({ pvpStandings = [] } = {}, pvpSeasons) {
   const [activePvpSeason] = filter(pvpSeasons, ({ active }) => active);
   const seasonId = activePvpSeason && activePvpSeason.id;
@@ -70,6 +58,21 @@ function getActiveStanding ({ pvpStandings = [] } = {}, pvpSeasons) {
 
 const addHash = (str) => (str ? `#${str}` : '-');
 const makeKey = (content, index) => (content ? content.name : index);
+
+type Props = InjectedProps & {
+  user?: UserType,
+  dispatchFetchUser: () => void,
+  dispatchSelectUser: () => void,
+  match: {
+    url: string,
+    params: {
+      alias: string,
+    },
+  },
+  worlds: Worlds,
+  pvpSeasons: PvpSeasons,
+  maps: Maps,
+};
 
 export default connect(selector, {
   dispatchFetchUser: fetchUser,

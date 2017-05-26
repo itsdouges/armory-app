@@ -26,9 +26,12 @@ const buildDescription = (character = {}) =>
 type Props = {
   character?: CharacterType,
   mode: 'pve' | 'pvp' | 'wvw',
-  routeParams: {
-    character: string,
-    alias: string,
+  match: {
+    url: string,
+    params: {
+      character: string,
+      alias: string,
+    },
   },
   title: Gw2Title,
   fetchCharacter: (name: string) => void,
@@ -80,7 +83,7 @@ export default class Character extends Component {
 
     return (
       <Content
-        title={`${character} | ${alias}`}
+        title={`${characterName} | ${alias}`}
         type="characters"
         content={character}
         basePath={this.props.match.url}

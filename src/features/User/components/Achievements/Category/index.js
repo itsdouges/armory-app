@@ -15,6 +15,7 @@ type Props = {
   selected?: boolean,
   subCategory?: boolean,
   rightComponent?: Children,
+  onClick?: () => void,
 };
 
 const AchievementCategory = ({ name, icon, className, selected, subCategory, rightComponent, to, onClick }: Props) => {

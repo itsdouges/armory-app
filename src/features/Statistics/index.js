@@ -69,10 +69,21 @@ function mapRawStats (stats) {
   });
 }
 
-@connect(selector)
+type Props = {
+  fetchStatistics: () => Promise<>,
+  armoryStats: {
+    characters: Object,
+  },
+};
+
+export default connect(selector, {
+  fetchStatistics,
+})(
 class Statistics extends Component {
+  props: Props;
+
   componentWillMount () {
-    this.props.dispatch(fetchStatistics());
+    this.props.fetchStatistics();
   }
 
   render () {
@@ -120,6 +131,4 @@ class Statistics extends Component {
       </Container>
     );
   }
-}
-
-export default Statistics;
+});

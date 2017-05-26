@@ -1,3 +1,5 @@
+// @flow
+
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -21,29 +23,35 @@ function mapStateToProps (state) {
   };
 }
 
+type Props = {
+  error?: string,
+  busy?: boolean,
+  fetchToken: (string, string) => Promise<>,
+};
+
+export default connect(mapStateToProps, {
+  fetchToken,
+})(
 class Login extends Component {
+  props: Props;
+
   state = {
     email: '',
     password: '',
     canLogin: false,
   };
 
-  fieldChanged = ({ target: { id, value } }) => {
-    const newState = {
-      ...this.state,
+  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent) => {
+    this.setState((prevState) => ({
       [id]: value,
-    };
-
-    const canLogin = newState.email && newState.password;
-    newState.canLogin = canLogin;
-
-    this.setState(newState);
+      canLogin: prevState.email && prevState.password,
+    }));
   };
 
   login = (event) => {
     event.preventDefault();
 
-    this.props.dispatch(fetchToken(this.state.email, this.state.password));
+    this.props.fetchToken(this.state.email, this.state.password);
   };
 
   render () {
@@ -60,7 +68,7 @@ class Login extends Component {
             <Textbox
               required
               id="email"
-              placeholder="Email"
+              label="Email"
               value={this.state.email}
               onChange={this.fieldChanged}
             />
@@ -68,7 +76,7 @@ class Login extends Component {
             <Textbox
               required
               id="password"
-              placeholder="Password"
+              label="Password"
               type="password"
               value={this.state.password}
               onChange={this.fieldChanged}
@@ -95,5 +103,4 @@ class Login extends Component {
     );
   }
 }
-
-export default connect(mapStateToProps)(Login);
+);

@@ -1,3 +1,5 @@
+// @flow
+
 import T from 'i18n-react';
 
 import styles from './styles.less';
@@ -24,7 +26,12 @@ function calculateWinLossRatio (stats) {
   };
 }
 
-const PvpStats = ({ stats, title }) => {
+type Props = {
+  stats: Object,
+  title: string,
+};
+
+const PvpStats = ({ stats, title }: Props) => {
   const { current, max, winLossRatio } = calculateWinLossRatio(stats);
   const { wins, losses, byes, desertions } = stats;
 

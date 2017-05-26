@@ -1,3 +1,5 @@
+// @flow
+
 import { Component } from 'react';
 import { post } from 'axios';
 import T from 'i18n-react';
@@ -9,7 +11,13 @@ import Message from 'common/components/Message';
 import config from 'config';
 import styles from '../../styles.less';
 
+type Props = {
+  next: Function,
+};
+
 export default class Start extends Component {
+  props: Props;
+
   state = {
     email: '',
     error: '',

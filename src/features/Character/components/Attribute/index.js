@@ -1,3 +1,5 @@
+// @flow
+
 import styles from './styles.less';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import cx from 'classnames';
@@ -50,7 +52,12 @@ function parseValue (name, value) {
   }
 }
 
-const Attribute = ({ value, name }) => (
+type Props = {
+  value: number,
+  name: string,
+};
+
+const Attribute = ({ value, name }: Props) => (
   <TooltipTrigger data={attributeNameMapping[name]}>
     <div className={styles.root}>
       <Icon className={cx(styles.icon, styles[name])} size="micro" />

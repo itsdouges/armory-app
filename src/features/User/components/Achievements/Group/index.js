@@ -3,7 +3,6 @@
 import type { AchievementCategories } from 'flowTypes';
 
 import cx from 'classnames';
-import { NavLink } from 'react-router-dom';
 
 import SvgIcon from 'common/components/Icon/Svg';
 import Icon from 'common/components/Icon';
@@ -14,13 +13,13 @@ import styles from './styles.less';
 import { DEFAULT_CATEGORY_ID } from '../CategoryPage';
 
 type Props = {
+  basePath: string,
   name: string,
   categories: Array<number>,
   categoryData: AchievementCategories,
   selected: boolean,
   onClick: () => void,
   onCategoryClick: (id: number) => void,
-  selectedCategory: number,
   groups: Array<*>,
   userAchievements: { [number]: any },
 };
@@ -62,7 +61,6 @@ const AchievementGroup = ({
   categoryData,
   selected,
   onClick,
-  selectedCategory,
   userAchievements,
 }: Props) => {
   const {

@@ -1,3 +1,5 @@
+// @flow
+
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { put } from 'axios';
@@ -13,7 +15,13 @@ import { validatePasswords } from 'features/Join/actions';
 import config from 'config';
 import styles from '../../styles.less';
 
+type Props = {
+  initialToken?: string,
+};
+
 export default class Finish extends Component {
+  props: Props;
+
   state = {
     token: this.props.initialToken || '',
     message: this.props.initialToken ? '' : T.translate('forgotPassword.checkEmail'),

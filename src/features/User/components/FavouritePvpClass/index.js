@@ -1,3 +1,5 @@
+// @flow
+
 import reduce from 'lodash/reduce';
 import maxBy from 'lodash/maxBy';
 import upperFirst from 'lodash/upperFirst';
@@ -20,7 +22,11 @@ const calculateFavouriteProfession = (professions) => {
   return maxBy(professionCounts, ({ count }) => count);
 };
 
-const FavouriePvpClass = ({ professions }) => {
+type Props = {
+  professions: Object,
+};
+
+const FavouriePvpClass = ({ professions }: Props) => {
   const { name, count } = calculateFavouriteProfession(professions);
   const redact = count === 0;
 
