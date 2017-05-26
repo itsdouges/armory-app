@@ -21,6 +21,7 @@ import Bags from './components/Bags';
 import styles from './styles.less';
 
 const buildDescription = (character = {}) =>
+  // eslint-disable-next-line max-len
   `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
 
 type Props = {
