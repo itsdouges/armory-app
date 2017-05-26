@@ -23,12 +23,12 @@ const AchievementCategory = ({ name, icon, className, selected, subCategory, rig
 
   const navProps = to ? {
     activeClassName: styles.selected,
+    exact: true,
     to,
   } : null;
 
   return (
     <Container
-      exact
       {...navProps}
       onClick={onClick}
       className={cx(styles.root, className, {

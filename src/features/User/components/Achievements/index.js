@@ -58,7 +58,7 @@ export default connect(selector, {
 class UserAchievements extends Component {
   props: Props;
   state: State = {
-    selectedGroup: DAILY_GROUP_ID,
+    selectedGroup: null,
   };
 
   componentWillMount () {
