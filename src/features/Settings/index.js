@@ -32,7 +32,7 @@ type Props = {
   fetchGw2Tokens: () => void,
   selectPrimaryGw2Token: (string) => void,
   removeGw2Token: (string) => void,
-  changePassword: (string, string) => void,
+  changePassword: (string, string) => Promise<*>,
   validatePasswords: (string, string) => void,
   clearUserData: () => void,
 };
@@ -96,7 +96,7 @@ class Settings extends Component {
   };
 
   changePassword = (currentPassword: string, newPassword: string) => {
-    this.props.changePassword(currentPassword, newPassword);
+    return this.props.changePassword(currentPassword, newPassword);
   };
 
   finishedUploading = () => {

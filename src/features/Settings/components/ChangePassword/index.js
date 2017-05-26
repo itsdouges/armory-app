@@ -11,12 +11,12 @@ import Button from 'common/components/Button';
 import PasswordForm from 'common/components/PasswordForm';
 
 type Props = {
-  message: string,
-  error: string,
-  busy: boolean,
-  valid: boolean,
+  message?: string,
+  error?: string,
+  busy?: boolean,
+  valid?: boolean,
   validate: (string, string) => void,
-  change: (string, string) => Promise<>,
+  change: (string, string) => Promise<*>,
 };
 
 export default class ChangePassword extends Component {

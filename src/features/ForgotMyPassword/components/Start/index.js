@@ -25,7 +25,7 @@ export default class Start extends Component {
     valid: false,
   };
 
-  fieldChanged = ({ target: { id, value } }) => {
+  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent) => {
     const newState = {
       ...this.state,
       [id]: value,
@@ -36,7 +36,7 @@ export default class Start extends Component {
     this.setState(newState);
   };
 
-  begin = (event) => {
+  begin = (event: Event) => {
     event.preventDefault();
 
     this.setState({
@@ -61,7 +61,7 @@ export default class Start extends Component {
         <Textbox
           required
           id="email"
-          placeholder="Email"
+          label="Email"
           value={this.state.email}
           onChange={this.fieldChanged}
         />

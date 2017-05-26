@@ -45,8 +45,8 @@ const PvpSeason = ({ standing, season, small }: Props) => {
 };
 
 type PvpLeagueProps = {
-  standings: Array<Object>,
-  seasons: Array<Object>,
+  standings?: Object,
+  seasons?: Object,
 }
 
 const PvpLeague = ({ standings, seasons }: PvpLeagueProps) => {

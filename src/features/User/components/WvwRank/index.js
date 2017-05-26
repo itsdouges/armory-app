@@ -9,8 +9,8 @@ import Redacted from 'common/components/Redacted';
 import rankToTitleMap from './rankToTitleMap.json';
 
 type Props = {
-  rank: number,
-  worldId: number,
+  rank?: number,
+  worldId?: number,
   worlds: Object,
 }
 
