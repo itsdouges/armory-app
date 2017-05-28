@@ -10,6 +10,9 @@ import { Route, Switch } from 'react-router-dom';
 import '../../styles.less';
 import styles from './styles.less';
 
+import withScroll from 'common/decorators/scrollTopOnMount';
+import authenticatedRoute from 'features/Auth/route';
+
 import Home from 'features/Home';
 import Login from 'features/Login';
 import Join from 'features/Join';
@@ -23,7 +26,21 @@ import Character from 'features/Character';
 import NotFound from 'features/NotFound';
 import Statistics from 'features/Statistics';
 import Leaderboards from 'features/Leaderboards';
-import authenticatedRoute from 'features/Auth/route';
+
+const HomeWithScroll = withScroll(Home);
+const LoginWithScroll = withScroll(Login);
+const JoinWithScroll = withScroll(Join);
+const UserWithScroll = withScroll(User);
+const ForgotMyPasswordWithScroll = withScroll(ForgotMyPassword);
+const GuildWithScroll = withScroll(Guild);
+const SettingsWithScroll = withScroll(authenticatedRoute(Settings));
+const EmbedsWithScroll = withScroll(Embeds);
+const CharacterWithScroll = withScroll(Character);
+const SearchWithScroll = withScroll(Search);
+const NotFoundWithScroll = withScroll(NotFound);
+const StatisticsWithScroll = withScroll(Statistics);
+const LeaderboardsWithScroll = withScroll(Leaderboards);
+
 import notifications from './notifications';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -82,19 +99,19 @@ export default class App extends Component {
         <Header compact={this.state.smallHeader} />
 
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/embeds" component={Embeds} />
-          <Route exact path="/statistics" component={Statistics} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/join" component={Join} />
-          <Route exact path="/search/:term" component={Search} />
-          <Route exact path="/settings" component={authenticatedRoute(Settings)} />
-          <Route exact path="/forgot-my-password" component={ForgotMyPassword} />
-          <Route exact path="/404" component={NotFound} />
-          <Route path="/leaderboards/pvp" component={Leaderboards} />
-          <Route path="/g/:guildName" component={Guild} />
-          <Route path="/:alias/c/:character" component={Character} />
-          <Route path="/:alias" component={User} />
+          <Route exact path="/" component={HomeWithScroll} />
+          <Route exact path="/embeds" component={EmbedsWithScroll} />
+          <Route exact path="/statistics" component={StatisticsWithScroll} />
+          <Route exact path="/login" component={LoginWithScroll} />
+          <Route exact path="/join" component={JoinWithScroll} />
+          <Route exact path="/search/:term" component={SearchWithScroll} />
+          <Route exact path="/settings" component={SettingsWithScroll} />
+          <Route exact path="/forgot-my-password" component={ForgotMyPasswordWithScroll} />
+          <Route exact path="/404" component={NotFoundWithScroll} />
+          <Route path="/leaderboards/pvp" component={LeaderboardsWithScroll} />
+          <Route path="/g/:guildName" component={GuildWithScroll} />
+          <Route path="/:alias/c/:character" component={CharacterWithScroll} />
+          <Route path="/:alias" component={UserWithScroll} />
         </Switch>
 
         <NotificationBox className={styles.notificationBox} />
