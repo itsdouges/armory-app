@@ -2,7 +2,7 @@
 
 import type { AchievementCategories, Achievements, UserAchievementsMap } from 'flowTypes';
 
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import { makeStubItems } from 'lib/paginator';
 import Icon from 'common/components/Icon';
 import colourMap from 'assets/categoryColourMap.json';
@@ -11,21 +11,16 @@ import Achievement from '../Achievement';
 import styles from './styles.less';
 
 const emptyAchievements = makeStubItems(24).rows;
-export const DEFAULT_CATEGORY_ID = 97; // Basic category
 
 type Props = {
   fetchAchievements: (Array<number>) => Promise<*>,
   categories: AchievementCategories,
   achievements: Achievements,
   userAchievements: UserAchievementsMap,
-  match?: {
-    params: {
-      categoryId: string,
-    },
-  },
+  categoryId: number,
 };
 
-export default class CategoryPage extends Component {
+export default class CategoryPage extends PureComponent {
   props: Props;
 
   componentWillMount () {
@@ -33,21 +28,16 @@ export default class CategoryPage extends Component {
   }
 
   componentWillReceiveProps (nextProps: Props) {
-    const currentCategory = this.props.categories[this.getCategoryId()];
-    const nextCategory = nextProps.categories[this.getCategoryId(nextProps)];
+    const currentCategory = this.props.categories[this.props.categoryId];
+    const nextCategory = nextProps.categories[nextProps.categoryId];
 
     if (currentCategory !== nextCategory) {
       this.fetchData(nextProps);
     }
   }
 
-  getCategoryId (props: Props = this.props): number {
-    return props.match ? +props.match.params.categoryId : DEFAULT_CATEGORY_ID;
-  }
-
   fetchData (props: Props = this.props) {
-    const { categories } = props;
-    const categoryId = this.getCategoryId(props);
+    const { categories, categoryId } = props;
 
     const category = categories[categoryId];
     category && props.fetchAchievements(category.achievements);
@@ -56,9 +46,8 @@ export default class CategoryPage extends Component {
   render () {
     const { categories, achievements, userAchievements } = this.props;
 
-    const categoryId = this.getCategoryId();
-    const category = categories[categoryId] || { achievements: emptyAchievements, icon: '' };
-    const colour = colourMap[categoryId];
+    const category = categories[this.props.categoryId] || { achievements: emptyAchievements, icon: '' };
+    const colour = colourMap[this.props.categoryId];
 
     return (
       <div className={styles.achievementsContainer}>

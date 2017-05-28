@@ -10,7 +10,7 @@ import Icon from 'common/components/Icon';
 import Category from '../Category';
 import styles from './styles.less';
 
-import { DEFAULT_CATEGORY_ID } from '../CategoryPage';
+import { DEFAULT_CATEGORY_ID } from '../';
 
 type Props = {
   basePath: string,

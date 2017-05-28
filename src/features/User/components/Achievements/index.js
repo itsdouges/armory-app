@@ -48,6 +48,7 @@ type State = {
   selectedGroup: ?string,
 };
 
+export const DEFAULT_CATEGORY_ID = 97; // Basic category
 const DAILY_GROUP_ID = '18DB115A-8637-4290-A636-821362A3C4A8';
 
 export default connect(selector, {
@@ -116,7 +117,7 @@ class UserAchievements extends Component {
         <Route path={`${this.props.match.url}/:categoryId`}>
           {(props) => (
             <CategoryPage
-              {...props}
+              categoryId={props.match ? props.match.params.categoryId : DEFAULT_CATEGORY_ID}
               categories={categories}
               achievements={achievements}
               userAchievements={userAchievements}
