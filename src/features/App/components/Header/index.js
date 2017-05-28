@@ -3,7 +3,7 @@
 import type { InjectedProps } from 'features/Auth/data';
 
 import { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import T from 'i18n-react';
 import cx from 'classnames';
 

@@ -1,11 +1,16 @@
-import { PropTypes } from 'react';
+// @flow
 
 import Summary from 'common/layouts/Summary';
 import ProgressBar from 'common/components/ProgressBar';
 import T from 'i18n-react';
 import Redacted from 'common/components/Redacted';
 
-const DailyAp = ({ dailyAp, monthlyAp }) => {
+type Props = {
+  dailyAp?: number,
+  monthlyAp?: number,
+};
+
+const DailyAp = ({ dailyAp, monthlyAp }: Props) => {
   const count = (dailyAp + monthlyAp) || 0;
 
   return (
@@ -20,11 +25,6 @@ const DailyAp = ({ dailyAp, monthlyAp }) => {
       }
     />
   );
-};
-
-DailyAp.propTypes = {
-  dailyAp: PropTypes.number,
-  monthlyAp: PropTypes.number,
 };
 
 export default DailyAp;

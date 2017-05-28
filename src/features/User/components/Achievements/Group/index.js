@@ -3,20 +3,23 @@
 import type { AchievementCategories } from 'flowTypes';
 
 import cx from 'classnames';
+
 import SvgIcon from 'common/components/Icon/Svg';
 import Icon from 'common/components/Icon';
 
 import Category from '../Category';
 import styles from './styles.less';
 
+import { DEFAULT_CATEGORY_ID } from '../';
+
 type Props = {
+  basePath: string,
   name: string,
   categories: Array<number>,
   categoryData: AchievementCategories,
   selected: boolean,
   onClick: () => void,
   onCategoryClick: (id: number) => void,
-  selectedCategory: number,
   groups: Array<*>,
   userAchievements: { [number]: any },
 };
@@ -52,13 +55,12 @@ function extractTotals (categories, categoryData, userAchievements) {
 }
 
 const AchievementGroup = ({
+  basePath,
   name,
   categories,
   categoryData,
   selected,
   onClick,
-  onCategoryClick,
-  selectedCategory,
   userAchievements,
 }: Props) => {
   const {
@@ -72,8 +74,8 @@ const AchievementGroup = ({
   return (
     <div className={cx({ [styles.selected]: selected })}>
       <Category
-        selected={selected}
         onClick={onClick}
+        selected={selected}
         name={name}
         rightComponent={groupTally}
         icon={<SvgIcon name="arrow-down" className={styles.icon} />}
@@ -88,16 +90,16 @@ const AchievementGroup = ({
           }
 
           const categoryTally = !!achievementCount && `${categoryCompletedMap[id] || 0}/${achievementCount}`;
+          const categoryPath = DEFAULT_CATEGORY_ID === id ? '' : `/${id}`;
 
           return (
             <li key={id} style={{ order: category.order }}>
               <Category
+                to={`${basePath}${categoryPath}`}
                 subCategory
                 name={category.name}
                 rightComponent={categoryTally}
                 icon={<Icon src={category.icon} />}
-                selected={selectedCategory === id}
-                onClick={() => onCategoryClick(id)}
               />
             </li>
           );

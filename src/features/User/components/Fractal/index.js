@@ -1,11 +1,15 @@
-import { PropTypes } from 'react';
+// @flow
 
 import Summary from 'common/layouts/Summary';
 import ProgressBar from 'common/components/ProgressBar';
 import T from 'i18n-react';
 import Redacted from 'common/components/Redacted';
 
-const Fractal = ({ level }) => {
+type Props = {
+  level?: number,
+};
+
+const Fractal = ({ level }: Props) => {
   const redact = !level;
 
   return (
@@ -20,10 +24,6 @@ const Fractal = ({ level }) => {
       }
     />
   );
-};
-
-Fractal.propTypes = {
-  level: PropTypes.number,
 };
 
 export default Fractal;

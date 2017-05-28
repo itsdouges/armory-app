@@ -1,4 +1,6 @@
-import { Component, PropTypes } from 'react';
+// @flow
+
+import { Component } from 'react';
 import { post } from 'axios';
 import T from 'i18n-react';
 
@@ -9,10 +11,12 @@ import Message from 'common/components/Message';
 import config from 'config';
 import styles from '../../styles.less';
 
+type Props = {
+  next: Function,
+};
+
 export default class Start extends Component {
-  static propTypes = {
-    next: PropTypes.func,
-  };
+  props: Props;
 
   state = {
     email: '',
@@ -21,7 +25,7 @@ export default class Start extends Component {
     valid: false,
   };
 
-  fieldChanged = ({ target: { id, value } }) => {
+  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent) => {
     const newState = {
       ...this.state,
       [id]: value,
@@ -32,7 +36,7 @@ export default class Start extends Component {
     this.setState(newState);
   };
 
-  begin = (event) => {
+  begin = (event: Event) => {
     event.preventDefault();
 
     this.setState({
@@ -57,7 +61,7 @@ export default class Start extends Component {
         <Textbox
           required
           id="email"
-          placeholder="Email"
+          label="Email"
           value={this.state.email}
           onChange={this.fieldChanged}
         />

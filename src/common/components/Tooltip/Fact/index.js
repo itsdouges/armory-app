@@ -117,6 +117,7 @@ const Fact = ({ data }: FactProps) => {
 
     case 'NoData':
     case 'Unblockable':
+    case 'StunBreak':
       content = (
         <div className={styles.center}>
           <Icon src={data.icon} size="mini" />

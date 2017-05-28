@@ -8,25 +8,32 @@ import styles from './styles.less';
 import PvpLeaderboard from './components/Pvp';
 import DisplayAd from 'common/components/DisplayAd';
 
-const Leaderboards = () => (
+type Props = {
+  match: {
+    url: string,
+  },
+};
+
+const Leaderboards = ({ match }: Props) => (
   <div className={styles.root}>
     <DisplayAd className={styles.ad} />
 
     <Tabs
-      titleSuffix={T.translate('leaderboards.name')}
+      titleSuffix={`PvP ${T.translate('leaderboards.name')}`}
+      basePath={match.url}
       tabs={[{
-        to: '/leaderboards/pvp',
-        name: 'PvP (GW2A)',
+        path: '',
+        name: 'GW2A Ladder',
         content: <PvpLeaderboard region="gw2a" />,
         description: config.descriptions.pvpLeaderboard,
       }, {
-        to: '/leaderboards/pvp/na',
-        name: 'PvP (NA)',
+        path: '/na',
+        name: 'NA Ladder',
         content: <PvpLeaderboard region="na" />,
         description: config.descriptions.pvpLeaderboard,
       }, {
-        to: '/leaderboards/pvp/eu',
-        name: 'PvP (EU)',
+        path: '/eu',
+        name: 'EU Ladder',
         content: <PvpLeaderboard region="eu" />,
         description: config.descriptions.pvpLeaderboard,
       }]}

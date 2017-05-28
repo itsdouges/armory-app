@@ -1,6 +1,6 @@
 // @flow
 
-import { PropTypes, Component } from 'react';
+import { Component } from 'react';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import T from 'i18n-react';
@@ -69,15 +69,21 @@ function mapRawStats (stats) {
   });
 }
 
-@connect(selector)
+type Props = {
+  fetchStatistics: () => Promise<>,
+  armoryStats: {
+    characters: Object,
+  },
+};
+
+export default connect(selector, {
+  fetchStatistics,
+})(
 class Statistics extends Component {
-  static propTypes = {
-    dispatch: PropTypes.func,
-    armoryStats: PropTypes.object,
-  };
+  props: Props;
 
   componentWillMount () {
-    this.props.dispatch(fetchStatistics());
+    this.props.fetchStatistics();
   }
 
   render () {
@@ -126,5 +132,4 @@ class Statistics extends Component {
     );
   }
 }
-
-export default Statistics;
+);

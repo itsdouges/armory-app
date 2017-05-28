@@ -10,7 +10,7 @@ import get from 'lodash/get';
 import isObject from 'lodash/isObject';
 import filter from 'lodash/filter';
 import T from 'i18n-react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import startCase from 'lodash/startCase';
 import cx from 'classnames';
 
@@ -49,18 +49,6 @@ export const selector = createSelector(
   })
 );
 
-type Props = InjectedProps & {
-  user?: UserType,
-  dispatchFetchUser: () => void,
-  dispatchSelectUser: () => void,
-  routeParams: {
-    alias: string,
-  },
-  worlds: Worlds,
-  pvpSeasons: PvpSeasons,
-  maps: Maps,
-};
-
 function getActiveStanding ({ pvpStandings = [] } = {}, pvpSeasons) {
   const [activePvpSeason] = filter(pvpSeasons, ({ active }) => active);
   const seasonId = activePvpSeason && activePvpSeason.id;
@@ -71,6 +59,21 @@ function getActiveStanding ({ pvpStandings = [] } = {}, pvpSeasons) {
 const addHash = (str) => (str ? `#${str}` : '-');
 const makeKey = (content, index) => (content ? content.name : index);
 
+type Props = InjectedProps & {
+  user?: UserType,
+  dispatchFetchUser: () => void,
+  dispatchSelectUser: () => void,
+  match: {
+    url: string,
+    params: {
+      alias: string,
+    },
+  },
+  worlds: Worlds,
+  pvpSeasons: PvpSeasons,
+  maps: Maps,
+};
+
 export default connect(selector, {
   dispatchFetchUser: fetchUser,
   dispatchSelectUser: selectUser,
@@ -80,15 +83,15 @@ class User extends Component {
   props: Props;
 
   componentWillMount () {
-    this.loadUser(this.props.routeParams.alias);
+    this.loadUser(this.props.match.params.alias);
   }
 
   componentWillReceiveProps (nextProps: Props) {
-    if (this.props.routeParams.alias === nextProps.routeParams.alias) {
+    if (this.props.match.params.alias === nextProps.match.params.alias) {
       return;
     }
 
-    this.loadUser(nextProps.routeParams.alias);
+    this.loadUser(nextProps.match.params.alias);
   }
 
   loadUser (alias: string) {
@@ -99,7 +102,7 @@ class User extends Component {
   }
 
   render () {
-    const { user, routeParams: { alias }, pvpSeasons, maps, worlds, alias: authenticated } = this.props;
+    const { user, match: { params: { alias } }, pvpSeasons, maps, worlds, alias: authenticated } = this.props;
 
     const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
     const guilds = get(user, 'guilds', STUB_GUILDS.rows);
@@ -134,6 +137,7 @@ class User extends Component {
             <Icon size="mini" className={styles.access} name={icon} />
           </TooltipTrigger>
         )}
+        basePath={this.props.match.url}
         extraContent={
           <ul className={styles.rating}>
             <li>
@@ -173,23 +177,23 @@ class User extends Component {
           </Link>
         )}
         tabs={[{
-          to: `/${alias}`,
+          path: '',
           name: 'Overview',
           ignoreTitle: true,
           content: (
             <Overview user={user} pvpSeasons={pvpSeasons} worlds={worlds} />
           ),
         }, {
-          to: `/${alias}/achievements`,
+          path: '/achievements',
           flair: 'new',
           name: T.translate('users.achievements'),
           content: <Achievements />,
         }, {
-          to: `/${alias}/characters`,
+          path: '/characters',
           name: 'Characters',
           content: <Characters alias={alias} />,
         }, {
-          to: `/${alias}/guilds`,
+          path: '/guilds',
           name: T.translate('guilds.name'),
           content: (
             <PaginatorGrid
@@ -203,7 +207,7 @@ class User extends Component {
             </PaginatorGrid>
           ),
         }, {
-          to: `/${alias}/matches`,
+          path: '/matches',
           name: T.translate('users.recentMatches'),
           content: (
             <div className={styles.gamesContainer}>

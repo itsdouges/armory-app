@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import config from 'config';
-import { browserHistory } from 'react-router';
+import history from 'history';
 import { paginatedThunk } from 'lib/redux';
 
 export const FETCHING_GUILD = 'FETCHING_GUILD';
@@ -95,5 +95,5 @@ export const fetchGuild = (name: string) => (dispatch: Dispatch) => {
     .then((response) => {
       dispatch(fetchGuildResult(name, response.data));
       dispatch(fetchingGuild(false));
-    }, () => browserHistory.replace('/404'));
+    }, () => history.replace('/404'));
 };

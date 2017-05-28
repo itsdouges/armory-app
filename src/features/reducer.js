@@ -39,6 +39,7 @@ const reducers = Object.keys(definitions).reduce((acc, key) => {
   const definition = definitions[key];
 
   if (__DEVELOPMENT__ && !definition.defaultState) {
+    // eslint-disable-next-line no-console
     console.error(`DefaultState for ${key} has not been defined.`);
   }
 

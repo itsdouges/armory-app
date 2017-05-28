@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+// @flow
+
 import startCase from 'lodash/startCase';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
@@ -37,6 +38,10 @@ function buildName (item, skin, upgrades, count) {
   return addCount(name, count);
 }
 
+type Props = {
+  data: Object,
+};
+
 const ItemsTooltip = ({ data: {
   count,
   item,
@@ -47,7 +52,7 @@ const ItemsTooltip = ({ data: {
   infusions,
   stats: { attributes = {} },
   equipped,
-} }) => {
+} }: Props) => {
   if (Object.keys(item).length === 0) {
     return <Background><SimpleTooltip data={name} /></Background>;
   }
@@ -152,10 +157,6 @@ const ItemsTooltip = ({ data: {
       </div>
     </Background>
   );
-};
-
-ItemsTooltip.propTypes = {
-  data: PropTypes.object,
 };
 
 export default ItemsTooltip;

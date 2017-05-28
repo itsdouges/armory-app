@@ -4,7 +4,7 @@ import type { PvpStanding, Paginated } from 'flowTypes';
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import T from 'i18n-react';
 
 import { makeStubItems } from 'lib/paginator';

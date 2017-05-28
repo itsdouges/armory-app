@@ -1,0 +1,52 @@
+@import '~common/styles/base.less';
+
+@achievementMargin: 0.25rem;
+
+.loading {
+  .loadingAnimation();
+};
+
+.achievement {
+  width: calc(100% ~"-" (@achievementMargin * 2));
+  margin: @achievementMargin;
+
+  .fromTablet({
+    width: calc(50% ~"-" @achievementMargin * 2);
+  });
+
+  .fromPc({
+    width: calc(33.33333% ~"-" (@achievementMargin * 2));
+  });
+}
+
+
+.categoryStrap {
+  display: flex;
+  margin: @achievementMargin * 4;
+  margin-bottom: 0;
+  align-items: center;
+}
+
+.categoryName {
+  margin: 0;
+  margin-left: 0.5em;
+}
+
+.achievementsContainer {
+  width: 75%;
+
+  .fromTablet({
+    width: 70%;
+  });
+
+  .fromPc({
+    width: 75%;
+  });
+}
+
+
+.achievements {
+  padding: @achievementMargin;
+  display: flex;
+  flex-wrap: wrap;
+}

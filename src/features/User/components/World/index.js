@@ -1,11 +1,17 @@
-import { PropTypes } from 'react';
+// @flow
+
 import get from 'lodash/get';
 import startCase from 'lodash/startCase';
 
 import Summary from 'common/layouts/Summary';
 import Redacted from 'common/components/Redacted';
 
-const World = ({ id, worlds }) => {
+type Props = {
+  id: number,
+  worlds: Object,
+};
+
+const World = ({ id, worlds }: Props) => {
   const world = worlds[id];
   const name = get(world, 'name', '????');
   const population = startCase(get(world, 'population', '????'));
@@ -22,11 +28,6 @@ const World = ({ id, worlds }) => {
 
 World.defaultProps = {
   worlds: {},
-};
-
-World.propTypes = {
-  id: PropTypes.number,
-  worlds: PropTypes.object,
 };
 
 export default World;

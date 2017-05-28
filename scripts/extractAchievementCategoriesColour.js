@@ -18,4 +18,5 @@ axios.get('https://api.guildwars2.com/v2/achievements/categories?ids=all')
         })
     ));
   })
+  // eslint-disable-next-line no-console
   .then(() => console.log(JSON.stringify(categoryMap)));

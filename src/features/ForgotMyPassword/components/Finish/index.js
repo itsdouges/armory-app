@@ -1,5 +1,7 @@
-import { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+// @flow
+
+import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { put } from 'axios';
 import T from 'i18n-react';
 
@@ -13,42 +15,46 @@ import { validatePasswords } from 'features/Join/actions';
 import config from 'config';
 import styles from '../../styles.less';
 
+type Props = {
+  initialToken?: string,
+};
+
 export default class Finish extends Component {
-  static propTypes = {
-    initialToken: PropTypes.string,
-  };
+  props: Props;
 
   state = {
     token: this.props.initialToken || '',
     message: this.props.initialToken ? '' : T.translate('forgotPassword.checkEmail'),
     password: '',
     passwordConfirm: '',
+    passwordError: '',
     busy: false,
     valid: false,
     complete: false,
   };
 
-  fieldChanged = ({ target: { id, value } }) => {
+  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent) => {
     const newState = {
       ...this.state,
       [id]: value,
     };
 
     const action = validatePasswords(newState.password, newState.passwordConfirm);
+
     newState.passwordError = action.error && action.payload;
     newState.valid = !action.error && !!this.state.token;
 
     this.setState(newState);
   };
 
-  changePassword = (event) => {
+  changePassword = (event: Event) => {
     event.preventDefault();
 
     const { token, password } = this.state;
 
     this.setState({
       busy: true,
-      error: '',
+      passwordError: '',
     });
 
     return put(`${config.api.endpoint}forgot-my-password`, {
@@ -80,7 +86,7 @@ export default class Finish extends Component {
         <Textbox
           required
           id="token"
-          placeholder="Token"
+          label="Token"
           value={this.state.token}
           onChange={this.fieldChanged}
         />

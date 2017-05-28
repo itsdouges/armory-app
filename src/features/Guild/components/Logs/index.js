@@ -4,7 +4,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import startCase from 'lodash/startCase';
 import cx from 'classnames';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import { humanize } from 'lib/date';
 import Card from 'common/components/Card';

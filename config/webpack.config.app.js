@@ -15,7 +15,7 @@ const common = {
       'react',
       'react-dom',
       'redux',
-      'prop-types',
+      'react-router-dom',
     ],
   },
 };

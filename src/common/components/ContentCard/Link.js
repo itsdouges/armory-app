@@ -1,7 +1,7 @@
 // @flow
 
 import ContentCard from './';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 type Props = {
   to: string,

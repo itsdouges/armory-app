@@ -1,4 +1,5 @@
-import { PropTypes } from 'react';
+// @flow
+
 import cx from 'classnames';
 
 import get from 'lodash/get';
@@ -9,7 +10,13 @@ import last from 'lodash/last';
 import styles from './styles.less';
 import Redacted from 'common/components/Redacted';
 
-const PvpSeason = ({ standing, season, small }) => {
+type Props = {
+  standing: Object,
+  season: Object,
+  small?: boolean,
+};
+
+const PvpSeason = ({ standing, season, small }: Props) => {
   const divisionId = get(standing, 'current.division');
   const division = get(season, `divisions[${divisionId}]`, {});
   const redact = !division.name;
@@ -37,13 +44,12 @@ const PvpSeason = ({ standing, season, small }) => {
   );
 };
 
-PvpSeason.propTypes = {
-  standing: PropTypes.object,
-  season: PropTypes.object,
-  small: PropTypes.bool,
-};
+type PvpLeagueProps = {
+  standings?: Object,
+  seasons?: Object,
+}
 
-const PvpLeague = ({ standings, seasons }) => {
+const PvpLeague = ({ standings, seasons }: PvpLeagueProps) => {
   const sortedSeasons = sortBy(seasons, (season) => new Date(season.end));
 
   const currentSeason = last(sortedSeasons) || {};
@@ -52,11 +58,6 @@ const PvpLeague = ({ standings, seasons }) => {
   return (
     <PvpSeason season={currentSeason} standing={standing} />
   );
-};
-
-PvpLeague.propTypes = {
-  standings: PropTypes.array,
-  seasons: PropTypes.array,
 };
 
 export default PvpLeague;

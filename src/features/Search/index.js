@@ -1,6 +1,8 @@
-import { Component, PropTypes } from 'react';
+// @flow
+
+import { Component } from 'react';
 import { get } from 'axios';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Head from 'common/components/Head';
 import T from 'i18n-react';
 
@@ -12,10 +14,16 @@ import ProgressIcon from 'common/components/Icon/Progress';
 
 const SEARCH_TERM_MINIMUM = 3;
 
+type Props = {
+  match: {
+    params: {
+      term: string,
+    },
+  },
+};
+
 export default class Search extends Component {
-  static propTypes = {
-    routeParams: PropTypes.object,
-  };
+  props: Props;
 
   state = {
     results: [],
@@ -24,17 +32,17 @@ export default class Search extends Component {
   };
 
   componentWillMount () {
-    const { term } = this.props.routeParams;
+    const { term } = this.props.match.params;
     this.search(term);
   }
 
-  componentWillReceiveProps (nextProps) {
-    if (this.props.routeParams.term !== nextProps.routeParams.term) {
-      this.search(nextProps.routeParams.term);
+  componentWillReceiveProps (nextProps: Props) {
+    if (this.props.match.params.term !== nextProps.match.params.term) {
+      this.search(nextProps.match.params.term);
     }
   }
 
-  search (term) {
+  search (term: string) {
     if (term.length < SEARCH_TERM_MINIMUM) {
       this.setState({
         results: [],
@@ -67,7 +75,7 @@ export default class Search extends Component {
     };
 
     const { results, searching, error } = this.state;
-    const { term } = this.props.routeParams;
+    const { term } = this.props.match.params;
 
     results.forEach((result) => {
       resources[result.resource].push(result);

@@ -6,7 +6,7 @@ import type { Character as CharacterType, Gw2Title } from 'flowTypes';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import T from 'i18n-react';
 
 import { topSelector } from './characters.reducer';
@@ -21,14 +21,18 @@ import Bags from './components/Bags';
 import styles from './styles.less';
 
 const buildDescription = (character = {}) =>
+  // eslint-disable-next-line max-len
   `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
 
 type Props = {
   character?: CharacterType,
   mode: 'pve' | 'pvp' | 'wvw',
-  routeParams: {
-    character: string,
-    alias: string,
+  match: {
+    url: string,
+    params: {
+      character: string,
+      alias: string,
+    },
   },
   title: Gw2Title,
   fetchCharacter: (name: string) => void,
@@ -51,13 +55,13 @@ export default class Character extends Component {
   }
 
   componentDidUpdate (prevProps: Props) {
-    if (prevProps.routeParams.character !== this.props.routeParams.character) {
+    if (prevProps.match.params.character !== this.props.match.params.character) {
       this.loadCharacter();
     }
   }
 
   loadCharacter () {
-    const { character, alias } = this.props.routeParams;
+    const { character, alias } = this.props.match.params;
 
     this.props.fetchCharacter(character);
     this.props.selectCharacter(character);
@@ -66,8 +70,7 @@ export default class Character extends Component {
 
   render () {
     const {
-      routeParams: { alias, character: characterName },
-      routeParams,
+      match: { params: { alias, character: characterName } },
       character,
       title,
     } = this.props;
@@ -81,9 +84,10 @@ export default class Character extends Component {
 
     return (
       <Content
-        title={`${routeParams.character} | ${alias}`}
+        title={`${characterName} | ${alias}`}
         type="characters"
         content={character}
+        basePath={this.props.match.url}
         description={buildDescription(character)}
         extraSubtitle={characterTitle && <span><i>{characterTitle}</i> | </span>}
         extraContent={(
@@ -98,7 +102,7 @@ export default class Character extends Component {
           </aside>
         )}
         tabs={[{
-          to: `/${alias}/c/${characterName}`,
+          path: '',
           name: 'PvE',
           ignoreTitle: true,
           content: (
@@ -109,7 +113,7 @@ export default class Character extends Component {
             />
           ),
         }, {
-          to: `/${alias}/c/${characterName}/pvp`,
+          path: '/pvp',
           name: 'PvP',
           content: (
             <Overview
@@ -119,7 +123,7 @@ export default class Character extends Component {
             />
           ),
         }, {
-          to: `/${alias}/c/${characterName}/wvw`,
+          path: '/wvw',
           name: 'WvW',
           content: (
             <Overview
@@ -129,7 +133,7 @@ export default class Character extends Component {
             />
           ),
         }, {
-          to: `/${alias}/c/${characterName}/bags`,
+          path: '/bags',
           name: T.translate('characters.bags'),
           flair: 'new',
           content: <Bags />,

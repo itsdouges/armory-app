@@ -6,10 +6,10 @@ import Textbox from 'common/components/Textbox';
 
 type PasswordFormProps = {
   onFieldChange?: Function,
-  valid: boolean,
+  valid?: boolean,
   passwordValue: string,
   passwordConfirmValue: string,
-  error: string,
+  error?: string,
 };
 
 const PasswordForm = ({

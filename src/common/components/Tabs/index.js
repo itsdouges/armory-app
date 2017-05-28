@@ -1,10 +1,11 @@
 // @flow
 
-import findIndex from 'lodash/findIndex';
-
-import Container from 'common/components/Container';
+import { cloneElement } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import Head from 'common/components/Head';
+import Container from 'common/components/Container';
+
 import styles from './styles.less';
 import Tab from './Tab';
 
@@ -21,44 +22,53 @@ type TabsProps = {
   pinnedTab?: any,
   tabs: Array<TabInput>,
   titleSuffix: string,
+  basePath: string,
 };
 
-const zeroIndex = (index) => (index < 0 ? 0 : index);
+const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath }: TabsProps) => (
+  <div className={styles.root}>
+    <nav className={styles.tabsBg}>
+      <Container className={styles.tabsContainer}>
+        <ul>
+          {tabs.map((tab) => (
+            <li key={tab.path}>
+              <Tab
+                exact={!tab.path}
+                path={`${basePath}${tab.path}`}
+                name={tab.name}
+              />
+            </li>
+          ))}
 
-const Tabs = ({ tabs, titleSuffix, tabLayout, pinnedTab }: TabsProps) => {
-  const { pathname } = window.location;
-  const selected = findIndex(tabs, (tab) => tab.to === decodeURIComponent(pathname));
-  const { content, name, ignoreTitle, description } = tabs[zeroIndex(selected)];
-  const Layout = tabLayout;
+          {pinnedTab && (
+            <li className={styles.pinnedRight}>{pinnedTab}</li>
+          )}
+        </ul>
+      </Container>
+    </nav>
 
-  return (
-    <div className={styles.root}>
-      {ignoreTitle || <Head title={`${name} | ${titleSuffix}`} description={description} />}
+    <section>
+      <Switch>
+        {tabs.map((tab) => (
+          <Route
+            exact={!tab.path}
+            key={tab.path}
+            path={`${basePath}${tab.path}`}
+            render={(props) => {
+              const content = cloneElement(tab.content, props);
 
-      <nav className={styles.tabsBg}>
-        <Container className={styles.tabsContainer}>
-          <ul>
-            {tabs.map((tab, index) => (
-              <li key={tab.to}>
-                <Tab
-                  to={encodeURI(tab.to || '')}
-                  index={index}
-                  selected={index === selected}
-                  {...tab}
-                />
-              </li>
-            ))}
-
-            {pinnedTab && (
-              <li className={styles.pinnedRight}>{pinnedTab}</li>
-            )}
-          </ul>
-        </Container>
-      </nav>
-
-      <section>{Layout ? <Layout>{content}</Layout> : content}</section>
-    </div>
-  );
-};
+              return (
+                <span>
+                  {tab.ignoreTitle || <Head title={`${tab.name} | ${titleSuffix}`} description={tab.description} />}
+                  {Layout ? <Layout>{content}</Layout> : content}
+                </span>
+              );
+            }}
+          />
+        ))}
+      </Switch>
+    </section>
+  </div>
+);
 
 export default Tabs;

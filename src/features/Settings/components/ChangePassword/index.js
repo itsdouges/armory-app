@@ -1,4 +1,6 @@
-import { Component, PropTypes } from 'react';
+// @flow
+
+import { Component } from 'react';
 import T from 'i18n-react';
 
 import styles from './styles.less';
@@ -8,15 +10,17 @@ import Textbox from 'common/components/Textbox';
 import Button from 'common/components/Button';
 import PasswordForm from 'common/components/PasswordForm';
 
+type Props = {
+  message?: string,
+  error?: string,
+  busy?: boolean,
+  valid?: boolean,
+  validate: (string, string) => void,
+  change: (string, string) => Promise<*>,
+};
+
 export default class ChangePassword extends Component {
-  static propTypes = {
-    change: PropTypes.func,
-    valid: PropTypes.bool,
-    validate: PropTypes.func,
-    error: PropTypes.string,
-    busy: PropTypes.bool,
-    message: PropTypes.string,
-  };
+  props: Props;
 
   state = {
     currentPassword: '',
@@ -24,7 +28,7 @@ export default class ChangePassword extends Component {
     passwordConfirm: '',
   };
 
-  fieldChanged = ({ target: { id, value } }) => {
+  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent) => {
     const newState = {
       ...this.state,
       [id]: value,
@@ -35,7 +39,7 @@ export default class ChangePassword extends Component {
     this.props.validate(newState.password, newState.passwordConfirm);
   };
 
-  changePassword = (e) => {
+  changePassword = (e: Event) => {
     e.preventDefault();
     this.props.change(this.state.currentPassword, this.state.password);
   };
@@ -54,7 +58,7 @@ export default class ChangePassword extends Component {
           <Textbox
             required
             id="currentPassword"
-            placeholder={T.translate('settings.changePassword.inputs.current')}
+            label={T.translate('settings.changePassword.inputs.current')}
             type="password"
             value={currentPassword}
             onChange={this.fieldChanged}

@@ -5,7 +5,7 @@ import type { AuthenticatedUser } from 'flowTypes';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
-import { browserHistory } from 'react-router';
+import history from 'history';
 import T from 'i18n-react';
 
 import styles from './styles.less';
@@ -32,7 +32,7 @@ type Props = {
   fetchGw2Tokens: () => void,
   selectPrimaryGw2Token: (string) => void,
   removeGw2Token: (string) => void,
-  changePassword: (string, string) => void,
+  changePassword: (string, string) => Promise<*>,
   validatePasswords: (string, string) => void,
   clearUserData: () => void,
 };
@@ -87,7 +87,7 @@ class Settings extends Component {
 
   signOut = (e: SyntheticEvent) => {
     e.preventDefault();
-    browserHistory.replace('/');
+    history.replace('/');
     this.props.clearUserData();
   };
 
@@ -96,7 +96,7 @@ class Settings extends Component {
   };
 
   changePassword = (currentPassword: string, newPassword: string) => {
-    this.props.changePassword(currentPassword, newPassword);
+    return this.props.changePassword(currentPassword, newPassword);
   };
 
   finishedUploading = () => {

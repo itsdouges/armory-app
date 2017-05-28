@@ -20,6 +20,7 @@ type Props = {
   description?: string,
   cardExtra?: any,
   pinnedTab?: any,
+  basePath: string,
 };
 
 const Content = ({
@@ -30,6 +31,7 @@ const Content = ({
   description,
   cardExtra,
   pinnedTab,
+  basePath,
   ...props
 }: Props) => (
   <div className={styles.root}>
@@ -44,7 +46,7 @@ const Content = ({
       </Container>
     </header>
 
-    {tabs && <Tabs titleSuffix={title} tabs={tabs} pinnedTab={pinnedTab} />}
+    {tabs && <Tabs titleSuffix={title} tabs={tabs} pinnedTab={pinnedTab} basePath={basePath} />}
 
     {children}
 

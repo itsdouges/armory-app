@@ -1,7 +1,7 @@
 // @flow
 
 import axios from 'axios';
-import { browserHistory } from 'react-router';
+import history from 'history';
 
 import { paginatedThunk } from 'lib/redux';
 import { readPvpSeasonIds } from 'lib/gw2';
@@ -136,5 +136,5 @@ export const fetchUser = (
         dispatch(fetchUserAchievements(alias));
         dispatch(fetchingUser(false));
         dispatch(actions.fetchWorlds([data.world]));
-      }, ({ response: { status } = {} } = {}) => status === 404 && browserHistory.replace('/404'));
+      }, ({ response: { status } = {} } = {}) => status === 404 && history.replace('/404'));
   };
