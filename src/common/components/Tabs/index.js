@@ -33,6 +33,7 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath }: Tab
           {tabs.map((tab) => (
             <li key={tab.path}>
               <Tab
+                {...tab}
                 exact={!tab.path}
                 path={`${basePath}${tab.path}`}
                 name={tab.name}
