@@ -13,6 +13,7 @@ export const FETCHING_CHARACTER = 'FETCHING_CHARACTER';
 export const SELECT_CHARACTER = 'SELECT_CHARACTER';
 export const SELECT_CHARACTER_MODE = 'SELECT_CHARACTER_MODE';
 export const UPDATE_CHARACTER = 'UPDATE_CHARACTER';
+export const UPDATE_CHARACTER_PRIVACY = 'UPDATE_CHARACTER_PRIVACY';
 
 const fetchingCharacter = (fetching) => ({
   type: FETCHING_CHARACTER,
@@ -124,6 +125,31 @@ export function updateCharacter (
   return (dispatch) => {
     dispatch(updateCharacterAuth(name, options));
     return axios.put(`${config.api.endpoint}characters/${name}`, options);
+  };
+}
+
+export const updatePrivacy = (name: string, prop: string, action: string) => ({
+  type: UPDATE_CHARACTER_PRIVACY,
+  payload: {
+    name,
+    prop,
+    action,
+  },
+});
+
+export function setPrivacy (name: string, prop: string): ReduxThunk {
+  return (dispatch) => {
+    dispatch(updatePrivacy(name, prop, 'add'));
+    return axios.put(`${config.api.endpoint}characters/${name}/privacy`, {
+      privacy: prop,
+    });
+  };
+}
+
+export function removePrivacy (name: string, prop: string): ReduxThunk {
+  return (dispatch) => {
+    dispatch(updatePrivacy(name, prop, 'remove'));
+    return axios.delete(`${config.api.endpoint}characters/${name}/privacy/${prop}`);
   };
 }
 

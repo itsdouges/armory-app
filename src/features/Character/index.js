@@ -88,6 +88,8 @@ class Character extends Component {
       alias,
     } = this.props;
 
+    const { editing } = this.state;
+
     const editable = alias === params.alias;
     const characterTitle = get(title, 'name');
     const guild = character && {
@@ -131,7 +133,8 @@ class Character extends Component {
           content: (
             <Overview
               name={params.character}
-              editing={this.state.editing}
+              editing={editing}
+              editable={editable}
               mode="pve"
               userAlias={alias}
             />
@@ -142,7 +145,8 @@ class Character extends Component {
           content: (
             <Overview
               name={params.character}
-              editing={this.state.editing}
+              editing={editing}
+              editable={editable}
               mode="pvp"
               userAlias={alias}
             />
@@ -153,7 +157,8 @@ class Character extends Component {
           content: (
             <Overview
               name={params.character}
-              editing={this.state.editing}
+              editing={editing}
+              editable={editable}
               mode="wvw"
               userAlias={alias}
             />

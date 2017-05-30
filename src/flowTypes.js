@@ -10,6 +10,7 @@ export type Character = {
   profession: string,
   eliteSpecialization: string,
   level: number,
+  privacy: Array<string>,
 };
 
 export const defaultCharacter: Character = {
@@ -22,6 +23,7 @@ export const defaultCharacter: Character = {
   profession: '',
   eliteSpecialization: '',
   level: 0,
+  privacy: [],
 };
 
 type PvpGame = {

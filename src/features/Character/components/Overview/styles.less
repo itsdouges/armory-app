@@ -51,10 +51,6 @@
   font-size: 1.2em;
 }
 
-.portrait {
-  margin-top: @itemMargin;
-}
-
 .modeIcon {
   display: block;
   opacity: 0.5;
@@ -81,6 +77,10 @@
 }
 
 .leftColumn {
+  :first-child {
+    margin-top: 0;
+  }
+
   > div {
     margin: @itemMargin;
   }
@@ -123,10 +123,6 @@
   > div {
     margin: 2.5em 0;
   }
-}
-
-.portrait {
-  margin-top: @itemMargin;
 }
 
 .brushStrokeContainer:before,
