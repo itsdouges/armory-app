@@ -117,9 +117,8 @@ class Character extends Component {
         )}
         pinnedTab={editable && (
           <Button
-            key="edit-button"
             className={styles.editButton}
-            type={this.state.editing ? 'primary' : 'minimal'}
+            type="cta"
             onClick={this.toggleEditing}
           >
             {T.translate(this.state.editing ? 'characters.done' : 'characters.edit')}
