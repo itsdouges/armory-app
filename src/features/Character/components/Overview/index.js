@@ -227,7 +227,7 @@ class CharacterOverview extends Component {
                     key={prop}
                     checked={!character || !character.privacy.includes(prop)}
                     onChange={(e) => this.setPrivacy(prop, e.target.checked ? 'remove' : 'add')}
-                    label={name}
+                    label={`Show ${name}`}
                   />
                 )),
               ]}
