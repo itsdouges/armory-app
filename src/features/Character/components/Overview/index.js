@@ -11,8 +11,6 @@ import type {
   Pets,
 } from 'flowTypes';
 
-import type { InjectedProps } from 'features/Auth/data';
-
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import includes from 'lodash/includes';
@@ -20,7 +18,6 @@ import get from 'lodash/get';
 import cx from 'classnames';
 import T from 'i18n-react';
 
-import authenticatedData from 'features/Auth/data';
 import { overviewSelector } from 'features/Character/characters.reducer';
 import { updateCharacter, selectCharacterMode } from 'features/Character/actions';
 import calculateAttributes from 'lib/gw2/attributes';
@@ -28,7 +25,6 @@ import { leftItems, rightItems } from 'lib/gw2/equipment';
 
 import Checkbox from 'common/components/Checkbox';
 import ImageUpload from 'common/components/ImageUpload';
-import Button from 'common/components/Button';
 import ContentCard from 'common/components/ContentCard';
 
 import PvpEquipment from '../PvpEquipment';
@@ -48,9 +44,9 @@ type UpdateOptions = {
   showPublic: boolean,
 };
 
-type Props = InjectedProps & {
+type Props = {
+  editing?: boolean,
   name: string,
-  userAlias: string,
   mode: CharacterModes,
   character?: CharacterType,
   items?: Items,
@@ -64,8 +60,7 @@ type Props = InjectedProps & {
   selectCharacterMode?: (CharacterModes) => void,
 };
 
-export default authenticatedData(
-connect(overviewSelector, {
+export default connect(overviewSelector, {
   updateCharacter,
   selectCharacterMode,
 })(
@@ -73,7 +68,6 @@ class CharacterOverview extends Component {
   props: Props;
 
   state = {
-    editMode: false,
     updateImage: false,
   };
 
@@ -97,14 +91,6 @@ class CharacterOverview extends Component {
     return ids.map((id) => this.props.items && this.props.items[id]);
   }
 
-  toggleEditMode = () => {
-    const editMode = !this.state.editMode;
-
-    this.setState({
-      editMode,
-    });
-  };
-
   hide = (e: EventHandler) => {
     const { name } = this.props;
 
@@ -115,7 +101,6 @@ class CharacterOverview extends Component {
 
   render () {
     const {
-      alias,
       name: characterName,
       character,
       mode,
@@ -126,13 +111,10 @@ class CharacterOverview extends Component {
       specializations,
       amulets,
       pets,
-      userAlias,
+      editing,
     } = this.props;
 
-    const { editMode } = this.state;
-
     const attributes = calculateAttributes(character, { items, traits, skills });
-    const ownCharacter = alias === userAlias;
     const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
     const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]).filter((s) => !!s);
@@ -178,8 +160,8 @@ class CharacterOverview extends Component {
 
             <ImageUpload
               onUploadComplete={this.onUploadComplete}
-              disabled={!editMode}
-              forceShow={editMode}
+              disabled={!editing}
+              forceShow={editing}
               hintText={<span>{T.translate('characters.changePortrait')}<br />560 x 840</span>}
               uploadName={`characters/${characterName}`}
             >
@@ -193,26 +175,13 @@ class CharacterOverview extends Component {
             </ImageUpload>
 
             <div className={styles.rightColumn}>
-              {ownCharacter && (
-                <div className={styles.editContainer}>
-                  <Button
-                    key="edit-button"
-                    className={styles.editButton}
-                    type={editMode ? 'primary' : 'minimal'}
-                    onClick={this.toggleEditMode}
-                  >
-                    {T.translate(editMode ? 'characters.done' : 'characters.edit')}
-                  </Button>
-
-                  {editMode && [
-                    <Checkbox
-                      checked={!!showPublic}
-                      key="hide-checkbox"
-                      onChange={this.hide}
-                      label={T.translate(showPublic ? 'characters.shown' : 'characters.hidden')}
-                    />,
-                  ]}
-                </div>
+              {editing && (
+                <Checkbox
+                  checked={!!showPublic}
+                  key="hide-checkbox"
+                  onChange={this.hide}
+                  label={T.translate(showPublic ? 'characters.shown' : 'characters.hidden')}
+                />
               )}
 
               <div className={styles.attributes}>
@@ -282,4 +251,4 @@ class CharacterOverview extends Component {
       </div>
     );
   }
-}));
+});

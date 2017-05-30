@@ -1,7 +1,7 @@
 // @flow
 
 import type { Character as CharacterType, Gw2Title } from 'flowTypes';
-
+import type { InjectedProps } from 'features/Auth/data';
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
@@ -9,13 +9,14 @@ import get from 'lodash/get';
 import { Link } from 'react-router-dom';
 import T from 'i18n-react';
 
-import { topSelector } from './characters.reducer';
-import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
-
+import authenticatedData from 'features/Auth/data';
+import Button from 'common/components/Button';
 import Content from 'common/layouts/Content';
 import ContentCard from 'common/components/ContentCard';
 
+import { fetchCharacter, selectCharacter } from './actions';
+import { topSelector } from './characters.reducer';
 import Overview from './components/Overview';
 import Bags from './components/Bags';
 import styles from './styles.less';
@@ -24,7 +25,7 @@ const buildDescription = (character = {}) =>
   // eslint-disable-next-line max-len
   `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
 
-type Props = {
+type Props = InjectedProps & {
   character?: CharacterType,
   mode: 'pve' | 'pvp' | 'wvw',
   match: {
@@ -41,14 +42,19 @@ type Props = {
   selectUser: (name: string) => void,
 };
 
-@connect(topSelector, {
+export default authenticatedData(
+connect(topSelector, {
   selectUser,
   fetchCharacter,
   selectCharacter,
   fetchUserCharacters,
-})
-export default class Character extends Component {
+})(
+class Character extends Component {
   props: Props;
+
+  state = {
+    editing: false,
+  };
 
   componentWillMount () {
     this.loadCharacter();
@@ -68,13 +74,21 @@ export default class Character extends Component {
     this.props.selectUser(alias);
   }
 
+  toggleEditing = () => {
+    this.setState((prevState) => ({
+      editing: !prevState.editing,
+    }));
+  };
+
   render () {
     const {
-      match: { params: { alias, character: characterName } },
+      match: { params },
       character,
       title,
+      alias,
     } = this.props;
 
+    const editable = alias === params.alias;
     const characterTitle = get(title, 'name');
     const guild = character && {
       name: character.guild_name,
@@ -84,7 +98,7 @@ export default class Character extends Component {
 
     return (
       <Content
-        title={`${characterName} | ${alias}`}
+        title={`${params.character} | ${params.alias}`}
         type="characters"
         content={character}
         basePath={this.props.match.url}
@@ -101,13 +115,24 @@ export default class Character extends Component {
             </Link>
           </aside>
         )}
+        pinnedTab={editable && (
+          <Button
+            key="edit-button"
+            className={styles.editButton}
+            type={this.state.editing ? 'primary' : 'minimal'}
+            onClick={this.toggleEditing}
+          >
+            {T.translate(this.state.editing ? 'characters.done' : 'characters.edit')}
+          </Button>
+        )}
         tabs={[{
           path: '',
           name: 'PvE',
           ignoreTitle: true,
           content: (
             <Overview
-              name={characterName}
+              name={params.character}
+              editing={this.state.editing}
               mode="pve"
               userAlias={alias}
             />
@@ -117,7 +142,8 @@ export default class Character extends Component {
           name: 'PvP',
           content: (
             <Overview
-              name={characterName}
+              name={params.character}
+              editing={this.state.editing}
               mode="pvp"
               userAlias={alias}
             />
@@ -127,7 +153,8 @@ export default class Character extends Component {
           name: 'WvW',
           content: (
             <Overview
-              name={characterName}
+              name={params.character}
+              editing={this.state.editing}
               mode="wvw"
               userAlias={alias}
             />
@@ -141,4 +168,4 @@ export default class Character extends Component {
       />
     );
   }
-}
+}));
