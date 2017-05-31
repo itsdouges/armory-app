@@ -200,7 +200,7 @@ class CharacterOverview extends Component {
             <ImageUpload
               onUploadComplete={this.onUploadComplete}
               forceShow={editing}
-              disable={!editable}
+              disabled={!editable}
               hintText={<span>{T.translate('characters.changePortrait')}<br />560 x 840</span>}
               uploadName={`characters/${characterName}`}
             >
