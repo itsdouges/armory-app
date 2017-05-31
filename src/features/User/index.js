@@ -147,7 +147,7 @@ class User extends Component {
 
     if (stubUser) {
       return (
-        <Link to={params.alias ? `settings?claiming=${alias}` : `join?claiming=${alias}`}>
+        <Link to={alias ? `/settings?claiming=${params.alias}` : `/join?claiming=${params.alias}`}>
           <Button type="cta">{T.translate('users.claimCta')}</Button>
         </Link>
       );
