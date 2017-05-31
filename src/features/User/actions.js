@@ -17,6 +17,7 @@ export const FETCH_USER_ACHIEVEMENTS_RESULT = 'FETCH_USER_ACHIEVEMENTS_RESULT';
 export const FETCH_PVP_GAMES_RESULT = 'FETCH_PVP_GAMES_RESULT';
 export const FETCH_PVP_STANDINGS_RESULT = 'FETCH_PVP_STANDINGS_RESULT';
 export const SELECT_USER = 'SELECT_USER';
+export const UPDATE_USER_PRIVACY = 'UPDATE_USER_PRIVACY';
 
 const fetchingUser = (fetching) => ({
   type: FETCHING_USER,
@@ -138,3 +139,28 @@ export const fetchUser = (
         dispatch(actions.fetchWorlds([data.world]));
       }, ({ response: { status } = {} } = {}) => status === 404 && history.replace('/404'));
   };
+
+export const updatePrivacy = (name: string, prop: string, action: string) => ({
+  type: UPDATE_USER_PRIVACY,
+  payload: {
+    name,
+    prop,
+    action,
+  },
+});
+
+export function setPrivacy (name: string, prop: string): ReduxThunk {
+  return (dispatch) => {
+    dispatch(updatePrivacy(name, prop, 'add'));
+    return axios.put(`${config.api.endpoint}users/me/privacy`, {
+      privacy: prop,
+    });
+  };
+}
+
+export function removePrivacy (name: string, prop: string): ReduxThunk {
+  return (dispatch) => {
+    dispatch(updatePrivacy(name, prop, 'remove'));
+    return axios.delete(`${config.api.endpoint}users/me/privacy/${prop}`);
+  };
+}

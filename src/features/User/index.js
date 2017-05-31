@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import startCase from 'lodash/startCase';
 import cx from 'classnames';
 
+import Checkbox from 'common/components/Checkbox';
 import authenticatedData from 'features/Auth/data';
 import { makeStubItems } from 'lib/paginator';
 import PaginatorGrid from 'common/layouts/PaginatorGrid';
@@ -34,6 +35,8 @@ const STUB_GUILDS = makeStubItems(4);
 import {
   fetchUser,
   selectUser,
+  setPrivacy,
+  removePrivacy,
 } from './actions';
 
 export const selector = createSelector(
@@ -61,8 +64,8 @@ const makeKey = (content, index) => (content ? content.name : index);
 
 type Props = InjectedProps & {
   user?: UserType,
-  dispatchFetchUser: () => void,
-  dispatchSelectUser: () => void,
+  fetchUser: () => void,
+  selectUser: () => void,
   match: {
     url: string,
     params: {
@@ -72,15 +75,41 @@ type Props = InjectedProps & {
   worlds: Worlds,
   pvpSeasons: PvpSeasons,
   maps: Maps,
+  setPrivacy: (name: string, prop: string) => Promise<*>,
+  removePrivacy: (name: string, prop: string) => Promise<*>,
 };
 
+const PRIVACY_OPTIONS = [
+  {
+    prop: 'achievements',
+    name: 'Achievements',
+  },
+  {
+    prop: 'pvpGames',
+    name: 'Recent Matches',
+  },
+  {
+    prop: 'pvpStats',
+    name: 'PvP Stats',
+  },
+  {
+    prop: 'pvpStandings',
+    name: 'Pvp Standings',
+  },
+];
+
 export default connect(selector, {
-  dispatchFetchUser: fetchUser,
-  dispatchSelectUser: selectUser,
+  fetchUser,
+  selectUser,
+  setPrivacy,
+  removePrivacy,
 })(
 authenticatedData(
 class User extends Component {
   props: Props;
+  state = {
+    editing: false,
+  };
 
   componentWillMount () {
     this.loadUser(this.props.match.params.alias);
@@ -95,20 +124,58 @@ class User extends Component {
   }
 
   loadUser (alias: string) {
-    const { dispatchFetchUser, dispatchSelectUser } = this.props;
+    this.props.fetchUser(alias);
+    this.props.selectUser(alias);
+  }
 
-    dispatchFetchUser(alias);
-    dispatchSelectUser(alias);
+  toggleEditing = () => {
+    this.setState((prevState) => ({
+      editing: !prevState.editing,
+    }));
+  };
+
+  setPrivacy = (prop: string, action: 'add' | 'remove') => {
+    return action === 'add'
+      ? this.props.setPrivacy(this.props.alias, prop)
+      : this.props.removePrivacy(this.props.alias, prop);
+  };
+
+  renderPinnedTab () {
+    const stubUser = get(this.props.user, 'stub');
+    const { alias, match: { params } } = this.props;
+    const editable = alias === params.alias;
+
+    if (stubUser) {
+      return (
+        <Link to={params.alias ? `settings?claiming=${alias}` : `join?claiming=${alias}`}>
+          <Button type="cta">{T.translate('users.claimCta')}</Button>
+        </Link>
+      );
+    }
+
+    if (editable) {
+      return (
+        <Button
+          onClick={this.toggleEditing}
+          className={styles.editButton}
+          type="cta"
+        >
+          {T.translate(this.state.editing ? 'characters.done' : 'characters.edit')}
+        </Button>
+      );
+    }
+
+    return null;
   }
 
   render () {
-    const { user, match: { params: { alias } }, pvpSeasons, maps, worlds, alias: authenticated } = this.props;
+    const { user, match: { params: { alias } }, pvpSeasons, maps, worlds } = this.props;
+    const { editing } = this.state;
 
     const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
     const guilds = get(user, 'guilds', STUB_GUILDS.rows);
 
     const safeUser = user || {};
-    const stubUser = get(user, 'stub');
     const standing = getActiveStanding(user, pvpSeasons);
     const rating = get(standing, 'current.rating') || get(user, 'rating');
     const gw2aRank = get(user, 'gw2aRank');
@@ -171,11 +238,7 @@ class User extends Component {
         type="users"
         title={alias}
         content={user}
-        pinnedTab={stubUser && (
-          <Link to={authenticated ? `settings?claiming=${alias}` : `join?claiming=${alias}`}>
-            <Button type="cta">{T.translate('users.claimCta')}</Button>
-          </Link>
-        )}
+        pinnedTab={this.renderPinnedTab()}
         tabs={[{
           path: '',
           name: 'Overview',
@@ -217,7 +280,17 @@ class User extends Component {
             </div>
           ),
         }]}
-      />
+      >
+        {editing && (
+          PRIVACY_OPTIONS.map(({ prop, name }) => (
+            <Checkbox
+              key={prop}
+              checked={!user || !user.privacy.includes(prop)}
+              onChange={(e) => this.setPrivacy(prop, e.target.checked ? 'remove' : 'add')}
+              label={`Show ${name}`}
+            />
+        )))}
+      </Content>
     );
   }
 }

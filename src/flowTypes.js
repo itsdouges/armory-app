@@ -56,6 +56,7 @@ export type User = {
   wins: ?number,
   losses: ?number,
   valid: boolean,
+  privacy: Array<string>,
 };
 
 export type AuthenticatedUser = User & {
@@ -85,6 +86,7 @@ export const defaultUser: User = {
   wins: null,
   losses: null,
   valid: true,
+  privacy: [],
 };
 
 // See: https://wiki.guildwars2.com/wiki/API:2/guild/:id/log

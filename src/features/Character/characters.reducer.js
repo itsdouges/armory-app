@@ -213,15 +213,20 @@ export default function reducer (state, action) {
     }
 
     case UPDATE_CHARACTER_PRIVACY: {
-      const characterUpdate = {
-        [action.payload.name]: {
-          privacy: action.payload.action === 'add'
-            ? state.data[action.payload.name].privacy.concat([action.payload.prop])
-            : state.data[action.payload.name].privacy.filter((priv) => priv !== action.payload.prop),
-        },
+      const newCharacter = {
+        ...state.data[action.payload.name],
+        privacy: action.payload.action === 'add'
+          ? state.data[action.payload.name].privacy.concat([action.payload.prop])
+          : state.data[action.payload.name].privacy.filter((priv) => priv !== action.payload.prop),
       };
 
-      return merge({}, state, { data: characterUpdate });
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.payload.name]: newCharacter,
+        },
+      };
     }
 
     default:
