@@ -5,31 +5,70 @@ import { connect } from 'react-redux';
 import T from 'i18n-react';
 import { Link } from 'react-router-dom';
 
+import type { InjectedProps } from 'features/Auth/data';
 import type { Guild as GuildType } from 'flowTypes';
 
+import Button from 'common/components/Button';
+import authenticatedData from 'features/Auth/data';
 import SvgIcon from 'common/components/Icon/Svg';
 import Content from 'common/layouts/Content';
 import ContentCard from 'common/components/ContentCard';
 import TooltipTrigger from 'common/components/TooltipTrigger';
+import Checkbox from 'common/components/Checkbox';
 
 import Characters from './components/Characters';
 import Members from './components/Members';
 import Logs from './components/Logs';
 import Overview from './components/Overview';
 import styles from './styles.less';
-
+import { selector } from './guilds.reducer';
 import {
   selectGuild,
   fetchGuild,
+  setPublic,
+  removePublic,
 } from './actions';
-import { selector } from './guilds.reducer';
+
+const PRIVACY_OPTIONS = [
+  {
+    prop: 'motd',
+    name: 'Message of the day',
+  },
+  {
+    prop: 'level',
+    name: 'Level',
+  },
+  {
+    prop: 'influence',
+    name: 'Influence',
+  },
+  {
+    prop: 'aetherium',
+    name: 'Aetherium',
+  },
+  {
+    prop: 'favor',
+    name: 'Favor',
+  },
+  {
+    prop: 'resonance',
+    name: 'Resonance',
+  },
+  {
+    prop: 'logs',
+    name: 'Logs',
+  },
+];
 
 export default connect(selector, {
-  dispatchSelectGuild: selectGuild,
-  dispatchFetchGuild: fetchGuild,
+  selectGuild,
+  fetchGuild,
+  setPublic,
+  removePublic,
 })(
+authenticatedData(
 class Guild extends Component {
-  props: {
+  props: InjectedProps & {
     guild?: GuildType,
     match: {
       url: string,
@@ -37,21 +76,39 @@ class Guild extends Component {
         guildName: string,
       },
     },
-    dispatchSelectGuild: (name: string) => void,
-    dispatchFetchGuild: (name: string) => void,
+    selectGuild: (name: string) => Promise<*>,
+    fetchGuild: (name: string) => Promise<*>,
+    setPublic: (name: string, prop: string) => Promise<*>,
+    removePublic: (name: string, prop: string) => Promise<*>,
+  };
+
+  state = {
+    editing: false,
   };
 
   componentWillMount () {
     const { guildName } = this.props.match.params;
-    const { dispatchSelectGuild, dispatchFetchGuild } = this.props;
 
-    dispatchSelectGuild(guildName);
-    dispatchFetchGuild(guildName);
+    this.props.selectGuild(guildName);
+    this.props.fetchGuild(guildName);
   }
 
-  render () {
-    const { guild, match: { params: { guildName } } } = this.props;
+  toggleEditing = () => {
+    this.setState((prevState) => ({
+      editing: !prevState.editing,
+    }));
+  };
 
+  setPrivacy = (prop: string, action: 'add' | 'remove') => {
+    return action === 'add'
+      ? this.props.setPublic(this.props.match.params.guildName, prop)
+      : this.props.removePublic(this.props.match.params.guildName, prop);
+  };
+
+  render () {
+    const { alias, guild, match: { params: { guildName } } } = this.props;
+
+    const editable = guild && guild.leader && guild.leader.alias === alias;
     const showGuildLeader = !guild || guild.leader !== null;
     const claimed = guild && guild.claimed;
     const claimedData = {
@@ -63,6 +120,15 @@ class Guild extends Component {
       <Content
         basePath={this.props.match.url}
         title={`${guildName} [${(guild && guild.tag) || '...'}]`}
+        pinnedTab={editable && (
+          <Button
+            onClick={this.toggleEditing}
+            className={styles.editButton}
+            type="cta"
+          >
+            {T.translate(this.state.editing ? 'characters.done' : 'characters.edit')}
+          </Button>
+        )}
         cardExtra={
           <TooltipTrigger data={claimedData.message}>
             <SvgIcon size="mini" className={styles.claimCta} name={claimedData.logo} />
@@ -97,7 +163,17 @@ class Guild extends Component {
           path: '/logs',
           content: <Logs guildName={guildName} />,
         }]}
-      />
+      >
+        {this.state.editing && (
+          PRIVACY_OPTIONS.map(({ prop, name }) => (
+            <Checkbox
+              key={prop}
+              checked={!guild || guild.privacy.includes(prop)}
+              onChange={(e) => this.setPrivacy(prop, e.target.checked ? 'add' : 'remove')}
+              label={`Show ${name}`}
+            />
+        )))}
+      </Content>
     );
   }
-});
+}));
