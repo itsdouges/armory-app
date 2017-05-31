@@ -133,6 +133,7 @@ export type Guild = {
   favor?: number,
   level?: number,
   members?: Array<User>,
+  privacy: Array<string>,
   leader?: {
     accountName: string,
     alias: string,
@@ -145,6 +146,7 @@ export const defaultGuild: Guild = {
   claimed: false,
   characters: [],
   users: [],
+  privacy: [],
 };
 
 export type PvpSeasons = {
