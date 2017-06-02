@@ -105,17 +105,19 @@ class Character extends Component {
   }
 
   hide = (e: EventHandler) => {
-    const { name } = this.props;
+    const { character } = this.props.match.params;
 
-    this.props.updateCharacter(name, {
+    this.props.updateCharacter(character, {
       showPublic: e.target.checked,
     });
-  }
+  };
 
   setPrivacy = (prop: string, action: 'add' | 'remove') => {
+    const { character } = this.props.match.params;
+
     return action === 'add'
-      ? this.props.setPrivacy(this.props.name, prop)
-      : this.props.removePrivacy(this.props.name, prop);
+      ? this.props.setPrivacy(character, prop)
+      : this.props.removePrivacy(character, prop);
   };
 
 
