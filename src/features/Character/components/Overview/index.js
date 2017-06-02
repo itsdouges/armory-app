@@ -19,11 +19,10 @@ import cx from 'classnames';
 import T from 'i18n-react';
 
 import { overviewSelector } from 'features/Character/characters.reducer';
-import { updateCharacter, selectCharacterMode, setPrivacy, removePrivacy } from 'features/Character/actions';
+import { selectCharacterMode } from 'features/Character/actions';
 import calculateAttributes from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
-import Checkbox from 'common/components/Checkbox';
 import ImageUpload from 'common/components/ImageUpload';
 import ContentCard from 'common/components/ContentCard';
 
@@ -40,12 +39,7 @@ import styles from './styles.less';
 
 type CharacterModes = 'pve' | 'pvp' | 'wvw';
 
-type UpdateOptions = {
-  showPublic: boolean,
-};
-
 type Props = {
-  editing?: boolean,
   editable?: boolean,
   name: string,
   mode: CharacterModes,
@@ -57,44 +51,11 @@ type Props = {
   traits?: Traits,
   skills?: Gw2Skills,
   amulets?: Amulets,
-  updateCharacter: (name: string, options: UpdateOptions) => Promise<*>,
-  setPrivacy: (name: string, prop: string) => Promise<*>,
-  removePrivacy: (name: string, prop: string) => Promise<*>,
   selectCharacterMode: (CharacterModes) => void,
 };
 
-const PRIVACY_OPTIONS = [
-  {
-    prop: 'crafting',
-    name: 'Crafting',
-  },
-  {
-    prop: 'skills',
-    name: 'Skills',
-  },
-  {
-    prop: 'specializations',
-    name: 'Specializations',
-  },
-  {
-    prop: 'bags',
-    name: 'Bags',
-  },
-  {
-    prop: 'equipment',
-    name: 'Equipment',
-  },
-  {
-    prop: 'equipment_pvp',
-    name: 'PvP Equipment',
-  },
-];
-
 export default connect(overviewSelector, {
-  updateCharacter,
   selectCharacterMode,
-  setPrivacy,
-  removePrivacy,
 })(
 class CharacterOverview extends Component {
   props: Props;
@@ -123,20 +84,6 @@ class CharacterOverview extends Component {
     return ids.map((id) => this.props.items && this.props.items[id]);
   }
 
-  hide = (e: EventHandler) => {
-    const { name } = this.props;
-
-    this.props.updateCharacter(name, {
-      showPublic: e.target.checked,
-    });
-  }
-
-  setPrivacy = (prop: string, action: 'add' | 'remove') => {
-    return action === 'add'
-      ? this.props.setPrivacy(this.props.name, prop)
-      : this.props.removePrivacy(this.props.name, prop);
-  };
-
   render () {
     const {
       name: characterName,
@@ -149,7 +96,6 @@ class CharacterOverview extends Component {
       specializations,
       amulets,
       pets,
-      editing,
       editable,
     } = this.props;
 
@@ -160,7 +106,6 @@ class CharacterOverview extends Component {
     const characterSkills = get(character, `skills[${mode}]`, {});
     const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
     const crafting = get(character, 'crafting', [{}, {}, {}]);
-    const showPublic = get(character, 'authorization.showPublic');
     const showPvpEquipment = mode === 'pvp';
     const characterPetIds = get(character, `skills[${mode}].pets.terrestrial`, undefined);
 
@@ -199,7 +144,6 @@ class CharacterOverview extends Component {
 
             <ImageUpload
               onUploadComplete={this.onUploadComplete}
-              forceShow={editing}
               disabled={!editable}
               hintText={<span>{T.translate('characters.changePortrait')}<br />560 x 840</span>}
               uploadName={`characters/${characterName}`}
@@ -214,24 +158,6 @@ class CharacterOverview extends Component {
             </ImageUpload>
 
             <div className={styles.rightColumn}>
-              {editing && [
-                <Checkbox
-                  key="hide-show"
-                  checked={!!showPublic}
-                  onChange={this.hide}
-                  label={T.translate(showPublic ? 'characters.shown' : 'characters.hidden')}
-                />,
-
-                ...PRIVACY_OPTIONS.map(({ prop, name }) => (
-                  <Checkbox
-                    key={prop}
-                    checked={!character || !character.privacy.includes(prop)}
-                    onChange={(e) => this.setPrivacy(prop, e.target.checked ? 'remove' : 'add')}
-                    label={`Show ${name}`}
-                  />
-                )),
-              ]}
-
               <div className={styles.attributes}>
                 {Object.keys(attributes).map((key) => {
                   const value = attributes[key];

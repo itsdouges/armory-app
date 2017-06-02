@@ -143,6 +143,15 @@ class Guild extends Component {
             )}
           </aside>
         }
+        metaContent={this.state.editing && (
+          PRIVACY_OPTIONS.map(({ prop, name }) => (
+            <Checkbox
+              key={prop}
+              checked={!guild || guild.privacy.includes(prop)}
+              onChange={(e) => this.setPrivacy(prop, e.target.checked ? 'add' : 'remove')}
+              label={`Show ${name}`}
+            />
+        )))}
         content={guild}
         type="guilds"
         tabs={[{
@@ -163,17 +172,7 @@ class Guild extends Component {
           path: '/logs',
           content: <Logs guildName={guildName} />,
         }]}
-      >
-        {this.state.editing && (
-          PRIVACY_OPTIONS.map(({ prop, name }) => (
-            <Checkbox
-              key={prop}
-              checked={!guild || guild.privacy.includes(prop)}
-              onChange={(e) => this.setPrivacy(prop, e.target.checked ? 'add' : 'remove')}
-              label={`Show ${name}`}
-            />
-        )))}
-      </Content>
+      />
     );
   }
 }));

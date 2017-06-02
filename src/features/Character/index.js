@@ -14,8 +14,9 @@ import authenticatedData from 'features/Auth/data';
 import Button from 'common/components/Button';
 import Content from 'common/layouts/Content';
 import ContentCard from 'common/components/ContentCard';
+import Checkbox from 'common/components/Checkbox';
 
-import { fetchCharacter, selectCharacter } from './actions';
+import { fetchCharacter, selectCharacter, updateCharacter, setPrivacy, removePrivacy } from './actions';
 import { topSelector } from './characters.reducer';
 import Overview from './components/Overview';
 import Bags from './components/Bags';
@@ -24,6 +25,37 @@ import styles from './styles.less';
 const buildDescription = (character = {}) =>
   // eslint-disable-next-line max-len
   `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
+
+const PRIVACY_OPTIONS = [
+  {
+    prop: 'crafting',
+    name: 'Crafting',
+  },
+  {
+    prop: 'skills',
+    name: 'Skills',
+  },
+  {
+    prop: 'specializations',
+    name: 'Specializations',
+  },
+  {
+    prop: 'bags',
+    name: 'Bags',
+  },
+  {
+    prop: 'equipment',
+    name: 'Equipment',
+  },
+  {
+    prop: 'equipment_pvp',
+    name: 'PvP Equipment',
+  },
+];
+
+type UpdateOptions = {
+  showPublic: boolean,
+};
 
 type Props = InjectedProps & {
   character?: CharacterType,
@@ -40,6 +72,9 @@ type Props = InjectedProps & {
   fetchUserCharacters: (name: string) => void,
   selectCharacter: (name: string) => void,
   selectUser: (name: string) => void,
+  updateCharacter: (name: string, options: UpdateOptions) => Promise<*>,
+  setPrivacy: (name: string, prop: string) => Promise<*>,
+  removePrivacy: (name: string, prop: string) => Promise<*>,
 };
 
 export default authenticatedData(
@@ -48,6 +83,9 @@ connect(topSelector, {
   fetchCharacter,
   selectCharacter,
   fetchUserCharacters,
+  updateCharacter,
+  setPrivacy,
+  removePrivacy,
 })(
 class Character extends Component {
   props: Props;
@@ -65,6 +103,21 @@ class Character extends Component {
       this.loadCharacter();
     }
   }
+
+  hide = (e: EventHandler) => {
+    const { name } = this.props;
+
+    this.props.updateCharacter(name, {
+      showPublic: e.target.checked,
+    });
+  }
+
+  setPrivacy = (prop: string, action: 'add' | 'remove') => {
+    return action === 'add'
+      ? this.props.setPrivacy(this.props.name, prop)
+      : this.props.removePrivacy(this.props.name, prop);
+  };
+
 
   loadCharacter () {
     const { character, alias } = this.props.match.params;
@@ -92,6 +145,7 @@ class Character extends Component {
 
     const editable = alias === params.alias;
     const characterTitle = get(title, 'name');
+    const showPublic = get(character, 'authorization.showPublic');
     const guild = character && {
       name: character.guild_name,
       tag: character.guild_tag,
@@ -106,6 +160,23 @@ class Character extends Component {
         basePath={this.props.match.url}
         description={buildDescription(character)}
         extraSubtitle={characterTitle && <span><i>{characterTitle}</i> | </span>}
+        metaContent={editing && [
+          <Checkbox
+            key="hide-show"
+            checked={!!showPublic}
+            onChange={this.hide}
+            label={T.translate(showPublic ? 'characters.shown' : 'characters.hidden')}
+          />,
+
+          ...PRIVACY_OPTIONS.map(({ prop, name }) => (
+            <Checkbox
+              key={prop}
+              checked={!character || !character.privacy.includes(prop)}
+              onChange={(e) => this.setPrivacy(prop, e.target.checked ? 'remove' : 'add')}
+              label={`Show ${name}`}
+            />
+          )),
+        ]}
         extraContent={(
           <aside className={styles.links}>
             <Link to={`/${(character && character.alias) || ''}`}>

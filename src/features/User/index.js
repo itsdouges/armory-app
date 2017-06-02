@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom';
 import startCase from 'lodash/startCase';
 import cx from 'classnames';
 
+import SelectList from 'common/components/SelectList';
 import Checkbox from 'common/components/Checkbox';
 import authenticatedData from 'features/Auth/data';
 import { makeStubItems } from 'lib/paginator';
@@ -142,7 +143,7 @@ class User extends Component {
 
   renderPinnedTab () {
     const stubUser = get(this.props.user, 'stub');
-    const { alias, match: { params } } = this.props;
+    const { alias, match: { params }, user } = this.props;
     const editable = alias === params.alias;
 
     if (stubUser) {
@@ -205,6 +206,15 @@ class User extends Component {
           </TooltipTrigger>
         )}
         basePath={this.props.match.url}
+        metaContent={editing && (
+          PRIVACY_OPTIONS.map(({ prop, name }) => (
+            <Checkbox
+              key={prop}
+              checked={!user || !user.privacy.includes(prop)}
+              onChange={(e) => this.setPrivacy(prop, e.target.checked ? 'remove' : 'add')}
+              label={`Show ${name}`}
+            />
+        )))}
         extraContent={
           <ul className={styles.rating}>
             <li>
@@ -280,17 +290,7 @@ class User extends Component {
             </div>
           ),
         }]}
-      >
-        {editing && (
-          PRIVACY_OPTIONS.map(({ prop, name }) => (
-            <Checkbox
-              key={prop}
-              checked={!user || !user.privacy.includes(prop)}
-              onChange={(e) => this.setPrivacy(prop, e.target.checked ? 'remove' : 'add')}
-              label={`Show ${name}`}
-            />
-        )))}
-      </Content>
+      />
     );
   }
 }

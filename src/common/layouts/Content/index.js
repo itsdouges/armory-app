@@ -1,5 +1,6 @@
 // @flow
 
+import type { Children } from 'react';
 import type { TabInput as Tabs$TabInput } from 'common/components/Tabs';
 
 import cx from 'classnames';
@@ -21,6 +22,7 @@ type Props = {
   cardExtra?: any,
   pinnedTab?: any,
   basePath: string,
+  metaContent?: Children,
 };
 
 const Content = ({
@@ -32,6 +34,7 @@ const Content = ({
   cardExtra,
   pinnedTab,
   basePath,
+  metaContent,
   ...props
 }: Props) => (
   <div className={styles.root}>
@@ -46,7 +49,15 @@ const Content = ({
       </Container>
     </header>
 
-    {tabs && <Tabs titleSuffix={title} tabs={tabs} pinnedTab={pinnedTab} basePath={basePath} />}
+    {tabs && (
+      <Tabs
+        tabs={tabs}
+        metaContent={metaContent}
+        titleSuffix={title}
+        pinnedTab={pinnedTab}
+        basePath={basePath}
+      />
+    )}
 
     {children}
 

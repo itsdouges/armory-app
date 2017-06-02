@@ -7,7 +7,7 @@
 }
 
 .tabsBg {
-  background: @tabsBg;
+  background-color: @tabsBg;
   border-bottom: 1px solid @tabsBorder;
 }
 
@@ -32,14 +32,13 @@
 .tab {
   display: block;
   padding: @tabPadding @tabPadding * 2;
-  color: @_darkgray;
+  color: @_black;
   border: 1px solid transparent;
 }
 
 .selected {
   margin-bottom: -1px;
-  background: @background;
-  color: @_darkergray;
+  background-color: @background;
   border: 1px solid @tabsBorder;
   border-bottom: none;
   border-radius: 2px 2px 0 0;
@@ -54,4 +53,9 @@
 
 .pinnedRight {
   margin-left: auto;
+}
+
+.metaContent {
+  background-color: @tabsBorder;
+  text-align: center;
 }
