@@ -1,5 +1,7 @@
 @import '~common/styles/base.less';
 
+@tabPadding: 1em;
+
 .root {
   font-size: 0.75rem;
 }
@@ -29,17 +31,19 @@
 
 .tab {
   display: block;
-  padding: 1em 2em;
+  padding: @tabPadding @tabPadding * 2;
   color: @_darkgray;
+  border: 1px solid transparent;
 }
 
-.selected,
-.selected.tab:hover,
-.selected.tab:focus,
-.tab:hover,
-.tab:focus {
-  background: @tabHover;
+.selected {
+  margin-bottom: -1px;
+  background: @background;
   color: @_darkergray;
+  border: 1px solid @tabsBorder;
+  border-bottom: none;
+  border-radius: 2px 2px 0 0;
+  padding-bottom: calc(@tabPadding ~"+" 2px);
 }
 
 .fromTablet({
