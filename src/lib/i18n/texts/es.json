@@ -86,7 +86,7 @@
     "shown": "Mostrar a todo el mundo",
     "hidden": "Personaje privado",
     "done": "Hecho",
-    "edit": "Editar",
+    "edit": "Intimidad",
     "changePortrait": "Cambiar el retrato del personaje",
     "noSkill": "Habilidad no seleccionada",
     "embedTooltip": "Copia y pega este markup a tu página.",
@@ -212,6 +212,7 @@
     "cta": "Guild Wars 2 Armory necesita tu ayuda, ¡hazte una patrona hoy!"
   },
   "notifications": {
-    "didYouKnow1": "¿Sabías? Los datos del clan autenticado están disponibles: ¡pídale a su líder del gremio que se registre y pueda acceder a su mensaje del día y los registros! Más datos próximamente."
+    "didYouKnow1": "¿Sabías? Los datos del clan autenticado están disponibles: ¡pídale a su líder del gremio que se registre y pueda acceder a su mensaje del día y los registros! Más datos próximamente.",
+    "privacyNowAvailable": "Configuración de privacidad ahora disponible! ¡Ahora también puedes mostrar tu gremio si eres el líder del gremio! Busque el gran botón rojo de \"INTIMIDAD\" cuando está conectado."
   }
 }

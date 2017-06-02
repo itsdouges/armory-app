@@ -86,7 +86,7 @@
     "shown": "Charakter sichtbar",
     "hidden": "Charakter versteckt",
     "done": "Fertig",
-    "edit": "Bearbeiten",
+    "edit": "Privatsphäre",
     "changePortrait": "Portrait wechseln",
     "noSkill": "Keine Fertigkeit ausgewälht",
     "embedTooltip": "Zum Einbetten in deine Website, kopiere dieses Markup und füge es in deiner Webseite ein.",
@@ -212,6 +212,7 @@
     "cta": "Guild Wars 2 Armory braucht deine Hilfe, werde heute ein Patreon!"
   },
   "notifications": {
-    "didYouKnow1": "Wusstest du schon? Authentifizierte Gildendaten stehen zur Verfügung - erhalten Sie Ihren Gildenführer, um sich anzumelden und Sie können auf Ihre Nachricht des Tages zugreifen und sich anmelden! Weitere Daten in Kürze"
+    "didYouKnow1": "Wusstest du schon? Authentifizierte Gildendaten stehen zur Verfügung - erhalten Sie Ihren Gildenführer, um sich anzumelden und Sie können auf Ihre Nachricht des Tages zugreifen und sich anmelden! Weitere Daten in Kürze",
+    "privacyNowAvailable": "Datenschutzeinstellungen jetzt verfügbar! Du kannst jetzt auch deine Gilde zeigen, wenn du der Gildenführer bist! Suchen Sie nach der großen roten \"Privatsphäre\" -Taste, wenn Sie angemeldet sind."
   }
 }

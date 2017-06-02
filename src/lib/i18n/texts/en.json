@@ -219,6 +219,7 @@
     "cta": "Guild Wars 2 Armory needs your help, become a patreon today!"
   },
   "notifications": {
-    "didYouKnow1": "Did you know? Private authenticated guild data is available - get your guild leader to sign up and you can access your message of the day and logs! More data coming soon."
+    "didYouKnow1": "Did you know? Private authenticated guild data is available - get your guild leader to sign up and you can access your message of the day and logs! More data coming soon.",
+    "privacyNowAvailable": "Privacy settings now available! You can now also show off your guild if you're the guild leader! Look for the big red \"PRIVACY\" button when logged in."
   }
 }
