@@ -5,6 +5,7 @@
 @portraitWidth: 770px;
 @brushDecorationZ: @_zindexBehind;
 @itemMargin: 0.125rem;
+@embedMargin: 0.5em;
 
 .root {
   flex-grow: 1;
@@ -14,6 +15,10 @@
 
 .overviewRoot {
   margin-top: @itemMargin;
+
+  .fromTablet({
+    margin-top: @itemMargin * 2;
+  });
 }
 
 .inner {
@@ -37,8 +42,6 @@
   right: 0.5em;
   z-index: @portraitButtonsZ;
 }
-
-@embedMargin: 0.5em;
 
 .embedContainer {
   position: absolute;
@@ -76,20 +79,25 @@
   .transition(opacity);
 }
 
-.leftColumn {
-  :first-child {
-    margin-top: 0;
-  }
-
-  > div {
-    margin: @itemMargin;
-  }
-}
-
 .leftColumn,
 .rightColumn {
   margin: 0 @itemMargin;
   flex-shrink: 0;
+}
+
+.leftColumn {
+  > div {
+    margin: @itemMargin;
+  }
+
+  margin-bottom: @itemMargin;
+
+  .fromTablet({
+    :first-child {
+      margin-top: 0;
+      margin-bottom: inherit;
+    }
+  });
 }
 
 .rightItemColumn {
