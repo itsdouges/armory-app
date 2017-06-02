@@ -2,7 +2,6 @@
 
 import type { Children } from 'react';
 
-import cx from 'classnames';
 import { cloneElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
 

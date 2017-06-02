@@ -14,7 +14,6 @@ import { Link } from 'react-router-dom';
 import startCase from 'lodash/startCase';
 import cx from 'classnames';
 
-import SelectList from 'common/components/SelectList';
 import Checkbox from 'common/components/Checkbox';
 import authenticatedData from 'features/Auth/data';
 import { makeStubItems } from 'lib/paginator';
@@ -143,7 +142,7 @@ class User extends Component {
 
   renderPinnedTab () {
     const stubUser = get(this.props.user, 'stub');
-    const { alias, match: { params }, user } = this.props;
+    const { alias, match: { params } } = this.props;
     const editable = alias === params.alias;
 
     if (stubUser) {
