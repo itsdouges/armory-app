@@ -108,7 +108,7 @@
     },
     "apiKeys": {
       "name": "Api Keys",
-      "noKeysCta": "Oh, you have no api keys.. go generate one ..! Make sure you select characters, builds, and pvp permissions :-).",
+      "noKeysCta": "You need to add some api keys, click here to create one. Select all permissions, you can hide what you don't want to show.",
       "inputs": {
         "add": "Add key"
       },
