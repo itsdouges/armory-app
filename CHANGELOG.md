@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- New privacy system for all resources
+
+### Changed
+- Tab styles to be more streamlined
 
 ## [4.27.0][] - 2017-05-28
 ### Added
