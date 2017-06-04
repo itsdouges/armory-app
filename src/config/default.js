@@ -17,8 +17,7 @@ module.exports = {
   },
 
   features: {
-    christmas: false,
-    ads: false,
+    ads: true,
   },
 
   embeds: {

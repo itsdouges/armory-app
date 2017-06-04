@@ -16,7 +16,7 @@ type Props = {
 
 const Leaderboards = ({ match }: Props) => (
   <div className={styles.root}>
-    <DisplayAd className={styles.ad} />
+    <DisplayAd type="leaderboard" className={styles.ad} />
 
     <Tabs
       titleSuffix={`PvP ${T.translate('leaderboards.name')}`}
@@ -39,7 +39,7 @@ const Leaderboards = ({ match }: Props) => (
       }]}
     />
 
-    <DisplayAd className={styles.ad} />
+    <DisplayAd type="leaderboard" className={styles.ad} />
   </div>
 );
 
