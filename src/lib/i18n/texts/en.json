@@ -108,7 +108,7 @@
     },
     "apiKeys": {
       "name": "Api Keys",
-      "noKeysCta": "You need to add some api keys, click here to create one. Select all permissions, you can hide what you don't want to show.",
+      "noKeysCta": "Click here to create an api key. Select all permissions, you can hide what you don't want to show.",
       "inputs": {
         "add": "Add key"
       },
