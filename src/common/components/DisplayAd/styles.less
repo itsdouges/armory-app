@@ -1,12 +1,26 @@
+@import '~common/styles/base.less';
+
 .root {
-  width: 728px;
-  height: 90px;
   margin-left: auto;
   margin-right: auto;
-  background: blue;
-}
+  border: 1px solid @tabsBorder;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
 
-.ad {
-  width: 728px;
-  height: 90px;
+  > iframe {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:after {
+    .absoluteCenter();
+    content: "This site is supported by ads. Please consider adding us to your whitelist or becoming a patreon!";
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.7em;
+  }
 }

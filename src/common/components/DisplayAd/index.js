@@ -1,37 +1,93 @@
 // @flow
 
+import { withRouter } from 'react-router';
 import { Component } from 'react';
 import cx from 'classnames';
 
-import styles from './styles.less';
 import config from 'config';
+import { iframe } from 'lib/dom';
+import styles from './styles.less';
 
 type Props = {
   className?: string,
+  location: Object,
+  type: 'billboard' | 'halfpage' | 'leaderboard' | 'mrec' | 'wideskyscraper',
 };
 
-export default class DisplayAd extends Component {
+const displayAdMap = {
+  billboard: {
+    width: 970,
+    height: 250,
+    tag: 480591,
+  },
+  leaderboard: {
+    width: 728,
+    height: 90,
+    tag: 480592,
+  },
+  halfpage: {
+    width: 300,
+    height: 600,
+    tag: 480595,
+  },
+  mrec: {
+    width: 300,
+    height: 250,
+    tag: 480593,
+  },
+  wideskyscraper: {
+    width: 160,
+    height: 600,
+    tag: 480597,
+  },
+};
+
+export default withRouter(
+class DisplayAd extends Component {
   props: Props;
+  _container: HTMLElement;
+
+  componentDidUpdate (prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.renderAd();
+    }
+  }
 
   componentDidMount () {
+    this.renderAd();
+  }
+
+  renderAd () {
     if (!config.features.ads) {
       return;
     }
 
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
+    this._container.innerHTML = '';
+
+    const ad = displayAdMap[this.props.type];
+
+    iframe(this._container, `
+<script src="//ap.lijit.com/www/delivery/fpi.js?z=${ad.tag}&width=${ad.width}&height=${ad.height}"></script>
+    `);
   }
 
   render () {
-    const { className } = this.props;
+    if (!config.features.ads) {
+      return null;
+    }
 
-    return config.features.ads ? (
-      <div className={cx(styles.root, className)}>
-        <ins
-          className={cx(styles.container, 'adsbygoogle', styles.ad)}
-          data-ad-client="ca-pub-2175298201916217"
-          data-ad-slot="8417387487"
-        />
-      </div>
-    ) : null;
+    const { className } = this.props;
+    const { width, height } = displayAdMap[this.props.type];
+
+    return (
+      <div
+        className={cx(styles.root, className)}
+        style={{
+          width,
+          height,
+        }}
+        ref={(c) => (this._container = c)}
+      />
+    );
   }
-}
+});

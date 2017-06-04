@@ -24,7 +24,7 @@ const Home = () => (
 
     <RandomGuilds />
 
-    <DisplayAd className={styles.ad} />
+    <DisplayAd type="leaderboard" className={styles.ad} />
   </div>
 );
 
