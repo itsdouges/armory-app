@@ -86,7 +86,7 @@
     "shown": "Caractère Montré",
     "hidden": "Caractère caché",
     "done": "Done",
-    "edit": "Edit",
+    "edit": "Intimité",
     "changePortrait": "Change your character portrait",
     "noSkill": "No Skill Selected",
     "embedTooltip": "Copy and paste this markup onto your website.",
@@ -212,6 +212,7 @@
     "cta": "L'Armurerie Guild Wars 2 a besoin de votre aide, devenez aujourd'hui une patrice!"
   },
   "notifications": {
-    "didYouKnow1": "Le saviez-vous? Les données de guilde authentifiées sont disponibles - demandez à votre chef de guilde de vous inscrire et vous pouvez accéder à votre message du jour et des journaux! Plus de données sont disponibles prochainement."
+    "didYouKnow1": "Le saviez-vous? Les données de guilde authentifiées sont disponibles - demandez à votre chef de guilde de vous inscrire et vous pouvez accéder à votre message du jour et des journaux! Plus de données sont disponibles prochainement.",
+    "privacyNowAvailable": "Les paramètres de confidentialité sont maintenant disponibles! Vous pouvez maintenant montrer votre guilde si vous êtes le leader de la guilde! Recherchez le grand bouton \"INTIMITÉ\" rouge lors de la connexion."
   }
 }

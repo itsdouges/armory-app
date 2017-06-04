@@ -10,6 +10,7 @@ export type Character = {
   profession: string,
   eliteSpecialization: string,
   level: number,
+  privacy: Array<string>,
 };
 
 export const defaultCharacter: Character = {
@@ -22,6 +23,7 @@ export const defaultCharacter: Character = {
   profession: '',
   eliteSpecialization: '',
   level: 0,
+  privacy: [],
 };
 
 type PvpGame = {
@@ -54,6 +56,7 @@ export type User = {
   wins: ?number,
   losses: ?number,
   valid: boolean,
+  privacy: Array<string>,
 };
 
 export type AuthenticatedUser = User & {
@@ -83,6 +86,7 @@ export const defaultUser: User = {
   wins: null,
   losses: null,
   valid: true,
+  privacy: [],
 };
 
 // See: https://wiki.guildwars2.com/wiki/API:2/guild/:id/log
@@ -129,6 +133,7 @@ export type Guild = {
   favor?: number,
   level?: number,
   members?: Array<User>,
+  privacy: Array<string>,
   leader?: {
     accountName: string,
     alias: string,
@@ -141,6 +146,7 @@ export const defaultGuild: Guild = {
   claimed: false,
   characters: [],
   users: [],
+  privacy: [],
 };
 
 export type PvpSeasons = {

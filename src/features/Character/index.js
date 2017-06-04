@@ -1,7 +1,7 @@
 // @flow
 
 import type { Character as CharacterType, Gw2Title } from 'flowTypes';
-
+import type { InjectedProps } from 'features/Auth/data';
 
 import { Component } from 'react';
 import { connect } from 'react-redux';
@@ -9,13 +9,15 @@ import get from 'lodash/get';
 import { Link } from 'react-router-dom';
 import T from 'i18n-react';
 
-import { topSelector } from './characters.reducer';
-import { fetchCharacter, selectCharacter } from './actions';
 import { fetchUserCharacters, selectUser } from 'features/User/actions';
-
+import authenticatedData from 'features/Auth/data';
+import Button from 'common/components/Button';
 import Content from 'common/layouts/Content';
 import ContentCard from 'common/components/ContentCard';
+import Checkbox from 'common/components/Checkbox';
 
+import { fetchCharacter, selectCharacter, updateCharacter, setPrivacy, removePrivacy } from './actions';
+import { topSelector } from './characters.reducer';
 import Overview from './components/Overview';
 import Bags from './components/Bags';
 import styles from './styles.less';
@@ -24,7 +26,38 @@ const buildDescription = (character = {}) =>
   // eslint-disable-next-line max-len
   `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
 
-type Props = {
+const PRIVACY_OPTIONS = [
+  {
+    prop: 'crafting',
+    name: 'Crafting',
+  },
+  {
+    prop: 'skills',
+    name: 'Skills',
+  },
+  {
+    prop: 'specializations',
+    name: 'Specializations',
+  },
+  {
+    prop: 'bags',
+    name: 'Bags',
+  },
+  {
+    prop: 'equipment',
+    name: 'Equipment',
+  },
+  {
+    prop: 'equipment_pvp',
+    name: 'PvP Equipment',
+  },
+];
+
+type UpdateOptions = {
+  showPublic: boolean,
+};
+
+type Props = InjectedProps & {
   character?: CharacterType,
   mode: 'pve' | 'pvp' | 'wvw',
   match: {
@@ -39,16 +72,27 @@ type Props = {
   fetchUserCharacters: (name: string) => void,
   selectCharacter: (name: string) => void,
   selectUser: (name: string) => void,
+  updateCharacter: (name: string, options: UpdateOptions) => Promise<*>,
+  setPrivacy: (name: string, prop: string) => Promise<*>,
+  removePrivacy: (name: string, prop: string) => Promise<*>,
 };
 
-@connect(topSelector, {
+export default authenticatedData(
+connect(topSelector, {
   selectUser,
   fetchCharacter,
   selectCharacter,
   fetchUserCharacters,
-})
-export default class Character extends Component {
+  updateCharacter,
+  setPrivacy,
+  removePrivacy,
+})(
+class Character extends Component {
   props: Props;
+
+  state = {
+    editing: false,
+  };
 
   componentWillMount () {
     this.loadCharacter();
@@ -60,6 +104,23 @@ export default class Character extends Component {
     }
   }
 
+  hide = (e: EventHandler) => {
+    const { character } = this.props.match.params;
+
+    this.props.updateCharacter(character, {
+      showPublic: e.target.checked,
+    });
+  };
+
+  setPrivacy = (prop: string, action: 'add' | 'remove') => {
+    const { character } = this.props.match.params;
+
+    return action === 'add'
+      ? this.props.setPrivacy(character, prop)
+      : this.props.removePrivacy(character, prop);
+  };
+
+
   loadCharacter () {
     const { character, alias } = this.props.match.params;
 
@@ -68,14 +129,25 @@ export default class Character extends Component {
     this.props.selectUser(alias);
   }
 
+  toggleEditing = () => {
+    this.setState((prevState) => ({
+      editing: !prevState.editing,
+    }));
+  };
+
   render () {
     const {
-      match: { params: { alias, character: characterName } },
+      match: { params },
       character,
       title,
+      alias,
     } = this.props;
 
+    const { editing } = this.state;
+
+    const editable = alias === params.alias;
     const characterTitle = get(title, 'name');
+    const showPublic = get(character, 'authorization.showPublic');
     const guild = character && {
       name: character.guild_name,
       tag: character.guild_tag,
@@ -84,12 +156,29 @@ export default class Character extends Component {
 
     return (
       <Content
-        title={`${characterName} | ${alias}`}
+        title={`${params.character} | ${params.alias}`}
         type="characters"
         content={character}
         basePath={this.props.match.url}
         description={buildDescription(character)}
         extraSubtitle={characterTitle && <span><i>{characterTitle}</i> | </span>}
+        metaContent={editing && [
+          <Checkbox
+            key="hide-show"
+            checked={!!showPublic}
+            onChange={this.hide}
+            label={T.translate(showPublic ? 'characters.shown' : 'characters.hidden')}
+          />,
+
+          ...PRIVACY_OPTIONS.map(({ prop, name }) => (
+            <Checkbox
+              key={prop}
+              checked={!character || !character.privacy.includes(prop)}
+              onChange={(e) => this.setPrivacy(prop, e.target.checked ? 'remove' : 'add')}
+              label={`Show ${name}`}
+            />
+          )),
+        ]}
         extraContent={(
           <aside className={styles.links}>
             <Link to={`/${(character && character.alias) || ''}`}>
@@ -101,13 +190,24 @@ export default class Character extends Component {
             </Link>
           </aside>
         )}
+        pinnedTab={editable && (
+          <Button
+            className={styles.editButton}
+            type="cta"
+            onClick={this.toggleEditing}
+          >
+            {T.translate(this.state.editing ? 'characters.done' : 'characters.edit')}
+          </Button>
+        )}
         tabs={[{
           path: '',
           name: 'PvE',
           ignoreTitle: true,
           content: (
             <Overview
-              name={characterName}
+              name={params.character}
+              editing={editing}
+              editable={editable}
               mode="pve"
               userAlias={alias}
             />
@@ -117,7 +217,9 @@ export default class Character extends Component {
           name: 'PvP',
           content: (
             <Overview
-              name={characterName}
+              name={params.character}
+              editing={editing}
+              editable={editable}
               mode="pvp"
               userAlias={alias}
             />
@@ -127,7 +229,9 @@ export default class Character extends Component {
           name: 'WvW',
           content: (
             <Overview
-              name={characterName}
+              name={params.character}
+              editing={editing}
+              editable={editable}
               mode="wvw"
               userAlias={alias}
             />
@@ -141,4 +245,4 @@ export default class Character extends Component {
       />
     );
   }
-}
+}));

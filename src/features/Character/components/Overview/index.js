@@ -11,8 +11,6 @@ import type {
   Pets,
 } from 'flowTypes';
 
-import type { InjectedProps } from 'features/Auth/data';
-
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import includes from 'lodash/includes';
@@ -20,15 +18,12 @@ import get from 'lodash/get';
 import cx from 'classnames';
 import T from 'i18n-react';
 
-import authenticatedData from 'features/Auth/data';
 import { overviewSelector } from 'features/Character/characters.reducer';
-import { updateCharacter, selectCharacterMode } from 'features/Character/actions';
+import { selectCharacterMode } from 'features/Character/actions';
 import calculateAttributes from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
-import Checkbox from 'common/components/Checkbox';
 import ImageUpload from 'common/components/ImageUpload';
-import Button from 'common/components/Button';
 import ContentCard from 'common/components/ContentCard';
 
 import PvpEquipment from '../PvpEquipment';
@@ -44,13 +39,9 @@ import styles from './styles.less';
 
 type CharacterModes = 'pve' | 'pvp' | 'wvw';
 
-type UpdateOptions = {
-  showPublic: boolean,
-};
-
-type Props = InjectedProps & {
+type Props = {
+  editable?: boolean,
   name: string,
-  userAlias: string,
   mode: CharacterModes,
   character?: CharacterType,
   items?: Items,
@@ -60,30 +51,26 @@ type Props = InjectedProps & {
   traits?: Traits,
   skills?: Gw2Skills,
   amulets?: Amulets,
-  updateCharacter?: (name: string, options: UpdateOptions) => void,
-  selectCharacterMode?: (CharacterModes) => void,
+  selectCharacterMode: (CharacterModes) => void,
 };
 
-export default authenticatedData(
-connect(overviewSelector, {
-  updateCharacter,
+export default connect(overviewSelector, {
   selectCharacterMode,
 })(
 class CharacterOverview extends Component {
   props: Props;
 
   state = {
-    editMode: false,
     updateImage: false,
   };
 
   componentWillMount () {
-    this.props.selectCharacterMode && this.props.selectCharacterMode(this.props.mode);
+    this.props.selectCharacterMode(this.props.mode);
   }
 
   componentWillReceiveProps (nextProps: Props) {
     if (nextProps.mode !== this.props.mode) {
-      this.props.selectCharacterMode && this.props.selectCharacterMode(nextProps.mode);
+      this.props.selectCharacterMode(nextProps.mode);
     }
   }
 
@@ -97,25 +84,8 @@ class CharacterOverview extends Component {
     return ids.map((id) => this.props.items && this.props.items[id]);
   }
 
-  toggleEditMode = () => {
-    const editMode = !this.state.editMode;
-
-    this.setState({
-      editMode,
-    });
-  };
-
-  hide = (e: EventHandler) => {
-    const { name } = this.props;
-
-    this.props.updateCharacter && this.props.updateCharacter(name, {
-      showPublic: e.target.checked,
-    });
-  }
-
   render () {
     const {
-      alias,
       name: characterName,
       character,
       mode,
@@ -126,20 +96,16 @@ class CharacterOverview extends Component {
       specializations,
       amulets,
       pets,
-      userAlias,
+      editable,
     } = this.props;
 
-    const { editMode } = this.state;
-
     const attributes = calculateAttributes(character, { items, traits, skills });
-    const ownCharacter = alias === userAlias;
     const equipment = get(character, 'equipment', {});
     const profession = get(character, 'profession');
     const characterSpecializations = get(character, `specializations[${mode}]`, [{}, {}, {}]).filter((s) => !!s);
     const characterSkills = get(character, `skills[${mode}]`, {});
     const pvpEquipment = get(character, 'equipment_pvp', { sigils: [] });
     const crafting = get(character, 'crafting', [{}, {}, {}]);
-    const showPublic = get(character, 'authorization.showPublic');
     const showPvpEquipment = mode === 'pvp';
     const characterPetIds = get(character, `skills[${mode}].pets.terrestrial`, undefined);
 
@@ -178,8 +144,7 @@ class CharacterOverview extends Component {
 
             <ImageUpload
               onUploadComplete={this.onUploadComplete}
-              disabled={!editMode}
-              forceShow={editMode}
+              disabled={!editable}
               hintText={<span>{T.translate('characters.changePortrait')}<br />560 x 840</span>}
               uploadName={`characters/${characterName}`}
             >
@@ -193,28 +158,6 @@ class CharacterOverview extends Component {
             </ImageUpload>
 
             <div className={styles.rightColumn}>
-              {ownCharacter && (
-                <div className={styles.editContainer}>
-                  <Button
-                    key="edit-button"
-                    className={styles.editButton}
-                    type={editMode ? 'primary' : 'minimal'}
-                    onClick={this.toggleEditMode}
-                  >
-                    {T.translate(editMode ? 'characters.done' : 'characters.edit')}
-                  </Button>
-
-                  {editMode && [
-                    <Checkbox
-                      checked={!!showPublic}
-                      key="hide-checkbox"
-                      onChange={this.hide}
-                      label={T.translate(showPublic ? 'characters.shown' : 'characters.hidden')}
-                    />,
-                  ]}
-                </div>
-              )}
-
               <div className={styles.attributes}>
                 {Object.keys(attributes).map((key) => {
                   const value = attributes[key];
@@ -282,4 +225,4 @@ class CharacterOverview extends Component {
       </div>
     );
   }
-}));
+});

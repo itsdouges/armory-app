@@ -1,11 +1,13 @@
 @import '~common/styles/base.less';
 
+@tabPadding: 1em;
+
 .root {
   font-size: 0.75rem;
 }
 
 .tabsBg {
-  background: @tabsBg;
+  background-color: @tabsBg;
   border-bottom: 1px solid @tabsBorder;
 }
 
@@ -29,17 +31,18 @@
 
 .tab {
   display: block;
-  padding: 1em 2em;
-  color: @_darkgray;
+  padding: @tabPadding @tabPadding * 2;
+  color: @_black;
+  border: 1px solid transparent;
 }
 
-.selected,
-.selected.tab:hover,
-.selected.tab:focus,
-.tab:hover,
-.tab:focus {
-  background: @tabHover;
-  color: @_darkergray;
+.selected {
+  margin-bottom: -1px;
+  background-color: @background;
+  border: 1px solid @tabsBorder;
+  border-bottom: none;
+  border-radius: 2px 2px 0 0;
+  padding-bottom: calc(@tabPadding ~"+" 2px);
 }
 
 .fromTablet({
@@ -50,4 +53,9 @@
 
 .pinnedRight {
   margin-left: auto;
+}
+
+.metaContent {
+  background-color: @tabsBorder;
+  text-align: center;
 }

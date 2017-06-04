@@ -5,6 +5,7 @@
 @portraitWidth: 770px;
 @brushDecorationZ: @_zindexBehind;
 @itemMargin: 0.125rem;
+@embedMargin: 0.5em;
 
 .root {
   flex-grow: 1;
@@ -14,6 +15,10 @@
 
 .overviewRoot {
   margin-top: @itemMargin;
+
+  .fromTablet({
+    margin-top: @itemMargin * 2;
+  });
 }
 
 .inner {
@@ -38,8 +43,6 @@
   z-index: @portraitButtonsZ;
 }
 
-@embedMargin: 0.5em;
-
 .embedContainer {
   position: absolute;
   right: @embedMargin;
@@ -49,10 +52,6 @@
   text-align: right;
   width: inherit;
   font-size: 1.2em;
-}
-
-.portrait {
-  margin-top: @itemMargin;
 }
 
 .modeIcon {
@@ -80,16 +79,25 @@
   .transition(opacity);
 }
 
-.leftColumn {
-  > div {
-    margin: @itemMargin;
-  }
-}
-
 .leftColumn,
 .rightColumn {
   margin: 0 @itemMargin;
   flex-shrink: 0;
+}
+
+.leftColumn {
+  > div {
+    margin: @itemMargin;
+  }
+
+  margin-bottom: @itemMargin;
+
+  .fromTablet({
+    :first-child {
+      margin-top: 0;
+      margin-bottom: inherit;
+    }
+  });
 }
 
 .rightItemColumn {
@@ -123,10 +131,6 @@
   > div {
     margin: 2.5em 0;
   }
-}
-
-.portrait {
-  margin-top: @itemMargin;
 }
 
 .brushStrokeContainer:before,

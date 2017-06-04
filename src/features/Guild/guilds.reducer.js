@@ -5,6 +5,7 @@ import {
   FETCH_GUILD_LOGS,
   FETCH_GUILD_MEMBERS,
   FETCH_GUILD_CHARACTERS,
+  UPDATE_GUILD_PRIVACY,
 } from './actions';
 
 import { createSelector } from 'reselect';
@@ -98,6 +99,23 @@ export default function reducer (state, action) {
               rows: ((previous.members || {}).rows || []).concat(action.payload.data.rows),
             },
           },
+        },
+      };
+    }
+
+    case UPDATE_GUILD_PRIVACY: {
+      const newCharacter = {
+        ...state.data[action.payload.name],
+        privacy: action.payload.action === 'add'
+          ? state.data[action.payload.name].privacy.concat([action.payload.prop])
+          : state.data[action.payload.name].privacy.filter((priv) => priv !== action.payload.prop),
+      };
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.payload.name]: newCharacter,
         },
       };
     }

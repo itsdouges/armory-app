@@ -1,5 +1,7 @@
 // @flow
 
+import type { Children } from 'react';
+
 import { cloneElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
@@ -23,9 +25,10 @@ type TabsProps = {
   tabs: Array<TabInput>,
   titleSuffix: string,
   basePath: string,
+  metaContent?: Children,
 };
 
-const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath }: TabsProps) => (
+const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath, metaContent }: TabsProps) => (
   <div className={styles.root}>
     <nav className={styles.tabsBg}>
       <Container className={styles.tabsContainer}>
@@ -33,7 +36,7 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath }: Tab
           {tabs.map((tab) => (
             <li key={tab.path}>
               <Tab
-                {...tab}
+                flair={tab.flair}
                 exact={!tab.path}
                 path={`${basePath}${tab.path}`}
                 name={tab.name}
@@ -47,6 +50,12 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath }: Tab
         </ul>
       </Container>
     </nav>
+
+    {!!metaContent && (
+      <aside className={styles.metaContent}>
+        {metaContent}
+      </aside>
+    )}
 
     <section>
       <Switch>

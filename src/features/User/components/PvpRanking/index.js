@@ -1,8 +1,8 @@
 // @flow
 
-import styles from './styles.less';
 import ProgressBar from 'common/components/ProgressBar';
 import Redacted from 'common/components/Redacted';
+import Summary from 'common/layouts/Summary';
 
 const calculateRankExperience = (rank) => {
   if (!rank || rank <= 1) {
@@ -86,22 +86,16 @@ const PvpRanking = ({ rank, points, rankRollOvers }: Props) => {
   const { image, name, current, max } = calculateRanking(rank, points);
 
   return (
-    <div className={styles.root}>
-      <Redacted redact={!rank}>
-        <div className={styles.icon} style={{ backgroundImage: `url(${image})` }} />
-      </Redacted>
-
-      <div className={styles.progressContainer}>
-        <span className={styles.name}>
-          <Redacted redact={!rank}>{name} ({rolledOverRank})</Redacted>
-        </span>
-
+    <Summary
+      leftIcon={{ src: image, size: 'xlarge' }}
+      title={<Redacted redact={!rank}>{name} ({rolledOverRank})</Redacted>}
+      subTitle={
         <ProgressBar
           current={current}
           max={max}
         />
-      </div>
-    </div>
+      }
+    />
   );
 };
 

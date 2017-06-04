@@ -11,6 +11,7 @@ import {
   SELECT_CHARACTER,
   SELECT_CHARACTER_MODE,
   UPDATE_CHARACTER,
+  UPDATE_CHARACTER_PRIVACY,
 } from './actions';
 
 const eliteSpecMap = {
@@ -209,6 +210,23 @@ export default function reducer (state, action) {
       };
 
       return merge({}, state, { data: characterUpdate });
+    }
+
+    case UPDATE_CHARACTER_PRIVACY: {
+      const newCharacter = {
+        ...state.data[action.payload.name],
+        privacy: action.payload.action === 'add'
+          ? state.data[action.payload.name].privacy.concat([action.payload.prop])
+          : state.data[action.payload.name].privacy.filter((priv) => priv !== action.payload.prop),
+      };
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.payload.name]: newCharacter,
+        },
+      };
     }
 
     default:

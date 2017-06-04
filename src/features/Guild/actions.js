@@ -11,6 +11,7 @@ export const FETCH_GUILD_RESULT = 'FETCH_GUILD_RESULT';
 export const FETCH_GUILD_LOGS = 'FETCH_GUILD_LOGS';
 export const FETCH_GUILD_MEMBERS = 'FETCH_GUILD_MEMBERS';
 export const FETCH_GUILD_CHARACTERS = 'FETCH_GUILD_CHARACTERS';
+export const UPDATE_GUILD_PRIVACY = 'UPDATE_GUILD_PRIVACY';
 
 const fetchingGuild = (fetching: boolean) => ({
   type: FETCHING_GUILD,
@@ -97,3 +98,28 @@ export const fetchGuild = (name: string) => (dispatch: Dispatch) => {
       dispatch(fetchingGuild(false));
     }, () => history.replace('/404'));
 };
+
+export const updatePrivacy = (name: string, prop: string, action: string) => ({
+  type: UPDATE_GUILD_PRIVACY,
+  payload: {
+    name,
+    prop,
+    action,
+  },
+});
+
+export function setPublic (name: string, prop: string): ReduxThunk {
+  return (dispatch) => {
+    dispatch(updatePrivacy(name, prop, 'add'));
+    return axios.put(`${config.api.endpoint}guilds/${name}/privacy`, {
+      privacy: prop,
+    });
+  };
+}
+
+export function removePublic (name: string, prop: string): ReduxThunk {
+  return (dispatch) => {
+    dispatch(updatePrivacy(name, prop, 'remove'));
+    return axios.delete(`${config.api.endpoint}guilds/${name}/privacy/${prop}`);
+  };
+}

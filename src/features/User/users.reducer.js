@@ -1,3 +1,5 @@
+import { reduceById } from 'lib/reduce';
+
 import {
   FETCHING_USER,
   FETCHING_USER_RESULT,
@@ -8,9 +10,8 @@ import {
   FETCH_PVP_STANDINGS_RESULT,
   FETCH_USER_ACHIEVEMENTS_RESULT,
   SELECT_USER,
+  UPDATE_USER_PRIVACY,
 } from './actions';
-
-import { reduceById } from 'lib/reduce';
 
 function fetchingUserResult (state, action) {
   const newState = {
@@ -146,6 +147,23 @@ export default function reducer (state, action) {
 
     case FETCH_USER_ACHIEVEMENTS_RESULT:
       return fetchAchievementsResult(state, action);
+
+    case UPDATE_USER_PRIVACY: {
+      const newUser = {
+        ...state.data[action.payload.name],
+        privacy: action.payload.action === 'add'
+          ? state.data[action.payload.name].privacy.concat([action.payload.prop])
+          : state.data[action.payload.name].privacy.filter((priv) => priv !== action.payload.prop),
+      };
+
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.payload.name]: newUser,
+        },
+      };
+    }
 
     default:
       return state;
