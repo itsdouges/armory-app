@@ -48,7 +48,7 @@
   "users": {
     "name": "Пользователи",
     "recentMatches": "Последние матчи",
-    "achievements": "Achievements",
+    "achievements": "Достижения",
     "claimCta": "Заявить права",
     "noApiKey": "API ключ не установлен.",
     "makePrimary": "Сделайте основной API ключ.",
@@ -90,7 +90,7 @@
     "changePortrait": "Изменить портрет персонажа",
     "noSkill": "Умения не выбраны",
     "embedTooltip": "Скопируйте и вставьте эту ссылку на свой сайт.",
-    "bags": "Bags"
+    "bags": "Сумки"
   },
   "settings": {
     "name": "Настройки",
@@ -188,12 +188,12 @@
     "dismiss": "Закрыть",
     "embed": "HTML-код",
     "loadMore": "Загрузить ещё",
-    "completed": "Completed",
-    "masteryPoint": "Mastery Point",
-    "coins": "Coins",
-    "title": "Title",
-    "of": "of",
-    "objectives": "Objectives"
+    "completed": "Выполнено",
+    "masteryPoint": "Очко мастерства",
+    "coins": "Монет",
+    "title": "Титул",
+    "of": "из",
+    "objectives": "Цели"
   },
   "leaderboards": {
     "name": "Таблицы лидеров"
@@ -206,7 +206,7 @@
     "newBags": "Просмотр сумок инвентаря теперь доступен на странице персонажа! Скоро будут доступны Достижения!"
   },
   "achievements": {
-    "pointsThisTier": "Points this tier"
+    "pointsThisTier": "Очков за этот уровень"
   },
   "patreon": {
     "cta": "Guild Wars 2 Armory нуждается в вашей помощи, станьте настоящим патроном!"
