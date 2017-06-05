@@ -20,6 +20,7 @@ import config from 'config';
 const heroImage = config.features.christmas ? 'xmas-hero.jpg' : 'gw_bgrd.png';
 const headerBg = require(`assets/images/${heroImage}`);
 
+import DisplayAd from 'common/components/DisplayAd';
 import buttonStyles from 'common/components/Button/styles.less';
 import ResponsiveMenu from 'common/components/ResponsiveMenu';
 import Container from 'common/components/Container';
@@ -163,6 +164,8 @@ class Header extends Component {
             <a className={styles.patreonCta} href="https://www.patreon.com/gw2armory">
               <SvgIcon name="patreon" size="micro" className={styles.patreonIcon} /> {T.translate('patreon.cta')}
             </a>
+
+            <DisplayAd type="leaderboard" className={styles.ad} />
           </Container>
         </div>
       </StickyHeader>

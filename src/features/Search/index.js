@@ -11,6 +11,8 @@ import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
 import Message from 'common/components/Message';
 import ProgressIcon from 'common/components/Icon/Progress';
+import DisplayAd from 'common/components/DisplayAd';
+import Container from 'common/components/Container';
 
 const SEARCH_TERM_MINIMUM = 3;
 
@@ -127,11 +129,14 @@ export default class Search extends Component {
     return (
       <div className={styles.root}>
         <Head title={T.translate('search.name')} />
+        <DisplayAd type="leaderboard" className={styles.ad} />
 
-        <Message size="big" className={styles.message}>
-          <span><T.span text={{ key: 'search.results' }} /> <strong><i>{term}</i></strong>...</span>
-          {error && <div><br />{error}</div>}
-        </Message>
+        <Container>
+          <Message size="big" className={styles.message}>
+            <span><T.span text={{ key: 'search.results' }} /> <strong><i>{term}</i></strong>...</span>
+            {error && <div><br />{error}</div>}
+          </Message>
+        </Container>
 
         {searching && <div className={styles.iconContainer}><ProgressIcon /></div>}
 

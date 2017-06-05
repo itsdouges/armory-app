@@ -6,7 +6,6 @@ import config from 'config';
 import Tabs from 'common/components/Tabs';
 import styles from './styles.less';
 import PvpLeaderboard from './components/Pvp';
-import DisplayAd from 'common/components/DisplayAd';
 
 type Props = {
   match: {
@@ -16,8 +15,6 @@ type Props = {
 
 const Leaderboards = ({ match }: Props) => (
   <div className={styles.root}>
-    <DisplayAd type="leaderboard" className={styles.ad} />
-
     <Tabs
       titleSuffix={`PvP ${T.translate('leaderboards.name')}`}
       basePath={match.url}
@@ -38,8 +35,6 @@ const Leaderboards = ({ match }: Props) => (
         description: config.descriptions.pvpLeaderboard,
       }]}
     />
-
-    <DisplayAd type="leaderboard" className={styles.ad} />
   </div>
 );
 

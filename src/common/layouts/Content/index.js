@@ -39,10 +39,10 @@ const Content = ({
 }: Props) => (
   <div className={styles.root}>
     <Head title={title} description={description} />
-
-    <DisplayAd className={styles.ad} />
+    <DisplayAd type="leaderboard" className={styles.ad} />
 
     <header className={styles.heroBg}>
+
       <Container className={cx(styles.inner)}>
         <ContentCard {...props} size="big">{cardExtra}</ContentCard>
         {extraContent}
@@ -60,8 +60,6 @@ const Content = ({
     )}
 
     {children}
-
-    <DisplayAd className={styles.ad} />
   </div>
 );
 

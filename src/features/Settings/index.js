@@ -19,6 +19,7 @@ import ImageUpload from 'common/components/ImageUpload';
 import ContentCard from 'common/components/ContentCard';
 import Button from 'common/components/Button';
 import { conversion as trackConversion } from 'lib/tracking';
+import DisplayAd from 'common/components/DisplayAd';
 
 import * as joinActions from 'features/Join/actions';
 import * as authActions from 'features/Auth/actions';
@@ -146,6 +147,8 @@ class Settings extends Component {
             adding={this.props.user.addingGw2Token}
           />
         </div>
+
+        <DisplayAd type="mrec" className={styles.ad} />
 
         <div className={styles.spaceBelow}>
           <ChangePassword

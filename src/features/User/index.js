@@ -1,6 +1,6 @@
 // @flow
 
-import type { User as UserType, PvpSeasons, Worlds, Maps } from 'flowTypes';
+import type { User as UserType, PvpSeasons, Worlds } from 'flowTypes';
 import type { InjectedProps } from 'features/Auth/data';
 
 import { Component } from 'react';
@@ -25,10 +25,10 @@ import Content from 'common/layouts/Content';
 import GuildContentCard from 'common/components/ContentCard/Guild';
 
 import styles from './styles.less';
-import PvpGame from './components/PvpGame';
 import Overview from './components/Overview';
 import Achievements from './components/Achievements';
 import Characters from './components/Characters';
+import RecentMatches from './components/RecentMatches';
 
 const STUB_GUILDS = makeStubItems(4);
 
@@ -42,12 +42,10 @@ import {
 export const selector = createSelector(
   (store) => store.users.data[store.users.selected],
   (store) => filter(store.pvpSeasons, ((season) => isObject(season))),
-  (store) => store.maps,
   (store) => store.worlds,
-  (user, pvpSeasons, maps, worlds) => ({
+  (user, pvpSeasons, worlds) => ({
     user,
     pvpSeasons,
-    maps,
     worlds,
   })
 );
@@ -74,7 +72,6 @@ type Props = InjectedProps & {
   },
   worlds: Worlds,
   pvpSeasons: PvpSeasons,
-  maps: Maps,
   setPrivacy: (name: string, prop: string) => Promise<*>,
   removePrivacy: (name: string, prop: string) => Promise<*>,
 };
@@ -169,10 +166,9 @@ class User extends Component {
   }
 
   render () {
-    const { user, match: { params: { alias } }, pvpSeasons, maps, worlds } = this.props;
+    const { user, match: { params: { alias } }, pvpSeasons, worlds } = this.props;
     const { editing } = this.state;
 
-    const pvpGames = (get(user, 'pvpGames.length') && get(user, 'pvpGames')) || [undefined, undefined];
     const guilds = get(user, 'guilds', STUB_GUILDS.rows);
 
     const safeUser = user || {};
@@ -281,13 +277,7 @@ class User extends Component {
         }, {
           path: '/matches',
           name: T.translate('users.recentMatches'),
-          content: (
-            <div className={styles.gamesContainer}>
-              <span />
-              {pvpGames.map((game, index) =>
-                <PvpGame game={game} key={game ? game.id : index} maps={maps} />)}
-            </div>
-          ),
+          content: <RecentMatches alias={alias} />,
         }]}
       />
     );

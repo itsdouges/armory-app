@@ -103,7 +103,7 @@ class Statistics extends Component {
     return (
       <Container className={styles.root}>
         <Head title={T.translate('stats.name')} />
-        <DisplayAd className={styles.ad} />
+        <DisplayAd type="leaderboard" className={styles.ad} />
 
         {parsedStats.slice(0, 1).map(({ name, stats }) => (
           <span key={name}>
@@ -127,7 +127,7 @@ class Statistics extends Component {
 
         <p className={styles.note}><small>* {T.translate('stats.refreshNote')}</small></p>
 
-        <DisplayAd className={styles.ad} />
+        <DisplayAd type="leaderboard" className={styles.ad} />
       </Container>
     );
   }

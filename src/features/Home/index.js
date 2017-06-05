@@ -21,7 +21,6 @@ const Home = () => (
         <RandomCharacter type="ofTheDay" />
       </Container>
     </div>
-
     <RandomGuilds />
 
     <DisplayAd type="leaderboard" className={styles.ad} />

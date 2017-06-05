@@ -7,7 +7,8 @@ import Finish from './components/Finish';
 
 import qs from 'lib/qs';
 import Head from 'common/components/Head';
-import Card from 'common/components/Card';
+import CardWithTitle from 'common/layouts/CardWithTitle';
+import DisplayAd from 'common/components/DisplayAd';
 
 export default class ForgotMyPassword extends Component {
   constructor () {
@@ -51,10 +52,11 @@ export default class ForgotMyPassword extends Component {
       <span className={styles.root}>
         <Head title={T.translate('forgotPassword.name')} />
 
-        <h2>{T.translate('forgotPassword.name')}</h2>
-        <Card size="small">
+        <CardWithTitle title={T.translate('forgotPassword.name')}>
           {screen}
-        </Card>
+        </CardWithTitle>
+
+        <DisplayAd type="mrec" className={styles.gw2Sale} />
       </span>
     );
   }

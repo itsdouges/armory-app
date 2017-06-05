@@ -12,7 +12,7 @@ import CardWithTitle from 'common/layouts/CardWithTitle';
 import Textbox from 'common/components/Textbox';
 import Message from 'common/components/Message';
 import Button from 'common/components/Button';
-import AffiliateAd from 'common/components/AffiliateAd';
+import DisplayAd from 'common/components/DisplayAd';
 
 import { fetchToken } from './actions';
 
@@ -98,7 +98,7 @@ class Login extends Component {
           </Message>
         </CardWithTitle>
 
-        <AffiliateAd className={styles.gw2Sale} />
+        <DisplayAd type="mrec" className={styles.gw2Sale} />
       </div>
     );
   }
