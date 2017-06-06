@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Removed
+- Display ad from character overview
 
 ## [4.29.0][] - 2017-06-07
 ### Added
