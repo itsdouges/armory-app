@@ -23,7 +23,7 @@ import { makeStubItems } from 'lib/paginator';
 import type { Guild as GuildType } from 'flowTypes';
 
 const LOGS_PER_PAGE = 20;
-const LOGS_PER_AD = 30;
+const LOGS_PER_AD = 100;
 const STUB_LOGS = makeStubItems(LOGS_PER_PAGE);
 
 const makeUserLink = (accountName, key) => (
