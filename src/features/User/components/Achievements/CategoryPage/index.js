@@ -6,8 +6,8 @@ import { PureComponent } from 'react';
 import { makeStubItems } from 'lib/paginator';
 import Icon from 'common/components/Icon';
 import colourMap from 'assets/categoryColourMap.json';
-import Achievement from '../Achievement';
 
+import Achievement from '../Achievement';
 import styles from './styles.less';
 
 const emptyAchievements = makeStubItems(24).rows;

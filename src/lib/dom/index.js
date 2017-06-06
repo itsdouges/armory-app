@@ -37,3 +37,11 @@ export function addStyleSheet (src: string) {
   style.setAttribute('type', 'text/css');
   document.head && document.head.appendChild(style);
 }
+
+export function iframe (container: HTMLElement, body: string) {
+  const iframeElement = document.createElement('iframe');
+  container.appendChild(iframeElement);
+  iframeElement.contentWindow.document.open();
+  iframeElement.contentWindow.document.write(`<html><head><style>html,body { margin: 0; padding: 0; overflow: hidden; }</style></head><body>${body}</body></html>`);
+  iframeElement.contentWindow.document.close();
+}

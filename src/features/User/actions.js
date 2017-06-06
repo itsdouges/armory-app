@@ -132,7 +132,6 @@ export const fetchUser = (
       .then(({ data }) => {
         dispatch(fetchUserResult(data));
         dispatch(fetchPvpStandings(alias));
-        dispatch(fetchPvpGames(alias));
         dispatch(fetchPvpStats(alias));
         dispatch(fetchUserAchievements(alias));
         dispatch(fetchingUser(false));

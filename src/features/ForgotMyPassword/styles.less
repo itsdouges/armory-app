@@ -1,10 +1,11 @@
-@import '~common/styles/colours.less';
+@import '~common/styles/base.less';
 
 .buttons {
   text-align: center;
 }
 
 .root {
+  .flexCenter;
   margin-bottom: 2em;
 }
 
@@ -15,4 +16,13 @@
   margin-top: 1em;
   font-size: 0.8em;
   color: @primary;
+}
+
+.gw2Sale {
+  margin-top: 3.5em;
+  text-align: center;
+
+  .fromLargeMobile({
+    margin-left: 2em;
+  });
 }

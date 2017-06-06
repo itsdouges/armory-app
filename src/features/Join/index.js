@@ -16,7 +16,7 @@ import CardWithTitle from 'common/layouts/CardWithTitle';
 import Textbox from 'common/components/Textbox';
 import Button from 'common/components/Button';
 import PasswordForm from 'common/components/PasswordForm';
-import AffiliateAd from 'common/components/AffiliateAd';
+import DisplayAd from 'common/components/DisplayAd';
 
 import {
   register,
@@ -213,7 +213,7 @@ export default class Join extends Component {
           </form>
         </CardWithTitle>
 
-        <AffiliateAd className={styles.gw2Sale} />
+        <DisplayAd type="mrec" className={styles.gw2Sale} />
       </div>
     );
   }

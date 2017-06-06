@@ -1645,6 +1645,10 @@ css-loader@^0.28.2:
     postcss-value-parser "^3.3.0"
     source-list-map "^0.1.7"
 
+css-mediaquery@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/css-mediaquery/-/css-mediaquery-0.1.2.tgz#6a2c37344928618631c54bd33cedd301da18bea0"
+
 css-select@^1.1.0, css-select@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/css-select/-/css-select-1.2.0.tgz#2b3a110539c5355f1cd8d314623e870b121ec858"
@@ -3213,6 +3217,10 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
+hyphenate-style-name@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.2.tgz#31160a36930adaf1fc04c6074f7eb41465d4ec4b"
+
 i18n-react@^0.3.0-ts1:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/i18n-react/-/i18n-react-0.3.0.tgz#d7e9bac4f386cb49fb35884c337b740c0455d697"
@@ -4137,6 +4145,12 @@ map-obj@^1.0.0, map-obj@^1.0.1:
   dependencies:
     buffers "~0.1.1"
     readable-stream "~1.0.0"
+
+matchmedia@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/matchmedia/-/matchmedia-0.1.2.tgz#cfd47f2bf68fbc7f5ea1bd3a3cf1715ecba3c1bd"
+  dependencies:
+    css-mediaquery "^0.1.2"
 
 math-expression-evaluator@^1.2.14:
   version "1.2.16"
@@ -5450,6 +5464,14 @@ react-redux@^5.0.5:
     lodash-es "^4.2.0"
     loose-envify "^1.1.0"
     prop-types "^15.5.10"
+
+react-responsive@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/react-responsive/-/react-responsive-1.3.0.tgz#adc9e8052d234be697f05386b7959e5587a54641"
+  dependencies:
+    hyphenate-style-name "^1.0.0"
+    matchmedia "^0.1.2"
+    prop-types "^15.5.7"
 
 react-router-dom@^4.1.1:
   version "4.1.1"

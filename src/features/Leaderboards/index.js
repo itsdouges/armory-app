@@ -4,9 +4,10 @@ import T from 'i18n-react';
 
 import config from 'config';
 import Tabs from 'common/components/Tabs';
+import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderboard';
+
 import styles from './styles.less';
 import PvpLeaderboard from './components/Pvp';
-import DisplayAd from 'common/components/DisplayAd';
 
 type Props = {
   match: {
@@ -16,7 +17,7 @@ type Props = {
 
 const Leaderboards = ({ match }: Props) => (
   <div className={styles.root}>
-    <DisplayAd className={styles.ad} />
+    <ResponsiveLeaderboard className={styles.leaderboard} />
 
     <Tabs
       titleSuffix={`PvP ${T.translate('leaderboards.name')}`}
@@ -38,8 +39,6 @@ const Leaderboards = ({ match }: Props) => (
         description: config.descriptions.pvpLeaderboard,
       }]}
     />
-
-    <DisplayAd className={styles.ad} />
   </div>
 );
 

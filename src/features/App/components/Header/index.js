@@ -20,6 +20,7 @@ import config from 'config';
 const heroImage = config.features.christmas ? 'xmas-hero.jpg' : 'gw_bgrd.png';
 const headerBg = require(`assets/images/${heroImage}`);
 
+import ResponsiveAd from 'common/components/DisplayAd/Responsive';
 import buttonStyles from 'common/components/Button/styles.less';
 import ResponsiveMenu from 'common/components/ResponsiveMenu';
 import Container from 'common/components/Container';
@@ -159,6 +160,19 @@ class Header extends Component {
             />
 
             <SearchBar className={styles.searchBar} />
+
+            <ResponsiveAd
+              className={styles.ad}
+              breakpoints={[{
+                type: 'banner',
+                maxWidth: Number.MAX_VALUE,
+                minWidth: 490,
+              }, {
+                type: 'mbanner',
+                maxWidth: 489,
+                minWidth: 0,
+              }]}
+            />
 
             <a className={styles.patreonCta} href="https://www.patreon.com/gw2armory">
               <SvgIcon name="patreon" size="micro" className={styles.patreonIcon} /> {T.translate('patreon.cta')}

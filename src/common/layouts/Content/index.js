@@ -9,7 +9,7 @@ import ContentCard from 'common/components/ContentCard';
 import Tabs from 'common/components/Tabs';
 import Head from 'common/components/Head';
 import Container from 'common/components/Container';
-import DisplayAd from 'common/components/DisplayAd';
+import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderboard';
 
 import styles from './styles.less';
 
@@ -39,10 +39,10 @@ const Content = ({
 }: Props) => (
   <div className={styles.root}>
     <Head title={title} description={description} />
-
-    <DisplayAd className={styles.ad} />
+    <ResponsiveLeaderboard className={styles.ad} />
 
     <header className={styles.heroBg}>
+
       <Container className={cx(styles.inner)}>
         <ContentCard {...props} size="big">{cardExtra}</ContentCard>
         {extraContent}
@@ -61,7 +61,7 @@ const Content = ({
 
     {children}
 
-    <DisplayAd className={styles.ad} />
+    <ResponsiveLeaderboard className={styles.ad} />
   </div>
 );
 

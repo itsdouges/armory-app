@@ -14,8 +14,10 @@ import Paginator from 'react-scroll-paginator';
 import { fetchPvpLeaderboard } from '../../actions';
 import styles from './styles.less';
 import { renderButton } from 'common/layouts/PaginatorGrid';
+import DisplayAd from 'common/components/DisplayAd';
 
 const STANDINGS_PER_PAGE = 30;
+const STANDINGS_PER_AD = 15;
 const STUB_STANDINGS = makeStubItems(STANDINGS_PER_PAGE);
 
 function buildContent (standing, rank) {
@@ -68,7 +70,7 @@ export default class PvpLeaderboard extends Component {
   };
 
   renderStanding = (standing?: PvpStanding, index: number) => {
-    return (
+    const standingComponent = (
       <li
         key={standing ? standing.accountName : index}
         className={styles.standing}
@@ -76,6 +78,15 @@ export default class PvpLeaderboard extends Component {
         <Link to={`/${standing ? standing.alias : ''}`}>{createInner(standing, index + 1)}</Link>
       </li>
     );
+
+    if ((index + 1) % STANDINGS_PER_AD === 0) {
+      return [
+        standingComponent,
+        <DisplayAd type="mrec" />,
+      ];
+    }
+
+    return standingComponent;
   }
 
   render () {
@@ -84,18 +95,20 @@ export default class PvpLeaderboard extends Component {
 
     return (
       <div className={styles.root}>
-        <Paginator
-          key={region}
-          rows={pvpLeaderboard.rows}
-          limit={STANDINGS_PER_PAGE}
-          count={pvpLeaderboard.count}
-          action={(limit, offset) => fetchLeaderboard(region, limit, offset)}
-          progressComponent={<Progress className={styles.progress} />}
-          renderContainer={({ children }) => <ol>{children}</ol>}
-          renderButton={renderButton}
-        >
-          {this.renderStanding}
-        </Paginator>
+        <section className={styles.listContainer}>
+          <Paginator
+            key={region}
+            rows={pvpLeaderboard.rows}
+            limit={STANDINGS_PER_PAGE}
+            count={pvpLeaderboard.count}
+            action={(limit, offset) => fetchLeaderboard(region, limit, offset)}
+            progressComponent={<Progress className={styles.progress} />}
+            renderContainer={({ children }) => <ol>{children}</ol>}
+            renderButton={renderButton}
+          >
+            {this.renderStanding}
+          </Paginator>
+        </section>
       </div>
     );
   }

@@ -1,11 +1,15 @@
 @import '~common/styles/base.less';
 
 @leaderText: @_white;
+@spaceBetween: 1em;
 
 .root {
-  max-width: 500px;
+  margin-bottom: @spaceBetween;
+}
+
+.listContainer {
   margin: 0 auto;
-  margin-bottom: 1em;
+  max-width: 500px;
 }
 
 .firstContainer,
@@ -18,7 +22,7 @@
 .firstContainer {
   margin: 4em 0 2em;
   color: @leaderText;
-  text-shadow: 0 0 20px @_black;
+  text-shadow: 0 0 10px @_black;
   width: 100%;
 }
 
@@ -55,4 +59,8 @@
 .progress {
   display: block;
   margin: 2em auto;
+}
+
+.leaderboard {
+  margin-top: @spaceBetween;
 }
