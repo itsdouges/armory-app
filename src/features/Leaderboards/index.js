@@ -4,6 +4,8 @@ import T from 'i18n-react';
 
 import config from 'config';
 import Tabs from 'common/components/Tabs';
+import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderboard';
+
 import styles from './styles.less';
 import PvpLeaderboard from './components/Pvp';
 
@@ -15,6 +17,8 @@ type Props = {
 
 const Leaderboards = ({ match }: Props) => (
   <div className={styles.root}>
+    <ResponsiveLeaderboard className={styles.leaderboard} />
+
     <Tabs
       titleSuffix={`PvP ${T.translate('leaderboards.name')}`}
       basePath={match.url}

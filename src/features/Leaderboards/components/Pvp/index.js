@@ -17,7 +17,7 @@ import { renderButton } from 'common/layouts/PaginatorGrid';
 import DisplayAd from 'common/components/DisplayAd';
 
 const STANDINGS_PER_PAGE = 30;
-const STANDINGS_PER_AD = 10;
+const STANDINGS_PER_AD = 15;
 const STUB_STANDINGS = makeStubItems(STANDINGS_PER_PAGE);
 
 function buildContent (standing, rank) {
@@ -95,8 +95,6 @@ export default class PvpLeaderboard extends Component {
 
     return (
       <div className={styles.root}>
-        <DisplayAd type="leaderboard" className={styles.leaderboard} />
-
         <section className={styles.listContainer}>
           <Paginator
             key={region}

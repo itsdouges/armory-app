@@ -23,7 +23,7 @@ import { selectCharacterMode } from 'features/Character/actions';
 import calculateAttributes from 'lib/gw2/attributes';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 
-import DisplayAd from 'common/components/DisplayAd';
+import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderboard';
 import ImageUpload from 'common/components/ImageUpload';
 import ContentCard from 'common/components/ContentCard';
 
@@ -224,7 +224,7 @@ class CharacterOverview extends Component {
           </div>
         </div>}
 
-        <DisplayAd type="leaderboard" className={styles.ad} />
+        <ResponsiveLeaderboard className={styles.ad} />
       </div>
     );
   }

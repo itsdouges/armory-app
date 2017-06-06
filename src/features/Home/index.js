@@ -9,7 +9,7 @@ import styles from './styles.less';
 import Introduction from './components/Introduction';
 import RandomCharacter from './components/RandomCharacter';
 import RandomGuilds from './components/RandomGuilds';
-import DisplayAd from 'common/components/DisplayAd';
+import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderboard';
 
 const Home = () => (
   <div className={styles.root}>
@@ -23,7 +23,7 @@ const Home = () => (
     </div>
     <RandomGuilds />
 
-    <DisplayAd type="leaderboard" className={styles.ad} />
+    <ResponsiveLeaderboard className={styles.ad} />
   </div>
 );
 

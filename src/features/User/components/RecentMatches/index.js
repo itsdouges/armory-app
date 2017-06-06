@@ -7,7 +7,6 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import DisplayAd from 'common/components/DisplayAd';
 import { makeStubItems } from 'lib/paginator';
 
 import PvpGame from '../PvpGame';
@@ -52,8 +51,6 @@ class RecentMatches extends Component {
         <span />
         {pvpGames.map((game, index) =>
           <PvpGame game={game} key={game ? game.id : index} maps={maps} />)}
-
-        <DisplayAd type="leaderboard" className={styles.ad} />
       </div>
     );
   }

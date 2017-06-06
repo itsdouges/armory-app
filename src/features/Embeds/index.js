@@ -5,6 +5,7 @@ import T from 'i18n-react';
 
 import Card from 'common/components/Card';
 import Head from 'common/components/Head';
+import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderboard';
 import DisplayAd from 'common/components/DisplayAd';
 
 import embeds from './text';
@@ -29,7 +30,7 @@ export default class Embeds extends Component {
     return (
       <div className={styles.root}>
         <Head title={T.translate('embeds.name')} />
-        <DisplayAd type="leaderboard" />
+        <ResponsiveLeaderboard />
 
         <article className={styles.innerRoot}>
           <h2>Options</h2>

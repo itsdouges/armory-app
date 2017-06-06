@@ -12,7 +12,7 @@ import { fetchStatistics } from './actions';
 import PieChart from 'common/components/PieChart';
 import Head from 'common/components/Head';
 import Container from 'common/components/Container';
-import DisplayAd from 'common/components/DisplayAd';
+import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderboard';
 
 export const selector = createSelector(
   (store) => store.stats,
@@ -103,7 +103,7 @@ class Statistics extends Component {
     return (
       <Container className={styles.root}>
         <Head title={T.translate('stats.name')} />
-        <DisplayAd type="leaderboard" className={styles.ad} />
+        <ResponsiveLeaderboard className={styles.ad} />
 
         {parsedStats.slice(0, 1).map(({ name, stats }) => (
           <span key={name}>
@@ -127,7 +127,7 @@ class Statistics extends Component {
 
         <p className={styles.note}><small>* {T.translate('stats.refreshNote')}</small></p>
 
-        <DisplayAd type="leaderboard" className={styles.ad} />
+        <ResponsiveLeaderboard className={styles.ad} />
       </Container>
     );
   }

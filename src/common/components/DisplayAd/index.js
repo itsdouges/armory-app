@@ -8,10 +8,10 @@ import config from 'config';
 import { iframe } from 'lib/dom';
 import styles from './styles.less';
 
-type Props = {
+export type Props = {
   className?: string,
   location: Object,
-  type: 'billboard' | 'halfpage' | 'leaderboard' | 'mrec' | 'wideskyscraper',
+  type: 'billboard' | 'halfpage' | 'leaderboard' | 'mrec' | 'wideskyscraper' | 'banner' | 'mbanner',
 };
 
 const displayAdMap = {
@@ -39,6 +39,16 @@ const displayAdMap = {
     width: 160,
     height: 600,
     tag: 480597,
+  },
+  mbanner: {
+    width: 320,
+    height: 50,
+    tag: 480970,
+  },
+  banner: {
+    width: 468,
+    height: 60,
+    tag: 480971,
   },
 };
 

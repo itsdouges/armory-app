@@ -13,6 +13,7 @@ import Progress from 'common/components/Icon/Progress';
 import Gw2Item from 'common/components/Gw2Item';
 import GuildUpgrade from 'common/components/Gw2GuildUpgrade';
 import Money from 'common/components/Tooltip/Gold';
+import DisplayAd from 'common/components/DisplayAd';
 
 import styles from './styles.less';
 import { fetchGuildLogs } from '../../actions';
@@ -22,6 +23,7 @@ import { makeStubItems } from 'lib/paginator';
 import type { Guild as GuildType } from 'flowTypes';
 
 const LOGS_PER_PAGE = 20;
+const LOGS_PER_AD = 30;
 const STUB_LOGS = makeStubItems(LOGS_PER_PAGE);
 
 const makeUserLink = (accountName, key) => (
@@ -127,11 +129,22 @@ export default class GuildLogs extends Component {
 
     return (
       <Container className={styles.root}>
-        {logs.rows.map((log, index) => (
-          <Card key={log ? log.id : index} size="small" className={styles.log}>
-            {createLogView(log)}
-          </Card>
-        ))}
+        {logs.rows.map((log, index) => {
+          const component = (
+            <Card key={log ? log.id : index} size="small" className={styles.log}>
+              {createLogView(log)}
+            </Card>
+          );
+
+          if ((index + 1) % LOGS_PER_AD === 0) {
+            return [
+              component,
+              <DisplayAd type="mrec" className={styles.ad} />,
+            ];
+          }
+
+          return component;
+        })}
 
         {(!guild || !guild.logs) && <div className={styles.progress}><Progress /></div>}
       </Container>

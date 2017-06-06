@@ -161,11 +161,11 @@ class Header extends Component {
 
             <SearchBar className={styles.searchBar} />
 
+            <DisplayAd type="banner" className={styles.ad} />
+
             <a className={styles.patreonCta} href="https://www.patreon.com/gw2armory">
               <SvgIcon name="patreon" size="micro" className={styles.patreonIcon} /> {T.translate('patreon.cta')}
             </a>
-
-            <DisplayAd type="leaderboard" className={styles.ad} />
           </Container>
         </div>
       </StickyHeader>
