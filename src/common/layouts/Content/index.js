@@ -60,8 +60,6 @@ const Content = ({
     )}
 
     {children}
-
-    <ResponsiveLeaderboard className={styles.ad} />
   </div>
 );
 
