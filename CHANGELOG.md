@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.29.1][] - 2017-06-07
 ### Removed
 - Display ad from character overview
 
@@ -855,7 +857,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.29.0...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.29.1...HEAD
+[4.29.1]: https://github.com/madou/armory-react/compare/v4.29.0...v4.29.1
 [4.29.0]: https://github.com/madou/armory-react/compare/v4.28.1...v4.29.0
 [4.28.1]: https://github.com/madou/armory-react/compare/v4.28.0...v4.28.1
 [4.28.0]: https://github.com/madou/armory-react/compare/v4.27.0...v4.28.0
