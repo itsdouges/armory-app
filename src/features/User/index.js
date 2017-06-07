@@ -29,6 +29,7 @@ import Overview from './components/Overview';
 import Achievements from './components/Achievements';
 import Characters from './components/Characters';
 import RecentMatches from './components/RecentMatches';
+import Bank from './components/Bank';
 
 const STUB_GUILDS = makeStubItems(4);
 
@@ -92,6 +93,10 @@ const PRIVACY_OPTIONS = [
   {
     prop: 'pvpStandings',
     name: 'Pvp Standings',
+  },
+  {
+    prop: 'bank',
+    name: 'Bank',
   },
 ];
 
@@ -253,9 +258,13 @@ class User extends Component {
           ),
         }, {
           path: '/achievements',
-          flair: 'new',
           name: T.translate('users.achievements'),
           content: <Achievements />,
+        }, {
+          path: '/bank',
+          flair: 'new',
+          name: T.translate('users.bank'),
+          content: <Bank alias={alias} />,
         }, {
           path: '/characters',
           name: 'Characters',

@@ -16,6 +16,7 @@ export const FETCH_PVP_STATS_RESULT = 'FETCH_PVP_STATS_RESULT';
 export const FETCH_USER_ACHIEVEMENTS_RESULT = 'FETCH_USER_ACHIEVEMENTS_RESULT';
 export const FETCH_PVP_GAMES_RESULT = 'FETCH_PVP_GAMES_RESULT';
 export const FETCH_PVP_STANDINGS_RESULT = 'FETCH_PVP_STANDINGS_RESULT';
+export const FETCH_BANK_RESULT = 'FETCH_BANK_RESULT';
 export const SELECT_USER = 'SELECT_USER';
 export const UPDATE_USER_PRIVACY = 'UPDATE_USER_PRIVACY';
 
@@ -94,6 +95,14 @@ export const fetchPvpStandingsSuccess = (alias: string, data: {}) => ({
   },
 });
 
+export const fetchBankSuccess = (alias: string, data: {}) => ({
+  type: FETCH_BANK_RESULT,
+  payload: {
+    alias,
+    data,
+  },
+});
+
 export const selectUser = (alias: string) => ({
   type: SELECT_USER,
   payload: alias,
@@ -112,6 +121,12 @@ export const fetchPvpGames = (alias: string): ReduxThunk => (dispatch) =>
 
     const ids = data.map((standing) => standing.map_id);
     dispatch(actions.fetchMaps(ids));
+  });
+
+export const fetchBank = (alias: string): ReduxThunk => (dispatch) =>
+  axios.get(`${config.api.endpoint}users/${alias}/bank`)
+  .then(({ data }) => {
+    dispatch(fetchBankSuccess(alias, data));
   });
 
 export const fetchPvpStandings = (alias: string): ReduxThunk => (dispatch) =>
