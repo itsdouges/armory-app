@@ -9,6 +9,7 @@ import {
   FETCH_PVP_GAMES_RESULT,
   FETCH_PVP_STANDINGS_RESULT,
   FETCH_USER_ACHIEVEMENTS_RESULT,
+  FETCH_SHARED_INVENTORY_RESULT,
   FETCH_BANK_RESULT,
   SELECT_USER,
   UPDATE_USER_PRIVACY,
@@ -166,6 +167,9 @@ export default function reducer (state, action) {
 
     case FETCH_BANK_RESULT:
       return fetchGenericResult('bank')(state, action);
+
+    case FETCH_SHARED_INVENTORY_RESULT:
+      return fetchGenericResult('sharedInventory')(state, action);
 
     case UPDATE_USER_PRIVACY: {
       const newUser = {

@@ -98,6 +98,10 @@ const PRIVACY_OPTIONS = [
     prop: 'bank',
     name: 'Bank',
   },
+  {
+    prop: 'inventory',
+    name: 'Shared Inventory',
+  },
 ];
 
 export default connect(selector, {
