@@ -61,7 +61,7 @@ class UserBank extends Component {
 
     return (
       <Container className={styles.root}>
-        {sharedInventory && (
+        {sharedInventory && !!sharedInventory.length && (
           <div className={styles.sharedInventory}>
             {sharedInventory.map((item, index) => (
               <Gw2Item
