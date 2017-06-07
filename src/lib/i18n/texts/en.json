@@ -52,6 +52,7 @@
     "joincta": "Join and add your gw2 api key(s) first!"
   },
   "users": {
+    "bank": "Bank",
     "name": "Users",
     "recentMatches": "Recent Matches",
     "claimCta": "Claim",

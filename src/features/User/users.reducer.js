@@ -9,6 +9,8 @@ import {
   FETCH_PVP_GAMES_RESULT,
   FETCH_PVP_STANDINGS_RESULT,
   FETCH_USER_ACHIEVEMENTS_RESULT,
+  FETCH_SHARED_INVENTORY_RESULT,
+  FETCH_BANK_RESULT,
   SELECT_USER,
   UPDATE_USER_PRIVACY,
 } from './actions';
@@ -58,6 +60,21 @@ function fetchingUserCharactersResult (state, action) {
 
   return newState;
 }
+
+const fetchGenericResult = (key) => (state, action) => {
+  const newState = {
+    ...state,
+  };
+
+  const oldUser = newState.data[action.payload.alias];
+
+  newState.data[action.payload.alias] = {
+    ...oldUser,
+    [key]: action.payload.data,
+  };
+
+  return newState;
+};
 
 function fetchPvpStatsResult (state, action) {
   const newState = {
@@ -147,6 +164,12 @@ export default function reducer (state, action) {
 
     case FETCH_USER_ACHIEVEMENTS_RESULT:
       return fetchAchievementsResult(state, action);
+
+    case FETCH_BANK_RESULT:
+      return fetchGenericResult('bank')(state, action);
+
+    case FETCH_SHARED_INVENTORY_RESULT:
+      return fetchGenericResult('sharedInventory')(state, action);
 
     case UPDATE_USER_PRIVACY: {
       const newUser = {
