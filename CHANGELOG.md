@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.30.1][] - 2017-06-13
 ### Changed
 - Updated pvp description
 - Cleaned up language dropdown
@@ -869,7 +871,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.30.0...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.30.1...HEAD
+[4.30.1]: https://github.com/madou/armory-react/compare/v4.30.0...v4.30.1
 [4.30.0]: https://github.com/madou/armory-react/compare/v4.29.2...v4.30.0
 [4.29.2]: https://github.com/madou/armory-react/compare/v4.29.1...v4.29.2
 [4.29.1]: https://github.com/madou/armory-react/compare/v4.29.0...v4.29.1
