@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Updated pvp description
+- Cleaned up language dropdown
 
 ## [4.30.0][] - 2017-06-07
 ### Added
