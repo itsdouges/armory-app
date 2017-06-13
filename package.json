@@ -23,7 +23,8 @@
     "preversion": "npm test",
     "version": "version-changelog CHANGELOG.md && changelog-verify CHANGELOG.md && git add CHANGELOG.md",
     "postversion": "git push && git push --tags",
-    "generateColourMap": "rm src/assets/categoryColourMap.json && node scripts/extractAchievementCategoriesColour.js >> src/assets/categoryColourMap.json"
+    "generateColourMap": "rm -f src/assets/categoryColourMap.json && babel-node src/mapBuilders/extractAchievementCategoriesColour.js >> src/assets/categoryColourMap.json",
+    "generateItemNameMap": "rm -f src/assets/itemNameMap.json && babel-node src/mapBuilders/createNameMap.js >> src/assets/itemNameMap.json"
   },
   "dependencies": {
     "axios": "^0.16.1",
@@ -56,6 +57,7 @@
   "devDependencies": {
     "app-module-path": "^2.2.0",
     "autoprefixer": "^7.1.1",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.11.4",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^7.0.0",
