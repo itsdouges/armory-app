@@ -26,17 +26,17 @@ module.exports = {
   },
 
   descriptions: {
-    pvpLeaderboard: 'Season six is finally here! Track users through the ranks while they climb their way to the top 250!',
+    pvpLeaderboard: 'PvP League Season 7 now has Guild Wars 2 users entering the Mists and battling for glory and rewards - keep an eye out for Armory users entering the top 250!',
   },
 
   i18n: {
     languages: [
       { short: 'en', long: 'English' },
-      { short: 'fr', long: 'Le Français' },
+      { short: 'fr', long: 'Français' },
       { short: 'de', long: 'Deutsch' },
       { short: 'es', long: 'Español' },
       { short: 'zh', long: '汉语/漢語' },
-      { short: 'ru', long: 'Pу́сский язы́к' },
+      { short: 'ru', long: 'Pу́сский' },
     ],
   },
 
