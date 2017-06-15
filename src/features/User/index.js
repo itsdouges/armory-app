@@ -174,8 +174,8 @@ class User extends Component {
     return null;
   }
 
-  canShowTab (tabName) {
-    return !!this.props.user && !this.props.user.privacy.includes(tabName);
+  canShowTab (privacy) {
+    return !!this.props.user && !this.props.user.privacy.includes(privacy);
   }
 
   render () {
