@@ -136,6 +136,13 @@ class Character extends Component {
   };
 
   canShowTab (privacy) {
+    const { match: { params }, alias } = this.props;
+
+    const editable = alias === params.alias;
+    if (editable) {
+      return true;
+    }
+
     return !!this.props.character && !this.props.character.privacy.includes(privacy);
   }
 

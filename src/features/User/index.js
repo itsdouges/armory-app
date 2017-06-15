@@ -175,6 +175,12 @@ class User extends Component {
   }
 
   canShowTab (privacy) {
+    const { alias, match: { params } } = this.props;
+    const editable = alias === params.alias;
+    if (editable) {
+      return true;
+    }
+
     return !!this.props.user && !this.props.user.privacy.includes(privacy);
   }
 
@@ -265,17 +271,6 @@ class User extends Component {
             <Overview user={user} pvpSeasons={pvpSeasons} worlds={worlds} />
           ),
         }, {
-          path: '/achievements',
-          name: T.translate('users.achievements'),
-          content: <Achievements />,
-          hide: !this.canShowTab('achievements'),
-        }, {
-          path: '/bank',
-          flair: 'new',
-          name: T.translate('users.bank'),
-          content: <Bank alias={alias} />,
-          hide: !this.canShowTab('bank'),
-        }, {
           path: '/characters',
           name: 'Characters',
           content: <Characters alias={alias} />,
@@ -293,6 +288,17 @@ class User extends Component {
               {(content, index) => <GuildContentCard key={makeKey(content, index)} content={content} />}
             </PaginatorGrid>
           ),
+        }, {
+          path: '/achievements',
+          name: T.translate('users.achievements'),
+          content: <Achievements />,
+          hide: !this.canShowTab('achievements'),
+        }, {
+          path: '/bank',
+          flair: 'new',
+          name: T.translate('users.bank'),
+          content: <Bank alias={alias} />,
+          hide: !this.canShowTab('bank'),
         }, {
           path: '/matches',
           name: T.translate('users.recentMatches'),
