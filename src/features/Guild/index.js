@@ -105,6 +105,26 @@ class Guild extends Component {
       : this.props.removePublic(this.props.match.params.guildName, prop);
   };
 
+  canShowTab (privacy) {
+    const { guild } = this.props;
+    if (!guild) {
+      return false;
+    }
+
+    // Silly work around to show the tab is motd is populated.
+    // It's assumed the user must have access to the guild if
+    // motd is shown. We need to expose a value (maybe authenticated: true)
+    // if the user can see the guild so we can just use that instead.
+    // Needs server work.
+    if (guild.motd) {
+      return true;
+    }
+
+    // NOTE: Privacy is flipped for guilds. If privacy is populated it means
+    // it IS shown to the public.
+    return guild.privacy.includes(privacy);
+  }
+
   render () {
     const { alias, guild, match: { params: { guildName } } } = this.props;
 
@@ -171,6 +191,7 @@ class Guild extends Component {
           name: 'Logs',
           path: '/logs',
           content: <Logs guildName={guildName} />,
+          hide: !this.canShowTab('logs'),
         }]}
       />
     );
