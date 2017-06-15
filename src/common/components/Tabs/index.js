@@ -60,7 +60,7 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath, metaC
 
     <section>
       <Switch>
-        {tabs.map((tab) => (
+        {tabs.map((tab) => (tab.hide ? null : (
           <Route
             exact={!tab.path}
             key={tab.path}
@@ -76,7 +76,7 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath, metaC
               );
             }}
           />
-        ))}
+        )))}
       </Switch>
     </section>
   </div>
