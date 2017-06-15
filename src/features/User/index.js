@@ -174,6 +174,10 @@ class User extends Component {
     return null;
   }
 
+  canShowTab (tabName) {
+    return !!this.props.user && !this.props.user.privacy.includes(tabName);
+  }
+
   render () {
     const { user, match: { params: { alias } }, pvpSeasons, worlds } = this.props;
     const { editing } = this.state;
@@ -264,11 +268,13 @@ class User extends Component {
           path: '/achievements',
           name: T.translate('users.achievements'),
           content: <Achievements />,
+          hide: !this.canShowTab('achievements'),
         }, {
           path: '/bank',
           flair: 'new',
           name: T.translate('users.bank'),
           content: <Bank alias={alias} />,
+          hide: !this.canShowTab('bank'),
         }, {
           path: '/characters',
           name: 'Characters',
@@ -291,6 +297,7 @@ class User extends Component {
           path: '/matches',
           name: T.translate('users.recentMatches'),
           content: <RecentMatches alias={alias} />,
+          hide: !this.canShowTab('pvpGames'),
         }]}
       />
     );

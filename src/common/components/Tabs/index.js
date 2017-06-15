@@ -17,6 +17,7 @@ export type TabInput = Tab$Props & {
   content: any,
   ignoreTitle?: boolean,
   description?: string,
+  hide?: boolean,
 };
 
 type TabsProps = {
@@ -33,7 +34,7 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath, metaC
     <nav className={styles.tabsBg}>
       <Container className={styles.tabsContainer}>
         <ul>
-          {tabs.map((tab) => (
+          {tabs.map((tab) => (tab.hide ? null : (
             <li key={tab.path}>
               <Tab
                 flair={tab.flair}
@@ -42,7 +43,7 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath, metaC
                 name={tab.name}
               />
             </li>
-          ))}
+          )))}
 
           {pinnedTab && (
             <li className={styles.pinnedRight}>{pinnedTab}</li>
