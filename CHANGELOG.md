@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Stub users not having their status icon appearing
 
 ## [4.31.1][] - 2017-06-16
 ### Fixed

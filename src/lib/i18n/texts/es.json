@@ -54,6 +54,7 @@
     "makePrimary": "Hacer clave principal de la API.",
     "primaryToken": "Esta es tu clave principal de la API, de donde se obtendrá tu información de usuario.",
     "invalidToken": "No se pudieron recuperar los datos de GW2, la clave de la API seguramente fue eliminada de la cuenta de usuario.",
+    "stubUser": "This user hasn't been claimed yet, go bug him to add his api key!",
     "pvpStats": {
       "name": "Estadísticas PvP",
       "unranked": "Libres",

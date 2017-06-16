@@ -188,12 +188,33 @@ class User extends Component {
     return !this.props.user.privacy.includes(privacy);
   }
 
+  buildStatusData () {
+    const { user } = this.props;
+    if (!user) {
+      return {
+        statusText: 'Loading...',
+        statusIcon: '',
+      };
+    }
+
+    if (user.stub) {
+      return {
+        statusText: T.translate('users.stubUser'),
+        statusIcon: 'svg/error-outline.svg',
+      };
+    }
+
+    return {
+      statusText: user.valid ? startCase(user.access) : T.translate('users.invalidToken'),
+      statusIcon: user.valid ? `${user.access}.png` : 'svg/error-outline.svg',
+    };
+  }
+
   render () {
     const { user, match: { params: { alias } }, pvpSeasons, worlds } = this.props;
     const { editing } = this.state;
 
     const guilds = get(user, 'guilds', STUB_GUILDS.rows);
-
     const safeUser = user || {};
     const standing = getActiveStanding(user, pvpSeasons);
     const rating = get(standing, 'current.rating') || get(user, 'rating');
@@ -204,23 +225,18 @@ class User extends Component {
     const byesText = T.translate('users.pvpStats.byes');
     const lossText = T.translate('users.pvpStats.losses');
     const winLossByes = `${winsText}/${lossText}/${byesText}`;
-
     const { byes, ...rankedStats } = get(user, 'pvpStats.ladders.ranked', {});
-
     const wins = rankedStats.wins || safeUser.wins || '0';
     const losses = rankedStats.losses || safeUser.losses || '0';
-
     const statSummary = (wins || losses || byes) ? `${wins}-${losses}-${byes || 0}` : '-';
-
-    const icon = safeUser.valid === false ? 'svg/error-outline.svg' : `${safeUser.access}.png`;
-    const tooltip = safeUser.valid === false ? T.translate('users.invalidToken') : startCase(safeUser.access);
+    const { statusText, statusIcon } = this.buildStatusData();
 
     return (
       <Content
         className={cx({ [styles.invalid]: safeUser.valid === false })}
         cardExtra={(
-          <TooltipTrigger data={tooltip}>
-            <Icon size="mini" className={styles.access} name={icon} />
+          <TooltipTrigger data={statusText}>
+            <Icon size="mini" className={styles.access} name={statusIcon} />
           </TooltipTrigger>
         )}
         basePath={this.props.match.url}

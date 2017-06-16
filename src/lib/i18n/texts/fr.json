@@ -54,6 +54,7 @@
     "makePrimary": "Make primary api key.",
     "primaryToken": "This is your primary api key, your user information will be sourced from this.",
     "invalidToken": "Could not retrieve data from GW2, the api key was probably deleted from the ArenaNet account page.",
+    "stubUser": "This user hasn't been claimed yet, go bug him to add his api key!",
     "pvpStats": {
       "name": "Stats PvP",
       "unranked": "Non Classé",
