@@ -104,6 +104,7 @@ export default class App extends Component {
           <Route exact path="/statistics" component={StatisticsWithScroll} />
           <Route exact path="/login" component={LoginWithScroll} />
           <Route exact path="/join" component={JoinWithScroll} />
+          <Route exact path="/search" component={SearchWithScroll} />
           <Route exact path="/search/:term" component={SearchWithScroll} />
           <Route exact path="/settings" component={SettingsWithScroll} />
           <Route exact path="/forgot-my-password" component={ForgotMyPasswordWithScroll} />

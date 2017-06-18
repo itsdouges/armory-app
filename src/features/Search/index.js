@@ -3,9 +3,11 @@
 import { Component } from 'react';
 import { get } from 'axios';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import Head from 'common/components/Head';
 import T from 'i18n-react';
 
+import qs from 'lib/qs';
 import config from 'config';
 import styles from './styles.less';
 import ContentCardList from 'common/components/ContentCardList';
@@ -17,6 +19,9 @@ import Container from 'common/components/Container';
 const SEARCH_TERM_MINIMUM = 3;
 
 type Props = {
+  location: {
+    search: string,
+  },
   match: {
     params: {
       term: string,
@@ -26,6 +31,7 @@ type Props = {
 
 export default class Search extends Component {
   props: Props;
+  willRedirect: boolean;
 
   state = {
     results: [],
@@ -34,14 +40,37 @@ export default class Search extends Component {
   };
 
   componentWillMount () {
-    const { term } = this.props.match.params;
+    if (this.props.match.params.term) {
+      this.willRedirect = true;
+    }
+
+    const term = this.getSearchQuery();
+    if (!term) {
+      return;
+    }
+
     this.search(term);
   }
 
   componentWillReceiveProps (nextProps: Props) {
-    if (this.props.match.params.term !== nextProps.match.params.term) {
-      this.search(nextProps.match.params.term);
+    const term = this.getSearchQuery();
+    if (!term) {
+      return;
     }
+
+    const newTerm = this.getSearchQuery(nextProps);
+    if (term !== newTerm) {
+      this.search(newTerm);
+    }
+
+    if (this.willRedirect) {
+      this.willRedirect = false;
+      this.search(newTerm);
+    }
+  }
+
+  getSearchQuery (props: Props = this.props) {
+    return qs('q', props.location.search);
   }
 
   search (term: string) {
@@ -77,7 +106,8 @@ export default class Search extends Component {
     };
 
     const { results, searching, error } = this.state;
-    const { term } = this.props.match.params;
+    const { term: oldTerm } = this.props.match.params;
+    const term = this.getSearchQuery();
 
     results.forEach((result) => {
       resources[result.resource].push(result);
@@ -144,6 +174,8 @@ export default class Search extends Component {
         {users}
         {guilds}
         {characters}
+
+        {oldTerm && <Redirect to={`/search?q=${oldTerm}`} />}
       </div>
     );
   }
