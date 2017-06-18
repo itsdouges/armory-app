@@ -16,7 +16,7 @@ function onSearch (event) {
     return;
   }
 
-  history.push(`/search/${filter}`);
+  history.push(`/search?q=${filter}`);
 }
 
 type SearchBarProps = {
