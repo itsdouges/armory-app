@@ -1,8 +1,12 @@
 // @flow
 
 import colours from 'common/styles/colours.less';
-import styles from './styles.less';
 import Icon from 'common/components/Icon';
+import goldImg from 'assets/images/gold.png';
+import silverImg from 'assets/images/silver.png';
+import copperImg from 'assets/images/copper.png';
+
+import styles from './styles.less';
 
 type Props = {
   coins: number,
@@ -26,6 +30,8 @@ function calc (coins) {
   };
 }
 
+const addSpace = (str) => ` ${str}`;
+
 const Gold = ({ coins, ...props }: Props) => {
   const { gold, silver, copper } = calc(coins);
 
@@ -33,17 +39,17 @@ const Gold = ({ coins, ...props }: Props) => {
     <div className={styles.root} {...props}>
       {!!gold && (
       <span className={`${styles.money} ${colours.gold}`}>
-        {gold} <Icon name="gold.png" size="micro" />
+        {addSpace(gold)} <img src={goldImg} alt="g" className={styles.icon} />
       </span>)}
 
       {!!silver && (
       <span className={`${styles.money} ${colours.silver}`}>
-        {silver} <Icon name="silver.png" size="micro" />
+        {addSpace(silver)} <img src={silverImg} alt="s" className={styles.icon} />
       </span>)}
 
       {!!copper && (
       <span className={`${styles.money} ${colours.copper}`}>
-        {copper} <Icon name="copper.png" size="micro" />
+        {addSpace(copper)} <img src={copperImg} alt="c" className={styles.icon} />
       </span>)}
     </div>
   );
