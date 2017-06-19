@@ -1,7 +1,6 @@
 // @flow
 
 import colours from 'common/styles/colours.less';
-import Icon from 'common/components/Icon';
 import goldImg from 'assets/images/gold.png';
 import silverImg from 'assets/images/silver.png';
 import copperImg from 'assets/images/copper.png';
