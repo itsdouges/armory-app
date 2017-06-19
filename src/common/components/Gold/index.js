@@ -30,27 +30,31 @@ function calc (coins) {
   };
 }
 
-const addSpace = (str) => ` ${str}`;
+type MoneyProps = {
+  money: number,
+  type: 'gold' | 'silver' | 'copper',
+};
+
+const moneyMap = {
+  gold: goldImg,
+  silver: silverImg,
+  copper: copperImg,
+};
+
+const Money = ({ money, type }: MoneyProps) => (
+  <span className={`${styles.money} ${colours[type]}`}>
+    {` ${money}`} <img src={moneyMap[type]} alt="g" className={styles.icon} />
+  </span>
+);
 
 const Gold = ({ coins, ...props }: Props) => {
   const { gold, silver, copper } = calc(coins);
 
   return (
     <div className={styles.root} {...props}>
-      {!!gold && (
-      <span className={`${styles.money} ${colours.gold}`}>
-        {addSpace(gold)} <img src={goldImg} alt="g" className={styles.icon} />
-      </span>)}
-
-      {!!silver && (
-      <span className={`${styles.money} ${colours.silver}`}>
-        {addSpace(silver)} <img src={silverImg} alt="s" className={styles.icon} />
-      </span>)}
-
-      {!!copper && (
-      <span className={`${styles.money} ${colours.copper}`}>
-        {addSpace(copper)} <img src={copperImg} alt="c" className={styles.icon} />
-      </span>)}
+      {!!gold && <Money money={gold} type="gold" />}
+      {!!silver && <Money money={silver} type="silver" />}
+      {!!copper && <Money money={copper} type="copper" />}
     </div>
   );
 };
