@@ -71,4 +71,4 @@ Feel like contributing? Look at the [issues](https://github.com/madou/armory-rea
 - [Feature enhancements](https://github.com/madou/armory-react/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement)
 - [Bugs](https://github.com/madou/armory-react/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 
-© 2015-2017 gw2armory.com
+© 2015-present gw2armory.com
