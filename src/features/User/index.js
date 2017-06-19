@@ -28,6 +28,7 @@ import styles from './styles.less';
 import Overview from './components/Overview';
 import Achievements from './components/Achievements';
 import Characters from './components/Characters';
+import Wallet from './components/Wallet';
 import RecentMatches from './components/RecentMatches';
 import Bank from './components/Bank';
 
@@ -101,6 +102,10 @@ const PRIVACY_OPTIONS = [
   {
     prop: 'inventory',
     name: 'Shared Inventory',
+  },
+  {
+    prop: 'wallet',
+    name: 'Wallet',
   },
 ];
 
@@ -324,6 +329,12 @@ class User extends Component {
           name: T.translate('users.recentMatches'),
           content: <RecentMatches alias={alias} />,
           hide: !this.canShowTab('pvpGames'),
+        }, {
+          path: '/wallet',
+          name: T.translate('users.wallet'),
+          content: <Wallet id={alias} />,
+          hide: !this.canShowTab('wallet'),
+          flair: 'new',
         }]}
       />
     );

@@ -47,6 +47,8 @@
   },
   "users": {
     "name": "Utilisateurs",
+    "bank": "Bank",
+    "wallet": "Wallet",
     "recentMatches": "Matches Récents",
     "claimCta": "Claim",
     "noApiKey": "Api key not set.",

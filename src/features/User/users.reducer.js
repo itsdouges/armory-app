@@ -13,6 +13,7 @@ import {
   FETCH_BANK_RESULT,
   SELECT_USER,
   UPDATE_USER_PRIVACY,
+  FETCH_WALLET_RESULT,
 } from './actions';
 
 function fetchingUserResult (state, action) {
@@ -170,6 +171,9 @@ export default function reducer (state, action) {
 
     case FETCH_SHARED_INVENTORY_RESULT:
       return fetchGenericResult('sharedInventory')(state, action);
+
+    case FETCH_WALLET_RESULT:
+      return fetchGenericResult('wallet')(state, action);
 
     case UPDATE_USER_PRIVACY: {
       const newUser = {
