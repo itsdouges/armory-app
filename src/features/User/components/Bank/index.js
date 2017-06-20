@@ -4,14 +4,17 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
+import { makeStubItems } from 'lib/paginator';
 import Container from 'common/components/Container';
 import Gw2Item from 'common/components/Gw2Item';
 
 import { fetchBank, fetchSharedInventory } from '../../actions';
 import styles from './styles.less';
 
+const STUB_ITEMS = makeStubItems(20).rows;
+
 export const selector = createSelector(
-  (store) => (store.users.data[store.users.selected] || {}).bank || [],
+  (store) => (store.users.data[store.users.selected] || {}).bank || STUB_ITEMS,
   (store) => (store.users.data[store.users.selected] || {}).sharedInventory,
   (bank, sharedInventory) => ({
     bank,
@@ -79,8 +82,7 @@ class UserBank extends Component {
             <Gw2Item
               // eslint-disable-next-line react/no-array-index-key
               key={index}
-              id={item.id}
-              count={item.count}
+              {...item}
             />
           ))}
         </div>
