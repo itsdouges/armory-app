@@ -45,7 +45,7 @@ module.exports = {
   },
 
   cache: {
-    saveToLs: true,
+    saveToLs: false,
 
     short: [
       'index.html',

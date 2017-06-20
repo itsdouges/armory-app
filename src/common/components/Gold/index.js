@@ -42,7 +42,7 @@ const moneyMap = {
 
 const Money = ({ money, type }: MoneyProps) => (
   <span className={`${styles.money} ${colours[type]}`}>
-    {` ${money}`} <img src={moneyMap[type]} alt="g" className={styles.icon} />
+    {` ${money}`} <img src={moneyMap[type]} alt={type[0]} className={styles.icon} />
   </span>
 );
 

@@ -11,13 +11,13 @@ import { thousands } from 'lib/numbers';
 import styles from './styles.less';
 
 type Props = {
-  name: string,
-  description: string,
-  icon: string,
   order: number,
   id: number,
-  className?: string,
+  name?: string,
   value?: number,
+  description?: string,
+  icon?: string,
+  className?: string,
 };
 
 const buildValueComponent = (id, value) => {
@@ -35,7 +35,7 @@ const buildValueComponent = (id, value) => {
 };
 
 const Currency = ({ id, name, description, icon, value, order, className }: Props) => (
-  <TooltipTrigger data={description}>
+  <TooltipTrigger data={description || 'Loading...'}>
     <Card className={cx(styles.root, className)} style={{ order }}>
       <Icon size="small" src={icon} />
 
@@ -43,7 +43,7 @@ const Currency = ({ id, name, description, icon, value, order, className }: Prop
         {buildValueComponent(id, value)}
       </div>
 
-      <div className={styles.name}>{name}</div>
+      <div className={cx(styles.name, { [styles.placeholder]: !name })}>{name || 'Loading...'}</div>
     </Card>
   </TooltipTrigger>
 );

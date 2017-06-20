@@ -10,11 +10,12 @@ type Options = {
   storeKeyResource: string,
   storeKeyGw2: string,
   resource: 'users' | 'characters' | 'guilds',
+  emptyUserData?: Array<typeof undefined>,
 };
 
-const withBatchLoad = ({ fetchResourceData, storeKeyResource, fetchGw2Data, storeKeyGw2, resource }: Options) => {
+const withBatchLoad = ({ fetchResourceData, storeKeyResource, fetchGw2Data, storeKeyGw2, resource, emptyUserData }: Options) => {
   const selector = createSelector(
-    (store) => (store[resource].data[store[resource].selected] || {})[storeKeyResource] || [],
+    (store) => (store[resource].data[store[resource].selected] || {})[storeKeyResource] || emptyUserData,
     (store) => store[storeKeyGw2] || {},
     (resourceData, gw2Data) => ({
       resourceData,
