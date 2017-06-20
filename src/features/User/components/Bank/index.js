@@ -11,7 +11,7 @@ import Gw2Item from 'common/components/Gw2Item';
 import { fetchBank, fetchSharedInventory } from '../../actions';
 import styles from './styles.less';
 
-const STUB_ITEMS = makeStubItems(20).rows;
+const STUB_ITEMS = makeStubItems(100).rows;
 
 export const selector = createSelector(
   (store) => (store.users.data[store.users.selected] || {}).bank || STUB_ITEMS,
@@ -81,7 +81,7 @@ class UserBank extends Component {
           {bank.map((item, index) => (
             <Gw2Item
               // eslint-disable-next-line react/no-array-index-key
-              key={index}
+              key={item ? index : `stub-${index}`}
               {...item}
             />
           ))}
