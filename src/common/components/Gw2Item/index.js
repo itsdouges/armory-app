@@ -4,7 +4,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import Item from 'features/Character/components/Item';
+import Item from 'common/components/Item';
 import actions from 'features/Gw2/actions';
 
 export const selector = createSelector(

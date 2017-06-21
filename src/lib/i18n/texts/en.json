@@ -52,6 +52,7 @@
     "joincta": "Join and add your gw2 api key(s) first!"
   },
   "users": {
+    "materials": "Materials",
     "bank": "Bank",
     "name": "Users",
     "wallet": "Wallet",

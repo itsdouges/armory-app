@@ -3,7 +3,7 @@
 import includes from 'lodash/includes';
 import cx from 'classnames';
 
-import Item from '../Item';
+import Item from 'common/components/Item';
 import styles from './styles.less';
 import { weapons, noSecondWeaponSet } from 'lib/gw2/equipment';
 

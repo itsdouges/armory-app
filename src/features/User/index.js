@@ -29,6 +29,7 @@ import Overview from './components/Overview';
 import Achievements from './components/Achievements';
 import Characters from './components/Characters';
 import Wallet from './components/Wallet';
+import Materials from './components/Materials';
 import RecentMatches from './components/RecentMatches';
 import Bank from './components/Bank';
 
@@ -106,6 +107,10 @@ const PRIVACY_OPTIONS = [
   {
     prop: 'wallet',
     name: 'Wallet',
+  },
+  {
+    prop: 'materials',
+    name: 'Materials',
   },
 ];
 
@@ -334,6 +339,12 @@ class User extends Component {
           name: T.translate('users.wallet'),
           content: <Wallet id={alias} />,
           hide: !this.canShowTab('wallet'),
+          flair: 'new',
+        }, {
+          path: '/materials',
+          name: T.translate('users.materials'),
+          content: <Materials id={alias} />,
+          hide: !this.canShowTab('materials'),
           flair: 'new',
         }]}
       />

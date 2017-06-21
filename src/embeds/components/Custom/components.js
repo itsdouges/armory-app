@@ -11,7 +11,7 @@ import PvpEquipment from 'features/Character/components/PvpEquipment';
 import Specialization from 'features/Character/components/Specialization';
 import CharacterSkills from 'features/Character/components/Skills';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
-import Item from 'features/Character/components/Item';
+import Item from 'common/components/Item';
 
 import type { Character, User, Items, Skins, Amulets, Skills, Professions } from 'flowTypes';
 

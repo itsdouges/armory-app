@@ -31,7 +31,7 @@ import Specialization from '../Specialization';
 import Portrait from '../Portrait';
 import Attribute from '../Attribute';
 import CraftingBar from '../CraftingBar';
-import Item from '../Item';
+import Item from 'common/components/Item';
 import Skills from '../Skills';
 import Embed from '../Embed';
 

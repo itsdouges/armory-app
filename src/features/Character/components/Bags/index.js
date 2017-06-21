@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 
 import Container from 'common/components/Container';
-import Item from 'features/Character/components/Item';
+import Item from 'common/components/Item';
 import actions from 'features/Gw2/actions';
 
 import styles from './styles.less';
