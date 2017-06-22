@@ -9,6 +9,7 @@ import Container from 'common/components/Container';
 import actions from 'features/Gw2/actions';
 import Section from './Section';
 
+import styles from './styles.less';
 import { createFetch } from '../../actions';
 
 type Props = {
@@ -58,8 +59,15 @@ class UserMaterials extends Component {
       .sort(({ order: a }, { order: b }) => (a - b));
 
     return (
-      <Container>
-        {orderedMaterials.map((material) => <Section key={material.id} {...material} userMaterials={userMaterials} />)}
+      <Container className={styles.root}>
+        {orderedMaterials.map((material, index) =>
+          <Section
+            beginExpanded={index === 0}
+            key={material.id}
+            {...material}
+            userMaterials={userMaterials}
+          />
+        )}
       </Container>
     );
   }

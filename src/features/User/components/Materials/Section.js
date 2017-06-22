@@ -13,14 +13,18 @@ type Props = {
   userMaterials: {
     [id: number]: { id: number, category: number, count: number },
   },
-  expanded?: boolean,
+  beginExpanded: boolean,
 };
 
 export default class MaterialSection extends Component {
   props: Props;
 
+  static defaultProps = {
+    beginExpanded: false,
+  };
+
   state = {
-    expanded: false,
+    expanded: this.props.beginExpanded,
   };
 
   toggleExpanded = () => {
@@ -35,12 +39,12 @@ export default class MaterialSection extends Component {
 
     return (
       <section className={cx(styles.sectionRoot, { [styles.expanded]: expanded })}>
-        <h2>
-          <button onClick={this.toggleExpanded}>
+        <button className={styles.buttonContainer} onClick={this.toggleExpanded}>
+          <h2>
             <SvgIcon name="arrow-down" className={styles.icon} />
             {name}
-          </button>
-        </h2>
+          </h2>
+        </button>
 
         {items.slice(0, expanded ? undefined : 18).map((id) => {
           const data = userMaterials[id] || {};
