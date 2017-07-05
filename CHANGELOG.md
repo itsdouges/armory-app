@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.31.4][] - 2017-07-05
 ### Removed
 - Ad borders + text
 
@@ -889,7 +891,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.31.3...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.31.4...HEAD
+[4.31.4]: https://github.com/madou/armory-react/compare/v4.31.3...v4.31.4
 [4.31.3]: https://github.com/madou/armory-react/compare/v4.31.2...v4.31.3
 [4.31.2]: https://github.com/madou/armory-react/compare/v4.31.1...v4.31.2
 [4.31.1]: https://github.com/madou/armory-react/compare/v4.31.0...v4.31.1
