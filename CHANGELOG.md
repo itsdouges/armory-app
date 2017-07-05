@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Removed
+- Ad borders + text
 
 ## [4.31.3][] - 2017-06-18
 ### Changed
