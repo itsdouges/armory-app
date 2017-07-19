@@ -325,7 +325,6 @@ class User extends Component {
           hide: !this.canShowTab('achievements'),
         }, {
           path: '/bank',
-          flair: 'new',
           name: T.translate('users.bank'),
           content: <Bank alias={alias} />,
           hide: !this.canShowTab('bank'),
