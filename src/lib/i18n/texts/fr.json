@@ -46,9 +46,10 @@
     "joincta": "Inscrivez-vous et ajoutez votre clé d'application(s) en premier!"
   },
   "users": {
-    "name": "Utilisateurs",
+    "materials": "Materials",
     "bank": "Bank",
     "wallet": "Wallet",
+    "name": "Utilisateurs",
     "recentMatches": "Matches Récents",
     "claimCta": "Claim",
     "noApiKey": "Api key not set.",

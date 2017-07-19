@@ -46,6 +46,9 @@
     "joincta": "Присоединяйтесь и добавляте свои GW2 токены!"
   },
   "users": {
+    "materials": "Materials",
+    "bank": "Bank",
+    "wallet": "Wallet",
     "name": "Пользователи",
     "recentMatches": "Последние матчи",
     "achievements": "Достижения",

@@ -46,6 +46,9 @@
     "joincta": "¡Entra y añade tus claves de la API de gw2!"
   },
   "users": {
+    "materials": "Materials",
+    "bank": "Bank",
+    "wallet": "Wallet",
     "name": "Usuarios",
     "achievements": "Achievements",
     "recentMatches": "Partidas recientes",

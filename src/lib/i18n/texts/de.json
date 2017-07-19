@@ -46,6 +46,9 @@
     "joincta": "Jetzt Mitglied werden und deinen GW2 API-Schlüssel einfügen, um gefunden zu werden!"
   },
   "users": {
+    "materials": "Materials",
+    "bank": "Bank",
+    "wallet": "Wallet",
     "name": "Benutzer",
     "recentMatches": "Aktuelle Spiele",
     "achievements": "Achievements",
