@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Wallet tab to user
+- Materials tab to user
+- Redux batch load HOC to load and pass common props
 
 ## [4.31.4][] - 2017-07-05
 ### Removed
