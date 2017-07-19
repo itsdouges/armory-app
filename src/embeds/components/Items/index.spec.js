@@ -16,7 +16,7 @@ const actions = {
 const stubs = {
   ...stubRedux,
   'features/Gw2/actions': actions,
-  'features/Character/components/Item': Item,
+  'common/components/Item': Item,
   'lib/gw2/itemStats': applyAttributes,
   './styles.less': styles,
 };

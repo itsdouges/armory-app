@@ -16,7 +16,7 @@ import ArmoryBadge from 'common/components/ArmoryBadge';
 import { fetchCharacter, selectCharacter } from 'features/Character/actions';
 import { minimalSelector } from 'features/Character/characters.reducer';
 import styles from './styles.less';
-import Item from 'features/Character/components/Item';
+import Item from 'common/components/Item';
 import Portrait from 'features/Character/components/Portrait';
 
 type Props = {

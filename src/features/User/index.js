@@ -28,6 +28,8 @@ import styles from './styles.less';
 import Overview from './components/Overview';
 import Achievements from './components/Achievements';
 import Characters from './components/Characters';
+import Wallet from './components/Wallet';
+import Materials from './components/Materials';
 import RecentMatches from './components/RecentMatches';
 import Bank from './components/Bank';
 
@@ -101,6 +103,14 @@ const PRIVACY_OPTIONS = [
   {
     prop: 'inventory',
     name: 'Shared Inventory',
+  },
+  {
+    prop: 'wallet',
+    name: 'Wallet',
+  },
+  {
+    prop: 'materials',
+    name: 'Materials',
   },
 ];
 
@@ -315,7 +325,6 @@ class User extends Component {
           hide: !this.canShowTab('achievements'),
         }, {
           path: '/bank',
-          flair: 'new',
           name: T.translate('users.bank'),
           content: <Bank alias={alias} />,
           hide: !this.canShowTab('bank'),
@@ -324,6 +333,18 @@ class User extends Component {
           name: T.translate('users.recentMatches'),
           content: <RecentMatches alias={alias} />,
           hide: !this.canShowTab('pvpGames'),
+        }, {
+          path: '/wallet',
+          name: T.translate('users.wallet'),
+          content: <Wallet id={alias} />,
+          hide: !this.canShowTab('wallet'),
+          flair: 'new',
+        }, {
+          path: '/materials',
+          name: T.translate('users.materials'),
+          content: <Materials id={alias} />,
+          hide: !this.canShowTab('materials'),
+          flair: 'new',
         }]}
       />
     );

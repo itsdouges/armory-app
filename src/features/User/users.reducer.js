@@ -13,6 +13,7 @@ import {
   FETCH_BANK_RESULT,
   SELECT_USER,
   UPDATE_USER_PRIVACY,
+  FETCH_WALLET_RESULT,
 } from './actions';
 
 function fetchingUserResult (state, action) {
@@ -61,16 +62,17 @@ function fetchingUserCharactersResult (state, action) {
   return newState;
 }
 
-const fetchGenericResult = (key) => (state, action) => {
+const fetchGenericResult = (key, transform) => (state, action) => {
   const newState = {
     ...state,
   };
 
   const oldUser = newState.data[action.payload.alias];
+  const data = transform ? transform(action.payload.data) : action.payload.data;
 
   newState.data[action.payload.alias] = {
     ...oldUser,
-    [key]: action.payload.data,
+    [key]: data,
   };
 
   return newState;
@@ -170,6 +172,12 @@ export default function reducer (state, action) {
 
     case FETCH_SHARED_INVENTORY_RESULT:
       return fetchGenericResult('sharedInventory')(state, action);
+
+    case FETCH_WALLET_RESULT:
+      return fetchGenericResult('wallet')(state, action);
+
+    case 'FETCH_USER_MATERIALS_RESULT':
+      return fetchGenericResult('materials', reduceById)(state, action);
 
     case UPDATE_USER_PRIVACY: {
       const newUser = {

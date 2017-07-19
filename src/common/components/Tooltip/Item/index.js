@@ -10,7 +10,7 @@ import colours from 'common/styles/colours.less';
 import { markup, attributeToName } from 'lib/gw2/parse';
 
 import ItemHeader from '../ItemHeader';
-import Gold from '../Gold';
+import Gold from '../../Gold';
 import Upgrade from '../Upgrade';
 import Infusion from '../Infusion';
 import Background from '../Background';

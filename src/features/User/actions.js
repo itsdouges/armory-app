@@ -17,6 +17,7 @@ export const FETCH_USER_ACHIEVEMENTS_RESULT = 'FETCH_USER_ACHIEVEMENTS_RESULT';
 export const FETCH_PVP_GAMES_RESULT = 'FETCH_PVP_GAMES_RESULT';
 export const FETCH_PVP_STANDINGS_RESULT = 'FETCH_PVP_STANDINGS_RESULT';
 export const FETCH_BANK_RESULT = 'FETCH_BANK_RESULT';
+export const FETCH_WALLET_RESULT = 'FETCH_WALLET_RESULT';
 export const FETCH_SHARED_INVENTORY_RESULT = 'FETCH_SHARED_INVENTORY_RESULT';
 export const SELECT_USER = 'SELECT_USER';
 export const UPDATE_USER_PRIVACY = 'UPDATE_USER_PRIVACY';
@@ -47,6 +48,22 @@ const fetchUserAchievementsResult = (alias, achievements) => ({
   },
 });
 
+const fetchWalletResult = (alias, data) => ({
+  type: FETCH_WALLET_RESULT,
+  payload: {
+    alias,
+    data,
+  },
+});
+
+const createFetchResult = (resource) => (alias, data) => ({
+  type: `FETCH_USER_${resource.toUpperCase()}_RESULT`,
+  payload: {
+    alias,
+    data,
+  },
+});
+
 const fetchingUserCharacters = (fetching) => ({
   type: FETCHING_USER_CHARACTERS,
   payload: fetching,
@@ -71,6 +88,14 @@ export const fetchUserCharacters = (alias: string, limit: number, offset: number
 export const fetchUserAchievements = (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/achievements`)
     .then(({ data }) => dispatch(fetchUserAchievementsResult(alias, data)));
+
+export const fetchWallet = (alias: string): ReduxThunk => (dispatch) =>
+  axios.get(`${config.api.endpoint}users/${alias}/wallet`)
+    .then(({ data }) => dispatch(fetchWalletResult(alias, data)));
+
+export const createFetch = (resource: string) => (alias: string): ReduxThunk => (dispatch) =>
+  axios.get(`${config.api.endpoint}users/${alias}/${resource}`)
+    .then(({ data }) => dispatch(createFetchResult('materials')(alias, data)));
 
 export const fetchPvpStatsSuccess = (alias: string, data: {}) => ({
   type: FETCH_PVP_STATS_RESULT,

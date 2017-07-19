@@ -1,0 +1,26 @@
+@import '~common/styles/base.less';
+
+@currencyMargin: 0.33em;
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  padding: @currencyMargin;
+}
+
+.currency {
+  margin: @currencyMargin;
+  width: calc(50% ~"-" @currencyMargin * 2);
+
+  .fromLargeMobile({
+    width: calc(33.3333% ~"-" @currencyMargin * 2);
+  });
+
+  .fromTablet({
+    width: calc(25% ~"-" @currencyMargin * 2);
+  });
+
+  .fromPc({
+    width: calc(20% ~"-" @currencyMargin * 2);
+  });
+}

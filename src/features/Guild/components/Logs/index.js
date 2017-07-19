@@ -12,7 +12,7 @@ import Container from 'common/components/Container';
 import Progress from 'common/components/Icon/Progress';
 import Gw2Item from 'common/components/Gw2Item';
 import GuildUpgrade from 'common/components/Gw2GuildUpgrade';
-import Money from 'common/components/Tooltip/Gold';
+import Money from 'common/components/Gold';
 import DisplayAd from 'common/components/DisplayAd';
 
 import styles from './styles.less';

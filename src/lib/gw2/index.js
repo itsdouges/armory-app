@@ -105,6 +105,20 @@ export const readSpecializations = (ids: Array<number>) => {
   .then(({ data }) => reduceById(data));
 };
 
+export const readCurrencies = (ids: Array<number>) => {
+  const delimitedIds = ids.join(',');
+
+  return get(`${config.gw2.endpoint}v2/currencies?ids=${delimitedIds}`)
+  .then(({ data }) => reduceById(data));
+};
+
+export const createFetch = (resource: string) => (ids: Array<number>) => {
+  const delimitedIds = ids.join(',');
+
+  return get(`${config.gw2.endpoint}v2/${resource}?ids=${delimitedIds}`)
+  .then(({ data }) => reduceById(data));
+};
+
 export const readTraits = (ids: Array<number>) => {
   const delimitedIds = ids.join(',');
 

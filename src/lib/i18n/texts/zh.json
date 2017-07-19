@@ -46,6 +46,9 @@
     "joincta": "请先注册，并添加你的GW2 API令牌！"
   },
   "users": {
+    "materials": "Materials",
+    "bank": "Bank",
+    "wallet": "Wallet",
     "name": "用户",
     "recentMatches": "近期比赛",
     "achievements": "Achievements",

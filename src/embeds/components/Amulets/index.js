@@ -7,7 +7,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 
 import actions from 'features/Gw2/actions';
-import Item from 'features/Character/components/Item';
+import Item from 'common/components/Item';
 import styles from './styles.less';
 
 function mapStateToProps (state) {

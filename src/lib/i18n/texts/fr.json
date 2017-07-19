@@ -46,6 +46,9 @@
     "joincta": "Inscrivez-vous et ajoutez votre clé d'application(s) en premier!"
   },
   "users": {
+    "materials": "Materials",
+    "bank": "Bank",
+    "wallet": "Wallet",
     "name": "Utilisateurs",
     "recentMatches": "Matches Récents",
     "claimCta": "Claim",
