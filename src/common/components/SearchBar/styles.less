@@ -22,21 +22,24 @@
 }
 
 .textBoxContainer.textBoxContainer {
+  background-color: @_red;
   display: flex;
   overflow: hidden;
   align-items: stretch;
-  border-radius: 5px;
   margin-bottom: 0;
   border: none;
-  .low;
 }
 
 input.textbox {
+  .secondaryFont();
   font-size: @normalText;
   margin: @thinMargin;
+  background-color: @_red;
+  color: @_white;
+  font-weight: 100;
 
   &::placeholder {
-    color: @placeholder;
+    color: @_white;
   }
 }
 
@@ -47,11 +50,6 @@ input.textbox {
 }
 
 .simple {
-  &.textBoxContainer {
-    box-shadow: none;
-    border-radius: 2px;
-  }
-
   input.textbox {
     margin: @tinyMargin;
     font-size: @smallText;

@@ -43,6 +43,7 @@ function extractData (content, { type, size, forceUpdate }): CardData {
         imageStyle: {
           backgroundColor: colours._gray,
           borderRadius: '50%',
+          border: `2px solid ${colours._white}`,
         },
         imageUrl: url,
         imageName: '',

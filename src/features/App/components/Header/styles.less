@@ -39,31 +39,40 @@
 }
 
 .bigSearchContainer {
-  padding: 4em 1em 0;
+  padding: 4em 1em 1em;
   position: relative;
   z-index: @searchBarZ;
   text-align: center;
 }
 
 .armoryLogo {
-  width: 260px;
-  height: 179px;
+  width: 170px;
+  height: 140px;
   margin-bottom: 2em;
 
   .fromMobile({
-    width: 292px;
-    height: 202px;
+    width: 282px;
+    height: 233px;
   });
 }
 
+.searchBarBase {
+  overflow: hidden;
+}
+
 .searchBar {
+  .searchBarBase();
+  .high();
   margin: 0 auto;
   font-size: 1.6em;
   max-width: @searchBarMaxWidth;
+  border-radius: 5px;
 }
 
 .smallSearchBar {
+  .searchBarBase();
   margin-right: 1em;
+  border-radius: 2px;
 }
 
 .patreonCta {
@@ -80,5 +89,11 @@
 }
 
 .ad {
-  margin-top: @spaceBetween;
+  margin-top: 1em;
+}
+
+.floating {
+  > :global(.ReactStickyHeader_fixed) {
+    .medium();
+  }
 }

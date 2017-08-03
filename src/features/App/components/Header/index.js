@@ -10,14 +10,13 @@ import cx from 'classnames';
 // $FlowFixMe
 import '!!style-loader!css-loader!react-sticky-header/styles.css'; //eslint-disable-line
 import StickyHeader from 'react-sticky-header';
-import SvgIcon from 'common/components/Icon/Svg';
 
 import authenticatedData from 'features/Auth/data';
 import colours from 'common/styles/colours';
-import armoryLogo from 'assets/images/gw_logo.png';
+import armoryLogo from 'assets/images/pof-logo.png';
 import config from 'config';
 
-const heroImage = config.features.christmas ? 'xmas-hero.jpg' : 'gw_bgrd.png';
+const heroImage = 'pof-hero.jpg';
 const headerBg = require(`assets/images/${heroImage}`);
 
 import ResponsiveAd from 'common/components/DisplayAd/Responsive';
@@ -149,7 +148,8 @@ class Header extends Component {
         backgroundImage={headerBg}
         headerOnly={compact}
         onSticky={this.onSticky}
-        backgroundColor={colours.headerGray}
+        backgroundColor={colours.headerBg}
+        className={showExtraHeaderItems && styles.floating}
       >
         <div className={styles.bigSearchContainer} style={{ display: compact ? 'none' : '' }}>
           <Container>
@@ -173,10 +173,6 @@ class Header extends Component {
                 minWidth: 0,
               }]}
             />
-
-            <a className={styles.patreonCta} href="https://www.patreon.com/gw2armory">
-              <SvgIcon name="patreon" size="micro" className={styles.patreonIcon} /> {T.translate('patreon.cta')}
-            </a>
           </Container>
         </div>
       </StickyHeader>
