@@ -114,7 +114,7 @@ class Header extends Component {
     const { authenticated, alias, checkingAuthentication, compact } = this.props;
     const { showExtraHeaderItems } = this.state;
     const links = buildLinks({ authenticated, checkingAuthentication, alias });
-    const smallIconName = config.features.christmas ? 'gift.png' : 'logo-small.png';
+    const smallIconName = config.features.christmas ? 'gift.png' : 'favicons/favicon-32.png';
 
     const header = (
       <Container className={styles.innerContainer}>

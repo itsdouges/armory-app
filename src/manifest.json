@@ -3,26 +3,22 @@
   "short_name": "GW2Armory",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#f7f9fa",
+  "background_color": "#fefefe",
   "lang": "en-US",
   "orientation": "portrait-primary",
-  "theme_color": "#d63227",
+  "theme_color": "#b51983",
   "description": "Guild Wars 2 Armory is an easy way to find, view, and share users, characters, and guilds with your friends on your mobile and pc! Join today and start sharing!",
   "icons": [{
+    "src": "./assets/images/favicons/favicon-16.png",
+    "sizes": "16x16",
+    "type": "image/png"
+  }, {
     "src": "./assets/images/favicons/favicon-32.png",
     "sizes": "32x32",
     "type": "image/png"
   }, {
-    "src": "./assets/images/favicons/favicon-96.png",
-    "sizes": "96x96",
-    "type": "image/png"
-  }, {
-    "src": "./assets/images/favicons/appIcon.png",
-    "sizes": "120x20",
-    "type": "image/png"
-  }, {
-    "src": "./assets/images/favicons/favicon-192.png",
-    "sizes": "192x192",
+    "src": "./assets/images/favicons/favicon-app.png",
+    "sizes": "180x180",
     "type": "image/png"
   }]
 }
