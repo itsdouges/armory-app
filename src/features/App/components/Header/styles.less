@@ -48,27 +48,9 @@
   text-align: center;
 
   .fromPc({
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-areas:
-      "logo searchbar"
-      "ad ad";
-
-    .armoryLogo {
-      grid-area: logo;
-      width: 240.05px;
-      height: 200px;
-      justify-self: end;
-      margin: 0 @spaceBetween * 2 @spaceBetween 0;
-    }
-
-    .searchBar {
-      grid-area: searchbar;
-      justify-self: start;
-      align-self: center;
-      margin: 0;
-      width: 600px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
   });
 }
 
@@ -80,6 +62,12 @@
   .fromMobile({
     width: 282px;
     height: 233px;
+  });
+
+  .fromPc({
+    width: 240.05px;
+    height: 200px;
+    margin: 0 @spaceBetween * 2 @spaceBetween 0;
   });
 }
 
@@ -94,6 +82,11 @@
   max-width: @searchBarMaxWidth;
   border-radius: 5px;
   box-shadow: 0 4px 20px 5px fade(@primary, 20%);
+
+  .fromPc({
+    margin: 0;
+    width: 600px;
+  });
 }
 
 .smallSearchBar {
