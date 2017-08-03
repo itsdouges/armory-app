@@ -22,21 +22,24 @@
 }
 
 .textBoxContainer.textBoxContainer {
+  background-color: @primary;
   display: flex;
   overflow: hidden;
   align-items: stretch;
-  border-radius: 5px;
   margin-bottom: 0;
   border: none;
-  .low;
 }
 
 input.textbox {
+  .secondaryFont();
   font-size: @normalText;
   margin: @thinMargin;
+  background-color: @primary;
+  color: @lightText;
+  font-weight: 100;
 
   &::placeholder {
-    color: @placeholder;
+    color: @lightText;
   }
 }
 
@@ -47,11 +50,6 @@ input.textbox {
 }
 
 .simple {
-  &.textBoxContainer {
-    box-shadow: none;
-    border-radius: 2px;
-  }
-
   input.textbox {
     margin: @tinyMargin;
     font-size: @smallText;
@@ -70,7 +68,7 @@ input.textbox {
 .searchButton {
   width: @thickButton;
   border: none;
-  background: @_red;
+  background: @primary;
   cursor: pointer;
   outline: none;
   position: relative;

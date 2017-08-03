@@ -51,16 +51,16 @@ export default class Embeds extends Component {
 
             <pre>
               {`document.GW2A_EMBED_OPTIONS = {
-    lang: 'en',
-  };`}
+  lang: 'en',
+};`}
             </pre>
           </Card>
 
           <h2>Styling</h2>
           <Card size="medium" className={styles.card}>
-            To style any embed simply target the embed with the embed name, e.g:
+            To style any embed simply target the embed with the embed name class, e.g:
 
-            <pre>{embeds.map(({ title }) => `gw2a-${title.toLowerCase()}-embed`).join('\n')}</pre>
+            <pre>{embeds.map(({ title }) => `.gw2a-${title.toLowerCase()}-embed`).join('\n')}</pre>
           </Card>
 
           <DisplayAd type="mrec" className={styles.mrec} />
@@ -73,7 +73,7 @@ export default class Embeds extends Component {
                   <div dangerouslySetInnerHTML={makeHtml(html)} />
                   <pre>{`${html}
 
-    <script async src="https://gw2armory.com/gw2aEmbeds.js"></script>`}</pre>
+<script async src="https://gw2armory.com/gw2aEmbeds.js"></script>`}</pre>
 
                   <ul className={styles.options}>
                     <li>{`data-armory-embed="${title.toLowerCase()}"`}</li>

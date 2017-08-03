@@ -3,11 +3,11 @@
 @disabledColor: @disabled;
 @disabledBackground: @disabledalt;
 @disabledBorder: @disabledalt;
-@buttonTextColour: @_white;
+@buttonTextColour: @lightText;
 
-@cta: @_red;
+@cta: @primary;
 @minimal: @positive;
-@primary: @positive;
+@primaryColour: @positive;
 @secondary: @negative;
 
 .button {
@@ -61,13 +61,13 @@
 }
 
 .primary {
-  border-color: @primary;
-  background: @primary;
+  border-color: @primaryColour;
+  background: @primaryColour;
   color: @buttonTextColour;
   font-weight: bold;
 
   &.disabled {
-    color: @primary;
+    color: @primaryColour;
   }
 }
 
