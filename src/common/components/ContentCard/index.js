@@ -41,7 +41,7 @@ function extractData (content, { type, size, forceUpdate }): CardData {
         ),
         subTitle: content.accountName || T.translate('users.noApiKey'),
         imageStyle: {
-          backgroundColor: colours._gray,
+          backgroundColor: colours._black,
           borderRadius: '50%',
           border: `2px solid ${colours._white}`,
         },

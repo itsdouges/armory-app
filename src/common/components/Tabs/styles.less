@@ -37,12 +37,16 @@
 }
 
 .selected {
-  margin-bottom: -1px;
-  background-color: @background;
   border: 1px solid @tabsBorder;
-  border-bottom: none;
-  border-radius: 2px 2px 0 0;
-  padding-bottom: calc(@tabPadding ~"+" 2px);
+  background-color: @background;
+  border-radius: 2px;
+
+  .fromPc({
+    margin-bottom: -1px;
+    border-bottom: none;
+    border-radius: 2px 2px 0 0;
+    padding-bottom: calc(@tabPadding ~"+" 2px);
+  });
 }
 
 .fromTablet({

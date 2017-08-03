@@ -1,21 +1,23 @@
 @import '~common/styles/base.less';
 
-@text: @_white;
-@background: @_darkergray;
+@text: @lightText;
+@background: @_black;
 
 .root {
   width: 100%;
   color: @text;
   font-size: 0.7em;
   padding: 2em 1em;
-  background: @background;
+  background-color: @background;
+  background-image: url('assets/images/standard-bg.jpg');
+  background-size: cover;
 
   a {
     text-transform: uppercase;
-    color: @_white;
+    color: @lightText;
 
     &:hover {
-      color: @_red;
+      color: @primary;
     }
   }
 }

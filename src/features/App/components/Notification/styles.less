@@ -1,5 +1,7 @@
 @import '~common/styles/base.less';
 
+@error: @_red;
+
 .root {
   display: flex;
   align-items: center;
@@ -9,7 +11,7 @@
 
 .error {
   color: fade(@_white, 90%);
-  background-color: @_red;
+  background-color: @error;
 }
 
 .info {

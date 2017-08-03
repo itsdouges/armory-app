@@ -3,12 +3,14 @@
 @searchBarZ: @_zindex40;
 @searchBarMaxWidth: 625px;
 @spaceBetween: 2em;
+@textShadow: @_white;
 
 .innerContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.15em;
+  font-size: 1.1em;
 }
 
 .searchContainer {
@@ -22,6 +24,7 @@
   padding: 0 0 0 0.25em;
   font-weight: bold;
   flex-shrink: 0;
+  text-shadow: 0 0 10px @textShadow;
 
   .fromMobile({
     font-size: 1em;
@@ -43,6 +46,30 @@
   position: relative;
   z-index: @searchBarZ;
   text-align: center;
+
+  .fromPc({
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "logo searchbar"
+      "ad ad";
+
+    .armoryLogo {
+      grid-area: logo;
+      width: 240.05px;
+      height: 200px;
+      justify-self: end;
+      margin: 0 @spaceBetween * 2 @spaceBetween 0;
+    }
+
+    .searchBar {
+      grid-area: searchbar;
+      justify-self: start;
+      align-self: center;
+      margin: 0;
+      width: 600px;
+    }
+  });
 }
 
 .armoryLogo {
@@ -62,11 +89,11 @@
 
 .searchBar {
   .searchBarBase();
-  .high();
   margin: 0 auto;
   font-size: 1.6em;
   max-width: @searchBarMaxWidth;
   border-radius: 5px;
+  box-shadow: 0 4px 20px 5px fade(@primary, 20%);
 }
 
 .smallSearchBar {

@@ -19,7 +19,6 @@ import config from 'config';
 const heroImage = 'pof-hero.jpg';
 const headerBg = require(`assets/images/${heroImage}`);
 
-import ResponsiveAd from 'common/components/DisplayAd/Responsive';
 import buttonStyles from 'common/components/Button/styles.less';
 import ResponsiveMenu from 'common/components/ResponsiveMenu';
 import Container from 'common/components/Container';
@@ -151,30 +150,15 @@ class Header extends Component {
         backgroundColor={colours.headerBg}
         className={showExtraHeaderItems && styles.floating}
       >
-        <div className={styles.bigSearchContainer} style={{ display: compact ? 'none' : '' }}>
-          <Container>
-            <img
-              alt="Guild Wars 2 Armory"
-              title="Guild Wars 2 Armory"
-              className={styles.armoryLogo} src={armoryLogo}
-            />
+        <Container className={styles.bigSearchContainer} style={{ display: compact ? 'none' : '' }}>
+          <img
+            alt="Guild Wars 2 Armory"
+            title="Guild Wars 2 Armory"
+            className={styles.armoryLogo} src={armoryLogo}
+          />
 
-            <SearchBar className={styles.searchBar} />
-
-            <ResponsiveAd
-              className={styles.ad}
-              breakpoints={[{
-                type: 'banner',
-                maxWidth: Number.MAX_VALUE,
-                minWidth: 490,
-              }, {
-                type: 'mbanner',
-                maxWidth: 489,
-                minWidth: 0,
-              }]}
-            />
-          </Container>
-        </div>
+          <SearchBar className={styles.searchBar} />
+        </Container>
       </StickyHeader>
     );
   }

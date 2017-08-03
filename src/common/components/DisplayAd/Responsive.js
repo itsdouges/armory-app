@@ -7,6 +7,7 @@ import DisplayAd from './';
 
 type Props = {
   className?: string,
+  containerClassName?: string,
   breakpoints: Array<{
     type: $PropertyType<DisplayAdProps, 'type'>,
     minWidth: number,
@@ -15,7 +16,7 @@ type Props = {
 };
 
 const ResponsiveDisplayAd = (props: Props) => (
-  <span>
+  <span className={props.containerClassName}>
     {props.breakpoints.map((breakpoint) => (
       <MediaQuery
         key={breakpoint.type}
