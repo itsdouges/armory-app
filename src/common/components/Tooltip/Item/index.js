@@ -4,11 +4,14 @@ import startCase from 'lodash/startCase';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
 import T from 'i18n-react';
+import cx from 'classnames';
 
+import styles from './styles.less';
 import SimpleTooltip from '../Simple';
 import colours from 'common/styles/colours.less';
 import { markup, attributeToName } from 'lib/gw2/parse';
 
+import Icon from 'common/components/Icon';
 import ItemHeader from '../ItemHeader';
 import Gold from '../../Gold';
 import Upgrade from '../Upgrade';
@@ -16,6 +19,8 @@ import Infusion from '../Infusion';
 import Background from '../Background';
 
 const addCount = (str, count) => (count > 1 ? `${count} ${str}` : str);
+
+const minutes = (ms) => `${Math.floor(ms / 60000)} m`;
 
 function buildName (item, skin, upgrades, count) {
   let name;
@@ -105,9 +110,15 @@ const ItemsTooltip = ({ data: {
           );
         })}
 
-        {item.details && <span className={colours.green}>
-          {markup(item.details.description, '\n')}
-        </span>}
+        {item.details && (
+          <span className={styles.description}>
+            {item.details.icon && <Icon src={item.details.icon} className={styles.detailsIcon} />}
+            <span className={colours.green}>
+              {item.details.name && <div>{`${item.details.name} (${minutes(item.details.duration_ms)}): `}</div>}
+              {markup(item.details.description)}
+            </span>
+          </span>
+      )}
 
         {get(item, 'details.bonuses', []).map((bonusName, bonusId) => (
           <div className={colours.blue}>
@@ -138,13 +149,11 @@ const ItemsTooltip = ({ data: {
           </div>
         )}
 
-        <div>{item.name}</div>
-
         <div>{item.rarity}</div>
 
         {item.details && <div>{item.details.weight_class}</div>}
 
-        {item.details && <div>{startCase(item.details.type)} {startCase(item.type)}</div>}
+        {item.details && <div>{startCase(item.type)}</div>}
 
         <div>{markup(item.description)}</div>
 

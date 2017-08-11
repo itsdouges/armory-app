@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Food tooltip to show detail name and icon
+- Tooltip displaying item name twice
 
 ## [4.32.2][] - 2017-08-03
 ### Changed
