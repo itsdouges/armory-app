@@ -4,7 +4,6 @@ import startCase from 'lodash/startCase';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
 import T from 'i18n-react';
-import cx from 'classnames';
 
 import styles from './styles.less';
 import SimpleTooltip from '../Simple';
