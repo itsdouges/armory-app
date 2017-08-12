@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Babel polyfill not targetting supported browsers
+
+### Changed
+- Add more options to rollbar
 
 ## [4.33.1][] - 2017-08-12
 ### Changed

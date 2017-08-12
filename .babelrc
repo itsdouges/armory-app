@@ -3,7 +3,7 @@
     "babel-preset-react",
     ["env", {
       "targets": {
-        "browsers": ["last 2 versions"]
+        "browsers": [">1%", "last 4 versions", "not ie < 11", "Firefox ESR"]
       },
       "useBuiltIns": true
     }]

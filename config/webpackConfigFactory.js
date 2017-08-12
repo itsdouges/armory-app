@@ -14,6 +14,7 @@ import paths from './paths';
 import config from '../src/config/default';
 import manup from 'manup';
 import manifest from '../src/manifest.json';
+import pkg from '../package.json';
 
 module.exports = ({
   entryPath,
@@ -166,6 +167,7 @@ module.exports = ({
         ...htmlWebpackPlugin,
         env: production ? 'production' : 'development',
         pwaMeta: manup(manifest),
+        version: pkg.version,
         minify: production && {
           removeComments: true,
           collapseWhitespace: true,
@@ -201,6 +203,7 @@ module.exports = ({
           comments: false,
           screw_ie8: true,
         },
+        parallel: true,
       }),
 
       production && new ExtractTextPlugin({
