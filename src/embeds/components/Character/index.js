@@ -22,18 +22,18 @@ import Portrait from 'features/Character/components/Portrait';
 type Props = {
   name: string,
   character?: Character,
-  selectCharacter?: (name: string) => void,
-  fetchCharacter?: (name: string) => void,
+  selectCharacter: (name: string) => void,
+  fetchCharacter: (name: string, any) => void,
   items?: Items,
   skins?: Skins,
   className?: string,
 };
 
-@connect(minimalSelector, {
+export default connect(minimalSelector, {
   fetchCharacter,
   selectCharacter,
-})
-export default class CharacterLite extends Component {
+})(
+class CharacterLite extends Component {
   props: Props;
 
   componentWillMount () {
@@ -58,12 +58,12 @@ export default class CharacterLite extends Component {
   }
 
   loadCharacter (name: string) {
-    this.props.fetchCharacter && this.props.fetchCharacter(name, {
+    this.props.fetchCharacter(name, {
       redirect404: false,
       basicLoad: true,
     });
 
-    this.props.selectCharacter && this.props.selectCharacter(name);
+    this.props.selectCharacter(name);
   }
 
   render () {
@@ -138,3 +138,4 @@ export default class CharacterLite extends Component {
     );
   }
 }
+);

@@ -32,8 +32,8 @@ export const selector = createSelector(
 );
 
 type Props = {
-  fetchAchievementGroups: () => Promise<*>,
-  fetchAchievementCategories: () => Promise<*>,
+  fetchAchievementGroups: (Array<number | string>) => Promise<*>,
+  fetchAchievementCategories: (Array<number>, Array<number>) => Promise<*>,
   fetchAchievements: (Array<number>) => Promise<*>,
   groups: AchievementGroups,
   categories: AchievementCategories,

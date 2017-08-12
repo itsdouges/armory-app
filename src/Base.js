@@ -1,5 +1,7 @@
 // @flow
 
+import type { Children } from 'react';
+
 import 'lib/i18n';
 import 'assets/fonts/menomonia.css';
 import 'assets/fonts/opensans.css';
@@ -26,7 +28,7 @@ const store = createStore(rootReducer, composeEnhancers(
 ));
 
 type BaseProps = {
-  children?: Element<any>,
+  children?: Children,
 };
 
 const Base = ({ children }: BaseProps) => (

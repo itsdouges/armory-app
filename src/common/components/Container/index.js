@@ -1,11 +1,13 @@
 // @flow
 
+import type { Children } from 'react';
+
 import styles from './styles.less';
 import cx from 'classnames';
 
 type ContainerProps = {
   className?: string,
-  children?: Element<any>,
+  children?: Children,
 };
 
 const Container = ({ className, children, ...props }: ContainerProps) => (

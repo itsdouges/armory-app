@@ -1,12 +1,14 @@
 // @flow
 
+import type { Children } from 'react';
+
 import styles from './styles.less';
 import cx from 'classnames';
 
 type CardProps = {
   size?: string,
   className?: string,
-  children?: Element<any>,
+  children?: Children,
 };
 
 const Card = ({ size, className, children, ...props }: CardProps) => (

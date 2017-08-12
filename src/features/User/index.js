@@ -65,8 +65,8 @@ const makeKey = (content, index) => (content ? content.name : index);
 
 type Props = InjectedProps & {
   user?: UserType,
-  fetchUser: () => void,
-  selectUser: () => void,
+  fetchUser: (string) => void,
+  selectUser: (string) => void,
   match: {
     url: string,
     params: {

@@ -30,15 +30,15 @@ export type Props = {
     type: string,
     data: Object,
   },
-  showTooltip?: () => void,
+  showTooltip?: (boolean) => void,
   showBadge?: boolean,
   className?: string,
 };
 
-@connect(selector, {
+export default connect(selector, {
   showTooltip,
-})
-export default class Tooltip extends Component {
+})(
+class Tooltip extends Component {
   props: Props;
 
   close = () => {
@@ -92,3 +92,4 @@ export default class Tooltip extends Component {
     );
   }
 }
+);

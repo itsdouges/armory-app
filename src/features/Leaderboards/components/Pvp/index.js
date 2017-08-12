@@ -54,15 +54,15 @@ function mapStateToProps (state, props) {
 }
 
 type Props = {
-  fetchPvpLeaderboard: () => Promise<>,
+  fetchPvpLeaderboard: (region: 'na' | 'eu' | 'gw2a', limit: number, offset: number) => Promise<>,
   leaderboard?: Paginated<PvpStanding>,
   region: 'gw2a' | 'na' | 'eu',
 };
 
-@connect(mapStateToProps, {
+export default connect(mapStateToProps, {
   fetchPvpLeaderboard,
-})
-export default class PvpLeaderboard extends Component {
+})(
+class PvpLeaderboard extends Component {
   props: Props;
 
   static defaultProps = {
@@ -113,3 +113,4 @@ export default class PvpLeaderboard extends Component {
     );
   }
 }
+);
