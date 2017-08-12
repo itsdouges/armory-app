@@ -164,8 +164,8 @@ module.exports = ({
       new HtmlWebpackPlugin({
         ...config,
         ...htmlWebpackPlugin,
+        env: production ? 'production' : 'development',
         pwaMeta: manup(manifest),
-        // chunks: [name],
         minify: production && {
           removeComments: true,
           collapseWhitespace: true,
