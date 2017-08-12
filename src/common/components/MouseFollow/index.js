@@ -1,5 +1,6 @@
 // @flow
 
+import type Children from 'react';
 import { Component } from 'react';
 
 import { isSmallScreen, addEvent } from 'lib/dom';
@@ -45,7 +46,7 @@ export default class MouseFollow extends Component {
   _tooltip: Element;
   removeEvent: Function;
   finished: boolean;
-  props: { children?: any };
+  props: { children?: Children };
   state = {
     style: {
       position: 'fixed',
@@ -87,11 +88,13 @@ export default class MouseFollow extends Component {
   }
 
   onMouseMove = (event: MouseEvent) => {
-    // eslint-disable-next-line
     const tooltip = this._tooltip;
+    if (!tooltip) {
+      return;
+    }
 
     window.requestAnimationFrame(() => {
-      if (this.finished) {
+      if (this.finished || !tooltip) {
         return;
       }
 
@@ -112,12 +115,15 @@ export default class MouseFollow extends Component {
     });
   };
 
+  setRef = (ref: HTMLElement) => {
+    this._tooltip = ref;
+  };
+
   render () {
     const { children, ...props } = this.props;
 
     return (
-      // eslint-disable-next-line
-      <div ref={(c) => this._tooltip = c} style={this.state.style} {...props}>
+      <div ref={this.setRef} style={this.state.style} {...props}>
         {children}
       </div>
     );

@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Guards tooltip from potentially being undefined
 
 ## [4.33.3][] - 2017-08-13
 ### Changed
