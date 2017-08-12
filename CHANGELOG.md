@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Rollbar to only log gw2a domains
 
 ## [4.33.0][] - 2017-08-12
 ### Added
