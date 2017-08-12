@@ -1,6 +1,6 @@
 // @flow
 
-import type Children from 'react';
+import type { Children } from 'react';
 import { Component } from 'react';
 
 import { isSmallScreen, addEvent } from 'lib/dom';
