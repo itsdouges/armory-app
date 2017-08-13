@@ -233,7 +233,9 @@ module.exports = ({
       production && process.env.ROLLBAR_POST && new RollbarSourceMapPlugin({
         accessToken: process.env.ROLLBAR_POST,
         version: pkg.version,
-        publicPath,
+        // Rollbar can't have a trailing slash. Ends up creating
+        // URLS like: //gw2armory.com//3-chunk.9a82d951.js
+        publicPath: publicPath.slice(0, publicPath.length - 1),
       }),
 
       // Moment.js is an extremely popular library that bundles large locale files

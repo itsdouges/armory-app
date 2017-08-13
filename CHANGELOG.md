@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Rollbar not liking trailing slashes
 
 ## [4.33.5][] - 2017-08-13
 ### Fixed
