@@ -24,6 +24,13 @@ type Props = {
 };
 
 const ItemUpgrade = ({ data, count: { count } }: Props) => {
+  if (typeof data !== 'object') {
+    // Dirty hack to back out if data isn't an object.
+    // It won't be an object if the item hasn't been parsed with
+    // loaded data (its just a number)
+    return null;
+  }
+
   const upgradeSlotUsed = !!data;
 
   if (!upgradeSlotUsed) {
@@ -63,6 +70,10 @@ const ItemUpgrade = ({ data, count: { count } }: Props) => {
         <div key={buff} className={colours.blue}>{markup(buff)}</div>)}
     </div>
   );
+};
+
+ItemUpgrade.defaultProps = {
+  count: {},
 };
 
 export default ItemUpgrade;

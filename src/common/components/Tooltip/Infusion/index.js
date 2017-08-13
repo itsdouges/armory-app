@@ -2,6 +2,7 @@
 
 import colours from 'common/styles/colours.less';
 import Icon from 'common/components/Icon';
+import get from 'lodash/get';
 
 type Props = {
   data: {
@@ -20,9 +21,9 @@ type Props = {
 const ItemInfusion = ({ data, data: {
   name,
   icon,
-  details: { infix_upgrade: { buff: { description } } } },
+  details },
 }: Props) => {
-  if (!data) {
+  if (!data || !details) {
     return (
       <div>
         <span>Unused Infusion Slot</span>
@@ -37,7 +38,7 @@ const ItemInfusion = ({ data, data: {
         <span> {name}</span>
       </div>
 
-      <div>{description.map((descrip) => <div key={descrip}>{descrip}</div>)}</div>
+      <div>{get(details, 'infix_upgrade.buff.description', []).map((descrip) => <div key={descrip}>{descrip}</div>)}</div>
     </div>
   );
 };
