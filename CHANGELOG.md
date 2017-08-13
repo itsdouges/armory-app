@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.33.6][] - 2017-08-13
 ### Fixed
 - Rollbar not liking trailing slashes
 
@@ -939,7 +941,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.33.5...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.33.6...HEAD
+[4.33.6]: https://github.com/madou/armory-react/compare/v4.33.5...v4.33.6
 [4.33.5]: https://github.com/madou/armory-react/compare/v4.33.4...v4.33.5
 [4.33.4]: https://github.com/madou/armory-react/compare/v4.33.3...v4.33.4
 [4.33.3]: https://github.com/madou/armory-react/compare/v4.33.2...v4.33.3
