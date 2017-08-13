@@ -8,6 +8,7 @@ import NameAllModulesPlugin from 'name-all-modules-plugin';
 import assert from 'assert';
 import ServiceWorkerPreCachePlugin from 'sw-precache-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import RollbarSourceMapPlugin from 'rollbar-sourcemap-webpack-plugin';
 import _ from 'lodash';
 
 import paths from './paths';
@@ -24,11 +25,17 @@ module.exports = ({
   filename,
   serviceWorker,
   longTermCache,
-  publicPath = '/',
   ...extra
 }) => {
   assert(entryPath, 'entryPath should be defined in webpack factory');
   assert(name, 'name should be defined in webpack factory');
+
+  let publicPath = '/';
+  if (production && !process.env.LOCAL) {
+    publicPath = process.env.TRAVIS_TAG
+      ? 'https://gw2armory.com/'
+      : 'https://preview.gw2armory.com/';
+  }
 
   const cssRulesUse = production
     ? ExtractTextPlugin.extract({
@@ -221,6 +228,12 @@ module.exports = ({
         navigateFallback: 'index.html',
         // Ignore any source map files and the asset manifest.
         staticFileGlobsIgnorePatterns: [/\.map$/, /asset-manifest\.json$/, /gw2aEmbeds\.js$/],
+      }),
+
+      production && process.env.ROLLBAR_POST && new RollbarSourceMapPlugin({
+        accessToken: process.env.ROLLBAR_POST,
+        version: pkg.version,
+        publicPath,
       }),
 
       // Moment.js is an extremely popular library that bundles large locale files

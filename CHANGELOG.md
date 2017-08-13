@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Rollbar not having access to sourcemaps
 
 ## [4.33.4][] - 2017-08-13
 ### Fixed

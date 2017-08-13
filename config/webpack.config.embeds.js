@@ -11,20 +11,12 @@ const common = {
   },
 };
 
-let productionPublicPath = '/';
-if (!process.env.LOCAL) {
-  productionPublicPath = process.env.TRAVIS_TAG
-    ? 'https://gw2armory.com/'
-    : 'https://preview.gw2armory.com/';
-}
-
 module.exports = {
   development: createConfig(common),
 
   production: createConfig({
     ...common,
     filename: '[name].js',
-    publicPath: productionPublicPath,
     production: true,
   }),
 };
