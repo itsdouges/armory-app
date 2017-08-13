@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Fav pvp classes from throwing when missing data
+- Tooltip from throwing when missing data
+
+### Changed
+- Catches http errors in user actions
 
 ## [4.33.6][] - 2017-08-13
 ### Fixed
