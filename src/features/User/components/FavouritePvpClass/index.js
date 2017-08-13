@@ -9,7 +9,7 @@ import Redacted from 'common/components/Redacted';
 import Summary from 'common/layouts/Summary';
 
 const calculateFavouriteProfession = (professions) => {
-  if (!professions) {
+  if (!professions || Object.keys(professions) === 0) {
     return { name: 'engineer', count: 0 };
   }
 
