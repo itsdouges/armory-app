@@ -7,6 +7,7 @@ import { paginatedThunk } from 'lib/redux';
 import { readPvpSeasonIds } from 'lib/gw2';
 import config from 'config';
 import actions from 'features/Gw2/actions';
+import handleError from 'lib/handleError';
 
 export const FETCHING_USER = 'FETCHING_USER';
 export const FETCHING_USER_CHARACTERS = 'FETCHING_USER_CHARACTERS';
@@ -87,15 +88,18 @@ export const fetchUserCharacters = (alias: string, limit: number, offset: number
 
 export const fetchUserAchievements = (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/achievements`)
-    .then(({ data }) => dispatch(fetchUserAchievementsResult(alias, data)));
+    .then(({ data }) => dispatch(fetchUserAchievementsResult(alias, data)))
+    .catch(handleError);
 
 export const fetchWallet = (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/wallet`)
-    .then(({ data }) => dispatch(fetchWalletResult(alias, data)));
+    .then(({ data }) => dispatch(fetchWalletResult(alias, data)))
+    .catch(handleError);
 
 export const createFetch = (resource: string) => (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/${resource}`)
-    .then(({ data }) => dispatch(createFetchResult('materials')(alias, data)));
+    .then(({ data }) => dispatch(createFetchResult('materials')(alias, data)))
+    .catch(handleError);
 
 export const fetchPvpStatsSuccess = (alias: string, data: {}) => ({
   type: FETCH_PVP_STATS_RESULT,
@@ -146,7 +150,8 @@ export const fetchPvpStats = (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/pvp/stats`)
   .then((response) => {
     dispatch(fetchPvpStatsSuccess(alias, response.data));
-  });
+  })
+  .catch(handleError);
 
 export const fetchPvpGames = (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/pvp/games`)
@@ -155,19 +160,22 @@ export const fetchPvpGames = (alias: string): ReduxThunk => (dispatch) =>
 
     const ids = data.map((standing) => standing.map_id);
     dispatch(actions.fetchMaps(ids));
-  });
+  })
+  .catch(handleError);
 
 export const fetchBank = (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/bank`)
   .then(({ data }) => {
     dispatch(fetchBankSuccess(alias, data));
-  });
+  })
+  .catch(handleError);
 
 export const fetchSharedInventory = (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/inventory`)
   .then(({ data }) => {
     dispatch(fetchSharedInventorySuccess(alias, data));
-  });
+  })
+  .catch(handleError);
 
 export const fetchPvpStandings = (alias: string): ReduxThunk => (dispatch) =>
  axios.get(`${config.api.endpoint}users/${alias}/pvp/standings`)
@@ -175,7 +183,8 @@ export const fetchPvpStandings = (alias: string): ReduxThunk => (dispatch) =>
     dispatch(fetchPvpStandingsSuccess(alias, data));
     return readPvpSeasonIds();
   })
-  .then((ids) => dispatch(actions.fetchPvpSeasons(ids)));
+  .then((ids) => dispatch(actions.fetchPvpSeasons(ids)))
+  .catch(handleError);
 
 export const fetchUser = (
   alias: string,
