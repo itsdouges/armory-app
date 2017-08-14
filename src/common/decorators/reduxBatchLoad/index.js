@@ -39,7 +39,7 @@ const withBatchLoad = ({ fetchResourceData, storeKeyResource, fetchGw2Data, stor
     componentDidMount () {
       this.props.fetchResourceData(this.props.id)
         .then((action) =>
-          this.props.fetchGw2Data(action.payload.data.map((item) => item.id)));
+          action && this.props.fetchGw2Data(action.payload.data.map((item) => item.id)));
     }
 
     render () {

@@ -94,7 +94,10 @@ export const fetchUserAchievements = (alias: string): ReduxThunk => (dispatch) =
 export const fetchWallet = (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/wallet`)
     .then(({ data }) => dispatch(fetchWalletResult(alias, data)))
-    .catch(handleError);
+    .catch((err) => {
+      dispatch(fetchWalletResult(alias, []));
+      return handleError(err);
+    });
 
 export const createFetch = (resource: string) => (alias: string): ReduxThunk => (dispatch) =>
   axios.get(`${config.api.endpoint}users/${alias}/${resource}`)

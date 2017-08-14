@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Error thrown when dipping into user privacy
+- Error thrown when no action is returned into redux batch hoc
+- Wallet from not existing loading state if no wallet was fetched from api
 
 ## [4.33.7][] - 2017-08-14
 ### Fixed

@@ -39,7 +39,7 @@ const Currency = ({ id, name, description, icon, value, order, className }: Prop
     <Card className={cx(styles.root, className)} style={{ order }}>
       <Icon size="small" src={icon} />
 
-      <div className={cx(styles.value, styles[`currency-${id}`])}>
+      <div className={cx(styles.value, styles[`currency-${id}`], { [styles.placeholder]: !name })}>
         {buildValueComponent(id, value)}
       </div>
 

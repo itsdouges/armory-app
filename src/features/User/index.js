@@ -191,7 +191,7 @@ class User extends Component {
       return true;
     }
 
-    if (!this.props.user || this.props.user.stub) {
+    if (!this.props.user || this.props.user.stub || !this.props.user.privacy) {
       return false;
     }
 
