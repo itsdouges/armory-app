@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.33.8][] - 2017-08-14
 ### Fixed
 - Error thrown when dipping into user privacy
 - Error thrown when no action is returned into redux batch hoc
@@ -953,7 +955,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.33.7...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.33.8...HEAD
+[4.33.8]: https://github.com/madou/armory-react/compare/v4.33.7...v4.33.8
 [4.33.7]: https://github.com/madou/armory-react/compare/v4.33.6...v4.33.7
 [4.33.6]: https://github.com/madou/armory-react/compare/v4.33.5...v4.33.6
 [4.33.5]: https://github.com/madou/armory-react/compare/v4.33.4...v4.33.5
