@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][]
 ### Changed
 - Upgraded to webpack 3
+- Upgrade testing dependencies
 
 ## [4.33.8][] - 2017-08-14
 ### Fixed
