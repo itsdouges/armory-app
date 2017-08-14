@@ -1,6 +1,6 @@
 // @flow
 
 // eslint-disable-next-line
-export default function handleError (err) {
+export default function handleError (err: Error) {
 
 }
