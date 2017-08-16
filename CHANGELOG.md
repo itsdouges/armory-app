@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Updated
+- Colour map
+- Some home page styles
+- Site title
 
 ## [4.33.9][] - 2017-08-14
 ### Changed

@@ -3,8 +3,6 @@
 import Head from 'common/components/Head';
 import Container from 'common/components/Container';
 
-import config from 'config';
-
 import styles from './styles.less';
 import Introduction from './components/Introduction';
 import RandomCharacter from './components/RandomCharacter';
@@ -13,7 +11,7 @@ import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderb
 
 const Home = () => (
   <div className={styles.root}>
-    <Head title={config.features.christmas ? 'Merry Wintersday!' : 'Armor Up'} />
+    <Head title="Path of Fire" />
 
     <div className={styles.introBackground}>
       <Container className={styles.atfContainer}>
@@ -21,7 +19,10 @@ const Home = () => (
         <RandomCharacter type="ofTheDay" />
       </Container>
     </div>
-    <RandomGuilds />
+
+    <Container>
+      <RandomGuilds />
+    </Container>
 
     <ResponsiveLeaderboard className={styles.ad} />
   </div>

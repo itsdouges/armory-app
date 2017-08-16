@@ -1,21 +1,18 @@
 @import '~common/styles/base.less';
 
+@mobileMargin: 10px;
+@tabletMargin: 10px;
+
 .container {
-  margin: 0 auto;
+  margin: 0 @mobileMargin;
+
+  .fromTablet({
+    margin: 0 @tabletMargin;
+  });
+
+  .fromPc({
+    width: @pc - (@tabletMargin * 2);
+    margin: 0 auto;
+  });
 }
 
-.fromTablet({
-  .container {
-    width: @tablet;
-  }
-
-  .flexContainer {
-    max-width: @tablet * 1.2;
-  }
-});
-
-.fromPc({
-  .container {
-    width: @pc;
-  }
-});
