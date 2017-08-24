@@ -1,6 +1,5 @@
 // @flow
 
-import type { Children } from 'react';
 import type { InjectedProps } from 'react-debounce-decorator';
 
 import { Component, cloneElement } from 'react';
@@ -12,10 +11,10 @@ import tooltipDebounce from 'react-debounce-decorator';
 type Props = {
   data?: string | Object,
   showTooltip?: Function,
-  children?: Children,
+  children: React.ComponentType<*>,
   type?: string,
-  onMouseEnter?: (SyntheticEvent) => void,
-  onMouseLeave?: (SyntheticEvent) => void,
+  onMouseEnter?: (SyntheticEvent<*>) => void,
+  onMouseLeave?: (SyntheticEvent<*>) => void,
 } & InjectedProps;
 
 /**
@@ -26,10 +25,10 @@ export default connect(null, {
   showTooltip,
 })(
 tooltipDebounce()(
-class TooltipTrigger extends Component {
+class TooltipTrigger extends Component<Props> {
   props: Props;
 
-  show = (e: SyntheticEvent) => {
+  show = (e: SyntheticEvent<*>) => {
     const { data, type, show, onMouseEnter, showTooltip: displayTooltip } = this.props;
     if (!data) {
       return;
@@ -44,7 +43,7 @@ class TooltipTrigger extends Component {
     });
   };
 
-  hide = (e: SyntheticEvent) => {
+  hide = (e: SyntheticEvent<*>) => {
     const { hide, onMouseLeave, showTooltip: displayTooltip } = this.props;
 
     hide(() => {

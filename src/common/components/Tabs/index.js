@@ -1,8 +1,8 @@
 // @flow
 
-import type { Children } from 'react';
+import type { Node } from 'react';
 
-import { cloneElement } from 'react';
+import React, { cloneElement } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Head from 'common/components/Head';
@@ -26,7 +26,7 @@ type TabsProps = {
   tabs: Array<TabInput>,
   titleSuffix: string,
   basePath: string,
-  metaContent?: Children,
+  metaContent?: Node,
 };
 
 const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath, metaContent }: TabsProps) => (

@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import cx from 'classnames';
 
 import TooltipTrigger from 'common/components/TooltipTrigger';

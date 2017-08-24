@@ -1,7 +1,7 @@
 // @flow
 
 import { withRouter } from 'react-router';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import cx from 'classnames';
 
 import config from 'config';
@@ -53,9 +53,9 @@ const displayAdMap = {
 };
 
 export default withRouter(
-class DisplayAd extends Component {
+class DisplayAd extends Component<Props> {
   props: Props;
-  _container: HTMLElement;
+  _container: ?HTMLElement;
 
   componentDidUpdate (prevProps) {
     if (this.props.location !== prevProps.location) {
@@ -68,7 +68,7 @@ class DisplayAd extends Component {
   }
 
   renderAd () {
-    if (!config.features.ads) {
+    if (!config.features.ads || !this._container) {
       return;
     }
 

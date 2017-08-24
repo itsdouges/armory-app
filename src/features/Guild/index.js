@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import T from 'i18n-react';
 import { Link } from 'react-router-dom';
@@ -67,7 +67,7 @@ export default connect(selector, {
   removePublic,
 })(
 authenticatedData(
-class Guild extends Component {
+class Guild extends Component<*, *> {
   props: InjectedProps & {
     guild?: GuildType,
     match: {

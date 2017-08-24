@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import T from 'i18n-react';
 
 import Textbox from 'common/components/Textbox';

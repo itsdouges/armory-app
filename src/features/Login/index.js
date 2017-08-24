@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import T from 'i18n-react';
@@ -32,7 +32,7 @@ type Props = {
 export default connect(mapStateToProps, {
   fetchToken,
 })(
-class Login extends Component {
+class Login extends Component<Props, *> {
   props: Props;
 
   state = {
@@ -41,7 +41,7 @@ class Login extends Component {
     canLogin: false,
   };
 
-  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent) => {
+  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent<*>) => {
     this.setState((prevState) => ({
       [id]: value,
       canLogin: prevState.email && prevState.password,

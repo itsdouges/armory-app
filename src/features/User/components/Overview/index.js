@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import get from 'lodash/get';
 import T from 'i18n-react';
 

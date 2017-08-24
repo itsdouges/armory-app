@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import styles from './styles.less';
 import upperFirst from 'lodash/upperFirst';
 import { prefix } from 'lib/css';

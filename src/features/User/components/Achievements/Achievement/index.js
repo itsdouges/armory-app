@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import T from 'i18n-react';
 import cx from 'classnames';
 import Icon from 'common/components/Icon';
@@ -135,7 +135,7 @@ const makeBits = (achievement, expanded, userBits = []) => {
   );
 };
 
-export default class Achievement extends Component {
+export default class Achievement extends Component<Props, *> {
   props: Props;
 
   static defaultProps = {

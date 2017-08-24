@@ -2,6 +2,7 @@
 
 import type { AchievementCategories } from 'flowTypes';
 
+import React from 'react';
 import cx from 'classnames';
 
 import SvgIcon from 'common/components/Icon/Svg';

@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import ContentCard from './';
 import { Link } from 'react-router-dom';
 

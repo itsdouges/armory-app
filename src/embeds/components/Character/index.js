@@ -2,7 +2,7 @@
 
 import type { Character, Items, Skins } from 'flowTypes';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
@@ -33,7 +33,7 @@ export default connect(minimalSelector, {
   fetchCharacter,
   selectCharacter,
 })(
-class CharacterLite extends Component {
+class CharacterLite extends Component<Props> {
   props: Props;
 
   componentWillMount () {

@@ -1,8 +1,8 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { put } from 'axios';
+import axios from 'axios';
 import T from 'i18n-react';
 
 import Textbox from 'common/components/Textbox';
@@ -19,7 +19,7 @@ type Props = {
   initialToken?: string,
 };
 
-export default class Finish extends Component {
+export default class Finish extends Component<Props, *> {
   props: Props;
 
   state = {
@@ -33,7 +33,7 @@ export default class Finish extends Component {
     complete: false,
   };
 
-  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent) => {
+  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent<*>) => {
     const newState = {
       ...this.state,
       [id]: value,
@@ -57,7 +57,7 @@ export default class Finish extends Component {
       passwordError: '',
     });
 
-    return put(`${config.api.endpoint}forgot-my-password`, {
+    return axios.put(`${config.api.endpoint}forgot-my-password`, {
       token,
       password,
     })

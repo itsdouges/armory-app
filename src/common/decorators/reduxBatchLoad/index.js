@@ -23,11 +23,11 @@ const withBatchLoad = ({ fetchResourceData, storeKeyResource, fetchGw2Data, stor
     })
   );
 
-  return (WrappedComponent: ReactClass<*>) => connect(selector, {
+  return (WrappedComponent: React.ComponentType<*>) => connect(selector, {
     fetchResourceData,
     fetchGw2Data,
   })(
-  class WithBatchLoad extends Component {
+  class WithBatchLoad extends Component<*> {
     props: {
       id: string,
       fetchResourceData: (string) => Promise<*>,

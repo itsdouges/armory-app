@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import { markup } from 'lib/gw2/parse';
 
 import Background from '../Background';

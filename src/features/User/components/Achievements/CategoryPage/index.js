@@ -2,7 +2,7 @@
 
 import type { AchievementCategories, Achievements, UserAchievementsMap } from 'flowTypes';
 
-import { PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { makeStubItems } from 'lib/paginator';
 import Icon from 'common/components/Icon';
 import colourMap from 'assets/categoryColourMap.json';
@@ -20,7 +20,7 @@ type Props = {
   categoryId: number,
 };
 
-export default class CategoryPage extends PureComponent {
+export default class CategoryPage extends PureComponent<Props> {
   props: Props;
 
   componentWillMount () {

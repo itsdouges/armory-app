@@ -1,7 +1,7 @@
 // @flow
 
-import { Component } from 'react';
-import { get } from 'axios';
+import React, { Component } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import Head from 'common/components/Head';
@@ -29,7 +29,7 @@ type Props = {
   },
 };
 
-export default class Search extends Component {
+export default class Search extends Component<Props, *> {
   props: Props;
   willRedirect: boolean;
 
@@ -89,7 +89,7 @@ export default class Search extends Component {
       error: '',
     });
 
-    return get(`${config.api.endpoint}search?filter=${term}`)
+    return axios.get(`${config.api.endpoint}search?filter=${term}`)
       .then(({ data }) => {
         this.setState({
           searching: false,

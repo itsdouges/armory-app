@@ -1,6 +1,7 @@
 // @flow
 
 import styles from './styles.less';
+import React from 'react';
 import cx from 'classnames';
 
 import ProgressIcon from 'common/components/Icon/Progress';

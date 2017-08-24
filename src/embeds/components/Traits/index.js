@@ -3,7 +3,7 @@
 import type { Traits } from 'flowTypes';
 import type { EmbedProps } from 'embeds/bootstrap';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import actions from 'features/Gw2/actions';
@@ -25,7 +25,7 @@ type Props = EmbedProps & {
 @connect(mapStateToProps, {
   fetchTraits: actions.fetchTraits,
 })
-export default class TraitsEmbed extends Component {
+export default class TraitsEmbed extends Component<Props> {
   props: Props;
 
   static renderTrait (id, traits, blankText, size) {

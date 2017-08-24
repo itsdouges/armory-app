@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import ProgressBar from 'common/components/ProgressBar';
 import Summary from 'common/layouts/Summary';
 import T from 'i18n-react';

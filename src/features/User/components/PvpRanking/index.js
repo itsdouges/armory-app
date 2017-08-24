@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import ProgressBar from 'common/components/ProgressBar';
 import Redacted from 'common/components/Redacted';
 import Summary from 'common/layouts/Summary';

@@ -35,7 +35,7 @@ export const submitNotification = (id: string, message: string, options: Message
 
 export const determineApiHealth = () => (dispatch: Dispatch) => {
   axios.get(`${config.gw2.endpoint}v2/characters?access_token=${config.health.token}`)
-    .then(null, () => {
+    .catch(() => {
       dispatch(submitNotification(API_HEALTH_ID, T.translate('messages.gw2ApiDown'), {
         type: 'error',
       }));

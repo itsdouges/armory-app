@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import cx from 'classnames';
 import pure from 'recompose/pure';
 
@@ -31,7 +32,7 @@ type Props = {
   equipped?: boolean,
   inline?: boolean,
   count?: number,
-  onClick?: (SyntheticEvent) => void,
+  onClick?: (SyntheticEvent<*>) => void,
   size?: number,
 };
 

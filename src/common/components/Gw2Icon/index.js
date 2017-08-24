@@ -2,6 +2,7 @@
 
 import type { IconProps } from 'common/components/Icon';
 
+import React from 'react';
 import Icon from 'common/components/Icon';
 import styles from './styles.less';
 

@@ -1,7 +1,8 @@
 // @flow
 
-import type { Children } from 'react';
+import type { Node } from 'react';
 
+import React from 'react';
 import cx from 'classnames';
 
 import styles from './styles.less';
@@ -10,8 +11,8 @@ import Icon from 'common/components/Icon';
 type Props = {
   className?: string,
   leftIcon?: any,
-  title: Children,
-  subTitle: Children,
+  title: Node,
+  subTitle: Node,
 };
 
 const Summary = ({ className, leftIcon, title, subTitle }: Props) => (

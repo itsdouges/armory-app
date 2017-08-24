@@ -163,10 +163,6 @@ module.exports = ({
     plugins: [
       new webpack.optimize.ModuleConcatenationPlugin(),
 
-      new webpack.ProvidePlugin({
-        React: 'react',
-      }),
-
       new ManifestPlugin({
         fileName: 'asset-manifest.json',
       }),

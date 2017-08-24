@@ -2,6 +2,7 @@
 
 import type { ContentType } from 'common/components/ContentCard';
 
+import React from 'react';
 import ContentCard from 'common/components/ContentCard';
 import Card from 'common/components/Card';
 import { Link } from 'react-router-dom';

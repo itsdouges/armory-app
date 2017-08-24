@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import startCase from 'lodash/startCase';
 import includes from 'lodash/includes';
 import get from 'lodash/get';

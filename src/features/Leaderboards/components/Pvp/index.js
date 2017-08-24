@@ -2,7 +2,7 @@
 
 import type { PvpStanding, Paginated } from 'flowTypes';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import T from 'i18n-react';
@@ -62,7 +62,7 @@ type Props = {
 export default connect(mapStateToProps, {
   fetchPvpLeaderboard,
 })(
-class PvpLeaderboard extends Component {
+class PvpLeaderboard extends Component<Props> {
   props: Props;
 
   static defaultProps = {

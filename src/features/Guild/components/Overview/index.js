@@ -2,6 +2,7 @@
 
 import T from 'i18n-react';
 
+import React from 'react';
 import Container from 'common/components/Container';
 import Redacted from 'common/components/Redacted';
 import SummaryProgress from 'common/layouts/SummaryProgress';

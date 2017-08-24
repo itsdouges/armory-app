@@ -2,7 +2,7 @@
 
 import type { AuthenticatedUser } from 'flowTypes';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
 import history from 'history';
@@ -43,7 +43,7 @@ type State = {
   updateImage: boolean,
 };
 
-@connect(selector, {
+export default connect(selector, {
   validateGw2Token: actions.validateGw2Token,
   addGw2Token: actions.addGw2Token,
   fetchGw2Tokens: actions.fetchGw2Tokens,
@@ -52,8 +52,8 @@ type State = {
   changePassword: actions.changePassword,
   clearUserData: authActions.clearUserData,
   validatePasswords: joinActions.validatePasswords,
-})
-class Settings extends Component {
+})(
+class Settings extends Component<Props, State> {
   props: Props;
 
   state: State = {
@@ -86,7 +86,7 @@ class Settings extends Component {
     this.props.removeGw2Token(token);
   };
 
-  signOut = (e: SyntheticEvent) => {
+  signOut = (e: SyntheticEvent<*>) => {
     e.preventDefault();
     history.replace('/');
     this.props.clearUserData();
@@ -170,5 +170,4 @@ class Settings extends Component {
     );
   }
 }
-
-export default Settings;
+);

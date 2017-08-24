@@ -3,7 +3,7 @@
 import type { User as UserType, PvpSeasons, Worlds } from 'flowTypes';
 import type { InjectedProps } from 'features/Auth/data';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
@@ -121,7 +121,7 @@ export default connect(selector, {
   removePrivacy,
 })(
 authenticatedData(
-class User extends Component {
+class User extends Component<Props, *> {
   props: Props;
   state = {
     editing: false,

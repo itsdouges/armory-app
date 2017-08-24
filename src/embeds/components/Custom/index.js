@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import noop from 'lodash/noop';
 import cx from 'classnames';
@@ -81,7 +81,7 @@ function generateCells ([x, y], { components, character, user, props }) {
   dispatchFetchUser: fetchUser,
   dispatchFetchCharacter: fetchCharacter,
 })
-export default class CustomEmbed extends Component {
+export default class CustomEmbed extends Component<Props> {
   props: Props;
 
   componentWillMount () {

@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import cx from 'classnames';
 
 import { addEvent } from 'lib/dom';
@@ -15,7 +15,7 @@ type MenuProps = {
   className?: string,
 };
 
-export default class ResponsiveMenu extends Component {
+export default class ResponsiveMenu extends Component<MenuProps, *> {
   props: MenuProps;
   detatch: Function;
 

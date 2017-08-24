@@ -2,7 +2,7 @@
 
 import type { Token } from 'flowTypes';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import qs from 'lib/qs';
 import T from 'i18n-react';
 
@@ -31,7 +31,7 @@ type State = {
   newToken: string,
 };
 
-export default class ApiTokens extends Component {
+export default class ApiTokens extends Component<Props, State> {
   props: Props;
 
   static defaultProps = {
@@ -49,7 +49,7 @@ export default class ApiTokens extends Component {
     });
   }
 
-  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent) => {
+  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent<*>) => {
     this.setState({
       ...this.state,
       [id]: value,
@@ -58,7 +58,7 @@ export default class ApiTokens extends Component {
     this.props.validate(value);
   };
 
-  add = (event: SyntheticEvent) => {
+  add = (event: SyntheticEvent<*>) => {
     event.preventDefault();
 
     this.props.add(this.state.newToken);

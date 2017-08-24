@@ -2,6 +2,7 @@
 
 import type { Specializations, Traits } from 'flowTypes';
 
+import React from 'react';
 import colours from 'common/styles/colours';
 import styles from './styles.less';
 import Trait from '../Trait';

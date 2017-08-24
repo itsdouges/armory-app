@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import styles from './styles.less';
 
 import Card from 'common/components/Card';

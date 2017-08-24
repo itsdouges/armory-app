@@ -2,6 +2,7 @@
 
 import type { EmbedProps } from 'embeds/bootstrap';
 
+import React from 'react';
 import Items from 'embeds/components/Items';
 
 export default function (element: HTMLElement, ids: Array<number>) {

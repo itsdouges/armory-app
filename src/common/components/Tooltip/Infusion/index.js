@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import colours from 'common/styles/colours.less';
 import Icon from 'common/components/Icon';
 import get from 'lodash/get';

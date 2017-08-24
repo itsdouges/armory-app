@@ -2,6 +2,7 @@
 
 import type { Props as DisplayAdProps } from './';
 
+import React from 'react';
 import MediaQuery from 'react-responsive';
 import DisplayAd from './';
 

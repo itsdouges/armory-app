@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import T from 'i18n-react';
 
 import styles from './styles.less';
@@ -19,7 +19,7 @@ type Props = {
   change: (string, string) => Promise<*>,
 };
 
-export default class ChangePassword extends Component {
+export default class ChangePassword extends Component<Props, *> {
   props: Props;
 
   state = {
@@ -28,7 +28,7 @@ export default class ChangePassword extends Component {
     passwordConfirm: '',
   };
 
-  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent) => {
+  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent<*>) => {
     const newState = {
       ...this.state,
       [id]: value,

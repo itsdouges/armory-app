@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import T from 'i18n-react';
 import Icon from 'common/components/Icon';
 import { markup } from 'lib/gw2/parse';

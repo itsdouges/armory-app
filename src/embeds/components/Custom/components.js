@@ -1,6 +1,7 @@
 // @flow
 /* eslint-disable react/prop-types */
 
+import React from 'react';
 import get from 'lodash/get';
 import includes from 'lodash/includes';
 

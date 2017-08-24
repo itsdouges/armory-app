@@ -1,3 +1,4 @@
+import React from 'react';
 import { mount } from 'enzyme';
 import { stubComponent, stubRedux, stubStyles, describeConnect } from 'test/utils';
 

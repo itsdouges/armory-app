@@ -3,7 +3,7 @@
 import type { Amulets } from 'flowTypes';
 import type { EmbedProps } from 'embeds/bootstrap';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import actions from 'features/Gw2/actions';
@@ -25,7 +25,7 @@ type Props = EmbedProps & {
 @connect(mapStateToProps, {
   fetchAmulets: actions.fetchAmulets,
 })
-export default class AmuletsEmbed extends Component {
+export default class AmuletsEmbed extends Component<Props> {
   props: Props;
 
   static renderAmulet (id: number, amulets?: Amulets, blankText, size) {

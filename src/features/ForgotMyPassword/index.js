@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import T from 'i18n-react';
 
 import styles from './styles.less';
@@ -10,7 +10,7 @@ import Head from 'common/components/Head';
 import CardWithTitle from 'common/layouts/CardWithTitle';
 import DisplayAd from 'common/components/DisplayAd';
 
-export default class ForgotMyPassword extends Component {
+export default class ForgotMyPassword extends Component<Props> {
   constructor () {
     super();
 

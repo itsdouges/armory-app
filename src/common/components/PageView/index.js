@@ -1,6 +1,6 @@
 // @flow
 
-import type { Children } from 'react';
+import type { Node } from 'react';
 
 import { withRouter } from 'react-router';
 import { Component } from 'react';
@@ -9,11 +9,11 @@ import { pageView } from 'lib/tracking';
 
 type Props = {
   location: string,
-  children?: Children,
+  children: Node,
 };
 
 export default withRouter(
-class ScrollToTop extends Component {
+class PageView extends Component<Props> {
   props: Props;
 
   componentDidMount () {

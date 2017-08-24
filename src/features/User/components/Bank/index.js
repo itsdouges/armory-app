@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -51,7 +51,7 @@ export default connect(selector, {
   fetchBank,
   fetchSharedInventory,
 })(
-class UserBank extends Component {
+class UserBank extends Component<Props> {
   props: Props;
 
   componentDidMount () {

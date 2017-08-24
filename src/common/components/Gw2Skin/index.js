@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -19,7 +19,7 @@ export const selector = createSelector(
 export default connect(selector, {
   fetch: actions.fetchSkins,
 })(
-class Gw2Skin extends Component {
+class Gw2Skin extends Component<*> {
   props: {
     id: number,
     skin: Object,

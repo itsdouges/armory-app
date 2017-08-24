@@ -1,7 +1,7 @@
 // @flow
 
 import axios from 'axios';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import GuildContentCard from 'common/components/ContentCard/Guild';
 import get from 'lodash/get';
 
@@ -11,7 +11,7 @@ import styles from './styles.less';
 
 const STUB_GUILDS = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
 
-export default class RandomGuilds extends Component {
+export default class RandomGuilds extends Component<*, *> {
   state = {
     guilds: undefined,
   };

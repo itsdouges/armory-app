@@ -3,7 +3,7 @@
 import type { Skills } from 'flowTypes';
 import type { EmbedProps } from 'embeds/bootstrap';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import actions from 'features/Gw2/actions';
@@ -26,7 +26,7 @@ type Props = EmbedProps & {
 @connect(mapStateToProps, {
   fetchSkills: actions.fetchSkills,
 })
-export default class SkillsEmbed extends Component {
+export default class SkillsEmbed extends Component<Props> {
   props: Props;
 
   static renderSkill (id, skills, blankText, size) {

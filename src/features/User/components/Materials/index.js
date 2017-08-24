@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -43,7 +43,7 @@ export default connect(selector, {
   fetchItems: actions.fetchItems,
   fetchUserMaterials: createFetch('materials'),
 })(
-class UserMaterials extends Component {
+class UserMaterials extends Component<Props> {
   props: Props;
 
   componentDidMount () {

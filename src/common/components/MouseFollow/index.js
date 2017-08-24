@@ -1,7 +1,7 @@
 // @flow
 
-import type { Children } from 'react';
-import { Component } from 'react';
+import type { Node } from 'react';
+import React, { Component } from 'react';
 
 import { isSmallScreen, addEvent } from 'lib/dom';
 import { prefix } from 'lib/css';
@@ -42,11 +42,21 @@ function calculatePin ({ tooltip, mouse }: Object) {
   };
 }
 
-export default class MouseFollow extends Component {
-  _tooltip: Element;
+type Props = {
+  children: Node,
+};
+
+type State = {
+  style: {
+    [string]: any,
+  },
+};
+
+export default class MouseFollow extends Component<Props, State> {
+  _tooltip: ?HTMLElement;
   removeEvent: Function;
   finished: boolean;
-  props: { children?: Children };
+  props: Props;
   state = {
     style: {
       position: 'fixed',
@@ -115,7 +125,7 @@ export default class MouseFollow extends Component {
     });
   };
 
-  setRef = (ref: HTMLElement) => {
+  setRef = (ref: ?HTMLElement) => {
     this._tooltip = ref;
   };
 

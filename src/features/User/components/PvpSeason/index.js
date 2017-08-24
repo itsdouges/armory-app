@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import get from 'lodash/get';
 import sortBy from 'lodash/sortBy';
 import find from 'lodash/find';

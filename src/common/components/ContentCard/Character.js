@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import LinkContentCard from './Link';
 
 type Props = {

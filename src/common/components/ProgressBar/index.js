@@ -1,7 +1,8 @@
 // @flow
 
-import type { Children } from 'react';
+import type { Node } from 'react';
 
+import React from 'react';
 import cx from 'classnames';
 
 import styles from './styles.less';
@@ -25,7 +26,7 @@ type ProgressBarProps = {
   backgroundColor?: string,
   icon?: any,
   small?: boolean,
-  label?: Children,
+  label?: Node,
   vertical?: boolean,
   className?: string,
   labelClassName?: string,

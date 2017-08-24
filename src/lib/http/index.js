@@ -11,6 +11,7 @@ export function setApiToken (token: string): ?() => void {
     return null;
   }
 
+  // $FlowFixMe - But why?
   const id = axios.interceptors.request.use((config) => {
     if (config.url.indexOf(env.api.endpoint) >= 0) {
       return {

@@ -3,7 +3,7 @@
 import type { Notifications, Notification as NotificationType } from 'flowTypes';
 
 import { connect } from 'react-redux';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import cx from 'classnames';
 import map from 'lodash/map';
 
@@ -27,7 +27,7 @@ type Props = {
 @connect(mapStoreToProps, {
   dismissNotification: actions.dismissNotification,
 })
-export default class NotificationBox extends Component {
+export default class NotificationBox extends Component<Props> {
   props: Props;
 
   render () {

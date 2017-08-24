@@ -1,5 +1,5 @@
-// flow-typed signature: 09272b82e4d7a497eb3ffd12dd130407
-// flow-typed version: d28912a036/axios_v0.15.x/flow_>=v0.28.x
+// flow-typed signature: c66ffd047058e4721afb3d9fedb38f07
+// flow-typed version: b43dff3e0e/axios_v0.16.x/flow_>=v0.25.x
 
 declare module 'axios' {
   declare interface ProxyConfig {
@@ -96,6 +96,7 @@ declare module 'axios' {
       request: AxiosRequestInterceptor<mixed>,
       response: AxiosResponseInterceptor<mixed>,
     };
+    defaults: AxiosXHRConfig<*> & { headers: Object };
   }
 
   declare class AxiosError<T> extends Error {

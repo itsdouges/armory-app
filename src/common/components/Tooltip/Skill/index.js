@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import styles from './styles.less';
 import { markup } from 'lib/gw2/parse';
 import Fact from '../Fact';

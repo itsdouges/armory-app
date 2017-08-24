@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import startCase from 'lodash/startCase';
 import cx from 'classnames';
@@ -111,7 +111,7 @@ function createLogView (log) {
 @connect(selector, {
   fetchGuildLogs,
 })
-export default class GuildLogs extends Component {
+export default class GuildLogs extends Component<*> {
   props: {
     guild?: GuildType,
     guildName: string,
