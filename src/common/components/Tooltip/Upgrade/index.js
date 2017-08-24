@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import styles from './styles.less';
 import colours from 'common/styles/colours.less';
 import Icon from 'common/components/Icon';

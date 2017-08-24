@@ -2,7 +2,7 @@
 
 import { Component } from 'react';
 
-const withScroll = (WrappedComponent: ReactClass<*>) => class ScrollTopOnMount extends Component {
+const withScroll = (WrappedComponent: React.ComponentType<*>) => class ScrollTopOnMount extends Component<void> {
   componentDidMount () {
     window.scrollTo(0, 0);
   }

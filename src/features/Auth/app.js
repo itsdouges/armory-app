@@ -1,6 +1,5 @@
 // @flow
 
-import type { Children } from 'react';
 import type { InjectedProps } from './data';
 
 import { Component } from 'react';
@@ -14,13 +13,13 @@ type Props = InjectedProps & {
   checkingAuthentication: (boolean) => void,
 };
 
-const authEnabled = (ComposedComponent: Children) =>
+const authEnabled = (ComposedComponent: React.ComponentType<*>) =>
 authenticatatedData(
 connect(null, {
   checkingAuthentication: actions.checkingAuthentication,
   authenticateUser: actions.authenticateUser,
 })(
-  class AuthenticatedApp extends Component {
+  class AuthenticatedApp extends Component<Props> {
     props: Props;
 
     componentWillMount () {

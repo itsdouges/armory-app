@@ -1,7 +1,7 @@
 // @flow
 
-import { Component } from 'react';
-import { post } from 'axios';
+import React, { Component } from 'react';
+import axios from 'axios';
 import T from 'i18n-react';
 
 import Textbox from 'common/components/Textbox';
@@ -15,7 +15,7 @@ type Props = {
   next: Function,
 };
 
-export default class Start extends Component {
+export default class Start extends Component<Props, *> {
   props: Props;
 
   state = {
@@ -25,7 +25,7 @@ export default class Start extends Component {
     valid: false,
   };
 
-  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent) => {
+  fieldChanged = ({ target: { id, value } }: SyntheticInputEvent<*>) => {
     const newState = {
       ...this.state,
       [id]: value,
@@ -44,7 +44,7 @@ export default class Start extends Component {
       error: '',
     });
 
-    return post(`${config.api.endpoint}forgot-my-password`, {
+    return axios.post(`${config.api.endpoint}forgot-my-password`, {
       email: this.state.email,
     })
     .then(this.props.next, () => this.setState({

@@ -59,10 +59,18 @@ export type User = {
   privacy: Array<string>,
 };
 
+export type Token = {
+  accountName: string,
+  primary: boolean,
+  permissions: string,
+  valid: boolean,
+  token: string,
+};
+
 export type AuthenticatedUser = User & {
   validGw2Token: boolean,
   validatingGw2Token: boolean,
-  gw2Tokens: Array<string>,
+  gw2Tokens: Array<Token>,
   gw2TokenError: string,
   addingGw2Token: boolean,
   passwordValid: boolean,
@@ -109,14 +117,6 @@ type Log = {
   coins: number,
   action: 'queued' | 'cancelled' | 'completed' | 'sped_up',
   upgrade_id: number,
-};
-
-export type Token = {
-  accountName: string,
-  primary: boolean,
-  permissions: string,
-  valid: boolean,
-  token: string,
 };
 
 export type Guild = {

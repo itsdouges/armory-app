@@ -11,7 +11,7 @@ import type {
   Pets,
 } from 'flowTypes';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import includes from 'lodash/includes';
 import get from 'lodash/get';
@@ -54,10 +54,14 @@ type Props = {
   selectCharacterMode: (CharacterModes) => void,
 };
 
+type State = {
+  updateImage: boolean,
+};
+
 export default connect(overviewSelector, {
   selectCharacterMode,
 })(
-class CharacterOverview extends Component {
+class CharacterOverview extends Component<Props, State> {
   props: Props;
 
   state = {

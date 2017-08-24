@@ -3,7 +3,7 @@
 import type { SubmitNotification } from './app.reducer';
 
 import 'normalize.css';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
@@ -60,15 +60,19 @@ type Props = {
   submitNotification?: SubmitNotification,
 };
 
+type State = {
+  smallHeader: boolean,
+};
+
 function shouldForceSmallHeader ({ location }: Props) {
   return location.pathname !== '/';
 }
 
-@connect(null, {
+export default connect(null, {
   determineApiHealth,
   submitNotification,
-})
-export default class App extends Component {
+})(
+class App extends Component<Props, State> {
   props: Props;
 
   state = {
@@ -121,3 +125,4 @@ export default class App extends Component {
     );
   }
 }
+);

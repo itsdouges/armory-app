@@ -2,7 +2,7 @@
 
 import type { Items, Bags } from 'flowTypes';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import cx from 'classnames';
 
@@ -30,10 +30,10 @@ type Props = {
   fetchItems?: (ids: Array<number>) => {},
 };
 
-@connect(mapStateToProps, {
+export default connect(mapStateToProps, {
   fetchItems: actions.fetchItems,
-})
-export default class CharacterBags extends Component {
+})(
+class CharacterBags extends Component<Props, State> {
   props: Props;
   funcs: Array<{
     enter: () => void,
@@ -157,3 +157,4 @@ export default class CharacterBags extends Component {
     );
   }
 }
+);

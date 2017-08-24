@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import cx from 'classnames';
 import Gw2Item from 'common/components/Gw2Item';
 import SvgIcon from 'common/components/Icon/Svg';
@@ -16,7 +16,7 @@ type Props = {
   beginExpanded: boolean,
 };
 
-export default class MaterialSection extends Component {
+export default class MaterialSection extends Component<Props, *> {
   props: Props;
 
   static defaultProps = {

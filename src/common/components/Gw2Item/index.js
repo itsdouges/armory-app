@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -17,7 +17,7 @@ export const selector = createSelector(
 export default connect(selector, {
   fetch: actions.fetchItems,
 })(
-class Gw2Item extends Component {
+class Gw2Item extends Component<*> {
   props: {
     id: number,
     fetch: ([number]) => void,

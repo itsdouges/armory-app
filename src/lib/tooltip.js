@@ -1,6 +1,7 @@
 // @flow
 
 import Base from '../Base';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Tooltip from 'common/components/Tooltip';
 

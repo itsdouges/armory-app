@@ -2,7 +2,7 @@
 
 import type { AuthenticatedUser } from 'flowTypes';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import T from 'i18n-react';
@@ -64,7 +64,7 @@ type FieldChanged = {
   validateGw2Token,
   register,
 })
-export default class Join extends Component {
+export default class Join extends Component<Props, *> {
   props: Props;
   state: State = {
     email: '',
@@ -123,7 +123,7 @@ export default class Join extends Component {
       300
   );
 
-  register = (event: SyntheticEvent) => {
+  register = (event: SyntheticEvent<*>) => {
     event.preventDefault();
 
     this.props.register(this.state);

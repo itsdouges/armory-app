@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import reduce from 'lodash/reduce';
 import maxBy from 'lodash/maxBy';
 import upperFirst from 'lodash/upperFirst';

@@ -1,7 +1,5 @@
 // @flow
 
-import type { Children } from 'react';
-
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 
@@ -25,7 +23,7 @@ export const selector = createSelector(
   })
 );
 
-const authenticatedData = (ComposedComponent: Children) => {
+const authenticatedData = (ComposedComponent: React.ComponentType<*>) => {
   // eslint-disable-next-line no-param-reassign
   ComposedComponent.defaultProps = {
     ...ComposedComponent.defaultProps,

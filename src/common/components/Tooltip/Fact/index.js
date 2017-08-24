@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import cx from 'classnames';
 import round from 'lodash/round';
 
@@ -12,7 +13,7 @@ import styles from './styles.less';
 const BASE_DAMAGE = 266.0;
 
 function extractSubText (data) {
-  return (
+  return String(
     data.hit_count ||
     data.field_type ||
     data.value ||

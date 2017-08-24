@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import styles from './styles.less';
 import cx from 'classnames';
 import SvgIcon from 'common/components/Icon/Svg';
@@ -53,7 +54,7 @@ const Textbox = ({
       <input
         {...props}
         onClick={singleClickSelect && ((e) => e.target.select())}
-        ref={autoSelect && ((c) => c && c.select())}
+        ref={autoSelect ? (c) => c && c.select() : undefined}
         disabled={busy}
         id={id}
         type={type || 'text'}

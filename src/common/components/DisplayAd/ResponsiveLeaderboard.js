@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import ResponsiveDisplayAd from './Responsive';
 
 type Props = {

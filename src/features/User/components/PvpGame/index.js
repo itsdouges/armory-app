@@ -1,6 +1,8 @@
 // @flow
 
 import type { Gw2PvpGame, Gw2Map as Gw2MapType } from 'flowTypes';
+
+import React from 'react';
 import get from 'lodash/get';
 import cx from 'classnames';
 import T from 'i18n-react';

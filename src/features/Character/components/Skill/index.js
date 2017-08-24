@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import cx from 'classnames';
 import get from 'lodash/get';
 import T from 'i18n-react';

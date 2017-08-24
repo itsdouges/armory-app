@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import Currency from 'common/components/Currency';
 import Container from 'common/components/Container';
 

@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import cx from 'classnames';
 
 import T from 'i18n-react';
@@ -24,7 +24,7 @@ type State = {
   shown: boolean,
 };
 
-export default class Embed extends Component {
+export default class Embed extends Component<Props, State> {
   props: Props;
   state: State = {
     shown: false,

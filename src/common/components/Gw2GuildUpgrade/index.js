@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -18,7 +18,7 @@ const selector = createSelector(
 export default connect(selector, {
   fetch: actions.fetchGuildUpgrades,
 })(
-class Gw2GuildUpgrade extends Component {
+class Gw2GuildUpgrade extends Component<*> {
   props: {
     id: number,
     upgrade: { icon: string, name: string },

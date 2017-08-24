@@ -1,7 +1,7 @@
 // @flow
 
 /* eslint no-return-assign:0 */
-import { Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import T from 'i18n-react';
 import cx from 'classnames';
@@ -25,9 +25,9 @@ type ImageUploadProps = {
   className?: string,
 };
 
-export default class ImageUpload extends Component {
+export default class ImageUpload extends Component<ImageUploadProps, *> {
   props: ImageUploadProps;
-  fileInput: HTMLInputElement;
+  fileInput: ?HTMLInputElement;
 
   static defaultProps = {
     onUploadComplete: () => {},
@@ -94,7 +94,9 @@ export default class ImageUpload extends Component {
               uploading: false,
             });
 
-            this.fileInput.value = '';
+            if (this.fileInput) {
+              this.fileInput.value = '';
+            }
             this.props.onUploadComplete();
           }, () => {
             this.setState({

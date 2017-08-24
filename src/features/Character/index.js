@@ -3,7 +3,7 @@
 import type { Character as CharacterType, Gw2Title } from 'flowTypes';
 import type { InjectedProps } from 'features/Auth/data';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 import { Link } from 'react-router-dom';
@@ -77,6 +77,10 @@ type Props = InjectedProps & {
   removePrivacy: (name: string, prop: string) => Promise<*>,
 };
 
+type State = {
+  editing: boolean,
+};
+
 export default authenticatedData(
 connect(topSelector, {
   selectUser,
@@ -87,7 +91,7 @@ connect(topSelector, {
   setPrivacy,
   removePrivacy,
 })(
-class Character extends Component {
+class Character extends Component<Props, State> {
   props: Props;
 
   state = {

@@ -1,6 +1,8 @@
 // @flow
 
 import type { Gw2Map as Gw2MapType } from 'flowTypes';
+
+import React from 'react';
 import cx from 'classnames';
 import includes from 'lodash/includes';
 

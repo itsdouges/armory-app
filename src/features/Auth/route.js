@@ -1,14 +1,14 @@
 // @flow
 
-import type { Children } from 'react';
 import type { InjectedProps } from './data';
 
-import { Component } from 'react';
+import type { ComponentType } from 'react';
+import React, { Component } from 'react';
 import history from 'history';
 import authData from './data';
 import ProgressIcon from 'common/components/Icon/Progress';
 
-const authenticatedRoute = (ComposedComponent: Children) => authData(class AuthOnly extends Component {
+const authenticatedRoute = (ComposedComponent: ComponentType<*>) => authData(class AuthOnly extends Component<InjectedProps> {
   props: InjectedProps;
 
   componentWillMount () {

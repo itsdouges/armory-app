@@ -2,6 +2,7 @@
 
 import type { EmbedProps } from 'embeds/bootstrap';
 
+import React from 'react';
 import CustomEmbed from 'embeds/components/Custom';
 import { makeAttribute } from 'embeds/bootstrap';
 

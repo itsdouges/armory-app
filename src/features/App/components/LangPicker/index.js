@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { set, get } from 'lib/i18n';
 import cx from 'classnames';
 
@@ -16,7 +16,11 @@ function pick (lang: string) {
   window.location.reload();
 }
 
-export default class LangPicker extends Component {
+type State = {
+  selected: string,
+};
+
+export default class LangPicker extends Component<{}, State> {
   state = {
     selected: get(),
   };

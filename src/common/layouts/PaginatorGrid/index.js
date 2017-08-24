@@ -2,6 +2,7 @@
 
 import type { BaseProps, ButtonProps, ContainerProps } from 'react-scroll-paginator';
 
+import React from 'react';
 import T from 'i18n-react';
 import Paginator from 'react-scroll-paginator';
 import Button from 'common/components/Button';

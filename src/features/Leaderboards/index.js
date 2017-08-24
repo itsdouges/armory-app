@@ -2,6 +2,7 @@
 
 import T from 'i18n-react';
 
+import React from 'react';
 import config from 'config';
 import Tabs from 'common/components/Tabs';
 import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderboard';

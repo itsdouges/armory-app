@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import T from 'i18n-react';
 import colours from 'common/styles/colours.less';
 import camelCase from 'lodash/camelCase';

@@ -1,5 +1,6 @@
 // @flow
 
+import React from 'react';
 import colours from 'common/styles/colours.less';
 import goldImg from 'assets/images/gold.png';
 import silverImg from 'assets/images/silver.png';

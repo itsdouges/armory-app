@@ -3,7 +3,7 @@
 import type { User, Maps } from 'flowTypes';
 
 import get from 'lodash/get';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 
@@ -34,7 +34,7 @@ type Props = {
 export default connect(selector, {
   fetchPvpGames,
 })(
-class RecentMatches extends Component {
+class RecentMatches extends Component<Props> {
   props: Props;
 
   componentDidMount () {

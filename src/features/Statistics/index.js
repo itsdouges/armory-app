@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 import T from 'i18n-react';
@@ -79,7 +79,7 @@ type Props = {
 export default connect(selector, {
   fetchStatistics,
 })(
-class Statistics extends Component {
+class Statistics extends Component<Props> {
   props: Props;
 
   componentWillMount () {

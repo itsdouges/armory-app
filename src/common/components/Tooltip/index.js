@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import cx from 'classnames';
@@ -38,7 +38,7 @@ export type Props = {
 export default connect(selector, {
   showTooltip,
 })(
-class Tooltip extends Component {
+class Tooltip extends Component<Props> {
   props: Props;
 
   close = () => {

@@ -2,6 +2,7 @@
 
 import cx from 'classnames';
 
+import React from 'react';
 import Icon from 'common/components/Icon';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Gold from 'common/components/Gold';

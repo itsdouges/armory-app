@@ -1,8 +1,9 @@
 // @flow
 
-import type { Children } from 'react';
+import type { Node } from 'react';
 import type { TabInput as Tabs$TabInput } from 'common/components/Tabs';
 
+import React from 'react';
 import cx from 'classnames';
 
 import ContentCard from 'common/components/ContentCard';
@@ -22,7 +23,7 @@ type Props = {
   cardExtra?: any,
   pinnedTab?: any,
   basePath: string,
-  metaContent?: Children,
+  metaContent?: Node,
 };
 
 const Content = ({

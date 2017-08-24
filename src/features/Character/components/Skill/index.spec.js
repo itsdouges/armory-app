@@ -1,3 +1,4 @@
+import React from 'react';
 import { shallow } from 'enzyme';
 import { stubComponent, stubStyles, stubI18n } from 'test/utils';
 

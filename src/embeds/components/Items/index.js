@@ -3,7 +3,7 @@
 import type { Items, ItemStats } from 'flowTypes';
 import type { EmbedProps } from 'embeds/bootstrap';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import actions from 'features/Gw2/actions';
@@ -33,7 +33,7 @@ type Props = {
   fetchItems: actions.fetchItems,
   fetchItemStats: actions.fetchItemStats,
 })
-export default class ItemsEmbed extends Component {
+export default class ItemsEmbed extends Component<Props> {
   props: Props;
 
   static renderItem (

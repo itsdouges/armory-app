@@ -2,7 +2,7 @@
 
 import type { Specializations, Traits } from 'flowTypes';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import actions from 'features/Gw2/actions';
@@ -29,7 +29,7 @@ type Props = {
 @connect(mapStateToProps, {
   fetchSpecializations: actions.fetchSpecializations,
 })
-export default class SkillsEmbed extends Component {
+export default class SkillsEmbed extends Component<Props> {
   props: Props;
 
   componentWillMount () {

@@ -2,7 +2,7 @@
 
 import type { InjectedProps } from 'features/Auth/data';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import T from 'i18n-react';
 import cx from 'classnames';
@@ -97,7 +97,7 @@ const buildLinks = ({ checkingAuthentication, alias }): Array<LinkDefs> => {
 };
 
 export default authenticatedData(
-class Header extends Component {
+class Header extends Component<Props, State> {
   props: Props;
 
   state: State = {

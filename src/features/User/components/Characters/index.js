@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { makeStubItems } from 'lib/paginator';
@@ -19,10 +19,10 @@ function mapStateToProps (state) {
   };
 }
 
-@connect(mapStateToProps, {
+export default connect(mapStateToProps, {
   fetchCharacters: fetchUserCharacters,
-})
-export default class UserCharacters extends Component {
+})(
+class UserCharacters extends Component<*> {
   props: {
     characters?: Object,
     fetchCharacters: (string, number, number) => Promise<>,
@@ -59,3 +59,4 @@ export default class UserCharacters extends Component {
     );
   }
 }
+);

@@ -2,7 +2,7 @@
 
 import type { Guild as GuildType } from 'flowTypes';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import get from 'lodash/get';
 
@@ -20,7 +20,7 @@ const makeKey = (content, index) => (content ? content.accountName : index);
 @connect(selector, {
   fetchMembers: fetchGuildMembers,
 })
-export default class GuildMembers extends Component {
+export default class GuildMembers extends Component<*> {
   props: {
     guild?: GuildType,
     fetchMembers: (string, number, number) => Promise<>,

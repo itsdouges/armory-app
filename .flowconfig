@@ -6,6 +6,11 @@
 config/
 scripts/
 <PROJECT_ROOT>/node_modules/function-batch/index.js.flow
+<PROJECT_ROOT>/node_modules/react-scroll-paginator/ReactScrollPaginator.js.flow
+<PROJECT_ROOT>/node_modules/react-scroll-paginator/index.js.flow
+<PROJECT_ROOT>/node_modules/react-debounce-decorator/debounceDecorator.js.flow
+<PROJECT_ROOT>/node_modules/editions/es2015/index.js
+<PROJECT_ROOT>/node_modules/react-debounce-decorator/index.js.flow
 
 [include]
 

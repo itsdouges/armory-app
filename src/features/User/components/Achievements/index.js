@@ -2,7 +2,7 @@
 
 import type { AchievementGroups, AchievementCategories, Achievements, UserAchievementsMap } from 'flowTypes';
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import map from 'lodash/map';
 import reduce from 'lodash/reduce';
@@ -56,7 +56,7 @@ export default connect(selector, {
   fetchAchievementCategories: actions.fetchAchievementCategories,
   fetchAchievements: actions.fetchAchievements,
 })(
-class UserAchievements extends Component {
+class UserAchievements extends Component<Props, State> {
   props: Props;
   state: State = {
     selectedGroup: null,

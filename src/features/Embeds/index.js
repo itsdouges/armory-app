@@ -1,6 +1,6 @@
 // @flow
 
-import { Component } from 'react';
+import React, { Component } from 'react';
 import T from 'i18n-react';
 
 import Card from 'common/components/Card';
@@ -21,7 +21,7 @@ function embedIframe () {
   document && document.head && document.head.appendChild(script);
 }
 
-export default class Embeds extends Component {
+export default class Embeds extends Component<*> {
   componentDidMount () {
     embedIframe();
   }

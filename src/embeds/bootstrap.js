@@ -2,6 +2,7 @@
 
 // Base is deliberately at the top.
 import Base from '../Base';
+import React from 'react';
 import bootstrapTooltip from 'lib/tooltip';
 import ReactDOM from 'react-dom';
 import cx from 'classnames';

@@ -2,6 +2,7 @@
 
 import 'babel-polyfill';
 import 'normalize.css';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, Switch } from 'react-router-dom';
 import PageView from 'common/components/PageView';

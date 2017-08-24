@@ -1,6 +1,6 @@
 // @flow
 
-import { get } from 'axios';
+import axios from 'axios';
 import config from 'config';
 import { paginatedThunk } from 'lib/redux';
 
@@ -16,7 +16,7 @@ const fetchPvpLeaderboardSuccess = (data, region) => ({
 
 export function fetchPvpLeaderboard (region: 'na' | 'eu' | 'gw2a', limit: number, offset: number) {
   return paginatedThunk((dispatch: Dispatch) => {
-    return get(`${config.api.endpoint}leaderboards/pvp/${region}`, {
+    return axios.get(`${config.api.endpoint}leaderboards/pvp/${region}`, {
       params: {
         limit,
         offset,

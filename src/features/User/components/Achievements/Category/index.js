@@ -1,7 +1,8 @@
 // @flow
 
-import type { Children } from 'react';
+import type { Node } from 'react';
 
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import cx from 'classnames';
 
@@ -11,10 +12,10 @@ type Props = {
   to?: string,
   name: string,
   className?: string,
-  icon?: Children,
+  icon?: Node,
   selected?: boolean,
   subCategory?: boolean,
-  rightComponent?: Children,
+  rightComponent?: Node,
   onClick?: () => void,
 };
 
