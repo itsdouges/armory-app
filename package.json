@@ -50,9 +50,7 @@
     "recompose": "^0.25.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.1.0",
-    "reselect": "^3.0.1",
-    "rollbar": "^2.2.3",
-    "withinviewport": "^2.0.0"
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "app-module-path": "^2.2.0",
