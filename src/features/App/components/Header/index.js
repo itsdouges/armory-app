@@ -115,17 +115,20 @@ class Header extends Component<Props, State> {
     const { showExtraHeaderItems } = this.state;
     const links = buildLinks({ authenticated, checkingAuthentication, alias });
     const smallIconName = config.features.christmas ? 'gift.png' : 'favicons/favicon-32.png';
+    const style = {
+      opacity: (compact || showExtraHeaderItems) ? 1 : 0,
+    };
 
     const header = (
       <Container className={styles.innerContainer}>
-        <Link to="/" style={{ opacity: (compact || showExtraHeaderItems) ? 1 : 0 }}>
+        <Link style={style} to="/">
           <Icon className={styles.icon} name={smallIconName} size="mini" />
           <h1>Guild Wars 2 Armory</h1>
         </Link>
 
         <div
+          style={style}
           className={styles.searchContainer}
-          style={{ opacity: (compact || showExtraHeaderItems) ? 1 : 0 }}
         >
           <SearchBar simple className={styles.smallSearchBar} />
         </div>
@@ -148,9 +151,8 @@ class Header extends Component<Props, State> {
         headerOnly={compact}
         onSticky={this.onSticky}
         backgroundColor={colours.headerBg}
-        className={showExtraHeaderItems && styles.floating}
       >
-        <Container className={styles.bigSearchContainer} style={{ display: compact ? 'none' : '' }}>
+        <Container className={styles.bigSearchContainer}>
           <img
             alt="Guild Wars 2 Armory"
             title="Guild Wars 2 Armory"

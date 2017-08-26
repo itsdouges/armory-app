@@ -3,7 +3,7 @@
 @searchBarZ: @_zindex40;
 @searchBarMaxWidth: 625px;
 @spaceBetween: 2em;
-@textShadow: @_white;
+@headerHeight: 56px;
 
 .innerContainer {
   display: flex;
@@ -11,6 +11,24 @@
   align-items: center;
   padding: 0.15em;
   font-size: 1.1em;
+  height: @headerHeight;
+
+  &:after {
+    .mediumBottomOnly();
+    opacity: 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+:global(.is-sticky) .innerContainer:after {
+  opacity: 1;
 }
 
 .searchContainer {
@@ -24,7 +42,6 @@
   padding: 0 0 0 0.25em;
   font-weight: bold;
   flex-shrink: 0;
-  text-shadow: 0 0 10px @textShadow;
 
   .fromMobile({
     font-size: 1em;
@@ -104,16 +121,6 @@
   text-align: left;
 }
 
-.patreonIcon {
-  margin-right: 5px;
-}
-
 .ad {
   margin-top: 1em;
-}
-
-.floating {
-  > :global(.ReactStickyHeader_fixed) {
-    .medium();
-  }
 }
