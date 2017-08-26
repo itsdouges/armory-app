@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Header not entering sticky state when appropriate
 
 ## [4.33.11][] - 2017-08-24
 ### Upgraded
