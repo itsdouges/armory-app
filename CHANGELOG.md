@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.33.12][] - 2017-08-26
 ### Fixed
 - Header not entering sticky state when appropriate
 
@@ -972,7 +974,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.33.11...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.33.12...HEAD
+[4.33.12]: https://github.com/madou/armory-react/compare/v4.33.11...v4.33.12
 [4.33.11]: https://github.com/madou/armory-react/compare/v4.33.10...v4.33.11
 [4.33.10]: https://github.com/madou/armory-react/compare/v4.33.9...v4.33.10
 [4.33.9]: https://github.com/madou/armory-react/compare/v4.33.8...v4.33.9
