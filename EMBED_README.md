@@ -1,5 +1,7 @@
 # GW2Armory Embeds
 
+For examples of the embeds go look at the [GW2Armory example page](https://gw2armory.com/embeds).
+
 ## Getting Started
 
 First add the embed script to your `<head>`:
