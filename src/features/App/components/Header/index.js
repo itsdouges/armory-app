@@ -51,7 +51,8 @@ const STATIC_LINKS = [{
   to: '/statistics',
 }, {
   name: T.translate('embeds.name'),
-  to: '/embeds',
+  external: true,
+  to: 'https://github.com/madou/armory-react/blob/master/EMBED_README.md',
 }];
 
 const UNAUTHENTICATED_STATIC_LINKS = [{
@@ -139,7 +140,10 @@ class Header extends Component<Props, State> {
           className={styles.linkContainer}
           itemClassName={cx(styles.link, { [styles.christmas]: config.features.christmas })}
         >
-          {links.map(({ to, name }) => <Link to={to} key={to}>{name}</Link>)}
+          {links.map(({ to, name, external }) => (external
+            // eslint-disable-next-line react/jsx-no-target-blank
+            ? <a href={to} target="_blank">{name}</a>
+            : <Link to={to} key={to}>{name}</Link>))}
         </ResponsiveMenu>
       </Container>
     );

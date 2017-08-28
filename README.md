@@ -15,46 +15,53 @@ cp src/config/local.sample.js src/config/local.js // local.js isn't checked in s
 
 ### Testing
 
+Run `tdd` for unit tests.
+
 ```bash
-npm run tdd // UNIT TESTS + WATCHER
-npm test // FULL TEST (lint/flow/coverage+unit)
+npm run tdd
 ```
+
+Run `dev` for development and `start` for production.
 
 ### Website
 
 ```bash
-npm run dev // DEV BUILD
-npm run start // PROD BUILD
+npm run dev
+npm start
 ```
 
 ### Embeds
 
+Run `dev:embeds` for development and `start:embeds` for production.
+
 ```bash
-npm run dev:embeds // DEV BUILD
-npm run start:embeds // PROD BUILD
+npm run dev:embeds
+npm run start:embeds
 ```
-
-### Technologies
-
-React, Redux, Flow, Webpack, LESS, Mocha/enzyme/chai/sinon, nyc/Coveralls
 
 ## Notes for Local Development
 
-- If running locally make sure you add a `local.js` to the `src/env/` folder. Look at `local.sample.js` for help. This isn't checked in deliberately so we can play with local settings without affecting git history.
+- When locally make sure you add a `local.js` to the `src/env/` folder. Look at `local.sample.js` for help. This isn't checked in deliberately so we can play with local settings without affecting git history.
 - If needed you can get the api over at [armory-back](https://github.com/madou/armory-back). You will have to update your `config/local.js` to point to `localhost` if running the api locally.
 - We use `pre-commit` to run commands before checking in. This will run `npm test` which covers linting, flow errors, and tests.
 
 ## Deployments
 
-Deployments are triggered to `preview.gw2armory.com` via any branch commit, and to `gw2armory.com` via any tagged commit to `master` branch. Note that `master` doesn't reflect what is in production - look for the most recent tagged commit for that.
+### To gw2armory.com
 
-Standard npm version is used for deployments.
+When a tagged commit is found a release to production is triggered in Travis.
+
+To get a tagged commit run the following command in `master`:
 
 ```bash
 npm version major|minor|patch
 ```
 
 This will increment the version, update CHANGELOG.md (anything under Unreleased will be moved to a version), and push commits/tags to git.
+
+### To preview.gw2armory.com
+
+Standard npm version is used for deployments.
 
 ### Redux Dev Tools
 

@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Readme
+- Header to point to EMBED README
 
 ## [4.33.12][] - 2017-08-26
 ### Fixed
