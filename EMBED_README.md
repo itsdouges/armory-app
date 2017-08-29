@@ -1,5 +1,7 @@
 # GW2Armory Embeds
 
+Guild Wars 2 Armory is arming the GW2 community with powered up embeds for items, skills, and more. Currently serving over 5 million requests a month and growing!
+
 For examples of the embeds go look at the [GW2Armory example page](https://gw2armory.com/embeds).
 
 ## Getting Started
