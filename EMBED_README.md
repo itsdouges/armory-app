@@ -208,6 +208,18 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-size | number | no | The size of each amulet in the embed. |
 | data-armory-blank-text | string | no | When loading an amulet of id `-1` you can override the tooltip text to be whatever you want. |
 
+## Finding IDs
+
+Unfortunately you can't pass the embeds the item/skill etc names. You have to pass the specific ids. 
+
+### Item IDs
+
+Item IDs are easy enough, go look at https://www.gw2spidy.com.
+
+### Skill/Trait/Specialization IDs
+
+Best bet is to look at the GW2 Wiki, for example: https://wiki.guildwars2.com/wiki/Virtue_of_Justice.
+
 ## Who Is Using GW2AEmbeds?
 
 - [MetaBattle](https://metabattle.com)
