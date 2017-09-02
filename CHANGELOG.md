@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Not found routes to keep the path instead of replacing to `/404`
 
 ## [4.33.13][] - 2017-08-28
 ### Changed

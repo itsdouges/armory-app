@@ -203,7 +203,7 @@ export const fetchUser = (
         dispatch(fetchUserAchievements(alias));
         dispatch(fetchingUser(false));
         dispatch(actions.fetchWorlds([data.world]));
-      }, ({ response: { status } = {} } = {}) => status === 404 && history.replace('/404'));
+      }, ({ response: { status } = {} } = {}) => status === 404 && history.replace({ state: { notFound: true } }));
   };
 
 export const updatePrivacy = (name: string, prop: string, action: string) => ({
