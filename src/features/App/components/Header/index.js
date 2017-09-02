@@ -142,7 +142,7 @@ class Header extends Component<Props, State> {
         >
           {links.map(({ to, name, external }) => (external
             // eslint-disable-next-line react/jsx-no-target-blank
-            ? <a href={to} target="_blank">{name}</a>
+            ? <a key={to} href={to} target="_blank">{name}</a>
             : <Link to={to} key={to}>{name}</Link>))}
         </ResponsiveMenu>
       </Container>
