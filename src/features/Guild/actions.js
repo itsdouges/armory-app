@@ -96,7 +96,7 @@ export const fetchGuild = (name: string) => (dispatch: Dispatch) => {
     .then((response) => {
       dispatch(fetchGuildResult(name, response.data));
       dispatch(fetchingGuild(false));
-    }, () => history.replace('/404'));
+    }, () => history.replace({ state: { notFound: true } }));
 };
 
 export const updatePrivacy = (name: string, prop: string, action: string) => ({
