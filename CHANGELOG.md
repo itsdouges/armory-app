@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.34.0][] - 2017-09-02
 ### Changed
 - Not found routes to keep the path instead of replacing to `/404`
 
@@ -981,7 +983,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.33.13...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.34.0...HEAD
+[4.34.0]: https://github.com/madou/armory-react/compare/v4.33.13...v4.34.0
 [4.33.13]: https://github.com/madou/armory-react/compare/v4.33.12...v4.33.13
 [4.33.12]: https://github.com/madou/armory-react/compare/v4.33.11...v4.33.12
 [4.33.11]: https://github.com/madou/armory-react/compare/v4.33.10...v4.33.11
