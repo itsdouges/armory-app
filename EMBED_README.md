@@ -1,6 +1,6 @@
 # GW2Armory Embeds
 
-Guild Wars 2 Armory is arming the GW2 community with powered up embeds for items, skills, and more. Currently serving over 5 million requests a month and growing!
+Guild Wars 2 Armory is arming the GW2 community with powered up embeds for items, skills, and more. Currently serving over 5.5 million requests a month and growing!
 
 For examples of the embeds go look at the [GW2Armory example page](https://gw2armory.com/embeds).
 
@@ -249,3 +249,7 @@ Best bet is to look at the GW2 Wiki, for example: https://wiki.guildwars2.com/wi
 - [Snow Crows](http://snowcrows.com)
 
 [Don't see your site? Add it in a Pull Request!](https://github.com/madou/armory-react/pulls)
+
+## Troubleshooting
+
+Hit [@itsmadou](https://twitter.com/itsmadou) up on twitter, or [post an issue](https://github.com/madou/armory-react/issues) if you think something is a bug.
