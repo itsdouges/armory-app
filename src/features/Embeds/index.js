@@ -33,38 +33,6 @@ export default class Embeds extends Component<*> {
         <ResponsiveLeaderboard />
 
         <article className={styles.innerRoot}>
-          <h2>Options</h2>
-          <Card size="medium" className={styles.card}>
-            Add options in the head of your webpage.
-            Ensure it is set immediately and not after the page has loaded
-            (do not use inside document.onReady or equivalent).
-
-            <p>lang</p>
-            <ul>
-              <li>en (ENGLISH)</li>
-              <li>fr (FRENCH)</li>
-              <li>de (GERMAN)</li>
-              <li>es (SPANISH)</li>
-              <li>zh (CHINESE)</li>
-              <li>ru (RUSSIAN [limited support])</li>
-            </ul>
-
-            <pre>
-              {`document.GW2A_EMBED_OPTIONS = {
-  lang: 'en',
-};`}
-            </pre>
-          </Card>
-
-          <h2>Styling</h2>
-          <Card size="medium" className={styles.card}>
-            To style any embed simply target the embed with the embed name class, e.g:
-
-            <pre>{embeds.map(({ title }) => `.gw2a-${title.toLowerCase()}-embed`).join('\n')}</pre>
-          </Card>
-
-          <DisplayAd type="mrec" className={styles.mrec} />
-
           {embeds.map(({ title, html, options }, index) => {
             const embedComponent = (
               <div key={title}>
@@ -74,11 +42,6 @@ export default class Embeds extends Component<*> {
                   <pre>{`${html}
 
 <script async src="https://gw2armory.com/gw2aEmbeds.js"></script>`}</pre>
-
-                  <ul className={styles.options}>
-                    <li>{`data-armory-embed="${title.toLowerCase()}"`}</li>
-                    {options.map((option) => <li key={option}>{option}</li>)}
-                  </ul>
                 </Card>
               </div>
             );
