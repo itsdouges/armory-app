@@ -125,6 +125,7 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-ids | numbers delimited by commas | yes | The skill ids you want to load. If you pass `-1` you will load an empty box instead of the skill. |
 | data-armory-size | number | no | The size of each skill in the embed. |
 | data-armory-blank-text | string | no | When loading an skill of id `-1` you can override the tooltip text to be whatever you want. |
+| data-armory-inline-text | string | no | Optional inline text that will be displayed to the right of the icon. You can pass in `wiki` to use a gw2 wiki URL, or pass in any other text that will be used as the link. |
 
 ### Items
 
@@ -152,6 +153,7 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-size | number | no | The size of each item in the embed. |
 | data-armory-blank-text | string | no | When loading an item of id `-1` you can override the tooltip text to be whatever you want. |
 | data-armory-{ITEM_ID}-stat | number | no | Loads the item with the stat of choice. |
+| data-armory-inline-text | string | no | Optional inline text that will be displayed to the right of the icon. You can pass in `wiki` to use a gw2 wiki URL, `gw2spidy` to use a gw2spidy URL, or pass in any other text that will be used as the link. |
 
 ### Specializations
 
@@ -187,6 +189,7 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-ids | numbers delimited by commas | yes | The trait ids you want to load. If you pass `-1` you will load an empty box instead of the trait. |
 | data-armory-size | number | no | The size of each trait in the embed. |
 | data-armory-blank-text | string | no | When loading an trait of id `-1` you can override the tooltip text to be whatever you want. |
+| data-armory-inline-text | string | no | Optional inline text that will be displayed to the right of the icon. You can pass in `wiki` to use a gw2 wiki URL, or pass in any other text that will be used as the link. |
 
 ### Amulets
 
@@ -207,10 +210,11 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-ids | numbers delimited by commas | yes | The amulet ids you want to load. If you pass `-1` you will load an empty box instead of the amulet. |
 | data-armory-size | number | no | The size of each amulet in the embed. |
 | data-armory-blank-text | string | no | When loading an amulet of id `-1` you can override the tooltip text to be whatever you want. |
+| data-armory-inline-text | string | no | Optional inline text that will be displayed to the right of the icon. You can pass in `wiki` to use a gw2 wiki URL, or pass in any other text that will be used as the link. |
 
 ## Finding IDs
 
-Unfortunately you can't pass the embeds the item/skill etc names. You have to pass the specific ids. 
+Unfortunately you can't pass the embeds the item/skill etc names. You have to pass the specific ids.
 
 ### Item IDs
 

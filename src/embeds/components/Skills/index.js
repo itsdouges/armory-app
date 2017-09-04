@@ -23,13 +23,13 @@ type Props = EmbedProps & {
   ids: Array<number>,
 };
 
-@connect(mapStateToProps, {
+export default connect(mapStateToProps, {
   fetchSkills: actions.fetchSkills,
-})
-export default class SkillsEmbed extends Component<Props> {
+})(
+class SkillsEmbed extends Component<Props> {
   props: Props;
 
-  static renderSkill (id, skills, blankText, size) {
+  static renderSkill (id, skills, blankText, size, props) {
     if (id >= 0) {
       return (
         <Skill
@@ -37,6 +37,7 @@ export default class SkillsEmbed extends Component<Props> {
           className={styles.skill}
           data={skills && skills[id]}
           size={size}
+          {...props}
         />
       );
     }
@@ -51,12 +52,13 @@ export default class SkillsEmbed extends Component<Props> {
   }
 
   render () {
-    const { ids, skills, className, blankText, size } = this.props;
+    const { ids, skills, className, blankText, size, ...props } = this.props;
 
     return (
       <div className={className}>
-        {ids.map((id) => SkillsEmbed.renderSkill(id, skills, blankText, size))}
+        {ids.map((id) => SkillsEmbed.renderSkill(id, skills, blankText, size, props))}
       </div>
     );
   }
 }
+);
