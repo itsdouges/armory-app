@@ -3,6 +3,7 @@
 import type { Node } from 'react';
 import React from 'react';
 import { get as getLang } from 'lib/i18n';
+import LoadingStrip from 'common/components/LoadingStrip';
 
 import styles from './styles.less';
 
@@ -10,7 +11,7 @@ type Props = {
   children: Node,
   href?: string,
   text?: string,
-}
+};
 
 export const buildLink = (href?: string, text?: string) => {
   switch (href) {
@@ -32,7 +33,7 @@ const ResourceLink = ({ children, href, text, ...props }: Props) => (href ? (
       href={href}
       className={styles.link}
     >
-      {text || 'Loading...'}
+      <LoadingStrip>{text}</LoadingStrip>
     </a>
   </span>
   // $FlowFixMe - cloneElement doesn't take Node?
