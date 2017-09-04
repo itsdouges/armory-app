@@ -2,9 +2,6 @@
 
 export default [{
   title: 'Character',
-  options: [
-    'data-armory-name="{CHARACTER_NAME}"',
-  ],
   html: `
 <div
   data-armory-embed="character"
@@ -14,12 +11,25 @@ export default [{
   `,
 }, {
   title: 'Skills',
-  options: [
-    'data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills',
-    'data-armory-size="{NUMBER}" (optional)',
-    'data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)',
-  ],
   html: `
+<span
+  data-armory-embed="skills"
+  data-armory-ids="5508"
+  data-armory-inline-text="wiki"
+  data-armory-size="25"
+>
+</span>
+
+<span
+  data-armory-embed="skills"
+  data-armory-ids="5515"
+  data-armory-inline-text="https://www.google.com.au/search?q=gw2armory"
+  data-armory-size="25"
+>
+</span>
+
+<br />
+
 <div
   data-armory-embed="skills"
   data-armory-ids="5507,5508,5510,5515"
@@ -42,13 +52,33 @@ export default [{
   `,
 }, {
   title: 'Items',
-  options: [
-    'data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills',
-    'data-armory-{ITEM_ID}-stat="{ITEMSTAT_ID}" (optional)',
-    'data-armory-size="{NUMBER}" (optional)',
-    'data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)',
-  ],
   html: `
+<span
+  data-armory-embed="items"
+  data-armory-ids="7139"
+  data-armory-inline-text="wiki"
+  data-armory-size="25"
+>
+</span>
+
+<span
+  data-armory-embed="items"
+  data-armory-ids="74847"
+  data-armory-inline-text="gw2spidy"
+  data-armory-size="25"
+>
+</span>
+
+<span
+  data-armory-embed="items"
+  data-armory-ids="993"
+  data-armory-inline-text="https://www.google.com.au/search?q=gw2armory"
+  data-armory-size="25"
+>
+</span>
+
+<br />
+
 <div
   data-armory-embed="items"
   data-armory-ids="7139,74847,332211,993,109"
@@ -76,12 +106,25 @@ export default [{
   `,
 }, {
   title: 'Amulets',
-  options: [
-    'data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills',
-    'data-armory-size="{NUMBER}" (optional)',
-    'data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)',
-  ],
   html: `
+<span
+  data-armory-embed="amulets"
+  data-armory-ids="10"
+  data-armory-inline-text="wiki"
+  data-armory-size="25"
+>
+</span>
+
+<span
+  data-armory-embed="amulets"
+  data-armory-ids="13"
+  data-armory-inline-text="https://www.google.com.au/search?q=gw2armory"
+  data-armory-size="25"
+>
+</span>
+
+<br />
+
 <div
   data-armory-embed="amulets"
   data-armory-ids="10,12"
@@ -105,12 +148,25 @@ export default [{
   `,
 }, {
   title: 'Traits',
-  options: [
-    'data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills',
-    'data-armory-size="{NUMBER}" (optional)',
-    'data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)',
-  ],
   html: `
+<span
+  data-armory-embed="traits"
+  data-armory-ids="700"
+  data-armory-inline-text="wiki"
+  data-armory-size="25"
+>
+</span>
+
+<span
+  data-armory-embed="traits"
+  data-armory-ids="1950"
+  data-armory-inline-text="https://www.google.com.au/search?q=gw2armory"
+  data-armory-size="25"
+>
+</span>
+
+<br />
+
 <div
   data-armory-embed="traits"
   data-armory-ids="700,1960,1950"
@@ -139,10 +195,6 @@ export default [{
   `,
 }, {
   title: 'Specializations',
-  options: [
-    'data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills',
-    'data-armory-{SPECIALIZATION_ID}="{TRAIT_IDS_COMMA_SEPARATED}" | Not mandatory, you can leave traits out if you want, either all three or individual ones.',
-  ],
   html: `
 <div
   data-armory-embed="specializations"

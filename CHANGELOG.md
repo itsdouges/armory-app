@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Inline text for embeds, see the EMBEDS_README
 
 ## [4.34.0][] - 2017-09-02
 ### Changed

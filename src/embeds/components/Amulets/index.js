@@ -22,13 +22,13 @@ type Props = EmbedProps & {
   fetchAmulets?: (ids: Array<number>) => void,
 };
 
-@connect(mapStateToProps, {
+export default connect(mapStateToProps, {
   fetchAmulets: actions.fetchAmulets,
-})
-export default class AmuletsEmbed extends Component<Props> {
+})(
+class AmuletsEmbed extends Component<Props> {
   props: Props;
 
-  static renderAmulet (id: number, amulets?: Amulets, blankText, size) {
+  static renderAmulet (id: number, amulets?: Amulets, blankText, size, props) {
     if (id >= 0) {
       return (
         <Item
@@ -37,6 +37,7 @@ export default class AmuletsEmbed extends Component<Props> {
           key={id}
           item={amulets && amulets[id]}
           size={size}
+          {...props}
         />
       );
     }
@@ -51,11 +52,12 @@ export default class AmuletsEmbed extends Component<Props> {
   }
 
   render () {
-    const { ids, amulets, className, blankText, size } = this.props;
+    const { ids, amulets, className, blankText, size, ...props } = this.props;
     return (
       <div className={className}>
-        {ids.map((id) => AmuletsEmbed.renderAmulet(id, amulets, blankText, size))}
+        {ids.map((id) => AmuletsEmbed.renderAmulet(id, amulets, blankText, size, props))}
       </div>
     );
   }
 }
+);

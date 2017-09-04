@@ -1,6 +1,6 @@
 # GW2Armory Embeds
 
-Guild Wars 2 Armory is arming the GW2 community with powered up embeds for items, skills, and more. Currently serving over 5 million requests a month and growing!
+Guild Wars 2 Armory is arming the GW2 community with powered up embeds for items, skills, and more. Currently serving over 5.5 million requests a month and growing!
 
 For examples of the embeds go look at the [GW2Armory example page](https://gw2armory.com/embeds).
 
@@ -86,7 +86,9 @@ Each embed has a class that you can target, each class follows the pattern `.gw2
 
 ## Embeds
 
-### Character
+### [Character](https://gw2armory.com/embeds#character)
+
+![image](https://user-images.githubusercontent.com/6801309/30039207-3fd4819c-9211-11e7-9ddd-62faa3b6bfec.png)
 
 Useful for showing off your character on a forum or fansite.
 
@@ -102,7 +104,9 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-embed | character | yes | |
 | data-armory-name | string | yes | Your character name, case-sensitive. |
 
-### Skills
+### [Skills](https://gw2armory.com/embeds#skills)
+
+![image](https://user-images.githubusercontent.com/6801309/30039214-7078b6c4-9211-11e7-8d93-b93f870fc032.png)
 
 ```html
 <div
@@ -125,8 +129,11 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-ids | numbers delimited by commas | yes | The skill ids you want to load. If you pass `-1` you will load an empty box instead of the skill. |
 | data-armory-size | number | no | The size of each skill in the embed. |
 | data-armory-blank-text | string | no | When loading an skill of id `-1` you can override the tooltip text to be whatever you want. |
+| data-armory-inline-text | string | no | Optional inline text that will be displayed to the right of the icon. You can pass in `wiki` to use a gw2 wiki URL, or pass in any other text that will be used as the link. |
 
-### Items
+### [Items](https://gw2armory.com/embeds#items)
+
+![image](https://user-images.githubusercontent.com/6801309/30039226-84ce7dc0-9211-11e7-9df7-693fb8921300.png)
 
 ```html
 <div
@@ -152,8 +159,11 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-size | number | no | The size of each item in the embed. |
 | data-armory-blank-text | string | no | When loading an item of id `-1` you can override the tooltip text to be whatever you want. |
 | data-armory-{ITEM_ID}-stat | number | no | Loads the item with the stat of choice. |
+| data-armory-inline-text | string | no | Optional inline text that will be displayed to the right of the icon. You can pass in `wiki` to use a gw2 wiki URL, `gw2spidy` to use a gw2spidy URL, or pass in any other text that will be used as the link. |
 
-### Specializations
+### [Specializations](https://gw2armory.com/embeds#specializations)
+
+![image](https://user-images.githubusercontent.com/6801309/30039237-9ba20c1a-9211-11e7-8e57-8b2efffe5304.png)
 
 ```html
 <div
@@ -170,7 +180,9 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-ids | numbers delimited by commas | yes | The specialization ids you want to load. |
 | data-armory-{SPEC_ID}-traits | numbers delimited by commas | no | Traits you want to select for the specialization. Entirely optional, you can select any combination. |
 
-### Traits
+### [Traits](https://gw2armory.com/embeds#traits)
+
+![image](https://user-images.githubusercontent.com/6801309/30039240-abca384c-9211-11e7-8f04-f90127747c8b.png)
 
 ```html
 <div
@@ -187,8 +199,11 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-ids | numbers delimited by commas | yes | The trait ids you want to load. If you pass `-1` you will load an empty box instead of the trait. |
 | data-armory-size | number | no | The size of each trait in the embed. |
 | data-armory-blank-text | string | no | When loading an trait of id `-1` you can override the tooltip text to be whatever you want. |
+| data-armory-inline-text | string | no | Optional inline text that will be displayed to the right of the icon. You can pass in `wiki` to use a gw2 wiki URL, or pass in any other text that will be used as the link. |
 
-### Amulets
+### [Amulets](https://gw2armory.com/embeds#amulets)
+
+![image](https://user-images.githubusercontent.com/6801309/30039246-bb506ffc-9211-11e7-981e-1fa5d62342a7.png)
 
 ```html
 <div
@@ -207,10 +222,11 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-ids | numbers delimited by commas | yes | The amulet ids you want to load. If you pass `-1` you will load an empty box instead of the amulet. |
 | data-armory-size | number | no | The size of each amulet in the embed. |
 | data-armory-blank-text | string | no | When loading an amulet of id `-1` you can override the tooltip text to be whatever you want. |
+| data-armory-inline-text | string | no | Optional inline text that will be displayed to the right of the icon. You can pass in `wiki` to use a gw2 wiki URL, or pass in any other text that will be used as the link. |
 
 ## Finding IDs
 
-Unfortunately you can't pass the embeds the item/skill etc names. You have to pass the specific ids. 
+Unfortunately you can't pass the embeds the item/skill etc names. You have to pass the specific ids.
 
 ### Item IDs
 
@@ -233,3 +249,7 @@ Best bet is to look at the GW2 Wiki, for example: https://wiki.guildwars2.com/wi
 - [Snow Crows](http://snowcrows.com)
 
 [Don't see your site? Add it in a Pull Request!](https://github.com/madou/armory-react/pulls)
+
+## Troubleshooting
+
+Hit [@itsmadou](https://twitter.com/itsmadou) up on twitter, or [post an issue](https://github.com/madou/armory-react/issues) if you think something is a bug.

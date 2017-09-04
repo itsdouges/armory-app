@@ -107,11 +107,15 @@ describe('embed bootstrapper', () => {
 
   describe('embeds', () => {
     const ids = ['1', '2', '3'];
+    const size = 50;
+    const inlineText = 'wiki';
     let element;
 
     beforeEach(() => {
       element = document.createElement('div');
       element.setAttribute('data-armory-embed', embedName);
+      element.setAttribute('data-armory-size', size);
+      element.setAttribute('data-armory-inline-text', inlineText);
       element.setAttribute('data-armory-ids', ids.join(','));
       document.body.appendChild(element);
     });
@@ -130,9 +134,11 @@ describe('embed bootstrapper', () => {
       const [jsx, container] = render.firstCall.args;
       const wrapper = shallow(jsx);
 
-      expect(wrapper.find(Embed).props()).to.include({
+      expect(wrapper.find(Embed).props()).to.eql({
         className: 'embed-style gw2a-traits-embed',
         blankText: blank,
+        size,
+        inlineText,
       });
 
       expect(container).to.equal(element);
@@ -150,7 +156,6 @@ describe('embed bootstrapper', () => {
         const wrapper = shallow(jsx);
 
         expect(wrapper.find(Embed).props()).to.include({
-          className: 'embed-style gw2a-traits-embed',
           blankText: textOverride,
         });
 

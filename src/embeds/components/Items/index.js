@@ -29,11 +29,11 @@ type Props = {
   statIds: { [key: number]: number },
 } & EmbedProps;
 
-@connect(mapStateToProps, {
+export default connect(mapStateToProps, {
   fetchItems: actions.fetchItems,
   fetchItemStats: actions.fetchItemStats,
-})
-export default class ItemsEmbed extends Component<Props> {
+})(
+class ItemsEmbed extends Component<Props> {
   props: Props;
 
   static renderItem (
@@ -45,6 +45,7 @@ export default class ItemsEmbed extends Component<Props> {
     blankText,
     index,
     size,
+    props,
   ) {
     if (id < 0) {
       return <Item key={`${index}-${id}`} tooltipTextOverride={blankText} size={size} />;
@@ -77,6 +78,7 @@ export default class ItemsEmbed extends Component<Props> {
         tooltipType={mode === 'rune' ? 'amulets' : undefined}
         className={styles.item}
         size={size}
+        {...props}
       />
     );
   }
@@ -89,7 +91,7 @@ export default class ItemsEmbed extends Component<Props> {
   }
 
   render () {
-    const { ids, statIds, items, itemStats, className, mode, blankText, size } = this.props;
+    const { ids, statIds, items, itemStats, className, mode, blankText, size, ...props } = this.props;
 
     return (
       <div className={className}>
@@ -102,8 +104,10 @@ export default class ItemsEmbed extends Component<Props> {
           blankText,
           index,
           size,
+          props,
         ))}
       </div>
     );
   }
 }
+);

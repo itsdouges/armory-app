@@ -17,6 +17,10 @@ const Skill = proxyquire('features/Character/components/Skill', {
   'common/components/Icon': Icon,
   './Empty': EmptySkill,
   './styles.less': styles,
+  'common/components/ResourceLink': {
+    default: (props) => <div {...props} />,
+    buildLink: () => '',
+  },
 });
 
 describe('<Skill />', () => {

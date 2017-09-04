@@ -19,16 +19,15 @@ type Props = EmbedProps & {
   traits?: Traits,
   fetchTraits?: (ids: Array<number>) => void,
   ids: Array<number>,
-  className?: string,
 };
 
-@connect(mapStateToProps, {
+export default connect(mapStateToProps, {
   fetchTraits: actions.fetchTraits,
-})
-export default class TraitsEmbed extends Component<Props> {
+})(
+class TraitsEmbed extends Component<Props> {
   props: Props;
 
-  static renderTrait (id, traits, blankText, size) {
+  static renderTrait (id, traits, blankText, size, props) {
     if (id >= 0) {
       return (
         <Trait
@@ -36,6 +35,7 @@ export default class TraitsEmbed extends Component<Props> {
           key={id}
           data={traits && traits[id]}
           size={size}
+          {...props}
         />
       );
     }
@@ -50,12 +50,13 @@ export default class TraitsEmbed extends Component<Props> {
   }
 
   render () {
-    const { ids, traits, className, blankText, size } = this.props;
+    const { ids, traits, className, blankText, size, ...props } = this.props;
 
     return (
       <div className={className}>
-        {ids.map((id) => TraitsEmbed.renderTrait(id, traits, blankText, size))}
+        {ids.map((id) => TraitsEmbed.renderTrait(id, traits, blankText, size, props))}
       </div>
     );
   }
 }
+);

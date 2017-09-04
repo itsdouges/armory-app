@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { stubComponent, stubRedux, stubStyles, describeConnect } from 'test/utils';
 
 const styles = stubStyles([
@@ -27,6 +27,7 @@ const ItemsEmbed = proxyquire('embeds/components/Items', stubs);
 describe('<Items /> embed', () => {
   const props = {
     ...actions,
+    extra: true,
     className: 'cool-class',
     ids: [1, 2, -1],
     statIds: {
@@ -45,7 +46,7 @@ describe('<Items /> embed', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(<ItemsEmbed {...props} />);
+    wrapper = shallow(<ItemsEmbed {...props} />);
   });
 
   context('when mounting', () => {
@@ -72,7 +73,7 @@ describe('<Items /> embed', () => {
     it('should render items', () => {
       const expectedItems = [
         <Item
-          item={props.items['2']}
+          item={props.items[2]}
           name={undefined}
           tooltipType={undefined}
           className={styles.item}
@@ -82,9 +83,17 @@ describe('<Items /> embed', () => {
       ];
 
       expect(wrapper.children()).to.have.length(expectedItems.length);
-
-      expectedItems.forEach((jsx, index) => {
-        expect(wrapper.children().at(index)).to.contain(jsx);
+      expect(wrapper.find(Item).at(0).props()).to.include({
+        item: props.items[2],
+        name: undefined,
+        tooltipType: undefined,
+        className: styles.item,
+        size: props.size,
+        extra: true,
+      });
+      expect(wrapper.find(Item).at(1).props()).to.include({
+        tooltipTextOverride: props.blankText,
+        size: props.size,
       });
     });
   });

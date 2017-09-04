@@ -22,6 +22,7 @@ export type EmbedProps = {
   className?: string,
   blankText?: string,
   size?: number,
+  inlineText?: string,
 };
 
 const makeClassName = (str) => `gw2a-${str}-embed`;
@@ -68,6 +69,7 @@ function bootstrapEmbeds () {
       const blankText = element.getAttribute(makeAttribute('blank-text')) || T.translate('words.optional');
       const ids = (rawIds || '').split(',');
       const size: number = parseInt(element.getAttribute(makeAttribute('size')), 10);
+      const inlineText = element.getAttribute(makeAttribute('inline-text')) || '';
 
       const Component = createEmbed(element, ids);
 
@@ -75,6 +77,7 @@ function bootstrapEmbeds () {
         className: cx(styles.embed, makeClassName(embedName)),
         blankText,
         size,
+        inlineText,
       };
 
       ReactDOM.render(
