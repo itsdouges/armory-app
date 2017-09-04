@@ -7,8 +7,7 @@ import pure from 'recompose/pure';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Gw2Icon from 'common/components/Gw2Icon';
 import Icon from 'common/components/Icon';
-import ResourceLink from 'common/components/ResourceLink';
-import { get as getLang } from 'lib/i18n';
+import ResourceLink, { buildLink as buildDefaultLink } from 'common/components/ResourceLink';
 
 import styles from './styles.less';
 
@@ -17,11 +16,8 @@ const buildLink = (inlineText, { name, id }) => {
     case 'gw2spidy':
       return `https://www.gw2spidy.com/item/${id}`;
 
-    case 'wiki':
-      return `http://wiki-${getLang()}.guildwars2.com/wiki/Special:Search/${name}`;
-
     default:
-      return inlineText;
+      return buildDefaultLink(inlineText, name);
   }
 };
 

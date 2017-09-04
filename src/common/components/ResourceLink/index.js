@@ -2,6 +2,8 @@
 
 import type { Node } from 'react';
 import React from 'react';
+import { get as getLang } from 'lib/i18n';
+
 import styles from './styles.less';
 
 type Props = {
@@ -9,6 +11,16 @@ type Props = {
   href?: string,
   text?: string,
 }
+
+export const buildLink = (href?: string, text?: string) => {
+  switch (href) {
+    case 'wiki':
+      return `http://wiki-${getLang()}.guildwars2.com/wiki/Special:Search/${text || ''}`;
+
+    default:
+      return href;
+  }
+};
 
 const ResourceLink = ({ children, href, text, ...props }: Props) => (href ? (
   <span {...props} className={styles.root}>

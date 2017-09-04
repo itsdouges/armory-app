@@ -7,8 +7,7 @@ import T from 'i18n-react';
 
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Icon from 'common/components/Icon';
-import ResourceLink from 'common/components/ResourceLink';
-import { get as getLang } from 'lib/i18n';
+import ResourceLink, { buildLink } from 'common/components/ResourceLink';
 
 import EmptySkill from './Empty';
 import styles from './styles.less';
@@ -23,23 +22,13 @@ type Props = {
   inlineText?: string,
 };
 
-const buildLink = (inlineText, item = {}) => {
-  switch (inlineText) {
-    case 'wiki':
-      return `http://wiki-${getLang()}.guildwars2.com/wiki/Special:Search/${item.name}`;
-
-    default:
-      return inlineText;
-  }
-};
-
 const Skill = ({ data, className, tooltipTextOverride, size, inlineText }: Props) => {
   const error = get(data, 'error');
   const tooltipData = tooltipTextOverride || data || T.translate('characters.noSkill');
 
   return (
     <TooltipTrigger type="skill" data={tooltipData}>
-      <ResourceLink text={data && data.name} href={buildLink(inlineText, data)}>
+      <ResourceLink text={data && data.name} href={buildLink(inlineText, data && data.name)}>
         {(error || !data)
           ? <EmptySkill size={size} />
           : (
