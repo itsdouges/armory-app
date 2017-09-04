@@ -104,7 +104,7 @@ export function fetchCharacter (character: string, { redirect404 = true, basicLo
           dispatch(actions.fetchAmulets(amulets));
           dispatch(actions.fetchSpecializations(specializations));
         }
-      }, () => redirect404 && (console.log('CYA') || history.replace({ state: { notFound: true } })));
+      }, () => redirect404 && history.replace({ state: { notFound: true } }));
   };
 }
 

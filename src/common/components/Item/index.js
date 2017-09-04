@@ -7,7 +7,23 @@ import pure from 'recompose/pure';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 import Gw2Icon from 'common/components/Gw2Icon';
 import Icon from 'common/components/Icon';
+import ResourceLink from 'common/components/ResourceLink';
+import { get as getLang } from 'lib/i18n';
+
 import styles from './styles.less';
+
+const buildLink = (inlineText, { name, id }) => {
+  switch (inlineText) {
+    case 'gw2spidy':
+      return `https://www.gw2spidy.com/item/${id}`;
+
+    case 'wiki':
+      return `http://wiki-${getLang()}.guildwars2.com/wiki/Special:Search/${name}`;
+
+    default:
+      return inlineText;
+  }
+};
 
 type Props = {
   type?: string,
@@ -15,6 +31,8 @@ type Props = {
   name?: string,
   item?: {
     icon?: string,
+    name: string,
+    id: number,
   },
   skin?: {
     icon?: string,
@@ -34,13 +52,14 @@ type Props = {
   count?: number,
   onClick?: (SyntheticEvent<*>) => void,
   size?: number,
+  inlineText?: string,
 };
 
 const Item = ({
   type = '',
   busy,
   name,
-  item = {},
+  item = { name: '', id: -1 },
   skin = {},
   upgrades = [],
   infusions = [],
@@ -56,6 +75,7 @@ const Item = ({
   count,
   onClick,
   size,
+  inlineText,
   ...props
 }: Props) => {
   if (hide) return null;
@@ -90,23 +110,25 @@ const Item = ({
       data={tooltipTextOverride || tooltipData}
       {...props}
     >
-      <Icon
-        name={type && `${type}-slot-icon.png`}
-        className={cx(styles.root, className, {
-          [styles.busy]: busy,
-          [styles.small]: small,
-          [styles.emptyBg]: !type && !itemLoaded,
-          [styles.inline]: inline,
-        })}
-        onClick={onClick}
-        sizePx={size}
-      >
-        <Gw2Icon
-          count={count}
-          className={styles.item}
-          src={skin.icon || item.icon || ''}
-        />
-      </Icon>
+      <ResourceLink text={item.name} href={buildLink(inlineText, item)}>
+        <Icon
+          name={type && `${type}-slot-icon.png`}
+          className={cx(styles.root, className, {
+            [styles.busy]: busy,
+            [styles.small]: small,
+            [styles.emptyBg]: !type && !itemLoaded,
+            [styles.inline]: inline,
+          })}
+          onClick={onClick}
+          sizePx={size}
+        >
+          <Gw2Icon
+            count={count}
+            className={styles.item}
+            src={skin.icon || item.icon || ''}
+          />
+        </Icon>
+      </ResourceLink>
     </TooltipTrigger>
   );
 };
