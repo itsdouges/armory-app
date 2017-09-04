@@ -23,7 +23,7 @@ export default [{
 <span
   data-armory-embed="skills"
   data-armory-ids="5515"
-  data-armory-inline-text="https://qtfy.eu/guildwars/ranger/condi-druid-quick-guide/"
+  data-armory-inline-text="https://www.google.com.au/search?q=gw2armory"
   data-armory-size="25"
 >
 </span>
@@ -72,7 +72,7 @@ export default [{
 <span
   data-armory-embed="items"
   data-armory-ids="993"
-  data-armory-inline-text="https://qtfy.eu/guildwars/ranger/condi-druid-quick-guide/"
+  data-armory-inline-text="https://www.google.com.au/search?q=gw2armory"
   data-armory-size="25"
 >
 </span>
@@ -118,7 +118,7 @@ export default [{
 <span
   data-armory-embed="amulets"
   data-armory-ids="13"
-  data-armory-inline-text="https://qtfy.eu/guildwars/ranger/condi-druid-quick-guide/"
+  data-armory-inline-text="https://www.google.com.au/search?q=gw2armory"
   data-armory-size="25"
 >
 </span>
@@ -160,7 +160,7 @@ export default [{
 <span
   data-armory-embed="traits"
   data-armory-ids="1950"
-  data-armory-inline-text="https://qtfy.eu/guildwars/ranger/condi-druid-quick-guide/"
+  data-armory-inline-text="https://www.google.com.au/search?q=gw2armory"
   data-armory-size="25"
 >
 </span>

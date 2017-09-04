@@ -9,6 +9,12 @@ type Props = {
   children: Node,
 };
 
-const LoadingStrip = ({ children }: Props) => children || <span className={styles.root}>Loading...</span>;
+const LoadingStrip = ({ children }: Props) => {
+  if (children) {
+    return <span>{children}</span>;
+  }
+
+  return <span className={styles.root}>Loading...</span>;
+};
 
 export default LoadingStrip;
