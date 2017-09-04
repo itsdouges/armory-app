@@ -210,6 +210,7 @@ export type Specializations = {
 export type Traits = {
   [number]: {
     icon?: string,
+    name: string,
   },
 };
 

@@ -19,7 +19,6 @@ type Props = EmbedProps & {
   traits?: Traits,
   fetchTraits?: (ids: Array<number>) => void,
   ids: Array<number>,
-  className?: string,
 };
 
 export default connect(mapStateToProps, {

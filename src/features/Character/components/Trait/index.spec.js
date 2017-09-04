@@ -19,6 +19,7 @@ const Trait = proxyquire('features/Character/components/Trait', {
   'common/components/TooltipTrigger': TooltipTrigger,
   'common/components/Icon': Icon,
   'common/styles/colours': colours,
+  'lib/i18n': { get: () => 'en' },
 });
 
 describe('<Trait />', () => {

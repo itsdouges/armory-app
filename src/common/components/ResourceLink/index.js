@@ -23,6 +23,7 @@ const ResourceLink = ({ children, href, text, ...props }: Props) => (href ? (
       {text || 'Loading...'}
     </a>
   </span>
+  // $FlowFixMe - cloneElement doesn't take Node?
 ) : React.cloneElement(children, props));
 
 export default ResourceLink;

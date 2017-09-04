@@ -14,7 +14,9 @@ import EmptySkill from './Empty';
 import styles from './styles.less';
 
 type Props = {
-  data?: {},
+  data?: {
+    name: string,
+  },
   className?: string,
   tooltipTextOverride?: string,
   size?: number,
