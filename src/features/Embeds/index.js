@@ -36,7 +36,7 @@ export default class Embeds extends Component<*> {
           {embeds.map(({ title, html, options }, index) => {
             const embedComponent = (
               <div key={title}>
-                <h2>{title}</h2>
+                <h2 id={title.toLowerCase()}>{title}</h2>
                 <Card size="medium" className={styles.card}>
                   <div dangerouslySetInnerHTML={makeHtml(html)} />
                   <pre>{`${html}
@@ -49,7 +49,8 @@ export default class Embeds extends Component<*> {
             if ((index + 1) % 3 === 0) {
               return [
                 embedComponent,
-                <DisplayAd type="mrec" className={styles.mrec} />,
+                // eslint-disable-next-line react/no-array-index-key
+                <DisplayAd type="mrec" className={styles.mrec} key={`ad-${index}`} />,
               ];
             }
 
