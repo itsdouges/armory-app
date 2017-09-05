@@ -122,6 +122,32 @@ describe('gw2 action factory', () => {
       });
     });
 
+    context('when an error is thrown', () => {
+      it('should dispatch all ids as errors', async () => {
+        const ids = [10, 11, 12];
+        const action = actions.fetchAmulets(ids);
+        getFunc.withArgs(ids).rejects({});
+        const message = 'uh oh not found';
+        translate.withArgs('messages.gw2ApiDown').returns(message);
+
+        await expect(action(dispatch, getStore)).to.be.rejected;
+
+        expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, message));
+      });
+
+      it('should dispatch not found error', async () => {
+        const ids = [10, 11, 12];
+        const action = actions.fetchAmulets(ids);
+        getFunc.withArgs(ids).rejects({ response: { status: 404 } });
+        const message = 'uh oh not found!!';
+        translate.withArgs('messages.notFoundLong').returns(message);
+
+        await expect(action(dispatch, getStore)).to.be.rejected;
+
+        expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, message));
+      });
+    });
+
     context('when the amount of ids to fetch are above the request limit', () => {
       it('should spread request over multiple requests', () => {
         const ids = Array(600).fill(undefined).map((x, index) => index);

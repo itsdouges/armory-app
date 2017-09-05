@@ -66,24 +66,17 @@ describe('<Items /> embed', () => {
       expect(wrapper).to.have.className(props.className);
     });
 
-    it('should render nothing for items that have no data', () => {
-      expect(wrapper.children()).to.have.length(2);
-    });
-
     it('should render items', () => {
-      const expectedItems = [
-        <Item
-          item={props.items[2]}
-          name={undefined}
-          tooltipType={undefined}
-          className={styles.item}
-          size={props.size}
-        />,
-        <Item tooltipTextOverride={props.blankText} size={props.size} />,
-      ];
-
-      expect(wrapper.children()).to.have.length(expectedItems.length);
       expect(wrapper.find(Item).at(0).props()).to.include({
+        item: undefined,
+        name: undefined,
+        tooltipType: undefined,
+        className: styles.item,
+        size: props.size,
+        extra: true,
+      });
+
+      expect(wrapper.find(Item).at(1).props()).to.include({
         item: props.items[2],
         name: undefined,
         tooltipType: undefined,
@@ -91,7 +84,8 @@ describe('<Items /> embed', () => {
         size: props.size,
         extra: true,
       });
-      expect(wrapper.find(Item).at(1).props()).to.include({
+
+      expect(wrapper.find(Item).at(2).props()).to.include({
         tooltipTextOverride: props.blankText,
         size: props.size,
       });

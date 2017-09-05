@@ -94,13 +94,11 @@ export function generateActions (resourceName, getResource, afterGet) {
         return afterGet ? afterGet(dispatch, response) : response;
       })
       .catch((data) => {
-        if (data.response) {
-          const text = data.response.status === 404
-            ? T.translate('messages.notFoundLong')
-            : T.translate('messages.gw2ApiDown');
+        const text = data.response && data.response.status === 404
+          ? T.translate('messages.notFoundLong')
+          : T.translate('messages.gw2ApiDown');
 
-          dispatch(actions[fetchErrorMethodName](idsToFetch, text));
-        }
+        dispatch(actions[fetchErrorMethodName](idsToFetch, text));
 
         throw data;
       });

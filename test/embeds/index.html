@@ -80,39 +80,7 @@ document.GW2A_EMBED_OPTIONS = {
     <div class="container">
       <h1>Guild Wars 2 Armory Embeds</h1>
 
-      <a class="back" href="https://gw2armory.com">Back to Guild Wars 2 Armory</a>
-
       <div class="inner-container">
-        <h2>Embed Options</h2>
-
-        <p>Add options in the head of your webpage. Ensure it is set immediately and not after the page has loaded (don't use inside document.onReady or equivalent).</p>
-
-        <p>lang</p>
-        <ul>
-          <li>'en' (ENGLISH)</li>
-          <li>'fr' (FRENCH)</li>
-          <li>'de' (GERMAN)</li>
-          <li>'es' (SPANISH)</li>
-          <li>'zh' (CHINESE)</li>
-          <li>'ru' (RUSSIAN [limited support])</li>
-        </ul>
-
-<pre>
-document.GW2A_EMBED_OPTIONS = {
-  lang: 'en',
-};
-</pre>
-
-        <h2>Styling Embeds</h2>
-
-        <p>To style any embed simply target the embed with the embed name, e.g:</p>
-
-        <pre>.gw2a-character-embed
-.gw2a-items-embed
-.gw2a-skills-embed
-.gw2a-tooltip-embed
-.gw2a-specializations-embed</pre>
-
         <h2>Character</h2>
 
         <div
@@ -120,19 +88,6 @@ document.GW2A_EMBED_OPTIONS = {
           data-armory-name="Blastrn"
         >
         </div>
-
-        <ul>
-          <li>data-armory-embed="character"</li>
-          <li>data-armory-name="{CHARACTER_NAME}"</li>
-        </ul>
-
-        <pre>&lt;div
-  data-armory-embed="character"
-  data-armory-name="Blastrn"
-&gt;
-&lt;/div&gt;
-
-&lt;script async src="https://gw2armory.com/gw2aEmbeds.js"&gt;&lt;/script&gt;</pre>
 
         <h2>Skills</h2>
         <span
@@ -172,35 +127,6 @@ document.GW2A_EMBED_OPTIONS = {
           data-armory-ids="5516,5517,30662,5542"
         >
         </div>
-
-        <ul>
-          <li>data-armory-embed="skills"</li>
-          <li>data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank skills</li>
-          <li>data-armory-size="{NUMBER}" (optional)</li>
-          <li>data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)</li>
-        </ul>
-
-        <pre>&lt;div
-  data-armory-embed="skills"
-  data-armory-ids="5507,5508,5510,5507"
-&gt;
-&lt;/div&gt;
-
-&lt;div
-  data-armory-embed="skills"
-  data-armory-ids="5508,5510,332211,-1,5515"
-  data-armory-size="40"
-  data-armory-blank-text="This can be replaced with any text!"
-&gt;
-&lt;/div&gt;
-
-&lt;div
-  data-armory-embed="skills"
-  data-armory-ids="5516,5517,30662,-1,5542"
-&gt;
-&lt;/div&gt;
-
-&lt;script async src="https://gw2armory.com/gw2aEmbeds.js"&gt;&lt;/script&gt;</pre>
 
         <h2>Items</h2>
         <span
@@ -254,41 +180,6 @@ document.GW2A_EMBED_OPTIONS = {
         >
         </div>
 
-        <ul>
-          <li>data-armory-embed="items"</li>
-          <li>data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank items</li>
-          <li>data-armory-{ITEM_ID}-stat="{ITEMSTAT_ID}" (optional)</li>
-          <li>data-armory-size="{NUMBER}" (optional)</li>
-          <li>data-armory-blank-text="{STRING}" (optional, if missing, "optional" is used in its place)</li>
-        </ul>
-
-        <pre>&lt;div
-  data-armory-embed="items"
-  data-armory-ids="7139,8633,46774,74847,993,332211,109"
-&gt;
-&lt;/div&gt;
-
-&lt;div
-  data-armory-embed="items"
-  data-armory-blank-text="Some other text can go here!"
-  data-armory-size="60"
-  data-armory-ids="24836,-1,74412,39620"
-&gt;
-&lt;/div&gt;
-
-&lt;div
-  data-armory-embed="items"
-  data-armory-ids="77482,79712,79444,80241,80434"
-  data-armory-77482-stat="656"
-  data-armory-79444-stat="591"
-  data-armory-79712-stat="1153"
-  data-armory-80241-stat="588"
-  data-armory-80434-stat="1153"
-&gt;
-&lt;/div&gt;
-
-&lt;script async src="https://gw2armory.com/gw2aEmbeds.js"&gt;&lt;/script&gt;</pre>
-
         <h2>Amulets</h2>
         <span
           data-armory-embed="amulets"
@@ -328,23 +219,6 @@ document.GW2A_EMBED_OPTIONS = {
           data-armory-ids="13,14"
         >
         </div>
-
-        <ul>
-          <li>data-armory-embed="amulets"</li>
-          <li>data-armory-ids="{IDS_COMMA_SEPARATED}" | use id:-1 for blank amulets</li>
-          <li>data-armory-size="{NUMBER}" (optional)</li>
-          <li>data-armory-blank-text="{STRING}" (if missing, "optional" is used in its place)</li>
-        </ul>
-
-        <pre>&lt;div
-  data-armory-embed="amulets"
-  data-armory-ids="10,12,332211,-1,13,14"
-  data-armory-size="30"
-  data-armory-blank-text="This is a blank space!"
-&gt;
-&lt;/div&gt;
-
-&lt;script async src="https://gw2armory.com/gw2aEmbeds.js"&gt;&lt;/script&gt;</pre>
 
         <h2>Traits</h2>
 
@@ -392,41 +266,6 @@ document.GW2A_EMBED_OPTIONS = {
         >
         </div>
 
-        <ul>
-          <li>data-armory-embed="traits"</li>
-          <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
-          <li>data-armory-size="{NUMBER}" (optional)</li>
-          <li>data-armory-blank-text="{STRING}" (if missing, "optional" is used in its place)</li>
-        </ul>
-
-        <pre>&lt;div
-  data-armory-embed="traits"
-  data-armory-ids="700,1960,1950"
-&gt;
-&lt;/div&gt;
-
-&lt;div
-  data-armory-embed="traits"
-  data-armory-ids="820,-1,1694"
-  data-armory-size="30"
-  data-armory-blank-text="This could be anything you want!"
-&gt;
-&lt;/div&gt;
-
-&lt;div
-  data-armory-embed="traits"
-  data-armory-ids="1471,22331122,1711"
-&gt;
-&lt;/div&gt;
-
-&lt;div
-  data-armory-embed="traits"
-  data-armory-ids="577,578,1686"
-&gt;
-&lt;/div&gt;
-
-&lt;script async src="https://gw2armory.com/gw2aEmbeds.js"&gt;&lt;/script&gt;</pre>
-
         <h2>Specializations</h2>
         <div
           data-armory-embed="specializations"
@@ -458,27 +297,6 @@ document.GW2A_EMBED_OPTIONS = {
           data-armory-18-traits="2049,2011,1928"
         >
         </div>
-
-        <ul>
-          <li>data-armory-embed="specializations"</li>
-          <li>data-armory-ids="{IDS_COMMA_SEPARATED}"</li>
-          <li>data-armory-{SPECIALIZATION_ID}="{TRAIT_IDS_COMMA_SEPARATED}" | Not mandatory, you can leave traits out if you want, either all three or individual ones.</li>
-        </ul>
-
-        <pre>&lt;div
-  data-armory-embed="specializations"
-  data-armory-ids="1,2,3,332211,39,11,16,18"
-  data-armory-1-traits="700,1960,1950"
-  data-armory-2-traits="820,858,1694"
-  data-armory-3-traits="1761,1774,1749"
-  data-armory-39-traits="815,816,801"
-  data-armory-16-traits="577,578,1686"
-  data-armory-11-traits="1471,1482,1711"
-  data-armory-18-traits="2049,2011,1928"
-&gt;
-&lt;/div&gt;
-
-&lt;script async src="https://gw2armory.com/gw2aEmbeds.js"&gt;&lt;/script&gt;</pre>
       </div>
     </div>
 
