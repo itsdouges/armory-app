@@ -53,9 +53,6 @@ class ItemsEmbed extends Component<Props> {
 
     const selectedStat = statId && itemStats && itemStats[statId];
     const item = items && items[id];
-    if (!item) {
-      return null;
-    }
 
     // TODO: Move this into a custom reducer.
     // See: https://github.com/madou/armory-react/issues/243

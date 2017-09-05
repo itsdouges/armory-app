@@ -14,7 +14,7 @@ import styles from './styles.less';
 const buildLink = (inlineText, { name, id }) => {
   switch (inlineText) {
     case 'gw2spidy':
-      return `https://www.gw2spidy.com/item/${id}`;
+      return `https://www.gw2spidy.com/item/${id || ''}`;
 
     default:
       return buildDefaultLink(inlineText, name);
@@ -27,8 +27,8 @@ type Props = {
   name?: string,
   item?: {
     icon?: string,
-    name: string,
-    id: number,
+    name?: string,
+    id?: number,
   },
   skin?: {
     icon?: string,
@@ -55,7 +55,7 @@ const Item = ({
   type = '',
   busy,
   name,
-  item = { name: '', id: -1 },
+  item = {},
   skin = {},
   upgrades = [],
   infusions = [],
