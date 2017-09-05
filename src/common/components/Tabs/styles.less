@@ -2,37 +2,59 @@
 
 @tabPadding: 0.9em;
 
-.root {
-  font-size: 0.75rem;
-}
-
 .tabsBg {
-  background-color: @tabsBg;
-  border-bottom: 1px solid @tabsBorder;
+  padding: 10px 0;
+
+  &.default {
+    background-color: @tabsBg;
+    border-bottom: 1px solid @tabsBorder;
+
+    .tab {
+      color: @_black;
+    }
+  }
+
+  &.transparent {
+    .tab {
+      color: @_white;
+    }
+
+    .selected {
+      color: @_black;
+    }
+  }
+
+  .fromTablet({
+    padding: 0;
+  });
+
+  .fromPc({
+    font-size: 0.85em;
+  });
 }
 
 .tabsContainer {
-  display: flex;
-
   > ul {
     margin: 0;
     padding: 0;
     list-style: none;
     width: 100%;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+
+    .fromTablet({
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    });
   }
 
   li {
-    display: inline-block;
+    display: block;
   }
 }
 
 .tab {
   display: block;
   padding: @tabPadding @tabPadding * 2;
-  color: @_black;
   border: 1px solid transparent;
 }
 
@@ -41,19 +63,17 @@
   background-color: @background;
   border-radius: 2px;
 
-  .fromPc({
+  .fromTablet({
     margin-bottom: -1px;
     border-bottom: none;
     border-radius: 2px 2px 0 0;
     padding-bottom: calc(@tabPadding ~"+" 2px);
   });
-}
 
-.fromTablet({
-  .root {
-    font-size: 0.85rem;
-  }
-});
+  .fromPc({
+
+  });
+}
 
 .pinnedRight {
   margin-left: auto;

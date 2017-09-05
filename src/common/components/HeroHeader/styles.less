@@ -1,0 +1,45 @@
+@import '~common/styles/base.less';
+
+@bgoffset: 4px;
+
+.root {
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  height: 300px;
+  .flexCenter();
+}
+
+.title {
+  color: white;
+  text-shadow: 1px 3px 15px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  text-align: center;
+  font-size: 2.5em;
+  line-height: 60px;
+  z-index: @_zindexBehind;
+
+  .fromTablet({
+    .flexCenter();
+    font-size: 3em;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  });
+}
+
+.background {
+  position: absolute;
+  top: -@bgoffset;
+  left: -@bgoffset;
+  right: -@bgoffset;
+  bottom: -@bgoffset;
+  background-size: cover;
+  background-position: center;
+  filter: blur(@bgoffset / 2);
+  z-index: @_zindexBehind;
+}

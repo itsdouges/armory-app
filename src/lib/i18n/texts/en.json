@@ -204,7 +204,8 @@
     "coins": "Coins",
     "title": "Title",
     "of": "of",
-    "objectives": "Objectives"
+    "objectives": "Objectives",
+    "ladder": "Ladder"
   },
   "leaderboards": {
     "name": "Leaderboards"

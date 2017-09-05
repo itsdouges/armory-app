@@ -57,7 +57,7 @@
     "makePrimary": "Сделайте основной API ключ.",
     "primaryToken": "Это основной API ключ, информация о Вашем аккаунте будет взята из него.",
     "invalidToken": "Невозможно получить данные! Возможно, API ключ был удалён со страницы аккаунта ArenaNet.",
-    "stubUser": "This user hasn't been claimed yet, go bug him to add his api key!",
+    "stubUser": "Этот пользователь еще не был востребован, попробуйте добавить его ключ api!",
     "pvpStats": {
       "name": "PvP Статистика",
       "unranked": "Обычная игра",
@@ -197,7 +197,8 @@
     "coins": "Монет",
     "title": "Титул",
     "of": "из",
-    "objectives": "Цели"
+    "objectives": "Цели",
+    "ladder": "трап"
   },
   "leaderboards": {
     "name": "Таблицы лидеров"

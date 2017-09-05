@@ -124,7 +124,6 @@ class Header extends Component<Props, State> {
       <Container className={styles.innerContainer}>
         <Link style={style} to="/">
           <Icon className={styles.icon} name={smallIconName} size="mini" />
-          <h1>Guild Wars 2 Armory</h1>
         </Link>
 
         <div

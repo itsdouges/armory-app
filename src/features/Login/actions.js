@@ -48,7 +48,7 @@ export function fetchToken (email, password) {
         dispatch(fetchingToken(false));
         history.push('/settings');
       }, ({ response }) => {
-        dispatch(fetchTokenError(response.data.error_description));
+        dispatch(fetchTokenError(response.data.message));
         dispatch(fetchingToken(false));
       });
   };

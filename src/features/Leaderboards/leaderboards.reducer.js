@@ -19,6 +19,7 @@ export default (state, action) => {
       return {
         ...state,
         pvp: {
+          name: newLeaderboard.name,
           ...state.pvp,
           [action.payload.region]: newLeaderboard,
         },
