@@ -25,12 +25,12 @@
     "name": "Forgot My Password",
     "nextCta": "Next",
     "changeCta": "Change",
-    "checkEmail": "Check your email for your reset token!",
-    "success": "Your password has been changed. Go login!"
+    "checkEmail": "A reset token has been emailed to you.",
+    "success": "Your password has been changed. Click here to login."
   },
   "join": {
     "name": "Join",
-    "loginCta": "Already have an account? Go login!",
+    "loginCta": "Have an account already?",
     "buttons": {
       "join": "Register"
     }
@@ -47,9 +47,9 @@
     "name": "Search",
     "textbox": "Search users, characters, and guilds",
     "results": "Search results for",
-    "minlength": "Search term should be 3 or more characters :-)",
+    "minlength": "Your search term should be 3 or more characters",
     "nonefound": "Nothing was found... Thought you'd find something?",
-    "joincta": "Join and add your gw2 api key(s) first!"
+    "joincta": "Join and add your GW2 API key(s) first!"
   },
   "users": {
     "materials": "Materials",
@@ -58,12 +58,12 @@
     "wallet": "Wallet",
     "recentMatches": "Recent Matches",
     "claimCta": "Claim",
-    "noApiKey": "Api key not set.",
+    "noApiKey": "API key not set.",
     "achievements": "Achievements",
-    "makePrimary": "Make primary api key.",
-    "primaryToken": "This is your primary api key, your user information will be sourced from this.",
-    "invalidToken": "Could not retrieve data from GW2, the api key was probably deleted from the ArenaNet account page.",
-    "stubUser": "This user hasn't been claimed yet, go bug him to add his api key!",
+    "makePrimary": "Make primary API key.",
+    "primaryToken": "This is your primary API key, your user information will be sourced from this.",
+    "invalidToken": "Could not retrieve data from GW2, the API key was probably deleted from the ArenaNet account page.",
+    "stubUser": "This user hasn't been claimed yet. Add an API key!",
     "pvpStats": {
       "name": "Pvp Stats",
       "unranked": "Unranked",
@@ -88,18 +88,18 @@
     "guild": "Guild",
     "noGuild": "No Guild",
     "claimed": "This guild has been claimed!",
-    "unclaimed": "This guild hasn't been claimed yet, if you're the guild leader add an api key with the guilds permission!",
+    "unclaimed": "This guild hasn't been claimed yet, the guild leader should add an API key with the \"guilds\" permission.",
     "motd": "Message of the day"
   },
   "characters": {
     "name": "Characters",
-    "embedCta": "This is a character chosen at random. You can get an embed just like this on your website! Click the embed text on any character page.",
+    "embedCta": "This is a character chosen at random. You can get an embed just like this on your website, click the embed text on any character page.",
     "shown": "Can be seen by everyone",
     "hidden": "Can only be seen by you",
     "done": "Done",
     "edit": "Privacy",
     "changePortrait": "Click to change your character portrait",
-    "noSkill": "No Skill Selected",
+    "noSkill": "No skill selected",
     "embedTooltip": "Copy and paste this markup onto your website.",
     "bags": "Bags"
   },
@@ -108,11 +108,11 @@
     "avatar": {
       "cta": "Click to change your avatar",
       "label": "Change your avatar",
-      "finished": "Looking good ;-)"
+      "finished": "Your avatar has been updated."
     },
     "apiKeys": {
-      "name": "Api Keys",
-      "noKeysCta": "Click here to create an api key. Select all permissions, you can hide what you don't want to show.",
+      "name": "API Keys",
+      "noKeysCta": "Click here to create an API key. Select all permissions, you can hide what you don't want to show.",
       "inputs": {
         "add": "Add key"
       },
@@ -213,7 +213,7 @@
     "gw2ApiDown": "The official GW2 API is experiencing issues, your session may be affected!",
     "notFound": "Not Found",
     "notFoundLong": "Not Found (or the GW2 API is dead)!",
-    "resourceNotFound": "Sorry, that doesn't exist. Here's a random character instead!",
+    "resourceNotFound": "Sorry that couldn't be found.",
     "newBags": "Bags now available on character pages! User achievements coming soon."
   },
   "achievements": {
