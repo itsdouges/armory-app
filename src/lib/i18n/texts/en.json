@@ -15,7 +15,7 @@
   },
   "login": {
     "name": "Sign in",
-    "joinCta": "Don't have an account? Join us!",
+    "joinCta": "Don't have an account?",
     "forgotMyPasswordCta": "Forgot my password",
     "buttons": {
       "login": "Sign in"
@@ -48,8 +48,8 @@
     "textbox": "Search users, characters, and guilds",
     "results": "Search results for",
     "minlength": "Your search term should be 3 or more characters",
-    "nonefound": "Nothing was found... Thought you'd find something?",
-    "joincta": "Join and add your GW2 API key(s) first!"
+    "nonefound": "There was nothing found.",
+    "joincta": "To be listed in the search results you first need to add your API key to the Armory, click here to join."
   },
   "users": {
     "materials": "Materials",
