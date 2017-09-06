@@ -9,12 +9,14 @@ type Props = {
   title: Node,
   children?: Node,
   backgroundImage: string,
+  backgroundColor: string,
 };
 
-const HeroHeader = ({ children, backgroundImage, title }: Props) => (
+const HeroHeader = ({ children, backgroundImage, backgroundColor, title }: Props) => (
   <div className={styles.root}>
     <div
       className={styles.background} style={{
+        backgroundColor,
         backgroundImage: `url(${backgroundImage})`,
       }}
     />

@@ -52,6 +52,7 @@ const mapStateToProps = (state) => ({
 const Leaderboards = ({ match, pvpSeasonName }: Props) => (
   <div className={styles.root}>
     <HeroHeader
+      backgroundColor="#57585d"
       backgroundImage={seasonEightBg}
       title={<LoadingStrip long appearance="white">{pvpSeasonName}</LoadingStrip>}
     >
