@@ -7,7 +7,6 @@
 
   &.default {
     background-color: @tabsBg;
-    border-bottom: 1px solid @tabsBorder;
 
     .tab {
       color: @_black;
@@ -30,6 +29,7 @@
   .fromTablet({
     padding: 0;
     font-size: 0.85em;
+    box-shadow: inset 1px -12px 8px -13px rgba(0, 0, 0, 0.1);
   });
 }
 
@@ -56,20 +56,18 @@
 .tab {
   display: block;
   padding: @tabPadding @tabPadding * 2;
-  border: 1px solid transparent;
   font-weight: normal;
 }
 
 .selected {
-  border: 1px solid @tabsBorder;
   background-color: @background;
   border-radius: 2px;
 
   .fromTablet({
     margin-bottom: -1px;
-    border-bottom: none;
     border-radius: 2px 2px 0 0;
     padding-bottom: calc(@tabPadding ~"+" 2px);
+    box-shadow: 0 -1px 3px 0px rgba(0, 0, 0, 0.05);
   });
 }
 
