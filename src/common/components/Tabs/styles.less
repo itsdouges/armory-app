@@ -15,6 +15,9 @@
   }
 
   &.transparent {
+    background: rgba(0, 0, 0, 0.2);
+    padding-top: 10px;
+
     .tab {
       color: @_white;
     }
@@ -42,8 +45,7 @@
 
     .fromTablet({
       display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+      align-items: flex-end;
     });
   }
 
@@ -56,6 +58,7 @@
   display: block;
   padding: @tabPadding @tabPadding * 2;
   border: 1px solid transparent;
+  font-weight: normal;
 }
 
 .selected {

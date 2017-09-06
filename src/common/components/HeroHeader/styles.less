@@ -1,7 +1,5 @@
 @import '~common/styles/base.less';
 
-@bgoffset: 4px;
-
 .root {
   position: relative;
   overflow: hidden;
@@ -17,6 +15,7 @@
 }
 
 .title {
+  .primaryFont();
   color: white;
   text-shadow: 1px 3px 15px rgba(0, 0, 0, 0.5);
   padding: 20px;
@@ -24,6 +23,7 @@
   font-size: 2.5em;
   line-height: 60px;
   z-index: @_zindexBehind;
+  letter-spacing: 5px;
 
   .fromTablet({
     .flexCenter();
@@ -33,17 +33,17 @@
     bottom: 0;
     left: 0;
     right: 0;
+    letter-spacing: 10px;
   });
 }
 
 .background {
   position: absolute;
-  top: -@bgoffset;
-  left: -@bgoffset;
-  right: -@bgoffset;
-  bottom: -@bgoffset;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-size: cover;
   background-position: center;
-  filter: blur(@bgoffset / 2);
   z-index: @_zindexBehind;
 }
