@@ -25,23 +25,21 @@ type TabsProps = {
 
 const Tabs = ({ tabs, pinnedTab, basePath, appearance }: TabsProps) => (
   <nav className={cx(styles.tabsBg, styles[appearance])}>
-    <Container className={styles.tabsContainer}>
-      <ul>
-        {tabs.map((tab) => (tab.hide ? null : (
-          <li key={tab.path}>
-            <Tab
-              flair={tab.flair}
-              exact={!tab.path}
-              path={`${basePath}${tab.path}`}
-              name={tab.name}
-            />
-          </li>
-        )))}
+    <Container className={styles.tabsContainer} tag="ul">
+      {tabs.map((tab) => (tab.hide ? null : (
+        <li key={tab.path}>
+          <Tab
+            flair={tab.flair}
+            exact={!tab.path}
+            path={`${basePath}${tab.path}`}
+            name={tab.name}
+          />
+        </li>
+      )))}
 
-        {pinnedTab && (
-          <li className={styles.pinnedRight}>{pinnedTab}</li>
-        )}
-      </ul>
+      {pinnedTab && (
+        <li className={styles.pinnedRight}>{pinnedTab}</li>
+      )}
     </Container>
   </nav>
 );

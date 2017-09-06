@@ -324,15 +324,15 @@ class User extends Component<Props, *> {
           content: <Achievements />,
           hide: !this.canShowTab('achievements'),
         }, {
-          path: '/bank',
-          name: T.translate('users.bank'),
-          content: <Bank alias={alias} />,
-          hide: !this.canShowTab('bank'),
-        }, {
           path: '/matches',
           name: T.translate('users.recentMatches'),
           content: <RecentMatches alias={alias} />,
           hide: !this.canShowTab('pvpGames'),
+        }, {
+          path: '/bank',
+          name: T.translate('users.bank'),
+          content: <Bank alias={alias} />,
+          hide: !this.canShowTab('bank'),
         }, {
           path: '/wallet',
           name: T.translate('users.wallet'),

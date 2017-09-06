@@ -29,25 +29,24 @@
 
   .fromTablet({
     padding: 0;
-  });
-
-  .fromPc({
     font-size: 0.85em;
   });
 }
 
 .tabsContainer {
-  > ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    width: 100%;
+  padding: 0;
+  list-style: none;
 
-    .fromTablet({
-      display: flex;
-      align-items: flex-end;
-    });
-  }
+  .fromTablet({
+    display: flex;
+    align-items: flex-end;
+    overflow-x: auto;
+    white-space: nowrap;
+  });
+
+  .fromPc({
+    overflow-x: inherit;
+  });
 
   li {
     display: block;
