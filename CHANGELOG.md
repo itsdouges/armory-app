@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Hero header to season page
+
+### Fixed
+- Login error not being shown
+
+### Changed
+- Tabs to be in two distinct components
+- Tabs styles
 
 ## [4.35.1][] - 2017-09-05
 ### Fixed
