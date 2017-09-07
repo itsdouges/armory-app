@@ -1,9 +1,11 @@
 // @flow
 
 import { compressToUTF16, decompressFromUTF16 } from 'lz-string';
+import axios from 'axios';
+import config from 'config';
 
-const LAST_STORAGE_CLEAN_DATE_KEY = 'LAST_CLEAN_DATE';
-const CLEAR_INTERVAL_IN_DAYS = 7;
+const GW2_BUILD_KEY = 'GW2_BUILD';
+const CLEAR_LS_NEXT_LOAD_KEY = 'CLEAR_LS_NEXT_LOAD';
 
 const makeKey = (str) => `GW2A:${str.toUpperCase()}`;
 
@@ -27,26 +29,29 @@ export function get (key: string): ?string {
   return decompressFromUTF16(compressed);
 }
 
-export function clear (key: string, clearKey?: string) {
+export function clear (key: string) {
   localStorage.removeItem(makeKey(key));
-  if (clearKey) {
-    set(clearKey, new Date().toString());
+}
+
+export function clearIfNewBuild (key: string) {
+  const shouldClearLs = get(CLEAR_LS_NEXT_LOAD_KEY) === 'true';
+  if (shouldClearLs) {
+    clear(key);
+    clear(CLEAR_LS_NEXT_LOAD_KEY);
   }
 }
 
-export function clearIfPastStoreInterval (key: string) {
-  const clearKey = `${LAST_STORAGE_CLEAN_DATE_KEY}:${key}`;
-  const lastCleared = get(clearKey);
-  if (!lastCleared) {
-    clear(key, clearKey);
-    return;
-  }
+export function initialise () {
+  return axios.get(`${config.gw2.endpoint}v2/build`)
+    .then(({ data }) => {
+      const currentBuildId = `${data.id}`;
+      const savedBuildId = get(GW2_BUILD_KEY);
 
-  const today = new Date();
-  const dateToClear = new Date(lastCleared);
-  dateToClear.setDate(dateToClear.getDate() + CLEAR_INTERVAL_IN_DAYS);
-
-  if (dateToClear <= today) {
-    clear(key);
-  }
+      if (!savedBuildId) {
+        set(GW2_BUILD_KEY, currentBuildId);
+      } else if (currentBuildId !== savedBuildId) {
+        set(GW2_BUILD_KEY, currentBuildId);
+        set(CLEAR_LS_NEXT_LOAD_KEY, 'true');
+      }
+    });
 }

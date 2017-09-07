@@ -9,7 +9,7 @@ export default function gw2ReducerFactory (resourceName, getResource, {
   const { fetching, result, error } = generateActions(resourceName, getResource, afterGet);
   const initialData = ls.get(LS_KEY);
 
-  ls.clearIfPastStoreInterval(LS_KEY);
+  ls.clearIfNewBuild(LS_KEY);
 
   return {
     reducer: (state, action) => {
