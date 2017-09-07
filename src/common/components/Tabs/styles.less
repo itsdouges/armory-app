@@ -2,58 +2,74 @@
 
 @tabPadding: 0.9em;
 
-.root {
-  font-size: 0.75rem;
-}
-
 .tabsBg {
-  background-color: @tabsBg;
-  border-bottom: 1px solid @tabsBorder;
+  padding: 10px 0;
+
+  &.default {
+    background-color: @tabsBg;
+
+    .tab {
+      color: @_black;
+    }
+  }
+
+  &.transparent {
+    background: rgba(0, 0, 0, 0.2);
+    padding-top: 10px;
+
+    .tab {
+      color: @_white;
+    }
+
+    .selected {
+      color: @_black;
+    }
+  }
+
+  .fromTablet({
+    padding: 0;
+    font-size: 0.85em;
+    box-shadow: inset 1px -12px 8px -13px rgba(0, 0, 0, 0.1);
+  });
 }
 
 .tabsContainer {
-  display: flex;
+  padding: 0;
+  list-style: none;
 
-  > ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    width: 100%;
+  .fromTablet({
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+    align-items: flex-end;
+    overflow-x: auto;
+    white-space: nowrap;
+  });
+
+  .fromPc({
+    overflow-x: inherit;
+  });
 
   li {
-    display: inline-block;
+    display: block;
   }
 }
 
 .tab {
   display: block;
   padding: @tabPadding @tabPadding * 2;
-  color: @_black;
-  border: 1px solid transparent;
+  font-weight: normal;
 }
 
 .selected {
-  border: 1px solid @tabsBorder;
   background-color: @background;
   border-radius: 2px;
 
-  .fromPc({
+  .fromTablet({
     margin-bottom: -1px;
-    border-bottom: none;
     border-radius: 2px 2px 0 0;
     padding-bottom: calc(@tabPadding ~"+" 2px);
+    box-shadow: 0 -1px 3px 0px rgba(0, 0, 0, 0.05);
   });
 }
-
-.fromTablet({
-  .root {
-    font-size: 0.85rem;
-  }
-});
 
 .pinnedRight {
   margin-left: auto;

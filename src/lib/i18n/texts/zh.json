@@ -46,18 +46,18 @@
     "joincta": "请先注册，并添加你的GW2 API令牌！"
   },
   "users": {
-    "materials": "Materials",
-    "bank": "Bank",
-    "wallet": "Wallet",
+    "materials": "物料",
+    "bank": "银行",
+    "wallet": "钱包",
     "name": "用户",
     "recentMatches": "近期比赛",
-    "achievements": "Achievements",
+    "achievements": "成就",
     "claimCta": "索取",
     "noApiKey": "哦，你没有API密钥。。请前往生成一个。。!",
     "makePrimary": "生成主要API密钥。",
     "primaryToken": "这是你的主要API密钥，你的用户资料会来自这里。",
     "invalidToken": "没有成功从 Guild Wars 2 取到资料，API密钥可能从 ArenaNet 的账目页被删除了。",
-    "stubUser": "This user hasn't been claimed yet, go bug him to add his api key!",
+    "stubUser": "这个用户还没有被声明过，他会发现他添加了他的api密钥！",
     "pvpStats": {
       "name": "PVP统计",
       "unranked": "未排序",
@@ -191,12 +191,13 @@
     "dismiss": "搁置",
     "embed": "嵌入",
     "loadMore": "加载更多",
-    "completed": "Completed",
-    "masteryPoint": "Mastery Point",
-    "coins": "Coins",
-    "title": "Title",
-    "of": "of",
-    "objectives": "Objectives"
+    "completed": "已完成",
+    "masteryPoint": "掌握点",
+    "coins": "硬币",
+    "title": "标题",
+    "of": "的",
+    "objectives": "目标",
+    "ladder": "阶梯"
   },
   "leaderboards": {
     "name": "选手积分榜"
@@ -209,7 +210,7 @@
     "newBags": "现在可以在各角色页面上看到容器!账户成就就快来了!"
   },
   "achievements": {
-    "pointsThisTier": "Points this tier"
+    "pointsThisTier": "点这一层"
   },
   "patreon": {
     "cta": "激战2军械库需要你的帮助，今天成为一个patreon"

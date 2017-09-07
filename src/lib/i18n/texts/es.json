@@ -46,18 +46,18 @@
     "joincta": "¡Entra y añade tus claves de la API de gw2!"
   },
   "users": {
-    "materials": "Materials",
-    "bank": "Bank",
-    "wallet": "Wallet",
+    "materials": "Materiales",
+    "bank": "Banco",
+    "wallet": "Billetera",
     "name": "Usuarios",
-    "achievements": "Achievements",
+    "achievements": "Logros",
     "recentMatches": "Partidas recientes",
     "claimCta": "Reclamar",
     "noApiKey": "Clave de la API no configurada",
     "makePrimary": "Hacer clave principal de la API.",
     "primaryToken": "Esta es tu clave principal de la API, de donde se obtendrá tu información de usuario.",
     "invalidToken": "No se pudieron recuperar los datos de GW2, la clave de la API seguramente fue eliminada de la cuenta de usuario.",
-    "stubUser": "This user hasn't been claimed yet, go bug him to add his api key!",
+    "stubUser": "Este usuario no ha sido reclamado todavía, ¡ve a bug para agregar su clave api!",
     "pvpStats": {
       "name": "Estadísticas PvP",
       "unranked": "Libres",
@@ -194,10 +194,11 @@
     "loadMore": "Cargar más",
     "completed": "Completed",
     "masteryPoint": "Mastery Point",
-    "coins": "Coins",
-    "title": "Title",
-    "of": "of",
-    "objectives": "Objectives"
+    "coins": "Monedas",
+    "title": "Título",
+    "of": "de",
+    "objectives": "Objetivos",
+    "ladder": "Escalera"
   },
   "leaderboards": {
     "name": "Tabla de clasificación"
@@ -210,7 +211,7 @@
     "newBags": "¡Sacos ahora disponibles en las páginas de usuario! Próximamente logros de usuario."
   },
   "achievements": {
-    "pointsThisTier": "Points this tier"
+    "pointsThisTier": "Puntos de este nivel"
   },
   "patreon": {
     "cta": "Guild Wars 2 Armory necesita tu ayuda, ¡hazte una patrona hoy!"

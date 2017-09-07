@@ -31,6 +31,7 @@ type PvpGame = {
 };
 
 export type PvpStanding = {
+  name: string,
   seasonId: string,
   totalPointsCurrent: number,
   divisionCurrent: number,

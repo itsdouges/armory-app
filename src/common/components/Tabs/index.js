@@ -2,14 +2,12 @@
 
 import type { Node } from 'react';
 
-import React, { cloneElement } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from 'react';
 
-import Head from 'common/components/Head';
-import Container from 'common/components/Container';
 
 import styles from './styles.less';
-import Tab from './Tab';
+import TabsRow from './TabsRow';
+import Content from './Content';
 
 import type { Tab$Props } from './Tab';
 
@@ -29,28 +27,9 @@ type TabsProps = {
   metaContent?: Node,
 };
 
-const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath, metaContent }: TabsProps) => (
+const Tabs = ({ metaContent, ...props }: TabsProps) => (
   <div className={styles.root}>
-    <nav className={styles.tabsBg}>
-      <Container className={styles.tabsContainer}>
-        <ul>
-          {tabs.map((tab) => (tab.hide ? null : (
-            <li key={tab.path}>
-              <Tab
-                flair={tab.flair}
-                exact={!tab.path}
-                path={`${basePath}${tab.path}`}
-                name={tab.name}
-              />
-            </li>
-          )))}
-
-          {pinnedTab && (
-            <li className={styles.pinnedRight}>{pinnedTab}</li>
-          )}
-        </ul>
-      </Container>
-    </nav>
+    <TabsRow {...props} appearance="default" />
 
     {!!metaContent && (
       <aside className={styles.metaContent}>
@@ -58,27 +37,7 @@ const Tabs = ({ tabs, titleSuffix, tabLayout: Layout, pinnedTab, basePath, metaC
       </aside>
     )}
 
-    <section>
-      <Switch>
-        {tabs.map((tab) => (tab.hide ? null : (
-          <Route
-            exact={!tab.path}
-            key={tab.path}
-            path={`${basePath}${tab.path}`}
-            render={(props) => {
-              const content = cloneElement(tab.content, props);
-
-              return (
-                <span>
-                  {tab.ignoreTitle || <Head title={`${tab.name} | ${titleSuffix}`} description={tab.description} />}
-                  {Layout ? <Layout>{content}</Layout> : content}
-                </span>
-              );
-            }}
-          />
-        )))}
-      </Switch>
-    </section>
+    <Content {...props} />
   </div>
 );
 

@@ -4,7 +4,7 @@ import 'babel-polyfill';
 import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
 import PageView from 'common/components/PageView';
 // Base has to be imported before the app because of the
 // dynamic creation of the redux reducers.
@@ -21,9 +21,7 @@ ReactDOM.render(
   <Base>
     <Router history={history}>
       <PageView>
-        <Switch>
-          <Route path="/" component={authenticatedApp(App)} />
-        </Switch>
+        <Route path="/" component={authenticatedApp(App)} />
       </PageView>
     </Router>
   </Base>,
