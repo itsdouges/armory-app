@@ -7,6 +7,7 @@ import 'lib/i18n';
 import 'assets/fonts/menomonia.css';
 import 'assets/fonts/opensans.css';
 
+import { initialise as initialiseLs } from 'lib/localStorage';
 import rootReducer from 'features/reducer';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
@@ -21,6 +22,8 @@ if (__DEVELOPMENT__) {
   // TODO: https://github.com/madou/armory-react/issues/243
   // middleware.push(require('redux-freeze'));
 }
+
+initialiseLs();
 
 const store = createStore(rootReducer, composeEnhancers(
   applyMiddleware(

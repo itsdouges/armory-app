@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Local storage cache bust behaviour. Now it will only clear the cache if a new GW2 API build id is found.
 
 ## [4.36.0][] - 2017-09-07
 ### Added
