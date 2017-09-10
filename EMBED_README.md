@@ -88,7 +88,7 @@ Each embed has a class that you can target, each class follows the pattern `.gw2
 
 ### [Character](https://gw2armory.com/embeds#character)
 
-![image](https://user-images.githubusercontent.com/6801309/30039207-3fd4819c-9211-11e7-9ddd-62faa3b6bfec.png)
+<img src="https://user-images.githubusercontent.com/6801309/30039207-3fd4819c-9211-11e7-9ddd-62faa3b6bfec.png" width="400" />
 
 Useful for showing off your character on a forum or fansite.
 
@@ -106,7 +106,7 @@ Useful for showing off your character on a forum or fansite.
 
 ### [Skills](https://gw2armory.com/embeds#skills)
 
-![image](https://user-images.githubusercontent.com/6801309/30039214-7078b6c4-9211-11e7-8d93-b93f870fc032.png)
+<img src="https://user-images.githubusercontent.com/6801309/30039214-7078b6c4-9211-11e7-8d93-b93f870fc032.png" width="400" />
 
 ```html
 <div
@@ -133,7 +133,7 @@ Useful for showing off your character on a forum or fansite.
 
 ### [Items](https://gw2armory.com/embeds#items)
 
-![image](https://user-images.githubusercontent.com/6801309/30039226-84ce7dc0-9211-11e7-9df7-693fb8921300.png)
+<img src="https://user-images.githubusercontent.com/6801309/30039226-84ce7dc0-9211-11e7-9df7-693fb8921300.png" width="400" />
 
 ```html
 <div
@@ -163,7 +163,7 @@ Useful for showing off your character on a forum or fansite.
 
 ### [Specializations](https://gw2armory.com/embeds#specializations)
 
-![image](https://user-images.githubusercontent.com/6801309/30039237-9ba20c1a-9211-11e7-8e57-8b2efffe5304.png)
+<img src="https://user-images.githubusercontent.com/6801309/30039237-9ba20c1a-9211-11e7-8e57-8b2efffe5304.png" width="400" />
 
 ```html
 <div
@@ -182,7 +182,7 @@ Useful for showing off your character on a forum or fansite.
 
 ### [Traits](https://gw2armory.com/embeds#traits)
 
-![image](https://user-images.githubusercontent.com/6801309/30039240-abca384c-9211-11e7-8f04-f90127747c8b.png)
+<img src="https://user-images.githubusercontent.com/6801309/30039240-abca384c-9211-11e7-8f04-f90127747c8b.png" width="400" />
 
 ```html
 <div
@@ -203,7 +203,7 @@ Useful for showing off your character on a forum or fansite.
 
 ### [Amulets](https://gw2armory.com/embeds#amulets)
 
-![image](https://user-images.githubusercontent.com/6801309/30039246-bb506ffc-9211-11e7-981e-1fa5d62342a7.png)
+<img src="https://user-images.githubusercontent.com/6801309/30039246-bb506ffc-9211-11e7-981e-1fa5d62342a7.png" width="400" />
 
 ```html
 <div
