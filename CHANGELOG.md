@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.36.1][] - 2017-09-10
 ### Changed
 - Local storage cache bust behaviour. Now it will only clear the cache if a new GW2 API build id is found.
 
@@ -1006,7 +1008,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.36.0...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.36.1...HEAD
+[4.36.1]: https://github.com/madou/armory-react/compare/v4.36.0...v4.36.1
 [4.36.0]: https://github.com/madou/armory-react/compare/v4.35.1...v4.36.0
 [4.35.1]: https://github.com/madou/armory-react/compare/v4.35.0...v4.35.1
 [4.35.0]: https://github.com/madou/armory-react/compare/v4.34.0...v4.35.0
