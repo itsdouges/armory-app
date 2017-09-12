@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Skill category highlight not working for i18n text
 
 ## [4.37.0][] - 2017-09-13
 ### Added

@@ -19,7 +19,7 @@ type SkillProps = {
   data: Gw2Skill,
 };
 
-const addSkillTypeTags = (description) => description.replace(/^\w+ ?\w*(:|\.)/g, (match) => `<c=@skill>${match}</c>`);
+const addSkillTypeTags = (description) => console.log(description) || description.replace(/^[a-zA-Z\u00C0-\u017F]+ ?[a-zA-Z\u00C0-\u017F]*.?(:|\.)/g, (match) => `<c=@skill>${match}</c>`);
 
 const Skill = ({ data }: SkillProps) => {
   if (!data.name) {

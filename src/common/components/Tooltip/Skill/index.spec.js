@@ -25,11 +25,35 @@ describe('<SkillTooltip />', () => {
     const props = {
       data: {
         name: 'Item',
-        description: 'Thing: Yeah it is ok',
+        description: 'Other Thing: Yeah it is ok',
       },
     };
     shallow(<SkillTooltip {...props} />);
 
-    expect(markup).to.have.been.calledWith('<c=@skill>Thing.</c> Yeah it is ok');
+    expect(markup).to.have.been.calledWith('<c=@skill>Other Thing:</c> Yeah it is ok');
+  });
+
+  it('should parrse text with accents', () => {
+    const props = {
+      data: {
+        name: 'Item',
+        description: 'Méditation : Votre intense concentration vous rend invulnérable et recharge vos vertus.',
+      },
+    };
+    shallow(<SkillTooltip {...props} />);
+
+    expect(markup).to.have.been.calledWith('<c=@skill>Méditation :</c> Votre intense concentration vous rend invulnérable et recharge vos vertus.');
+  });
+
+  it('should parse text with weird whitespace', () => {
+    const props = {
+      data: {
+        name: 'Item',
+        description: 'Signe passif : puissance améliorée.',
+      },
+    };
+    shallow(<SkillTooltip {...props} />);
+
+    expect(markup).to.have.been.calledWith('<c=@skill>Signe passif :</c> puissance améliorée.');
   });
 });
