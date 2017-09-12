@@ -115,12 +115,21 @@ export function mapItemsToObject (items: []) {
 
 export function markup (text: string) {
   if (!text) {
-    return <span />;
+    return null;
   }
 
-  const parsedText = text.replace(/<c=@([^>]*)>|<\/c>|<c>/g, '').split(/\n|<br>/);
-  const result = /<c=@([^>]*)>/g.exec(text);
-  const colour = result && result[1];
+  const html = text
+    .replace(/<c=@[^>]*>.*<\/?c>/g, (match) => {
+      const [colour] = /@\w+/g.exec(match);
+      const [words] = />.+</g.exec(match);
 
-  return parsedText.map((tx) => <span className={colours[colour]} key={tx}>{tx}<br /></span>);
+      const parsedColour = colour.replace('@', '');
+      const parsedWords = words.replace(/>|</g, '');
+
+      return `<span class="${colours[parsedColour]}">${parsedWords}</span>`;
+    })
+    .split(/\n|<br>/)
+    .join('<br />');
+
+  return <span dangerouslySetInnerHTML={{ __html: html }} />;
 }

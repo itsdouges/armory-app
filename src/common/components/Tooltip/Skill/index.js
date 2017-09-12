@@ -19,6 +19,8 @@ type SkillProps = {
   data: Gw2Skill,
 };
 
+const addSkillTypeTags = (description) => description.replace(/^\w+ ?\w*(:|\.)/g, (match) => `<c=@skill>${match}</c>`);
+
 const Skill = ({ data }: SkillProps) => {
   if (!data.name) {
     return <Background><SimpleTooltip data="Skill" /></Background>;
@@ -33,7 +35,7 @@ const Skill = ({ data }: SkillProps) => {
       <Background className={styles.root}>
         <div className={styles.title}>{data.name}</div>
 
-        <div className={styles.description}>{markup(data.description)}</div>
+        <div className={styles.description}>{markup(addSkillTypeTags(data.description))}</div>
 
         {get(data, 'facts', []).map((fact, index) =>
           // eslint-disable-next-line react/no-array-index-key

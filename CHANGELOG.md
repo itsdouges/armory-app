@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Skill category highlight for tooltips
 
 ## [4.36.1][] - 2017-09-10
 ### Changed
