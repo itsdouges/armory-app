@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.37.2][] - 2017-09-13
 ### Fixed
 - Remove console log
 
@@ -1018,7 +1020,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.37.1...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.37.2...HEAD
+[4.37.2]: https://github.com/madou/armory-react/compare/v4.37.1...v4.37.2
 [4.37.1]: https://github.com/madou/armory-react/compare/v4.37.0...v4.37.1
 [4.37.0]: https://github.com/madou/armory-react/compare/v4.36.1...v4.37.0
 [4.36.1]: https://github.com/madou/armory-react/compare/v4.36.0...v4.36.1
