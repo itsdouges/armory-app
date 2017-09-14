@@ -159,7 +159,7 @@ Useful for showing off your character on a forum or fansite.
 | data-armory-size | number | no | The size of each item in the embed. |
 | data-armory-blank-text | string | no | When loading an item of id `-1` you can override the tooltip text to be whatever you want. |
 | data-armory-{ITEM_ID}-stat | number | no | Loads the item with the stat of choice. |
-| data-armory-{SKIN_ID}-skin | number | no | Loads the item with the skin of choice. |
+| data-armory-{ITEM_ID}-skin | number | no | Loads the item with the skin of choice. |
 | data-armory-inline-text | string | no | Optional inline text that will be displayed to the right of the icon. You can pass in `wiki` to use a gw2 wiki URL, `gw2spidy` to use a gw2spidy URL, or pass in any other text that will be used as the link. |
 
 ### [Specializations](https://gw2armory.com/embeds#specializations)
