@@ -11,7 +11,6 @@ import SvgIcon from 'common/components/Icon/Svg';
 
 import styles from './styles.less';
 
-
 export default class RandomCharacter extends Component<*, *> {
   props: {
     type: 'ofTheDay' | 'random',
