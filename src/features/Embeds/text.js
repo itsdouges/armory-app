@@ -89,6 +89,10 @@ export default [{
   data-armory-embed="items"
   data-armory-blank-text="Some other text can go here!"
   data-armory-size="60"
+  data-armory-24836-skin="11"
+  data-armory-74412-skin="11"
+  data-armory-46774-skin="11"
+  data-armory-39620-skin="11"
   data-armory-ids="24836,-1,74412,46774,39620"
 >
 </div>
