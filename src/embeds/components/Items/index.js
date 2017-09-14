@@ -1,6 +1,6 @@
 // @flow
 
-import type { Items, ItemStats } from 'flowTypes';
+import type { Items, ItemStats, Skins } from 'flowTypes';
 import type { EmbedProps } from 'embeds/bootstrap';
 
 import React, { Component } from 'react';
@@ -15,22 +15,27 @@ import styles from './styles.less';
 function mapStateToProps (state) {
   return {
     items: state.items,
+    skins: state.skins,
     itemStats: state.itemStats,
   };
 }
 
 type Props = {
-  items?: Items,
-  itemStats?: ItemStats,
-  fetchItems?: (ids: Array<number>) => void,
-  fetchItemStats?: (ids: Array<number>) => void,
+  items: Items,
+  skins: Skins,
+  itemStats: ItemStats,
+  fetchItems: (ids: Array<number>) => void,
+  fetchSkins: (ids: Array<number>) => void,
+  fetchItemStats: (ids: Array<number>) => void,
   ids: Array<number>,
   mode?: 'rune' | 'item',
   statIds: { [key: number]: number },
+  skinIds: { [key: number]: number },
 } & EmbedProps;
 
 export default connect(mapStateToProps, {
   fetchItems: actions.fetchItems,
+  fetchSkins: actions.fetchSkins,
   fetchItemStats: actions.fetchItemStats,
 })(
 class ItemsEmbed extends Component<Props> {
@@ -45,6 +50,8 @@ class ItemsEmbed extends Component<Props> {
     blankText,
     index,
     size,
+    skins,
+    skinId,
     props,
   ) {
     if (id < 0) {
@@ -71,6 +78,7 @@ class ItemsEmbed extends Component<Props> {
       <Item
         key={`${index}-${id}`}
         item={item}
+        skin={skins[skinId]}
         name={mode === 'rune' ? 'Rune' : undefined}
         tooltipType={mode === 'rune' ? 'amulets' : undefined}
         className={styles.item}
@@ -81,14 +89,15 @@ class ItemsEmbed extends Component<Props> {
   }
 
   componentWillMount () {
-    const { ids, statIds, fetchItems, fetchItemStats } = this.props;
+    const { ids, skinIds, statIds, fetchItems, fetchItemStats, fetchSkins } = this.props;
 
-    fetchItems && fetchItems(ids);
-    fetchItemStats && fetchItemStats(Object.values(statIds).map((id) => +id));
+    fetchItems(ids);
+    fetchItemStats(Object.values(statIds).map((id) => +id));
+    fetchSkins(Object.values(skinIds).map((id) => +id));
   }
 
   render () {
-    const { ids, statIds, items, itemStats, className, mode, blankText, size, ...props } = this.props;
+    const { ids, statIds, items, itemStats, className, mode, blankText, size, skins, skinIds, ...props } = this.props;
 
     return (
       <div className={className}>
@@ -101,6 +110,8 @@ class ItemsEmbed extends Component<Props> {
           blankText,
           index,
           size,
+          skins,
+          skinIds[id],
           props,
         ))}
       </div>
