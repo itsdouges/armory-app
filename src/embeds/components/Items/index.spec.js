@@ -11,6 +11,7 @@ const applyAttributes = sandbox.stub();
 const Item = stubComponent('Item');
 const actions = {
   fetchItems: sandbox.spy(),
+  fetchSkins: sandbox.spy(),
   fetchItemStats: sandbox.spy(),
 };
 
@@ -41,6 +42,8 @@ describe('<Items /> embed', () => {
       },
     },
     size: 2,
+    skinIds: [],
+    skins: {},
   };
 
   let wrapper;
@@ -97,6 +100,7 @@ describe('<Items /> embed', () => {
       items: { cool: 'item' },
       itemStats: { neat: 'stat' },
       other: 'value',
+      skins: { yes: true },
     };
 
     it('should map state to props', () => {
@@ -105,6 +109,7 @@ describe('<Items /> embed', () => {
       expect(mappedProps).to.eql({
         items: store.items,
         itemStats: store.itemStats,
+        skins: store.skins,
       });
     });
 
