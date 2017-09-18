@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Empty skill icon being transparent
+- Skill description parser not working for a few cases
 
 ## [4.39.1][] - 2017-09-17
 ### Fixed
