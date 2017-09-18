@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.39.2][] - 2017-09-18
 ### Fixed
 - Empty skill icon being transparent
 - Skill description parser not working for a few cases
@@ -1035,7 +1037,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.39.1...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.39.2...HEAD
+[4.39.2]: https://github.com/madou/armory-react/compare/v4.39.1...v4.39.2
 [4.39.1]: https://github.com/madou/armory-react/compare/v4.39.0...v4.39.1
 [4.39.0]: https://github.com/madou/armory-react/compare/v4.38.0...v4.39.0
 [4.38.0]: https://github.com/madou/armory-react/compare/v4.37.2...v4.38.0
