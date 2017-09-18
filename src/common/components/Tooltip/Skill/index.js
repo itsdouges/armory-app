@@ -7,6 +7,7 @@ import Fact from '../Fact';
 import Background from '../Background';
 import SimpleTooltip from '../Simple';
 import get from 'lodash/get';
+import parse from './parser';
 
 type Gw2Skill = {
   name: string,
@@ -18,8 +19,6 @@ type Gw2Skill = {
 type SkillProps = {
   data: Gw2Skill,
 };
-
-const addSkillTypeTags = (description) => description.replace(/^[a-zA-Z\u00C0-\u017F]+ ?[a-zA-Z\u00C0-\u017F]*.?(:|\.)/g, (match) => `<c=@skill>${match}</c>`);
 
 const Skill = ({ data }: SkillProps) => {
   if (!data.name) {
@@ -35,7 +34,7 @@ const Skill = ({ data }: SkillProps) => {
       <Background className={styles.root}>
         <div className={styles.title}>{data.name}</div>
 
-        <div className={styles.description}>{markup(addSkillTypeTags(data.description))}</div>
+        <div className={styles.description}>{markup(parse(data.description))}</div>
 
         {get(data, 'facts', []).map((fact, index) =>
           // eslint-disable-next-line react/no-array-index-key
