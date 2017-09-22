@@ -248,6 +248,7 @@ Best bet is to look at the GW2 Wiki, for example: https://wiki.guildwars2.com/wi
 - [Abaddons Maul](https://abaddons-maul.de)
 - [Chains of the Kraken](https://ctk.enjin.com)
 - [Snow Crows](http://snowcrows.com)
+- [SPF Gaming](http://spf-gaming.de/)
 
 [Don't see your site? Add it in a Pull Request!](https://github.com/madou/armory-react/pulls)
 
