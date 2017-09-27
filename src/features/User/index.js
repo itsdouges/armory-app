@@ -221,7 +221,7 @@ class User extends Component<Props, *> {
       }];
     }
 
-    return user.access.map((name) => ({
+    return [].concat(user.access).map((name) => ({
       statusText: startCase(name),
       statusIcon: `${name}.png`,
     }));
