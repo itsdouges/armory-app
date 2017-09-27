@@ -201,23 +201,30 @@ class User extends Component<Props, *> {
   buildStatusData () {
     const { user } = this.props;
     if (!user) {
-      return {
+      return [{
         statusText: 'Loading...',
         statusIcon: '',
-      };
+      }];
     }
 
     if (user.stub) {
-      return {
+      return [{
         statusText: T.translate('users.stubUser'),
         statusIcon: 'svg/error-outline.svg',
-      };
+      }];
     }
 
-    return {
-      statusText: user.valid ? startCase(user.access) : T.translate('users.invalidToken'),
-      statusIcon: user.valid ? `${user.access}.png` : 'svg/error-outline.svg',
-    };
+    if (!user.valid || !user.access) {
+      return [{
+        statusText: T.translate('users.invalidToken'),
+        statusIcon: 'svg/error-outline.svg',
+      }];
+    }
+
+    return [].concat(user.access).map((name) => ({
+      statusText: startCase(name),
+      statusIcon: `${name}.png`,
+    }));
   }
 
   render () {
@@ -239,16 +246,19 @@ class User extends Component<Props, *> {
     const wins = rankedStats.wins || safeUser.wins || '0';
     const losses = rankedStats.losses || safeUser.losses || '0';
     const statSummary = (wins || losses || byes) ? `${wins}-${losses}-${byes || 0}` : '-';
-    const { statusText, statusIcon } = this.buildStatusData();
 
     return (
       <Content
         className={cx({ [styles.invalid]: safeUser.valid === false })}
-        cardExtra={(
-          <TooltipTrigger data={statusText}>
-            <Icon size="mini" className={styles.access} name={statusIcon} />
-          </TooltipTrigger>
-        )}
+        cardExtra={
+          <div className={styles.accessContainer}>
+            {this.buildStatusData().map(({ statusText, statusIcon }) => (
+              <TooltipTrigger key={statusText} data={statusText}>
+                <Icon size="mini" className={styles.access} name={statusIcon} />
+              </TooltipTrigger>
+            ))}
+          </div>
+        }
         basePath={this.props.match.url}
         metaContent={editing && (
           PRIVACY_OPTIONS.map(({ prop, name }) => (
