@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.39.3][] - 2017-09-27
 ### Changed
 - User access to be created from the new access array data, e.g: `['PathOfFire', 'GuildWars2']`
 
@@ -1039,7 +1041,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.39.2...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.39.3...HEAD
+[4.39.3]: https://github.com/madou/armory-react/compare/v4.39.2...v4.39.3
 [4.39.2]: https://github.com/madou/armory-react/compare/v4.39.1...v4.39.2
 [4.39.1]: https://github.com/madou/armory-react/compare/v4.39.0...v4.39.1
 [4.39.0]: https://github.com/madou/armory-react/compare/v4.38.0...v4.39.0
