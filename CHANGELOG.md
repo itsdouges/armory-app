@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- User access to be created from the new access array data, e.g: `['PathOfFire', 'GuildWars2']`
 
 ## [4.39.2][] - 2017-09-18
 ### Fixed
