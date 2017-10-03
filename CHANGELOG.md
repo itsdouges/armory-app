@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.40.0][] - 2017-10-03
 ### Added
 - Ability to self host gw2a embeds for big sites. See: http://gw2a-embeds.s3-website-us-west-2.amazonaws.com/
 
@@ -1043,7 +1045,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.39.3...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.40.0...HEAD
+[4.40.0]: https://github.com/madou/armory-react/compare/v4.39.3...v4.40.0
 [4.39.3]: https://github.com/madou/armory-react/compare/v4.39.2...v4.39.3
 [4.39.2]: https://github.com/madou/armory-react/compare/v4.39.1...v4.39.2
 [4.39.1]: https://github.com/madou/armory-react/compare/v4.39.0...v4.39.1
