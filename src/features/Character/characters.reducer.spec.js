@@ -1,4 +1,8 @@
-import { minimalSelector } from './characters.reducer';
+import proxyquire from 'proxyquire';
+
+const { minimalSelector } = proxyquire('features/Character/characters.reducer', {
+  './actions': {},
+});
 
 describe('characters.reducer.js', () => {
   describe('selector', () => {
