@@ -30,7 +30,7 @@ Available at http://gw2a-embeds.s3-website-us-west-2.amazonaws.com, get the late
 
 If hosting on `https://gw2fan.com`, make sure to upload all of the embed assets to the `/` directory.
 
-Note that the embed version is tied to the main website version, which means if there is a website release without any embed updates, the embed version will be incremented anyway until we separate the releasing of embeds from the website.
+Note that the embed version is tied to the main website version, which means **if there is a website release without any embed updates the embed version will be incremented anyway** until we separate the releasing of embeds from the website.
 
 ### Single Page Application Support
 
