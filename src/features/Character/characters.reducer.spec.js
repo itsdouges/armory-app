@@ -1,7 +1,9 @@
 import proxyquire from 'proxyquire';
 
 const { minimalSelector } = proxyquire('features/Character/characters.reducer', {
-  './actions': {},
+  './actions': {
+    '@noCallThru': true,
+  },
 });
 
 describe('characters.reducer.js', () => {
