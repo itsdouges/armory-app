@@ -1,1 +1,5 @@
-flow-typed/
+flow-typed
+dist
+dist-embeds
+coverage
+.nyc_output

@@ -5,6 +5,7 @@
   "exclude": [
     "src/**/*.spec.js",
     "dist",
+    "dist-embeds",
     "flow",
     "flow-typed",
     "scripts",

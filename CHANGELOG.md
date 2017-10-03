@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Ability to self host gw2a embeds for big sites. See: http://gw2a-embeds.s3-website-us-west-2.amazonaws.com/
 
 ## [4.39.3][] - 2017-09-27
 ### Changed
