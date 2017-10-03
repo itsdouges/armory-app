@@ -1,6 +1,6 @@
 {
   "name": "armory-react",
-  "version": "4.39.2",
+  "version": "4.40.0",
   "private": true,
   "pre-commit": [
     "test"
@@ -14,8 +14,10 @@
     "lint": "eslint ./config ./scripts ./src ./test",
     "dev": "LOCAL=true node ./scripts/start.js",
     "dev:embeds": "LOCAL=true npm run dev -- --embeds",
-    "build": "node ./scripts/build.js",
+    "build": "node ./scripts/build.js --embeds --app",
+    "build:embeds": "LOCAL=true node ./scripts/build.js --embeds",
     "deploy": "node ./scripts/deploy.js",
+    "deploy:embeds": "rm -rf dist-emeds && mkdir dist-embeds && node ./scripts/deployEmbeds.js",
     "unit": "BABEL_ENV=test mocha \"src/**/*.spec.js\"",
     "tdd": "npm run unit -- -w",
     "coverage": "BABEL_ENV=test nyc npm run unit",
@@ -50,7 +52,8 @@
     "recompose": "^0.25.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.1.0",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "zip-folder": "^1.0.0"
   },
   "devDependencies": {
     "app-module-path": "^2.2.0",

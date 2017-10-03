@@ -24,6 +24,14 @@ Next add embeds to your html response:
 
 Finally when the `DOMContentLoaded` event is triggered the embed script will find all embeds and render them.
 
+### Host Your Own
+
+Available at http://gw2a-embeds.s3-website-us-west-2.amazonaws.com, get the latest package from the endpoint and upload to your root folder, so for example:
+
+If hosting on `https://gw2fan.com`, make sure to upload all of the embed assets to the `/` directory.
+
+Note that the embed version is tied to the main website version, which means if there is a website release without any embed updates, the embed version will be incremented anyway until we separate the releasing of embeds from the website.
+
 ### Single Page Application Support
 
 While the embeds don't _officially_ support SPAs, it doesn't mean you can't use the embeds.

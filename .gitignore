@@ -6,3 +6,5 @@ dist
 .nyc_output/
 coverage/
 *.lcov
+gw2a-embeds-*
+dist*

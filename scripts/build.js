@@ -9,14 +9,15 @@ const fs = require('fs');
 const path = require('path');
 const filesize = require('filesize');
 const gzipSize = require('gzip-size').sync;
+const argv = require('yargs').argv;
 const rimrafSync = require('rimraf').sync;
 const webpack = require('webpack');
 const paths = require('../config/paths');
 
 const config = [
-  require('../config/webpack.config.embeds').production,
-  require('../config/webpack.config.app').production,
-];
+  argv.embeds && require('../config/webpack.config.embeds').production,
+  argv.app && require('../config/webpack.config.app').production,
+].filter(Boolean);
 
 // Remove all content but keep the directory so that
 // if you're in it, you don't end up in Trash
