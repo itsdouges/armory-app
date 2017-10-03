@@ -188,7 +188,16 @@
     "chronomancer": "Chronomancer",
     "scrapper": "Scrapper",
     "tempest": "Tempest",
-    "herald": "Herald"
+    "herald": "Herald",
+    "soulbeast": "Soulbeast",
+    "weaver": "Weaver",
+    "holosmith": "Holosmith",
+    "deadeye": "Deadeye",
+    "mirage": "Mirage",
+    "scourge": "Scourge",
+    "spellbreaker": "Spellbreaker",
+    "firebrand": "Firebrand",
+    "renegade": "Renegade"
   },
   "words": {
     "played": "Played",

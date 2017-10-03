@@ -15,6 +15,10 @@ import {
 } from './actions';
 
 const eliteSpecMap = {
+  // This map exists because professions aren't static.
+  // When you assign a elite spec in game, all it does is
+  // set a specialization. We extract out if there is an elite
+  // spec assigned, and then set it accordingly.
   5: T.translate('classes.druid'),
   7: T.translate('classes.daredevil'),
   18: T.translate('classes.berserker'),
@@ -24,6 +28,15 @@ const eliteSpecMap = {
   43: T.translate('classes.scrapper'),
   48: T.translate('classes.tempest'),
   52: T.translate('classes.herald'),
+  55: T.translate('classes.soulbeast'),
+  56: T.translate('classes.weaver'),
+  57: T.translate('classes.holosmith'),
+  58: T.translate('classes.deadeye'),
+  59: T.translate('classes.mirage'),
+  60: T.translate('classes.scourge'),
+  61: T.translate('classes.spellbreaker'),
+  62: T.translate('classes.firebrand'),
+  63: T.translate('classes.renegade'),
 };
 
 function parseWeaponSwap (character) {
@@ -110,7 +123,7 @@ function parseCharacter (character) {
 
 function extractEliteSpecialization (character, mode) {
   return get(character, `specializations[${mode}]`, [])
-    .reduce((acc, spec) => (spec && eliteSpecMap[spec.id]) || acc, character.profession);
+    .reduce((acc, spec) => (spec && (eliteSpecMap[spec.id] || acc)), character.profession);
 }
 
 const getCharacter = (state) => state.characters.data[state.characters.selected];

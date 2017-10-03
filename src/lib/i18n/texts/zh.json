@@ -180,7 +180,16 @@
     "chronomancer": "时空术士",
     "scrapper": "机械师",
     "tempest": "风暴使",
-    "herald": "龙魂使"
+    "herald": "龙魂使",
+    "soulbeast": "Soulbeast",
+    "weaver": "Weaver",
+    "holosmith": "Holosmith",
+    "deadeye": "Deadeye",
+    "mirage": "Mirage",
+    "scourge": "Scourge",
+    "spellbreaker": "Spellbreaker",
+    "firebrand": "Firebrand",
+    "renegade": "Renegade"
   },
   "words": {
     "played": "打过",

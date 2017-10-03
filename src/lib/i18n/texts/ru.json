@@ -181,7 +181,16 @@
     "chronomancer": "Хрономант",
     "scrapper": "Сборщик",
     "tempest": "Буря",
-    "herald": "Вестник"
+    "herald": "Вестник",
+    "soulbeast": "Soulbeast",
+    "weaver": "Weaver",
+    "holosmith": "Holosmith",
+    "deadeye": "Deadeye",
+    "mirage": "Mirage",
+    "scourge": "Scourge",
+    "spellbreaker": "Spellbreaker",
+    "firebrand": "Firebrand",
+    "renegade": "Renegade"
   },
   "words": {
     "played": "Сыграно",

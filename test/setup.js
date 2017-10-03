@@ -14,6 +14,7 @@ addPath(path.join(__dirname, '..', '/src'));
   require.extensions[`.${extension}`] = noop;
 });
 
+global.__DEVELOPMENT__ = true;
 global.chai = require('chai');
 global.sinon = require('sinon');
 global.expect = require('chai').expect;

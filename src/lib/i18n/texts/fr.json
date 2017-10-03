@@ -181,7 +181,16 @@
     "chronomancer": "Chronomancien",
     "scrapper": "Mécatronicien",
     "tempest": "Catalyste",
-    "herald": "Héraut"
+    "herald": "Héraut",
+    "soulbeast": "Soulbeast",
+    "weaver": "Weaver",
+    "holosmith": "Holosmith",
+    "deadeye": "Deadeye",
+    "mirage": "Mirage",
+    "scourge": "Scourge",
+    "spellbreaker": "Spellbreaker",
+    "firebrand": "Firebrand",
+    "renegade": "Renegade"
   },
   "words": {
     "played": "Joué",
