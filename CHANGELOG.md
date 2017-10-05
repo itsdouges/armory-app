@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Skill tooltip throwing when no description is present
+- GW2 parser not parsing multiple sections correctly
 
 ## [4.41.2][] - 2017-10-03
 ### Fixed

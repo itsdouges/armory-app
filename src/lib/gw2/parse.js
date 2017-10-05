@@ -119,7 +119,7 @@ export function markup (text: string) {
   }
 
   const html = text
-    .replace(/<c=@[^>]*>.*<\/?c>/g, (match) => {
+    .replace(/<c=@[^>]*>.*?<\/?c>/g, (match) => {
       const [colour] = /@\w+/g.exec(match);
       const [words] = />.+</g.exec(match);
 

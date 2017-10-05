@@ -48,4 +48,8 @@ describe('description parser', () => {
 
     expect(actual).to.equal(description);
   });
+
+  it('shouldnt blow up if no text', () => {
+    parse(undefined);
+  });
 });
