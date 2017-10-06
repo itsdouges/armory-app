@@ -10,10 +10,9 @@ type Props = {
 };
 
 const ArmoryBadge = ({ className, hotlink }: Props) => {
-  const ctaText = 'Powered by gw2armory.com &#9829;';
   const text = hotlink
-    ? <a href="https://gw2armory.com">{ctaText}</a>
-    : ctaText;
+    ? <a href="https://gw2armory.com">Powered by gw2armory.com &#9829;</a>
+    : <span>Powered by gw2armory.com &#9829;</span>;
 
   return (
     <div className={cx(styles.root, className)}>
