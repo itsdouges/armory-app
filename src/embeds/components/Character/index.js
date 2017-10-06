@@ -80,7 +80,7 @@ class CharacterLite extends Component<Props> {
 
     return (
       <div className={cx(styles.root, className)}>
-        <ArmoryBadge className={styles.badge} />
+        <ArmoryBadge className={styles.badge} hotlink />
 
         <div className={styles.cover}>
           <Portrait character={character} className={styles.litePortrait} />

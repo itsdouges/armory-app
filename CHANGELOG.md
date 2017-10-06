@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Ability for ArmoryBage to have optional hotlink
 
 ## [4.41.3][] - 2017-10-06
 ### Fixed
