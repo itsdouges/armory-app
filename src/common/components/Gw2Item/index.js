@@ -3,14 +3,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
+import get from 'lodash/get';
 
 import Item from 'common/components/Item';
 import actions from 'features/Gw2/actions';
 
 export const selector = createSelector(
   (state, props) => state.items[props.id],
-  (item) => ({
+  (state, props) => get(state.calculatedItemStats, [props.id, props.statsId]),
+  (item, stats) => ({
     item,
+    stats,
   })
 );
 
@@ -20,11 +23,15 @@ export default connect(selector, {
 class Gw2Item extends Component<*> {
   props: {
     id: number,
-    fetch: ([number]) => void,
+    statsId?: number,
+    fetch: ([number]) => Promise<*>,
   };
 
-  componentWillMount () {
-    this.props.fetch([this.props.id]);
+  componentDidMount () {
+    this.props.fetch([this.props.id])
+      .then((data) => {
+        // pass rarity, level, type, to action.
+      });
   }
 
   render () {

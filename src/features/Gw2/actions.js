@@ -5,6 +5,7 @@ import T from 'i18n-react';
 import batchFunction from 'function-batch';
 
 export const SHOW_TOOLTIP = 'SHOW_TOOLTIP';
+export const FETCH_CALCULATED_ITEM_STATS = 'FETCH_CALCULATED_ITEM_STATS';
 
 const actions = {};
 export default actions;
@@ -123,6 +124,19 @@ export function showTooltip (show, { type, data } = {}) {
       show,
       type,
       data,
+    },
+  };
+}
+
+export function fetchCalculatedItemStats (id, { itemId, type, rarity, level }) {
+  return {
+    type: FETCH_CALCULATED_ITEM_STATS,
+    payload: {
+      id,
+      itemId,
+      type,
+      rarity,
+      level,
     },
   };
 }

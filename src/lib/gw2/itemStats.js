@@ -95,9 +95,12 @@ export default function applyAttributes (item, selectedStat) {
     return [];
   }
 
-  const itemAttributes = queryItemAttributes(type.toLowerCase(),
+  const itemAttributes = queryItemAttributes(
+    type.toLowerCase(),
     item.rarity.toLowerCase(),
-    item.level);
+    item.level
+  );
+
   const calcModifier = getCalcFunction(itemAttributes, selectedStat);
   return Object.keys(selectedStat.attributes)
     .map((attribute) => ({
