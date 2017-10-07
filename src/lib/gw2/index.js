@@ -129,3 +129,23 @@ export const readTraits = (ids: Array<number>) => {
 export const readGuild = (guid: string) =>
   get(`${config.gw2.endpoint}v1/guild_details.json?guild_id=${guid}`)
   .then(({ data }) => data);
+
+type StatDef = {
+  id: number,
+  itemId: number,
+  type: string,
+  rarity: string,
+  level: number,
+};
+
+export const readCalculatedItemStats = (statDefs: Array<StatDef>) =>
+  axios.post('https://api.gw2armory.com/itemstats', statDefs)
+  .then(({ data }) => data.reduce((obj, itemStat, index) => {
+    const itemId = statDefs[index].itemId;
+    // eslint-disable-next-line no-param-reassign
+    obj[`${itemId}${itemStat.id}`] = {
+      ...itemStat,
+      itemId: statDefs[index].itemId,
+    };
+    return obj;
+  }, {}));

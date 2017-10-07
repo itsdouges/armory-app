@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Added
+- Api calculated item stats
+
+### Changed
+- Items embed to use Gw2Item component
 
 ## [4.42.1][] - 2017-10-07
 ### Fixed

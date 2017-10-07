@@ -1,10 +1,12 @@
+import proxyquire from 'proxyquire';
+
 const sandbox = sinon.sandbox.create();
 const translate = sandbox.stub();
 const getFunc = sandbox.stub();
 const dispatch = sandbox.spy();
 const afterGetFunc = sandbox.stub();
 
-const actionsFactory = proxyquire('features/Gw2/actions', {
+const actionsFactory = proxyquire.noCallThru()('./actions', {
   'i18n-react': {
     translate,
   },
@@ -97,8 +99,37 @@ describe('gw2 action factory', () => {
       return action(dispatch, getStore);
     });
 
-    context('when there are no ids missing', () => {
-      it('should return immediately if no ids are missing', () => {
+    describe('when ids are actually complex objects', () => {
+      it('should call service with them', () => {
+        const ids = [{ id: 5 }, { id: 6 }];
+        const action = actions.fetchAmulets(ids);
+
+        action(dispatch, getStore);
+
+        expect(getFunc.firstCall.args[0]).to.eql(ids);
+      });
+
+      it('should still filter ids that are already in the store', () => {
+        const ids = [{ id: 5 }, { id: 1 }];
+        const action = actions.fetchAmulets(ids);
+
+        action(dispatch, getStore);
+
+        expect(getFunc.firstCall.args[0]).to.eql([{ id: 5 }]);
+      });
+
+      it('should prioritise using calculatedId', () => {
+        const ids = [{ id: 5 }, { calculatedId: 1, id: 3 }];
+        const action = actions.fetchAmulets(ids);
+
+        action(dispatch, getStore);
+
+        expect(getFunc.firstCall.args[0]).to.eql([{ id: 5 }]);
+      });
+    });
+
+    context('when all ids area already in the store', () => {
+      it('should return immediately', () => {
         const action = actions.fetchAmulets([1]);
 
         action(dispatch, getStore);
