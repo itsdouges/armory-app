@@ -25,9 +25,10 @@ export const selector = createSelector(
     }
 
     if (item && stat && item.details) {
+      const statName = stat.error ? '[ItemStatNotFound]' : stat.name;
       return {
         ...item,
-        name: `${stat.name} ${item.name}`,
+        name: `${statName} ${item.name}`,
         details: {
           ...item.details,
           infix_upgrade: stat,
@@ -37,25 +38,31 @@ export const selector = createSelector(
 
     return item;
   },
-  (item) => ({
+  (state, props) => state.skins[props.skinId],
+  (item, skin) => ({
     item,
+    skin,
   })
 );
 
 export default connect(selector, {
   fetch: actions.fetchItems,
+  fetchSkins: actions.fetchSkins,
   fetchCalculatedItemStats: actions.fetchCalculatedItemStats,
 })(
 class Gw2Item extends Component<*> {
   props: {
     id: number,
     statsId?: number,
-    fetch: ([number]) => Promise<*>,
-    fetchCalculatedItemStats: (Array<Object>) => Promise<*>,
+    skinId?: number,
     item?: ItemType,
+    fetch: ([number]) => Promise<*>,
+    fetchSkins: ([number]) => Promise<*>,
+    fetchCalculatedItemStats: (Array<Object>) => Promise<*>,
   };
 
   componentDidMount () {
+    this.props.skinId && this.props.fetchSkins([this.props.skinId]);
     this.props.fetch([this.props.id])
       .then(() => {
         const { item, id, statsId, fetchCalculatedItemStats } = this.props;

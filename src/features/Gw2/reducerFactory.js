@@ -44,12 +44,22 @@ export default function gw2ReducerFactory (resourceName, getResource, {
         case error: {
           return {
             ...state,
-            ...action.payload.ids.reduce((obj, id) => ({
-              ...obj,
-              [id]: {
-                error: `ID:${id} | ${action.payload.message}`,
-              },
-            }), {}),
+            ...action.payload.ids.reduce((obj, id) => {
+              const storeId = typeof id === 'object'
+                ? (id.calculatedId || id.id)
+                : id;
+
+              const resourceId = typeof id === 'object'
+                ? id.id
+                : id;
+
+              return {
+                ...obj,
+                [storeId]: {
+                  error: `ID:${resourceId} | ${action.payload.message}`,
+                },
+              };
+            }, {}),
           };
         }
 
