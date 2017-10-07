@@ -3,10 +3,9 @@ import proxyquire from 'proxyquire';
 const sandbox = sinon.sandbox.create();
 const post = sandbox.stub();
 
-const { readCalculatedItemStats } = proxyquire.noPreserveCache()('./', {
-  config: {},
+const { readCalculatedItemStats } = proxyquire.noPreserveCache().noCallThru()('./', {
+  config: { default: {} },
   axios: { post },
-  '../i18n': { get: () => 'en' },
 });
 
 describe('gw2 service', () => {
