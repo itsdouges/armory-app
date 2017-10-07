@@ -85,6 +85,18 @@ export type AuthenticatedUser = User & {
   registering: boolean,
 };
 
+export type Item = {
+  icon: string,
+  name: string,
+  id: number,
+  rarity: string,
+  level: number,
+  type: string,
+  details: {
+    type: string,
+  },
+};
+
 export const defaultUser: User = {
   fractalLevel: 0,
   wvwRank: 0,
