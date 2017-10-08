@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased][]
 ### Fixed
 - Gw2 action creator from not using the id `all` correctly
+- Gw2 action creator treating `null` as `object`
+- Local sample config not pointing to the default port (`3030`)
 
 ## [4.43.0][] - 2017-10-07
 ### Added

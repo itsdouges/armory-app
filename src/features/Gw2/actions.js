@@ -65,10 +65,14 @@ export function generateActions (resourceName, getResource, afterGet) {
       // Sometimes we'll call with more complicated objects for the request
       // We filter them, then pass them along to the service (for example lib/gw2/readCalculatedItemStats)
       // If calculatedId exists, use that.
-      const actualId = +(typeof id === 'object' ? (id.calculatedId || id.id) : id);
+      const actualId = id && +(typeof id === 'object' ? (id.calculatedId || id.id) : id);
       const isValidId = (id === 'all') || (actualId && actualId !== -1);
+      if (!isValidId) {
+        return false;
+      }
+
       const isNotInStore = !store[resourceName][actualId] || !!store[resourceName][actualId].error;
-      return isValidId && isNotInStore;
+      return isNotInStore;
     }));
 
     if (!idsToFetch.length) {
