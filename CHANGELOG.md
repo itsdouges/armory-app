@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Gw2 action creator from not using the id `all` correctly
 
 ## [4.43.0][] - 2017-10-07
 ### Added
