@@ -9,8 +9,8 @@
 ```bash
 git clone https://github.com/madou/armory-react.git
 cd armory-react
-npm install
-cp src/config/local.sample.js src/config/local.js // local.js isn't checked in so you'll have to make one yourself.
+yarn install # See https://yarnpkg.com/lang/en/docs/install/
+cp src/config/local.sample.js src/config/local.js # local.js isn't checked in so you'll have to make one yourself.
 ```
 
 ### Testing
