@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [4.43.2][] - 2017-10-09
 ### Fixed
 - Gw2 action creator not taking objects/calculatedid into consideration
 
@@ -1088,7 +1090,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.43.1...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.43.2...HEAD
+[4.43.2]: https://github.com/madou/armory-react/compare/v4.43.1...v4.43.2
 [4.43.1]: https://github.com/madou/armory-react/compare/v4.43.0...v4.43.1
 [4.43.0]: https://github.com/madou/armory-react/compare/v4.42.1...v4.43.0
 [4.42.1]: https://github.com/madou/armory-react/compare/v4.42.0...v4.42.1
