@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Fixed
+- Gw2 action creator not taking objects/calculatedid into consideration
 
 ## [4.43.1][] - 2017-10-09
 ### Fixed
