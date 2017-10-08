@@ -112,7 +112,7 @@ describe('gw2 action factory', () => {
         expect(getFunc.firstCall.args[0]).to.eql(ids);
       });
 
-      it ('should error if any other string', () => {
+      it('should error if any other string', () => {
         // Arrange
         const ids = ['balthazar'];
         const action = actions.fetchAmulets(ids);
