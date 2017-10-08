@@ -99,6 +99,32 @@ describe('gw2 action factory', () => {
       return action(dispatch, getStore);
     });
 
+    describe('when id is string', () => {
+      it('should dispatch when id is "all"', () => {
+        // Arrange
+        const ids = ['all'];
+        const action = actions.fetchAmulets(ids);
+
+        // Act
+        action(dispatch, getStore);
+
+        // Assert
+        expect(getFunc.firstCall.args[0]).to.eql(ids);
+      });
+
+      it ('should error if any other string', () => {
+        // Arrange
+        const ids = ['balthazar'];
+        const action = actions.fetchAmulets(ids);
+
+        // Act
+        action(dispatch, getStore);
+
+        // Assert
+        expect(getFunc).to.not.have.been.called;
+      });
+    });
+
     describe('when ids are actually complex objects', () => {
       it('should call service with them', () => {
         const ids = [{ id: 5 }, { id: 6 }];
