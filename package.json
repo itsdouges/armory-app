@@ -34,7 +34,6 @@
     "fastclick": "^1.0.6",
     "function-batch": "^1.1.2",
     "gw2e-item-attributes": "^1.2.0",
-    "gw2itemstats": "^0.0.2",
     "i18n-react": "^0.3.0-ts1",
     "lodash": "^4.14.1",
     "lz-string": "^1.4.4",
@@ -52,8 +51,7 @@
     "recompose": "^0.25.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.1.0",
-    "reselect": "^3.0.1",
-    "zip-folder": "^1.0.0"
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "app-module-path": "^2.2.0",
@@ -138,6 +136,7 @@
     "webpack-dev-server": "^2.7.1",
     "webpack-manifest-plugin": "^1.3.1",
     "webpack-md5-hash": "^0.0.5",
-    "yargs": "^8.0.2"
+    "yargs": "^8.0.2",
+    "zip-folder": "^1.0.0"
   }
 }
