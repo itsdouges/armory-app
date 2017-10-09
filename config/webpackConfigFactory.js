@@ -1,21 +1,21 @@
-import path from 'path';
-import autoprefixer from 'autoprefixer';
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ManifestPlugin from 'webpack-manifest-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import NameAllModulesPlugin from 'name-all-modules-plugin';
-import assert from 'assert';
-import ServiceWorkerPreCachePlugin from 'sw-precache-webpack-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import RollbarSourceMapPlugin from 'rollbar-sourcemap-webpack-plugin';
-import _ from 'lodash';
+const path = require('path');
+const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const NameAllModulesPlugin = require('name-all-modules-plugin');
+const assert = require('assert');
+const ServiceWorkerPreCachePlugin = require('sw-precache-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin');
+const _ = require('lodash');
 
-import paths from './paths';
-import config from '../src/config/default';
-import manup from 'manup';
-import manifest from '../src/manifest.json';
-import pkg from '../package.json';
+const paths = require('./paths');
+const config = require('../src/config/default');
+const manup = require('manup');
+const manifest = require('../src/manifest.json');
+const pkg = require('../package.json');
 
 module.exports = ({
   entryPath,
@@ -194,6 +194,11 @@ module.exports = ({
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development'),
         __DEVELOPMENT__: !production,
+      }),
+
+      new webpack.optimize.CommonsChunkPlugin({
+        minChunks: 2,
+        async: true,
       }),
 
       !production && new webpack.HotModuleReplacementPlugin(),

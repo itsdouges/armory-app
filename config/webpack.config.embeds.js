@@ -1,5 +1,5 @@
-import createConfig from './webpackConfigFactory';
-import paths from './paths';
+const createConfig = require('./webpackConfigFactory');
+const paths = require('./paths');
 
 const common = {
   name: 'gw2aEmbeds',

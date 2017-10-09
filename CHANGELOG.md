@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Webpack config, reduce embed bundle size by 10x, app by a marginal amount
 
 ## [4.43.3][] - 2017-10-09
 ### Fixed
