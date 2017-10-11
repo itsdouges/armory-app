@@ -52,7 +52,7 @@ const STATIC_LINKS = [{
 }, {
   name: T.translate('embeds.name'),
   external: true,
-  to: 'https://github.com/madou/armory-react/blob/master/EMBED_README.md',
+  to: 'https://github.com/madou/armory-embeds',
 }];
 
 const UNAUTHENTICATED_STATIC_LINKS = [{
