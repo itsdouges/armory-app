@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Embed link to point to the new repo
 
+### Removed
+- Host your own embeds deployment
+
 ## [4.43.6][] - 2017-10-10
 ### Fixed
 - Chinese translations
