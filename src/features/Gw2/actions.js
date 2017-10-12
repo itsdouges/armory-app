@@ -18,6 +18,8 @@ function flattenResponses (responses) {
   }), {});
 }
 
+const getActualId = (id) => id && +(typeof id === 'object' ? (id.calculatedId || id.id) : id);
+
 export function generateActions (resourceName, getResource, afterGet) {
   const resouceNameUpper = resourceName.toUpperCase();
   const actionNames = {
@@ -65,10 +67,14 @@ export function generateActions (resourceName, getResource, afterGet) {
       // Sometimes we'll call with more complicated objects for the request
       // We filter them, then pass them along to the service (for example lib/gw2/readCalculatedItemStats)
       // If calculatedId exists, use that.
-      const actualId = +(typeof id === 'object' ? (id.calculatedId || id.id) : id);
+      const actualId = getActualId(id);
       const isValidId = (id === 'all') || (actualId && actualId !== -1);
+      if (!isValidId) {
+        return false;
+      }
+
       const isNotInStore = !store[resourceName][actualId] || !!store[resourceName][actualId].error;
-      return isValidId && isNotInStore;
+      return isNotInStore;
     }));
 
     if (!idsToFetch.length) {
@@ -90,7 +96,7 @@ export function generateActions (resourceName, getResource, afterGet) {
         dispatch(actions[fetchResultMethodName](response, noCache));
         dispatch(actions[fetchingMethodName](false));
 
-        const missingIds = idsToFetch.filter((id) => !response[id]);
+        const missingIds = idsToFetch.map(getActualId).filter((id) => !response[id]);
         if (missingIds.length) {
           dispatch(actions[fetchErrorMethodName](missingIds, T.translate('messages.notFoundLong')));
         }

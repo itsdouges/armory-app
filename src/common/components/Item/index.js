@@ -87,7 +87,7 @@ const Item = ({
     tooltipData = error;
   } else if (skinLoaded) {
     tooltipData = {
-      skin: skin
+      skin,
     };
   } else if (itemLoaded) {
     tooltipData = {
