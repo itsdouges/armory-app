@@ -1,5 +1,11 @@
-import createConfig from './webpackConfigFactory';
-import paths from './paths';
+const createConfig = require('./webpackConfigFactory');
+const paths = require('./paths');
+const dependencies = require('../package.json').dependencies;
+
+const ignoreDependencies = [
+  'normalize.css',
+  'babel-polyfill',
+];
 
 const common = {
   name: 'app',
@@ -11,12 +17,7 @@ const common = {
     inject: true,
   },
   entry: {
-    vendor: [
-      'react',
-      'react-dom',
-      'redux',
-      'react-router-dom',
-    ],
+    vendor: Object.keys(dependencies).filter((dep) => !ignoreDependencies.includes(dep)),
   },
 };
 

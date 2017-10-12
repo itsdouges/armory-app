@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
 
+## [4.43.7][] - 2017-10-11
+### Changed
+- Embed link to point to the new repo
+
+### Removed
+- Host your own embeds deployment
+
+## [4.43.6][] - 2017-10-10
+### Fixed
+- Chinese translations
+
+## [4.43.5][] - 2017-10-09
+### Changed
+- Move all dependencies into vendor bundle
+
+## [4.43.4][] - 2017-10-09
+### Changed
+- Webpack config, reduce embed bundle size by 10x, app by a marginal amount
+
+## [4.43.3][] - 2017-10-09
+### Fixed
+- Turns local storage persistence on
+
+## [4.43.2][] - 2017-10-09
+### Fixed
+- Gw2 action creator not taking objects/calculatedid into consideration
+
+## [4.43.1][] - 2017-10-09
+### Fixed
+- Gw2 action creator from not using the id `all` correctly
+- Gw2 action creator treating `null` as `object`
+- Local sample config not pointing to the default port (`3030`)
+
 ## [4.43.0][] - 2017-10-07
 ### Added
 - Api calculated item stats
@@ -1080,7 +1113,14 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.43.0...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v4.43.7...HEAD
+[4.43.7]: https://github.com/madou/armory-react/compare/v4.43.6...v4.43.7
+[4.43.6]: https://github.com/madou/armory-react/compare/v4.43.5...v4.43.6
+[4.43.5]: https://github.com/madou/armory-react/compare/v4.43.4...v4.43.5
+[4.43.4]: https://github.com/madou/armory-react/compare/v4.43.3...v4.43.4
+[4.43.3]: https://github.com/madou/armory-react/compare/v4.43.2...v4.43.3
+[4.43.2]: https://github.com/madou/armory-react/compare/v4.43.1...v4.43.2
+[4.43.1]: https://github.com/madou/armory-react/compare/v4.43.0...v4.43.1
 [4.43.0]: https://github.com/madou/armory-react/compare/v4.42.1...v4.43.0
 [4.42.1]: https://github.com/madou/armory-react/compare/v4.42.0...v4.42.1
 [4.42.0]: https://github.com/madou/armory-react/compare/v4.41.3...v4.42.0

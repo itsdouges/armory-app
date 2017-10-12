@@ -3,7 +3,7 @@ export default {
 
   api: {
     endpoint: '//api.gw2armory.com/',
-    // endpoint: '//localhost/',
+    // endpoint: '//localhost:3030/',
   },
 
   features: {

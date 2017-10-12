@@ -2,10 +2,11 @@
   "presets": [
     "babel-preset-react",
     ["env", {
+      "modules": false,
+      "useBuiltIns": true,
       "targets": {
         "browsers": [">1%", "last 4 versions", "not ie < 11", "Firefox ESR"]
-      },
-      "useBuiltIns": true
+      }
     }]
   ],
   "plugins": [
@@ -16,9 +17,21 @@
   ],
   "env": {
     "test": {
+      "presets": [
+        "babel-preset-react",
+        ["env", {
+          "useBuiltIns": true,
+          "targets": {
+            "browsers": [">1%", "last 4 versions", "not ie < 11", "Firefox ESR"]
+          }
+        }]
+      ],
       "plugins": [
         "istanbul",
-        "dynamic-import-node"
+        "dynamic-import-node",
+        "transform-decorators-legacy",
+        "transform-class-properties",
+        "transform-object-rest-spread"
       ]
     },
     "production": {

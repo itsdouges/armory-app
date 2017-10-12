@@ -20,12 +20,12 @@ export const selector = createSelector(
       // We know we will have a stat, but just not yet.
       return {
         ...item,
-        name: `Loading... ${item.name}`,
+        name: `... ${item.name}`,
       };
     }
 
     if (item && stat && item.details) {
-      const statName = stat.error ? '[ItemStatNotFound]' : stat.name;
+      const statName = stat.error ? '[404]' : stat.name;
       return {
         ...item,
         name: `${statName} ${item.name}`,

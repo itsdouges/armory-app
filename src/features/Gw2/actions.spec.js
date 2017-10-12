@@ -1,15 +1,11 @@
 import proxyquire from 'proxyquire';
 
 const sandbox = sinon.sandbox.create();
-const translate = sandbox.stub();
 const getFunc = sandbox.stub();
 const dispatch = sandbox.spy();
 const afterGetFunc = sandbox.stub();
 
 const actionsFactory = proxyquire.noCallThru()('./actions', {
-  'i18n-react': {
-    translate,
-  },
   'function-batch': (func) => func,
 }, true);
 
@@ -61,15 +57,14 @@ describe('gw2 action factory', () => {
 
     it('should create fetch error action', () => {
       const ids = [1, 2];
-      const message = 'uh oh';
 
-      const action = actions.fetchAmuletsError(ids, message);
+      const action = actions.fetchAmuletsError(ids, 'messages.notFoundLong');
 
       expect(action).to.eql({
         type: 'FETCH_AMULETS_ERROR',
         payload: {
           ids,
-          message,
+          message: 'messages.notFoundLong',
         },
       });
     });
@@ -97,6 +92,32 @@ describe('gw2 action factory', () => {
       getFunc.withArgs([2, 3, 4]).returns(Promise.resolve());
 
       return action(dispatch, getStore);
+    });
+
+    describe('when id is string', () => {
+      it('should dispatch when id is "all"', () => {
+        // Arrange
+        const ids = ['all'];
+        const action = actions.fetchAmulets(ids);
+
+        // Act
+        action(dispatch, getStore);
+
+        // Assert
+        expect(getFunc.firstCall.args[0]).to.eql(ids);
+      });
+
+      it('should error if any other string', () => {
+        // Arrange
+        const ids = ['balthazar'];
+        const action = actions.fetchAmulets(ids);
+
+        // Act
+        action(dispatch, getStore);
+
+        // Assert
+        expect(getFunc).to.not.have.been.called;
+      });
     });
 
     describe('when ids are actually complex objects', () => {
@@ -143,12 +164,10 @@ describe('gw2 action factory', () => {
         const ids = [10, 11, 12];
         const action = actions.fetchAmulets(ids);
         getFunc.withArgs(ids).returns(Promise.resolve({}));
-        const message = 'uh oh not found';
-        translate.withArgs('messages.notFoundLong').returns(message);
 
         return action(dispatch, getStore)
           .then(() => {
-            expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, message));
+            expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, 'messages.notFoundLong'));
           });
       });
     });
@@ -158,24 +177,20 @@ describe('gw2 action factory', () => {
         const ids = [10, 11, 12];
         const action = actions.fetchAmulets(ids);
         getFunc.withArgs(ids).rejects({});
-        const message = 'uh oh not found';
-        translate.withArgs('messages.gw2ApiDown').returns(message);
 
         await expect(action(dispatch, getStore)).to.be.rejected;
 
-        expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, message));
+        expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, 'messages.gw2ApiDown'));
       });
 
       it('should dispatch not found error', async () => {
         const ids = [10, 11, 12];
         const action = actions.fetchAmulets(ids);
         getFunc.withArgs(ids).rejects({ response: { status: 404 } });
-        const message = 'uh oh not found!!';
-        translate.withArgs('messages.notFoundLong').returns(message);
 
         await expect(action(dispatch, getStore)).to.be.rejected;
 
-        expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, message));
+        expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, 'messages.notFoundLong'));
       });
     });
 
@@ -242,6 +257,28 @@ describe('gw2 action factory', () => {
             });
         });
 
+        describe('items missing from the response', () => {
+          it('should dispatch error', async () => {
+            const ids = [10, 11, 12];
+            action = actions.fetchAmulets(ids);
+            getFunc.withArgs(ids).resolves({ 10: true, 11: true });
+
+            await action(dispatch, getStore);
+
+            expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError([12], 'messages.notFoundLong'));
+          });
+
+          it('should use calculated id if present', async () => {
+            const ids = [{ id: 20 }, { calculatedId: 2020, id: 21 }];
+            action = actions.fetchAmulets(ids);
+            getFunc.withArgs(ids).resolves({ 20: true });
+
+            await action(dispatch, getStore);
+
+            expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError([2020], 'messages.notFoundLong'));
+          });
+        });
+
         context('when there is a after fetch hook', () => {
           it('should call after method', () => {
             const afterGetAction = actions.fetchAfterGet([7]);
@@ -270,24 +307,16 @@ describe('gw2 action factory', () => {
 
         context('and it is a 404', () => {
           it('should dispatch an error under the item id', () => {
-            const message = 'uh oh not found';
-
-            translate.withArgs('messages.notFoundLong').returns(message);
-
             return createErrorAction(404).catch(() => {
-              expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, message));
+              expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, 'messages.notFoundLong'));
             });
           });
         });
 
         context('and it is anything else', () => {
           it('should dispatch an error under the item id', () => {
-            const message = 'uh oh baad';
-
-            translate.withArgs('messages.gw2ApiDown').returns(message);
-
             return createErrorAction(500).catch(() => {
-              expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, message));
+              expect(dispatch).to.have.been.calledWith(actions.fetchAmuletsError(ids, 'messages.gw2ApiDown'));
             });
           });
         });
