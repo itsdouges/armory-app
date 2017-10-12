@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import ItemHeader from '../ItemHeader';
+import Icon from 'common/components/Icon';
 import Background from '../Background';
 import styles from './styles.less';
 
@@ -12,8 +12,17 @@ type Props = {
 const SkinTooltip = ({ data: { skin } }: Props) => {
   return (
     <Background>
-      <ItemHeader name={skin.name} icon={skin.icon} rarity={skin.rarity} />
-      <div> <span className={styles.skinTypeText}>{skin.details.type}</span></div>
+      <div className={styles.itemHeader}>
+        <Icon size="mini" src={skin.icon} className={styles.tooltipIcon} />
+        <span className={styles.skinNameText}>
+          {skin.name}
+        </span>
+      </div>
+      <div>
+        <span className={styles.skinTypeText}>
+          {skin.details.type}
+        </span>
+      </div>
     </Background>
   );
 };

@@ -79,7 +79,7 @@ class Tooltip extends Component<Props> {
           break;
 
         case 'skins':
-          content = <SkinTooltip data={tooltip.data}/>;
+          content = <SkinTooltip data={tooltip.data} />;
           break;
 
         case 'guildUpgrade':
