@@ -6,7 +6,7 @@ import Container from 'common/components/Container';
 
 import { makeStubItems } from 'lib/paginator';
 import withBatchLoad from 'common/decorators/reduxBatchLoad';
-import actions from 'features/Gw2/actions';
+import { actions } from 'armory-component-ui';
 import styles from './styles.less';
 import { fetchWallet } from '../../actions';
 

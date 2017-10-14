@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styles from './styles.less';
-import TooltipTrigger from 'common/components/TooltipTrigger';
+import { TooltipTrigger } from 'armory-component-ui';
 import cx from 'classnames';
 import Icon from 'common/components/Icon';
 import T from 'i18n-react';

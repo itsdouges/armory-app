@@ -7,7 +7,7 @@ import T from 'i18n-react';
 import cx from 'classnames';
 
 import SvgIcon from 'common/components/Icon/Svg';
-import TooltipTrigger from 'common/components/TooltipTrigger';
+import { TooltipTrigger } from 'armory-component-ui';
 import styles from './styles.less';
 
 type Props = {

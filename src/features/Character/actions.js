@@ -6,7 +6,7 @@ import history from 'history';
 import get from 'lodash/get';
 import forEach from 'lodash/forEach';
 
-import actions from 'features/Gw2/actions';
+import { actions } from 'armory-component-ui';
 
 export const FETCH_CHARACTER_RESULT = 'FETCH_CHARACTER_RESULT';
 export const FETCHING_CHARACTER = 'FETCHING_CHARACTER';

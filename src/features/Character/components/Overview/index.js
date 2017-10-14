@@ -27,13 +27,12 @@ import ImageUpload from 'common/components/ImageUpload';
 import ContentCard from 'common/components/ContentCard';
 
 import PvpEquipment from '../PvpEquipment';
-import Specialization from '../Specialization';
 import Portrait from '../Portrait';
 import Attribute from '../Attribute';
 import CraftingBar from '../CraftingBar';
-import Item from 'common/components/Item';
 import Skills from '../Skills';
 import Embed from '../Embed';
+import { Item, Specialization } from 'armory-component-ui';
 
 import styles from './styles.less';
 

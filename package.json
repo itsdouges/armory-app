@@ -28,6 +28,7 @@
     "generateColourMap": "rm src/assets/categoryColourMap.json && node scripts/extractAchievementCategoriesColour.js >> src/assets/categoryColourMap.json"
   },
   "dependencies": {
+    "armory-component-ui": "^0.4.2",
     "axios": "^0.16.2",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.5",
@@ -76,6 +77,7 @@
     "chalk": "^2.1.0",
     "changelog-verify": "^1.0.4",
     "codecov": "^2.3.0",
+    "copy-webpack-plugin": "^4.1.1",
     "cross-spawn": "^5.0.1",
     "css-loader": "^0.28.5",
     "detect-port": "^1.2.1",

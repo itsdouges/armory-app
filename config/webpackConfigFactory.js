@@ -10,6 +10,7 @@ const ServiceWorkerPreCachePlugin = require('sw-precache-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin');
 const _ = require('lodash');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const paths = require('./paths');
 const config = require('../src/config/default');
@@ -196,11 +197,6 @@ module.exports = ({
         __DEVELOPMENT__: !production,
       }),
 
-      new webpack.optimize.CommonsChunkPlugin({
-        minChunks: 2,
-        async: true,
-      }),
-
       !production && new webpack.HotModuleReplacementPlugin(),
 
       production && new webpack.optimize.UglifyJsPlugin({
@@ -252,6 +248,11 @@ module.exports = ({
       // You can remove this if you don't use Moment.js:
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
+      new CopyWebpackPlugin([{
+        from: '../node_modules/armory-component-ui/images',
+        to: 'images',
+      }]),
+
       // See: https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31
       // >> Start longterm caching strategy.
       longTermCache && new webpack.NamedModulesPlugin(),
@@ -269,6 +270,11 @@ module.exports = ({
 
       longTermCache && new webpack.optimize.CommonsChunkPlugin({
         name: 'runtime',
+      }),
+
+      new webpack.optimize.CommonsChunkPlugin({
+        minChunks: 2,
+        async: true,
       }),
 
       longTermCache && new NameAllModulesPlugin(),

@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import cx from 'classnames';
-import Gw2Item from 'common/components/Gw2Item';
+import { Gw2Item } from 'armory-component-ui';
 import SvgIcon from 'common/components/Icon/Svg';
 
 import styles from './styles.less';

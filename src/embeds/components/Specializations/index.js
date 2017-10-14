@@ -5,7 +5,7 @@ import type { Specializations, Traits } from 'flowTypes';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import actions from 'features/Gw2/actions';
+import { actions } from 'armory-component-ui';
 import Specialization from 'features/Character/components/Specialization';
 
 function mapStateToProps (state) {

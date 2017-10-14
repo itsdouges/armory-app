@@ -18,7 +18,7 @@ import Checkbox from 'common/components/Checkbox';
 import authenticatedData from 'features/Auth/data';
 import { makeStubItems } from 'lib/paginator';
 import PaginatorGrid from 'common/layouts/PaginatorGrid';
-import TooltipTrigger from 'common/components/TooltipTrigger';
+import { TooltipTrigger } from 'armory-component-ui';
 import Button from 'common/components/Button';
 import Icon from 'common/components/Icon';
 import Content from 'common/layouts/Content';

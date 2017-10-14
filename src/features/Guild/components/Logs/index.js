@@ -10,9 +10,7 @@ import { humanize } from 'lib/date';
 import Card from 'common/components/Card';
 import Container from 'common/components/Container';
 import Progress from 'common/components/Icon/Progress';
-import Gw2Item from 'common/components/Gw2Item';
-import GuildUpgrade from 'common/components/Gw2GuildUpgrade';
-import Money from 'common/components/Gold';
+import { Gw2Item, GuildUpgrade, Gold as Money } from 'armory-component-ui';
 import DisplayAd from 'common/components/DisplayAd';
 
 import styles from './styles.less';

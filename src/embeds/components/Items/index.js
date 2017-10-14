@@ -3,8 +3,7 @@
 import type { EmbedProps } from 'embeds/bootstrap';
 
 import React from 'react';
-import Item from 'common/components/Item';
-import Gw2Item from 'common/components/Gw2Item';
+import { Item, Gw2Item } from 'armory-component-ui';
 import styles from './styles.less';
 
 type Props = {

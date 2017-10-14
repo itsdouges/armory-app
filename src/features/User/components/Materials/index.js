@@ -6,7 +6,7 @@ import { createSelector } from 'reselect';
 
 import map from 'lodash/map';
 import Container from 'common/components/Container';
-import actions from 'features/Gw2/actions';
+import { actions } from 'armory-component-ui';
 import Section from './Section';
 
 import styles from './styles.less';

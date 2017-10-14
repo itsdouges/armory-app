@@ -9,10 +9,9 @@ import styles from './styles.less';
 import ContentCard from 'common/components/ContentCard';
 import Portrait from 'features/Character/components/Portrait';
 import PvpEquipment from 'features/Character/components/PvpEquipment';
-import Specialization from 'features/Character/components/Specialization';
 import CharacterSkills from 'features/Character/components/Skills';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
-import Item from 'common/components/Item';
+import { Item, Specialization } from 'armory-component-ui';
 
 import type { Character, User, Items, Skins, Amulets, Skills, Professions } from 'flowTypes';
 

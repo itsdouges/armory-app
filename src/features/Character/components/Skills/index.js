@@ -5,7 +5,7 @@ import get from 'lodash/get';
 import cx from 'classnames';
 
 import styles from './styles.less';
-import Skill from '../Skill';
+import { Skill } from 'armory-component-ui';
 
 type SkillsProps = {
   skills: {},

@@ -6,7 +6,7 @@ import history from 'history';
 import { paginatedThunk } from 'lib/redux';
 import { readPvpSeasonIds } from 'lib/gw2';
 import config from 'config';
-import actions from 'features/Gw2/actions';
+import { actions } from 'armory-component-ui';
 import handleError from 'lib/handleError';
 
 export const FETCHING_USER = 'FETCHING_USER';

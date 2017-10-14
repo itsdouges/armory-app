@@ -10,15 +10,15 @@ const ignoreDependencies = [
 const common = {
   name: 'app',
   entryPath: paths.appSrc,
-  longTermCache: true,
+  // longTermCache: true,
   htmlWebpackPlugin: {
     filename: 'index.html',
     template: paths.appHtml,
     inject: true,
   },
-  entry: {
-    vendor: Object.keys(dependencies).filter((dep) => !ignoreDependencies.includes(dep)),
-  },
+  // entry: {
+  //   vendor: Object.keys(dependencies).filter((dep) => !ignoreDependencies.includes(dep)),
+  // },
 };
 
 module.exports = {

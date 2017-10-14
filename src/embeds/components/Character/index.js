@@ -12,11 +12,10 @@ import config from 'config';
 import { leftItems, rightItems } from 'lib/gw2/equipment';
 import ContentCard from 'common/components/ContentCard';
 
-import ArmoryBadge from 'common/components/ArmoryBadge';
+import { ArmoryBadge, Item } from 'armory-component-ui';
 import { fetchCharacter, selectCharacter } from 'features/Character/actions';
 import { minimalSelector } from 'features/Character/characters.reducer';
 import styles from './styles.less';
-import Item from 'common/components/Item';
 import Portrait from 'features/Character/components/Portrait';
 
 type Props = {

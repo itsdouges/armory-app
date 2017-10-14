@@ -9,7 +9,7 @@ import upperFirst from 'lodash/upperFirst';
 import styles from './styles.less';
 import { fetchStatistics } from './actions';
 
-import PieChart from 'common/components/PieChart';
+import { PieChart } from 'armory-component-ui';
 import Head from 'common/components/Head';
 import Container from 'common/components/Container';
 import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderboard';

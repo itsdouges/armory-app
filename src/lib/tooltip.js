@@ -3,9 +3,9 @@
 import Base from '../Base';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Tooltip from 'common/components/Tooltip';
+import { Tooltip } from 'armory-component-ui';
 
-import type { Props } from 'common/components/Tooltip';
+import type { TooltipProps as Props } from 'armory-component-ui';
 
 export default function bootstrapTooltip (props: Props = {}) {
   const tooltipContainer = document.createElement('div');

@@ -20,7 +20,6 @@ import User from 'features/User';
 import ForgotMyPassword from 'features/ForgotMyPassword';
 import Guild from 'features/Guild';
 import Settings from 'features/Settings';
-import Embeds from 'features/Embeds';
 import Search from 'features/Search';
 import Character from 'features/Character';
 
@@ -34,7 +33,6 @@ const UserWithScroll = withScroll(User);
 const ForgotMyPasswordWithScroll = withScroll(ForgotMyPassword);
 const GuildWithScroll = withScroll(Guild);
 const SettingsWithScroll = withScroll(authenticatedRoute(Settings));
-const EmbedsWithScroll = withScroll(Embeds);
 const CharacterWithScroll = withScroll(Character);
 const SearchWithScroll = withScroll(Search);
 const StatisticsWithScroll = withScroll(Statistics);
@@ -104,7 +102,6 @@ class App extends Component<Props, State> {
 
         <Switch>
           <Route exact path="/" component={HomeWithScroll} />
-          <Route exact path="/embeds" component={EmbedsWithScroll} />
           <Route exact path="/statistics" component={StatisticsWithScroll} />
           <Route exact path="/login" component={LoginWithScroll} />
           <Route exact path="/join" component={JoinWithScroll} />

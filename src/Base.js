@@ -2,16 +2,18 @@
 
 import type { Node } from 'react';
 
+import './publicPath';
 import React from 'react';
-import 'lib/i18n';
-import 'assets/fonts/menomonia.css';
-import 'assets/fonts/opensans.css';
+import { get as getLang } from 'lib/i18n';
+// $FlowFixMe
+import '!!style-loader!css-loader!armory-component-ui/styles.css'; // eslint-disable-line
 
 import { initialise as initialiseLs } from 'lib/localStorage';
 import rootReducer from 'features/reducer';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
+import { LanguageProvider } from 'armory-component-ui';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middleware = [
@@ -19,8 +21,7 @@ const middleware = [
 ];
 
 if (__DEVELOPMENT__) {
-  // TODO: https://github.com/madou/armory-react/issues/243
-  // middleware.push(require('redux-freeze'));
+  middleware.push(require('redux-freeze'));
 }
 
 initialiseLs();
@@ -37,7 +38,9 @@ type BaseProps = {
 
 const Base = ({ children }: BaseProps) => (
   <Provider store={store}>
-    {children}
+    <LanguageProvider lang={getLang()}>
+      {children}
+    </LanguageProvider>
   </Provider>
 );
 

@@ -10,7 +10,7 @@ import { createSelector } from 'reselect';
 import T from 'i18n-react';
 import { Route } from 'react-router-dom';
 
-import actions from 'features/Gw2/actions';
+import { actions } from 'armory-component-ui';
 import Container from 'common/components/Container';
 import Textbox from 'common/components/Textbox';
 

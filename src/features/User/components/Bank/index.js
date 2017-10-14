@@ -6,7 +6,7 @@ import { createSelector } from 'reselect';
 
 import { makeStubItems } from 'lib/paginator';
 import Container from 'common/components/Container';
-import Gw2Item from 'common/components/Gw2Item';
+import { Gw2Item } from 'armory-component-ui';
 
 import { fetchBank, fetchSharedInventory } from '../../actions';
 import styles from './styles.less';

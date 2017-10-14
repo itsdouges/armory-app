@@ -4,7 +4,7 @@ import React from 'react';
 import cx from 'classnames';
 
 import styles from './styles.less';
-import TooltipTrigger from 'common/components/TooltipTrigger';
+import { TooltipTrigger } from 'armory-component-ui';
 import ProgressBar from 'common/components/ProgressBar';
 import Icon from 'common/components/Icon';
 import colours from 'common/styles/colours';

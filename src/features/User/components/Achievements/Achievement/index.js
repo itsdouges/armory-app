@@ -4,13 +4,10 @@ import React, { Component } from 'react';
 import T from 'i18n-react';
 import cx from 'classnames';
 import Icon from 'common/components/Icon';
-import TooltipTrigger from 'common/components/TooltipTrigger';
 import ProgressBar from 'common/components/ProgressBar';
 import Card from 'common/components/Card';
-import Money from 'common/components/Gold';
-import Gw2Item from 'common/components/Gw2Item';
-import Gw2Skin from 'common/components/Gw2Skin';
-import Gw2Title from 'common/components/Gw2Title';
+import { Gold as Money, Gw2Item, Gw2Skin, Gw2Title, TooltipTrigger } from 'armory-component-ui';
+
 import SvgIcon from 'common/components/Icon/Svg';
 
 import extractColour from 'lib/colour';

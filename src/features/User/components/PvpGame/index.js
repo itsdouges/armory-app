@@ -13,9 +13,8 @@ import styles from './styles.less';
 import ProgressBar from 'common/components/ProgressBar';
 import Card from 'common/components/Card';
 import Icon from 'common/components/Icon';
-import Gw2Map from 'common/components/Gw2Map';
+import { Gw2Map, TooltipTrigger } from 'armory-component-ui';
 import Redacted from 'common/components/Redacted';
-import TooltipTrigger from 'common/components/TooltipTrigger';
 
 function calculateProgressBar ({ team, scores }) {
   if (team === 'Red') {

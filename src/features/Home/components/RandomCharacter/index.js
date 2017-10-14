@@ -6,7 +6,7 @@ import T from 'i18n-react';
 
 import config from 'config';
 import CharacterEmbed from 'embeds/components/Character';
-import TooltipTrigger from 'common/components/TooltipTrigger';
+import { TooltipTrigger } from 'armory-component-ui';
 import SvgIcon from 'common/components/Icon/Svg';
 
 import styles from './styles.less';

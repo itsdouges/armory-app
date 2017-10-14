@@ -13,7 +13,7 @@ import authenticatedData from 'features/Auth/data';
 import SvgIcon from 'common/components/Icon/Svg';
 import Content from 'common/layouts/Content';
 import ContentCard from 'common/components/ContentCard';
-import TooltipTrigger from 'common/components/TooltipTrigger';
+import { TooltipTrigger } from 'armory-component-ui';
 import Checkbox from 'common/components/Checkbox';
 
 import Characters from './components/Characters';

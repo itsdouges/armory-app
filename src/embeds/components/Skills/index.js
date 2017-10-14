@@ -6,7 +6,7 @@ import type { EmbedProps } from 'embeds/bootstrap';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import actions from 'features/Gw2/actions';
+import { actions } from 'armory-component-ui';
 import Skill from 'features/Character/components/Skill';
 
 import styles from './styles.less';

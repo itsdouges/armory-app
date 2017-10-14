@@ -6,7 +6,7 @@ import type { EmbedProps } from 'embeds/bootstrap';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import actions from 'features/Gw2/actions';
+import { actions } from 'armory-component-ui';
 import Trait from 'features/Character/components/Trait';
 
 function mapStateToProps (state) {

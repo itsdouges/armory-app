@@ -7,8 +7,7 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 
 import Container from 'common/components/Container';
-import Item from 'common/components/Item';
-import actions from 'features/Gw2/actions';
+import { actions, Item } from 'armory-component-ui';
 
 import styles from './styles.less';
 

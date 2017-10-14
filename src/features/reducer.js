@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducers as gw2Reducers } from 'armory-component-ui';
 
 const reducerModules = require.context('./', true, /.\.reducer\.js$/);
 
@@ -60,4 +61,7 @@ const reducers = Object.keys(definitions).reduce((acc, key) => {
   return acc;
 }, {});
 
-export default combineReducers(reducers);
+export default combineReducers({
+  ...reducers,
+  ...gw2Reducers,
+});
