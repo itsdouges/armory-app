@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Desert mastery not appearing, add workaround to map Unknown to Desert
 
 ## [4.43.7][] - 2017-10-11
 ### Changed
