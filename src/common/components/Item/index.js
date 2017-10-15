@@ -79,13 +79,11 @@ const Item = ({
   // $FlowFixMe
   const error = item && item.error;
   const itemLoaded = !error && !!Object.keys(item).length;
-  const skinLoaded = !error && !!Object.keys(skin).length;
-
   let tooltipData;
 
   if (error) {
     tooltipData = error;
-  } else if (skinLoaded) {
+  } else if (tooltipType === 'skins') {
     tooltipData = {
       skin,
     };
@@ -107,7 +105,7 @@ const Item = ({
 
   return (
     <TooltipTrigger
-      type={tooltipType || (skinLoaded ? 'skins' : 'items')}
+      type={tooltipType || 'items'}
       data={tooltipTextOverride || tooltipData}
       {...props}
     >
