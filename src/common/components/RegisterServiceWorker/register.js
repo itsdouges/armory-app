@@ -8,7 +8,7 @@
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
 
-export default function register () {
+export default function register ({ onLoaded, onError }) {
   const enableServiceWorker = process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator;
 
   if (enableServiceWorker) {
@@ -23,27 +23,15 @@ export default function register () {
             installingWorker.onstatechange = () => {
               if (installingWorker.state === 'installed') {
                 if (navigator.serviceWorker.controller) {
-                  // At this point, the old content will have been purged and
-                  // the fresh content will have been added to the cache.
-                  // It's the perfect time to display a "New content is
-                  // available; please refresh." message in your web app.
-                  // eslint-disable-next-line no-console
-                  console.log('>> New content is available; please refresh.');
+                  onLoaded({ newVersionAvailable: true });
                 } else {
-                  // At this point, everything has been precached.
-                  // It's the perfect time to display a
-                  // "Content is cached for offline use." message.
-                  // eslint-disable-next-line no-console
-                  console.log('>> Content is cached for offline use.');
+                  onLoaded({ newVersionAvailable: false });
                 }
               }
             };
           };
         })
-        .catch((error) => {
-          // eslint-disable-next-line no-console
-          console.error('>> Error during service worker registration:', error);
-        });
+        .catch(onError);
     });
   }
 

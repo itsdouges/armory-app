@@ -15,7 +15,6 @@ import authenticatedApp from 'features/Auth/app';
 import history from './history';
 import bootstrapTooltip from 'lib/tooltip';
 import attachFastClick from 'fastclick';
-import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <Base>
@@ -30,4 +29,3 @@ ReactDOM.render(
 
 attachFastClick.attach(document.body);
 bootstrapTooltip();
-registerServiceWorker();

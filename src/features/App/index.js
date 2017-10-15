@@ -11,6 +11,7 @@ import '../../styles.less';
 import styles from './styles.less';
 
 import withScroll from 'common/decorators/scrollTopOnMount';
+import RegisterServiceWorker from 'common/components/RegisterServiceWorker';
 import authenticatedRoute from 'features/Auth/route';
 
 import Home from 'features/Home';
@@ -116,6 +117,12 @@ class App extends Component<Props, State> {
           <RouteWithNoMatch path="/:alias/c/:character" component={CharacterWithScroll} />
           <RouteWithNoMatch path="/:alias" component={UserWithScroll} />
         </Switch>
+
+        <RegisterServiceWorker>
+          {({ newVersionAvailable }) => (
+            newVersionAvailable ? 'new version available' : null
+          )}
+        </RegisterServiceWorker>
 
         <NotificationBox className={styles.notificationBox} />
         <Footer />
