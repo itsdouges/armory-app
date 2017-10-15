@@ -54,6 +54,8 @@ const calculateTier = (achievement, current) => {
 };
 
 const masteryMap = {
+  // TODO: This is due to the the api returning unknown instead of desert.
+  // See: https://github.com/arenanet/api-cdi/issues/577
   Unknown: 'Desert',
 };
 
