@@ -53,6 +53,12 @@ const calculateTier = (achievement, current) => {
   return achievement.tiers.filter((tier) => tier.count >= current)[0] || {};
 };
 
+const masteryMap = {
+  // TODO: This is due to the the api returning unknown instead of desert.
+  // See: https://github.com/arenanet/api-cdi/issues/577
+  Unknown: 'Desert',
+};
+
 const makeRewards = (achievement) => {
   if (!achievement || !achievement.rewards) {
     return [];
@@ -60,12 +66,14 @@ const makeRewards = (achievement) => {
 
   return achievement.rewards.map((reward) => {
     switch (reward.type) {
-      case 'Mastery':
+      case 'Mastery': {
+        const masteryType = masteryMap[reward.region] || reward.region;
         return (
-          <TooltipTrigger key={reward.id} data={`${reward.region} ${T.translate('words.masteryPoint')}`}>
-            <Icon name={`mastery-point-${reward.region.toLowerCase()}.png`} />
+          <TooltipTrigger key={reward.id} data={`${masteryType} ${T.translate('words.masteryPoint')}`}>
+            <Icon name={`mastery-point-${masteryType.toLowerCase()}.png`} />
           </TooltipTrigger>
         );
+      }
 
       case 'Coins':
         return (
