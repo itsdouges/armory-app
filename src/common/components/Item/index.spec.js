@@ -33,11 +33,25 @@ describe('<Item />', () => {
     const wrapper = shallow(<Item {...props} />);
 
     expect(wrapper.find(TooltipTrigger).props()).to.contain({
-        type: 'items',
-      });
+      type: 'items',
+    });
 
   });
 
   it('should set tooltipData for skin when tooltipType is "skins"', () => {
+    const props = {
+      name: 'myItem',
+      item: { 
+        name: 'myItem'
+      },
+      tooltipType: 'skins',
+      inlineText: 'gw2spidy',
+    };
+
+    const wrapper = shallow(<Item {...props} />);
+
+    expect(wrapper.find(TooltipTrigger).props()).to.contain({
+      type: 'skins',
+    });
   });
 });
