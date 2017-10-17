@@ -74,6 +74,8 @@ const Item = ({
   inlineText,
   ...props
 }: Props) => {
+console.log('=========================================');
+
   if (hide) return null;
 
   // $FlowFixMe
@@ -103,6 +105,7 @@ const Item = ({
     tooltipData = name;
   }
 
+console.log('-----------------------------');
   return (
     <TooltipTrigger
       type={tooltipType || 'items'}
