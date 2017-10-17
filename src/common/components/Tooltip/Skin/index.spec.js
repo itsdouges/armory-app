@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import proxyquire from 'proxyquire';
 import SkinTooltip from './';
 
 describe('<SkinTooltip />', () => {
@@ -8,33 +7,30 @@ describe('<SkinTooltip />', () => {
     const testData = {
       skin: {
         type: 'Weapon',
-        details: { 
-          type: 'Axe'
+        details: {
+          type: 'Axe',
         },
-      }
+      },
     };
 
     const wrapper = shallow(<SkinTooltip data={testData} />);
 
     expect(wrapper.find('span')).to.contain('Axe');
-
   });
 
   it('should render the weight and detail type for armor', () => {
     const testData = {
       skin: {
         type: 'Armor',
-        details: { 
+        details: {
           type: 'Helm',
           weight_class: 'Heavy',
         },
-      }
+      },
     };
 
     const wrapper = shallow(<SkinTooltip data={testData} />);
 
     expect(wrapper.find('span')).to.contain('Heavy Helm');
-
   });
-
 });

@@ -10,9 +10,7 @@ type Props = {
 };
 
 const SkinTooltip = ({ data: { skin } }: Props) => {
-
-  const t = (skin.type === 'Weapon' ? skin.details.type : skin.details.weight_class + ' ' + skin.details.type);
-
+  const t = (skin.type === 'Weapon' ? skin.details.type : `${skin.details.weight_class} ${skin.details.type}`);
   return (
     <Background>
       <ItemHeader name={skin.name} icon={skin.icon} rarity="white" />

@@ -1,8 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import proxyquire from 'proxyquire';
-import { stubComponent, stubStyles } from 'test/utils';
-
+import stubComponent from 'test/utils';
 
 const TooltipTrigger = stubComponent('TooltipTrigger');
 const ResourceLink = stubComponent('ResourceLink');
@@ -17,15 +16,12 @@ const { default: Item } = proxyquire.noCallThru().noPreserveCache()('common/comp
   'recompose/pure': (obj) => { return obj; },
 });
 
-
-//import Item from './';
-
 describe('<Item />', () => {
   it('should default to item tooltipType', () => {
     const props = {
       name: 'myItem',
-      item: { 
-        name: 'myItem'
+      item: {
+        name: 'myItem',
       },
       inlineText: 'gw2spidy',
     };
@@ -35,14 +31,13 @@ describe('<Item />', () => {
     expect(wrapper.find(TooltipTrigger).props()).to.contain({
       type: 'items',
     });
-
   });
 
   it('should set tooltipData for skin when tooltipType is "skins"', () => {
     const props = {
-      name: 'myItem',
-      item: { 
-        name: 'myItem'
+      name: 'mySkin',
+      skin: {
+        name: 'mySkin',
       },
       tooltipType: 'skins',
       inlineText: 'gw2spidy',
@@ -53,5 +48,7 @@ describe('<Item />', () => {
     expect(wrapper.find(TooltipTrigger).props()).to.contain({
       type: 'skins',
     });
+
+    expect(wrapper.find(TooltipTrigger).props().data.skin.name).to.equal('mySkin');
   });
 });
