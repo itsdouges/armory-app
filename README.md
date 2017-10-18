@@ -1,6 +1,11 @@
 # Guild Wars 2 Armory
 
-[![Build Status](https://travis-ci.org/madou/armory-app.svg?branch=master)](https://travis-ci.org/madou/armory-app) [![Dependencies](https://david-dm.org/madou/armory-app.svg)](https://david-dm.org/madou/armory-app) [![Dev Dependencies](https://david-dm.org/madou/armory-app/dev-status.svg)](https://david-dm.org/madou/armory-app?type=dev) [![Join the chat at https://gitter.im/gw2armory/Lobby](https://badges.gitter.im/gw2armory/Lobby.svg)](https://gitter.im/gw2armory/Lobby) [![codecov](https://codecov.io/gh/madou/armory-react/branch/master/graph/badge.svg)](https://codecov.io/gh/madou/armory-app)
+[![Build Status](https://travis-ci.org/madou/armory-app.svg?branch=master)](https://travis-ci.org/madou/armory-app) 
+[![Dependencies](https://david-dm.org/madou/armory-app.svg)](https://david-dm.org/madou/armory-app) 
+[![Dev Dependencies](https://david-dm.org/madou/armory-app/dev-status.svg)](https://david-dm.org/madou/armory-app?type=dev) 
+[![Join the chat at https://gitter.im/gw2armory/Lobby](https://badges.gitter.im/gw2armory/Lobby.svg)](https://gitter.im/gw2armory/Lobby) 
+[![codecov](https://codecov.io/gh/madou/armory-react/branch/master/graph/badge.svg)](https://codecov.io/gh/madou/armory-app)
+[![Discord](https://img.shields.io/badge/discord-GW2Armory-blue.svg)](https://discord.gg/3BRbV7b)
 
 > Guild Wars 2 Armory is an easy way to find, view, and share users, characters, and guilds with your friends on your mobile and PC! Join today and start sharing!
 
