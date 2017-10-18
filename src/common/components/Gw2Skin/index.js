@@ -31,7 +31,7 @@ class Gw2Skin extends Component<*> {
   }
 
   render () {
-    return <Item {...this.props} />;
+    return <Item {...this.props} tooltipType="skins" />;
   }
 }
 );

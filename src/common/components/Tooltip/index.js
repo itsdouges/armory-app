@@ -11,6 +11,7 @@ import MouseFollow from '../MouseFollow';
 import AmuletTooltip from './Amulet';
 import ItemTooltip from './Item';
 import SkillTooltip from './Skill';
+import SkinTooltip from './Skin';
 import SimpleTooltip from './Simple';
 import Background from './Background';
 import AchievementTooltip from './Achievement';
@@ -75,6 +76,10 @@ class Tooltip extends Component<Props> {
 
         case 'achievement':
           content = <AchievementTooltip data={tooltip.data} />;
+          break;
+
+        case 'skins':
+          content = <SkinTooltip data={tooltip.data} />;
           break;
 
         case 'guildUpgrade':

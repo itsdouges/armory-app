@@ -79,11 +79,14 @@ const Item = ({
   // $FlowFixMe
   const error = item && item.error;
   const itemLoaded = !error && !!Object.keys(item).length;
-
   let tooltipData;
 
   if (error) {
     tooltipData = error;
+  } else if (tooltipType === 'skins') {
+    tooltipData = {
+      skin,
+    };
   } else if (itemLoaded) {
     tooltipData = {
       name,
