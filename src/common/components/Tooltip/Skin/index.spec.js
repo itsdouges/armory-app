@@ -14,7 +14,7 @@ describe('<SkinTooltip />', () => {
     };
 
     const wrapper = shallow(<SkinTooltip data={testData} />);
-
+    expect(wrapper.find('span')).to.have.length(1);
     expect(wrapper.find('span')).to.contain('Axe');
   });
 
@@ -31,6 +31,8 @@ describe('<SkinTooltip />', () => {
 
     const wrapper = shallow(<SkinTooltip data={testData} />);
 
-    expect(wrapper.find('span')).to.contain('Heavy Helm');
+    expect(wrapper.find('span')).to.have.length(2);
+    expect(wrapper.find('span').at(0)).to.contain('Heavy');
+    expect(wrapper.find('span').at(1)).to.contain('Helm');
   });
 });

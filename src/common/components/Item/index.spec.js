@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import proxyquire from 'proxyquire';
-import stubComponent from 'test/utils';
+import { stubComponent } from 'test/utils';
 
 const TooltipTrigger = stubComponent('TooltipTrigger');
 const ResourceLink = stubComponent('ResourceLink');
