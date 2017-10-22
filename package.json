@@ -1,6 +1,6 @@
 {
   "name": "armory-react",
-  "version": "4.44.0",
+  "version": "5.0.0",
   "private": true,
   "pre-commit": [
     "test"

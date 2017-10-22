@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+
+## [5.0.0][] - 2017-10-22
 ### Removed
 - Embeds from the codebase, left with a message to migrate to the new CDN
 
@@ -1123,7 +1125,8 @@ At a later date a embed generator page will be made to help with the creation of
 ### Added
 - This CHANGELOG file to allow more insight to the changes made throughout the development of gw2armory.com
 
-[Unreleased]: https://github.com/madou/armory-react/compare/v4.44.0...HEAD
+[Unreleased]: https://github.com/madou/armory-react/compare/v5.0.0...HEAD
+[5.0.0]: https://github.com/madou/armory-react/compare/v4.44.0...v5.0.0
 [4.44.0]: https://github.com/madou/armory-react/compare/v4.43.8...v4.44.0
 [4.43.8]: https://github.com/madou/armory-react/compare/v4.43.7...v4.43.8
 [4.43.7]: https://github.com/madou/armory-react/compare/v4.43.6...v4.43.7
