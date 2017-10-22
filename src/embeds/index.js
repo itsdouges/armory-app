@@ -1,13 +1,10 @@
 // @flow
 
 import 'babel-polyfill';
-
-const init = () => {
-  import('./bootstrap').then((module) => module.default());
-};
+import bootstrap from './bootstrap';
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', bootstrap);
 } else {
-  setTimeout(init, 1);
+  setTimeout(bootstrap, 1);
 }
