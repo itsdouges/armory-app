@@ -6,6 +6,7 @@
 [![Join the chat at https://gitter.im/gw2armory/Lobby](https://badges.gitter.im/gw2armory/Lobby.svg)](https://gitter.im/gw2armory/Lobby) 
 [![codecov](https://codecov.io/gh/madou/armory-react/branch/master/graph/badge.svg)](https://codecov.io/gh/madou/armory-app)
 [![Discord](https://img.shields.io/badge/discord-GW2Armory-blue.svg)](https://discord.gg/3BRbV7b)
+[![Patreon](https://img.shields.io/badge/patreon-Become%20a%20Patreon-green.svg)](https://www.patreon.com/bePatron?u=5546924)
 
 > Guild Wars 2 Armory is an easy way to find, view, and share users, characters, and guilds with your friends on your mobile and PC! Join today and start sharing!
 
