@@ -21,24 +21,24 @@ type Props = {
   },
 };
 
-const buildName = str => `${str} ${T.translate('words.ladder')}`;
+const buildName = str => str;
 
 const tabs = [
   {
     path: '',
-    name: buildName('GW2A'),
+    name: buildName('GW2Armory'),
     content: <PvpLeaderboard region="gw2a" />,
     description: config.descriptions.pvpLeaderboard,
   },
   {
     path: '/na',
-    name: buildName('NA'),
+    name: buildName('North America'),
     content: <PvpLeaderboard region="na" />,
     description: config.descriptions.pvpLeaderboard,
   },
   {
     path: '/eu',
-    name: buildName('EU'),
+    name: buildName('Europe'),
     content: <PvpLeaderboard region="eu" />,
     description: config.descriptions.pvpLeaderboard,
   },

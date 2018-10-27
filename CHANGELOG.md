@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Pvp leaderboards to a tabular format
 
 ## [5.0.0][] - 2017-10-22
 ### Removed

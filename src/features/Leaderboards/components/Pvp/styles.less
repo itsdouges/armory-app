@@ -3,49 +3,50 @@
 @leaderText: @_white;
 @spaceBetween: 1em;
 
-.root {
-  margin-bottom: @spaceBetween;
+.avatar {
+  margin-right: 0.5rem;
 }
 
-.listContainer {
-  margin: 0 auto;
-  max-width: 550px;
+.avatarContainer {
+  display: flex;
+  align-items: center;
 }
 
-.firstContainer,
-.closeToFirstContainer,
-.everyoneElse {
-  display: inline-block;
-  position: relative;
+.rankingsTable {
+  margin: @spaceBetween auto;
+  border: none;
+  border-collapse: collapse;
+
+  td,
+  th {
+    padding: 0.5em 0.5rem;
+  }
+
+  th {
+    font-size: 0.9em;
+    font-weight: 400;
+  }
+
+  tbody {
+    tr:hover {
+      background-color: @_lightgray;
+    }
+
+    > tr:nth-child(1) {
+      font-size: 2em;
+    }
+
+    > tr:nth-child(2) {
+      font-size: 1.5em;
+    }
+
+    > tr:nth-child(3) {
+      font-size: 1.25em;
+    }
+  }
 }
 
-.firstContainer {
-  margin: 4em 0 2em;
-  color: @leaderText;
-  text-shadow: 0 0 10px @_black;
-  width: 100%;
-}
-
-.firstContainerBg {
-  position: absolute;
-  left: 0;
-  top: 10px;
-  width: 500px;
-  height: 215px;
-  background-image: url('assets/images/stroke-a.png');
-  z-index: -1;
-  transform: scaleX(-1);
-}
-
-.closeToFirstContainer {
-  margin: 0.5em 0 0.5em 20px;
-}
-
-.everyoneElse {
-  margin: 1em;
-  margin-left: 76px;
-}
-
+// prettier-ignore
 .fromTablet({
   .firstContainer {
     width: auto;
@@ -59,8 +60,4 @@
 .progress {
   display: block;
   margin: 2em auto;
-}
-
-.leaderboard {
-  margin-top: @spaceBetween;
 }

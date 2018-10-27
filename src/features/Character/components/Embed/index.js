@@ -12,7 +12,7 @@ import styles from './styles.less';
 
 const buildEmbedScript = name => `
 <div data-armory-embed="character" data-armory-name="${name}"></div>
-<script async type="text/javascript" src="${window.location.origin}/gw2aEmbeds.js"></script>
+<script async src="https://unpkg.com/armory-embeds@^0.x.x/armory-embeds.js"></script>
 `;
 
 type Props = {
@@ -52,7 +52,7 @@ export default class Embed extends Component<Props, State> {
       <div className={cx(styles.root, className)}>
         {!shown && (
           <button onClick={this.show} className={styles.embedText}>
-            {T.translate('words.embed')}
+            Get {T.translate('words.embed')}
           </button>
         )}
 
