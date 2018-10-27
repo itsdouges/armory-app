@@ -4,7 +4,6 @@ import type { Node } from 'react';
 
 import React from 'react';
 
-
 import styles from './styles.less';
 import TabsRow from './TabsRow';
 import Content from './Content';
@@ -31,11 +30,7 @@ const Tabs = ({ metaContent, ...props }: TabsProps) => (
   <div className={styles.root}>
     <TabsRow {...props} appearance="default" />
 
-    {!!metaContent && (
-      <aside className={styles.metaContent}>
-        {metaContent}
-      </aside>
-    )}
+    {!!metaContent && <aside className={styles.metaContent}>{metaContent}</aside>}
 
     <Content {...props} />
   </div>

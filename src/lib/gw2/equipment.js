@@ -1,24 +1,29 @@
 export const noSecondWeaponSet = ['Engineer', 'Elementalist'];
 
-export const weapons = [{
-  name: 'Main-Hand Weapon',
-  type: 'sword',
-  key: 'weaponA1',
-}, {
-  name: 'Off-Hand Weapon',
-  type: 'shield',
-  key: 'weaponA2',
-}, {
-  name: 'Main-Hand Weapon',
-  type: 'sword',
-  key: 'weaponB1',
-  hideForClasses: noSecondWeaponSet,
-}, {
-  name: 'Off-Hand Weapon',
-  type: 'shield',
-  key: 'weaponB2',
-  hideForClasses: noSecondWeaponSet,
-}];
+export const weapons = [
+  {
+    name: 'Main-Hand Weapon',
+    type: 'sword',
+    key: 'weaponA1',
+  },
+  {
+    name: 'Off-Hand Weapon',
+    type: 'shield',
+    key: 'weaponA2',
+  },
+  {
+    name: 'Main-Hand Weapon',
+    type: 'sword',
+    key: 'weaponB1',
+    hideForClasses: noSecondWeaponSet,
+  },
+  {
+    name: 'Off-Hand Weapon',
+    type: 'shield',
+    key: 'weaponB2',
+    hideForClasses: noSecondWeaponSet,
+  },
+];
 
 export const leftItems = [
   {

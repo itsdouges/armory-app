@@ -64,63 +64,67 @@ type State = {
   smallHeader: boolean,
 };
 
-function shouldForceSmallHeader ({ location }: Props) {
+function shouldForceSmallHeader({ location }: Props) {
   return location.pathname !== '/';
 }
 
-export default connect(null, {
-  determineApiHealth,
-  submitNotification,
-})(
-class App extends Component<Props, State> {
-  props: Props;
+export default connect(
+  null,
+  {
+    determineApiHealth,
+    submitNotification,
+  }
+)(
+  class App extends Component<Props, State> {
+    props: Props;
 
-  state = {
-    smallHeader: shouldForceSmallHeader(this.props),
-  };
+    state = {
+      smallHeader: shouldForceSmallHeader(this.props),
+    };
 
-  componentWillMount () {
-    this.props.determineApiHealth && this.props.determineApiHealth();
+    componentWillMount() {
+      this.props.determineApiHealth && this.props.determineApiHealth();
 
-    notifications.forEach((notification) => {
-      this.props.submitNotification && this.props.submitNotification(
-        notification.id,
-        notification.message,
-        notification.options,
+      notifications.forEach(notification => {
+        this.props.submitNotification &&
+          this.props.submitNotification(
+            notification.id,
+            notification.message,
+            notification.options
+          );
+      });
+    }
+
+    componentWillReceiveProps(nextProps: Props) {
+      this.setState({
+        smallHeader: shouldForceSmallHeader(nextProps),
+      });
+    }
+
+    render() {
+      return (
+        <div className={styles.root}>
+          <Header compact={this.state.smallHeader} />
+
+          <Switch>
+            <Route exact path="/" component={HomeWithScroll} />
+            <Route exact path="/embeds" component={EmbedsWithScroll} />
+            <Route exact path="/statistics" component={StatisticsWithScroll} />
+            <Route exact path="/login" component={LoginWithScroll} />
+            <Route exact path="/join" component={JoinWithScroll} />
+            <Route exact path="/search" component={SearchWithScroll} />
+            <Route exact path="/settings" component={SettingsWithScroll} />
+            <Route exact path="/forgot-my-password" component={ForgotMyPasswordWithScroll} />
+            <Route path="/leaderboards/pvp" component={LeaderboardsWithScroll} />
+            <RouteWithNoMatch path="/g/:guildName" component={GuildWithScroll} />
+            <RouteWithNoMatch path="/:alias/c/:character" component={CharacterWithScroll} />
+            <RouteWithNoMatch path="/:alias" component={UserWithScroll} />
+          </Switch>
+
+          <NotificationBox className={styles.notificationBox} />
+          <Footer />
+        </div>
       );
-    });
+    }
   }
-
-  componentWillReceiveProps (nextProps: Props) {
-    this.setState({
-      smallHeader: shouldForceSmallHeader(nextProps),
-    });
-  }
-
-  render () {
-    return (
-      <div className={styles.root}>
-        <Header compact={this.state.smallHeader} />
-
-        <Switch>
-          <Route exact path="/" component={HomeWithScroll} />
-          <Route exact path="/embeds" component={EmbedsWithScroll} />
-          <Route exact path="/statistics" component={StatisticsWithScroll} />
-          <Route exact path="/login" component={LoginWithScroll} />
-          <Route exact path="/join" component={JoinWithScroll} />
-          <Route exact path="/search" component={SearchWithScroll} />
-          <Route exact path="/settings" component={SettingsWithScroll} />
-          <Route exact path="/forgot-my-password" component={ForgotMyPasswordWithScroll} />
-          <Route path="/leaderboards/pvp" component={LeaderboardsWithScroll} />
-          <RouteWithNoMatch path="/g/:guildName" component={GuildWithScroll} />
-          <RouteWithNoMatch path="/:alias/c/:character" component={CharacterWithScroll} />
-          <RouteWithNoMatch path="/:alias" component={UserWithScroll} />
-        </Switch>
-
-        <NotificationBox className={styles.notificationBox} />
-        <Footer />
-      </div>
-    );
-  }
-}
 );

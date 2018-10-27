@@ -6,6 +6,7 @@ type Colour = {
   b: string,
 };
 
-const extractColour = (c?: Colour, opacity: number) => c && `rgba(${c.r}, ${c.g}, ${c.b}, ${opacity})`;
+const extractColour = (c?: Colour, opacity: number) =>
+  c && `rgba(${c.r}, ${c.g}, ${c.b}, ${opacity})`;
 
 export default extractColour;

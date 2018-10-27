@@ -50,7 +50,7 @@ const calculateTier = (achievement, current) => {
     return {};
   }
 
-  return achievement.tiers.filter((tier) => tier.count >= current)[0] || {};
+  return achievement.tiers.filter(tier => tier.count >= current)[0] || {};
 };
 
 const masteryMap = {
@@ -59,17 +59,20 @@ const masteryMap = {
   Unknown: 'Desert',
 };
 
-const makeRewards = (achievement) => {
+const makeRewards = achievement => {
   if (!achievement || !achievement.rewards) {
     return [];
   }
 
-  return achievement.rewards.map((reward) => {
+  return achievement.rewards.map(reward => {
     switch (reward.type) {
       case 'Mastery': {
         const masteryType = masteryMap[reward.region] || reward.region;
         return (
-          <TooltipTrigger key={reward.id} data={`${masteryType} ${T.translate('words.masteryPoint')}`}>
+          <TooltipTrigger
+            key={reward.id}
+            data={`${masteryType} ${T.translate('words.masteryPoint')}`}
+          >
             <Icon name={`mastery-point-${masteryType.toLowerCase()}.png`} />
           </TooltipTrigger>
         );
@@ -99,9 +102,7 @@ const makeBits = (achievement, expanded, userBits = []) => {
     return [];
   }
 
-  const bits = expanded
-    ? achievement.bits
-    : achievement.bits.slice(0, 1);
+  const bits = expanded ? achievement.bits : achievement.bits.slice(0, 1);
 
   return (
     <ol>
@@ -157,22 +158,32 @@ export default class Achievement extends Component<Props, *> {
   };
 
   toggleBits = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       bitsExpanded: !prevState.bitsExpanded,
     }));
   };
 
-  render () {
+  render() {
     const { achievement, icon, current, bits, colour, done: completed } = this.props;
     const { bitsExpanded } = this.state;
     const tier = calculateTier(achievement, current);
-    const name = achievement ? achievement.name : <span className={styles.loading}>Loading Achievement...</span>;
+    const name = achievement ? (
+      achievement.name
+    ) : (
+      <span className={styles.loading}>Loading Achievement...</span>
+    );
 
     return (
       <Card className={cx(styles.root, cx({ [styles.completed]: completed }))}>
         <div className={styles.achievementContainer}>
-          <TooltipTrigger data={achievement && { ...achievement, current, userBits: bits }} type="achievement">
-            <div className={styles.iconContainer} style={{ backgroundColor: extractColour(colour, 0.1) }}>
+          <TooltipTrigger
+            data={achievement && { ...achievement, current, userBits: bits }}
+            type="achievement"
+          >
+            <div
+              className={styles.iconContainer}
+              style={{ backgroundColor: extractColour(colour, 0.1) }}
+            >
               <Icon size="medium" src={icon} className={styles.icon} />
 
               <ProgressBar
@@ -206,18 +217,19 @@ export default class Achievement extends Component<Props, *> {
           </div>
         </div>
 
-        {achievement && achievement.bits && (
-          <button
-            onClick={this.toggleBits}
-            className={cx(styles.bits, {
-              [styles.expanded]: bitsExpanded,
-            })}
-          >
-            <SvgIcon name="expand" className={styles.expandIcon} />
-            <span className={styles.bitsWash} />
-            {makeBits(achievement, bitsExpanded, bits)}
-          </button>
-        )}
+        {achievement &&
+          achievement.bits && (
+            <button
+              onClick={this.toggleBits}
+              className={cx(styles.bits, {
+                [styles.expanded]: bitsExpanded,
+              })}
+            >
+              <SvgIcon name="expand" className={styles.expandIcon} />
+              <span className={styles.bitsWash} />
+              {makeBits(achievement, bitsExpanded, bits)}
+            </button>
+          )}
       </Card>
     );
   }

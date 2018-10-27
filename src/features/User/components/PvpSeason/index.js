@@ -22,7 +22,13 @@ const PvpSeason = ({ standing, season, small }: Props) => {
 
   return (
     <Summary
-      leftIcon={{ src: small ? division.small_icon : division.large_icon || 'https://render.guildwars2.com/file/02ED75461164551455297DA4955862552C2452BE/1313334.png', size: 'large' }}
+      leftIcon={{
+        src: small
+          ? division.small_icon
+          : division.large_icon ||
+            'https://render.guildwars2.com/file/02ED75461164551455297DA4955862552C2452BE/1313334.png',
+        size: 'large',
+      }}
       title={<Redacted redact={redact}>{season.name || 'PvP League Season Ten'}</Redacted>}
       subTitle={<Redacted redact={redact}>{division.name || 'Division 1: Amber'}</Redacted>}
     />
@@ -32,17 +38,15 @@ const PvpSeason = ({ standing, season, small }: Props) => {
 type PvpLeagueProps = {
   standings?: Object,
   seasons?: Object,
-}
+};
 
 const PvpLeague = ({ standings, seasons }: PvpLeagueProps) => {
-  const sortedSeasons = sortBy(seasons, (season) => new Date(season.end));
+  const sortedSeasons = sortBy(seasons, season => new Date(season.end));
 
   const currentSeason = last(sortedSeasons) || {};
   const standing = find(standings, { season_id: currentSeason.id }) || {};
 
-  return (
-    <PvpSeason season={currentSeason} standing={standing} />
-  );
+  return <PvpSeason season={currentSeason} standing={standing} />;
 };
 
 export default PvpLeague;

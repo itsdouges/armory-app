@@ -8,7 +8,7 @@ const { defaultState, reducer } = createReducer('professions', readProfessions, 
     const skillIds = [];
 
     forEach(professions, ({ weapons }) => {
-      forEach(weapons, ({ skills }) => skills.forEach((skill) => skillIds.push(skill.id)));
+      forEach(weapons, ({ skills }) => skills.forEach(skill => skillIds.push(skill.id)));
     });
 
     dispatch(actions.fetchSkills(skillIds));

@@ -8,7 +8,7 @@
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
 
-export default function register () {
+export default function register() {
   const enableServiceWorker = process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator;
 
   if (enableServiceWorker) {
@@ -16,7 +16,7 @@ export default function register () {
       const swUrl = '/service-worker.js';
       navigator.serviceWorker
         .register(swUrl)
-        .then((registration) => {
+        .then(registration => {
           // eslint-disable-next-line no-param-reassign
           registration.onupdatefound = () => {
             const installingWorker = registration.installing;
@@ -40,7 +40,7 @@ export default function register () {
             };
           };
         })
-        .catch((error) => {
+        .catch(error => {
           // eslint-disable-next-line no-console
           console.error('>> Error during service worker registration:', error);
         });
@@ -49,7 +49,7 @@ export default function register () {
 
   return () => {
     if (enableServiceWorker) {
-      navigator.serviceWorker.ready.then((registration) => {
+      navigator.serviceWorker.ready.then(registration => {
         registration.unregister();
       });
     }

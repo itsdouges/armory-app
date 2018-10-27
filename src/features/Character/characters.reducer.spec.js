@@ -11,7 +11,7 @@ describe('characters.reducer.js', () => {
     const mode = 'pve';
     const name = 'Blastrn';
 
-    const buildState = (character) => ({
+    const buildState = character => ({
       items: {},
       skins: {},
       characters: {

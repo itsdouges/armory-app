@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import styles from './styles.less';
 import cx from 'classnames';
 
-function buildUrl (item, aliasOverride, resource) {
+function buildUrl(item, aliasOverride, resource) {
   switch (resource) {
     case 'users':
       return `/${item.name}`;
@@ -45,28 +45,33 @@ const ContentCardList = ({
   resource = 'characters',
   children,
 }: ContentCardListProps) => {
-  const content = items.length ?
-    items.map((item, index) => {
-      const card = <ContentCard type={resource || item.resource} content={item} />;
-      const key = `${item.name}-${index}`;
+  const content = items.length
+    ? items.map((item, index) => {
+        const card = <ContentCard type={resource || item.resource} content={item} />;
+        const key = `${item.name}-${index}`;
 
-      if (item.gw2Only) {
-        return <div key={key} className={styles.item}>{card}</div>;
-      }
+        if (item.gw2Only) {
+          return (
+            <div key={key} className={styles.item}>
+              {card}
+            </div>
+          );
+        }
 
-      return (
-        <Link
-          to={buildUrl(item, alias, resource)}
-          key={key}
-          className={cx(styles.item, styles.withHover)}
-        >
-          {card}
-        </Link>);
-    }) :
-    [0, 0].map((data, index) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <ContentCard className={styles.item} key={index} />)
-    );
+        return (
+          <Link
+            to={buildUrl(item, alias, resource)}
+            key={key}
+            className={cx(styles.item, styles.withHover)}
+          >
+            {card}
+          </Link>
+        );
+      })
+    : [0, 0].map((data, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <ContentCard className={styles.item} key={index} />
+      ));
 
   const borderStyle = bottomBorder ? 'borderContainerBottom' : 'borderContainerTop';
 

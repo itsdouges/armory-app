@@ -15,8 +15,8 @@ import Container from 'common/components/Container';
 import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderboard';
 
 export const selector = createSelector(
-  (store) => store.stats,
-  (armoryStats) => ({
+  store => store.stats,
+  armoryStats => ({
     armoryStats,
   })
 );
@@ -46,8 +46,8 @@ const nameToColour = {
   80: 'teal',
 };
 
-function mapRawStatsToData (data) {
-  return Object.keys(data).map((name) => {
+function mapRawStatsToData(data) {
+  return Object.keys(data).map(name => {
     const count = data[name];
 
     return {
@@ -58,8 +58,8 @@ function mapRawStatsToData (data) {
   });
 }
 
-function mapRawStats (stats) {
-  return Object.keys(stats).map((stat) => {
+function mapRawStats(stats) {
+  return Object.keys(stats).map(stat => {
     const data = stats[stat];
 
     return {
@@ -76,60 +76,69 @@ type Props = {
   },
 };
 
-export default connect(selector, {
-  fetchStatistics,
-})(
-class Statistics extends Component<Props> {
-  props: Props;
-
-  componentWillMount () {
-    this.props.fetchStatistics();
+export default connect(
+  selector,
+  {
+    fetchStatistics,
   }
+)(
+  class Statistics extends Component<Props> {
+    props: Props;
 
-  render () {
-    const { armoryStats = {
-      characters: { race: { Asura: { value: 100, name: 'ok' } } },
-    } } = this.props;
+    componentWillMount() {
+      this.props.fetchStatistics();
+    }
 
-    const parsedStats = Object.keys(armoryStats).sort().map((name) => {
-      const data = armoryStats[name];
+    render() {
+      const {
+        armoryStats = {
+          characters: { race: { Asura: { value: 100, name: 'ok' } } },
+        },
+      } = this.props;
 
-      return {
-        name,
-        stats: mapRawStats(data),
-      };
-    });
+      const parsedStats = Object.keys(armoryStats)
+        .sort()
+        .map(name => {
+          const data = armoryStats[name];
 
-    return (
-      <Container className={styles.root}>
-        <Head title={T.translate('stats.name')} />
-        <ResponsiveLeaderboard className={styles.ad} />
+          return {
+            name,
+            stats: mapRawStats(data),
+          };
+        });
 
-        {parsedStats.slice(0, 1).map(({ name, stats }) => (
-          <span key={name}>
-            <h2>{upperFirst(name)}</h2>
+      return (
+        <Container className={styles.root}>
+          <Head title={T.translate('stats.name')} />
+          <ResponsiveLeaderboard className={styles.ad} />
 
-            <hr />
+          {parsedStats.slice(0, 1).map(({ name, stats }) => (
+            <span key={name}>
+              <h2>{upperFirst(name)}</h2>
 
-            <div className={styles.chartsContainer}>
-              {stats.filter((statData) => statData.name !== 'count').map((statData) => (
-                <span key={statData.name} className={styles.chartContainer}>
-                  <h3>{upperFirst(statData.name)}</h3>
+              <hr />
 
-                  <PieChart className={styles.chart} dataValues={statData.data} />
-                </span>
-              ))}
-            </div>
+              <div className={styles.chartsContainer}>
+                {stats.filter(statData => statData.name !== 'count').map(statData => (
+                  <span key={statData.name} className={styles.chartContainer}>
+                    <h3>{upperFirst(statData.name)}</h3>
 
-            <hr />
-          </span>
-        ))}
+                    <PieChart className={styles.chart} dataValues={statData.data} />
+                  </span>
+                ))}
+              </div>
 
-        <p className={styles.note}><small>* {T.translate('stats.refreshNote')}</small></p>
+              <hr />
+            </span>
+          ))}
 
-        <ResponsiveLeaderboard className={styles.ad} />
-      </Container>
-    );
+          <p className={styles.note}>
+            <small>* {T.translate('stats.refreshNote')}</small>
+          </p>
+
+          <ResponsiveLeaderboard className={styles.ad} />
+        </Container>
+      );
+    }
   }
-}
 );

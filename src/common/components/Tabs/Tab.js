@@ -13,13 +13,7 @@ export type Tab$Props = {
   flair?: 'new',
 };
 
-const Tab = ({
-  name,
-  path,
-  onClick,
-  flair,
-  ...props
-}: Tab$Props) => (
+const Tab = ({ name, path, onClick, flair, ...props }: Tab$Props) => (
   <NavLink
     {...props}
     to={path}

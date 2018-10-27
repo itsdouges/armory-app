@@ -21,31 +21,35 @@ type Props = {
   },
 };
 
-const buildName = (str) => `${str} ${T.translate('words.ladder')}`;
+const buildName = str => `${str} ${T.translate('words.ladder')}`;
 
-const tabs = [{
-  path: '',
-  name: buildName('GW2A'),
-  content: <PvpLeaderboard region="gw2a" />,
-  description: config.descriptions.pvpLeaderboard,
-}, {
-  path: '/na',
-  name: buildName('NA'),
-  content: <PvpLeaderboard region="na" />,
-  description: config.descriptions.pvpLeaderboard,
-}, {
-  path: '/eu',
-  name: buildName('EU'),
-  content: <PvpLeaderboard region="eu" />,
-  description: config.descriptions.pvpLeaderboard,
-}];
+const tabs = [
+  {
+    path: '',
+    name: buildName('GW2A'),
+    content: <PvpLeaderboard region="gw2a" />,
+    description: config.descriptions.pvpLeaderboard,
+  },
+  {
+    path: '/na',
+    name: buildName('NA'),
+    content: <PvpLeaderboard region="na" />,
+    description: config.descriptions.pvpLeaderboard,
+  },
+  {
+    path: '/eu',
+    name: buildName('EU'),
+    content: <PvpLeaderboard region="eu" />,
+    description: config.descriptions.pvpLeaderboard,
+  },
+];
 
 const tabsProps = {
   tabs,
   titleSuffix: `PvP ${T.translate('leaderboards.name')}`,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   pvpSeasonName: state.leaderboards.pvp.name,
 });
 
@@ -54,7 +58,11 @@ const Leaderboards = ({ match, pvpSeasonName }: Props) => (
     <HeroHeader
       backgroundColor="#57585d"
       backgroundImage={seasonEightBg}
-      title={<LoadingStrip long appearance="white">{pvpSeasonName}</LoadingStrip>}
+      title={
+        <LoadingStrip long appearance="white">
+          {pvpSeasonName}
+        </LoadingStrip>
+      }
     >
       <TabsRow {...tabsProps} basePath={match.url} appearance="transparent" />
     </HeroHeader>

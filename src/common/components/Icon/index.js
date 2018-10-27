@@ -26,7 +26,17 @@ const buildStyle = ({ style, src, name, imageSrc, sizePx }) => {
   };
 };
 
-const Icon = ({ name, size, className, src, button, children, style, sizePx, ...props }: IconProps) => {
+const Icon = ({
+  name,
+  size,
+  className,
+  src,
+  button,
+  children,
+  style,
+  sizePx,
+  ...props
+}: IconProps) => {
   let imageSrc;
 
   try {

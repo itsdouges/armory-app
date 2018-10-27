@@ -18,10 +18,7 @@ const Home = () => (
       <Container className={styles.atfContainer}>
         <Introduction className={styles.introContainer} />
 
-        <AsyncComponent
-          type="ofTheDay"
-          load={() => import('./components/RandomCharacter')}
-        />
+        <AsyncComponent type="ofTheDay" load={() => import('./components/RandomCharacter')} />
       </Container>
     </div>
 

@@ -25,7 +25,7 @@ type Props = {
   userAchievements: { [number]: any },
 };
 
-function extractTotals (categories, categoryData, userAchievements) {
+function extractTotals(categories, categoryData, userAchievements) {
   const totals = {};
   let totalCompleted = 0;
 
@@ -64,11 +64,11 @@ const AchievementGroup = ({
   onClick,
   userAchievements,
 }: Props) => {
-  const {
-    totalCompleted,
-    totalAchievements,
-    categoryCompletedMap,
-  } = extractTotals(categories, categoryData, userAchievements);
+  const { totalCompleted, totalAchievements, categoryCompletedMap } = extractTotals(
+    categories,
+    categoryData,
+    userAchievements
+  );
 
   const groupTally = !!totalAchievements && `${totalCompleted}/${totalAchievements}`;
 
@@ -83,14 +83,16 @@ const AchievementGroup = ({
       />
 
       <ol className={styles.categories}>
-        {categories.map((id) => {
+        {categories.map(id => {
           const category = categoryData[id] || {};
-          const achievementCount = categories && category.achievements && category.achievements.length;
+          const achievementCount =
+            categories && category.achievements && category.achievements.length;
           if (achievementCount === 0) {
             return null;
           }
 
-          const categoryTally = !!achievementCount && `${categoryCompletedMap[id] || 0}/${achievementCount}`;
+          const categoryTally =
+            !!achievementCount && `${categoryCompletedMap[id] || 0}/${achievementCount}`;
           const categoryPath = DEFAULT_CATEGORY_ID === id ? '' : `/${id}`;
 
           return (

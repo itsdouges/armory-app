@@ -57,25 +57,32 @@ export default class Finish extends Component<Props, *> {
       passwordError: '',
     });
 
-    return axios.put(`${config.api.endpoint}forgot-my-password`, {
-      token,
-      password,
-    })
-    .then(() => {
-      this.setState({
-        busy: false,
-        complete: true,
-      });
-    }, ({ response }) => this.setState({
-      busy: false,
-      message: response.data,
-    }));
+    return axios
+      .put(`${config.api.endpoint}forgot-my-password`, {
+        token,
+        password,
+      })
+      .then(
+        () => {
+          this.setState({
+            busy: false,
+            complete: true,
+          });
+        },
+        ({ response }) =>
+          this.setState({
+            busy: false,
+            message: response.data,
+          })
+      );
   };
 
-  render () {
+  render() {
     if (this.state.complete) {
       return (
-        <Message><Link to="/login">{T.translate('forgotPassword.success')}</Link></Message>
+        <Message>
+          <Link to="/login">{T.translate('forgotPassword.success')}</Link>
+        </Message>
       );
     }
 
@@ -100,11 +107,7 @@ export default class Finish extends Component<Props, *> {
         />
 
         <div className={styles.buttons}>
-          <Button
-            type="primary"
-            busy={this.state.busy}
-            disabled={!this.state.valid}
-          >
+          <Button type="primary" busy={this.state.busy} disabled={!this.state.valid}>
             {T.translate('forgotPassword.changeCta')}
           </Button>
         </div>

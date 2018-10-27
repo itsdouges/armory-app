@@ -15,7 +15,7 @@ import { createFetch } from '../../actions';
 type Props = {
   id: string,
   fetchMaterials: (Array<string>) => Promise<*>,
-  fetchUserMaterials: (string) => Promise<*>,
+  fetchUserMaterials: string => Promise<*>,
   userMaterials: {
     [id: number]: { id: number, category: number, count: number },
   },
@@ -25,51 +25,54 @@ type Props = {
       name: string,
       items: Array<number>,
       order: number,
-    }
+    },
   },
 };
 
 export const selector = createSelector(
-  (store) => (store.users.data[store.users.selected] || {}).materials || {},
-  (store) => store.materials,
+  store => (store.users.data[store.users.selected] || {}).materials || {},
+  store => store.materials,
   (userMaterials, materials) => ({
     userMaterials,
     materials,
-  }),
+  })
 );
 
-export default connect(selector, {
-  fetchMaterials: actions.fetchMaterials,
-  fetchItems: actions.fetchItems,
-  fetchUserMaterials: createFetch('materials'),
-})(
-class UserMaterials extends Component<Props> {
-  props: Props;
-
-  componentDidMount () {
-    this.props.fetchMaterials(['all']);
-    this.props.fetchUserMaterials(this.props.id);
+export default connect(
+  selector,
+  {
+    fetchMaterials: actions.fetchMaterials,
+    fetchItems: actions.fetchItems,
+    fetchUserMaterials: createFetch('materials'),
   }
+)(
+  class UserMaterials extends Component<Props> {
+    props: Props;
 
-  render () {
-    const { materials, userMaterials } = this.props;
+    componentDidMount() {
+      this.props.fetchMaterials(['all']);
+      this.props.fetchUserMaterials(this.props.id);
+    }
 
-    const orderedMaterials = map(materials, (material) => (material.id ? material : null))
-      .filter(Boolean)
-      .sort(({ order: a }, { order: b }) => (a - b));
+    render() {
+      const { materials, userMaterials } = this.props;
 
-    return (
-      <Container className={styles.root}>
-        {orderedMaterials.map((material, index) =>
-          <Section
-            beginExpanded={index === 0}
-            key={material.id}
-            {...material}
-            userMaterials={userMaterials}
-          />
-        )}
-      </Container>
-    );
+      const orderedMaterials = map(materials, material => (material.id ? material : null))
+        .filter(Boolean)
+        .sort(({ order: a }, { order: b }) => a - b);
+
+      return (
+        <Container className={styles.root}>
+          {orderedMaterials.map((material, index) => (
+            <Section
+              beginExpanded={index === 0}
+              key={material.id}
+              {...material}
+              userMaterials={userMaterials}
+            />
+          ))}
+        </Container>
+      );
+    }
   }
-}
 );

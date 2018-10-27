@@ -35,7 +35,7 @@ const PvpEquipment = ({
 }: Props) => (
   <div className={cx(styles.root, className, styles[display])}>
     <div className={styles.weaponsContainer}>
-      {weapons.map((item) => {
+      {weapons.map(item => {
         const equip = equipment[item.key] || {};
 
         return (

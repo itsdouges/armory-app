@@ -1,6 +1,6 @@
 const path = require('path');
 
-function resolve (relativePath) {
+function resolve(relativePath) {
   return path.resolve(__dirname, relativePath);
 }
 

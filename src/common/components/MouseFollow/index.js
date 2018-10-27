@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { isSmallScreen, addEvent } from 'lib/dom';
 import { prefix } from 'lib/css';
 
-function calculateStyle ({ pin, mouse, tooltip }: Object) {
+function calculateStyle({ pin, mouse, tooltip }: Object) {
   let { clientX: x, clientY: y } = mouse;
 
   if (pin.pinRight) {
@@ -22,17 +22,17 @@ function calculateStyle ({ pin, mouse, tooltip }: Object) {
   return prefix('transform', transform);
 }
 
-function calculatePin ({ tooltip, mouse }: Object) {
+function calculatePin({ tooltip, mouse }: Object) {
   const { clientX: x, clientY: y } = mouse;
 
   let pinRight = false;
   let pinBottom = false;
 
-  if ((x + tooltip.offsetWidth + 10) > window.innerWidth) {
+  if (x + tooltip.offsetWidth + 10 > window.innerWidth) {
     pinRight = true;
   }
 
-  if ((y + tooltip.offsetHeight + 10) > window.innerHeight) {
+  if (y + tooltip.offsetHeight + 10 > window.innerHeight) {
     pinBottom = true;
   }
 
@@ -68,7 +68,7 @@ export default class MouseFollow extends Component<Props, State> {
     },
   };
 
-  componentDidMount () {
+  componentDidMount() {
     if (isSmallScreen()) {
       // eslint-disable-next-line
       this.setState({
@@ -87,7 +87,7 @@ export default class MouseFollow extends Component<Props, State> {
     this.removeEvent = addEvent('mousemove', this.onMouseMove);
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.finished = true;
 
     if (isSmallScreen()) {
@@ -129,7 +129,7 @@ export default class MouseFollow extends Component<Props, State> {
     this._tooltip = ref;
   };
 
-  render () {
+  render() {
     const { children, ...props } = this.props;
 
     return (

@@ -5,13 +5,13 @@ import ReactDOM from 'react-dom';
 
 export const makeAttribute = (str: string) => `data-armory-${str}`;
 
-function bootstrapEmbeds () {
+function bootstrapEmbeds() {
   if (!document.body) {
     throw new Error('Document body not loaded!');
   }
 
   const embedables = Array.from(document.body.querySelectorAll(`[${makeAttribute('embed')}]`));
-  return embedables.forEach((element) => {
+  return embedables.forEach(element => {
     const embedName = element.getAttribute(makeAttribute('embed'));
     if (!embedName) {
       return;
@@ -24,13 +24,16 @@ function bootstrapEmbeds () {
     ReactDOM.render(
       <div>
         <strong>GW2Armory Embeds have moved. </strong>
-        Please migrate to the new CDN, go to the <a href="https://github.com/madou/armory-embeds">GitHub repository</a> for more information.
-        Please join our <a href="https://discord.gg/3BRbV7b">Discord server</a> for all future update information.</div>,
+        Please migrate to the new CDN, go to the{' '}
+        <a href="https://github.com/madou/armory-embeds">GitHub repository</a> for more information.
+        Please join our <a href="https://discord.gg/3BRbV7b">Discord server</a> for all future
+        update information.
+      </div>,
       element
     );
   });
 }
 
-export default function bootstrap () {
+export default function bootstrap() {
   bootstrapEmbeds();
 }

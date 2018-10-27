@@ -44,16 +44,19 @@ export default class Start extends Component<Props, *> {
       error: '',
     });
 
-    return axios.post(`${config.api.endpoint}forgot-my-password`, {
-      email: this.state.email,
-    })
-    .then(this.props.next, () => this.setState({
-      error: 'Uh Oh!',
-      busy: false,
-    }));
+    return axios
+      .post(`${config.api.endpoint}forgot-my-password`, {
+        email: this.state.email,
+      })
+      .then(this.props.next, () =>
+        this.setState({
+          error: 'Uh Oh!',
+          busy: false,
+        })
+      );
   };
 
-  render () {
+  render() {
     return (
       <form onSubmit={this.begin}>
         <Message type="error">{this.state.error}</Message>
@@ -67,11 +70,7 @@ export default class Start extends Component<Props, *> {
         />
 
         <div className={styles.buttons}>
-          <Button
-            type="primary"
-            busy={this.state.busy}
-            disabled={!this.state.valid}
-          >
+          <Button type="primary" busy={this.state.busy} disabled={!this.state.valid}>
             {T.translate('forgotPassword.nextCta')}
           </Button>
         </div>

@@ -13,7 +13,9 @@ const { default: Item } = proxyquire.noCallThru().noPreserveCache()('common/comp
   'common/components/ResourceLink': ResourceLink,
   'common/components/Icon': Icon,
   'common/components/Gw2Icon': Gw2Icon,
-  'recompose/pure': (obj) => { return obj; },
+  'recompose/pure': obj => {
+    return obj;
+  },
 });
 
 describe('<Item />', () => {

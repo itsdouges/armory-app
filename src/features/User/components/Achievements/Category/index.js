@@ -19,14 +19,25 @@ type Props = {
   onClick?: () => void,
 };
 
-const AchievementCategory = ({ name, icon, className, selected, subCategory, rightComponent, to, onClick }: Props) => {
+const AchievementCategory = ({
+  name,
+  icon,
+  className,
+  selected,
+  subCategory,
+  rightComponent,
+  to,
+  onClick,
+}: Props) => {
   const Container = to ? NavLink : 'button';
 
-  const navProps = to ? {
-    activeClassName: styles.selected,
-    exact: true,
-    to,
-  } : null;
+  const navProps = to
+    ? {
+        activeClassName: styles.selected,
+        exact: true,
+        to,
+      }
+    : null;
 
   return (
     <Container

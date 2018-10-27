@@ -7,9 +7,9 @@ import config from 'config';
 const GW2_BUILD_KEY = 'GW2_BUILD';
 const CLEAR_LS_NEXT_LOAD_KEY = 'CLEAR_LS_NEXT_LOAD';
 
-const makeKey = (str) => `GW2A:${str.toUpperCase()}`;
+const makeKey = str => `GW2A:${str.toUpperCase()}`;
 
-export function set (key: string, value: string) {
+export function set(key: string, value: string) {
   const compressed = compressToUTF16(value);
   try {
     localStorage.setItem(makeKey(key), compressed);
@@ -24,16 +24,16 @@ export function set (key: string, value: string) {
   }
 }
 
-export function get (key: string): ?string {
+export function get(key: string): ?string {
   const compressed = localStorage.getItem(makeKey(key));
   return decompressFromUTF16(compressed);
 }
 
-export function clear (key: string) {
+export function clear(key: string) {
   localStorage.removeItem(makeKey(key));
 }
 
-export function clearIfNewBuild (key: string) {
+export function clearIfNewBuild(key: string) {
   const shouldClearLs = get(CLEAR_LS_NEXT_LOAD_KEY) === 'true';
   if (shouldClearLs) {
     clear(key);
@@ -41,17 +41,16 @@ export function clearIfNewBuild (key: string) {
   }
 }
 
-export function initialise () {
-  return axios.get(`${config.gw2.endpoint}v2/build`)
-    .then(({ data }) => {
-      const currentBuildId = `${data.id}`;
-      const savedBuildId = get(GW2_BUILD_KEY);
+export function initialise() {
+  return axios.get(`${config.gw2.endpoint}v2/build`).then(({ data }) => {
+    const currentBuildId = `${data.id}`;
+    const savedBuildId = get(GW2_BUILD_KEY);
 
-      if (!savedBuildId) {
-        set(GW2_BUILD_KEY, currentBuildId);
-      } else if (currentBuildId !== savedBuildId) {
-        set(GW2_BUILD_KEY, currentBuildId);
-        set(CLEAR_LS_NEXT_LOAD_KEY, 'true');
-      }
-    });
+    if (!savedBuildId) {
+      set(GW2_BUILD_KEY, currentBuildId);
+    } else if (currentBuildId !== savedBuildId) {
+      set(GW2_BUILD_KEY, currentBuildId);
+      set(CLEAR_LS_NEXT_LOAD_KEY, 'true');
+    }
+  });
 }

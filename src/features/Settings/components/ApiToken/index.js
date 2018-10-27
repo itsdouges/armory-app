@@ -16,7 +16,11 @@ type Props = {
   token: Token,
 };
 
-const ApiToken = ({ token: { accountName, primary, permissions, valid }, remove, setPrimary }: Props) => (
+const ApiToken = ({
+  token: { accountName, primary, permissions, valid },
+  remove,
+  setPrimary,
+}: Props) => (
   <div className={styles.root}>
     <TooltipTrigger data={T.translate(primary ? 'users.primaryToken' : 'users.makePrimary')}>
       <button onClick={setPrimary}>
@@ -26,13 +30,9 @@ const ApiToken = ({ token: { accountName, primary, permissions, valid }, remove,
 
     <div className={cx(styles.information, { [styles.invalid]: !valid })}>
       <span className={cx({ [styles.strikethrough]: !valid })}>
-        <div className={styles.accountName}>
-          {accountName}
-        </div>
+        <div className={styles.accountName}>{accountName}</div>
 
-        <div className={styles.permissions}>
-          {permissions.split(',').join(' | ')}
-        </div>
+        <div className={styles.permissions}>{permissions.split(',').join(' | ')}</div>
       </span>
 
       {!valid && <sub>{T.translate('users.invalidToken')}</sub>}

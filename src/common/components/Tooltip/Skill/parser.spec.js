@@ -18,11 +18,14 @@ describe('description parser', () => {
   });
 
   it('should parrse text with accents', () => {
-    const description = 'Méditation : Votre intense concentration vous rend invulnérable et recharge vos vertus.';
+    const description =
+      'Méditation : Votre intense concentration vous rend invulnérable et recharge vos vertus.';
 
     const actual = parse(description);
 
-    expect(actual).to.equal('<c=@skill>Méditation :</c> Votre intense concentration vous rend invulnérable et recharge vos vertus.');
+    expect(actual).to.equal(
+      '<c=@skill>Méditation :</c> Votre intense concentration vous rend invulnérable et recharge vos vertus.'
+    );
   });
 
   it('should parse text with weird whitespace', () => {
@@ -38,7 +41,9 @@ describe('description parser', () => {
 
     const actual = parse(description);
 
-    expect(actual).to.equal('<c=@skill>Signet Active:</c> Yeah its ok.\n<c=@skill>Signet Passive:</c> Eh what can you do.');
+    expect(actual).to.equal(
+      '<c=@skill>Signet Active:</c> Yeah its ok.\n<c=@skill>Signet Passive:</c> Eh what can you do.'
+    );
   });
 
   it('should ignore descriptions where its only two words', () => {

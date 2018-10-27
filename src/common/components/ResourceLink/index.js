@@ -23,20 +23,18 @@ export const buildLink = (href?: string, text?: string) => {
   }
 };
 
-const ResourceLink = ({ children, href, text, ...props }: Props) => (href ? (
-  <span {...props} className={styles.root}>
-    {children}
+const ResourceLink = ({ children, href, text, ...props }: Props) =>
+  href ? (
+    <span {...props} className={styles.root}>
+      {children}
 
-    <a
-      rel="noopener noreferrer"
-      target="_blank"
-      href={href}
-      className={styles.link}
-    >
-      <LoadingStrip>{text}</LoadingStrip>
-    </a>
-  </span>
-  // $FlowFixMe - cloneElement doesn't take Node?
-) : React.cloneElement(children, props));
+      <a rel="noopener noreferrer" target="_blank" href={href} className={styles.link}>
+        <LoadingStrip>{text}</LoadingStrip>
+      </a>
+    </span>
+  ) : (
+    // $FlowFixMe - cloneElement doesn't take Node?
+    React.cloneElement(children, props)
+  );
 
 export default ResourceLink;

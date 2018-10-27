@@ -9,13 +9,16 @@ import styles from './styles.less';
 import { prefix } from 'lib/css';
 import colours from 'common/styles/colours';
 
-function calcBarStyles (current, max, barColor, vertical) {
+function calcBarStyles(current, max, barColor, vertical) {
   const percent = max ? Math.ceil((current / max || 0) * 100) : 0;
 
   return {
     width: '100%',
     backgroundColor: barColor,
-    ...prefix('transform', vertical ? `translateY(${101 - percent}%)` : `translateX(${percent - 100}%)`),
+    ...prefix(
+      'transform',
+      vertical ? `translateY(${101 - percent}%)` : `translateX(${percent - 100}%)`
+    ),
   };
 }
 
@@ -56,9 +59,7 @@ const ProgressBar = ({
     <span className={styles.bar} style={calcBarStyles(current, max, barColor, vertical)} />
 
     {small || (
-      <span className={cx(styles.label, labelClassName)}>
-        {label || `${current}/${max}`}
-      </span>
+      <span className={cx(styles.label, labelClassName)}>{label || `${current}/${max}`}</span>
     )}
   </div>
 );

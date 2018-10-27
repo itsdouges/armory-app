@@ -10,7 +10,7 @@ export default class AsyncComponent extends React.Component<*, *> {
   props: Props;
   state = {};
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.load().then(({ default: Component }) => {
       this.setState({
         Component,
@@ -18,7 +18,7 @@ export default class AsyncComponent extends React.Component<*, *> {
     });
   }
 
-  render () {
+  render() {
     const { load, ...props } = this.props;
 
     const { Component } = this.state;

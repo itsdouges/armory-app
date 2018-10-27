@@ -10,9 +10,7 @@ type Props = {
 };
 
 const Redacted = ({ children, redact }: Props) => (
-  <span className={cx({ [styles.redact]: redact })}>
-    {children}
-  </span>
+  <span className={cx({ [styles.redact]: redact })}>{children}</span>
 );
 
 export default Redacted;

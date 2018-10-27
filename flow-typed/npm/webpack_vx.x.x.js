@@ -1254,7 +1254,9 @@ declare module 'webpack/lib/dependencies/AMDRequireDependenciesBlock.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/AMDRequireDependenciesBlock'>;
 }
 declare module 'webpack/lib/dependencies/AMDRequireDependenciesBlockParserPlugin.js' {
-  declare module.exports: $Exports<'webpack/lib/dependencies/AMDRequireDependenciesBlockParserPlugin'>;
+  declare module.exports: $Exports<
+    'webpack/lib/dependencies/AMDRequireDependenciesBlockParserPlugin'
+  >;
 }
 declare module 'webpack/lib/dependencies/AMDRequireDependency.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/AMDRequireDependency'>;
@@ -1272,7 +1274,9 @@ declare module 'webpack/lib/dependencies/CommonJsRequireDependency.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/CommonJsRequireDependency'>;
 }
 declare module 'webpack/lib/dependencies/CommonJsRequireDependencyParserPlugin.js' {
-  declare module.exports: $Exports<'webpack/lib/dependencies/CommonJsRequireDependencyParserPlugin'>;
+  declare module.exports: $Exports<
+    'webpack/lib/dependencies/CommonJsRequireDependencyParserPlugin'
+  >;
 }
 declare module 'webpack/lib/dependencies/ConstDependency.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/ConstDependency'>;
@@ -1287,7 +1291,9 @@ declare module 'webpack/lib/dependencies/ContextDependencyTemplateAsId.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/ContextDependencyTemplateAsId'>;
 }
 declare module 'webpack/lib/dependencies/ContextDependencyTemplateAsRequireCall.js' {
-  declare module.exports: $Exports<'webpack/lib/dependencies/ContextDependencyTemplateAsRequireCall'>;
+  declare module.exports: $Exports<
+    'webpack/lib/dependencies/ContextDependencyTemplateAsRequireCall'
+  >;
 }
 declare module 'webpack/lib/dependencies/ContextElementDependency.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/ContextElementDependency'>;
@@ -1332,7 +1338,9 @@ declare module 'webpack/lib/dependencies/HarmonyExportHeaderDependency.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/HarmonyExportHeaderDependency'>;
 }
 declare module 'webpack/lib/dependencies/HarmonyExportImportedSpecifierDependency.js' {
-  declare module.exports: $Exports<'webpack/lib/dependencies/HarmonyExportImportedSpecifierDependency'>;
+  declare module.exports: $Exports<
+    'webpack/lib/dependencies/HarmonyExportImportedSpecifierDependency'
+  >;
 }
 declare module 'webpack/lib/dependencies/HarmonyExportSpecifierDependency.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/HarmonyExportSpecifierDependency'>;
@@ -1437,7 +1445,9 @@ declare module 'webpack/lib/dependencies/RequireEnsureDependenciesBlock.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/RequireEnsureDependenciesBlock'>;
 }
 declare module 'webpack/lib/dependencies/RequireEnsureDependenciesBlockParserPlugin.js' {
-  declare module.exports: $Exports<'webpack/lib/dependencies/RequireEnsureDependenciesBlockParserPlugin'>;
+  declare module.exports: $Exports<
+    'webpack/lib/dependencies/RequireEnsureDependenciesBlockParserPlugin'
+  >;
 }
 declare module 'webpack/lib/dependencies/RequireEnsureDependency.js' {
   declare module.exports: $Exports<'webpack/lib/dependencies/RequireEnsureDependency'>;

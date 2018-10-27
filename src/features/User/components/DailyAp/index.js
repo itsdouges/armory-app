@@ -12,18 +12,13 @@ type Props = {
 };
 
 const DailyAp = ({ dailyAp, monthlyAp }: Props) => {
-  const count = (dailyAp + monthlyAp) || 0;
+  const count = dailyAp + monthlyAp || 0;
 
   return (
     <Summary
       leftIcon={{ name: 'daily.png', size: 'xlarge' }}
       title={<Redacted redact={!count}>{T.translate('accSummary.dailyAp')}</Redacted>}
-      subTitle={
-        <ProgressBar
-          current={count}
-          max={15000}
-        />
-      }
+      subTitle={<ProgressBar current={count} max={15000} />}
     />
   );
 };

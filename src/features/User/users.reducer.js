@@ -16,7 +16,7 @@ import {
   FETCH_WALLET_RESULT,
 } from './actions';
 
-function fetchingUserResult (state, action) {
+function fetchingUserResult(state, action) {
   const newState = {
     ...state,
   };
@@ -31,7 +31,7 @@ function fetchingUserResult (state, action) {
   return newState;
 }
 
-function fetchAchievementsResult (state, action) {
+function fetchAchievementsResult(state, action) {
   const newState = {
     ...state,
   };
@@ -47,7 +47,7 @@ function fetchAchievementsResult (state, action) {
   return newState;
 }
 
-function fetchingUserCharactersResult (state, action) {
+function fetchingUserCharactersResult(state, action) {
   const newState = {
     ...state,
   };
@@ -78,7 +78,7 @@ const fetchGenericResult = (key, transform) => (state, action) => {
   return newState;
 };
 
-function fetchPvpStatsResult (state, action) {
+function fetchPvpStatsResult(state, action) {
   const newState = {
     ...state,
   };
@@ -93,7 +93,7 @@ function fetchPvpStatsResult (state, action) {
   return newState;
 }
 
-function fetchPvpStandingsResult (state, action) {
+function fetchPvpStandingsResult(state, action) {
   const newState = {
     ...state,
   };
@@ -108,7 +108,7 @@ function fetchPvpStandingsResult (state, action) {
   return newState;
 }
 
-function fetchPvpGamesResult (state, action) {
+function fetchPvpGamesResult(state, action) {
   const newState = {
     ...state,
   };
@@ -129,7 +129,7 @@ export const defaultState = {
   fetching: false,
 };
 
-export default function reducer (state, action) {
+export default function reducer(state, action) {
   switch (action.type) {
     case FETCHING_USER:
       return {
@@ -182,9 +182,10 @@ export default function reducer (state, action) {
     case UPDATE_USER_PRIVACY: {
       const newUser = {
         ...state.data[action.payload.name],
-        privacy: action.payload.action === 'add'
-          ? state.data[action.payload.name].privacy.concat([action.payload.prop])
-          : state.data[action.payload.name].privacy.filter((priv) => priv !== action.payload.prop),
+        privacy:
+          action.payload.action === 'add'
+            ? state.data[action.payload.name].privacy.concat([action.payload.prop])
+            : state.data[action.payload.name].privacy.filter(priv => priv !== action.payload.prop),
       };
 
       return {

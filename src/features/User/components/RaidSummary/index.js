@@ -21,8 +21,9 @@ const RaidSummary = ({ userAchievements, className, simple }: Props) => {
     ({ id, done }) => RAID_KILL_ACHIEVEMENTS[id] && done
   );
 
-  const raidKills = `${T.translate('accSummary.raidBossKills')} ${achievements.map(({ id }) =>
-    `[${RAID_KILL_ACHIEVEMENTS[id]}]`).join('')}`;
+  const raidKills = `${T.translate('accSummary.raidBossKills')} ${achievements
+    .map(({ id }) => `[${RAID_KILL_ACHIEVEMENTS[id]}]`)
+    .join('')}`;
 
   if (simple) {
     return <span>{raidKills}</span>;
@@ -33,12 +34,7 @@ const RaidSummary = ({ userAchievements, className, simple }: Props) => {
       className={className}
       leftIcon={{ name: 'raid.png', size: 'xlarge' }}
       title={<Redacted redact={redact}>{raidKills}</Redacted>}
-      subTitle={
-        <ProgressBar
-          current={achievements.length}
-          max={TOTAL_KILLS}
-        />
-      }
+      subTitle={<ProgressBar current={achievements.length} max={TOTAL_KILLS} />}
     />
   );
 };

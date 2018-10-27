@@ -10,7 +10,7 @@ require('jsdom-global')();
 addPath(path.join(__dirname, '..', ''));
 addPath(path.join(__dirname, '..', '/src'));
 
-['css', 'png', 'less'].forEach((extension) => {
+['css', 'png', 'less'].forEach(extension => {
   require.extensions[`.${extension}`] = noop;
 });
 

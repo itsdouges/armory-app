@@ -11,16 +11,19 @@ export default actions;
 
 const GW2API_REQUEST_LIMIT = 200;
 
-function flattenResponses (responses) {
-  return responses.reduce((obj, response) => ({
-    ...obj,
-    ...response,
-  }), {});
+function flattenResponses(responses) {
+  return responses.reduce(
+    (obj, response) => ({
+      ...obj,
+      ...response,
+    }),
+    {}
+  );
 }
 
-const getActualId = (id) => id && +(typeof id === 'object' ? (id.calculatedId || id.id) : id);
+const getActualId = id => id && +(typeof id === 'object' ? id.calculatedId || id.id : id);
 
-export function generateActions (resourceName, getResource, afterGet) {
+export function generateActions(resourceName, getResource, afterGet) {
   const resouceNameUpper = resourceName.toUpperCase();
   const actionNames = {
     fetching: `FETCHING_${resouceNameUpper}`,
@@ -43,7 +46,7 @@ export function generateActions (resourceName, getResource, afterGet) {
     },
   });
 
-  actions[fetchingMethodName] = (fetching) => ({
+  actions[fetchingMethodName] = fetching => ({
     type: actionNames.fetching,
     payload: fetching,
   });
@@ -63,19 +66,22 @@ export function generateActions (resourceName, getResource, afterGet) {
 
     const store = getStore();
 
-    const idsToFetch = uniq(ids.filter((id) => {
-      // Sometimes we'll call with more complicated objects for the request
-      // We filter them, then pass them along to the service (for example lib/gw2/readCalculatedItemStats)
-      // If calculatedId exists, use that.
-      const actualId = getActualId(id);
-      const isValidId = (id === 'all') || (actualId && actualId !== -1);
-      if (!isValidId) {
-        return false;
-      }
+    const idsToFetch = uniq(
+      ids.filter(id => {
+        // Sometimes we'll call with more complicated objects for the request
+        // We filter them, then pass them along to the service (for example lib/gw2/readCalculatedItemStats)
+        // If calculatedId exists, use that.
+        const actualId = getActualId(id);
+        const isValidId = id === 'all' || (actualId && actualId !== -1);
+        if (!isValidId) {
+          return false;
+        }
 
-      const isNotInStore = !store[resourceName][actualId] || !!store[resourceName][actualId].error;
-      return isNotInStore;
-    }));
+        const isNotInStore =
+          !store[resourceName][actualId] || !!store[resourceName][actualId].error;
+        return isNotInStore;
+      })
+    );
 
     if (!idsToFetch.length) {
       return undefined;
@@ -92,21 +98,22 @@ export function generateActions (resourceName, getResource, afterGet) {
 
     return Promise.all(requests)
       .then(flattenResponses)
-      .then((response) => {
+      .then(response => {
         dispatch(actions[fetchResultMethodName](response, noCache));
         dispatch(actions[fetchingMethodName](false));
 
-        const missingIds = idsToFetch.map(getActualId).filter((id) => !response[id]);
+        const missingIds = idsToFetch.map(getActualId).filter(id => !response[id]);
         if (missingIds.length) {
           dispatch(actions[fetchErrorMethodName](missingIds, T.translate('messages.notFoundLong')));
         }
 
         return afterGet ? afterGet(dispatch, response) : response;
       })
-      .catch((data) => {
-        const text = data.response && data.response.status === 404
-          ? T.translate('messages.notFoundLong')
-          : T.translate('messages.gw2ApiDown');
+      .catch(data => {
+        const text =
+          data.response && data.response.status === 404
+            ? T.translate('messages.notFoundLong')
+            : T.translate('messages.gw2ApiDown');
 
         dispatch(actions[fetchErrorMethodName](idsToFetch, text));
 
@@ -126,7 +133,7 @@ export function generateActions (resourceName, getResource, afterGet) {
   return actionNames;
 }
 
-export function showTooltip (show, { type, data } = {}) {
+export function showTooltip(show, { type, data } = {}) {
   return {
     type: SHOW_TOOLTIP,
     payload: {

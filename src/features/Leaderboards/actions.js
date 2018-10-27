@@ -14,14 +14,20 @@ const fetchPvpLeaderboardSuccess = (data, region) => ({
   type: FETCH_PVP_LEADERBOARD,
 });
 
-export function fetchPvpLeaderboard (region: 'na' | 'eu' | 'gw2a', limit: number, offset: number) {
-  return paginatedThunk((dispatch: Dispatch) => {
-    return axios.get(`${config.api.endpoint}leaderboards/pvp/${region}`, {
-      params: {
-        limit,
-        offset,
-      },
-    })
-    .then(({ data }) => dispatch(fetchPvpLeaderboardSuccess(data, region)));
-  }, `leaderboards.pvp[${region}]`, limit, offset);
+export function fetchPvpLeaderboard(region: 'na' | 'eu' | 'gw2a', limit: number, offset: number) {
+  return paginatedThunk(
+    (dispatch: Dispatch) => {
+      return axios
+        .get(`${config.api.endpoint}leaderboards/pvp/${region}`, {
+          params: {
+            limit,
+            offset,
+          },
+        })
+        .then(({ data }) => dispatch(fetchPvpLeaderboardSuccess(data, region)));
+    },
+    `leaderboards.pvp[${region}]`,
+    limit,
+    offset
+  );
 }

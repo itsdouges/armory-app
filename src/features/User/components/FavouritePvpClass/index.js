@@ -9,16 +9,20 @@ import T from 'i18n-react';
 import Redacted from 'common/components/Redacted';
 import Summary from 'common/layouts/Summary';
 
-const calculateFavouriteProfession = (professions) => {
+const calculateFavouriteProfession = professions => {
   if (!professions || Object.keys(professions) === 0) {
     return { name: 'engineer', count: 0 };
   }
 
-  const professionCounts = reduce(professions, (acc, value, key) => {
-    // eslint-disable-next-line
-    acc.push({ name: key, count: reduce(value, (total, value) => (total += value) && total, 0) });
-    return acc;
-  }, []);
+  const professionCounts = reduce(
+    professions,
+    (acc, value, key) => {
+      // eslint-disable-next-line
+      acc.push({ name: key, count: reduce(value, (total, value) => (total += value) && total, 0) });
+      return acc;
+    },
+    []
+  );
 
   return maxBy(professionCounts, ({ count }) => count);
 };

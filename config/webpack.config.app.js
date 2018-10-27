@@ -2,10 +2,7 @@ const createConfig = require('./webpackConfigFactory');
 const paths = require('./paths');
 const dependencies = require('../package.json').dependencies;
 
-const ignoreDependencies = [
-  'normalize.css',
-  'babel-polyfill',
-];
+const ignoreDependencies = ['normalize.css', 'babel-polyfill'];
 
 const common = {
   name: 'app',
@@ -17,7 +14,7 @@ const common = {
     inject: true,
   },
   entry: {
-    vendor: Object.keys(dependencies).filter((dep) => !ignoreDependencies.includes(dep)),
+    vendor: Object.keys(dependencies).filter(dep => !ignoreDependencies.includes(dep)),
   },
 };
 

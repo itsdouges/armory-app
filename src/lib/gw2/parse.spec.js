@@ -14,18 +14,19 @@ describe('gw2 markup parser', () => {
     const wrapper = shallow(jsx);
 
     expect(wrapper.props().dangerouslySetInnerHTML.__html).to.eql(
-      '<span class="black">Thing.</span> Yeah it is ok.<br />But really, is it?<br />Dunno!',
+      '<span class="black">Thing.</span> Yeah it is ok.<br />But really, is it?<br />Dunno!'
     );
   });
 
   it('should handle i18n', () => {
-    const raw = '<c=@black>Méditation.</c> Votre intense concentration vous rend invulnérable et recharge vos vertus.';
+    const raw =
+      '<c=@black>Méditation.</c> Votre intense concentration vous rend invulnérable et recharge vos vertus.';
 
     const jsx = markup(raw);
     const wrapper = shallow(jsx);
 
     expect(wrapper.props().dangerouslySetInnerHTML.__html).to.eql(
-      '<span class="black">Méditation.</span> Votre intense concentration vous rend invulnérable et recharge vos vertus.',
+      '<span class="black">Méditation.</span> Votre intense concentration vous rend invulnérable et recharge vos vertus.'
     );
   });
 });

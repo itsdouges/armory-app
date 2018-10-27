@@ -14,9 +14,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const middleware = [
-  thunk,
-];
+const middleware = [thunk];
 
 if (__DEVELOPMENT__) {
   // TODO: https://github.com/madou/armory-react/issues/243
@@ -25,20 +23,12 @@ if (__DEVELOPMENT__) {
 
 initialiseLs();
 
-const store = createStore(rootReducer, composeEnhancers(
-  applyMiddleware(
-    ...middleware,
-  ),
-));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));
 
 type BaseProps = {
   children: Node,
 };
 
-const Base = ({ children }: BaseProps) => (
-  <Provider store={store}>
-    {children}
-  </Provider>
-);
+const Base = ({ children }: BaseProps) => <Provider store={store}>{children}</Provider>;
 
 export default Base;

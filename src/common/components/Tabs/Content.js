@@ -24,23 +24,28 @@ type TabsProps = {
 const TabsContent = ({ tabs, titleSuffix, tabLayout: Layout, basePath }: TabsProps) => (
   <section>
     <Switch>
-      {tabs.map((tab) => (tab.hide ? null : (
-        <Route
-          exact={!tab.path}
-          key={tab.path}
-          path={`${basePath}${tab.path}`}
-          render={(props) => {
-            const content = cloneElement(tab.content, props);
+      {tabs.map(
+        tab =>
+          tab.hide ? null : (
+            <Route
+              exact={!tab.path}
+              key={tab.path}
+              path={`${basePath}${tab.path}`}
+              render={props => {
+                const content = cloneElement(tab.content, props);
 
-            return (
-              <span>
-                {tab.ignoreTitle || <Head title={`${tab.name} | ${titleSuffix}`} description={tab.description} />}
-                {Layout ? <Layout>{content}</Layout> : content}
-              </span>
-            );
-          }}
-        />
-      )))}
+                return (
+                  <span>
+                    {tab.ignoreTitle || (
+                      <Head title={`${tab.name} | ${titleSuffix}`} description={tab.description} />
+                    )}
+                    {Layout ? <Layout>{content}</Layout> : content}
+                  </span>
+                );
+              }}
+            />
+          )
+      )}
     </Switch>
   </section>
 );

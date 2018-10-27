@@ -17,7 +17,7 @@ import Gw2Map from 'common/components/Gw2Map';
 import Redacted from 'common/components/Redacted';
 import TooltipTrigger from 'common/components/TooltipTrigger';
 
-function calculateProgressBar ({ team, scores }) {
+function calculateProgressBar({ team, scores }) {
   if (team === 'Red') {
     return {
       backgroundColor: colours._blue,
@@ -99,10 +99,15 @@ const PvpGame = ({ game = defaultGame, maps }: Props) => {
 
         <div className={cx(styles.column, styles.stats, styles.spreadItems, styles.big)}>
           <TooltipTrigger data={game.rating_type}>
-            <Icon name="ranked.png" className={cx(styles.rankIcon, game.rating_type === 'Ranked' && styles.ranked)}>
-              {game.rating_change && <span className={cx(styles.ratingChange, ratingChangeStyle)}>
-                {Math.abs(game.rating_change)}
-              </span>}
+            <Icon
+              name="ranked.png"
+              className={cx(styles.rankIcon, game.rating_type === 'Ranked' && styles.ranked)}
+            >
+              {game.rating_change && (
+                <span className={cx(styles.ratingChange, ratingChangeStyle)}>
+                  {Math.abs(game.rating_change)}
+                </span>
+              )}
             </Icon>
           </TooltipTrigger>
 

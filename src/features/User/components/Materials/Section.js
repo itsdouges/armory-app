@@ -28,12 +28,12 @@ export default class MaterialSection extends Component<Props, *> {
   };
 
   toggleExpanded = () => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       expanded: !prevState.expanded,
     }));
   };
 
-  render () {
+  render() {
     const { items, name, userMaterials } = this.props;
     const { expanded } = this.state;
 
@@ -46,7 +46,7 @@ export default class MaterialSection extends Component<Props, *> {
           </h2>
         </button>
 
-        {items.slice(0, expanded ? undefined : 18).map((id) => {
+        {items.slice(0, expanded ? undefined : 18).map(id => {
           const data = userMaterials[id] || {};
 
           return (
@@ -55,7 +55,8 @@ export default class MaterialSection extends Component<Props, *> {
               key={id}
               count={data.count}
               className={cx(styles.item, { [styles.hasItems]: data.count })}
-            />);
+            />
+          );
         })}
       </section>
     );

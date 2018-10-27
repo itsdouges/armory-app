@@ -94,31 +94,43 @@ declare module 'web-app-manifest-loader/index.js' {
   declare module.exports: $Exports<'web-app-manifest-loader'>;
 }
 declare module 'web-app-manifest-loader/test/error-cases/invalid-json/expected-error.js' {
-  declare module.exports: $Exports<'web-app-manifest-loader/test/error-cases/invalid-json/expected-error'>;
+  declare module.exports: $Exports<
+    'web-app-manifest-loader/test/error-cases/invalid-json/expected-error'
+  >;
 }
 declare module 'web-app-manifest-loader/test/error-cases/invalid-json/index.js' {
   declare module.exports: $Exports<'web-app-manifest-loader/test/error-cases/invalid-json/index'>;
 }
 declare module 'web-app-manifest-loader/test/error-cases/invalid-json/webpack.config.js' {
-  declare module.exports: $Exports<'web-app-manifest-loader/test/error-cases/invalid-json/webpack.config'>;
+  declare module.exports: $Exports<
+    'web-app-manifest-loader/test/error-cases/invalid-json/webpack.config'
+  >;
 }
 declare module 'web-app-manifest-loader/test/error-cases/missing-image/expected-error.js' {
-  declare module.exports: $Exports<'web-app-manifest-loader/test/error-cases/missing-image/expected-error'>;
+  declare module.exports: $Exports<
+    'web-app-manifest-loader/test/error-cases/missing-image/expected-error'
+  >;
 }
 declare module 'web-app-manifest-loader/test/error-cases/missing-image/index.js' {
   declare module.exports: $Exports<'web-app-manifest-loader/test/error-cases/missing-image/index'>;
 }
 declare module 'web-app-manifest-loader/test/error-cases/missing-image/webpack.config.js' {
-  declare module.exports: $Exports<'web-app-manifest-loader/test/error-cases/missing-image/webpack.config'>;
+  declare module.exports: $Exports<
+    'web-app-manifest-loader/test/error-cases/missing-image/webpack.config'
+  >;
 }
 declare module 'web-app-manifest-loader/test/error-cases/missing-src/expected-error.js' {
-  declare module.exports: $Exports<'web-app-manifest-loader/test/error-cases/missing-src/expected-error'>;
+  declare module.exports: $Exports<
+    'web-app-manifest-loader/test/error-cases/missing-src/expected-error'
+  >;
 }
 declare module 'web-app-manifest-loader/test/error-cases/missing-src/index.js' {
   declare module.exports: $Exports<'web-app-manifest-loader/test/error-cases/missing-src/index'>;
 }
 declare module 'web-app-manifest-loader/test/error-cases/missing-src/webpack.config.js' {
-  declare module.exports: $Exports<'web-app-manifest-loader/test/error-cases/missing-src/webpack.config'>;
+  declare module.exports: $Exports<
+    'web-app-manifest-loader/test/error-cases/missing-src/webpack.config'
+  >;
 }
 declare module 'web-app-manifest-loader/test/index.js' {
   declare module.exports: $Exports<'web-app-manifest-loader/test/index'>;
@@ -127,13 +139,19 @@ declare module 'web-app-manifest-loader/test/success-cases/basic/index.js' {
   declare module.exports: $Exports<'web-app-manifest-loader/test/success-cases/basic/index'>;
 }
 declare module 'web-app-manifest-loader/test/success-cases/basic/webpack.config.js' {
-  declare module.exports: $Exports<'web-app-manifest-loader/test/success-cases/basic/webpack.config'>;
+  declare module.exports: $Exports<
+    'web-app-manifest-loader/test/success-cases/basic/webpack.config'
+  >;
 }
 declare module 'web-app-manifest-loader/test/success-cases/inline-loaders/index.js' {
-  declare module.exports: $Exports<'web-app-manifest-loader/test/success-cases/inline-loaders/index'>;
+  declare module.exports: $Exports<
+    'web-app-manifest-loader/test/success-cases/inline-loaders/index'
+  >;
 }
 declare module 'web-app-manifest-loader/test/success-cases/inline-loaders/webpack.config.js' {
-  declare module.exports: $Exports<'web-app-manifest-loader/test/success-cases/inline-loaders/webpack.config'>;
+  declare module.exports: $Exports<
+    'web-app-manifest-loader/test/success-cases/inline-loaders/webpack.config'
+  >;
 }
 declare module 'web-app-manifest-loader/test/utils/directory-contains.js' {
   declare module.exports: $Exports<'web-app-manifest-loader/test/utils/directory-contains'>;

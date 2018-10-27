@@ -24,8 +24,8 @@ const addGw2TokenResultReducer = (state, action) => {
 };
 
 export const selector = createSelector(
-  (store) => store.user,
-  (user) => ({
+  store => store.user,
+  user => ({
     user,
   })
 );
@@ -34,7 +34,7 @@ export const defaultState = {
   gw2Tokens: [],
 };
 
-export default function reducer (state, action) {
+export default function reducer(state, action) {
   switch (action.type) {
     case FETCHING_GW2_TOKENS:
       return {
@@ -98,7 +98,7 @@ export default function reducer (state, action) {
     case SELECT_PRIMARY_TOKEN:
       return {
         ...state,
-        gw2Tokens: state.gw2Tokens.map((token) => ({
+        gw2Tokens: state.gw2Tokens.map(token => ({
           ...token,
           primary: token.token === action.payload,
         })),

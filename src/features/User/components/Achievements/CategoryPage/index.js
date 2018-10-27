@@ -23,11 +23,11 @@ type Props = {
 export default class CategoryPage extends PureComponent<Props> {
   props: Props;
 
-  componentWillMount () {
+  componentWillMount() {
     this.fetchData();
   }
 
-  componentWillReceiveProps (nextProps: Props) {
+  componentWillReceiveProps(nextProps: Props) {
     const currentCategory = this.props.categories[this.props.categoryId];
     const nextCategory = nextProps.categories[nextProps.categoryId];
 
@@ -36,17 +36,20 @@ export default class CategoryPage extends PureComponent<Props> {
     }
   }
 
-  fetchData (props: Props = this.props) {
+  fetchData(props: Props = this.props) {
     const { categories, categoryId } = props;
 
     const category = categories[categoryId];
     category && props.fetchAchievements(category.achievements);
   }
 
-  render () {
+  render() {
     const { categories, achievements, userAchievements } = this.props;
 
-    const category = categories[this.props.categoryId] || { achievements: emptyAchievements, icon: '' };
+    const category = categories[this.props.categoryId] || {
+      achievements: emptyAchievements,
+      icon: '',
+    };
     const colour = colourMap[this.props.categoryId];
 
     return (

@@ -44,7 +44,7 @@ export default class ChangePassword extends Component<Props, *> {
     this.props.change(this.state.currentPassword, this.state.password);
   };
 
-  render () {
+  render() {
     const { message, error, busy, valid } = this.props;
     const { currentPassword, password, passwordConfirm } = this.state;
 
@@ -73,11 +73,7 @@ export default class ChangePassword extends Component<Props, *> {
           />
 
           <div className={styles.buttons}>
-            <Button
-              busy={busy}
-              type="primary"
-              disabled={!valid}
-            >
+            <Button busy={busy} type="primary" disabled={!valid}>
               {T.translate('forgotPassword.changeCta')}
             </Button>
           </div>

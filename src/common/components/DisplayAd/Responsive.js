@@ -18,16 +18,13 @@ type Props = {
 
 const ResponsiveDisplayAd = (props: Props) => (
   <span className={props.containerClassName}>
-    {props.breakpoints.map((breakpoint) => (
+    {props.breakpoints.map(breakpoint => (
       <MediaQuery
         key={breakpoint.type}
         minWidth={breakpoint.minWidth}
         maxWidth={breakpoint.maxWidth}
       >
-        <DisplayAd
-          className={props.className}
-          type={breakpoint.type}
-        />
+        <DisplayAd className={props.className} type={breakpoint.type} />
       </MediaQuery>
     ))}
   </span>

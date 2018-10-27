@@ -39,7 +39,7 @@ const eliteSpecMap = {
   63: T.translate('classes.renegade'),
 };
 
-function parseWeaponSwap (character) {
+function parseWeaponSwap(character) {
   const char = {
     ...character,
   };
@@ -57,7 +57,7 @@ function parseWeaponSwap (character) {
   return char;
 }
 
-function parseCharacterUpgrades (character) {
+function parseCharacterUpgrades(character) {
   const char = {
     ...character,
   };
@@ -68,7 +68,7 @@ function parseCharacterUpgrades (character) {
     return char;
   }
 
-  char.equipment = char.equipment.map((equip) => {
+  char.equipment = char.equipment.map(equip => {
     const equipWithUpgradeCount = {
       ...equip,
     };
@@ -79,7 +79,7 @@ function parseCharacterUpgrades (character) {
 
     let upgradeId;
 
-    equipWithUpgradeCount.upgrades.forEach((upgrade) => {
+    equipWithUpgradeCount.upgrades.forEach(upgrade => {
       upgradeId = upgrade;
 
       if (!characterUpgrades[upgradeId]) {
@@ -102,18 +102,21 @@ function parseCharacterUpgrades (character) {
   return char;
 }
 
-function parseEquipment (character) {
+function parseEquipment(character) {
   return {
     ...character,
-    equipment: (character.equipment || []).reduce((obj, equip) => ({
-      ...obj,
-      [lowerFirst(equip.slot)]: equip,
-    }), {}),
+    equipment: (character.equipment || []).reduce(
+      (obj, equip) => ({
+        ...obj,
+        [lowerFirst(equip.slot)]: equip,
+      }),
+      {}
+    ),
     equipmentRaw: character.equipment || [],
   };
 }
 
-function parseCharacter (character) {
+function parseCharacter(character) {
   let char = parseCharacterUpgrades(character);
   char = parseEquipment(char);
   char = parseWeaponSwap(char);
@@ -121,24 +124,27 @@ function parseCharacter (character) {
   return char;
 }
 
-function extractEliteSpecialization (character, mode) {
-  return get(character, `specializations[${mode}]`, [])
-    .reduce((acc, spec) => (spec && (eliteSpecMap[spec.id] || acc)), character.profession);
+function extractEliteSpecialization(character, mode) {
+  return get(character, `specializations[${mode}]`, []).reduce(
+    (acc, spec) => spec && (eliteSpecMap[spec.id] || acc),
+    character.profession
+  );
 }
 
-const getCharacter = (state) => state.characters.data[state.characters.selected];
+const getCharacter = state => state.characters.data[state.characters.selected];
 
-const mergeEliteSpec = (character, mode = 'pve') => (character && {
-  ...defaultCharacter,
-  ...character,
-  // This is set because we still need to use profession for icons.
-  eliteSpecialization: extractEliteSpecialization(character, mode),
-});
+const mergeEliteSpec = (character, mode = 'pve') =>
+  character && {
+    ...defaultCharacter,
+    ...character,
+    // This is set because we still need to use profession for icons.
+    eliteSpecialization: extractEliteSpecialization(character, mode),
+  };
 
 export const topSelector = createSelector(
   getCharacter,
-  (state) => state.characters.mode,
-  (state) => state.titles[get(getCharacter(state), 'title', '')],
+  state => state.characters.mode,
+  state => state.titles[get(getCharacter(state), 'title', '')],
   (character, mode, title) => ({
     character: mergeEliteSpec(character, mode),
     mode,
@@ -148,13 +154,13 @@ export const topSelector = createSelector(
 
 export const overviewSelector = createSelector(
   getCharacter,
-  (state) => state.items,
-  (state) => state.skins,
-  (state) => state.specializations,
-  (state) => state.traits,
-  (state) => state.skills,
-  (state) => state.amulets,
-  (state) => state.pets,
+  state => state.items,
+  state => state.skins,
+  state => state.specializations,
+  state => state.traits,
+  state => state.skills,
+  state => state.amulets,
+  state => state.pets,
   (character, items, skins, specializations, traits, skills, amulets, pets) => ({
     character: mergeEliteSpec(character),
     items,
@@ -169,8 +175,8 @@ export const overviewSelector = createSelector(
 
 export const minimalSelector = createSelector(
   (state, props) => state.characters.data[props.name],
-  (state) => state.items,
-  (state) => state.skins,
+  state => state.items,
+  state => state.skins,
   (character, items, skins) => ({
     character: mergeEliteSpec(character),
     items,
@@ -184,7 +190,7 @@ export const defaultState = {
   fetching: false,
 };
 
-export default function reducer (state, action) {
+export default function reducer(state, action) {
   switch (action.type) {
     case FETCH_CHARACTER_RESULT: {
       return {
@@ -228,9 +234,10 @@ export default function reducer (state, action) {
     case UPDATE_CHARACTER_PRIVACY: {
       const newCharacter = {
         ...state.data[action.payload.name],
-        privacy: action.payload.action === 'add'
-          ? state.data[action.payload.name].privacy.concat([action.payload.prop])
-          : state.data[action.payload.name].privacy.filter((priv) => priv !== action.payload.prop),
+        privacy:
+          action.payload.action === 'add'
+            ? state.data[action.payload.name].privacy.concat([action.payload.prop])
+            : state.data[action.payload.name].privacy.filter(priv => priv !== action.payload.prop),
       };
 
       return {

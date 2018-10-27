@@ -19,7 +19,11 @@ type AmuletProps = {
 
 const AmuletTooltip = ({ data: { item, name } }: AmuletProps) => {
   if (!item.name) {
-    return <Background><SimpleTooltip data={name || 'Amulet'} /></Background>;
+    return (
+      <Background>
+        <SimpleTooltip data={name || 'Amulet'} />
+      </Background>
+    );
   }
 
   return (
@@ -27,10 +31,8 @@ const AmuletTooltip = ({ data: { item, name } }: AmuletProps) => {
       <ItemHeader name={item.name} icon={item.icon} rarity={item.rarity} />
 
       <div>
-        {get(item.details, 'infix_upgrade.buff.description', []).map((description) => (
-          <div key={description}>
-            {markup(description)}
-          </div>
+        {get(item.details, 'infix_upgrade.buff.description', []).map(description => (
+          <div key={description}>{markup(description)}</div>
         ))}
       </div>
 

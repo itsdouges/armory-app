@@ -1,6 +1,6 @@
 // @flow
 
-export default function getParameterByName (
+export default function getParameterByName(
   name: string,
   url: string = window.location.href
 ): string {

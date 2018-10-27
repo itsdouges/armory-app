@@ -23,7 +23,6 @@ declare module 'opn' {
  * needed.
  */
 
-
 // Filename aliases
 declare module 'opn/index' {
   declare module.exports: $Exports<'opn'>;

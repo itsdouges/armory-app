@@ -36,7 +36,7 @@ const attributeNameMapping = {
   revanent: T.translate('itemAttributes.revanent'),
 };
 
-function parseValue (name, value) {
+function parseValue(name, value) {
   if (!value) {
     return 0;
   }

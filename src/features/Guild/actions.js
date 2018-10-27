@@ -55,48 +55,61 @@ const fetchGuildCharactersResult = (name: string, data) => ({
   },
 });
 
-export const fetchGuildLogs = (name: string) => (dispatch: Dispatch) => axios
-  .get(`${config.api.endpoint}guilds/${name}/logs`)
-  .then((response) => {
+export const fetchGuildLogs = (name: string) => (dispatch: Dispatch) =>
+  axios.get(`${config.api.endpoint}guilds/${name}/logs`).then(response => {
     dispatch(fetchGuildLogsResult(name, response.data));
   });
 
-export function fetchGuildMembers (name: string, limit: number, offset: number) {
-  return paginatedThunk((dispatch: Dispatch) => {
-    return axios.get(`${config.api.endpoint}guilds/${name}/members`, {
-      params: {
-        limit,
-        offset,
-      },
-    })
-    .then((response) => {
-      dispatch(fetchGuildMembersResult(name, response.data));
-    });
-  }, `guilds.data[${name}].members`, limit, offset);
+export function fetchGuildMembers(name: string, limit: number, offset: number) {
+  return paginatedThunk(
+    (dispatch: Dispatch) => {
+      return axios
+        .get(`${config.api.endpoint}guilds/${name}/members`, {
+          params: {
+            limit,
+            offset,
+          },
+        })
+        .then(response => {
+          dispatch(fetchGuildMembersResult(name, response.data));
+        });
+    },
+    `guilds.data[${name}].members`,
+    limit,
+    offset
+  );
 }
 
-export function fetchGuildCharacters (name: string, limit: number, offset: number) {
-  return paginatedThunk((dispatch: Dispatch) => {
-    return axios.get(`${config.api.endpoint}guilds/${name}/characters`, {
-      params: {
-        limit,
-        offset,
-      },
-    })
-    .then((response) => {
-      dispatch(fetchGuildCharactersResult(name, response.data));
-    });
-  }, `guilds.data[${name}].characters`, limit, offset);
+export function fetchGuildCharacters(name: string, limit: number, offset: number) {
+  return paginatedThunk(
+    (dispatch: Dispatch) => {
+      return axios
+        .get(`${config.api.endpoint}guilds/${name}/characters`, {
+          params: {
+            limit,
+            offset,
+          },
+        })
+        .then(response => {
+          dispatch(fetchGuildCharactersResult(name, response.data));
+        });
+    },
+    `guilds.data[${name}].characters`,
+    limit,
+    offset
+  );
 }
 
 export const fetchGuild = (name: string) => (dispatch: Dispatch) => {
   dispatch(fetchingGuild(true));
 
-  return axios.get(`${config.api.endpoint}guilds/${name}`)
-    .then((response) => {
+  return axios.get(`${config.api.endpoint}guilds/${name}`).then(
+    response => {
       dispatch(fetchGuildResult(name, response.data));
       dispatch(fetchingGuild(false));
-    }, () => history.replace({ state: { notFound: true } }));
+    },
+    () => history.replace({ state: { notFound: true } })
+  );
 };
 
 export const updatePrivacy = (name: string, prop: string, action: string) => ({
@@ -108,8 +121,8 @@ export const updatePrivacy = (name: string, prop: string, action: string) => ({
   },
 });
 
-export function setPublic (name: string, prop: string): ReduxThunk {
-  return (dispatch) => {
+export function setPublic(name: string, prop: string): ReduxThunk {
+  return dispatch => {
     dispatch(updatePrivacy(name, prop, 'add'));
     return axios.put(`${config.api.endpoint}guilds/${name}/privacy`, {
       privacy: prop,
@@ -117,8 +130,8 @@ export function setPublic (name: string, prop: string): ReduxThunk {
   };
 }
 
-export function removePublic (name: string, prop: string): ReduxThunk {
-  return (dispatch) => {
+export function removePublic(name: string, prop: string): ReduxThunk {
+  return dispatch => {
     dispatch(updatePrivacy(name, prop, 'remove'));
     return axios.delete(`${config.api.endpoint}guilds/${name}/privacy/${prop}`);
   };

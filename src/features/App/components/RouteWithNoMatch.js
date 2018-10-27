@@ -11,10 +11,13 @@ type Props = {
 const RouteWithNoMatch = ({ component: Component, ...props }: Props) => (
   <Route
     {...props}
-    render={(router) => (router.location.state && router.location.state.notFound
-      ? <NotFound />
-      : <Component {...router} />
-    )}
+    render={router =>
+      router.location.state && router.location.state.notFound ? (
+        <NotFound />
+      ) : (
+        <Component {...router} />
+      )
+    }
   />
 );
 

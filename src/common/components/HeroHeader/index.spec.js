@@ -17,7 +17,12 @@ describe('<HeroHeader />', () => {
 
     const wrapper = shallow(<HeroHeader {...props} />);
 
-    expect(wrapper.children().find('div').props().style).to.include({
+    expect(
+      wrapper
+        .children()
+        .find('div')
+        .props().style
+    ).to.include({
       backgroundColor: props.backgroundColor,
       backgroundImage: `url(${props.backgroundImage})`,
     });

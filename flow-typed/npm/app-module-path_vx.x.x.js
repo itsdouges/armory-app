@@ -97,16 +97,24 @@ declare module 'app-module-path/register.js' {
   declare module.exports: $Exports<'app-module-path/register'>;
 }
 declare module 'app-module-path/test/node_modules/installed-module-allowed-explicit/index.js' {
-  declare module.exports: $Exports<'app-module-path/test/node_modules/installed-module-allowed-explicit/index'>;
+  declare module.exports: $Exports<
+    'app-module-path/test/node_modules/installed-module-allowed-explicit/index'
+  >;
 }
 declare module 'app-module-path/test/node_modules/installed-module-allowed-explicit/installed-module-allowed-explicit-foo/index.js' {
-  declare module.exports: $Exports<'app-module-path/test/node_modules/installed-module-allowed-explicit/installed-module-allowed-explicit-foo/index'>;
+  declare module.exports: $Exports<
+    'app-module-path/test/node_modules/installed-module-allowed-explicit/installed-module-allowed-explicit-foo/index'
+  >;
 }
 declare module 'app-module-path/test/node_modules/installed-module-allowed/index.js' {
-  declare module.exports: $Exports<'app-module-path/test/node_modules/installed-module-allowed/index'>;
+  declare module.exports: $Exports<
+    'app-module-path/test/node_modules/installed-module-allowed/index'
+  >;
 }
 declare module 'app-module-path/test/node_modules/installed-module-allowed/installed-module-allowed-foo/index.js' {
-  declare module.exports: $Exports<'app-module-path/test/node_modules/installed-module-allowed/installed-module-allowed-foo/index'>;
+  declare module.exports: $Exports<
+    'app-module-path/test/node_modules/installed-module-allowed/installed-module-allowed-foo/index'
+  >;
 }
 declare module 'app-module-path/test/node_modules/installed-module/index.js' {
   declare module.exports: $Exports<'app-module-path/test/node_modules/installed-module/index'>;

@@ -18,12 +18,12 @@ type CardData = {
   imageName?: string,
 };
 
-function extractData (content, { type, size, forceUpdate }): CardData {
+function extractData(content, { type, size, forceUpdate }): CardData {
   switch (type) {
     case 'users': {
       const alias = content.alias || content.name;
-      const url = alias &&
-        `${config.imagesEndpoint}${alias}/avatar${forceUpdate ? `?${+new Date()}` : ''}`;
+      const url =
+        alias && `${config.imagesEndpoint}${alias}/avatar${forceUpdate ? `?${+new Date()}` : ''}`;
 
       if (content.gw2Only) {
         return {
@@ -54,9 +54,14 @@ function extractData (content, { type, size, forceUpdate }): CardData {
     case 'characters': {
       const imageSuffix = size === 'small' ? `-${size}` : '';
       return {
-        title: content.guild_tag ? `${content.name || 'Api Error.'} [${content.guild_tag}]` : content.name || 'Api Error.',
-        subTitle: content.level ? `${content.level} ${content.race} ${content.eliteSpecialization || content.profession}` : 'Api error.',
-        imageName: `${content.profession && content.profession.toLowerCase()}-icon${imageSuffix}.png`,
+        title: content.guild_tag
+          ? `${content.name || 'Api Error.'} [${content.guild_tag}]`
+          : content.name || 'Api Error.',
+        subTitle: content.level
+          ? `${content.level} ${content.race} ${content.eliteSpecialization || content.profession}`
+          : 'Api error.',
+        imageName: `${content.profession &&
+          content.profession.toLowerCase()}-icon${imageSuffix}.png`,
         imageStyle: {},
       };
     }
@@ -69,7 +74,8 @@ function extractData (content, { type, size, forceUpdate }): CardData {
           borderRadius: '50%',
         },
         imageName: '',
-        imageUrl: `https://guilds.gw2w2w.com/guilds/${content.name && content.name.replace(/\s+/g, '-')}/256.svg`,
+        imageUrl: `https://guilds.gw2w2w.com/guilds/${content.name &&
+          content.name.replace(/\s+/g, '-')}/256.svg`,
       };
 
     case 'pet':
@@ -112,13 +118,11 @@ const ContentCard = ({
     return <Placeholder size={size} className={className} />;
   }
 
-  const {
-    title,
-    subTitle,
-    imageName,
-    imageStyle,
-    imageUrl,
-  } = extractData(content, { type, size, forceUpdate });
+  const { title, subTitle, imageName, imageStyle, imageUrl } = extractData(content, {
+    type,
+    size,
+    forceUpdate,
+  });
 
   return (
     <div className={cx(styles.root, className, styles[size])}>
@@ -127,11 +131,11 @@ const ContentCard = ({
       </Icon>
 
       <div className={styles.textContainer}>
-        {size === 'big'
-          ? <h2 className={styles.title}>{title}</h2>
-          : <div className={styles.title}>{title}</div>
-
-        }
+        {size === 'big' ? (
+          <h2 className={styles.title}>{title}</h2>
+        ) : (
+          <div className={styles.title}>{title}</div>
+        )}
         <div className={styles.subTitle}>
           {extraSubtitle}
           {subTitle}

@@ -17,12 +17,7 @@ const Fractal = ({ level }: Props) => {
     <Summary
       leftIcon={{ name: 'raid.png', size: 'xlarge' }}
       title={<Redacted redact={redact}>{T.translate('accSummary.fractalLvl')}</Redacted>}
-      subTitle={
-        <ProgressBar
-          current={level || 0}
-          max={100}
-        />
-      }
+      subTitle={<ProgressBar current={level || 0} max={100} />}
     />
   );
 };

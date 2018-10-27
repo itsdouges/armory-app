@@ -81,31 +81,37 @@ export default class ImageUpload extends Component<ImageUploadProps, *> {
 
     const { uploadName } = this.props;
 
-    axios.get(`${config.api.endpoint}sign-upload?contentType=${file.type}&fileName=${uploadName}`)
+    axios
+      .get(`${config.api.endpoint}sign-upload?contentType=${file.type}&fileName=${uploadName}`)
       .then(({ data: { signedRequest } }) =>
-          axios.put(signedRequest, file, {
+        axios
+          .put(signedRequest, file, {
             headers: {
               Accept: '*/*',
               'Content-Type': file.type,
             },
           })
-          .then(() => {
-            this.setState({
-              uploading: false,
-            });
+          .then(
+            () => {
+              this.setState({
+                uploading: false,
+              });
 
-            if (this.fileInput) {
-              this.fileInput.value = '';
+              if (this.fileInput) {
+                this.fileInput.value = '';
+              }
+              this.props.onUploadComplete();
+            },
+            () => {
+              this.setState({
+                error: 'error :-(',
+              });
             }
-            this.props.onUploadComplete();
-          }, () => {
-            this.setState({
-              error: 'error :-(',
-            });
-          }));
+          )
+      );
   };
 
-  render () {
+  render() {
     if (this.props.disabled) {
       return this.props.children;
     }
@@ -115,28 +121,23 @@ export default class ImageUpload extends Component<ImageUploadProps, *> {
 
     const showOverlay = this.props.forceShow || hovering || uploading || error;
     const overlayContent = (error && <Message type="error">{error}</Message>) ||
-      (uploading && <ProgressIcon />) ||
-      <span className={styles.hintText}>{this.props.hintText}</span>;
+      (uploading && <ProgressIcon />) || (
+        <span className={styles.hintText}>{this.props.hintText}</span>
+      );
 
     return (
-      <div
-        onMouseLeave={this.hide}
-        onMouseEnter={this.show}
-        className={cx(styles.root, className)}
-      >
-        {showOverlay && (
-          <div className={styles.uploadOverlay}>
-            {overlayContent}
-          </div>
-        )}
+      <div onMouseLeave={this.hide} onMouseEnter={this.show} className={cx(styles.root, className)}>
+        {showOverlay && <div className={styles.uploadOverlay}>{overlayContent}</div>}
 
-        {uploading || <input
-          accept="image/x-png,image/jpeg"
-          className={styles.fileUpload}
-          onChange={this.upload}
-          ref={(ref) => this.fileInput = ref}
-          type="file"
-        />}
+        {uploading || (
+          <input
+            accept="image/x-png,image/jpeg"
+            className={styles.fileUpload}
+            onChange={this.upload}
+            ref={ref => (this.fileInput = ref)}
+            type="file"
+          />
+        )}
 
         {this.props.children}
       </div>

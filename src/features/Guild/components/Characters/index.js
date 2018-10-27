@@ -17,9 +17,12 @@ const STUB_CHARACTERS = makeStubItems(16);
 
 const makeKey = (content, index) => (content ? content.name : index);
 
-@connect(selector, {
-  fetchCharacters: fetchGuildCharacters,
-})
+@connect(
+  selector,
+  {
+    fetchCharacters: fetchGuildCharacters,
+  }
+)
 export default class GuildCharacters extends Component<*> {
   props: {
     guild?: GuildType,
@@ -31,7 +34,7 @@ export default class GuildCharacters extends Component<*> {
     fetchCharacters: () => Promise.resolve(),
   };
 
-  render () {
+  render() {
     const { guild = {}, fetchCharacters, name } = this.props;
     const users = get(guild, 'characters', STUB_CHARACTERS);
 
@@ -43,7 +46,9 @@ export default class GuildCharacters extends Component<*> {
         count={users.count}
         action={(limit, offset) => fetchCharacters(name, limit, offset)}
       >
-        {(content, index) => <CharacterContentCard key={makeKey(content, index)} content={content} />}
+        {(content, index) => (
+          <CharacterContentCard key={makeKey(content, index)} content={content} />
+        )}
       </PaginatorGrid>
     );
   }

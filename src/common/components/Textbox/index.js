@@ -53,8 +53,8 @@ const Textbox = ({
 
       <input
         {...props}
-        onClick={singleClickSelect && ((e) => e.target.select())}
-        ref={autoSelect ? (c) => c && c.select() : undefined}
+        onClick={singleClickSelect && (e => e.target.select())}
+        ref={autoSelect ? c => c && c.select() : undefined}
         disabled={busy}
         id={id}
         type={type || 'text'}
@@ -62,17 +62,19 @@ const Textbox = ({
         placeholder={placeholder || label}
       />
 
-      {error &&
+      {error && (
         <Message className={styles.error} type="error" size="small">
           {error}
-        </Message>}
+        </Message>
+      )}
 
       {iconRight}
 
-      {showStatus &&
+      {showStatus && (
         <div className={styles.validityContainer}>
           {busy ? <ProgressIcon size="micro" /> : validity}
-        </div>}
+        </div>
+      )}
     </div>
   );
 };

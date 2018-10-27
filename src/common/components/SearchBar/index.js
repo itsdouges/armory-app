@@ -9,7 +9,7 @@ import styles from './styles.less';
 import Textbox from 'common/components/Textbox';
 import SvgIcon from 'common/components/Icon/Svg';
 
-function onSearch (event) {
+function onSearch(event) {
   event.preventDefault();
 
   const filter = event.nativeEvent.target[0].value;
@@ -35,7 +35,7 @@ const SearchBar = ({ className, simple, ...props }: SearchBarProps) => (
       placeholder={`${T.translate('search.textbox')}...`}
       className={styles.textbox}
       containerClassName={cx(styles.textBoxContainer, { [styles.simple]: simple })}
-      iconRight={(
+      iconRight={
         <button type="submit" className={styles.searchButton}>
           <SvgIcon
             button
@@ -44,7 +44,7 @@ const SearchBar = ({ className, simple, ...props }: SearchBarProps) => (
             size="micro"
           />
         </button>
-      )}
+      }
     />
   </form>
 );

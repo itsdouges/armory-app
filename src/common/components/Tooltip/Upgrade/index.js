@@ -53,22 +53,31 @@ const ItemUpgrade = ({ data, count: { count } }: Props) => {
         <Icon src={data.icon} size="micro" />
         <span className={styles.summaryContainer}>
           {`${data.name} `}
-          {withBonus &&
+          {withBonus && (
             <span>
-              (<span className={upgradeOverflow && styles.overflowRunes}>
+              (
+              <span className={upgradeOverflow && styles.overflowRunes}>
                 {`${count || 0}/${data.details.bonuses.length}`}
-              </span>)
-            </span>}
+              </span>
+              )
+            </span>
+          )}
         </span>
       </div>
 
-      {withBonus && data.details.bonuses.map((bonus, index) =>
-        <div key={bonus} className={index < count && colours.blue}>
-          {`(${index + 1}):`} {markup(bonus)}
-        </div>)}
+      {withBonus &&
+        data.details.bonuses.map((bonus, index) => (
+          <div key={bonus} className={index < count && colours.blue}>
+            {`(${index + 1}):`} {markup(bonus)}
+          </div>
+        ))}
 
-      {withBuffs && data.details.infix_upgrade.buff.description.map((buff) =>
-        <div key={buff} className={colours.blue}>{markup(buff)}</div>)}
+      {withBuffs &&
+        data.details.infix_upgrade.buff.description.map(buff => (
+          <div key={buff} className={colours.blue}>
+            {markup(buff)}
+          </div>
+        ))}
     </div>
   );
 };

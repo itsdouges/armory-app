@@ -3,15 +3,16 @@ import { shallow } from 'enzyme';
 import { stubStyles } from 'test/utils';
 import LoadingStrip from 'common/components/LoadingStrip';
 
-const styles = stubStyles([
-  'root',
-  'link',
-]);
+const styles = stubStyles(['root', 'link']);
 
-const { buildLink, default: ResourceLink } = proxyquire('common/components/ResourceLink', {
-  'lib/i18n': { get: () => 'en' },
-  './styles.less': styles,
-}, true);
+const { buildLink, default: ResourceLink } = proxyquire(
+  'common/components/ResourceLink',
+  {
+    'lib/i18n': { get: () => 'en' },
+    './styles.less': styles,
+  },
+  true
+);
 
 describe('ResourceLink.js', () => {
   describe('<ResourceLink />', () => {
@@ -37,7 +38,9 @@ describe('ResourceLink.js', () => {
         className: styles.link,
       });
 
-      expect(wrapper.find('a').find(LoadingStrip)).prop('children').to.equal(props.text);
+      expect(wrapper.find('a').find(LoadingStrip))
+        .prop('children')
+        .to.equal(props.text);
     });
 
     it('should render only children if href doesnt exist', () => {

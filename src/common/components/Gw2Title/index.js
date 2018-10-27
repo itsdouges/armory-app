@@ -11,31 +11,34 @@ import T from 'i18n-react';
 
 const selector = createSelector(
   (state, props) => state.titles[props.id] || { name: '...' },
-  (title) => ({
+  title => ({
     title,
   })
 );
 
-export default connect(selector, {
-  fetch: actions.fetchTitles,
-})(
-class Gw2Title extends Component<*> {
-  props: {
-    id: number,
-    title: { name: string },
-    fetch: ([number]) => void,
-  };
-
-  componentWillMount () {
-    this.props.fetch([this.props.id]);
+export default connect(
+  selector,
+  {
+    fetch: actions.fetchTitles,
   }
+)(
+  class Gw2Title extends Component<*> {
+    props: {
+      id: number,
+      title: { name: string },
+      fetch: ([number]) => void,
+    };
 
-  render () {
-    return (
-      <TooltipTrigger data={`${T.translate('words.title')}: ${this.props.title.name}`}>
-        <Icon name="title-crown.png" size="xsmall" />
-      </TooltipTrigger>
-    );
+    componentWillMount() {
+      this.props.fetch([this.props.id]);
+    }
+
+    render() {
+      return (
+        <TooltipTrigger data={`${T.translate('words.title')}: ${this.props.title.name}`}>
+          <Icon name="title-crown.png" size="xsmall" />
+        </TooltipTrigger>
+      );
+    }
   }
-}
 );

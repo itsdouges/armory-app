@@ -2,14 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { stubComponent, stubStyles } from 'test/utils';
 
-const styles = stubStyles([
-  'root',
-  'active',
-]);
+const styles = stubStyles(['root', 'active']);
 
-const colours = stubStyles([
-  '_black',
-]);
+const colours = stubStyles(['_black']);
 
 const TooltipTrigger = stubComponent('TooltipTrigger');
 const Icon = stubComponent('Icon');
@@ -20,7 +15,7 @@ const Trait = proxyquire('features/Character/components/Trait', {
   'common/components/Icon': Icon,
   'common/styles/colours': colours,
   'common/components/ResourceLink': {
-    default: (props) => <div {...props} />,
+    default: props => <div {...props} />,
     buildLink: () => '',
   },
 });
@@ -58,10 +53,14 @@ describe('<Trait />', () => {
 
       const wrapper = shallow(<Trait {...props} />);
 
-      expect(wrapper.find(Icon)).to.have.prop('src').equal(props.data.icon);
-      expect(wrapper.find(Icon)).to.have.prop('style').eql({
-        backgroundColor: colours._black,
-      });
+      expect(wrapper.find(Icon))
+        .to.have.prop('src')
+        .equal(props.data.icon);
+      expect(wrapper.find(Icon))
+        .to.have.prop('style')
+        .eql({
+          backgroundColor: colours._black,
+        });
     });
   });
 

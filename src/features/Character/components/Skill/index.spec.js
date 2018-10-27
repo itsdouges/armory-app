@@ -2,9 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { stubComponent, stubStyles, stubI18n } from 'test/utils';
 
-const styles = stubStyles([
-  'skill',
-]);
+const styles = stubStyles(['skill']);
 
 const translate = sinon.stub();
 const TooltipTrigger = stubComponent('TooltipTrigger');
@@ -18,7 +16,7 @@ const Skill = proxyquire('features/Character/components/Skill', {
   './Empty': EmptySkill,
   './styles.less': styles,
   'common/components/ResourceLink': {
-    default: (props) => <div {...props} />,
+    default: props => <div {...props} />,
     buildLink: () => '',
   },
 });

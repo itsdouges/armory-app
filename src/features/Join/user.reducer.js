@@ -13,8 +13,8 @@ import {
 } from './actions';
 
 export const selector = createSelector(
-  (state) => state.user,
-  (state) => !!state.user.aliasValid && !!state.user.emailValid && !!state.user.passwordValue,
+  state => state.user,
+  state => !!state.user.aliasValid && !!state.user.emailValid && !!state.user.passwordValue,
   (user, canRegister) => ({
     user,
     canRegister,
@@ -30,10 +30,12 @@ export default (state, action) => {
       };
 
     case REGISTER_USER_RESULT:
-      return action.error ? {
-        ...state,
-        registerErrors: action.error ? action.payload : undefined,
-      } : {};
+      return action.error
+        ? {
+            ...state,
+            registerErrors: action.error ? action.payload : undefined,
+          }
+        : {};
 
     case INVALIDATE_EMAIL:
       return {

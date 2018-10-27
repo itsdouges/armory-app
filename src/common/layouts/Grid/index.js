@@ -12,7 +12,13 @@ type Props = {
   fullWidth?: boolean,
 };
 
-const Grid = ({ children, className, type, containerElement: Container = 'div', fullWidth }: Props) => (
+const Grid = ({
+  children,
+  className,
+  type,
+  containerElement: Container = 'div',
+  fullWidth,
+}: Props) => (
   <Container
     className={cx(styles.root, className, styles[type], {
       [styles.fullWidth]: fullWidth,

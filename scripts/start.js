@@ -24,7 +24,7 @@ let compiler;
 // TODO: hide this behind a flag and eliminate dead code on eject.
 // This shouldn't be exposed to the user.
 let handleCompile;
-const isSmokeTest = process.argv.some((arg) => arg.indexOf('--smoke-test') > -1);
+const isSmokeTest = process.argv.some(arg => arg.indexOf('--smoke-test') > -1);
 if (isSmokeTest) {
   handleCompile = (err, stats) => {
     if (err || stats.hasErrors() || stats.hasWarnings()) {
@@ -37,37 +37,39 @@ if (isSmokeTest) {
 
 const friendlySyntaxErrorLabel = 'Syntax error:';
 
-function isLikelyASyntaxError (message) {
+function isLikelyASyntaxError(message) {
   return message.indexOf(friendlySyntaxErrorLabel) !== -1;
 }
 
 // This is a little hacky.
 // It would be easier if webpack provided a rich error object.
 
-function formatMessage (message) {
-  return message
-    // Make some common errors shorter:
-    .replace(
-      // Babel syntax error
-      'Module build failed: SyntaxError:',
-      friendlySyntaxErrorLabel
-    )
-    .replace(
-      // Webpack file not found error
-      /Module not found: Error: Cannot resolve 'file' or 'directory'/,
-      'Module not found:'
-    )
-    // Internal stacks are generally useless so we strip them
-    .replace(/^\s*at\s.*:\d+:\d+[\s)]*\n/gm, '') // at ... ...:x:y
-    // Webpack loader names obscure CSS filenames
-    .replace('./~/css-loader!./~/postcss-loader!', '');
+function formatMessage(message) {
+  return (
+    message
+      // Make some common errors shorter:
+      .replace(
+        // Babel syntax error
+        'Module build failed: SyntaxError:',
+        friendlySyntaxErrorLabel
+      )
+      .replace(
+        // Webpack file not found error
+        /Module not found: Error: Cannot resolve 'file' or 'directory'/,
+        'Module not found:'
+      )
+      // Internal stacks are generally useless so we strip them
+      .replace(/^\s*at\s.*:\d+:\d+[\s)]*\n/gm, '') // at ... ...:x:y
+      // Webpack loader names obscure CSS filenames
+      .replace('./~/css-loader!./~/postcss-loader!', '')
+  );
 }
 
-function clearConsole () {
+function clearConsole() {
   process.stdout.write('\x1bc');
 }
 
-function setupCompiler (port) {
+function setupCompiler(port) {
   compiler = webpack(config, handleCompile);
 
   compiler.plugin('invalid', () => {
@@ -75,7 +77,7 @@ function setupCompiler (port) {
     console.log('Compiling...');
   });
 
-  compiler.plugin('done', (stats) => {
+  compiler.plugin('done', stats => {
     clearConsole();
     const hasErrors = stats.hasErrors();
     const hasWarnings = stats.hasWarnings();
@@ -90,13 +92,15 @@ function setupCompiler (port) {
     }
 
     const json = stats.toJson();
-    const formattedErrors = json.errors.map((message) =>
-      // eslint-disable-next-line
-      'Error in ' + formatMessage(message)
+    const formattedErrors = json.errors.map(
+      message =>
+        // eslint-disable-next-line
+        'Error in ' + formatMessage(message)
     );
-    const formattedWarnings = json.warnings.map((message) =>
-      // eslint-disable-next-line
-      'Warning in ' + formatMessage(message)
+    const formattedWarnings = json.warnings.map(
+      message =>
+        // eslint-disable-next-line
+        'Warning in ' + formatMessage(message)
     );
 
     if (hasErrors) {
@@ -109,7 +113,7 @@ function setupCompiler (port) {
         // eslint-disable-next-line
         formattedErrors = formattedErrors.filter(isLikelyASyntaxError);
       }
-      formattedErrors.forEach((message) => {
+      formattedErrors.forEach(message => {
         console.log(message);
         console.log();
       });
@@ -120,21 +124,25 @@ function setupCompiler (port) {
     if (hasWarnings) {
       console.log(chalk.yellow('Compiled with warnings.'));
       console.log();
-      formattedWarnings.forEach((message) => {
+      formattedWarnings.forEach(message => {
         console.log(message);
         console.log();
       });
 
       console.log('You may use special comments to disable some warnings.');
-      // eslint-disable-next-line
-      console.log('Use ' + chalk.yellow('// eslint-disable-next-line') + ' to ignore the next line.');
-      // eslint-disable-next-line
-      console.log('Use ' + chalk.yellow('/* eslint-disable */') + ' to ignore all warnings in a file.');
+      console.log(
+        // eslint-disable-next-line
+        'Use ' + chalk.yellow('// eslint-disable-next-line') + ' to ignore the next line.'
+      );
+      console.log(
+        // eslint-disable-next-line
+        'Use ' + chalk.yellow('/* eslint-disable */') + ' to ignore all warnings in a file.'
+      );
     }
   });
 }
 
-function openBrowser (port) {
+function openBrowser(port) {
   if (process.platform === 'darwin') {
     try {
       // Try our best to reuse existing tab
@@ -143,8 +151,10 @@ function openBrowser (port) {
       execSync(
         // eslint-disable-next-line
         'osascript ' +
-        path.resolve(__dirname, './utils/chrome.applescript') +
-        ' http://localhost:' + port + basePath
+          path.resolve(__dirname, './utils/chrome.applescript') +
+          ' http://localhost:' +
+          port +
+          basePath
       );
       return;
     } catch (err) {
@@ -157,7 +167,7 @@ function openBrowser (port) {
   opn('http://localhost:' + port + basePath);
 }
 
-function runDevServer (port) {
+function runDevServer(port) {
   new WebpackDevServer(compiler, {
     historyApiFallback: {
       disableDotRule: true,
@@ -166,7 +176,7 @@ function runDevServer (port) {
     publicPath: config.output.publicPath,
     quiet: true,
     // eslint-disable-next-line
-  }).listen(port, (err) => {
+  }).listen(port, err => {
     if (err) {
       return console.log(err);
     }
@@ -178,12 +188,12 @@ function runDevServer (port) {
   });
 }
 
-function run (port) {
+function run(port) {
   setupCompiler(port);
   runDevServer(port);
 }
 
-detect(DEFAULT_PORT).then((port) => {
+detect(DEFAULT_PORT).then(port => {
   if (port === DEFAULT_PORT) {
     run(port);
     return;
@@ -194,7 +204,7 @@ detect(DEFAULT_PORT).then((port) => {
     chalk.yellow('Something is already running at port ' + DEFAULT_PORT + '.') + // eslint-disable-line
     '\n\nWould you like to run the app at another port instead?';
 
-  prompt(question, true).then((shouldChangePort) => {
+  prompt(question, true).then(shouldChangePort => {
     if (shouldChangePort) {
       run(port);
     }

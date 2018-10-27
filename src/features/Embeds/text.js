@@ -1,17 +1,19 @@
 // @flow
 
-export default [{
-  title: 'Character',
-  html: `
+export default [
+  {
+    title: 'Character',
+    html: `
 <div
   data-armory-embed="character"
   data-armory-name="Blastrn"
 >
 </div>
   `,
-}, {
-  title: 'Skills',
-  html: `
+  },
+  {
+    title: 'Skills',
+    html: `
 <span
   data-armory-embed="skills"
   data-armory-ids="5508"
@@ -50,9 +52,10 @@ export default [{
 >
 </div>
   `,
-}, {
-  title: 'Items',
-  html: `
+  },
+  {
+    title: 'Items',
+    html: `
 <span
   data-armory-embed="items"
   data-armory-ids="7139"
@@ -108,9 +111,10 @@ export default [{
 >
 </div>
   `,
-}, {
-  title: 'Amulets',
-  html: `
+  },
+  {
+    title: 'Amulets',
+    html: `
 <span
   data-armory-embed="amulets"
   data-armory-ids="10"
@@ -150,9 +154,10 @@ export default [{
 >
 </div>
   `,
-}, {
-  title: 'Traits',
-  html: `
+  },
+  {
+    title: 'Traits',
+    html: `
 <span
   data-armory-embed="traits"
   data-armory-ids="700"
@@ -197,9 +202,10 @@ export default [{
 >
 </div>
   `,
-}, {
-  title: 'Specializations',
-  html: `
+  },
+  {
+    title: 'Specializations',
+    html: `
 <div
   data-armory-embed="specializations"
   data-armory-ids="1,2"
@@ -231,7 +237,8 @@ export default [{
 >
 </div>
   `,
-}].map((res) => ({
+  },
+].map(res => ({
   ...res,
   html: res.html.trim(),
 }));

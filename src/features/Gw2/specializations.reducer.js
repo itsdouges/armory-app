@@ -6,13 +6,10 @@ const { defaultState, reducer } = createReducer('specializations', readSpecializ
   afterGet: (dispatch, specializations) => {
     let traitsToAdd = [];
 
-    Object.keys(specializations).forEach((key) => {
+    Object.keys(specializations).forEach(key => {
       const speciailization = specializations[key];
 
-      traitsToAdd = traitsToAdd.concat(
-        speciailization.major_traits,
-        speciailization.minor_traits
-      );
+      traitsToAdd = traitsToAdd.concat(speciailization.major_traits, speciailization.minor_traits);
     });
 
     dispatch(actions.fetchTraits(traitsToAdd));

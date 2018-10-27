@@ -1,7 +1,6 @@
 const argv = require('yargs')
   .boolean('embeds')
-  .boolean('production')
-  .argv;
+  .boolean('production').argv;
 
 const production = argv.production;
 const embeds = argv.embeds;

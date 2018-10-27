@@ -17,7 +17,7 @@ type PieChartProps = {
 
 const PieChart = ({ dataValues, className, size = 256 }: PieChartProps) => {
   const radius = size / 2;
-  const max = dataValues.reduce((total, { value }) => (total + value), 0);
+  const max = dataValues.reduce((total, { value }) => total + value, 0);
   const segments = [];
 
   dataValues.reduce((rotationOffset, data) => {
@@ -32,11 +32,7 @@ const PieChart = ({ dataValues, className, size = 256 }: PieChartProps) => {
           rotationOffset={rotationOffset}
         />
 
-        <PieSegment
-          data={data}
-          centralAngle={centralAngle}
-          rotationOffset={rotationOffset}
-        />
+        <PieSegment data={data} centralAngle={centralAngle} rotationOffset={rotationOffset} />
       </li>
     );
 

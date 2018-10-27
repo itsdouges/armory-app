@@ -7,8 +7,6 @@ type Props = {
   name: string,
 };
 
-const SvgIcon = (props: Props) => (
-  <Icon {...props} name={`svg/${props.name}.svg`} />
-);
+const SvgIcon = (props: Props) => <Icon {...props} name={`svg/${props.name}.svg`} />;
 
 export default SvgIcon;

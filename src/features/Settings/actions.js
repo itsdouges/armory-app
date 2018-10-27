@@ -13,79 +13,81 @@ export const VALIDATE_GW2_TOKEN_RESULT = 'VALIDATE_GW2_TOKEN_RESULT';
 export const CHANGE_PASSWORD_RESULT = 'CHANGE_PASSWORD_RESULT';
 export const CHANGING_PASSWORD = 'CHANGING_PASSWORD';
 
-function changingPassword (changing) {
+function changingPassword(changing) {
   return {
     type: CHANGING_PASSWORD,
     payload: !!changing,
   };
 }
 
-function changePasswordSuccess () {
+function changePasswordSuccess() {
   return {
     type: CHANGE_PASSWORD_RESULT,
   };
 }
 
-function changePasswordError () {
+function changePasswordError() {
   return {
     type: CHANGE_PASSWORD_RESULT,
     error: true,
   };
 }
 
-export function changePassword (currentPassword, password) {
-  return (dispatch) => {
+export function changePassword(currentPassword, password) {
+  return dispatch => {
     dispatch(changingPassword(true));
 
     return put(`${config.api.endpoint}users/me/password`, {
       password,
       currentPassword,
-    })
-    .then(() => {
-      dispatch(changingPassword(false));
-      dispatch(changePasswordSuccess());
-    }, () => {
-      dispatch(changingPassword(false));
-      dispatch(changePasswordError());
-    });
+    }).then(
+      () => {
+        dispatch(changingPassword(false));
+        dispatch(changePasswordSuccess());
+      },
+      () => {
+        dispatch(changingPassword(false));
+        dispatch(changePasswordError());
+      }
+    );
   };
 }
 
-function fetchingGw2Tokens (fetching) {
+function fetchingGw2Tokens(fetching) {
   return {
     type: FETCHING_GW2_TOKENS,
     payload: !!fetching,
   };
 }
 
-function fetchGw2TokensSuccess (tokens) {
+function fetchGw2TokensSuccess(tokens) {
   return {
     type: FETCH_GW2_TOKEN_RESULT,
     payload: tokens,
   };
 }
 
-function addingGw2Token (adding) {
+function addingGw2Token(adding) {
   return {
     type: ADDING_GW2_TOKEN,
     payload: !!adding,
   };
 }
 
-function addGw2TokenResultSuccess (token) {
+function addGw2TokenResultSuccess(token) {
   return {
     type: ADD_GW2_TOKEN_RESULT,
     payload: token,
   };
 }
 
-function validateGw2TokenResultSuccess () {
+function validateGw2TokenResultSuccess() {
   return {
     type: VALIDATE_GW2_TOKEN_RESULT,
   };
 }
 
-function validateGw2TokenResultError (message) {
+function validateGw2TokenResultError(message) {
   return {
     type: VALIDATE_GW2_TOKEN_RESULT,
     error: true,
@@ -93,46 +95,47 @@ function validateGw2TokenResultError (message) {
   };
 }
 
-function validatingGw2Token (validating) {
+function validatingGw2Token(validating) {
   return {
     type: VALIDATING_GW2_TOKEN,
     payload: !!validating,
   };
 }
 
-function invalidateGw2Token () {
+function invalidateGw2Token() {
   return {
     type: INVALIDATE_GW2_TOKEN,
   };
 }
 
-export function validateGw2Token (token) {
-  return (dispatch) => {
+export function validateGw2Token(token) {
+  return dispatch => {
     if (!token) {
       return dispatch(invalidateGw2Token());
     }
 
     dispatch(validatingGw2Token(true));
 
-    return get(`${config.api.endpoint}users/check/gw2-token/${token}`)
-      .then(() => {
+    return get(`${config.api.endpoint}users/check/gw2-token/${token}`).then(
+      () => {
         dispatch(validateGw2TokenResultSuccess());
         dispatch(validatingGw2Token(false));
-      }, ({ response }) => {
+      },
+      ({ response }) => {
         dispatch(validateGw2TokenResultError(response.data));
         dispatch(validatingGw2Token(false));
-      });
+      }
+    );
   };
 }
 
-export function addGw2Token (token) {
-  return (dispatch) => {
+export function addGw2Token(token) {
+  return dispatch => {
     dispatch(addingGw2Token(true));
 
     return post(`${config.api.endpoint}users/me/gw2-tokens`, {
       token,
-    })
-    .then((response) => {
+    }).then(response => {
       dispatch(addGw2TokenResultSuccess(response.data));
       dispatch(invalidateGw2Token());
       dispatch(addingGw2Token(false));
@@ -140,42 +143,41 @@ export function addGw2Token (token) {
   };
 }
 
-export function fetchGw2Tokens () {
-  return (dispatch) => {
+export function fetchGw2Tokens() {
+  return dispatch => {
     dispatch(fetchingGw2Tokens(true));
 
-    return get(`${config.api.endpoint}users/me/gw2-tokens`)
-    .then((response) => {
+    return get(`${config.api.endpoint}users/me/gw2-tokens`).then(response => {
       dispatch(fetchGw2TokensSuccess(response.data));
       dispatch(fetchingGw2Tokens(false));
     });
   };
 }
 
-function deleteGw2Token (token) {
+function deleteGw2Token(token) {
   return {
     type: REMOVE_GW2_TOKEN,
     payload: token,
   };
 }
 
-export function removeGw2Token (token) {
-  return (dispatch) => {
+export function removeGw2Token(token) {
+  return dispatch => {
     dispatch(deleteGw2Token(token));
 
     return del(`${config.api.endpoint}users/me/gw2-tokens/${token}`);
   };
 }
 
-function selectPrimaryToken (token) {
+function selectPrimaryToken(token) {
   return {
     type: SELECT_PRIMARY_TOKEN,
     payload: token,
   };
 }
 
-export function selectPrimaryGw2Token (token) {
-  return (dispatch) => {
+export function selectPrimaryGw2Token(token) {
+  return dispatch => {
     dispatch(selectPrimaryToken(token));
 
     return put(`${config.api.endpoint}users/me/gw2-tokens/${token}/set-primary`);

@@ -15,7 +15,8 @@ type Props = {
 const HeroHeader = ({ children, backgroundImage, backgroundColor, title }: Props) => (
   <div className={styles.root}>
     <div
-      className={styles.background} style={{
+      className={styles.background}
+      style={{
         backgroundColor,
         backgroundImage: `url(${backgroundImage})`,
       }}

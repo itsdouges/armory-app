@@ -20,25 +20,23 @@ export default class RandomCharacter extends Component<*, *> {
     name: '',
   };
 
-  componentDidMount () {
-    const resource = this.props.type === 'ofTheDay'
-      ? 'of-the-day/characters'
-      : 'random/characters/1';
+  componentDidMount() {
+    const resource =
+      this.props.type === 'ofTheDay' ? 'of-the-day/characters' : 'random/characters/1';
 
-    axios.get(`${config.api.endpoint}${resource}`)
-    .then(({ data }) => this.setState({ name: data[0] }));
+    axios
+      .get(`${config.api.endpoint}${resource}`)
+      .then(({ data }) => this.setState({ name: data[0] }));
   }
 
-  render () {
+  render() {
     const { name } = this.state;
 
     return (
       <div className={styles.root}>
         <CharacterEmbed name={name} />
 
-        <TooltipTrigger
-          data={T.translate('characters.embedCta')}
-        >
+        <TooltipTrigger data={T.translate('characters.embedCta')}>
           <SvgIcon className={styles.helpIcon} name="help" />
         </TooltipTrigger>
       </div>

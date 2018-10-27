@@ -687,25 +687,35 @@ declare module 'eslint-plugin-jsx-a11y/__tests__/index-test.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/index-test'>;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/anchor-has-content-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/anchor-has-content-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/anchor-has-content-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/aria-props-test.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/aria-props-test'>;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/aria-proptypes-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/aria-proptypes-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/aria-proptypes-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/aria-role-test.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/aria-role-test'>;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/aria-unsupported-elements-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/aria-unsupported-elements-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/aria-unsupported-elements-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/click-events-have-key-events-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/click-events-have-key-events-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/click-events-have-key-events-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/heading-has-content-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/heading-has-content-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/heading-has-content-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/href-no-hash-test.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/href-no-hash-test'>;
@@ -717,7 +727,9 @@ declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/img-has-alt-test.js' 
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/img-has-alt-test'>;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/img-redundant-alt-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/img-redundant-alt-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/img-redundant-alt-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/label-has-for-test.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/label-has-for-test'>;
@@ -726,7 +738,9 @@ declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/lang-test.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/lang-test'>;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/mouse-events-have-key-events-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/mouse-events-have-key-events-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/mouse-events-have-key-events-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/no-access-key-test.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/no-access-key-test'>;
@@ -738,25 +752,37 @@ declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/no-onchange-test.js' 
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/no-onchange-test'>;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/no-static-element-interactions-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/no-static-element-interactions-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/no-static-element-interactions-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/onclick-has-focus-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/onclick-has-focus-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/onclick-has-focus-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/onclick-has-role-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/onclick-has-role-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/onclick-has-role-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/role-has-required-aria-props-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/role-has-required-aria-props-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/role-has-required-aria-props-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/role-supports-aria-props-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/role-supports-aria-props-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/role-supports-aria-props-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/scope-test.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/scope-test'>;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/rules/tabindex-no-positive-test.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/rules/tabindex-no-positive-test'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/__tests__/src/rules/tabindex-no-positive-test'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/__tests__/src/util/getSuggestion-test.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/__tests__/src/util/getSuggestion-test'>;
@@ -819,7 +845,9 @@ declare module 'eslint-plugin-jsx-a11y/lib/rules/no-onchange.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/lib/rules/no-onchange'>;
 }
 declare module 'eslint-plugin-jsx-a11y/lib/rules/no-static-element-interactions.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/lib/rules/no-static-element-interactions'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/lib/rules/no-static-element-interactions'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/lib/rules/onclick-has-focus.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/lib/rules/onclick-has-focus'>;
@@ -1026,7 +1054,9 @@ declare module 'eslint-plugin-jsx-a11y/src/rules/no-onchange.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/src/rules/no-onchange'>;
 }
 declare module 'eslint-plugin-jsx-a11y/src/rules/no-static-element-interactions.js' {
-  declare module.exports: $Exports<'eslint-plugin-jsx-a11y/src/rules/no-static-element-interactions'>;
+  declare module.exports: $Exports<
+    'eslint-plugin-jsx-a11y/src/rules/no-static-element-interactions'
+  >;
 }
 declare module 'eslint-plugin-jsx-a11y/src/rules/onclick-has-focus.js' {
   declare module.exports: $Exports<'eslint-plugin-jsx-a11y/src/rules/onclick-has-focus'>;

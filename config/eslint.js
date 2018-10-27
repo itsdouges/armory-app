@@ -29,10 +29,7 @@ module.exports = {
   },
 
   settings: {
-    'import/ignore': [
-      'node_modules',
-      '\\.(json|css|jpg|png|gif|eot|svg|ttf|woff|woff2|mp4|webm)$',
-    ],
+    'import/ignore': ['node_modules', '\\.(json|css|jpg|png|gif|eot|svg|ttf|woff|woff2|mp4|webm)$'],
     'import/extensions': ['.js'],
     'import/resolver': {
       node: {
@@ -77,15 +74,18 @@ module.exports = {
     'no-labels': ['warn', { allowLoop: false, allowSwitch: false }],
     'no-lone-blocks': 'warn',
     'no-loop-func': 'warn',
-    'no-mixed-operators': ['warn', {
-      groups: [
-        ['&', '|', '^', '~', '<<', '>>', '>>>'],
-        ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
-        ['&&', '||'],
-        ['in', 'instanceof'],
-      ],
-      allowSamePrecedence: false,
-    }],
+    'no-mixed-operators': [
+      'warn',
+      {
+        groups: [
+          ['&', '|', '^', '~', '<<', '>>', '>>>'],
+          ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
+          ['&&', '||'],
+          ['in', 'instanceof'],
+        ],
+        allowSamePrecedence: false,
+      },
+    ],
     'no-multi-str': 'warn',
     'no-native-reassign': 'warn',
     'no-negated-in-lhs': 'warn',
@@ -98,11 +98,7 @@ module.exports = {
     'no-octal-escape': 'warn',
     'no-redeclare': 'warn',
     'no-regex-spaces': 'warn',
-    'no-restricted-syntax': [
-      'warn',
-      'LabeledStatement',
-      'WithStatement',
-    ],
+    'no-restricted-syntax': ['warn', 'LabeledStatement', 'WithStatement'],
     'no-return-assign': 'warn',
     'no-script-url': 'warn',
     'no-self-assign': 'warn',
@@ -123,11 +119,14 @@ module.exports = {
     'no-useless-concat': 'warn',
     'no-useless-constructor': 'warn',
     'no-useless-escape': 'warn',
-    'no-useless-rename': ['warn', {
-      ignoreDestructuring: false,
-      ignoreImport: false,
-      ignoreExport: false,
-    }],
+    'no-useless-rename': [
+      'warn',
+      {
+        ignoreDestructuring: false,
+        ignoreImport: false,
+        ignoreExport: false,
+      },
+    ],
     'no-with': 'warn',
     'no-whitespace-before-property': 'warn',
     'operator-assignment': ['warn', 'always'],
@@ -167,10 +166,13 @@ module.exports = {
     'react/jsx-equals-spacing': ['warn', 'never'],
     'react/jsx-no-duplicate-props': ['warn', { ignoreCase: true }],
     'react/jsx-no-undef': 'warn',
-    'react/jsx-pascal-case': ['warn', {
-      allowAllCaps: true,
-      ignore: [],
-    }],
+    'react/jsx-pascal-case': [
+      'warn',
+      {
+        allowAllCaps: true,
+        ignore: [],
+      },
+    ],
     'react/jsx-uses-react': 'warn',
     'react/jsx-uses-vars': 'warn',
     'react/no-deprecated': 'warn',

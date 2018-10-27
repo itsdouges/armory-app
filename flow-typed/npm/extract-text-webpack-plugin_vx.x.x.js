@@ -61,7 +61,9 @@ declare module 'extract-text-webpack-plugin/dist/lib/ExtractedModule.js' {
   declare module.exports: $Exports<'extract-text-webpack-plugin/dist/lib/ExtractedModule'>;
 }
 declare module 'extract-text-webpack-plugin/dist/lib/ExtractTextPluginCompilation.js' {
-  declare module.exports: $Exports<'extract-text-webpack-plugin/dist/lib/ExtractTextPluginCompilation'>;
+  declare module.exports: $Exports<
+    'extract-text-webpack-plugin/dist/lib/ExtractTextPluginCompilation'
+  >;
 }
 declare module 'extract-text-webpack-plugin/dist/lib/helpers.js' {
   declare module.exports: $Exports<'extract-text-webpack-plugin/dist/lib/helpers'>;

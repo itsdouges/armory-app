@@ -12,7 +12,7 @@ import Notification from '../Notification';
 import * as actions from '../../actions';
 import styles from './styles.less';
 
-function mapStoreToProps (store) {
+function mapStoreToProps(store) {
   return {
     notifications: store.app.notifications,
   };
@@ -21,16 +21,19 @@ function mapStoreToProps (store) {
 type Props = {
   className?: string,
   notifications?: Notifications,
-  dismissNotification?: (string) => void,
+  dismissNotification?: string => void,
 };
 
-@connect(mapStoreToProps, {
-  dismissNotification: actions.dismissNotification,
-})
+@connect(
+  mapStoreToProps,
+  {
+    dismissNotification: actions.dismissNotification,
+  }
+)
 export default class NotificationBox extends Component<Props> {
   props: Props;
 
-  render () {
+  render() {
     const { notifications, dismissNotification, className } = this.props;
     if (!notifications || Object.keys(notifications).length === 0) {
       return null;
@@ -39,7 +42,7 @@ export default class NotificationBox extends Component<Props> {
     return (
       <Container className={cx(styles.root, className)}>
         <ol>
-          {map(notifications, (msg: NotificationType) =>
+          {map(notifications, (msg: NotificationType) => (
             <li key={msg.id}>
               <Notification
                 {...msg}
@@ -47,7 +50,7 @@ export default class NotificationBox extends Component<Props> {
                 dismiss={() => dismissNotification && dismissNotification(msg.id)}
               />
             </li>
-          )}
+          ))}
         </ol>
       </Container>
     );

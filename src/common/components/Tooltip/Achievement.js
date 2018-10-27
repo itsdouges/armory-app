@@ -13,7 +13,7 @@ const extractTier = (achievement, current) => {
     return {};
   }
 
-  return achievement.tiers.filter((tier) => tier.count >= current)[0] || {};
+  return achievement.tiers.filter(tier => tier.count >= current)[0] || {};
 };
 
 const AchievementTooltip = ({ data }: any) => {
@@ -21,17 +21,19 @@ const AchievementTooltip = ({ data }: any) => {
   const tier = extractTier(data, data.current);
   const currentTierIndex = tiers.indexOf(tier);
 
-  const currentPoints = tiers && tiers.reduce((total, current, index) => {
-    if (!tier) {
-      return 0;
-    }
+  const currentPoints =
+    tiers &&
+    tiers.reduce((total, current, index) => {
+      if (!tier) {
+        return 0;
+      }
 
-    if (currentTierIndex > -1 && currentTierIndex <= index) {
-      return total + current.points;
-    }
+      if (currentTierIndex > -1 && currentTierIndex <= index) {
+        return total + current.points;
+      }
 
-    return total;
-  }, 0);
+      return total;
+    }, 0);
 
   return (
     <Background>
@@ -49,7 +51,8 @@ const AchievementTooltip = ({ data }: any) => {
       {data.bits && (
         <span>
           <br />
-          {T.translate('words.objectives')}: {data.userBits ? data.userBits.length : 0}/{data.bits.length}
+          {T.translate('words.objectives')}: {data.userBits ? data.userBits.length : 0}/
+          {data.bits.length}
         </span>
       )}
 
@@ -60,7 +63,8 @@ const AchievementTooltip = ({ data }: any) => {
         </span>
       )}
 
-      <br /><br />
+      <br />
+      <br />
       <span className={styles.vertical}>
         {currentPoints} <Icon sizePx={32} name="arenanet-points.png" />
       </span>

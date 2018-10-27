@@ -23,11 +23,11 @@ export default class ResponsiveMenu extends Component<MenuProps, *> {
     shown: false,
   };
 
-  componentDidMount () {
+  componentDidMount() {
     this.detatch = addEvent('click', this.onWindowClick);
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.detatch();
   }
 
@@ -37,7 +37,7 @@ export default class ResponsiveMenu extends Component<MenuProps, *> {
     }
 
     this.reset();
-  }
+  };
 
   reset = () => {
     this.setState({
@@ -51,17 +51,15 @@ export default class ResponsiveMenu extends Component<MenuProps, *> {
     this.setState({
       shown: !this.state.shown,
     });
-  }
+  };
 
-  render () {
+  render() {
     const { children, className, itemClassName, ...props } = this.props;
     const { shown } = this.state;
     const moreVertIconName = config.features.christmas ? 'more-vert-white' : 'more-vert';
 
     return (
-      <div
-        className={cx(styles.root, className, shown ? styles.shown : styles.hidden)}
-      >
+      <div className={cx(styles.root, className, shown ? styles.shown : styles.hidden)}>
         <button className={styles.toggleButton} onClick={this.toggle}>
           <span>{shown ? 'Hide Menu' : 'Show Menu'}</span>
           <SvgIcon name={moreVertIconName} />
@@ -69,15 +67,16 @@ export default class ResponsiveMenu extends Component<MenuProps, *> {
 
         <nav>
           <ul className={styles.listRoot} {...props}>
-            {children && children.map((item, index) => (
-              <li
-                className={cx(styles.item, itemClassName)}
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-              >
-                {item}
-              </li>
-            ))}
+            {children &&
+              children.map((item, index) => (
+                <li
+                  className={cx(styles.item, itemClassName)}
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={index}
+                >
+                  {item}
+                </li>
+              ))}
           </ul>
         </nav>
       </div>

@@ -2,10 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { stubStyles } from 'test/utils';
 
-const styles = stubStyles([
-  'root',
-  'small',
-]);
+const styles = stubStyles(['root', 'small']);
 
 const Card = proxyquire('common/components/Card', {
   './styles.less': styles,

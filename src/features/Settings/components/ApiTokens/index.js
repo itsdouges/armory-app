@@ -43,7 +43,7 @@ export default class ApiTokens extends Component<Props, State> {
     newToken: '',
   };
 
-  componentWillMount () {
+  componentWillMount() {
     this.setState({
       claimingUser: qs('claiming'),
     });
@@ -64,7 +64,7 @@ export default class ApiTokens extends Component<Props, State> {
     this.props.add(this.state.newToken);
   };
 
-  render () {
+  render() {
     const { claimingUser } = this.state;
 
     const addKeyLabel = claimingUser
@@ -74,7 +74,7 @@ export default class ApiTokens extends Component<Props, State> {
     return (
       <CardWithTitle title={T.translate('settings.apiKeys.name')} size="medium" type="compact">
         <div className={styles.padding}>
-          {!this.props.tokens.length &&
+          {!this.props.tokens.length && (
             <Message>
               <a
                 target="_blank"
@@ -84,16 +84,17 @@ export default class ApiTokens extends Component<Props, State> {
               >
                 {T.translate('settings.apiKeys.noKeysCta')}
               </a>
-            </Message>}
+            </Message>
+          )}
 
-          {this.props.tokens.map((token) =>
+          {this.props.tokens.map(token => (
             <ApiToken
               key={token.token}
               token={token}
               remove={() => this.props.remove(token.token)}
               setPrimary={() => this.props.setPrimary(token.token)}
             />
-          )}
+          ))}
         </div>
 
         <hr />
@@ -113,11 +114,7 @@ export default class ApiTokens extends Component<Props, State> {
             autoFocus={!!claimingUser}
           />
 
-          <Button
-            type="primary"
-            busy={this.props.adding}
-            disabled={!this.props.valid}
-          >
+          <Button type="primary" busy={this.props.adding} disabled={!this.props.valid}>
             {T.translate('settings.apiKeys.buttons.add')}
           </Button>
         </form>

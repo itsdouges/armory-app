@@ -18,12 +18,7 @@ import Button from 'common/components/Button';
 import PasswordForm from 'common/components/PasswordForm';
 import DisplayAd from 'common/components/DisplayAd';
 
-import {
-  register,
-  validateEmail,
-  validateAlias,
-  validatePasswords,
-} from './actions';
+import { register, validateEmail, validateAlias, validatePasswords } from './actions';
 
 import { validateGw2Token } from 'features/Settings/actions';
 
@@ -43,11 +38,11 @@ type Props = {
   dispatch: () => void,
   user: AuthenticatedUser,
   canRegister: boolean,
-  validateEmail: (string) => void,
-  validateAlias: (string) => void,
+  validateEmail: string => void,
+  validateAlias: string => void,
   validatePasswords: (string, string) => void,
-  validateGw2Token: (string) => void,
-  register: (State) => void,
+  validateGw2Token: string => void,
+  register: State => void,
 };
 
 type FieldChanged = {
@@ -57,13 +52,16 @@ type FieldChanged = {
   },
 };
 
-@connect(selector, {
-  validateEmail,
-  validateAlias,
-  validatePasswords,
-  validateGw2Token,
-  register,
-})
+@connect(
+  selector,
+  {
+    validateEmail,
+    validateAlias,
+    validatePasswords,
+    validateGw2Token,
+    register,
+  }
+)
 export default class Join extends Component<Props, *> {
   props: Props;
   state: State = {
@@ -74,7 +72,7 @@ export default class Join extends Component<Props, *> {
     apiToken: '',
   };
 
-  componentWillMount () {
+  componentWillMount() {
     this.setState({
       claimingUser: qs('claiming'),
     });
@@ -88,9 +86,7 @@ export default class Join extends Component<Props, *> {
 
     const passwordChanged = id.indexOf('password') >= 0;
     const methodName = passwordChanged ? 'password' : id;
-    const args = passwordChanged
-      ? [newState.password, newState.passwordConfirm]
-      : [value];
+    const args = passwordChanged ? [newState.password, newState.passwordConfirm] : [value];
 
     // $FlowFixMe
     this[`check${methodName[0].toUpperCase() + methodName.slice(1)}`](...args);
@@ -120,7 +116,7 @@ export default class Join extends Component<Props, *> {
   checkPassword = debounce(
     (password: string, passwordConfirm: string) =>
       this.props.validatePasswords(password, passwordConfirm),
-      300
+    300
   );
 
   register = (event: SyntheticEvent<*>) => {
@@ -129,32 +125,23 @@ export default class Join extends Component<Props, *> {
     this.props.register(this.state);
   };
 
-  render () {
+  render() {
     const { claimingUser, apiToken, alias, password, email, passwordConfirm } = this.state;
     const { user, canRegister } = this.props;
 
-    const formValid = claimingUser
-      ? this.props.user.validGw2Token && canRegister
-      : canRegister;
+    const formValid = claimingUser ? this.props.user.validGw2Token && canRegister : canRegister;
 
     return (
       <div className={styles.root}>
         <CardWithTitle
           title={T.translate('join.name')}
           size="medium"
-          message={
-            <Link to="/login">{T.translate('join.loginCta')}</Link>
-          }
+          message={<Link to="/login">{T.translate('join.loginCta')}</Link>}
         >
           <Head title={T.translate('join.name')} />
           <form onSubmit={this.register}>
             {claimingUser && (
-              <Textbox
-                disabled
-                id="claiming-user"
-                label="Claiming User"
-                value={claimingUser}
-              />
+              <Textbox disabled id="claiming-user" label="Claiming User" value={claimingUser} />
             )}
 
             {claimingUser && (
@@ -202,11 +189,7 @@ export default class Join extends Component<Props, *> {
             />
 
             <div className={styles.buttons}>
-              <Button
-                type="primary"
-                busy={user.registering}
-                disabled={!formValid}
-              >
+              <Button type="primary" busy={user.registering} disabled={!formValid}>
                 {T.translate('join.buttons.join')}
               </Button>
             </div>

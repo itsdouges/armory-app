@@ -49,11 +49,7 @@ const Overview = ({ user, pvpSeasons, worlds }: Props) => {
 
       <FavouritePvpClass professions={get(pvpStats, 'professions')} />
 
-      <WvwRank
-        rank={user && user.wvwRank}
-        worlds={worlds}
-        worldId={user && user.world}
-      />
+      <WvwRank rank={user && user.wvwRank} worlds={worlds} worldId={user && user.world} />
 
       <Fractal level={user && user.fractalLevel} />
       <RaidSummary userAchievements={userAchievements} />

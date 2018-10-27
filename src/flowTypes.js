@@ -162,38 +162,27 @@ export const defaultGuild: Guild = {
   privacy: [],
 };
 
-export type PvpSeasons = {
-};
+export type PvpSeasons = {};
 
-export type Worlds = {
-};
+export type Worlds = {};
 
-export type Maps = {
-};
+export type Maps = {};
 
-export type Items = {
-};
+export type Items = {};
 
-export type ItemStats = {
-};
+export type ItemStats = {};
 
-export type Skins = {
-};
+export type Skins = {};
 
-export type Amulets = {
-};
+export type Amulets = {};
 
-export type Skills = {
-};
+export type Skills = {};
 
-export type Professions = {
-};
+export type Professions = {};
 
-export type AchievementGroups = {
-};
+export type AchievementGroups = {};
 
-export type AchievementCategories = {
-};
+export type AchievementCategories = {};
 
 export type Achievements = {};
 

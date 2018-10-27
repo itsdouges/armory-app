@@ -1,3 +1,1 @@
-describe('leaderboard reducers', () => {
-
-});
+describe('leaderboard reducers', () => {});

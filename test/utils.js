@@ -10,19 +10,23 @@ export const stubComponent = (displayName: string) => {
   return component;
 };
 
-export const stubStyles = (classnames: Array<string>) => classnames.reduce((obj, name) => ({
-  ...obj,
-  [name]: `${name}-style`,
-}), {});
+export const stubStyles = (classnames: Array<string>) =>
+  classnames.reduce(
+    (obj, name) => ({
+      ...obj,
+      [name]: `${name}-style`,
+    }),
+    {}
+  );
 
 export const stubDecorator = _.identity;
 export const stubDecoratorWithArgs = () => _.identity;
 
-export const stubRedux = ({
+export const stubRedux = {
   'react-redux': {
     connect: stubDecoratorWithArgs,
   },
-});
+};
 
 export const stubI18n = (stub: any) => ({
   'i18n-react': {
@@ -30,7 +34,11 @@ export const stubI18n = (stub: any) => ({
   },
 });
 
-export function describeConnect (path: string, stubs: ?{}, expectations: (mstp: () => {}, mdtp: {}) => void) {
+export function describeConnect(
+  path: string,
+  stubs: ?{},
+  expectations: (mstp: () => {}, mdtp: {}) => void
+) {
   let mapStateToPropsExtracted;
   let mapDispatchToPropsExatracted;
 

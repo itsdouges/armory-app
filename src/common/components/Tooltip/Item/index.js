@@ -20,9 +20,9 @@ import Background from '../Background';
 
 const addCount = (str, count) => (count > 1 ? `${count} ${str}` : str);
 
-const minutes = (ms) => `${Math.floor(ms / 60000)} m`;
+const minutes = ms => `${Math.floor(ms / 60000)} m`;
 
-function buildName (item, skin, upgrades, count) {
+function buildName(item, skin, upgrades, count) {
   let name;
 
   if (!skin.name) {
@@ -47,19 +47,25 @@ type Props = {
   data: Object,
 };
 
-const ItemsTooltip = ({ data: {
-  count,
-  item,
-  skin,
-  name,
-  upgrades,
-  upgradeCounts,
-  infusions,
-  stats: { attributes = {} },
-  equipped,
-} }: Props) => {
+const ItemsTooltip = ({
+  data: {
+    count,
+    item,
+    skin,
+    name,
+    upgrades,
+    upgradeCounts,
+    infusions,
+    stats: { attributes = {} },
+    equipped,
+  },
+}: Props) => {
   if (Object.keys(item).length === 0) {
-    return <Background><SimpleTooltip data={name} /></Background>;
+    return (
+      <Background>
+        <SimpleTooltip data={name} />
+      </Background>
+    );
   }
 
   const isTransmuted = !!skin.name;
@@ -75,18 +81,22 @@ const ItemsTooltip = ({ data: {
       />
 
       <div>
-        {item.details && !!item.details.defense && (
-          <div>
-            {T.translate('items.defense')}:
-            <span className={colours.green}> {item.details.defense}</span>
-          </div>)}
+        {item.details &&
+          !!item.details.defense && (
+            <div>
+              {T.translate('items.defense')}:
+              <span className={colours.green}> {item.details.defense}</span>
+            </div>
+          )}
 
-        {item.type === 'Weapon' && <div>
-          <span>{T.translate('items.weaponStrength')}: </span>
-          <span className={colours.green}>
-            {`${item.details.min_power} - ${item.details.max_power}`}
-          </span>
-        </div>}
+        {item.type === 'Weapon' && (
+          <div>
+            <span>{T.translate('items.weaponStrength')}: </span>
+            <span className={colours.green}>
+              {`${item.details.min_power} - ${item.details.max_power}`}
+            </span>
+          </div>
+        )}
 
         {get(item, 'details.infix_upgrade.attributes', []).map(({ modifier, attribute }) => (
           <div key={attribute} className={colours.green}>
@@ -94,13 +104,13 @@ const ItemsTooltip = ({ data: {
           </div>
         ))}
 
-        {item.type === 'UpgradeComponent' && !includes(item.name, 'Infusion') && get(item, 'details.infix_upgrade.buff.description', []).map((buff) => (
-          <div key={buff}>
-            {markup(buff)}
-          </div>
-        ))}
+        {item.type === 'UpgradeComponent' &&
+          !includes(item.name, 'Infusion') &&
+          get(item, 'details.infix_upgrade.buff.description', []).map(buff => (
+            <div key={buff}>{markup(buff)}</div>
+          ))}
 
-        {Object.keys(attributes).map((attribute) => {
+        {Object.keys(attributes).map(attribute => {
           const modifier = attributes[attribute];
 
           return (
@@ -114,38 +124,38 @@ const ItemsTooltip = ({ data: {
           <span className={styles.description}>
             {item.details.icon && <Icon src={item.details.icon} className={styles.detailsIcon} />}
             <span className={colours.green}>
-              {item.details.name && <div>{`${item.details.name} (${minutes(item.details.duration_ms)}): `}</div>}
+              {item.details.name && (
+                <div>{`${item.details.name} (${minutes(item.details.duration_ms)}): `}</div>
+              )}
               {markup(item.details.description)}
             </span>
           </span>
-      )}
+        )}
 
         {get(item, 'details.bonuses', []).map((bonusName, bonusId) => (
-          <div className={colours.blue}>
-            {markup(`(${bonusId + 1}): ${bonusName}`)}
-          </div>
+          <div className={colours.blue}>{markup(`(${bonusId + 1}): ${bonusName}`)}</div>
         ))}
 
         <br />
 
-        {upgrades.map((upgrade) =>
+        {upgrades.map(upgrade => (
           <span key={upgrade.id}>
-            <Upgrade data={upgrade} count={upgradeCounts[upgrade.id]} /><br />
+            <Upgrade data={upgrade} count={upgradeCounts[upgrade.id]} />
+            <br />
           </span>
-        )}
+        ))}
 
-        {infusions.map((infusion, index) =>
+        {infusions.map((infusion, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <span key={index}>
-            <Infusion data={infusion} /><br />
+            <Infusion data={infusion} />
+            <br />
           </span>
-        )}
+        ))}
 
         {equipped && (
           <div>
-            {isTransmuted
-              ? T.translate('items.transmuted')
-              : T.translate('items.skinLocked')}
+            {isTransmuted ? T.translate('items.transmuted') : T.translate('items.skinLocked')}
           </div>
         )}
 
@@ -157,12 +167,15 @@ const ItemsTooltip = ({ data: {
 
         <div>{markup(item.description)}</div>
 
-        {!!item.level && <div>{T.translate('items.requiredLevel')}: {item.level}</div>}
+        {!!item.level && (
+          <div>
+            {T.translate('items.requiredLevel')}: {item.level}
+          </div>
+        )}
 
         <div>{startCase(item.boundStatus)}</div>
 
-        {item.rarity !== 'Legendary' &&
-          <Gold coins={item.vendor_value} />}
+        {item.rarity !== 'Legendary' && <Gold coins={item.vendor_value} />}
       </div>
     </Background>
   );

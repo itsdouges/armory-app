@@ -10,33 +10,36 @@ import actions from 'features/Gw2/actions';
 
 const selector = createSelector(
   (state, props) => state.guildUpgrades[props.id] || { icon: '', name: '...' },
-  (upgrade) => ({
+  upgrade => ({
     upgrade,
   })
 );
 
-export default connect(selector, {
-  fetch: actions.fetchGuildUpgrades,
-})(
-class Gw2GuildUpgrade extends Component<*> {
-  props: {
-    id: number,
-    upgrade: { icon: string, name: string },
-    fetch: ([number]) => void,
-  };
-
-  componentWillMount () {
-    this.props.fetch([this.props.id]);
+export default connect(
+  selector,
+  {
+    fetch: actions.fetchGuildUpgrades,
   }
+)(
+  class Gw2GuildUpgrade extends Component<*> {
+    props: {
+      id: number,
+      upgrade: { icon: string, name: string },
+      fetch: ([number]) => void,
+    };
 
-  render () {
-    const { upgrade } = this.props;
+    componentWillMount() {
+      this.props.fetch([this.props.id]);
+    }
 
-    return (
-      <TooltipTrigger data={upgrade} type="guildUpgrade">
-        <Icon src={upgrade.icon} size="small" />
-      </TooltipTrigger>
-    );
+    render() {
+      const { upgrade } = this.props;
+
+      return (
+        <TooltipTrigger data={upgrade} type="guildUpgrade">
+          <Icon src={upgrade.icon} size="small" />
+        </TooltipTrigger>
+      );
+    }
   }
-}
 );

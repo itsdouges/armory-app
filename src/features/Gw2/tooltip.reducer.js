@@ -4,7 +4,7 @@ export const defaultState = {
   show: false,
 };
 
-export default function reducer (state, action) {
+export default function reducer(state, action) {
   switch (action.type) {
     case SHOW_TOOLTIP:
       return {

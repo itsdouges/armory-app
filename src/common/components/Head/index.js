@@ -35,15 +35,11 @@ const Head = ({
       { name: 'og:type', content: type },
       { name: 'og:url', content: canonical },
     ],
-    link: [
-      { rel: 'canonical', href: canonical },
-    ],
+    link: [{ rel: 'canonical', href: canonical }],
     ...extraProps,
   };
 
-  return (
-    <Helmet {...props} />
-  );
+  return <Helmet {...props} />;
 };
 
 export default Head;

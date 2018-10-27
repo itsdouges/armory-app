@@ -29,113 +29,111 @@ type Props = {
   className?: string,
 };
 
-export default connect(minimalSelector, {
-  fetchCharacter,
-  selectCharacter,
-})(
-class CharacterLite extends Component<Props> {
-  props: Props;
+export default connect(
+  minimalSelector,
+  {
+    fetchCharacter,
+    selectCharacter,
+  }
+)(
+  class CharacterLite extends Component<Props> {
+    props: Props;
 
-  componentWillMount () {
-    const name = this.props.name;
-    if (!name) {
-      return;
+    componentWillMount() {
+      const name = this.props.name;
+      if (!name) {
+        return;
+      }
+
+      this.loadCharacter(name);
     }
 
-    this.loadCharacter(name);
-  }
+    componentWillReceiveProps(nextProps: Props) {
+      if (this.props.name === nextProps.name) {
+        return;
+      }
 
-  componentWillReceiveProps (nextProps: Props) {
-    if (this.props.name === nextProps.name) {
-      return;
+      this.loadCharacter(nextProps.name);
     }
 
-    this.loadCharacter(nextProps.name);
-  }
+    getItems(ids: Array<number> = []) {
+      return ids.map(id => (this.props.items || [])[id]);
+    }
 
-  getItems (ids: Array<number> = []) {
-    return ids.map((id) => (this.props.items || [])[id]);
-  }
+    loadCharacter(name: string) {
+      this.props.fetchCharacter(name, {
+        redirect404: false,
+        basicLoad: true,
+      });
 
-  loadCharacter (name: string) {
-    this.props.fetchCharacter(name, {
-      redirect404: false,
-      basicLoad: true,
-    });
+      this.props.selectCharacter(name);
+    }
 
-    this.props.selectCharacter(name);
-  }
+    render() {
+      const { character, items, skins, className } = this.props;
 
-  render () {
-    const {
-      character,
-      items,
-      skins,
-      className,
-    } = this.props;
+      const equipment = get(character, 'equipment', {});
+      const profession = get(character, 'profession');
+      const safeCharacter = get(this.props, 'character', {});
 
-    const equipment = get(character, 'equipment', {});
-    const profession = get(character, 'profession');
-    const safeCharacter = get(this.props, 'character', {});
+      return (
+        <div className={cx(styles.root, className)}>
+          <ArmoryBadge className={styles.badge} hotlink />
 
-    return (
-      <div className={cx(styles.root, className)}>
-        <ArmoryBadge className={styles.badge} hotlink />
+          <div className={styles.cover}>
+            <Portrait character={character} className={styles.litePortrait} />
+          </div>
 
-        <div className={styles.cover}>
-          <Portrait character={character} className={styles.litePortrait} />
+          <a
+            href={`${config.webUrl}/${safeCharacter.alias}/c/${safeCharacter.name}`}
+            className={styles.header}
+          >
+            <ContentCard content={character} />
+          </a>
+
+          <div className={styles.equips}>
+            {leftItems.map(item => {
+              const equip = equipment[item.key] || {};
+
+              return (
+                <Item
+                  {...item}
+                  small
+                  hide={includes(item.hideForClasses, profession)}
+                  key={item.key}
+                  upgradeCounts={equip.upgradeCounts}
+                  upgrades={this.getItems(equip.upgrades)}
+                  infusions={this.getItems(equip.infusions)}
+                  item={(items || [])[equip.id]}
+                  skin={(skins || [])[equip.skin]}
+                  stats={equip.stats}
+                  equipped
+                />
+              );
+            })}
+
+            {rightItems.map(item => {
+              const equip = equipment[item.key] || {};
+
+              return (
+                <Item
+                  {...item}
+                  small
+                  hide={includes(item.hideForClasses, profession)}
+                  key={item.key}
+                  upgradeCounts={equip.upgradeCounts}
+                  upgrades={this.getItems(equip.upgrades)}
+                  infusions={this.getItems(equip.infusions)}
+                  item={(items || [])[equip.id]}
+                  skin={(skins || [])[equip.skin]}
+                  stats={equip.stats}
+                  equipped
+                />
+              );
+            })}
+          </div>
         </div>
-
-        <a
-          href={`${config.webUrl}/${safeCharacter.alias}/c/${safeCharacter.name}`}
-          className={styles.header}
-        >
-          <ContentCard content={character} />
-        </a>
-
-        <div className={styles.equips}>
-          {leftItems.map((item) => {
-            const equip = equipment[item.key] || {};
-
-            return (
-              <Item
-                {...item}
-                small
-                hide={includes(item.hideForClasses, profession)}
-                key={item.key}
-                upgradeCounts={equip.upgradeCounts}
-                upgrades={this.getItems(equip.upgrades)}
-                infusions={this.getItems(equip.infusions)}
-                item={(items || [])[equip.id]}
-                skin={(skins || [])[equip.skin]}
-                stats={equip.stats}
-                equipped
-              />
-            );
-          })}
-
-          {rightItems.map((item) => {
-            const equip = equipment[item.key] || {};
-
-            return (
-              <Item
-                {...item}
-                small
-                hide={includes(item.hideForClasses, profession)}
-                key={item.key}
-                upgradeCounts={equip.upgradeCounts}
-                upgrades={this.getItems(equip.upgrades)}
-                infusions={this.getItems(equip.infusions)}
-                item={(items || [])[equip.id]}
-                skin={(skins || [])[equip.skin]}
-                stats={equip.stats}
-                equipped
-              />
-            );
-          })}
-        </div>
-      </div>
-    );
+      );
+    }
   }
-}
 );

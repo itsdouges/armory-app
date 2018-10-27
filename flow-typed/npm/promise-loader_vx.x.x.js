@@ -23,7 +23,6 @@ declare module 'promise-loader' {
  * needed.
  */
 
-
 // Filename aliases
 declare module 'promise-loader/index' {
   declare module.exports: $Exports<'promise-loader'>;

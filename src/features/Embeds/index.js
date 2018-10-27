@@ -11,22 +11,22 @@ import DisplayAd from 'common/components/DisplayAd';
 import embeds from './text';
 import styles from './styles.less';
 
-const makeHtml = (html) => ({
+const makeHtml = html => ({
   __html: html,
 });
 
-function embedIframe () {
+function embedIframe() {
   const script = document.createElement('script');
   script.src = 'gw2aEmbeds.js';
   document && document.head && document.head.appendChild(script);
 }
 
 export default class Embeds extends Component<*> {
-  componentDidMount () {
+  componentDidMount() {
     embedIframe();
   }
 
-  render () {
+  render() {
     return (
       <div className={styles.root}>
         <Head title={T.translate('embeds.name')} />

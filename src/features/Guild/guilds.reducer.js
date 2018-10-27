@@ -17,13 +17,13 @@ export const defaultState = {
 };
 
 export const selector = createSelector(
-  (store) => store.guilds.data[store.guilds.selected],
-  (guild) => ({
+  store => store.guilds.data[store.guilds.selected],
+  guild => ({
     guild,
   })
 );
 
-export default function reducer (state, action) {
+export default function reducer(state, action) {
   switch (action.type) {
     case FETCHING_GUILD:
       return {
@@ -106,9 +106,10 @@ export default function reducer (state, action) {
     case UPDATE_GUILD_PRIVACY: {
       const newCharacter = {
         ...state.data[action.payload.name],
-        privacy: action.payload.action === 'add'
-          ? state.data[action.payload.name].privacy.concat([action.payload.prop])
-          : state.data[action.payload.name].privacy.filter((priv) => priv !== action.payload.prop),
+        privacy:
+          action.payload.action === 'add'
+            ? state.data[action.payload.name].privacy.concat([action.payload.prop])
+            : state.data[action.payload.name].privacy.filter(priv => priv !== action.payload.prop),
       };
 
       return {

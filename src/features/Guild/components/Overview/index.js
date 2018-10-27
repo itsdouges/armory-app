@@ -18,11 +18,16 @@ type Props = {
   data?: Guild,
 };
 
-const motdPlaceholder = 'Today we\'re going to go for an adventure...';
+const motdPlaceholder = "Today we're going to go for an adventure...";
 
-function parseNewLines (string = '') {
+function parseNewLines(string = '') {
   return string
-    ? string.split('\n').map((tx, index) => <span key={tx || index}>{tx}<br /></span>)
+    ? string.split('\n').map((tx, index) => (
+        <span key={tx || index}>
+          {tx}
+          <br />
+        </span>
+      ))
     : motdPlaceholder;
 }
 

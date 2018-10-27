@@ -23,20 +23,22 @@ const config = [
 // if you're in it, you don't end up in Trash
 rimrafSync(`${paths.appBuild}/*`);
 
-function getAssets (multiStats) {
-  return multiStats.map((stats) =>
-    stats.toJson().assets
-      .filter((asset) => /\.(js|css)$/.test(asset.name))
-      .map((asset) => {
-        const fileContents = fs.readFileSync(`${paths.appBuild}/${asset.name}`);
-        return {
-          name: asset.name,
-          size: gzipSize(fileContents),
-        };
-      })
-  )
-  .reduce((arr, stats) => arr.concat(stats), [])
-  .sort((a, b) => a.size - b.size);
+function getAssets(multiStats) {
+  return multiStats
+    .map(stats =>
+      stats
+        .toJson()
+        .assets.filter(asset => /\.(js|css)$/.test(asset.name))
+        .map(asset => {
+          const fileContents = fs.readFileSync(`${paths.appBuild}/${asset.name}`);
+          return {
+            name: asset.name,
+            size: gzipSize(fileContents),
+          };
+        })
+    )
+    .reduce((arr, stats) => arr.concat(stats), [])
+    .sort((a, b) => a.size - b.size);
 }
 
 console.log('Creating an optimized production build...');
@@ -54,11 +56,15 @@ webpack(config).run((err, stats) => {
   console.log();
 
   const assets = getAssets(stats.stats);
-  assets.forEach((asset) => {
+  assets.forEach(asset => {
     console.log(
       // eslint-disable-next-line
-      '  ' + chalk.dim('build' + path.sep) + chalk.cyan(asset.name) + ': ' +
-      chalk.green(filesize(asset.size))
+      '  ' +
+        // eslint-disable-next-line
+        chalk.dim('build' + path.sep) +
+        chalk.cyan(asset.name) +
+        ': ' +
+        chalk.green(filesize(asset.size))
     );
   });
 

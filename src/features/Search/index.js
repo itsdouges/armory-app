@@ -39,7 +39,7 @@ export default class Search extends Component<Props, *> {
     error: '',
   };
 
-  componentWillMount () {
+  componentWillMount() {
     if (this.props.match.params.term) {
       this.willRedirect = true;
     }
@@ -52,7 +52,7 @@ export default class Search extends Component<Props, *> {
     this.search(term);
   }
 
-  componentWillReceiveProps (nextProps: Props) {
+  componentWillReceiveProps(nextProps: Props) {
     const term = this.getSearchQuery();
     if (!term) {
       return;
@@ -69,11 +69,11 @@ export default class Search extends Component<Props, *> {
     }
   }
 
-  getSearchQuery (props: Props = this.props) {
+  getSearchQuery(props: Props = this.props) {
     return qs('q', props.location.search);
   }
 
-  search (term: string) {
+  search(term: string) {
     if (term.length < SEARCH_TERM_MINIMUM) {
       this.setState({
         results: [],
@@ -89,16 +89,15 @@ export default class Search extends Component<Props, *> {
       error: '',
     });
 
-    return axios.get(`${config.api.endpoint}search?filter=${term}`)
-      .then(({ data }) => {
-        this.setState({
-          searching: false,
-          results: data,
-        });
+    return axios.get(`${config.api.endpoint}search?filter=${term}`).then(({ data }) => {
+      this.setState({
+        searching: false,
+        results: data,
       });
+    });
   }
 
-  render () {
+  render() {
     const resources = {
       users: [],
       characters: [],
@@ -109,52 +108,43 @@ export default class Search extends Component<Props, *> {
     const { term: oldTerm } = this.props.match.params;
     const term = this.getSearchQuery();
 
-    results.forEach((result) => {
+    results.forEach(result => {
       resources[result.resource].push(result);
     });
 
     const characters = !!resources.characters.length && (
       <span>
         <h2>{T.translate('characters.name')}</h2>
-        <ContentCardList
-          noBorder
-          resource="characters"
-          items={resources.characters}
-          type="grid"
-        />
+        <ContentCardList noBorder resource="characters" items={resources.characters} type="grid" />
       </span>
     );
 
     const users = !!resources.users.length && (
       <span>
         <h2>{T.translate('users.name')}</h2>
-        <ContentCardList
-          noBorder
-          resource="users"
-          items={resources.users}
-          type="grid"
-        />
+        <ContentCardList noBorder resource="users" items={resources.users} type="grid" />
       </span>
     );
 
     const guilds = !!resources.guilds.length && (
       <span>
         <h2>{T.translate('guilds.name')}</h2>
-        <ContentCardList
-          noBorder
-          resource="guilds"
-          items={resources.guilds}
-          type="grid"
-        />
+        <ContentCardList noBorder resource="guilds" items={resources.guilds} type="grid" />
       </span>
     );
 
-    const noResults = !error && !searching && !results.length && (
-      <Message>
-        <T.span text={{ key: 'search.nonefound' }} /><br /><br />
-        <Link to="/join"><T.span text={{ key: 'search.joincta' }} /></Link>
-      </Message>
-    );
+    const noResults = !error &&
+      !searching &&
+      !results.length && (
+        <Message>
+          <T.span text={{ key: 'search.nonefound' }} />
+          <br />
+          <br />
+          <Link to="/join">
+            <T.span text={{ key: 'search.joincta' }} />
+          </Link>
+        </Message>
+      );
 
     return (
       <div className={styles.root}>
@@ -163,12 +153,27 @@ export default class Search extends Component<Props, *> {
 
         <Container>
           <Message size="big" className={styles.message}>
-            <span><T.span text={{ key: 'search.results' }} /> <strong><i>{term}</i></strong>...</span>
-            {error && <div><br />{error}</div>}
+            <span>
+              <T.span text={{ key: 'search.results' }} />{' '}
+              <strong>
+                <i>{term}</i>
+              </strong>
+              ...
+            </span>
+            {error && (
+              <div>
+                <br />
+                {error}
+              </div>
+            )}
           </Message>
         </Container>
 
-        {searching && <div className={styles.iconContainer}><ProgressIcon /></div>}
+        {searching && (
+          <div className={styles.iconContainer}>
+            <ProgressIcon />
+          </div>
+        )}
 
         {noResults}
         {users}

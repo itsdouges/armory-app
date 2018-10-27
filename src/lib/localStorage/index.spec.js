@@ -13,8 +13,8 @@ const config = {
 
 const ls = proxyquire('lib/localStorage', {
   'lz-string': {
-    compressToUTF16: (value) => value,
-    decompressFromUTF16: (value) => value,
+    compressToUTF16: value => value,
+    decompressFromUTF16: value => value,
   },
   axios: {
     get: axiosGet,
@@ -91,9 +91,7 @@ describe('gw2a local storage', () => {
     });
   });
 
-  describe('clear()', () => {
-
-  });
+  describe('clear()', () => {});
 
   describe('clearIfNewBuild()', () => {
     it('should clear is ls key is set', () => {
@@ -113,4 +111,3 @@ describe('gw2a local storage', () => {
     });
   });
 });
-

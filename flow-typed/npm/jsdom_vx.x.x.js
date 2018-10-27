@@ -1926,7 +1926,9 @@ declare module 'jsdom/lib/jsdom/living/navigator/Navigator-impl.js' {
   declare module.exports: $Exports<'jsdom/lib/jsdom/living/navigator/Navigator-impl'>;
 }
 declare module 'jsdom/lib/jsdom/living/navigator/NavigatorConcurrentHardware-impl.js' {
-  declare module.exports: $Exports<'jsdom/lib/jsdom/living/navigator/NavigatorConcurrentHardware-impl'>;
+  declare module.exports: $Exports<
+    'jsdom/lib/jsdom/living/navigator/NavigatorConcurrentHardware-impl'
+  >;
 }
 declare module 'jsdom/lib/jsdom/living/navigator/NavigatorCookies-impl.js' {
   declare module.exports: $Exports<'jsdom/lib/jsdom/living/navigator/NavigatorCookies-impl'>;

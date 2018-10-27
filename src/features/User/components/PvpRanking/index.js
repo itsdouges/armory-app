@@ -5,7 +5,7 @@ import ProgressBar from 'common/components/ProgressBar';
 import Redacted from 'common/components/Redacted';
 import Summary from 'common/layouts/Summary';
 
-const calculateRankExperience = (rank) => {
+const calculateRankExperience = rank => {
   if (!rank || rank <= 1) {
     return 0;
   } else if (rank >= 2 && rank <= 5) {
@@ -34,7 +34,7 @@ const calculateExperienceInCurrentLevel = (rank, rankPoints) => {
   return Math.abs(totalExperienceForNextLevel - rankPoints);
 };
 
-const calculateIconStyle = (rank) => {
+const calculateIconStyle = rank => {
   let name;
 
   if (!rank || rank <= 9) {
@@ -63,7 +63,7 @@ const calculateIconStyle = (rank) => {
   };
 };
 
-function calculateRanking (rank, points) {
+function calculateRanking(rank, points) {
   const current = calculateExperienceInCurrentLevel(rank, points) || 0;
   const max = calculateRankExperience(rank);
   const { name, image } = calculateIconStyle(rank);
@@ -83,19 +83,18 @@ type Props = {
 };
 
 const PvpRanking = ({ rank, points, rankRollOvers }: Props) => {
-  const rolledOverRank = (rank + rankRollOvers) || 0;
+  const rolledOverRank = rank + rankRollOvers || 0;
   const { image, name, current, max } = calculateRanking(rank, points);
 
   return (
     <Summary
       leftIcon={{ src: image, size: 'xlarge' }}
-      title={<Redacted redact={!rank}>{name} ({rolledOverRank})</Redacted>}
-      subTitle={
-        <ProgressBar
-          current={current}
-          max={max}
-        />
+      title={
+        <Redacted redact={!rank}>
+          {name} ({rolledOverRank})
+        </Redacted>
       }
+      subTitle={<ProgressBar current={current} max={max} />}
     />
   );
 };

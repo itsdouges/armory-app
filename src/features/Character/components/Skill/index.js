@@ -29,16 +29,16 @@ const Skill = ({ data, className, tooltipTextOverride, size, inlineText }: Props
   return (
     <TooltipTrigger type="skill" data={tooltipData}>
       <ResourceLink text={data && data.name} href={buildLink(inlineText, data && data.name)}>
-        {(error || !data)
-          ? <EmptySkill size={size} />
-          : (
-            <Icon
-              src={get(data, 'icon')}
-              size="mediumSmall"
-              className={cx(styles.skill, className)}
-              sizePx={size}
-            />
-          )}
+        {error || !data ? (
+          <EmptySkill size={size} />
+        ) : (
+          <Icon
+            src={get(data, 'icon')}
+            size="mediumSmall"
+            className={cx(styles.skill, className)}
+            sizePx={size}
+          />
+        )}
       </ResourceLink>
     </TooltipTrigger>
   );

@@ -1,8 +1,4 @@
-import {
-  CLEAR_USER_DATA,
-  AUTHENTICATE_USER,
-  CHECKING_AUTHENTICATION,
-} from './actions';
+import { CLEAR_USER_DATA, AUTHENTICATE_USER, CHECKING_AUTHENTICATION } from './actions';
 
 import { setApiToken } from 'lib/http';
 import { TOKEN_KEY } from 'features/Login/user.reducer';

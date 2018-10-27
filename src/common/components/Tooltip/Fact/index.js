@@ -12,18 +12,18 @@ import styles from './styles.less';
 
 const BASE_DAMAGE = 266.0;
 
-function extractSubText (data) {
+function extractSubText(data) {
   return String(
     data.hit_count ||
-    data.field_type ||
-    data.value ||
-    data.distance ||
-    data.finisher_type ||
-    `${data.percent}%`
+      data.field_type ||
+      data.value ||
+      data.distance ||
+      data.finisher_type ||
+      `${data.percent}%`
   );
 }
 
-function extractDamage (data) {
+function extractDamage(data) {
   const multiplier: number = data.dmg_multiplier || 1;
 
   return round(BASE_DAMAGE * multiplier * data.hit_count);
@@ -111,7 +111,9 @@ const Fact = ({ data }: FactProps) => {
       content = (
         <div className={styles.center}>
           <Icon src={data.icon} size="mini" />
-          {`Gain ${attributeToName(data.target)} based on a Percentage of ${data.source}: ${data.percent}%`}
+          {`Gain ${attributeToName(data.target)} based on a Percentage of ${data.source}: ${
+            data.percent
+          }%`}
         </div>
       );
       break;
@@ -142,7 +144,9 @@ const Fact = ({ data }: FactProps) => {
       content = (
         <div className={styles.center}>
           <Gw2Icon src={data.icon} size="mini" applyCount={data.apply_count} />
-          <div>{`${data.status} (${data.duration}s)`}: {markup(data.description)}</div>
+          <div>
+            {`${data.status} (${data.duration}s)`}: {markup(data.description)}
+          </div>
         </div>
       );
       break;

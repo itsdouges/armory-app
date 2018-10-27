@@ -1,7 +1,4 @@
-import {
-  FETCH_TOKEN_RESULT,
-  FETCHING_TOKEN,
-} from './actions';
+import { FETCH_TOKEN_RESULT, FETCHING_TOKEN } from './actions';
 
 import * as ls from 'lib/localStorage';
 

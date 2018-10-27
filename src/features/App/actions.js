@@ -24,7 +24,11 @@ type MessageOptions = {
 
 export type SubmitNotification = (id: string, message: string, options?: MessageOptions) => void;
 
-export const submitNotification = (id: string, message: string, options: MessageOptions = { type: 'info', showOnce: false }) => ({
+export const submitNotification = (
+  id: string,
+  message: string,
+  options: MessageOptions = { type: 'info', showOnce: false }
+) => ({
   type: SUBMIT_NOTIFICATION,
   payload: {
     ...options,
@@ -34,10 +38,11 @@ export const submitNotification = (id: string, message: string, options: Message
 });
 
 export const determineApiHealth = () => (dispatch: Dispatch) => {
-  axios.get(`${config.gw2.endpoint}v2/characters?access_token=${config.health.token}`)
-    .catch(() => {
-      dispatch(submitNotification(API_HEALTH_ID, T.translate('messages.gw2ApiDown'), {
+  axios.get(`${config.gw2.endpoint}v2/characters?access_token=${config.health.token}`).catch(() => {
+    dispatch(
+      submitNotification(API_HEALTH_ID, T.translate('messages.gw2ApiDown'), {
         type: 'error',
-      }));
-    });
+      })
+    );
+  });
 };

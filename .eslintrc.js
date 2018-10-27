@@ -12,6 +12,9 @@ module.exports = {
     'arrow-parens': 'off',
     'max-len': 'off',
     indent: 'off',
+    'react/jsx-indent': 'off',
+    'no-confusing-arrow': 'off',
+    'no-mixed-operators': 'off',
 
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-unused-expressions': 'off',

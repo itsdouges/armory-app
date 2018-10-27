@@ -14,9 +14,9 @@ if (!SECRET_ACCESS_KEY) {
   throw new Error('SECRET_ACCESS_KEY is empty!');
 }
 
-const log = (str) => console.log(str);
+const log = str => console.log(str);
 
-function getS3Client () {
+function getS3Client() {
   return s3.createClient({
     s3Options: {
       accessKeyId: ACCESS_KEY_ID,
@@ -26,10 +26,10 @@ function getS3Client () {
   });
 }
 
-function hasShortCache (file) {
+function hasShortCache(file) {
   let result = false;
 
-  config.cache.short.forEach((shortCacheFile) => {
+  config.cache.short.forEach(shortCacheFile => {
     if (file.indexOf(shortCacheFile) >= 0) {
       result = true;
     }
@@ -38,18 +38,18 @@ function hasShortCache (file) {
   return result;
 }
 
-function calculateDaysToSeconds (days) {
+function calculateDaysToSeconds(days) {
   return 3600 * 24 * days;
 }
 
-module.exports = function sync (bucket, folder, paramOverride) {
+module.exports = function sync(bucket, folder, paramOverride) {
   log(`==> Syncing s3 bucket ${bucket}`);
 
   const s3Client = getS3Client();
 
   const DEFAULT_DAYS_TO_CACHE = 365;
 
-  function getS3Params (localFile, stat, callback) {
+  function getS3Params(localFile, stat, callback) {
     let secondsToCache;
 
     if (hasShortCache(localFile)) {
@@ -65,15 +65,18 @@ module.exports = function sync (bucket, folder, paramOverride) {
     callback(null, s3Params);
   }
 
-  const params = Object.assign({
-    localDir: folder,
-    deleteRemoved: true,
-    s3Params: {
-      Bucket: bucket,
-      Prefix: '',
+  const params = Object.assign(
+    {
+      localDir: folder,
+      deleteRemoved: true,
+      s3Params: {
+        Bucket: bucket,
+        Prefix: '',
+      },
+      getS3Params,
     },
-    getS3Params,
-  }, paramOverride);
+    paramOverride
+  );
 
   const uploader = s3Client.uploadDir(params);
   uploader.on('error', () => {

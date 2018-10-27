@@ -121,11 +121,7 @@ const Item = ({
           onClick={onClick}
           sizePx={size}
         >
-          <Gw2Icon
-            count={count}
-            className={styles.item}
-            src={skin.icon || item.icon || ''}
-          />
+          <Gw2Icon count={count} className={styles.item} src={skin.icon || item.icon || ''} />
         </Icon>
       </ResourceLink>
     </TooltipTrigger>

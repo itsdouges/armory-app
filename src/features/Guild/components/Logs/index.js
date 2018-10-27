@@ -32,20 +32,19 @@ const makeUserLink = (accountName, key) => (
   </Link>
 );
 
-const makeItem = (id) => <Gw2Item key={id} id={id} />;
+const makeItem = id => <Gw2Item key={id} id={id} />;
 
-const pluralize = (operation) => (operation === 'deposit' ? 'deposited' : 'withdrawn');
-const createStashLog = (log) => (log.coins === 0
-  ? [`${log.count} x `, makeItem(log.item_id), ` was ${pluralize(log.operation)}`]
-  : [<Money key="money" coins={log.coins} />, ` were ${pluralize(log.operation)}`]);
+const pluralize = operation => (operation === 'deposit' ? 'deposited' : 'withdrawn');
+const createStashLog = log =>
+  log.coins === 0
+    ? [`${log.count} x `, makeItem(log.item_id), ` was ${pluralize(log.operation)}`]
+    : [<Money key="money" coins={log.coins} />, ` were ${pluralize(log.operation)}`];
 
-function createLogView (log) {
+function createLogView(log) {
   if (!log) {
     return (
       <span className={styles.placeholder}>
-        <span className={styles.placeholder}>
-          Logs are loading as fast as they can...
-        </span>
+        <span className={styles.placeholder}>Logs are loading as fast as they can...</span>
 
         <time className={cx(styles.logTime, styles.placeholder)}>1 second ago</time>
       </span>
@@ -72,11 +71,24 @@ function createLogView (log) {
       break;
 
     case 'treasury':
-      content = [`${log.count} x `, makeItem(log.item_id), ' was deposited into the treasury by ', makeUserLink(log.user)];
+      content = [
+        `${log.count} x `,
+        makeItem(log.item_id),
+        ' was deposited into the treasury by ',
+        makeUserLink(log.user),
+      ];
       break;
 
     case 'rank_change':
-      content = [makeUserLink(log.user, 'a'), '\'s rank was changed from ', <strong key="old">{log.old_rank}</strong>, ' to ', <strong key="new">{log.new_rank}</strong>, ' by ', makeUserLink(log.changed_by)];
+      content = [
+        makeUserLink(log.user, 'a'),
+        "'s rank was changed from ",
+        <strong key="old">{log.old_rank}</strong>,
+        ' to ',
+        <strong key="new">{log.new_rank}</strong>,
+        ' by ',
+        makeUserLink(log.changed_by),
+      ];
       break;
 
     case 'joined':
@@ -108,9 +120,12 @@ function createLogView (log) {
   );
 }
 
-@connect(selector, {
-  fetchGuildLogs,
-})
+@connect(
+  selector,
+  {
+    fetchGuildLogs,
+  }
+)
 export default class GuildLogs extends Component<*> {
   props: {
     guild?: GuildType,
@@ -118,12 +133,12 @@ export default class GuildLogs extends Component<*> {
     fetchGuildLogs?: (name: string) => void,
   };
 
-  componentWillMount () {
+  componentWillMount() {
     const { guildName } = this.props;
     this.props.fetchGuildLogs && this.props.fetchGuildLogs(guildName);
   }
 
-  render () {
+  render() {
     const { guild } = this.props;
     const logs = guild && guild.logs ? { rows: guild.logs } : STUB_LOGS;
 
@@ -137,16 +152,17 @@ export default class GuildLogs extends Component<*> {
           );
 
           if ((index + 1) % LOGS_PER_AD === 0) {
-            return [
-              component,
-              <DisplayAd type="mrec" className={styles.ad} />,
-            ];
+            return [component, <DisplayAd type="mrec" className={styles.ad} />];
           }
 
           return component;
         })}
 
-        {(!guild || !guild.logs) && <div className={styles.progress}><Progress /></div>}
+        {(!guild || !guild.logs) && (
+          <div className={styles.progress}>
+            <Progress />
+          </div>
+        )}
       </Container>
     );
   }

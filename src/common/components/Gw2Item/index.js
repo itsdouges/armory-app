@@ -45,26 +45,28 @@ export const selector = createSelector(
   })
 );
 
-export default connect(selector, {
-  fetch: actions.fetchItems,
-  fetchSkins: actions.fetchSkins,
-  fetchCalculatedItemStats: actions.fetchCalculatedItemStats,
-})(
-class Gw2Item extends Component<*> {
-  props: {
-    id: number,
-    statsId?: number,
-    skinId?: number,
-    item?: ItemType,
-    fetch: ([number]) => Promise<*>,
-    fetchSkins: ([number]) => Promise<*>,
-    fetchCalculatedItemStats: (Array<Object>) => Promise<*>,
-  };
+export default connect(
+  selector,
+  {
+    fetch: actions.fetchItems,
+    fetchSkins: actions.fetchSkins,
+    fetchCalculatedItemStats: actions.fetchCalculatedItemStats,
+  }
+)(
+  class Gw2Item extends Component<*> {
+    props: {
+      id: number,
+      statsId?: number,
+      skinId?: number,
+      item?: ItemType,
+      fetch: ([number]) => Promise<*>,
+      fetchSkins: ([number]) => Promise<*>,
+      fetchCalculatedItemStats: (Array<Object>) => Promise<*>,
+    };
 
-  componentDidMount () {
-    this.props.skinId && this.props.fetchSkins([this.props.skinId]);
-    this.props.fetch([this.props.id])
-      .then(() => {
+    componentDidMount() {
+      this.props.skinId && this.props.fetchSkins([this.props.skinId]);
+      this.props.fetch([this.props.id]).then(() => {
         const { item, id, statsId, fetchCalculatedItemStats } = this.props;
         if (!item || !statsId) {
           return;
@@ -86,10 +88,10 @@ class Gw2Item extends Component<*> {
 
         fetchCalculatedItemStats([statsDef]);
       });
-  }
+    }
 
-  render () {
-    return <Item {...this.props} />;
+    render() {
+      return <Item {...this.props} />;
+    }
   }
-}
 );

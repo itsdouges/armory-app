@@ -11,13 +11,10 @@ import { makeStubItems } from 'lib/paginator';
 
 const getTrait = (id, traits, error) => (traits && traits[id]) || { error };
 const isActive = (id, { traits }) => (traits || []).indexOf(id) >= 0;
-const layoutTraits = (ids, traits, data, error) => ids.map((id, index) =>
-  <Trait
-    key={id || index}
-    data={getTrait(id, traits, error)}
-    active={isActive(id, data)}
-  />
-);
+const layoutTraits = (ids, traits, data, error) =>
+  ids.map((id, index) => (
+    <Trait key={id || index} data={getTrait(id, traits, error)} active={isActive(id, data)} />
+  ));
 
 const getStyle = (data, spec) => ({
   backgroundImage: `url(${spec.background || ''})`,
@@ -43,15 +40,9 @@ const Specialization = ({ data, traits, specializations }: Props) => {
 
   return (
     <div className={styles.root}>
-      <div
-        className={styles.background}
-        style={getStyle(data, specialization)}
-      />
+      <div className={styles.background} style={getStyle(data, specialization)} />
 
-      <SpecializationIcon
-        data={specialization}
-        className={styles.bigIcon}
-      />
+      <SpecializationIcon data={specialization} className={styles.bigIcon} />
 
       <div className={styles.traits}>
         <Trait

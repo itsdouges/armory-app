@@ -7,18 +7,18 @@ const fs = require('fs');
 const sync = require('./syncS3');
 
 const ENVIRONMENT = argv.env;
-const log = (str) => console.log(str);
-function deployPreview () {
+const log = str => console.log(str);
+function deployPreview() {
   log('Deploying preview.gw2armory.com');
 
   sync('preview.gw2armory.com', './dist/');
 }
 
-function downloadSitemap (done) {
+function downloadSitemap(done) {
   log('Downloading prod sitemap.xml');
 
   const file = fs.createWriteStream('./dist/sitemap.xml');
-  http.get('http://api.gw2armory.com/sitemap.xml', (response) => {
+  http.get('http://api.gw2armory.com/sitemap.xml', response => {
     if (response.statusCode >= 500) {
       log('Error downloading sitemap!');
       log(`${response.statusCode} - ${response.statusMessage}`);
@@ -32,7 +32,7 @@ function downloadSitemap (done) {
   });
 }
 
-function deployProd () {
+function deployProd() {
   log('Deploying gw2armory.com');
 
   downloadSitemap(() => sync('gw2armory.com', './dist/'));

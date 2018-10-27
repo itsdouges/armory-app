@@ -10,7 +10,7 @@ import Summary from 'common/layouts/Summary';
 import Redacted from 'common/components/Redacted';
 import colours from 'common/styles/colours';
 
-function calculateWinLossRatio (stats) {
+function calculateWinLossRatio(stats) {
   if (!stats.wins) {
     return { current: 0, max: 1, winLossRatio: 0 };
   }
@@ -56,9 +56,10 @@ const PvpStats = ({ stats, title }: Props) => {
             max={max}
             label={
               <Redacted redact={redact}>
-                { // eslint-disable-next-line max-len
-                  `${winLossRatio} ${T.translate('users.pvp.winLossAbbreviation')} ${T.translate('words.ratio')}`
-                }
+                {// eslint-disable-next-line max-len
+                `${winLossRatio} ${T.translate('users.pvp.winLossAbbreviation')} ${T.translate(
+                  'words.ratio'
+                )}`}
               </Redacted>
             }
             barColor={colours._lightgreen}

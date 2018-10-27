@@ -16,9 +16,7 @@ type Props = {
 const ItemHeader = ({ icon, name, rarity }: Props) => (
   <div className={styles.itemHeader}>
     <Icon size="mini" src={icon} className={styles.tooltipIcon} />
-    <span className={cx(styles.itemName, rarity && colours[rarity.toLowerCase()])}>
-      {name}
-    </span>
+    <span className={cx(styles.itemName, rarity && colours[rarity.toLowerCase()])}>{name}</span>
   </div>
 );
 

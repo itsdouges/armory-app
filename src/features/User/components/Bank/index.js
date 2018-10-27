@@ -14,8 +14,8 @@ import styles from './styles.less';
 const STUB_ITEMS = makeStubItems(100).rows;
 
 export const selector = createSelector(
-  (store) => (store.users.data[store.users.selected] || {}).bank || STUB_ITEMS,
-  (store) => (store.users.data[store.users.selected] || {}).sharedInventory,
+  store => (store.users.data[store.users.selected] || {}).bank || STUB_ITEMS,
+  store => (store.users.data[store.users.selected] || {}).sharedInventory,
   (bank, sharedInventory) => ({
     bank,
     sharedInventory,
@@ -24,8 +24,8 @@ export const selector = createSelector(
 
 type Props = {
   alias: string,
-  fetchBank: (string) => Promise<>,
-  fetchSharedInventory: (string) => Promise<>,
+  fetchBank: string => Promise<>,
+  fetchSharedInventory: string => Promise<>,
   sharedInventory: Array<{
     id: number,
     count: number,
@@ -47,47 +47,51 @@ type Props = {
   }>,
 };
 
-export default connect(selector, {
-  fetchBank,
-  fetchSharedInventory,
-})(
-class UserBank extends Component<Props> {
-  props: Props;
-
-  componentDidMount () {
-    this.props.fetchBank(this.props.alias);
-    this.props.fetchSharedInventory(this.props.alias);
+export default connect(
+  selector,
+  {
+    fetchBank,
+    fetchSharedInventory,
   }
+)(
+  class UserBank extends Component<Props> {
+    props: Props;
 
-  render () {
-    const { bank, sharedInventory } = this.props;
+    componentDidMount() {
+      this.props.fetchBank(this.props.alias);
+      this.props.fetchSharedInventory(this.props.alias);
+    }
 
-    return (
-      <Container className={styles.root}>
-        {sharedInventory && !!sharedInventory.length && (
-          <div className={styles.sharedInventory}>
-            {sharedInventory.map((item, index) => (
+    render() {
+      const { bank, sharedInventory } = this.props;
+
+      return (
+        <Container className={styles.root}>
+          {sharedInventory &&
+            !!sharedInventory.length && (
+              <div className={styles.sharedInventory}>
+                {sharedInventory.map((item, index) => (
+                  <Gw2Item
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={index}
+                    id={item.id}
+                    count={item.count}
+                  />
+                ))}
+              </div>
+            )}
+
+          <div className={styles.bank}>
+            {bank.map((item, index) => (
               <Gw2Item
                 // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                id={item.id}
-                count={item.count}
+                key={item ? index : `stub-${index}`}
+                {...item}
               />
             ))}
           </div>
-        )}
-
-        <div className={styles.bank}>
-          {bank.map((item, index) => (
-            <Gw2Item
-              // eslint-disable-next-line react/no-array-index-key
-              key={item ? index : `stub-${index}`}
-              {...item}
-            />
-          ))}
-        </div>
-      </Container>
-    );
+        </Container>
+      );
+    }
   }
-}
 );

@@ -2,9 +2,7 @@ import config from 'config';
 import * as ls from 'lib/localStorage';
 import { generateActions } from './actions';
 
-export default function gw2ReducerFactory (resourceName, getResource, {
-  afterGet,
-} = {}) {
+export default function gw2ReducerFactory(resourceName, getResource, { afterGet } = {}) {
   const LS_KEY = `${resourceName}_DATA`;
   const { fetching, result, error } = generateActions(resourceName, getResource, afterGet);
   const initialData = ls.get(LS_KEY);
@@ -31,7 +29,7 @@ export default function gw2ReducerFactory (resourceName, getResource, {
               ...newState,
             };
 
-            action.payload.noCache.forEach((id) => {
+            action.payload.noCache.forEach(id => {
               delete saveState[id];
             });
 
@@ -45,13 +43,9 @@ export default function gw2ReducerFactory (resourceName, getResource, {
           return {
             ...state,
             ...action.payload.ids.reduce((obj, id) => {
-              const storeId = typeof id === 'object'
-                ? (id.calculatedId || id.id)
-                : id;
+              const storeId = typeof id === 'object' ? id.calculatedId || id.id : id;
 
-              const resourceId = typeof id === 'object'
-                ? id.id
-                : id;
+              const resourceId = typeof id === 'object' ? id.id : id;
 
               return {
                 ...obj,
@@ -68,7 +62,7 @@ export default function gw2ReducerFactory (resourceName, getResource, {
       }
     },
     defaultState: {
-      ...initialData && JSON.parse(initialData),
+      ...(initialData && JSON.parse(initialData)),
       fetching: false,
     },
   };

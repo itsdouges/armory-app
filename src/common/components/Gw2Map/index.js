@@ -11,7 +11,7 @@ import styles from './styles.less';
 
 const UNSUPPORTED = ['zh', 'ru'];
 
-const getWikiSupportedLanguage = (language) => {
+const getWikiSupportedLanguage = language => {
   if (includes(UNSUPPORTED, language)) {
     return 'en';
   }
@@ -21,9 +21,9 @@ const getWikiSupportedLanguage = (language) => {
 
 const LANGUAGE = getWikiSupportedLanguage(i18n.get());
 
-const cleanName = (name) => name && name.replace('Beta ', '').replace(' BETA', '');
+const cleanName = name => name && name.replace('Beta ', '').replace(' BETA', '');
 
-function getStyle (id = 0) {
+function getStyle(id = 0) {
   const image = require(`assets/images/maps/${id}.jpg`);
 
   return {

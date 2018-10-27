@@ -21,7 +21,11 @@ const PieSegment = (props: PieSegmentProps) => {
   // For some reason destructoring props here makes rotationOffset work, but
   // destructoring the args directly makes rotationOffset return undefined
   // in child props..
-  const { data: { name, color }, centralAngle, rotationOffset } = props;
+  const {
+    data: { name, color },
+    centralAngle,
+    rotationOffset,
+  } = props;
 
   if (centralAngle > MAX_SEGMENT_DEG) {
     const segmentDegrees = [];
@@ -61,11 +65,7 @@ const PieSegment = (props: PieSegmentProps) => {
 
   return (
     <div>
-      <Segment
-        rotationOffset={rotationOffset}
-        centralAngle={centralAngle}
-        color={color}
-      />
+      <Segment rotationOffset={rotationOffset} centralAngle={centralAngle} color={color} />
 
       <Divider rotationOffset={rotationOffset} />
     </div>

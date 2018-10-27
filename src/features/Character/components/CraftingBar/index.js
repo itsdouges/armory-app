@@ -10,7 +10,7 @@ import Icon from 'common/components/Icon';
 import colours from 'common/styles/colours';
 
 const craftingUpTo400 = ['Chef', 'Jeweler', 'Scribe'];
-const getTotal = (discipline) => {
+const getTotal = discipline => {
   return craftingUpTo400.indexOf(discipline) >= 0 ? 400 : 500;
 };
 

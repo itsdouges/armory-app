@@ -8,10 +8,6 @@ type Props = {
   children?: any,
 };
 
-const Flair = ({ type, children }: Props) => (
-  <span className={styles[type]}>
-    {children}
-  </span>
-);
+const Flair = ({ type, children }: Props) => <span className={styles[type]}>{children}</span>;
 
 export default Flair;

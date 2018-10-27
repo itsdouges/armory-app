@@ -1291,7 +1291,9 @@ declare module 'react-test-renderer/lib/shallow/checkReactTypeSpec.js' {
   declare module.exports: $Exports<'react-test-renderer/lib/shallow/checkReactTypeSpec'>;
 }
 declare module 'react-test-renderer/lib/shallow/createMicrosoftUnsafeLocalFunction.js' {
-  declare module.exports: $Exports<'react-test-renderer/lib/shallow/createMicrosoftUnsafeLocalFunction'>;
+  declare module.exports: $Exports<
+    'react-test-renderer/lib/shallow/createMicrosoftUnsafeLocalFunction'
+  >;
 }
 declare module 'react-test-renderer/lib/shallow/CSSProperty.js' {
   declare module.exports: $Exports<'react-test-renderer/lib/shallow/CSSProperty'>;
@@ -1429,7 +1431,9 @@ declare module 'react-test-renderer/lib/shallow/ReactChildReconciler.js' {
   declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactChildReconciler'>;
 }
 declare module 'react-test-renderer/lib/shallow/ReactComponentBrowserEnvironment.js' {
-  declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactComponentBrowserEnvironment'>;
+  declare module.exports: $Exports<
+    'react-test-renderer/lib/shallow/ReactComponentBrowserEnvironment'
+  >;
 }
 declare module 'react-test-renderer/lib/shallow/ReactComponentEnvironment.js' {
   declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactComponentEnvironment'>;
@@ -1483,7 +1487,9 @@ declare module 'react-test-renderer/lib/shallow/ReactDOMInvalidARIAHook.js' {
   declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactDOMInvalidARIAHook'>;
 }
 declare module 'react-test-renderer/lib/shallow/ReactDOMNullInputValuePropHook.js' {
-  declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactDOMNullInputValuePropHook'>;
+  declare module.exports: $Exports<
+    'react-test-renderer/lib/shallow/ReactDOMNullInputValuePropHook'
+  >;
 }
 declare module 'react-test-renderer/lib/shallow/ReactDOMOption.js' {
   declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactDOMOption'>;
@@ -1573,7 +1579,9 @@ declare module 'react-test-renderer/lib/shallow/ReactInstrumentation.js' {
   declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactInstrumentation'>;
 }
 declare module 'react-test-renderer/lib/shallow/ReactInvalidSetStateWarningHook.js' {
-  declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactInvalidSetStateWarningHook'>;
+  declare module.exports: $Exports<
+    'react-test-renderer/lib/shallow/ReactInvalidSetStateWarningHook'
+  >;
 }
 declare module 'react-test-renderer/lib/shallow/ReactMarkupChecksum.js' {
   declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactMarkupChecksum'>;
@@ -1630,7 +1638,9 @@ declare module 'react-test-renderer/lib/shallow/ReactServerRendering.js' {
   declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactServerRendering'>;
 }
 declare module 'react-test-renderer/lib/shallow/ReactServerRenderingTransaction.js' {
-  declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactServerRenderingTransaction'>;
+  declare module.exports: $Exports<
+    'react-test-renderer/lib/shallow/ReactServerRenderingTransaction'
+  >;
 }
 declare module 'react-test-renderer/lib/shallow/ReactServerUpdateQueue.js' {
   declare module.exports: $Exports<'react-test-renderer/lib/shallow/ReactServerUpdateQueue'>;

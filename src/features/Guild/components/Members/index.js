@@ -17,9 +17,12 @@ const STUB_MEMBERS = makeStubItems(12);
 
 const makeKey = (content, index) => (content ? content.accountName : index);
 
-@connect(selector, {
-  fetchMembers: fetchGuildMembers,
-})
+@connect(
+  selector,
+  {
+    fetchMembers: fetchGuildMembers,
+  }
+)
 export default class GuildMembers extends Component<*> {
   props: {
     guild?: GuildType,
@@ -31,7 +34,7 @@ export default class GuildMembers extends Component<*> {
     fetchMembers: () => Promise.resolve(),
   };
 
-  render () {
+  render() {
     const { guild = {}, fetchMembers, name } = this.props;
     const users = get(guild, 'members', STUB_MEMBERS);
 

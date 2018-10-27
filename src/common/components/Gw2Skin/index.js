@@ -11,27 +11,30 @@ const defaultSkin = {};
 
 export const selector = createSelector(
   (state, props) => state.skins[props.id] || defaultSkin,
-  (skin) => ({
+  skin => ({
     skin,
   })
 );
 
-export default connect(selector, {
-  fetch: actions.fetchSkins,
-})(
-class Gw2Skin extends Component<*> {
-  props: {
-    id: number,
-    skin: Object,
-    fetch: ([number]) => void,
-  };
-
-  componentWillMount () {
-    this.props.fetch([this.props.id]);
+export default connect(
+  selector,
+  {
+    fetch: actions.fetchSkins,
   }
+)(
+  class Gw2Skin extends Component<*> {
+    props: {
+      id: number,
+      skin: Object,
+      fetch: ([number]) => void,
+    };
 
-  render () {
-    return <Item {...this.props} tooltipType="skins" />;
+    componentWillMount() {
+      this.props.fetch([this.props.id]);
+    }
+
+    render() {
+      return <Item {...this.props} tooltipType="skins" />;
+    }
   }
-}
 );

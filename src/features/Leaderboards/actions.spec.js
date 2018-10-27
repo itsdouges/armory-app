@@ -1,3 +1,1 @@
-describe('leaderboard actions', () => {
-
-});
+describe('leaderboard actions', () => {});

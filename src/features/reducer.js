@@ -46,7 +46,7 @@ const reducers = Object.keys(definitions).reduce((acc, key) => {
   acc[key] = (state = definition.defaultState, action) => {
     let result;
 
-    definition.reducers.forEach((reducer) => {
+    definition.reducers.forEach(reducer => {
       if (result) {
         return;
       }

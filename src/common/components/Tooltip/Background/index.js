@@ -11,9 +11,7 @@ type Props = {
 };
 
 const Background = ({ children, className }: Props) => (
-  <div className={cx(styles.root, className)}>
-    {children}
-  </div>
+  <div className={cx(styles.root, className)}>{children}</div>
 );
 
 export default Background;

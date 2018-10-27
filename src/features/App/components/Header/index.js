@@ -43,35 +43,46 @@ type LinkDefs = {
   external?: boolean,
 };
 
-const STATIC_LINKS = [{
-  name: T.translate('leaderboards.name'),
-  to: '/leaderboards/pvp',
-}, {
-  name: T.translate('stats.name'),
-  to: '/statistics',
-}, {
-  name: T.translate('embeds.name'),
-  external: true,
-  to: 'https://github.com/madou/armory-embeds',
-}];
+const STATIC_LINKS = [
+  {
+    name: T.translate('leaderboards.name'),
+    to: '/leaderboards/pvp',
+  },
+  {
+    name: T.translate('stats.name'),
+    to: '/statistics',
+  },
+  {
+    name: T.translate('embeds.name'),
+    external: true,
+    to: 'https://github.com/madou/armory-embeds',
+  },
+];
 
-const UNAUTHENTICATED_STATIC_LINKS = [{
-  name: T.translate('login.name'),
-  to: '/login',
-}, {
-  name: <span className={buttonStyles.cta}>{T.translate('join.name')}</span>,
-  to: '/join',
-}];
+const UNAUTHENTICATED_STATIC_LINKS = [
+  {
+    name: T.translate('login.name'),
+    to: '/login',
+  },
+  {
+    name: <span className={buttonStyles.cta}>{T.translate('join.name')}</span>,
+    to: '/join',
+  },
+];
 
-const AUTHENTICATED_STATIC_LINKS = [{
-  name: T.translate('settings.name'),
-  to: '/settings',
-}];
+const AUTHENTICATED_STATIC_LINKS = [
+  {
+    name: T.translate('settings.name'),
+    to: '/settings',
+  },
+];
 
-const LOADING_INDICATOR = [{
-  name: <ProgressIcon key="progress" size="nano" />,
-  to: '',
-}];
+const LOADING_INDICATOR = [
+  {
+    name: <ProgressIcon key="progress" size="nano" />,
+    to: '',
+  },
+];
 
 const buildLinks = ({ checkingAuthentication, alias }): Array<LinkDefs> => {
   let linksForContext;
@@ -83,88 +94,96 @@ const buildLinks = ({ checkingAuthentication, alias }): Array<LinkDefs> => {
     // If an alias exists, the user has been authenticated before.
     linksForContext = alias
       ? [
-        ...AUTHENTICATED_STATIC_LINKS,
-        ...[{
-          name: alias,
-          to: `/${alias}`,
-        }],
-      ] : UNAUTHENTICATED_STATIC_LINKS;
+          ...AUTHENTICATED_STATIC_LINKS,
+          ...[
+            {
+              name: alias,
+              to: `/${alias}`,
+            },
+          ],
+        ]
+      : UNAUTHENTICATED_STATIC_LINKS;
   }
 
-  return [
-    ...STATIC_LINKS,
-    ...linksForContext,
-  ];
+  return [...STATIC_LINKS, ...linksForContext];
 };
 
 export default authenticatedData(
-class Header extends Component<Props, State> {
-  props: Props;
+  class Header extends Component<Props, State> {
+    props: Props;
 
-  state: State = {
-    showExtraHeaderItems: false,
-  };
-
-  onSticky = (isSticky: boolean) => {
-    this.setState({
-      showExtraHeaderItems: isSticky,
-    });
-  };
-
-  render () {
-    const { authenticated, alias, checkingAuthentication, compact } = this.props;
-    const { showExtraHeaderItems } = this.state;
-    const links = buildLinks({ authenticated, checkingAuthentication, alias });
-    const smallIconName = config.features.christmas ? 'gift.png' : 'favicons/favicon-32.png';
-    const style = {
-      opacity: (compact || showExtraHeaderItems) ? 1 : 0,
+    state: State = {
+      showExtraHeaderItems: false,
     };
 
-    const header = (
-      <Container className={styles.innerContainer}>
-        <Link style={style} to="/">
-          <Icon className={styles.icon} name={smallIconName} size="mini" />
-        </Link>
+    onSticky = (isSticky: boolean) => {
+      this.setState({
+        showExtraHeaderItems: isSticky,
+      });
+    };
 
-        <div
-          style={style}
-          className={styles.searchContainer}
-        >
-          <SearchBar simple className={styles.smallSearchBar} />
-        </div>
+    render() {
+      const { authenticated, alias, checkingAuthentication, compact } = this.props;
+      const { showExtraHeaderItems } = this.state;
+      const links = buildLinks({ authenticated, checkingAuthentication, alias });
+      const smallIconName = config.features.christmas ? 'gift.png' : 'favicons/favicon-32.png';
+      const style = {
+        opacity: compact || showExtraHeaderItems ? 1 : 0,
+      };
 
-        <LangPicker key="langPicker" />
+      const header = (
+        <Container className={styles.innerContainer}>
+          <Link style={style} to="/">
+            <Icon className={styles.icon} name={smallIconName} size="mini" />
+          </Link>
 
-        <ResponsiveMenu
-          className={styles.linkContainer}
-          itemClassName={cx(styles.link, { [styles.christmas]: config.features.christmas })}
-        >
-          {links.map(({ to, name, external }) => (external
-            // eslint-disable-next-line react/jsx-no-target-blank
-            ? <a key={to} href={to} target="_blank">{name}</a>
-            : <Link to={to} key={to}>{name}</Link>))}
-        </ResponsiveMenu>
-      </Container>
-    );
+          <div style={style} className={styles.searchContainer}>
+            <SearchBar simple className={styles.smallSearchBar} />
+          </div>
 
-    return (
-      <StickyHeader
-        header={header}
-        backgroundImage={headerBg}
-        headerOnly={compact}
-        onSticky={this.onSticky}
-        backgroundColor={colours.headerBg}
-      >
-        <Container className={styles.bigSearchContainer}>
-          <img
-            alt="Guild Wars 2 Armory"
-            title="Guild Wars 2 Armory"
-            className={styles.armoryLogo} src={armoryLogo}
-          />
+          <LangPicker key="langPicker" />
 
-          <SearchBar className={styles.searchBar} />
+          <ResponsiveMenu
+            className={styles.linkContainer}
+            itemClassName={cx(styles.link, { [styles.christmas]: config.features.christmas })}
+          >
+            {links.map(
+              ({ to, name, external }) =>
+                external ? (
+                  // eslint-disable-next-line react/jsx-no-target-blank
+                  <a key={to} href={to} target="_blank">
+                    {name}
+                  </a>
+                ) : (
+                  <Link to={to} key={to}>
+                    {name}
+                  </Link>
+                )
+            )}
+          </ResponsiveMenu>
         </Container>
-      </StickyHeader>
-    );
+      );
+
+      return (
+        <StickyHeader
+          header={header}
+          backgroundImage={headerBg}
+          headerOnly={compact}
+          onSticky={this.onSticky}
+          backgroundColor={colours.headerBg}
+        >
+          <Container className={styles.bigSearchContainer}>
+            <img
+              alt="Guild Wars 2 Armory"
+              title="Guild Wars 2 Armory"
+              className={styles.armoryLogo}
+              src={armoryLogo}
+            />
+
+            <SearchBar className={styles.searchBar} />
+          </Container>
+        </StickyHeader>
+      );
+    }
   }
-});
+);

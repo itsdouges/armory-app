@@ -11,7 +11,7 @@ import CardWithTitle from 'common/layouts/CardWithTitle';
 import DisplayAd from 'common/components/DisplayAd';
 
 export default class ForgotMyPassword extends Component<Props> {
-  constructor () {
+  constructor() {
     super();
 
     const token = qs('token');
@@ -22,26 +22,22 @@ export default class ForgotMyPassword extends Component<Props> {
     };
   }
 
-  setProgress = (screen) => {
+  setProgress = screen => {
     this.setState({
       screen,
     });
-  }
+  };
 
-  render () {
+  render() {
     let screen;
 
     switch (this.state.screen) {
       case 'start':
-        screen = (
-          <Start next={() => this.setProgress('finish')} />
-        );
+        screen = <Start next={() => this.setProgress('finish')} />;
         break;
 
       case 'finish':
-        screen = (
-          <Finish initialToken={this.state.initialToken} />
-        );
+        screen = <Finish initialToken={this.state.initialToken} />;
         break;
 
       default:
@@ -52,9 +48,7 @@ export default class ForgotMyPassword extends Component<Props> {
       <span className={styles.root}>
         <Head title={T.translate('forgotPassword.name')} />
 
-        <CardWithTitle title={T.translate('forgotPassword.name')}>
-          {screen}
-        </CardWithTitle>
+        <CardWithTitle title={T.translate('forgotPassword.name')}>{screen}</CardWithTitle>
 
         <DisplayAd type="mrec" className={styles.gw2Sale} />
       </span>

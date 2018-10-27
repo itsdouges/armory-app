@@ -23,7 +23,6 @@ declare module 'gzip-size' {
  * needed.
  */
 
-
 // Filename aliases
 declare module 'gzip-size/index' {
   declare module.exports: $Exports<'gzip-size'>;

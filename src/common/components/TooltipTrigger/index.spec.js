@@ -33,8 +33,8 @@ describe('<TooltipTrigger />', () => {
   const props = {
     onMouseEnter: sandbox.spy(),
     onMouseLeave: sandbox.spy(),
-    show: (cb) => cb(),
-    hide: (cb) => cb(),
+    show: cb => cb(),
+    hide: cb => cb(),
     data: 'neat',
     type: 'item',
     showTooltip,

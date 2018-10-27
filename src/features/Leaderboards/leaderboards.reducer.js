@@ -1,6 +1,4 @@
-import {
-  FETCH_PVP_LEADERBOARD,
-} from './actions';
+import { FETCH_PVP_LEADERBOARD } from './actions';
 
 export const defaultState = {
   pvp: {},

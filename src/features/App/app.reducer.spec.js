@@ -5,16 +5,20 @@ const set = sandbox.spy();
 const SUBMIT_NOTIFICATION = 'SUBMIT_NOTIFICATION';
 const DISMISS_NOTIFICATION = 'DISMISS_NOTIFICATION';
 
-const { default: reducer, defaultState } = proxyquire('features/App/app.reducer', {
-  'lib/localStorage': {
-    get,
-    set,
+const { default: reducer, defaultState } = proxyquire(
+  'features/App/app.reducer',
+  {
+    'lib/localStorage': {
+      get,
+      set,
+    },
+    './actions': {
+      DISMISS_NOTIFICATION,
+      SUBMIT_NOTIFICATION,
+    },
   },
-  './actions': {
-    DISMISS_NOTIFICATION,
-    SUBMIT_NOTIFICATION,
-  },
-}, true);
+  true
+);
 
 describe('app reducer', () => {
   describe('default state', () => {
@@ -55,7 +59,10 @@ describe('app reducer', () => {
       it('should add notification', () => {
         const state = { notifications: {} };
 
-        const newState = reducer(state, { payload: { neat: true, id: 'msg' }, type: SUBMIT_NOTIFICATION });
+        const newState = reducer(state, {
+          payload: { neat: true, id: 'msg' },
+          type: SUBMIT_NOTIFICATION,
+        });
 
         expect(newState).to.eql({
           notifications: {

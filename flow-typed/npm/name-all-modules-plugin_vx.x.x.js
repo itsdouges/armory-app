@@ -23,7 +23,6 @@ declare module 'name-all-modules-plugin' {
  * needed.
  */
 
-
 // Filename aliases
 declare module 'name-all-modules-plugin/index' {
   declare module.exports: $Exports<'name-all-modules-plugin'>;

@@ -9,42 +9,47 @@ import authenticatatedData from './data';
 import * as actions from './actions';
 
 type Props = InjectedProps & {
-  authenticateUser: (string) => void,
-  checkingAuthentication: (boolean) => void,
+  authenticateUser: string => void,
+  checkingAuthentication: boolean => void,
 };
 
 const authEnabled = (ComposedComponent: React.ComponentType<*>) =>
-authenticatatedData(
-connect(null, {
-  checkingAuthentication: actions.checkingAuthentication,
-  authenticateUser: actions.authenticateUser,
-})(
-  class AuthenticatedApp extends Component<Props> {
-    props: Props;
-
-    componentWillMount () {
-      this.authenticate();
-    }
-
-    componentDidUpdate (prevProps) {
-      if (prevProps.token !== this.props.token) {
-        this.authenticate();
+  authenticatatedData(
+    connect(
+      null,
+      {
+        checkingAuthentication: actions.checkingAuthentication,
+        authenticateUser: actions.authenticateUser,
       }
-    }
+    )(
+      class AuthenticatedApp extends Component<Props> {
+        props: Props;
 
-    authenticate () {
-      const { token, authenticated, checkingAuthentication, authenticateUser } = this.props;
-      if (!token || authenticated) {
-        checkingAuthentication(false);
-        return;
+        componentWillMount() {
+          this.authenticate();
+        }
+
+        componentDidUpdate(prevProps) {
+          if (prevProps.token !== this.props.token) {
+            this.authenticate();
+          }
+        }
+
+        authenticate() {
+          const { token, authenticated, checkingAuthentication, authenticateUser } = this.props;
+          if (!token || authenticated) {
+            checkingAuthentication(false);
+            return;
+          }
+
+          authenticateUser(token);
+        }
+
+        render() {
+          return <ComposedComponent {...this.props} />;
+        }
       }
-
-      authenticateUser(token);
-    }
-
-    render () {
-      return <ComposedComponent {...this.props} />;
-    }
-}));
+    )
+  );
 
 export default authEnabled;

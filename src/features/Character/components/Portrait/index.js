@@ -31,14 +31,18 @@ const Portrait = ({
       className,
       styles.portraitBgDefault,
       character.race && styles[character.race.toLowerCase()],
-      { [styles.compact]: compact },
+      { [styles.compact]: compact }
     )}
   >
     <div className={cx(styles.portraitTopIn, styles.borderStrip1)} />
     <div
       className={cx(styles.portrait)}
       style={{
-        backgroundImage: encodeURI(`url(${endpoint}${character.alias || ''}/characters/${character.name || ''}${forceUpdate ? `?${+new Date()}` : ''})`),
+        backgroundImage: encodeURI(
+          `url(${endpoint}${character.alias || ''}/characters/${character.name || ''}${
+            forceUpdate ? `?${+new Date()}` : ''
+          })`
+        ),
       }}
     />
     <div className={cx(styles.portraitBottomIn, styles.borderStrip2)} />

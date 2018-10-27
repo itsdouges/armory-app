@@ -19,10 +19,7 @@ const Message = ({ children, type, title, className, size }: MessageProps) => {
   }
 
   return (
-    <div
-      title={title}
-      className={cx(styles.root, className, styles[type], styles[size])}
-    >
+    <div title={title} className={cx(styles.root, className, styles[type], styles[size])}>
       {children}
     </div>
   );

@@ -19,11 +19,7 @@ type Props = {
   },
 };
 
-const ItemInfusion = ({ data, data: {
-  name,
-  icon,
-  details },
-}: Props) => {
+const ItemInfusion = ({ data, data: { name, icon, details } }: Props) => {
   if (!data || !details) {
     return (
       <div>
@@ -39,7 +35,11 @@ const ItemInfusion = ({ data, data: {
         <span> {name}</span>
       </div>
 
-      <div>{get(details, 'infix_upgrade.buff.description', []).map((descrip) => <div key={descrip}>{descrip}</div>)}</div>
+      <div>
+        {get(details, 'infix_upgrade.buff.description', []).map(descrip => (
+          <div key={descrip}>{descrip}</div>
+        ))}
+      </div>
     </div>
   );
 };

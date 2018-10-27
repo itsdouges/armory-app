@@ -53,51 +53,57 @@ const displayAdMap = {
 };
 
 export default withRouter(
-class DisplayAd extends Component<Props> {
-  props: Props;
-  _container: ?HTMLElement;
+  class DisplayAd extends Component<Props> {
+    props: Props;
+    _container: ?HTMLElement;
 
-  componentDidUpdate (prevProps) {
-    if (this.props.location !== prevProps.location) {
+    componentDidUpdate(prevProps) {
+      if (this.props.location !== prevProps.location) {
+        this.renderAd();
+      }
+    }
+
+    componentDidMount() {
       this.renderAd();
     }
-  }
 
-  componentDidMount () {
-    this.renderAd();
-  }
+    renderAd() {
+      if (!config.features.ads || !this._container) {
+        return;
+      }
 
-  renderAd () {
-    if (!config.features.ads || !this._container) {
-      return;
+      this._container.innerHTML = '';
+
+      const ad = displayAdMap[this.props.type];
+
+      iframe(
+        this._container,
+        `
+<script src="//ap.lijit.com/www/delivery/fpi.js?z=${ad.tag}&width=${ad.width}&height=${
+          ad.height
+        }"></script>
+    `
+      );
     }
 
-    this._container.innerHTML = '';
+    render() {
+      if (!config.features.ads) {
+        return null;
+      }
 
-    const ad = displayAdMap[this.props.type];
+      const { className } = this.props;
+      const { width, height } = displayAdMap[this.props.type];
 
-    iframe(this._container, `
-<script src="//ap.lijit.com/www/delivery/fpi.js?z=${ad.tag}&width=${ad.width}&height=${ad.height}"></script>
-    `);
-  }
-
-  render () {
-    if (!config.features.ads) {
-      return null;
+      return (
+        <div
+          className={cx(styles.root, className)}
+          style={{
+            width,
+            height,
+          }}
+          ref={c => (this._container = c)}
+        />
+      );
     }
-
-    const { className } = this.props;
-    const { width, height } = displayAdMap[this.props.type];
-
-    return (
-      <div
-        className={cx(styles.root, className)}
-        style={{
-          width,
-          height,
-        }}
-        ref={(c) => (this._container = c)}
-      />
-    );
   }
-});
+);

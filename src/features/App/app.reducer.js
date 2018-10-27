@@ -1,9 +1,6 @@
 import * as ls from 'lib/localStorage';
 
-import {
-  DISMISS_NOTIFICATION,
-  SUBMIT_NOTIFICATION,
-} from './actions';
+import { DISMISS_NOTIFICATION, SUBMIT_NOTIFICATION } from './actions';
 
 const setNotification = (state, id, notification) => {
   const key = `notification:${id}`;

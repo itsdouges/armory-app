@@ -11,10 +11,10 @@ export type InjectedProps = {
 };
 
 export const selector = createSelector(
-  (store) => store.user.token,
-  (store) => store.user.loggedIn,
-  (store) => store.user.checkingAuthentication,
-  (store) => store.user.alias,
+  store => store.user.token,
+  store => store.user.loggedIn,
+  store => store.user.checkingAuthentication,
+  store => store.user.alias,
   (token, authenticated, checkingAuthentication, alias) => ({
     token,
     authenticated,
@@ -33,9 +33,7 @@ const authenticatedData = (ComposedComponent: React.ComponentType<*>) => {
     checkingAuthentication: false,
   };
 
-  return connect(selector)(
-    (props) => <ComposedComponent {...props} />
-  );
+  return connect(selector)(props => <ComposedComponent {...props} />);
 };
 
 export default authenticatedData;

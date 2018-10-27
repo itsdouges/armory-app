@@ -8,7 +8,7 @@ type Props = {
   aliasOverride?: string,
 };
 
-const str = (s) => s || '';
+const str = s => s || '';
 
 const makeUrl = (content, aliasOverride) => {
   const alias = aliasOverride || (content && (content.alias || content.userAlias));

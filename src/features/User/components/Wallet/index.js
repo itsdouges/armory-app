@@ -19,14 +19,20 @@ type Props = {
       description: string,
       order: number,
       icon: string,
-    }
+    },
   },
 };
 
 const Wallet = (props: Props) => (
   <Container className={styles.root}>
-    {props.resourceData.map(({ id, value } = {}, index) =>
-      <Currency className={styles.currency} key={id || index} value={value} {...props.gw2Data[id]} />)}
+    {props.resourceData.map(({ id, value } = {}, index) => (
+      <Currency
+        className={styles.currency}
+        key={id || index}
+        value={value}
+        {...props.gw2Data[id]}
+      />
+    ))}
   </Container>
 );
 

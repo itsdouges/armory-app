@@ -10,10 +10,10 @@ import Textbox from 'common/components/Textbox';
 
 import styles from './styles.less';
 
-const buildEmbedScript = (name) => (`
+const buildEmbedScript = name => `
 <div data-armory-embed="character" data-armory-name="${name}"></div>
 <script async type="text/javascript" src="${window.location.origin}/gw2aEmbeds.js"></script>
-`);
+`;
 
 type Props = {
   name: string,
@@ -30,7 +30,7 @@ export default class Embed extends Component<Props, State> {
     shown: false,
   };
 
-  componentWillReceiveProps (nextProps: Props) {
+  componentWillReceiveProps(nextProps: Props) {
     if (nextProps.name !== this.props.name) {
       this.setState({
         shown: false,
@@ -44,17 +44,14 @@ export default class Embed extends Component<Props, State> {
     });
   };
 
-  render () {
+  render() {
     const { name, className } = this.props;
     const { shown } = this.state;
 
     return (
       <div className={cx(styles.root, className)}>
         {!shown && (
-          <button
-            onClick={this.show}
-            className={styles.embedText}
-          >
+          <button onClick={this.show} className={styles.embedText}>
             {T.translate('words.embed')}
           </button>
         )}
@@ -69,11 +66,11 @@ export default class Embed extends Component<Props, State> {
               singleClickSelect
               label={T.translate('characters.embedTooltip')}
               containerClassName={styles.textboxContainer}
-              iconRight={(
+              iconRight={
                 <TooltipTrigger data={T.translate('characters.embedTooltip')}>
                   <SvgIcon name="help-black" />
                 </TooltipTrigger>
-              )}
+              }
             />
           </div>
         )}

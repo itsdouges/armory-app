@@ -14,17 +14,21 @@ describe('<Achievement />', () => {
     const props = {
       achievement: {
         tiers: [],
-        rewards: [{
-          type: 'Mastery',
-          region: 'Unknown',
-        }],
+        rewards: [
+          {
+            type: 'Mastery',
+            region: 'Unknown',
+          },
+        ],
       },
     };
 
     const wrapper = shallow(<Achievement {...props} />);
 
     expect(
-      wrapper.find('TooltipTrigger').findWhere((instance) => instance.props().data === 'Desert words.masteryPoint')
+      wrapper
+        .find('TooltipTrigger')
+        .findWhere(instance => instance.props().data === 'Desert words.masteryPoint')
     ).to.exist;
   });
 
@@ -32,17 +36,21 @@ describe('<Achievement />', () => {
     const props = {
       achievement: {
         tiers: [],
-        rewards: [{
-          type: 'Mastery',
-          region: 'Unknown',
-        }],
+        rewards: [
+          {
+            type: 'Mastery',
+            region: 'Unknown',
+          },
+        ],
       },
     };
 
     const wrapper = shallow(<Achievement {...props} />);
 
     expect(
-      wrapper.find('Icon').findWhere((instance) => instance.props().name === 'mastery-point-desert.png')
+      wrapper
+        .find('Icon')
+        .findWhere(instance => instance.props().name === 'mastery-point-desert.png')
     ).to.exist;
   });
 });

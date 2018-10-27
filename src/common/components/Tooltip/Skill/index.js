@@ -22,24 +22,30 @@ type SkillProps = {
 
 const Skill = ({ data }: SkillProps) => {
   if (!data.name) {
-    return <Background><SimpleTooltip data="Skill" /></Background>;
+    return (
+      <Background>
+        <SimpleTooltip data="Skill" />
+      </Background>
+    );
   }
   // XXX: Hidden more then 1 skill.
   const skills = get(data, 'skills', []).slice(0, 1);
 
   return (
     <div>
-      {skills.map((skill) => <Skill key={skill.id} data={skill} />)}
+      {skills.map(skill => (
+        <Skill key={skill.id} data={skill} />
+      ))}
 
       <Background className={styles.root}>
         <div className={styles.title}>{data.name}</div>
 
         <div className={styles.description}>{markup(parse(data.description))}</div>
 
-        {get(data, 'facts', []).map((fact, index) =>
+        {get(data, 'facts', []).map((fact, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <Fact key={index} data={fact} />)
-        }
+          <Fact key={index} data={fact} />
+        ))}
       </Background>
     </div>
   );

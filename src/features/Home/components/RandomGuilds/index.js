@@ -9,19 +9,29 @@ import config from 'config';
 
 import styles from './styles.less';
 
-const STUB_GUILDS = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
+const STUB_GUILDS = [
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+];
 
 export default class RandomGuilds extends Component<*, *> {
   state = {
     guilds: undefined,
   };
 
-  componentDidMount () {
-    axios.get(`${config.api.endpoint}of-the-day/guilds`)
-    .then(({ data }) => this.setState({ guilds: data }));
+  componentDidMount() {
+    axios
+      .get(`${config.api.endpoint}of-the-day/guilds`)
+      .then(({ data }) => this.setState({ guilds: data }));
   }
 
-  render () {
+  render() {
     const guilds = get(this.state, 'guilds', STUB_GUILDS);
 
     return (

@@ -4,7 +4,7 @@ const zip = require('zip-folder');
 const version = require('../package.json').version;
 const sync = require('./syncS3');
 
-zip('./dist', `./dist-embeds/gw2a-embeds-v${version}.zip`, (err) => {
+zip('./dist', `./dist-embeds/gw2a-embeds-v${version}.zip`, err => {
   if (err) {
     console.error(err);
     process.exit(1);

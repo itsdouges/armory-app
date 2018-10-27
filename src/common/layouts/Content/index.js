@@ -43,9 +43,10 @@ const Content = ({
     <ResponsiveLeaderboard className={styles.ad} />
 
     <header className={styles.heroBg}>
-
       <Container className={cx(styles.inner)}>
-        <ContentCard {...props} size="big">{cardExtra}</ContentCard>
+        <ContentCard {...props} size="big">
+          {cardExtra}
+        </ContentCard>
         {extraContent}
       </Container>
     </header>

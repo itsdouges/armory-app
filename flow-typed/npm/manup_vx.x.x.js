@@ -23,7 +23,6 @@ declare module 'manup' {
  * needed.
  */
 
-
 // Filename aliases
 declare module 'manup/index' {
   declare module.exports: $Exports<'manup'>;

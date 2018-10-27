@@ -14,12 +14,12 @@ import { fetchPvpGames } from '../../actions';
 import styles from './styles.less';
 
 export const selector = createSelector(
-  (store) => store.users.data[store.users.selected],
-  (store) => store.maps,
+  store => store.users.data[store.users.selected],
+  store => store.maps,
   (user, maps) => ({
     user,
     maps,
-  }),
+  })
 );
 
 const STUB_MATCHES = makeStubItems(10).rows;
@@ -28,30 +28,35 @@ type Props = {
   user: User,
   maps: Maps,
   alias: string,
-  fetchPvpGames: (string) => Promise<*>,
+  fetchPvpGames: string => Promise<*>,
 };
 
-export default connect(selector, {
-  fetchPvpGames,
-})(
-class RecentMatches extends Component<Props> {
-  props: Props;
-
-  componentDidMount () {
-    this.props.fetchPvpGames(this.props.alias);
+export default connect(
+  selector,
+  {
+    fetchPvpGames,
   }
+)(
+  class RecentMatches extends Component<Props> {
+    props: Props;
 
-  render () {
-    const { user, maps } = this.props;
-    const userGames = get(user, 'pvpGames.length') && get(user, 'pvpGames');
-    const pvpGames = userGames || STUB_MATCHES;
+    componentDidMount() {
+      this.props.fetchPvpGames(this.props.alias);
+    }
 
-    return (
-      <div className={styles.root}>
-        <span />
-        {pvpGames.map((game, index) =>
-          <PvpGame game={game} key={game ? game.id : index} maps={maps} />)}
-      </div>
-    );
+    render() {
+      const { user, maps } = this.props;
+      const userGames = get(user, 'pvpGames.length') && get(user, 'pvpGames');
+      const pvpGames = userGames || STUB_MATCHES;
+
+      return (
+        <div className={styles.root}>
+          <span />
+          {pvpGames.map((game, index) => (
+            <PvpGame game={game} key={game ? game.id : index} maps={maps} />
+          ))}
+        </div>
+      );
+    }
   }
-});
+);

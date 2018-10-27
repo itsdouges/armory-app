@@ -16,7 +16,13 @@ import Content from 'common/layouts/Content';
 import ContentCard from 'common/components/ContentCard';
 import Checkbox from 'common/components/Checkbox';
 
-import { fetchCharacter, selectCharacter, updateCharacter, setPrivacy, removePrivacy } from './actions';
+import {
+  fetchCharacter,
+  selectCharacter,
+  updateCharacter,
+  setPrivacy,
+  removePrivacy,
+} from './actions';
 import { topSelector } from './characters.reducer';
 import Overview from './components/Overview';
 import Bags from './components/Bags';
@@ -24,7 +30,9 @@ import styles from './styles.less';
 
 const buildDescription = (character = {}) =>
   // eslint-disable-next-line max-len
-  `${character.name} the level ${character.level} ${character.race} ${character.eliteSpecialization || character.profession}.`;
+  `${character.name} the level ${character.level} ${
+    character.race
+  } ${character.eliteSpecialization || character.profession}.`;
 
 const PRIVACY_OPTIONS = [
   {
@@ -82,182 +90,200 @@ type State = {
 };
 
 export default authenticatedData(
-connect(topSelector, {
-  selectUser,
-  fetchCharacter,
-  selectCharacter,
-  fetchUserCharacters,
-  updateCharacter,
-  setPrivacy,
-  removePrivacy,
-})(
-class Character extends Component<Props, State> {
-  props: Props;
-
-  state = {
-    editing: false,
-  };
-
-  componentWillMount () {
-    this.loadCharacter();
-  }
-
-  componentDidUpdate (prevProps: Props) {
-    if (prevProps.match.params.character !== this.props.match.params.character) {
-      this.loadCharacter();
+  connect(
+    topSelector,
+    {
+      selectUser,
+      fetchCharacter,
+      selectCharacter,
+      fetchUserCharacters,
+      updateCharacter,
+      setPrivacy,
+      removePrivacy,
     }
-  }
+  )(
+    class Character extends Component<Props, State> {
+      props: Props;
 
-  hide = (e: EventHandler) => {
-    const { character } = this.props.match.params;
+      state = {
+        editing: false,
+      };
 
-    this.props.updateCharacter(character, {
-      showPublic: e.target.checked,
-    });
-  };
+      componentWillMount() {
+        this.loadCharacter();
+      }
 
-  setPrivacy = (prop: string, action: 'add' | 'remove') => {
-    const { character } = this.props.match.params;
+      componentDidUpdate(prevProps: Props) {
+        if (prevProps.match.params.character !== this.props.match.params.character) {
+          this.loadCharacter();
+        }
+      }
 
-    return action === 'add'
-      ? this.props.setPrivacy(character, prop)
-      : this.props.removePrivacy(character, prop);
-  };
+      hide = (e: EventHandler) => {
+        const { character } = this.props.match.params;
 
+        this.props.updateCharacter(character, {
+          showPublic: e.target.checked,
+        });
+      };
 
-  loadCharacter () {
-    const { character, alias } = this.props.match.params;
+      setPrivacy = (prop: string, action: 'add' | 'remove') => {
+        const { character } = this.props.match.params;
 
-    this.props.fetchCharacter(character);
-    this.props.selectCharacter(character);
-    this.props.selectUser(alias);
-  }
+        return action === 'add'
+          ? this.props.setPrivacy(character, prop)
+          : this.props.removePrivacy(character, prop);
+      };
 
-  toggleEditing = () => {
-    this.setState((prevState) => ({
-      editing: !prevState.editing,
-    }));
-  };
+      loadCharacter() {
+        const { character, alias } = this.props.match.params;
 
-  canShowTab (privacy) {
-    const { match: { params }, alias } = this.props;
+        this.props.fetchCharacter(character);
+        this.props.selectCharacter(character);
+        this.props.selectUser(alias);
+      }
 
-    const editable = alias === params.alias;
-    if (editable) {
-      return true;
+      toggleEditing = () => {
+        this.setState(prevState => ({
+          editing: !prevState.editing,
+        }));
+      };
+
+      canShowTab(privacy) {
+        const {
+          match: { params },
+          alias,
+        } = this.props;
+
+        const editable = alias === params.alias;
+        if (editable) {
+          return true;
+        }
+
+        return !!this.props.character && !this.props.character.privacy.includes(privacy);
+      }
+
+      render() {
+        const {
+          match: { params },
+          character,
+          title,
+          alias,
+        } = this.props;
+
+        const { editing } = this.state;
+
+        const editable = alias === params.alias;
+        const characterTitle = get(title, 'name');
+        const showPublic = get(character, 'authorization.showPublic');
+        const guild = character && {
+          name: character.guild_name,
+          tag: character.guild_tag,
+          id: character.guild,
+        };
+
+        return (
+          <Content
+            title={`${params.character} | ${params.alias}`}
+            type="characters"
+            content={character}
+            basePath={this.props.match.url}
+            description={buildDescription(character)}
+            extraSubtitle={
+              characterTitle && (
+                <span>
+                  <i>{characterTitle}</i> |{' '}
+                </span>
+              )
+            }
+            metaContent={
+              editing && [
+                <Checkbox
+                  key="hide-show"
+                  checked={!!showPublic}
+                  onChange={this.hide}
+                  label={T.translate(showPublic ? 'characters.shown' : 'characters.hidden')}
+                />,
+
+                ...PRIVACY_OPTIONS.map(({ prop, name }) => (
+                  <Checkbox
+                    key={prop}
+                    checked={!character || !character.privacy.includes(prop)}
+                    onChange={e => this.setPrivacy(prop, e.target.checked ? 'remove' : 'add')}
+                    label={`Show ${name}`}
+                  />
+                )),
+              ]
+            }
+            extraContent={
+              <aside className={styles.links}>
+                <Link to={`/${(character && character.alias) || ''}`}>
+                  <ContentCard type="users" content={character} />
+                </Link>
+
+                <Link to={`/g/${(guild && guild.name) || ''}`}>
+                  <ContentCard type="guilds" content={guild} />
+                </Link>
+              </aside>
+            }
+            pinnedTab={
+              editable && (
+                <Button className={styles.editButton} type="cta" onClick={this.toggleEditing}>
+                  {T.translate(this.state.editing ? 'characters.done' : 'characters.edit')}
+                </Button>
+              )
+            }
+            tabs={[
+              {
+                path: '',
+                name: 'PvE',
+                ignoreTitle: true,
+                content: (
+                  <Overview
+                    name={params.character}
+                    editing={editing}
+                    editable={editable}
+                    mode="pve"
+                    userAlias={alias}
+                  />
+                ),
+              },
+              {
+                path: '/pvp',
+                name: 'PvP',
+                content: (
+                  <Overview
+                    name={params.character}
+                    editing={editing}
+                    editable={editable}
+                    mode="pvp"
+                    userAlias={alias}
+                  />
+                ),
+              },
+              {
+                path: '/wvw',
+                name: 'WvW',
+                content: (
+                  <Overview
+                    name={params.character}
+                    editing={editing}
+                    editable={editable}
+                    mode="wvw"
+                    userAlias={alias}
+                  />
+                ),
+              },
+              {
+                path: '/bags',
+                name: T.translate('characters.bags'),
+                content: <Bags />,
+                hide: !this.canShowTab('bags'),
+              },
+            ]}
+          />
+        );
+      }
     }
-
-    return !!this.props.character && !this.props.character.privacy.includes(privacy);
-  }
-
-  render () {
-    const {
-      match: { params },
-      character,
-      title,
-      alias,
-    } = this.props;
-
-    const { editing } = this.state;
-
-    const editable = alias === params.alias;
-    const characterTitle = get(title, 'name');
-    const showPublic = get(character, 'authorization.showPublic');
-    const guild = character && {
-      name: character.guild_name,
-      tag: character.guild_tag,
-      id: character.guild,
-    };
-
-    return (
-      <Content
-        title={`${params.character} | ${params.alias}`}
-        type="characters"
-        content={character}
-        basePath={this.props.match.url}
-        description={buildDescription(character)}
-        extraSubtitle={characterTitle && <span><i>{characterTitle}</i> | </span>}
-        metaContent={editing && [
-          <Checkbox
-            key="hide-show"
-            checked={!!showPublic}
-            onChange={this.hide}
-            label={T.translate(showPublic ? 'characters.shown' : 'characters.hidden')}
-          />,
-
-          ...PRIVACY_OPTIONS.map(({ prop, name }) => (
-            <Checkbox
-              key={prop}
-              checked={!character || !character.privacy.includes(prop)}
-              onChange={(e) => this.setPrivacy(prop, e.target.checked ? 'remove' : 'add')}
-              label={`Show ${name}`}
-            />
-          )),
-        ]}
-        extraContent={(
-          <aside className={styles.links}>
-            <Link to={`/${(character && character.alias) || ''}`}>
-              <ContentCard type="users" content={character} />
-            </Link>
-
-            <Link to={`/g/${(guild && guild.name) || ''}`}>
-              <ContentCard type="guilds" content={guild} />
-            </Link>
-          </aside>
-        )}
-        pinnedTab={editable && (
-          <Button
-            className={styles.editButton}
-            type="cta"
-            onClick={this.toggleEditing}
-          >
-            {T.translate(this.state.editing ? 'characters.done' : 'characters.edit')}
-          </Button>
-        )}
-        tabs={[{
-          path: '',
-          name: 'PvE',
-          ignoreTitle: true,
-          content: (
-            <Overview
-              name={params.character}
-              editing={editing}
-              editable={editable}
-              mode="pve"
-              userAlias={alias}
-            />
-          ),
-        }, {
-          path: '/pvp',
-          name: 'PvP',
-          content: (
-            <Overview
-              name={params.character}
-              editing={editing}
-              editable={editable}
-              mode="pvp"
-              userAlias={alias}
-            />
-          ),
-        }, {
-          path: '/wvw',
-          name: 'WvW',
-          content: (
-            <Overview
-              name={params.character}
-              editing={editing}
-              editable={editable}
-              mode="wvw"
-              userAlias={alias}
-            />
-          ),
-        }, {
-          path: '/bags',
-          name: T.translate('characters.bags'),
-          content: <Bags />,
-          hide: !this.canShowTab('bags'),
-        }]}
-      />
-    );
-  }
-}));
+  )
+);

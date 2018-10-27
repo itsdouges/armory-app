@@ -23,7 +23,6 @@ declare module 'less-vars-loader' {
  * needed.
  */
 
-
 // Filename aliases
 declare module 'less-vars-loader/index' {
   declare module.exports: $Exports<'less-vars-loader'>;

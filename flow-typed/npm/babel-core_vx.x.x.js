@@ -208,7 +208,9 @@ declare module 'babel-core/lib/transformation/internal-plugins/block-hoist.js' {
   declare module.exports: $Exports<'babel-core/lib/transformation/internal-plugins/block-hoist'>;
 }
 declare module 'babel-core/lib/transformation/internal-plugins/shadow-functions.js' {
-  declare module.exports: $Exports<'babel-core/lib/transformation/internal-plugins/shadow-functions'>;
+  declare module.exports: $Exports<
+    'babel-core/lib/transformation/internal-plugins/shadow-functions'
+  >;
 }
 declare module 'babel-core/lib/transformation/pipeline.js' {
   declare module.exports: $Exports<'babel-core/lib/transformation/pipeline'>;

@@ -10,7 +10,7 @@ import SelectList from 'common/components/SelectList';
 
 import styles from './styles.less';
 
-function pick (lang: string) {
+function pick(lang: string) {
   window.localStorage.clear();
   set(lang);
   window.location.reload();
@@ -25,20 +25,20 @@ export default class LangPicker extends Component<{}, State> {
     selected: get(),
   };
 
-  render () {
+  render() {
     const iconName = config.features.christmas ? 'globe-white' : 'globe';
 
     return (
       <SelectList icon={<SvgIcon name={iconName} size="micro" />}>
-        {config.i18n.languages.map(({ short, long }) =>
+        {config.i18n.languages.map(({ short, long }) => (
           <button
             key={short}
             className={cx(styles.lang, { [styles.selected]: this.state.selected === short })}
             onClick={() => pick(short)}
           >
             {long}
-          </button>)
-        }
+          </button>
+        ))}
       </SelectList>
     );
   }

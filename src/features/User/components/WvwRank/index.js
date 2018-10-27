@@ -13,16 +13,21 @@ type Props = {
   rank?: number,
   worldId?: number,
   worlds: Object,
-}
+};
 
 const WvwRank = ({ rank, worldId, worlds }: Props) => {
   const world = worlds[worldId];
   const worldName = get(world, 'name');
   const redact = !rank;
 
-  const rankName = (rank && reduce(rankToTitleMap, (selectedName, wvwRankName, wvwRank) => (
-    rank >= wvwRank ? wvwRankName : selectedName
-  ), '')) || '????';
+  const rankName =
+    (rank &&
+      reduce(
+        rankToTitleMap,
+        (selectedName, wvwRankName, wvwRank) => (rank >= wvwRank ? wvwRankName : selectedName),
+        ''
+      )) ||
+    '????';
 
   return (
     <Summary
@@ -30,7 +35,11 @@ const WvwRank = ({ rank, worldId, worlds }: Props) => {
       title={
         <Redacted redact={redact}>{`WvW ${T.translate('words.rank')} (${rank || 1})`}</Redacted>
       }
-      subTitle={<span><Redacted redact={redact}>{rankName}</Redacted> for {worldName}</span>}
+      subTitle={
+        <span>
+          <Redacted redact={redact}>{rankName}</Redacted> for {worldName}
+        </span>
+      }
     />
   );
 };

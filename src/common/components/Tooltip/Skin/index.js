@@ -13,15 +13,18 @@ const SkinTooltip = ({ data: { skin } }: Props) => {
   return (
     <Background>
       <ItemHeader name={skin.name} icon={skin.icon} rarity="white" />
-      {skin.type === 'Weapon' && <div className={styles.skinTypeText}>
-        <span className={styles.skinTypeText}>{skin.details.type}</span>
-      </div>}
-      {skin.type === 'Armor' && <div className={styles.skinTypeText}>
-        <span >{skin.details.weight_class}</span>
-        <br />
-        <span className={styles.skinTypeText}>{skin.details.type}</span>
-      </div>}
-
+      {skin.type === 'Weapon' && (
+        <div className={styles.skinTypeText}>
+          <span className={styles.skinTypeText}>{skin.details.type}</span>
+        </div>
+      )}
+      {skin.type === 'Armor' && (
+        <div className={styles.skinTypeText}>
+          <span>{skin.details.weight_class}</span>
+          <br />
+          <span className={styles.skinTypeText}>{skin.details.type}</span>
+        </div>
+      )}
     </Background>
   );
 };

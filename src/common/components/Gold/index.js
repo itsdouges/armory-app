@@ -12,7 +12,7 @@ type Props = {
   coins: number,
 };
 
-function calc (coins) {
+function calc(coins) {
   let remainder = coins;
 
   const gold = Math.floor(remainder / 10000);
