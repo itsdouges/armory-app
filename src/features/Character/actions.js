@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import config from 'config';
-import history from 'history';
+import history from 'lib/history';
 import get from 'lodash/get';
 import forEach from 'lodash/forEach';
 
@@ -15,7 +15,7 @@ export const SELECT_CHARACTER_MODE = 'SELECT_CHARACTER_MODE';
 export const UPDATE_CHARACTER = 'UPDATE_CHARACTER';
 export const UPDATE_CHARACTER_PRIVACY = 'UPDATE_CHARACTER_PRIVACY';
 
-const fetchingCharacter = (fetching) => ({
+const fetchingCharacter = fetching => ({
   type: FETCHING_CHARACTER,
   payload: fetching,
 });
@@ -28,7 +28,7 @@ const fetchCharacterResultSuccess = (name, data) => ({
   },
 });
 
-function extractIds ({ specializations, equipment, equipment_pvp, skills }) {
+function extractIds({ specializations, equipment, equipment_pvp, skills }) {
   const ids = {
     items: [],
     skins: [],
@@ -37,29 +37,31 @@ function extractIds ({ specializations, equipment, equipment_pvp, skills }) {
     pets: [],
   };
 
-  specializations && Object.keys(specializations).forEach((key) => {
-    const mode = specializations[key];
-    mode.forEach((specialization) => {
-      if (!specialization) {
-        return;
+  specializations &&
+    Object.keys(specializations).forEach(key => {
+      const mode = specializations[key];
+      mode.forEach(specialization => {
+        if (!specialization) {
+          return;
+        }
+
+        ids.specializations.push(specialization.id);
+      });
+    });
+
+  equipment &&
+    equipment.forEach(item => {
+      ids.skins.push(item.skin);
+      ids.items.push(item.id);
+
+      if (item.upgrades) {
+        ids.items = ids.items.concat(item.upgrades);
       }
 
-      ids.specializations.push(specialization.id);
+      if (item.infusions) {
+        ids.items = ids.items.concat(item.infusions);
+      }
     });
-  });
-
-  equipment && equipment.forEach((item) => {
-    ids.skins.push(item.skin);
-    ids.items.push(item.id);
-
-    if (item.upgrades) {
-      ids.items = ids.items.concat(item.upgrades);
-    }
-
-    if (item.infusions) {
-      ids.items = ids.items.concat(item.infusions);
-    }
-  });
 
   if (equipment_pvp) {
     ids.items = ids.items.concat(equipment_pvp.sigils);
@@ -74,15 +76,21 @@ function extractIds ({ specializations, equipment, equipment_pvp, skills }) {
   return ids;
 }
 
-export function fetchCharacter (character: string, { redirect404 = true, basicLoad }: {
-  redirect404: boolean,
-  basicLoad: boolean,
-} = {}): ReduxThunk {
-  return (dispatch) => {
+export function fetchCharacter(
+  character: string,
+  {
+    redirect404 = true,
+    basicLoad,
+  }: {
+    redirect404: boolean,
+    basicLoad: boolean,
+  } = {}
+): ReduxThunk {
+  return dispatch => {
     dispatch(fetchingCharacter(true));
 
-    return axios.get(`${config.api.endpoint}characters/${character}`)
-      .then(({ data }) => {
+    return axios.get(`${config.api.endpoint}characters/${character}`).then(
+      ({ data }) => {
         dispatch(fetchCharacterResultSuccess(character, data));
         dispatch(fetchingCharacter(false));
 
@@ -104,11 +112,13 @@ export function fetchCharacter (character: string, { redirect404 = true, basicLo
           dispatch(actions.fetchAmulets(amulets));
           dispatch(actions.fetchSpecializations(specializations));
         }
-      }, () => redirect404 && history.replace({ state: { notFound: true } }));
+      },
+      () => redirect404 && history.replace({ state: { notFound: true } })
+    );
   };
 }
 
-function updateCharacterAuth (name, authorization) {
+function updateCharacterAuth(name, authorization) {
   return {
     type: UPDATE_CHARACTER,
     payload: {
@@ -118,11 +128,8 @@ function updateCharacterAuth (name, authorization) {
   };
 }
 
-export function updateCharacter (
-  name: string,
-  options: {| showPublic: boolean |},
-): ReduxThunk {
-  return (dispatch) => {
+export function updateCharacter(name: string, options: {| showPublic: boolean |}): ReduxThunk {
+  return dispatch => {
     dispatch(updateCharacterAuth(name, options));
     return axios.put(`${config.api.endpoint}characters/${name}`, options);
   };
@@ -137,8 +144,8 @@ export const updatePrivacy = (name: string, prop: string, action: string) => ({
   },
 });
 
-export function setPrivacy (name: string, prop: string): ReduxThunk {
-  return (dispatch) => {
+export function setPrivacy(name: string, prop: string): ReduxThunk {
+  return dispatch => {
     dispatch(updatePrivacy(name, prop, 'add'));
     return axios.put(`${config.api.endpoint}characters/${name}/privacy`, {
       privacy: prop,
@@ -146,8 +153,8 @@ export function setPrivacy (name: string, prop: string): ReduxThunk {
   };
 }
 
-export function removePrivacy (name: string, prop: string): ReduxThunk {
-  return (dispatch) => {
+export function removePrivacy(name: string, prop: string): ReduxThunk {
+  return dispatch => {
     dispatch(updatePrivacy(name, prop, 'remove'));
     return axios.delete(`${config.api.endpoint}characters/${name}/privacy/${prop}`);
   };

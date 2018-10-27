@@ -12,7 +12,7 @@ import Base from './Base';
 import App from 'features/App';
 import authenticatedApp from 'features/Auth/app';
 
-import history from './history';
+import history from './lib/history';
 import bootstrapTooltip from 'lib/tooltip';
 import attachFastClick from 'fastclick';
 import registerServiceWorker from './registerServiceWorker';

@@ -1,18 +1,18 @@
 import axios from 'axios';
 import config from 'config';
-import history from 'history';
+import history from 'lib/history';
 
 export const FETCHING_TOKEN = 'FETCHING_TOKEN';
 export const FETCH_TOKEN_RESULT = 'FETCH_TOKEN_RESULT';
 
-function fetchTokenSuccess (token) {
+function fetchTokenSuccess(token) {
   return {
     type: FETCH_TOKEN_RESULT,
     payload: token,
   };
 }
 
-function fetchTokenError (message) {
+function fetchTokenError(message) {
   return {
     type: FETCH_TOKEN_RESULT,
     error: true,
@@ -20,36 +20,43 @@ function fetchTokenError (message) {
   };
 }
 
-function fetchingToken (fetching) {
+function fetchingToken(fetching) {
   return {
     type: FETCHING_TOKEN,
     payload: !!fetching,
   };
 }
 
-export function fetchToken (email, password) {
-  return (dispatch) => {
+export function fetchToken(email, password) {
+  return dispatch => {
     dispatch(fetchingToken(true));
 
     return axios
-      .post(`${config.api.endpoint}token`, {
-        username: email,
-        password,
-        grant_type: 'password',
-      }, {
-        headers: {
-          Authorization: `Basic ${config.api.token}`,
+      .post(
+        `${config.api.endpoint}token`,
+        {
+          username: email,
+          password,
+          grant_type: 'password',
         },
-      })
-      .then((response) => {
-        const combinedToken = `${response.data.token_type} ${response.data.access_token}`;
+        {
+          headers: {
+            Authorization: `Basic ${config.api.token}`,
+          },
+        }
+      )
+      .then(
+        response => {
+          const combinedToken = `${response.data.token_type} ${response.data.access_token}`;
 
-        dispatch(fetchTokenSuccess(combinedToken));
-        dispatch(fetchingToken(false));
-        history.push('/settings');
-      }, ({ response }) => {
-        dispatch(fetchTokenError(response.data.message));
-        dispatch(fetchingToken(false));
-      });
+          dispatch(fetchTokenSuccess(combinedToken));
+          dispatch(fetchingToken(false));
+          history.push('/settings');
+        },
+        ({ response }) => {
+          dispatch(fetchTokenError(response.data.message));
+          dispatch(fetchingToken(false));
+        }
+      );
   };
 }

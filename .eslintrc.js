@@ -1,22 +1,17 @@
 module.exports = {
-  extends: [
-    './config/eslint.js',
-    'airbnb',
-    'plugin:flowtype/recommended',
-  ],
-  plugins: [
-    'flowtype',
-    'mocha',
-  ],
-  'rules': {
-    'space-before-function-paren': ['error', 'always'],
-    'comma-dangle': ['error', 'always-multiline'],
+  extends: ['./config/eslint.js', 'airbnb', 'plugin:flowtype/recommended'],
+  plugins: ['flowtype', 'mocha'],
+  rules: {
     'default-case': 'off',
+
+    'comma-dangle': 'off',
+    'space-before-function-paren': 'off',
     'global-require': 'off',
-    'camelcase': 'off',
+    camelcase: 'off',
     'arrow-body-style': 'off',
-    'arrow-parens': ['error', 'always'],
-    'max-len': ['warn', { code: 120, ignoreStrings: true, ignoreUrls: true }],
+    'arrow-parens': 'off',
+    'max-len': 'off',
+    indent: 'off',
 
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-unused-expressions': 'off',
@@ -40,18 +35,21 @@ module.exports = {
 
     'react/jsx-filename-extension': 'off',
     'react/jsx-sort-props': 'off',
-    'react/sort-comp': ['error', {
-      order: [
-        'type-annotations',
-        'static-methods',
-        'lifecycle',
-        '/^on.+$/',
-        '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
-        'everything-else',
-        '/^render.+$/',
-        'render',
-      ],
-    }],
+    'react/sort-comp': [
+      'error',
+      {
+        order: [
+          'type-annotations',
+          'static-methods',
+          'lifecycle',
+          '/^on.+$/',
+          '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
+          'everything-else',
+          '/^render.+$/',
+          'render',
+        ],
+      },
+    ],
 
     'mocha/no-exclusive-tests': 'error',
   },

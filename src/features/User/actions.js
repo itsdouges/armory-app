@@ -1,7 +1,7 @@
 // @flow
 
 import axios from 'axios';
-import history from 'history';
+import history from 'lib/history';
 
 import { paginatedThunk } from 'lib/redux';
 import { readPvpSeasonIds } from 'lib/gw2';
@@ -23,12 +23,12 @@ export const FETCH_SHARED_INVENTORY_RESULT = 'FETCH_SHARED_INVENTORY_RESULT';
 export const SELECT_USER = 'SELECT_USER';
 export const UPDATE_USER_PRIVACY = 'UPDATE_USER_PRIVACY';
 
-const fetchingUser = (fetching) => ({
+const fetchingUser = fetching => ({
   type: FETCHING_USER,
   payload: fetching,
 });
 
-const fetchUserResult = (user) => ({
+const fetchUserResult = user => ({
   type: FETCHING_USER_RESULT,
   payload: user,
 });
@@ -57,7 +57,7 @@ const fetchWalletResult = (alias, data) => ({
   },
 });
 
-const createFetchResult = (resource) => (alias, data) => ({
+const createFetchResult = resource => (alias, data) => ({
   type: `FETCH_USER_${resource.toUpperCase()}_RESULT`,
   payload: {
     alias,
@@ -65,42 +65,51 @@ const createFetchResult = (resource) => (alias, data) => ({
   },
 });
 
-const fetchingUserCharacters = (fetching) => ({
+const fetchingUserCharacters = fetching => ({
   type: FETCHING_USER_CHARACTERS,
   payload: fetching,
 });
 
 export const fetchUserCharacters = (alias: string, limit: number, offset: number): ReduxThunk =>
-  paginatedThunk((dispatch: Dispatch) => {
-    dispatch(fetchingUserCharacters(true));
+  paginatedThunk(
+    (dispatch: Dispatch) => {
+      dispatch(fetchingUserCharacters(true));
 
-    return axios.get(`${config.api.endpoint}users/${alias}/characters`, {
-      params: {
-        limit,
-        offset,
-      },
-    })
-    .then((response) => {
-      dispatch(fetchUserCharactersResult(alias, response.data));
-      dispatch(fetchingUserCharacters(false));
-    });
-  }, `users.data[${alias}].characters`, limit, offset);
+      return axios
+        .get(`${config.api.endpoint}users/${alias}/characters`, {
+          params: {
+            limit,
+            offset,
+          },
+        })
+        .then(response => {
+          dispatch(fetchUserCharactersResult(alias, response.data));
+          dispatch(fetchingUserCharacters(false));
+        });
+    },
+    `users.data[${alias}].characters`,
+    limit,
+    offset
+  );
 
-export const fetchUserAchievements = (alias: string): ReduxThunk => (dispatch) =>
-  axios.get(`${config.api.endpoint}users/${alias}/achievements`)
+export const fetchUserAchievements = (alias: string): ReduxThunk => dispatch =>
+  axios
+    .get(`${config.api.endpoint}users/${alias}/achievements`)
     .then(({ data }) => dispatch(fetchUserAchievementsResult(alias, data)))
     .catch(handleError);
 
-export const fetchWallet = (alias: string): ReduxThunk => (dispatch) =>
-  axios.get(`${config.api.endpoint}users/${alias}/wallet`)
+export const fetchWallet = (alias: string): ReduxThunk => dispatch =>
+  axios
+    .get(`${config.api.endpoint}users/${alias}/wallet`)
     .then(({ data }) => dispatch(fetchWalletResult(alias, data)))
-    .catch((err) => {
+    .catch(err => {
       dispatch(fetchWalletResult(alias, []));
       return handleError(err);
     });
 
-export const createFetch = (resource: string) => (alias: string): ReduxThunk => (dispatch) =>
-  axios.get(`${config.api.endpoint}users/${alias}/${resource}`)
+export const createFetch = (resource: string) => (alias: string): ReduxThunk => dispatch =>
+  axios
+    .get(`${config.api.endpoint}users/${alias}/${resource}`)
     .then(({ data }) => dispatch(createFetchResult('materials')(alias, data)))
     .catch(handleError);
 
@@ -149,62 +158,67 @@ export const selectUser = (alias: string) => ({
   payload: alias,
 });
 
-export const fetchPvpStats = (alias: string): ReduxThunk => (dispatch) =>
-  axios.get(`${config.api.endpoint}users/${alias}/pvp/stats`)
-  .then((response) => {
-    dispatch(fetchPvpStatsSuccess(alias, response.data));
-  })
-  .catch(handleError);
+export const fetchPvpStats = (alias: string): ReduxThunk => dispatch =>
+  axios
+    .get(`${config.api.endpoint}users/${alias}/pvp/stats`)
+    .then(response => {
+      dispatch(fetchPvpStatsSuccess(alias, response.data));
+    })
+    .catch(handleError);
 
-export const fetchPvpGames = (alias: string): ReduxThunk => (dispatch) =>
-  axios.get(`${config.api.endpoint}users/${alias}/pvp/games`)
-  .then(({ data }) => {
-    dispatch(fetchPvpGamesSuccess(alias, data));
+export const fetchPvpGames = (alias: string): ReduxThunk => dispatch =>
+  axios
+    .get(`${config.api.endpoint}users/${alias}/pvp/games`)
+    .then(({ data }) => {
+      dispatch(fetchPvpGamesSuccess(alias, data));
 
-    const ids = data.map((standing) => standing.map_id);
-    dispatch(actions.fetchMaps(ids));
-  })
-  .catch(handleError);
+      const ids = data.map(standing => standing.map_id);
+      dispatch(actions.fetchMaps(ids));
+    })
+    .catch(handleError);
 
-export const fetchBank = (alias: string): ReduxThunk => (dispatch) =>
-  axios.get(`${config.api.endpoint}users/${alias}/bank`)
-  .then(({ data }) => {
-    dispatch(fetchBankSuccess(alias, data));
-  })
-  .catch(handleError);
+export const fetchBank = (alias: string): ReduxThunk => dispatch =>
+  axios
+    .get(`${config.api.endpoint}users/${alias}/bank`)
+    .then(({ data }) => {
+      dispatch(fetchBankSuccess(alias, data));
+    })
+    .catch(handleError);
 
-export const fetchSharedInventory = (alias: string): ReduxThunk => (dispatch) =>
-  axios.get(`${config.api.endpoint}users/${alias}/inventory`)
-  .then(({ data }) => {
-    dispatch(fetchSharedInventorySuccess(alias, data));
-  })
-  .catch(handleError);
+export const fetchSharedInventory = (alias: string): ReduxThunk => dispatch =>
+  axios
+    .get(`${config.api.endpoint}users/${alias}/inventory`)
+    .then(({ data }) => {
+      dispatch(fetchSharedInventorySuccess(alias, data));
+    })
+    .catch(handleError);
 
-export const fetchPvpStandings = (alias: string): ReduxThunk => (dispatch) =>
- axios.get(`${config.api.endpoint}users/${alias}/pvp/standings`)
-  .then(({ data }) => {
-    dispatch(fetchPvpStandingsSuccess(alias, data));
-    return readPvpSeasonIds();
-  })
-  .then((ids) => dispatch(actions.fetchPvpSeasons(ids)))
-  .catch(handleError);
+export const fetchPvpStandings = (alias: string): ReduxThunk => dispatch =>
+  axios
+    .get(`${config.api.endpoint}users/${alias}/pvp/standings`)
+    .then(({ data }) => {
+      dispatch(fetchPvpStandingsSuccess(alias, data));
+      return readPvpSeasonIds();
+    })
+    .then(ids => dispatch(actions.fetchPvpSeasons(ids)))
+    .catch(handleError);
 
-export const fetchUser = (
-  alias: string,
-): ReduxThunk =>
-  (dispatch) => {
-    dispatch(fetchingUser(true));
+export const fetchUser = (alias: string): ReduxThunk => dispatch => {
+  dispatch(fetchingUser(true));
 
-    return axios.get(`${config.api.endpoint}users/${alias}`)
-      .then(({ data }) => {
-        dispatch(fetchUserResult(data));
-        dispatch(fetchPvpStandings(alias));
-        dispatch(fetchPvpStats(alias));
-        dispatch(fetchUserAchievements(alias));
-        dispatch(fetchingUser(false));
-        dispatch(actions.fetchWorlds([data.world]));
-      }, ({ response: { status } = {} } = {}) => status === 404 && history.replace({ state: { notFound: true } }));
-  };
+  return axios.get(`${config.api.endpoint}users/${alias}`).then(
+    ({ data }) => {
+      dispatch(fetchUserResult(data));
+      dispatch(fetchPvpStandings(alias));
+      dispatch(fetchPvpStats(alias));
+      dispatch(fetchUserAchievements(alias));
+      dispatch(fetchingUser(false));
+      dispatch(actions.fetchWorlds([data.world]));
+    },
+    ({ response: { status } = {} } = {}) =>
+      status === 404 && history.replace({ state: { notFound: true } })
+  );
+};
 
 export const updatePrivacy = (name: string, prop: string, action: string) => ({
   type: UPDATE_USER_PRIVACY,
@@ -215,8 +229,8 @@ export const updatePrivacy = (name: string, prop: string, action: string) => ({
   },
 });
 
-export function setPrivacy (name: string, prop: string): ReduxThunk {
-  return (dispatch) => {
+export function setPrivacy(name: string, prop: string): ReduxThunk {
+  return dispatch => {
     dispatch(updatePrivacy(name, prop, 'add'));
     return axios.put(`${config.api.endpoint}users/me/privacy`, {
       privacy: prop,
@@ -224,8 +238,8 @@ export function setPrivacy (name: string, prop: string): ReduxThunk {
   };
 }
 
-export function removePrivacy (name: string, prop: string): ReduxThunk {
-  return (dispatch) => {
+export function removePrivacy(name: string, prop: string): ReduxThunk {
+  return dispatch => {
     dispatch(updatePrivacy(name, prop, 'remove'));
     return axios.delete(`${config.api.endpoint}users/me/privacy/${prop}`);
   };

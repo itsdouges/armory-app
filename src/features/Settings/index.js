@@ -5,7 +5,7 @@ import type { AuthenticatedUser } from 'flowTypes';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
-import history from 'history';
+import history from 'lib/history';
 import T from 'i18n-react';
 
 import styles from './styles.less';
@@ -28,11 +28,11 @@ import * as actions from './actions';
 type Props = {
   router: {},
   user: AuthenticatedUser,
-  validateGw2Token: (string) => void,
-  addGw2Token: (string) => void,
+  validateGw2Token: string => void,
+  addGw2Token: string => void,
   fetchGw2Tokens: () => void,
-  selectPrimaryGw2Token: (string) => void,
-  removeGw2Token: (string) => void,
+  selectPrimaryGw2Token: string => void,
+  removeGw2Token: string => void,
   changePassword: (string, string) => Promise<*>,
   validatePasswords: (string, string) => void,
   clearUserData: () => void,
@@ -43,131 +43,140 @@ type State = {
   updateImage: boolean,
 };
 
-export default connect(selector, {
-  validateGw2Token: actions.validateGw2Token,
-  addGw2Token: actions.addGw2Token,
-  fetchGw2Tokens: actions.fetchGw2Tokens,
-  selectPrimaryGw2Token: actions.selectPrimaryGw2Token,
-  removeGw2Token: actions.removeGw2Token,
-  changePassword: actions.changePassword,
-  clearUserData: authActions.clearUserData,
-  validatePasswords: joinActions.validatePasswords,
-})(
-class Settings extends Component<Props, State> {
-  props: Props;
-
-  state: State = {
-    subTitle: T.translate('settings.avatar.cta'),
-    updateImage: false,
-  };
-
-  componentWillMount () {
-    this.props.fetchGw2Tokens();
-    trackConversion();
+export default connect(
+  selector,
+  {
+    validateGw2Token: actions.validateGw2Token,
+    addGw2Token: actions.addGw2Token,
+    fetchGw2Tokens: actions.fetchGw2Tokens,
+    selectPrimaryGw2Token: actions.selectPrimaryGw2Token,
+    removeGw2Token: actions.removeGw2Token,
+    changePassword: actions.changePassword,
+    clearUserData: authActions.clearUserData,
+    validatePasswords: joinActions.validatePasswords,
   }
+)(
+  class Settings extends Component<Props, State> {
+    props: Props;
 
-  setPrimaryToken = (token: string) => {
-    this.props.selectPrimaryGw2Token(token);
-  };
-
-  validateToken = debounce((token) => {
-    if (!token.trim()) {
-      return;
-    }
-
-    this.props.validateGw2Token(token);
-  });
-
-  addToken = (token: string) => {
-    this.props.addGw2Token(token);
-  };
-
-  removeToken = (token: string) => {
-    this.props.removeGw2Token(token);
-  };
-
-  signOut = (e: SyntheticEvent<*>) => {
-    e.preventDefault();
-    history.replace('/');
-    this.props.clearUserData();
-  };
-
-  validatePasswords = (newPassword: string, newPasswordConfirm: string) => {
-    this.props.validatePasswords(newPassword, newPasswordConfirm);
-  };
-
-  changePassword = (currentPassword: string, newPassword: string) => {
-    return this.props.changePassword(currentPassword, newPassword);
-  };
-
-  finishedUploading = () => {
-    this.setState({
-      subTitle: T.translate('settings.avatar.finished'),
-      updateImage: true,
-    });
-  };
-
-  render () {
-    const { alias } = this.props.user;
-    const { updateImage, subTitle } = this.state;
-
-    const content = {
-      alias,
-      accountName: subTitle,
+    state: State = {
+      subTitle: T.translate('settings.avatar.cta'),
+      updateImage: false,
     };
 
-    return (
-      <span>
-        <Head title={T.translate('settings.name')} />
+    componentWillMount() {
+      this.props.fetchGw2Tokens();
+      trackConversion();
+    }
 
-        <ImageUpload
-          hintText={<span>{T.translate('settings.avatar.label')}<br />128 x 128</span>}
-          uploadName="avatar"
-          onUploadComplete={this.finishedUploading}
-        >
-          <ContentCard
-            className={styles.contentCard}
-            content={content}
-            type="users"
-            size="big"
-            forceUpdate={updateImage}
-          />
-        </ImageUpload>
+    setPrimaryToken = (token: string) => {
+      this.props.selectPrimaryGw2Token(token);
+    };
 
-        <div className={styles.spaceBelow}>
-          <ApiTokens
-            valid={this.props.user.validGw2Token}
-            validating={this.props.user.validatingGw2Token}
-            tokens={this.props.user.gw2Tokens}
-            error={this.props.user.gw2TokenError}
-            add={this.addToken}
-            remove={this.removeToken}
-            validate={this.validateToken}
-            setPrimary={this.setPrimaryToken}
-            adding={this.props.user.addingGw2Token}
-          />
-        </div>
+    validateToken = debounce(token => {
+      if (!token.trim()) {
+        return;
+      }
 
-        <DisplayAd type="mrec" className={styles.ad} />
+      this.props.validateGw2Token(token);
+    });
 
-        <div className={styles.spaceBelow}>
-          <ChangePassword
-            valid={this.props.user.passwordValid}
-            change={this.changePassword}
-            validate={this.validatePasswords}
-            error={this.props.user.passwordErrors}
-            busy={this.props.user.changingPassword}
-            message={this.props.user.passwordSuccess}
-          />
-        </div>
+    addToken = (token: string) => {
+      this.props.addGw2Token(token);
+    };
 
-        <div style={{ textAlign: 'center' }} className={styles.spaceBelow}>
-          <Button type="secondary" onClick={this.signOut}>
-            {T.translate('settings.buttons.logout')}
-          </Button>
-        </div>
-      </span>
-    );
+    removeToken = (token: string) => {
+      this.props.removeGw2Token(token);
+    };
+
+    signOut = (e: SyntheticEvent<*>) => {
+      e.preventDefault();
+      history.replace('/');
+      this.props.clearUserData();
+    };
+
+    validatePasswords = (newPassword: string, newPasswordConfirm: string) => {
+      this.props.validatePasswords(newPassword, newPasswordConfirm);
+    };
+
+    changePassword = (currentPassword: string, newPassword: string) => {
+      return this.props.changePassword(currentPassword, newPassword);
+    };
+
+    finishedUploading = () => {
+      this.setState({
+        subTitle: T.translate('settings.avatar.finished'),
+        updateImage: true,
+      });
+    };
+
+    render() {
+      const { alias } = this.props.user;
+      const { updateImage, subTitle } = this.state;
+
+      const content = {
+        alias,
+        accountName: subTitle,
+      };
+
+      return (
+        <span>
+          <Head title={T.translate('settings.name')} />
+
+          <ImageUpload
+            hintText={
+              <span>
+                {T.translate('settings.avatar.label')}
+                <br />
+                128 x 128
+              </span>
+            }
+            uploadName="avatar"
+            onUploadComplete={this.finishedUploading}
+          >
+            <ContentCard
+              className={styles.contentCard}
+              content={content}
+              type="users"
+              size="big"
+              forceUpdate={updateImage}
+            />
+          </ImageUpload>
+
+          <div className={styles.spaceBelow}>
+            <ApiTokens
+              valid={this.props.user.validGw2Token}
+              validating={this.props.user.validatingGw2Token}
+              tokens={this.props.user.gw2Tokens}
+              error={this.props.user.gw2TokenError}
+              add={this.addToken}
+              remove={this.removeToken}
+              validate={this.validateToken}
+              setPrimary={this.setPrimaryToken}
+              adding={this.props.user.addingGw2Token}
+            />
+          </div>
+
+          <DisplayAd type="mrec" className={styles.ad} />
+
+          <div className={styles.spaceBelow}>
+            <ChangePassword
+              valid={this.props.user.passwordValid}
+              change={this.changePassword}
+              validate={this.validatePasswords}
+              error={this.props.user.passwordErrors}
+              busy={this.props.user.changingPassword}
+              message={this.props.user.passwordSuccess}
+            />
+          </div>
+
+          <div style={{ textAlign: 'center' }} className={styles.spaceBelow}>
+            <Button type="secondary" onClick={this.signOut}>
+              {T.translate('settings.buttons.logout')}
+            </Button>
+          </div>
+        </span>
+      );
+    }
   }
-}
 );

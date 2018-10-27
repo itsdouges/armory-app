@@ -4,7 +4,7 @@ import React from 'react';
 import cx from 'classnames';
 import T from 'i18n-react';
 
-import history from 'history';
+import history from 'lib/history';
 import styles from './styles.less';
 import Textbox from 'common/components/Textbox';
 import SvgIcon from 'common/components/Icon/Svg';
