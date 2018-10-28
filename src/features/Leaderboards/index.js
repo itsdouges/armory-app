@@ -10,6 +10,7 @@ import TabsRow from 'common/components/Tabs/TabsRow';
 import HeroHeader from 'common/components/HeroHeader';
 import seasonEightBg from 'assets/images/season-eight.jpg';
 import LoadingStrip from 'common/components/LoadingStrip';
+import ResponsiveLeaderboard from 'common/components/DisplayAd/ResponsiveLeaderboard';
 
 import styles from './styles.less';
 import PvpLeaderboard from './components/Pvp';
@@ -67,7 +68,9 @@ const Leaderboards = ({ match, pvpSeasonName }: Props) => (
       <TabsRow {...tabsProps} basePath={match.url} appearance="transparent" />
     </HeroHeader>
 
+    <ResponsiveLeaderboard className={styles.leaderboardAd} />
     <TabsContent {...tabsProps} basePath={match.url} />
+    <ResponsiveLeaderboard className={styles.leaderboardAd} />
   </div>
 );
 

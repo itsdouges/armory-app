@@ -81,8 +81,10 @@ export default connect(
       if ((index + 1) % STANDINGS_PER_AD === 0) {
         return [
           buildStanding(standing, rank),
-          <tr key={`${rank}-ad`}>
-            <DisplayAd type="mrec" />
+          <tr key={`${rank}-ad`} className={styles.adRow}>
+            <td colSpan="6">
+              <DisplayAd type="mrec" />
+            </td>
           </tr>,
         ];
       }
@@ -102,21 +104,25 @@ export default connect(
           count={pvpLeaderboard.count}
           action={(limit, offset) => fetchLeaderboard(region, limit, offset)}
           progressComponent={<Progress className={styles.progress} />}
-          renderContainer={({ children }) => (
-            <table className={styles.rankingsTable}>
-              <thead>
-                <tr>
-                  <th />
-                  <th />
-                  <th>{T.translate('users.pvpStats.wins')}</th>
-                  <th>{T.translate('users.pvpStats.losses')}</th>
-                  <th>{T.translate('users.pvpStats.rating')}</th>
-                  <th>{T.translate('words.delta')}</th>
-                </tr>
-              </thead>
-              <tbody>{children}</tbody>
-            </table>
-          )}
+          renderContainer={({ children }) =>
+            leaderboard && leaderboard.rows ? (
+              <table className={styles.rankingsTable}>
+                <thead>
+                  <tr>
+                    <th />
+                    <th />
+                    <th>{T.translate('users.pvpStats.wins')}</th>
+                    <th>{T.translate('users.pvpStats.losses')}</th>
+                    <th>{T.translate('users.pvpStats.rating')}</th>
+                    <th>{T.translate('words.delta')}</th>
+                  </tr>
+                </thead>
+                <tbody>{children}</tbody>
+              </table>
+            ) : (
+              undefined
+            )
+          }
           renderButton={renderButton}
         >
           {this.renderStanding}
