@@ -34,7 +34,7 @@ module.exports = ({
   if (production && !process.env.LOCAL) {
     publicPath = process.env.TRAVIS_TAG
       ? 'https://gw2armory.com/'
-      : 'https://preview.gw2armory.com/';
+      : process.env.PUBLIC_PATH || publicPath;
   }
 
   const cssRulesUse = production

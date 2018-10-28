@@ -14,7 +14,7 @@
     "lint": "eslint ./config ./scripts ./src ./test",
     "dev": "LOCAL=true node ./scripts/start.js",
     "dev:embeds": "LOCAL=true npm run dev -- --embeds",
-    "build": "node ./scripts/build.js --embeds --app",
+    "build": "node ./scripts/build.js --app && printf \"http://gw2armory.netlify.com/* http://gw2armory.com/:splat 301!\" > dist/_redirects",
     "build:embeds": "LOCAL=true node ./scripts/build.js --embeds",
     "deploy": "node ./scripts/deploy.js",
     "deploy:embeds": "rm -rf dist-emeds && mkdir dist-embeds && node ./scripts/deployEmbeds.js",

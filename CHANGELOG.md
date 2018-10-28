@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][]
+### Changed
+- Dynamically set public path from env variable when deploying outside of travis ci
 
 ## [5.1.1][] - 2018-10-28
 ### Fixed
