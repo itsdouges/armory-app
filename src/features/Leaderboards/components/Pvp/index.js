@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import T from 'i18n-react';
+import uniqBy from 'lodash/uniqBy';
 
 import { makeStubItems } from 'lib/paginator';
 import Progress from 'common/components/Icon/Progress';
@@ -16,7 +17,7 @@ import styles from './styles.less';
 import { renderButton } from 'common/layouts/PaginatorGrid';
 import DisplayAd from 'common/components/DisplayAd';
 
-const STANDINGS_PER_PAGE = 100;
+const STANDINGS_PER_PAGE = 300;
 const STANDINGS_PER_AD = 15;
 const STUB_STANDINGS = makeStubItems(STANDINGS_PER_PAGE);
 
@@ -99,7 +100,9 @@ export default connect(
       return (
         <Paginator
           key={region}
-          rows={pvpLeaderboard.rows}
+          // TODO: Remove when we fix the backend to return unique LATEST rows (instead of all of them).
+          // This patches the stupid return of multiple standings :)... whoops.
+          rows={uniqBy(pvpLeaderboard.rows, row => (row ? row.alias : ''))}
           limit={STANDINGS_PER_PAGE}
           count={pvpLeaderboard.count}
           action={(limit, offset) => fetchLeaderboard(region, limit, offset)}
